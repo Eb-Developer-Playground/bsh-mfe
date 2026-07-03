@@ -19,5 +19,31 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/shell/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/shell/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/customer360/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/customer360/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/swift/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/swift/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/onboarding/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/onboarding/tsconfig.spec.json"
+    }
+  ]
 }

@@ -6,7 +6,17 @@ export const routes: Routes = [
   {
     path: 'customer360',
     loadComponent: () =>
-      loadRemoteModule('customer360', './Component').then(m => m.AppComponent),
+      loadRemoteModule('customer360', './Component').then(m => m.App),
+  },
+  {
+    path: 'onboarding',
+    loadComponent: () =>
+      loadRemoteModule('onboarding', './Component').then(m => m.App),
+  },
+  {
+    path: 'swift',
+    loadComponent: () =>
+      loadRemoteModule('swift', './Component').then(m => m.App),
   },
 ];
 

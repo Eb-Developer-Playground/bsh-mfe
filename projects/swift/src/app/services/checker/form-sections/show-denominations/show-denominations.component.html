@@ -1,0 +1,742 @@
+<mat-card class="mb-2" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="mat-title fw-400">
+      {{ denominationsInfo.transactionType }} {{ 'COMMON.TABLE' | translate }}
+    </h3>
+  </div>
+  <mat-divider></mat-divider>
+  @if (denominationsInfo) {
+    <div class="pt-18 pb-18">
+      <form>
+        @if (country === 'KE') {
+          <table cellspacing="0" class="deno-table">
+            <thead class="table_header">
+              <tr>
+                <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }}</th>
+                <th>{{ 'TRANSACTIONS.DENOMINATION.AMOUNT' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (deno of denominationsInfo.denominations; track deno) {
+                <tr>
+                  <td>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        readonly="readonly"
+                        [value]="deno.DenominationName"
+                      />
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        readonly="readonly"
+                        [value]="deno.DenominationValue"
+                        autocomplete="off"
+                        currencyMask
+                        [options]="{
+                          prefix: '',
+                          thousands: ',',
+                          decimal: '.',
+                          allowNegative: false,
+                          align: 'left',
+                        }"
+                      />
+                    </mat-form-field>
+                  </td>
+                </tr>
+              }
+              <tr class="total_row" style="padding-top: 10px">
+                <td class="pt-10 text-center">
+                  {{ 'PAGES.FUNDS_TRANSFER_MT103.TOTAL_VALUE' | translate }}
+                </td>
+                <td class="pt-10 text-center">
+                  <input
+                    type="text"
+                    matInput
+                    required
+                    readonly="readonly"
+                    [value]="totalValue['KE']"
+                    autocomplete="off"
+                    currencyMask
+                    [options]="{
+                      prefix: '',
+                      thousands: ',',
+                      decimal: '.',
+                      allowNegative: false,
+                      align: 'left',
+                    }"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table cellspacing="0" class="deno-table" width="100%">
+            <tbody>
+              <ng-container>
+                @for (managedBy of management; track managedBy) {
+                  <tr>
+                    <td width="50%">{{ 'TRANSACTIONS.DENOMINATION.OFFICIAL' | translate }}:</td>
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <input
+                          type="text"
+                          matInput
+                          required
+                          readonly="readonly"
+                          [value]="managedBy.Name"
+                        />
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                }
+              </ng-container>
+            </tbody>
+          </table>
+        }
+        @if (country === 'UG' && transactionType === 'Deposit') {
+          <div class="deposit-ug">
+            <div class="table-one">
+              <table cellspacing="0" class="deno-table">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }} (FIT)</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.BAGS' | translate }}
+                    </th>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.AMOUNT' | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (deno of denominationsInfo.denominations; track deno; let i = $index) {
+                    @if (
+                      deno.DenominationPackageName === 'coin' && deno.DenominationCategory === 'FIT'
+                    ) {
+                      <tr>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationName"
+                            />
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationPackage"
+                            />
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationValue"
+                              autocomplete="off"
+                              currencyMask
+                              [options]="{
+                                prefix: '',
+                                thousands: ',',
+                                decimal: '.',
+                                allowNegative: false,
+                                align: 'left',
+                              }"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                    }
+                  }
+                </tbody>
+              </table>
+              <ng-container>
+                <div class="total_row">
+                  <span
+                    ><b
+                      >{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }}
+                      (FIT)
+                    </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        readonly="readonly"
+                        [value]="totalValue['UG']['Deposit']['FIT']['coin']"
+                        autocomplete=" off"
+                        currencyMask
+                        [options]="{
+                          prefix: '',
+                          thousands: ',',
+                          decimal: '.',
+                          allowNegative: false,
+                          align: 'left',
+                        }"
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+              </ng-container>
+              <table cellspacing="0" class="deno-table">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }} (UNFIT)</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.BAGS' | translate }}
+                    </th>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.AMOUNT' | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (deno of denominationsInfo.denominations; track deno; let i = $index) {
+                    @if (
+                      deno.DenominationPackageName === 'coin' &&
+                      deno.DenominationCategory === 'UNFIT'
+                    ) {
+                      <tr>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationName"
+                            />
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationPackage"
+                            />
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationValue"
+                              autocomplete="off"
+                              currencyMask
+                              [options]="{
+                                prefix: '',
+                                thousands: ',',
+                                decimal: '.',
+                                allowNegative: false,
+                                align: 'left',
+                              }"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                    }
+                  }
+                </tbody>
+              </table>
+              <ng-container>
+                <div class="total_row">
+                  <span
+                    ><b
+                      >{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }}
+                      (UNFIT)
+                    </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        readonly="readonly"
+                        [value]="totalValue['UG']['Deposit']['UNFIT']['coin']"
+                        autocomplete=" off"
+                        currencyMask
+                        [options]="{
+                          prefix: '',
+                          thousands: ',',
+                          decimal: '.',
+                          allowNegative: false,
+                          align: 'left',
+                        }"
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+                <div class="total_row">
+                  <span
+                    ><b>{{ 'TRANSACTIONS.DENOMINATION.GRAND_TOTAL_VALUE' | translate }} </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        readonly="readonly"
+                        [value]="
+                          +totalValue['UG']['Deposit']['FIT']['total'] +
+                          +totalValue['UG']['Deposit']['UNFIT']['total']
+                        "
+                        autocomplete=" off"
+                        currencyMask
+                        [options]="{
+                          prefix: '',
+                          thousands: ',',
+                          decimal: '.',
+                          allowNegative: false,
+                          align: 'left',
+                        }"
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+                <ng-container>
+                  <div class="mb-1 mt-20">
+                    <h3 class="mat-title fw-400">
+                      {{ 'TRANSACTIONS.DENOMINATION.DELIVERED_BY' | translate }}
+                    </h3>
+                  </div>
+                  <div class="pt-5 pb-18">
+                    <mat-divider></mat-divider>
+                  </div>
+                  <table cellspacing="0" class="deno-delivery">
+                    <thead class="table_header">
+                      <tr>
+                        <th>
+                          {{ 'TRANSACTIONS.DENOMINATION.NAME' | translate }}
+                        </th>
+                        <th>
+                          {{ 'TRANSACTIONS.DENOMINATION.PF_NUMBER' | translate }}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (managedBy of management; track managedBy; let i = $index) {
+                        @if (managedBy.DenominationPackageName === 'coin') {
+                          <tr>
+                            <td>
+                              <mat-form-field appearance="fill">
+                                <input
+                                  type="text"
+                                  matInput
+                                  required
+                                  readonly="readonly"
+                                  [value]="managedBy.Name"
+                                />
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field appearance="fill">
+                                <input
+                                  type="text"
+                                  matInput
+                                  required
+                                  readonly="readonly"
+                                  [value]="managedBy.PFNumber"
+                                />
+                              </mat-form-field>
+                            </td>
+                          </tr>
+                        }
+                      }
+                    </tbody>
+                  </table>
+                </ng-container>
+              </ng-container>
+            </div>
+            <div class="table-two">
+              <table cellspacing="0" class="deno-table">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }} (FIT)</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.BUNDLES' | translate }}
+                    </th>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.AMOUNT' | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (deno of denominationsInfo.denominations; track deno; let i = $index) {
+                    @if (
+                      deno.DenominationPackageName === 'note' && deno.DenominationCategory === 'FIT'
+                    ) {
+                      <tr>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationName"
+                            />
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationPackage"
+                            />
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationValue"
+                              autocomplete="off"
+                              currencyMask
+                              [options]="{
+                                prefix: '',
+                                thousands: ',',
+                                decimal: '.',
+                                allowNegative: false,
+                                align: 'left',
+                              }"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                    }
+                  }
+                </tbody>
+              </table>
+              <ng-container>
+                <div class="total_row">
+                  <span
+                    ><b
+                      >{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }}
+                      (FIT)
+                    </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        readonly="readonly"
+                        [value]="totalValue['UG']['Deposit']['FIT']['note']"
+                        autocomplete=" off"
+                        currencyMask
+                        [options]="{
+                          prefix: '',
+                          thousands: ',',
+                          decimal: '.',
+                          allowNegative: false,
+                          align: 'left',
+                        }"
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+              </ng-container>
+              <table cellspacing="0" class="deno-table">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }} (UNFIT)</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.BUNDLES' | translate }}
+                    </th>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.AMOUNT' | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (deno of denominationsInfo.denominations; track deno; let i = $index) {
+                    @if (
+                      deno.DenominationPackageName === 'note' &&
+                      deno.DenominationCategory === 'UNFIT'
+                    ) {
+                      <tr>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationName"
+                            />
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationPackage"
+                            />
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              readonly="readonly"
+                              [value]="deno.DenominationValue"
+                              autocomplete="off"
+                              currencyMask
+                              [options]="{
+                                prefix: '',
+                                thousands: ',',
+                                decimal: '.',
+                                allowNegative: false,
+                                align: 'left',
+                              }"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                    }
+                  }
+                </tbody>
+              </table>
+              <ng-container>
+                <div class="total_row">
+                  <span
+                    ><b
+                      >{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }}
+                      (UNFIT)
+                    </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        readonly="readonly"
+                        [value]="totalValue['UG']['Deposit']['UNFIT']['note']"
+                        autocomplete=" off"
+                        currencyMask
+                        [options]="{
+                          prefix: '',
+                          thousands: ',',
+                          decimal: '.',
+                          allowNegative: false,
+                          align: 'left',
+                        }"
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+                <ng-container>
+                  <div class="mb-1 mt-20">
+                    <h3 class="mat-title fw-400">
+                      {{ 'TRANSACTIONS.DENOMINATION.DELIVERED_BY' | translate }}
+                    </h3>
+                  </div>
+                  <div class="pt-5 pb-18">
+                    <mat-divider></mat-divider>
+                  </div>
+                  <table cellspacing="0" class="deno-delivery">
+                    <thead class="table_header">
+                      <tr>
+                        <th>
+                          {{ 'TRANSACTIONS.DENOMINATION.NAME' | translate }}
+                        </th>
+                        <th>
+                          {{ 'TRANSACTIONS.DENOMINATION.PF_NUMBER' | translate }}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (managedBy of management; track managedBy; let i = $index) {
+                        @if (managedBy.DenominationPackageName === 'note') {
+                          <tr>
+                            <td>
+                              <mat-form-field appearance="fill">
+                                <input
+                                  type="text"
+                                  matInput
+                                  required
+                                  readonly="readonly"
+                                  [value]="managedBy.Name"
+                                />
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <mat-form-field appearance="fill">
+                                <input
+                                  type="text"
+                                  matInput
+                                  required
+                                  readonly="readonly"
+                                  [value]="managedBy.PFNumber"
+                                />
+                              </mat-form-field>
+                            </td>
+                          </tr>
+                        }
+                      }
+                    </tbody>
+                  </table>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        }
+        @if (country === 'UG' && transactionType === 'Withdraw') {
+          <table cellspacing="0" class="deno-table">
+            <thead class="table_header">
+              <tr>
+                <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }}</th>
+                <th>{{ 'TRANSACTIONS.DENOMINATION.AMOUNT' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (deno of denominationsInfo.denominations; track deno; let i = $index) {
+                <tr>
+                  <td>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        readonly="readonly"
+                        [value]="deno.DenominationName"
+                      />
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        readonly="readonly"
+                        [value]="deno.DenominationValue"
+                        autocomplete="off"
+                        currencyMask
+                        [options]="{
+                          prefix: '',
+                          thousands: ',',
+                          decimal: '.',
+                          allowNegative: false,
+                          align: 'left',
+                        }"
+                      />
+                    </mat-form-field>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+          <ng-container>
+            <div class="total_row">
+              <span
+                ><b>{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }} </b></span
+              >
+              <span>
+                <mat-form-field appearance="fill">
+                  <input
+                    type="text"
+                    matInput
+                    required
+                    readonly="readonly"
+                    [value]="totalValue['UG']['Withdraw']"
+                    autocomplete=" off"
+                    currencyMask
+                    [options]="{
+                      prefix: '',
+                      thousands: ',',
+                      decimal: '.',
+                      allowNegative: false,
+                      align: 'left',
+                    }"
+                  />
+                </mat-form-field>
+              </span>
+            </div>
+            <ng-container>
+              <div class="mb-1 mt-20">
+                <h3 class="mat-title fw-400">
+                  {{ 'TRANSACTIONS.DENOMINATION.PICKED_BY' | translate }}
+                </h3>
+              </div>
+              <div class="pt-5 pb-18">
+                <mat-divider></mat-divider>
+              </div>
+              <table cellspacing="0" class="deno-delivery">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.NAME' | translate }}</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.PF_NUMBER' | translate }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (managedBy of management; track managedBy; let i = $index) {
+                    <tr>
+                      <td>
+                        <mat-form-field appearance="fill">
+                          <input
+                            type="text"
+                            matInput
+                            required
+                            readonly="readonly"
+                            [value]="managedBy.Name"
+                          />
+                        </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-form-field appearance="fill">
+                          <input
+                            type="text"
+                            matInput
+                            required
+                            readonly="readonly"
+                            [value]="managedBy.PFNumber"
+                          />
+                        </mat-form-field>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </ng-container>
+          </ng-container>
+        }
+      </form>
+    </div>
+  }
+</mat-card>

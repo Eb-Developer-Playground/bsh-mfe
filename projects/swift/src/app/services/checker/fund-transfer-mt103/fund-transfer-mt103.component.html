@@ -1,0 +1,429 @@
+@if (!data?.AccountDetails?.IsGlAccount) {
+  <div class="mb-2">
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="mb-1">
+            <h2 class="fw-400 mb-0">
+              {{ 'PAGES.FUNDS_TRANSFER_MT103.REMITTER_DETAILS' | translate }}
+            </h2>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="pb-1">
+        <mat-divider></mat-divider>
+      </div>
+      <app-account-details
+        [accountNumber]="data?.AccountDetails?.AccountNumber"
+      ></app-account-details>
+    </mat-expansion-panel>
+  </div>
+}
+<div class="mt-15 mb-15"></div>
+@if (accountFormFields.length > 0) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.ADDITIONAL_ACCOUNT_DETAILS' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of accountFormFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('AccountDetails', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span class="fw-600" [innerText]="getValue('AccountDetails', field?.key)"></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+@if (remitterAccDetailsFields.length > 0) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.REMITTER_ACCOUNT_DETAILS' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of remitterAccDetailsFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('RemitterAccountDetails', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span
+              class="fw-600"
+              [innerText]="getValue('RemitterAccountDetails', field?.key)"
+            ></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+@if (TransactionDetailsFields.length > 0) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.TRANSACTION_INFORMATION' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of TransactionDetailsFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('TransactionDetails', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span class="fw-600" [innerText]="getValue('TransactionDetails', field?.key)"></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+@if (beneficiaryDetailsFields.length > 0) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.BENEFICIARY_DETAILS' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of beneficiaryDetailsFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('BeneficiaryDetails', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span class="fw-600" [innerText]="getValue('BeneficiaryDetails', field?.key)"></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+@if (beneficiaryBankDetailsFields.length > 0) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.BENEFICIARY_BANK_DETAILS' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of beneficiaryBankDetailsFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('BeneficiaryBankDetails', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span
+              class="fw-600"
+              [innerText]="getValue('BeneficiaryBankDetails', field?.key)"
+            ></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+@if (senderToReceiverInformationFields.length > 0) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.SENDER_TO_RECEIVER_INFORMATION' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of senderToReceiverInformationFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('SenderToReceiverInformation', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span
+              class="fw-600"
+              [innerText]="getValue('SenderToReceiverInformation', field?.key)"
+            ></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+
+@if (
+  ticket.bankId === '43' &&
+  data.TransactionDetails.ProductCode !== 'RTGS' &&
+  LicenseDetailsFields.length > 0
+) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.LICENSE_DETAILS' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of LicenseDetailsFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('LicenseDetails', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span class="fw-600" [innerText]="getValue('LicenseDetails', field?.key)"></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+
+@if (ChargeDetailsFields.length > 0) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.CHARGE_DETAILS' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of ChargeDetailsFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('ChargeDetails', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span class="fw-600" [innerText]="getValue('ChargeDetails', field?.key)"></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+
+@if (ExchangeDetailsFields.length > 0) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.EXCHANGE_DETAILS' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of ExchangeDetailsFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('ExchangeDetails', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span class="fw-600" [innerText]="getValue('ExchangeDetails', field?.key)"></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+@if (AdditionalFields.length > 0) {
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><div class="mb-1">
+          <h2 class="mat-title fw-400 mb-0">
+            {{ 'PAGES.FUNDS_TRANSFER_MT103.ADDITIONAL_FIELDS' | translate }}
+          </h2>
+        </div></mat-panel-title
+      >
+    </mat-expansion-panel-header>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (field of AdditionalFields; track field) {
+        <div>
+          <p class="text-muted mb-0">{{ field.label | translate }}</p>
+          @if (field?.field_type === 11) {
+            <span class="fw-600">{{
+              getValue('Additional', field?.key) | date: 'dd/MM/yyyy'
+            }}</span>
+          }
+          @if (field?.field_type !== 11) {
+            <span class="fw-600" [innerText]="getValue('Additional', field?.key)"></span>
+          }
+        </div>
+      }
+    </div>
+  </mat-expansion-panel>
+}
+<div class="mt-15 mb-15"></div>
+<mat-expansion-panel [expanded]="true">
+  <mat-expansion-panel-header>
+    <mat-panel-title
+      ><div class="mb-1">
+        <h2 class="mat-title fw-400 mb-0">
+          {{ 'COMMON.DOCUMENTS.LABEL' | translate }}
+        </h2>
+      </div></mat-panel-title
+    >
+  </mat-expansion-panel-header>
+  <div class="pt-18 pb-18">
+    <mat-divider></mat-divider>
+  </div>
+  <app-document-cards [RequiredDocuments]="documents"></app-document-cards>
+</mat-expansion-panel>
+<div class="mt-15 mb-15"></div>
+@if (ticket.status === 'SubmittedToChecker') {
+  <mat-card style="padding: 1.5rem">
+    <div class="mb-1">
+      <h2 class="mat-title fw-400">{{ 'COMMON.APPROVAL.LABEL' | translate }}</h2>
+      <div class="mat-sub-title fw-200">
+        {{ 'COMMON.APPROVAL.TEXT' | translate }}
+      </div>
+    </div>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <div [formGroup]="actionForm" class="fieldset">
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'COMMON.STATUS' | translate }}</mat-label>
+        <mat-select formControlName="action">
+          <mat-option [value]="'submit'">{{ 'COMMON.APPROVE' | translate }}</mat-option>
+          @if (!(ticket.bankId === '43')) {
+            <mat-option [value]="'refer back'">{{ 'COMMON.RETURN' | translate }}</mat-option>
+          }
+          <mat-option [value]="'reject'">{{ 'COMMON.REJECT' | translate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'COMMON.COMMENT' | translate }}</mat-label>
+        <textarea
+          formControlName="comment"
+          matInput
+          rows="1"
+          placeholder="{{
+            actionForm.get('action')?.value === 'refer back' ||
+            actionForm.get('action')?.value === 'reject'
+              ? 'Return Reason should be mandatory-Guidance on which/what details to be amended by the maker'
+              : ''
+          }}"
+        ></textarea>
+        @if (actionForm.get('comment')?.hasError('required')) {
+          <mat-error>
+            {{ 'COMMON.RETURNED_REASON' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </mat-card>
+}
+<div class="flex flex-row mt-15">
+  <button mat-stroked-button color="primary" [routerLink]="['/dashboard/']">
+    {{ 'COMMON.QUIT' | translate }}
+  </button>
+  <span class="flex-1"></span>
+  @if (ticket.status === 'SubmittedToChecker') {
+    <button mat-raised-button color="primary" [disabled]="!actionForm.valid" (click)="submit()">
+      {{ 'COMMON.SUBMIT' | translate }}
+    </button>
+  }
+</div>

@@ -1,0 +1,801 @@
+<mat-card class="mb-2" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="mat-title fw-400">
+      {{ 'SERVICES.SECTIONS.SEND-MONEY.ACCOUNT_DETAILS' | translate }}
+    </h3>
+  </div>
+  <div class="pb-4">
+    <mat-divider></mat-divider>
+  </div>
+  <mat-card-content class="flex flex-row p-6">
+    <div class="flex flex-col">
+      <mat-icon
+        svgIcon="ic-placeholder-potrait"
+        aria-hidden="false"
+        aria-label="placeholder-potrait"
+        style="width: 141px; height: 141px">
+      </mat-icon>
+      <mat-icon
+        svgIcon="ic-placeholder"
+        aria-hidden="false"
+        aria-label="placeholder"
+        style="width: 141px; height: 141px">
+      </mat-icon>
+    </div>
+    <div class="w-[87%] ml-6">
+      <div class="flex justify-between">
+        <mat-card-subtitle class="text-xl text-gray-900 text-lg">George Okonjo</mat-card-subtitle>
+      </div>
+      <div class="grid grid-cols-4 gap-5">
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.NATIONALITY' | translate }}</p>
+          <p class="text-gray-900 mt-1">Kenyan</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.COUNTRY_RESIDENCE' | translate }}</p>
+          <p class="text-gray-900 mt-1">Kenya</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.ID_TYPE' | translate }}</p>
+          <p class="text-gray-900 mt-1">National ID</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.ID_NUMBER' | translate }}</p>
+          <p class="text-gray-900 mt-1">23546987</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.FIRST_NAME' | translate }}</p>
+          <p class="text-gray-900 mt-1">Mattias</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.MIDDLE NAME' | translate }}</p>
+          <p class="text-gray-900 mt-1">Ojwang</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ "SERVICES.SECTIONS.SEND-MONEY.COLS.SURNAME" | translate }}</p>
+          <p class="text-gray-900 mt-1">Otieno</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.DATE_BIRTH' | translate }}</p>
+          <p class="text-gray-900 mt-1">06/02/1986</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.ID_SERIAL_NUMBER' | translate }}</p>
+          <p class="text-gray-900 mt-1">234567891</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.KRA_NUMBER' | translate }}</p>
+          <p class="text-gray-900 mt-1">A000458896235</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.GENDER' | translate }}</p>
+          <p class="text-gray-900 mt-1">Male</p>
+        </div>
+        <div class="flex flex-col">
+          <p class="text-gray-400 mb-0">{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.MARITAL_STATUS' | translate }}</p>
+          <p class="text-gray-900 mt-1">Married</p>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<form [formGroup]="groupForm" autocomplete="off">
+  <mat-accordion multi>
+    <mat-expansion-panel [expanded]="counter >= 1" class="pointer-none">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="flex items-center">
+            <div class="indicator-container">
+              @if (!isVerified) {
+                <button mat-mini-fab color="primary" aria-label="Section 1" class="color-white">1</button>
+              }
+              @if (isVerified) {
+                <button mat-mini-fab aria-label="Section 1" class="color-white bg-green">
+                  <mat-icon class="check">check</mat-icon>
+                </button>
+              }
+            </div>
+            <h3 class="mat-title fw-400 self-center mb-0">
+              {{ 'SERVICES.SECTIONS.SEND-MONEY.ADDITIONAL_ACCOUNT_DETAILS' | translate }}
+            </h3>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <hr />
+      <div formGroupName="nationalityForm" class="grid grid-cols-2 gap-4" autocomplete="off">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.NATIONALITY' | translate }}</mat-label>
+          <mat-select formControlName="nationality" required readonly aria-readonly="true">
+            <mat-option value="Kenyan">Kenyan</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.COUNTRY_RESIDENCE' | translate }}</mat-label>
+          <input
+            matInput
+            aria-label="Country of residence"
+            [matAutocomplete]="auto"
+            formControlName="residence"
+            readonly
+            required
+            oninput="this.value = this.value.toUpperCase()" />
+          <mat-autocomplete #auto="matAutocomplete" class="residence">
+            @for (country of filteredCountries | async; track country.name) {
+              <mat-option [value]="country.name" required class="custom-option">
+                <img class="option-img self-center" aria-hidden [src]="country.flag" />
+                <span class="self-center">{{ country.name }}</span>
+              </mat-option>
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.ID_TYPE' | translate }}</mat-label>
+          <mat-select formControlName="id_type" id="id-type" required>
+            <mat-option value="NationalID">National ID</mat-option>
+            <mat-option value="KenyanPassport">Passport (Kenyan)</mat-option>
+            <mat-option value="ForeignPassport">Passport (Foreign)</mat-option>
+            <mat-option value="DriversLicense">Drivers License</mat-option>
+            <mat-option value="MilitaryServiceCard">Military service card</mat-option>
+            <mat-option value="RefugeeID">Refugee ID</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.ID_SERIAL_NUMBER' | translate }}</mat-label>
+          <input matInput formControlName="id_serial" required oninput="this.value = this.value.toUpperCase()" />
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+
+    @if (isVerified) {
+      <mat-expansion-panel [expanded]="counter >= 2">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="flex items-center">
+              <div class="indicator-container">
+                @if (!detailsForm?.valid) {
+                  <button
+                    mat-mini-fab
+                    color="primary"
+                    aria-label="Section 2"
+                    class="color-white"
+                    [class.icon-disabled]="counter < 2">
+                    2
+                  </button>
+                }
+                @if (detailsForm?.valid && counter >= 2) {
+                  <button mat-mini-fab aria-label="Section 2" class="color-white bg-green">
+                    <mat-icon class="check">check</mat-icon>
+                  </button>
+                }
+              </div>
+              <h3 class="mat-title fw-400 self-center mb-0">
+                {{ 'SERVICES.SECTIONS.SEND-MONEY.TRANSACTION_INFORMATION' | translate }}
+              </h3>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr />
+        <div formGroupName="detailsForm" class="flex flex-wrap flex-col" autocomplete="off">
+          <div class="grid grid-cols-2 gap-4">
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.FIRST_NAME' | translate }}</mat-label>
+              <input matInput formControlName="first_name" required oninput="this.value = this.value.toUpperCase()" />
+              @if (detailsForm.controls['first_name'].hasError('pattern') && !detailsForm.controls['first_name'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.ALPHABETICAL_ONLY' | translate }}</mat-error>
+              }
+              @if (detailsForm.controls['first_name'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_FIRST' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.MIDDLE_NAME' | translate }}</mat-label>
+              <input matInput formControlName="middle_name" oninput="this.value = this.value.toUpperCase()" />
+              @if (detailsForm.controls['middle_name'].hasError('pattern')) {
+                <mat-error>{{ 'COMMON.ERROR.ALPHABETICAL_ONLY' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.SURNAME' | translate }}</mat-label>
+              <input matInput formControlName="surname" required oninput="this.value = this.value.toUpperCase()" />
+              @if (detailsForm.controls['surname'].hasError('pattern') && !detailsForm.controls['surname'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.ALPHABETICAL_ONLY' | translate }}</mat-error>
+              }
+              @if (detailsForm.controls['surname'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_SURNAME' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.DATE_BIRTH' | translate }}</mat-label>
+              <input
+                matInput
+                [max]="today"
+                [matDatepicker]="picker"
+                formControlName="dob"
+                required
+                oninput="this.value = this.value.toUpperCase()" />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              @if (detailsForm.controls['dob'].hasError('required') && !detailsForm.controls['dob'].hasError('matDatepickerParse')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_DATE' | translate }}</mat-error>
+              }
+              @if (detailsForm.controls['dob'].hasError('matDatepickerParse')) {
+                <mat-error>{{ 'COMMON.ERROR.INVALID_DATE' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.KRA_NUMBER' | translate }}</mat-label>
+              <input matInput formControlName="kra_pin" required oninput="this.value = this.value.toUpperCase()" />
+              @if (detailsForm.controls['kra_pin'].hasError('required') && !detailsForm.controls['kra_pin'].hasError('invalidKraPin')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_KRA_NUMBER' | translate }}</mat-error>
+              }
+              @if (!detailsForm.controls['kra_pin'].hasError('required') && detailsForm.controls['kra_pin'].hasError('invalidKraPin')) {
+                <mat-error>{{ 'COMMON.ERROR.INVALID_KRA_NUMBER' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.GENDER' | translate }}</mat-label>
+              <mat-select formControlName="gender" required>
+                <mat-option value="female">{{ 'COMMON.GENDER.STATUS.FEMALE' | translate }}</mat-option>
+                <mat-option value="male">{{ 'COMMON.GENDER.STATUS.MALE' | translate }}</mat-option>
+              </mat-select>
+              @if (detailsForm.controls['gender'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_GENDER' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.COLS.MARITAL_STATUS' | translate }}</mat-label>
+              <mat-select formControlName="marital_status" required>
+                <mat-option value="married">{{ 'COMMON.MARITAL.STATUS.MARRIED' | translate }}</mat-option>
+                <mat-option value="single">{{ 'COMMON.MARITAL.STATUS.SINGLE' | translate }}</mat-option>
+                <mat-option value="other">{{ 'COMMON.MARITAL.STATUS.OTHER' | translate }}</mat-option>
+              </mat-select>
+              @if (detailsForm.controls['marital_status'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_MARITAL_STATUS' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    }
+
+    @if (isVerified) {
+      <mat-expansion-panel [expanded]="counter >= 3" [disabled]="!detailsForm?.valid">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="flex items-center">
+              <div class="indicator-container">
+                @if (!contactForm?.valid) {
+                  <button mat-mini-fab color="primary" aria-label="Section 3" class="color-white" [class.icon-disabled]="counter < 3">3</button>
+                }
+                @if (contactForm?.valid && counter >= 3) {
+                  <button mat-mini-fab aria-label="Section 3" class="color-white bg-green">
+                    <mat-icon class="check">check</mat-icon>
+                  </button>
+                }
+              </div>
+              <h3 class="mat-title fw-400 self-center mb-0">
+                {{ 'SERVICES.SECTIONS.SEND-MONEY.EXCHANGE_RATE_INFO' | translate }}
+              </h3>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr />
+        <div>
+          <mat-card class="mb-4">
+            <form [formGroup]="contactForm!" class="flex flex-wrap w-full" autocomplete="off">
+              <input type="text" formControlName="email_verified" [required]="contactForm?.value?.email_address" hidden />
+              <div class="max-w-sm pr-2">
+                <p><strong>{{ 'SERVICES.SECTIONS.SEND-MONEY.ENABLE_MOBILE_BANKING' | translate }}</strong></p>
+                <div class="flex justify-between items-center">
+                  <div class="text-gray-500 mr-4">
+                    {{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_CUSTOMER_MOBILE' | translate }}
+                  </div>
+                  <mat-slide-toggle color="primary" formControlName="enable_phone"></mat-slide-toggle>
+                </div>
+                <div class="flex items-start overflow-x-hidden">
+                  <mat-form-field appearance="fill" floatLabel="always" class="w-[5rem] min-w-[5rem] me-05" readonly>
+                    <input matInput type="number" readonly oninput="this.value = this.value.toUpperCase()" />
+                    <span matPrefix>
+                      <img class="h-[1.7rem] w-[1.7rem] object-cover" aria-hidden src="assets/flags/kenya.png" />
+                    </span>
+                    <span matSuffix>
+                      <mat-icon>keyboard_arrow_down</mat-icon>
+                    </span>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" floatLabel="always" class="w-full">
+                    <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.PRIMARY_MOBILE_NUMBER' | translate }}</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      placeholder="*** *** ***"
+                      formControlName="mobile_number"
+                      required
+                      id="mobile_number"
+                      maxlength="9"
+                      oninput="this.value = this.value.toUpperCase()" />
+                    @if (contactForm.controls['mobile_number'].hasError('pattern') && !contactForm.controls['mobile_number'].hasError('required') && !(contactForm.controls['mobile_number'].hasError('minlength') && contactForm.controls['mobile_number'].hasError('maxlength'))) {
+                      <mat-error>{{ 'COMMON.ERROR.NUMBERS_ONLY' | translate }}</mat-error>
+                    }
+                    @if (!contactForm.controls['mobile_number'].hasError('pattern') && !contactForm.controls['mobile_number'].hasError('required') && (contactForm.controls['mobile_number'].hasError('minlength') || contactForm.controls['mobile_number'].hasError('maxlength'))) {
+                      <mat-error>{{ 'COMMON.ERROR.INVALID_MOBILE_NUMBER' | translate }}</mat-error>
+                    }
+                    @if (contactForm.controls['mobile_number'].hasError('required')) {
+                      <mat-error>{{ 'COMMON.ERROR.REQUIRED_MOBILE_NUMBER' | translate }}</mat-error>
+                    }
+                    <span matPrefix>+254</span>
+                  </mat-form-field>
+                </div>
+                <div class="flex justify-between items-center flex-wrap">
+                  <div class="flex" (keyup)="inputChanged($event)" id="mobile-container">
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                  </div>
+                  <div [matTooltipDisabled]="contactForm.controls['mobile_number'].valid" matTooltip="Provide a valid mobile number">
+                    <button mat-flat-button (click)="verifyContact(contactForm, '', 'mobile')" class="text-gray-500 hover:text-red-700" [disabled]="contactForm.controls['mobile_number'].invalid">
+                      Verify phone number
+                    </button>
+                  </div>
+                </div>
+                <p class="text-red-600 hidden" id="verify-help-mobile">Please add a valid verification code</p>
+              </div>
+              <div class="w-[2px] bg-gray-200 mx-4 h-auto"></div>
+              <div class="max-w-sm pl-2">
+                <p><strong>{{ 'SERVICES.SECTIONS.SEND-MONEY.ENABLE_INTERNET_BANKING' | translate }}</strong></p>
+                <div class="flex justify-between items-center">
+                  <div class="text-gray-500 mr-4">
+                    {{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_CUSTOMER_EMAIL' | translate }}
+                  </div>
+                  <mat-slide-toggle color="primary" formControlName="enable_email"></mat-slide-toggle>
+                </div>
+                <div class="flex items-center overflow-x-hidden">
+                  <mat-form-field appearance="fill" class="w-full">
+                    <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.PRIMARY_EMAIL' | translate }}</mat-label>
+                    <input matInput type="email" formControlName="email_address" id="email_address" oninput="this.value = this.value.toUpperCase()" />
+                    @if (contactForm.controls['email_address'].hasError('invalidEmail') && !contactForm.controls['email_address'].hasError('required')) {
+                      <mat-error>{{ 'COMMON.ERROR.INVALID_EMAIL' | translate }}</mat-error>
+                    }
+                    @if (contactForm.controls['email_address'].hasError('required')) {
+                      <mat-error>{{ 'COMMON.ERROR.REQUIRED_EMAIL' | translate }}</mat-error>
+                    }
+                  </mat-form-field>
+                </div>
+                <div class="flex justify-between items-center flex-wrap">
+                  <div class="flex" (keyup)="inputChanged($event)" id="email-container">
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                    <input type="text" maxlength="1" class="form-control" required />
+                  </div>
+                  <div [matTooltipDisabled]="contactForm.controls['email_address'].valid" matTooltip="Provide a valid email address">
+                    <button mat-flat-button (click)="verifyContact(contactForm, '', 'email')" class="text-gray-500 hover:text-red-700" [disabled]="disableState(contactForm, 'email_address')">
+                      Verify email address
+                    </button>
+                  </div>
+                </div>
+                <p class="text-red-600 hidden" id="verify-help-email">
+                  {{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_VERIFICATION_CODE' | translate }}
+                </p>
+                <mat-form-field appearance="fill" class="w-full mt-4">
+                  <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.PRIMARY_EMAIL_COMMENT' | translate }}</mat-label>
+                  <textarea matInput formControlName="email_comment" oninput="this.value = this.value.toUpperCase()"></textarea>
+                  @if (contactForm.controls['email_comment'].hasError('minlength')) {
+                    <mat-error>{{ 'COMMON.ERROR.MINIMUM_CHARACTERS' | translate: { value: '3' } }}</mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </form>
+          </mat-card>
+          <div autocomplete="off">
+            @for (item of contactFormGroups; track item; let i = $index) {
+              <mat-card class="mb-4">
+                <form [formGroup]="item" class="flex flex-wrap w-full">
+                  <input type="text" formControlName="email_verified" [required]="item.value?.email_address" hidden />
+                  <input type="text" formControlName="mobile_verified" [required]="item.value?.mobile_number" hidden />
+                  <div class="max-w-sm pr-2">
+                    <p><strong>{{ 'SERVICES.SECTIONS.SEND-MONEY.ENABLE_MOBILE_BANKING' | translate }}</strong></p>
+                    <div class="flex justify-between items-center">
+                      <div class="text-gray-500 mr-4">
+                        {{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_VERIFICATION_MOBILE_CODE' | translate }}
+                      </div>
+                      <mat-slide-toggle color="primary" formControlName="enable_phone"></mat-slide-toggle>
+                    </div>
+                    <div class="flex items-center overflow-x-hidden">
+                      <mat-form-field appearance="fill" floatLabel="always" class="w-[5rem] min-w-[5rem] me-05" readonly>
+                        <input matInput type="number" readonly oninput="this.value = this.value.toUpperCase()" />
+                        <span matPrefix><img class="h-[1.7rem] w-[1.7rem] object-cover" aria-hidden src="assets/flags/kenya.png" /></span>
+                        <span matSuffix><mat-icon>keyboard_arrow_down</mat-icon></span>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill" floatLabel="always" class="w-full">
+                        <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.MOBILE_NUMBER' | translate }}</mat-label>
+                        <input matInput type="text" placeholder="*** *** ***" formControlName="mobile_number" id="mobile_number{{ i }}" oninput="this.value = this.value.toUpperCase()" />
+                        @if (item.controls['mobile_number'].hasError('pattern') && !item.controls['mobile_number'].hasError('required')) {
+                          <mat-error>{{ 'COMMON.ERROR.NUMBERS_ONLY' | translate }}</mat-error>
+                        }
+                        @if (!item.controls['mobile_number'].hasError('pattern') && !item.controls['mobile_number'].hasError('required') && (item.controls['mobile_number'].hasError('minlength') || item.controls['mobile_number'].hasError('maxlength'))) {
+                          <mat-error>{{ 'COMMON.ERROR.INVALID_MOBILE_NUMBER' | translate }}</mat-error>
+                        }
+                        @if (item.controls['mobile_number'].hasError('required')) {
+                          <mat-error>{{ 'COMMON.ERROR.REQUIRED_MOBILE_NUMBER' | translate }}</mat-error>
+                        }
+                        <span matPrefix>+254</span>
+                      </mat-form-field>
+                    </div>
+                    <div class="flex justify-between items-center flex-wrap">
+                      <div class="flex" (keyup)="inputChanged($event)" [id]="'mobile-container' + i">
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                      </div>
+                      <div [matTooltipDisabled]="item.controls['mobile_number'].valid" matTooltip="Provide a valid phone number">
+                        <button mat-flat-button (click)="verifyContact(item, i, 'mobile')" class="text-gray-500 hover:text-red-700" [disabled]="disableState(item, 'mobile_number')">
+                          {{ 'SERVICES.SECTIONS.SEND-MONEY.VERIFY_PHONE_NUMBER' | translate }}
+                        </button>
+                      </div>
+                    </div>
+                    <p class="text-red-600 hidden" [id]="'verify-help-mobile' + i">{{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_VERIFICATION_CODE' | translate }}</p>
+                  </div>
+                  <div class="w-[2px] bg-gray-200 mx-4"></div>
+                  <div class="max-w-sm pl-2">
+                    <p><strong>{{ 'SERVICES.SECTIONS.SEND-MONEY.ENABLE_INTERNET_BANKING' | translate }}</strong></p>
+                    <div class="flex justify-between items-center">
+                      <div class="text-gray-500 mr-4">{{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_CUSTOMER_EMAIL' | translate }}</div>
+                      <mat-slide-toggle color="primary" formControlName="enable_email"></mat-slide-toggle>
+                    </div>
+                    <div class="flex items-center overflow-x-hidden">
+                      <mat-form-field appearance="fill" class="w-full">
+                        <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.EMAIL' | translate }}</mat-label>
+                        <input matInput type="email" formControlName="email_address" [id]="'email_address' + i" oninput="this.value = this.value.toUpperCase()" />
+                        @if (item.controls['email_address'].hasError('invalidEmail')) {
+                          <mat-error>{{ 'COMMON.ERROR.INVALID_EMAIL' | translate }}</mat-error>
+                        }
+                      </mat-form-field>
+                    </div>
+                    <div class="flex justify-between items-center flex-wrap">
+                      <div class="flex" (keyup)="inputChanged($event)" [id]="'email-container' + i">
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                        <input type="text" maxlength="1" class="form-control" required />
+                      </div>
+                      <div [matTooltipDisabled]="item.controls['email_address'].valid" matTooltip="Provide a valid email address">
+                        <button mat-flat-button (click)="verifyContact(item, i, 'email')" class="text-gray-500 hover:text-red-700" [disabled]="disableState(item, 'email_address')">
+                          {{ 'SERVICES.SECTIONS.SEND-MONEY.VERIFY_EMAIL' | translate }}
+                        </button>
+                      </div>
+                    </div>
+                    <p class="text-red-600 hidden" [id]="'verify-help-email' + i">{{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_VERIFICATION_CODE' | translate }}</p>
+                  </div>
+                </form>
+                <div class="mt-2">
+                  <button mat-flat-button class="text-red-700 ml-auto pl-0" (click)="removeField(i)">
+                    <strong>{{ 'SERVICES.SECTIONS.SEND-MONEY.REMOVE_NUMBER_EMAIL' | translate }}</strong>
+                  </button>
+                </div>
+              </mat-card>
+            }
+          </div>
+          <mat-card class="my-4">
+            <button mat-flat-button class="text-red-700" (click)="createFields()">
+              <strong>{{ 'SERVICES.SECTIONS.SEND-MONEY.ADD_NUMBER_EMAIL' | translate }}</strong>
+            </button>
+          </mat-card>
+        </div>
+      </mat-expansion-panel>
+    }
+
+    @if (isVerified) {
+      <mat-expansion-panel [expanded]="counter >= 4" [disabled]="!contactForm.valid">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="flex items-center">
+              <div class="indicator-container">
+                @if (additionalForm?.valid && counter < 4) {
+                  <button mat-mini-fab color="primary" aria-label="Section 4" class="color-white" [class.icon-disabled]="counter < 4">4</button>
+                }
+                @if (additionalForm?.valid && counter >= 4) {
+                  <button mat-mini-fab aria-label="Section 4" class="color-white bg-green">
+                    <mat-icon class="check">check</mat-icon>
+                  </button>
+                }
+              </div>
+              <h3 class="mat-title fw-400 self-center mb-0">
+                {{ 'SERVICES.SECTIONS.SEND-MONEY.BENEFICIARY_DETAILS' | translate }}
+              </h3>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr />
+        <div>
+          <mat-card>
+            <div formGroupName="additionalForm" autocomplete="off" class="grid grid-cols-2 gap-4">
+              <mat-checkbox color="primary" formControlName="high_risk">{{ 'SERVICES.SECTIONS.SEND-MONEY.HIGH_RISK_CUSTOMER' | translate }}</mat-checkbox>
+              <mat-checkbox color="primary" formControlName="staff">{{ 'SERVICES.SECTIONS.SEND-MONEY.STAFF_MEMBER' | translate }}</mat-checkbox>
+              <mat-checkbox color="primary" formControlName="joint_account">{{ 'SERVICES.SECTIONS.SEND-MONEY.JOINT_ACCOUNT' | translate }}</mat-checkbox>
+              <mat-checkbox color="primary" formControlName="minor">{{ 'SERVICES.SECTIONS.SEND-MONEY.MINOR' | translate }}</mat-checkbox>
+            </div>
+          </mat-card>
+        </div>
+      </mat-expansion-panel>
+    }
+
+    @if (isVerified) {
+      <mat-expansion-panel [expanded]="counter >= 5" [disabled]="!additionalForm?.valid">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="flex items-center">
+              <div class="indicator-container">
+                @if (!accountForm?.valid) {
+                  <button mat-mini-fab color="primary" aria-label="Section 5" class="color-white" [class.icon-disabled]="counter < 5">5</button>
+                }
+                @if (accountForm?.valid && counter >= 5) {
+                  <button mat-mini-fab aria-label="Section 5" class="color-white bg-green">
+                    <mat-icon class="check">check</mat-icon>
+                  </button>
+                }
+              </div>
+              <h3 class="mat-title fw-400 self-center mb-0">
+                {{ 'SERVICES.SECTIONS.SEND-MONEY.BENEFICIARY_BANK_DETAILS' | translate }}
+              </h3>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr />
+        <div formGroupName="accountForm" class="flex flex-wrap flex-col" autocomplete="off">
+          <div class="grid grid-cols-2 gap-4">
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.ACCOUNT_TYPE' | translate }}</mat-label>
+              <mat-select formControlName="type" #schemeType (selectionChange)="countySelection$.next($event.value)" required>
+                @for (type of accountTypes; track type) {
+                  <mat-option [value]="type.AccountType">{{ type.SchemeType.toUpperCase() }}&nbsp;-&nbsp;{{ type.AccountType.toUpperCase() }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.ACCOUNT_CURRENCY' | translate }}</mat-label>
+              <mat-select formControlName="currency" required>
+                <mat-option value="ksh">{{ 'COMMON.CURRENCIES.KES' | translate }}</mat-option>
+                <mat-option value="usd">{{ 'COMMON.CURRENCIES.USD' | translate }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.SCHEME_TYPE' | translate }}</mat-label>
+              <mat-select formControlName="scheme_type" required>
+                @for (type of schemeTypes; track type) {
+                  <mat-option [value]="type.SchemeCode">{{ type.SchemeCode.toUpperCase() }}&nbsp;-&nbsp;{{ type.SchemeDesc.toUpperCase() }}</mat-option>
+                }
+                @if (schemeTypes.length === 0) {
+                  <mat-option disabled>{{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_ACCOUNT_TYPE' | translate }}</mat-option>
+                }
+              </mat-select>
+              @if (accountForm.controls['scheme_type'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_SCHEME_TYPE' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE' | translate }}</mat-label>
+              <mat-select formControlName="dispatch_mode" required>
+                <mat-option value="collect">{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE_OPTIONS.COLLECT_ONLY' | translate }}</mat-option>
+                <mat-option value="email">{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE_OPTIONS.EMAIL_ONLY' | translate }}</mat-option>
+                <mat-option value="post">{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE_OPTIONS.POST_ONLY' | translate }}</mat-option>
+              </mat-select>
+              @if (accountForm.controls['dispatch_mode'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_STATEMENT_DISPATCH' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.STATEMENT_FREQUENCY' | translate }}</mat-label>
+              <mat-select formControlName="statement_frequency" required>
+                <mat-option value="daily">{{ 'SERVICES.SECTIONS.SEND-MONEY.STATEMENT_FREQUENCY_OPTIONS.DAILY' | translate }}</mat-option>
+                <mat-option value="weekly">{{ 'SERVICES.SECTIONS.SEND-MONEY.STATEMENT_FREQUENCY_OPTIONS.WEEKLY' | translate }}</mat-option>
+                <mat-option value="monthly">{{ 'SERVICES.SECTIONS.SEND-MONEY.STATEMENT_FREQUENCY_OPTIONS.MONTHLY' | translate }}</mat-option>
+                <mat-option value="yearly">{{ 'SERVICES.SECTIONS.SEND-MONEY.STATEMENT_FREQUENCY_OPTIONS.YEARLY' | translate }}</mat-option>
+              </mat-select>
+              @if (accountForm.controls['statement_frequency'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_STATEMENT_FREQUENCY' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.STATEMENT_START_DATE' | translate }}</mat-label>
+              <input matInput [min]="today" [matDatepicker]="picker1" formControlName="date_from" required [matDatepickerFilter]="weekendsDatesFilter" />
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+              @if (accountForm.controls['date_from'].hasError('required') && !accountForm.controls['date_from'].hasError('matDatepickerParse')) {
+                <mat-error>{{ 'COMMON.ERROR.INVALID_START_DATE' | translate }}</mat-error>
+              }
+              @if (accountForm.controls['date_from'].hasError('matDatepickerParse')) {
+                <mat-error>{{ 'COMMON.ERROR.INVALID_DATE' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    }
+
+    @if (isVerified) {
+      <mat-expansion-panel [expanded]="counter >= 6" [disabled]="!additionalForm?.valid">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="flex items-center">
+              <div class="indicator-container">
+                @if (!accountForm?.valid) {
+                  <button mat-mini-fab color="primary" aria-label="Section 6" class="color-white" [class.icon-disabled]="counter < 6">6</button>
+                }
+                @if (accountForm?.valid && counter >= 6) {
+                  <button mat-mini-fab aria-label="Section 6" class="color-white bg-green">
+                    <mat-icon class="check">check</mat-icon>
+                  </button>
+                }
+              </div>
+              <h3 class="mat-title fw-400 self-center mb-0">
+                {{ 'SERVICES.SECTIONS.SEND-MONEY.CHARGE_DETAILS' | translate }}
+              </h3>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr />
+        <div formGroupName="accountForm" class="flex flex-wrap flex-col" autocomplete="off">
+          <div class="grid grid-cols-2 gap-4">
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.ACCOUNT_TYPE' | translate }}</mat-label>
+              <mat-select formControlName="type" #schemeType2 (selectionChange)="countySelection$.next($event.value)" required>
+                @for (type of accountTypes; track type) {
+                  <mat-option [value]="type.AccountType">{{ type.SchemeType.toUpperCase() }}&nbsp;-&nbsp;{{ type.AccountType.toUpperCase() }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    }
+
+    @if (isVerified) {
+      <mat-expansion-panel [expanded]="counter >= 7" [disabled]="!additionalForm?.valid">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="flex items-center">
+              <div class="indicator-container">
+                @if (!accountForm?.valid) {
+                  <button mat-mini-fab color="primary" aria-label="Section 7" class="color-white" [class.icon-disabled]="counter < 7">7</button>
+                }
+                @if (accountForm?.valid && counter >= 7) {
+                  <button mat-mini-fab aria-label="Section 7" class="color-white bg-green">
+                    <mat-icon class="check">check</mat-icon>
+                  </button>
+                }
+              </div>
+              <h3 class="mat-title fw-400 self-center mb-0">
+                {{ 'SERVICES.SECTIONS.SEND-MONEY.REMITTANCE_INFORMATION' | translate }}
+              </h3>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr />
+        <div formGroupName="accountForm" class="flex flex-wrap flex-col" autocomplete="off">
+          <div class="grid grid-cols-2 gap-4">
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.ACCOUNT_TYPE' | translate }}</mat-label>
+              <mat-select formControlName="type" #schemeType3 (selectionChange)="countySelection$.next($event.value)" required>
+                @for (type of accountTypes; track type) {
+                  <mat-option [value]="type.AccountType">{{ type.SchemeType.toUpperCase() }}&nbsp;-&nbsp;{{ type.AccountType.toUpperCase() }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.ACCOUNT_CURRENCY' | translate }}</mat-label>
+              <mat-select formControlName="currency" required>
+                <mat-option value="ksh">{{ 'COMMON.CURRENCIES.KES' | translate }}</mat-option>
+                <mat-option value="usd">{{ 'COMMON.CURRENCIES.USD' | translate }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.SCHEME_TYPE' | translate }}</mat-label>
+              <mat-select formControlName="scheme_type" required>
+                @for (type of schemeTypes; track type) {
+                  <mat-option [value]="type.SchemeCode">{{ type.SchemeCode.toUpperCase() }}&nbsp;-&nbsp;{{ type.SchemeDesc.toUpperCase() }}</mat-option>
+                }
+                @if (schemeTypes.length === 0) {
+                  <mat-option disabled>{{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_ACCOUNT_TYPE' | translate }}</mat-option>
+                }
+              </mat-select>
+              @if (accountForm.controls['scheme_type'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_SCHEME_TYPE' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE' | translate }}</mat-label>
+              <mat-select formControlName="dispatch_mode" required>
+                <mat-option value="collect">{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE_OPTIONS.COLLECT_ONLY' | translate }}</mat-option>
+                <mat-option value="email">{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE_OPTIONS.EMAIL_ONLY' | translate }}</mat-option>
+                <mat-option value="post">{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE_OPTIONS.POST_ONLY' | translate }}</mat-option>
+              </mat-select>
+              @if (accountForm.controls['dispatch_mode'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_STATEMENT_DISPATCH' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    }
+
+    @if (isVerified) {
+      <mat-expansion-panel [expanded]="counter >= 8" [disabled]="!additionalForm?.valid">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="flex items-center">
+              <div class="indicator-container">
+                @if (!accountForm?.valid) {
+                  <button mat-mini-fab color="primary" aria-label="Section 8" class="color-white" [class.icon-disabled]="counter < 8">8</button>
+                }
+                @if (accountForm?.valid && counter >= 8) {
+                  <button mat-mini-fab aria-label="Section 8" class="color-white bg-green">
+                    <mat-icon class="check">check</mat-icon>
+                  </button>
+                }
+              </div>
+              <h3 class="mat-title fw-400 self-center mb-0">
+                {{ 'SERVICES.SECTIONS.SEND-MONEY.SENDER_RECEIVER_INFORMATION' | translate }}
+              </h3>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr />
+        <div formGroupName="accountForm" class="flex flex-wrap flex-col" autocomplete="off">
+          <div class="grid grid-cols-2 gap-4">
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.ACCOUNT_TYPE' | translate }}</mat-label>
+              <mat-select formControlName="type" #schemeType4 (selectionChange)="countySelection$.next($event.value)" required>
+                @for (type of accountTypes; track type) {
+                  <mat-option [value]="type.AccountType">{{ type.SchemeType.toUpperCase() }}&nbsp;-&nbsp;{{ type.AccountType.toUpperCase() }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.ACCOUNT_CURRENCY' | translate }}</mat-label>
+              <mat-select formControlName="currency" required>
+                <mat-option value="ksh">{{ 'COMMON.CURRENCIES.KES' | translate }}</mat-option>
+                <mat-option value="usd">{{ 'COMMON.CURRENCIES.USD' | translate }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.SCHEME_TYPE' | translate }}</mat-label>
+              <mat-select formControlName="scheme_type" required>
+                @for (type of schemeTypes; track type) {
+                  <mat-option [value]="type.SchemeCode">{{ type.SchemeCode.toUpperCase() }}&nbsp;-&nbsp;{{ type.SchemeDesc.toUpperCase() }}</mat-option>
+                }
+                @if (schemeTypes.length === 0) {
+                  <mat-option disabled>{{ 'SERVICES.SECTIONS.SEND-MONEY.INFO_MESSAGE_ACCOUNT_TYPE' | translate }}</mat-option>
+                }
+              </mat-select>
+              @if (accountForm.controls['scheme_type'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_SCHEME_TYPE' | translate }}</mat-error>
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE' | translate }}</mat-label>
+              <mat-select formControlName="dispatch_mode" required>
+                <mat-option value="collect">{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE_OPTIONS.COLLECT_ONLY' | translate }}</mat-option>
+                <mat-option value="email">{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE_OPTIONS.EMAIL_ONLY' | translate }}</mat-option>
+                <mat-option value="post">{{ 'SERVICES.SECTIONS.SEND-MONEY.DISPATCH_MODE_OPTIONS.POST_ONLY' | translate }}</mat-option>
+              </mat-select>
+              @if (accountForm.controls['dispatch_mode'].hasError('required')) {
+                <mat-error>{{ 'COMMON.ERROR.REQUIRED_STATEMENT_DISPATCH' | translate }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    }
+  </mat-accordion>
+</form>

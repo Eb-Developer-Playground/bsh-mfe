@@ -1,0 +1,43 @@
+.indicator-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  margin-right: 0.8rem;
+}
+
+.status-indicator-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  line-height: 24px;
+  display: block;
+}
+
+::ng-deep .status-indicator-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.section-number-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(146, 148, 151, 0.2);
+  color: #929497;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.mat-hint {
+  color: #f38707 !important;
+}

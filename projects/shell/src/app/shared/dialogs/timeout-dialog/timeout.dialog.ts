@@ -1,11 +1,13 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-timeout-dialog',
   templateUrl: './timeout.dialog.html',
   styleUrls: ['./timeout.dialog.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class TimeoutDialog implements OnInit, OnDestroy {
   logoutIn = 60;
   logoutTimer: any;

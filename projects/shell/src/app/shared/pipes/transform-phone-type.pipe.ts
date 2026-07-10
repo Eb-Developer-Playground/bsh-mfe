@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'transformPhoneType',
+  standalone: false,
 })
 export class TransformPhoneTypePipe implements PipeTransform {
   transform(value: unknown, ...args: unknown[]): unknown {

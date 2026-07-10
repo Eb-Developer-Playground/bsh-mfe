@@ -17,7 +17,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     name: 'MENU.CUSTOMER-MAIN',
     icon: '',
-    path: `${env.adminPortalUrl}`,
+    path: `${(env as any).adminPortalUrl}`,
     sub_menu: true,
   },
   {
@@ -29,7 +29,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     name: 'MENU.CUSTOMER-SWIFT',
     icon: '',
-    path: `${env.swiftUrl}`,
+    path: `${(env as any).swiftUrl}`,
     sub_menu: true,
   },
   {

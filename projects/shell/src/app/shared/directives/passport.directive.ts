@@ -1,9 +1,10 @@
-import { Directive } from '@angular/core';
+import { Directive, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Directive({
   selector: '[appPassport]',
 })
+
 export class PassportDirective {
   constructor() {}
 }

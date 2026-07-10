@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'transformCounty',
+  standalone: false,
 })
 export class TransformCountyPipe implements PipeTransform {
   transform(value: any, ...args: unknown[]): any {

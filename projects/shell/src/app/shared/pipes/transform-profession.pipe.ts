@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'transformProfession',
+  standalone: false,
 })
 export class TransformProfessionPipe implements PipeTransform {
   transform(value: any, ...args: unknown[]): any {

@@ -1,8 +1,9 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Directive({
   selector: '[appTrimWhitespace]',
 })
+
 export class TrimWhitespaceDirective {
   constructor(private el: ElementRef) {}
 

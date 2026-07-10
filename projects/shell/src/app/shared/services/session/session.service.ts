@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { toObservable } from '@angular/core/rxjs-interop';
 
-import { BehaviorSubject, finalize, Observable, of } from 'rxjs';
+import { finalize, Observable, of } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { EncryptionService } from '../encryption.service';
 import { LoaderService } from '../../modules/loader';
 import { ILocale } from '../../modules/localization';
 import { TimeoutDialog } from '../../dialogs';
@@ -12,7 +14,7 @@ import { AUTH_VERSION, User } from '../../models';
 import { default as SUBSIDIARIES } from '../../../../assets/data/subsidiaries.json';
 import { default as LOCALES } from '../../../../assets/data/language-locales.json';
 import { environment as env } from '../../../../environments/environment';
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import moment from 'moment';
 
 export type IActionFlow = string;
@@ -56,22 +58,32 @@ export interface ISubsidiary {
   providedIn: 'root',
 })
 export class SessionService {
-  user!: User;
   updatingSession!: boolean;
   dialogRef!: MatDialogRef<any> | undefined;
-  _userSubject = new BehaviorSubject<{}>({});
   _roles!: IUserRole[];
 
-  _isActive: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private _user = signal<User | undefined>(undefined);
+  private _isActive!: WritableSignal<boolean>;
+  private _onChanged!: WritableSignal<boolean>;
 
-  get isActive(): Observable<any> {
-    return this._isActive.asObservable();
+  get user(): User {
+    return this._user()!;
   }
 
-  _onChanged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  /** Backward-compat Observable-based API */
+  readonly isActive$: Observable<boolean>;
+  readonly onChanged$: Observable<boolean>;
 
-  get onChanged(): Observable<any> {
-    return this._onChanged.asObservable();
+  /** New signal-based API */
+  isActiveSignal!: Signal<boolean>;
+  onChangedSignal!: Signal<boolean>;
+
+  get isActive(): Observable<boolean> {
+    return this.isActive$;
+  }
+
+  get onChanged(): Observable<boolean> {
+    return this.onChanged$;
   }
 
   get subsidiary(): ISubsidiary {
@@ -147,27 +159,27 @@ export class SessionService {
   }
 
   set expiresAt(m: moment.Moment) {
-    localStorage.setItem('expires_at', JSON.stringify(m.valueOf()));
+    this.encryptItem('expires_at', JSON.stringify(m.valueOf()));
   }
 
   get expiresAt(): moment.Moment {
-    return JSON.parse(<string>localStorage.getItem('expires_at'));
+    return JSON.parse(this.decryptItem('expires_at') || 'null');
   }
 
   set syncToken(token: string | undefined) {
-    localStorage.setItem('syncRt', token || '');
+    this.encryptItem('syncRt', token || '');
   }
 
   get syncToken(): string | undefined {
-    return localStorage.getItem('syncRt') || '';
+    return this.decryptItem('syncRt') || '';
   }
 
   set loginResponse(resp: ILoginResponse) {
-    localStorage.setItem('access_token', JSON.stringify(resp));
+    this.encryptItem('access_token', JSON.stringify(resp));
   }
 
   get loginResponse(): ILoginResponse {
-    return JSON.parse(<string>localStorage.getItem('access_token'));
+    return JSON.parse(this.decryptItem('access_token') || 'null');
   }
 
   get userEmail(): string {
@@ -224,27 +236,68 @@ export class SessionService {
     private loader: LoaderService
     // private accountSelectionService: AccountSelectionService
   ) {
+    this._isActive = signal(false);
+    this._onChanged = signal(false);
+    this.isActiveSignal = this._isActive.asReadonly();
+    this.onChangedSignal = this._onChanged.asReadonly();
+    this.isActive$ = toObservable(this._isActive);
+    this.onChanged$ = toObservable(this._onChanged);
+    this.encryptionService = inject(EncryptionService);
     this.setSession();
+    const hasToken = !!localStorage.getItem('access_token');
+    console.log('[BSH.SessionService] constructed | encrypted token in storage:', hasToken, '| loggedIn:', this.isLoggedIn(), '| signal.active:', this._isActive());
+  }
+
+  private encryptionService!: EncryptionService;
+
+  /** Encrypt and store a value in localStorage */
+  private encryptItem(key: string, value: string): void {
+    localStorage.setItem(key, this.encryptionService.encryptAES(value));
+  }
+
+  /** Read and decrypt from localStorage with fallback for legacy unencrypted data */
+  private decryptItem(key: string): string | null {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const decrypted = this.encryptionService.decryptAES(raw);
+    if (decrypted === 'error 1' || decrypted === 'error 2' || decrypted === 'error 3') {
+      return raw;
+    }
+    return decrypted;
+  }
+
+  /** Public API for external services to signal that session state changed */
+  public notifyChanged(active: boolean = this._isActive()): void {
+    this._onChanged.set(active);
+    this._isActive.set(active);
   }
 
   public decodeToken(token: string): any {
-    return jwt_decode(token);
+    return jwtDecode(token);
   }
 
   public get currentUser(): any {
-    this._userSubject.next(this.decodeToken(this.loginResponse.access_token));
-    return this._userSubject.value;
+    const decoded = this.decodeToken(this.loginResponse.access_token);
+    this._user.set(decoded);
+    return decoded;
   }
 
   // NOTE: loginResponse to be passed immediately after session retrieval
   public setSession(loginResponse?: any) {
     if (loginResponse) {
+      console.log('[BSH.SessionService] setSession called with new loginResponse | expires_in:', loginResponse.expires_in);
       this.loginResponse = loginResponse;
       this.expiresAt = moment().add(loginResponse.expires_in, 'second');
     }
     if (this.loginResponse) {
-      this.user = jwt_decode(this.loginResponse.access_token);
+      this._user.set(jwtDecode(this.loginResponse.access_token));
       localStorage.setItem('bankId', this.user?.bankId);
+      const active = this.isLoggedIn();
+      console.log('[BSH.SessionService] setSession complete | user:', this.user?.sub, '| bankId:', this.user?.bankId, '| isLoggedIn:', active, '| expiresAt:', this.expiresAt?.format());
+      this._isActive.set(active);
+      this._onChanged.set(active);
+    } else {
+      console.log('[BSH.SessionService] setSession — no loginResponse in storage, user is not authenticated');
     }
   }
 
@@ -399,8 +452,9 @@ export class SessionService {
   }
 
   logout() {
+    const token = this.loginResponse?.access_token;
+    console.log('[BSH.SessionService] logout — token exists:', !!token);
     this.loader.isLoading.next(true);
-    const token = localStorage.getItem("access_token");
     return this.http
       .post(
           `${env.apiUrl}/adminportalauth/api/authorization/logout`,
@@ -409,21 +463,21 @@ export class SessionService {
       )
       .pipe(
         finalize(() => {
+          console.log('[BSH.SessionService] logout finalize — clearing storage');
           localStorage.removeItem('expires_at');
           localStorage.removeItem('access_token');
-          Object.assign(this.user, {});
-
-          // Clear all account selection and customer data
-          // this.accountSelectionService.clearAllAccountData();
-
-          finalize(() => this.loader.isLoading.next(false));
+          localStorage.removeItem('syncRt');
+          this._user.set(undefined);
+          this._isActive.set(false);
+          this._onChanged.set(false);
+          this.loader.isLoading.next(false);
+          console.log('[BSH.SessionService] logout complete — signal.active:', this._isActive(), 'storage cleared');
         })
       );
   }
 
   login(returnPath?: any, reAuth?: any, bankId?: string) {
     const returnUrl = returnPath || this.getUrlParameters() || '/dashboard';
-    const params = new URLSearchParams();
     const locale = JSON.parse(
       localStorage.getItem('user-locale') || '{"language":"en-GB"}'
     );
@@ -431,14 +485,16 @@ export class SessionService {
       ? `${window.location.protocol}//${window.location.hostname}:${window.location.port}`
       : `${window.location.protocol}//${window.location.hostname}`;
     if (!bankId)
-      // Session might be wiped out, default to local storage value.
       bankId = localStorage.getItem('bankId') || '';
+    const redirectUrl = `${(env as any).adminPortalUrl}/login/login/?returnUrl=${encodeURIComponent(host + returnUrl)}&lang=${locale?.language}&bankId=${bankId || ''}&re-auth=${reAuth || 0}`;
+    console.log('[BSH.SessionService] login — redirecting to admin portal:', redirectUrl.substring(0, 120) + '...');
+    const params = new URLSearchParams();
     params.set('re-auth', `${reAuth || 0}`);
     params.set('returnUrl', host + returnUrl);
     params.set('lang', locale?.language);
     params.set('bankId', bankId || '');
     window.location.replace(
-      `${env.adminPortalUrl}/login/login/?${params.toString()}`
+      `${(env as any).adminPortalUrl}/login/login/?${params.toString()}`
     );
   }
 
@@ -447,7 +503,10 @@ export class SessionService {
     bankId?: any,
     showLoader = true
   ): Observable<any> {
-    if (this.updatingSession) return of(true);
+    if (this.updatingSession) {
+      console.log('[BSH.SessionService] updateSession — already updating, skipping');
+      return of(true);
+    }
     const headers: any = {
       'Content-Type': 'application/x-www-form-urlencoded',
     };
@@ -460,26 +519,35 @@ export class SessionService {
       },
     });
     this.updatingSession = true;
+    const targetUrl = `${env.apiUrl}/adminportalauth/oauth/microsoft`;
+    console.log('[BSH.SessionService] updateSession — POST', targetUrl, '| bankId:', bankId, '| reIssue length:', reIssue?.length || 0);
     return this.http
-      .post(`${env.apiUrl}/adminportalauth/oauth/microsoft`, body.toString(), {
+      .post(targetUrl, body.toString(), {
         headers: new HttpHeaders(headers),
       })
       .pipe(
         map(r => {
+          const resp = r as any;
+          console.log('[BSH.SessionService] updateSession SUCCESS | expires_in:', resp?.expires_in, '| token present:', !!resp?.access_token);
           this.syncToken = reIssue;
           this.setSession(r);
-          this._onChanged.next(this.isLoggedIn());
-          return this.isLoggedIn();
+          const loggedIn = this.isLoggedIn();
+          console.log('[BSH.SessionService] updateSession result — isLoggedIn:', loggedIn);
+          return loggedIn;
         }),
         shareReplay(),
-        finalize(() => (this.updatingSession = false))
+        finalize(() => {
+          this.updatingSession = false;
+          console.log('[BSH.SessionService] updateSession finalize — updatingSession set to false');
+        })
       );
   }
 
   routeToUrl(url: string | URL) {
     let lang = '';
-    if (localStorage.getItem('user-locale'))
-      lang = JSON.parse(<string>localStorage.getItem('user-locale')).language;
+    const localeRaw = localStorage.getItem('user-locale');
+    if (localeRaw)
+      lang = JSON.parse(localeRaw).language;
     const parts = url.toString().split('?');
     const params = parts?.[1] || '';
     const rtParams = new URLSearchParams({
@@ -491,8 +559,10 @@ export class SessionService {
     toUrl.search = new URLSearchParams(
       `${rtParams.toString()}&${params}`
     ).toString();
+    console.log('[BSH.SessionService] routeToUrl — navigating to:', toUrl.toString().substring(0, 120) + '...', '| rt present:', !!this.reissueToken, '| bankId:', this.userBank);
     localStorage.removeItem('expires_at');
     localStorage.removeItem('access_token');
+    console.log('[BSH.SessionService] routeToUrl — cleared local storage, redirecting');
     window.location.replace(toUrl);
   }
 

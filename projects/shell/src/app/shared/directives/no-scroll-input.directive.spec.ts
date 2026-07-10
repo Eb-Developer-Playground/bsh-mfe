@@ -1,10 +1,12 @@
 import { NoScrollInputDirective } from './no-scroll-input.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { COMPAT_IMPORTS } from '../compat-barrel';
 @Component({
   template: `<input type="number" appNoScrollInput />`,
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 class TestComponent {}
 
 describe('NoScrollInputDirective', () => {

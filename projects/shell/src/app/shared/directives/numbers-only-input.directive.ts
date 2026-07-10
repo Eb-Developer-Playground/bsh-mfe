@@ -1,8 +1,9 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Directive({
   selector: '[appNumbersOnlyInput]',
 })
+
 export class NumbersOnlyInputDirective {
   constructor(private el: ElementRef) {}
 

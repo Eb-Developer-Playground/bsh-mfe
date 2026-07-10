@@ -19,7 +19,7 @@ export class SessionResolver implements Resolve<any> {
   ): Observable<any> {
     const oldReIssueToken = this.session.reissueToken || '';
     const reIssueToken =
-      (route.queryParams || route.parent?.queryParams)?.rt || '';
+      (route.queryParams || route.parent?.queryParams)?.['rt'] || '';
     if (
       reIssueToken &&
       reIssueToken !== oldReIssueToken &&

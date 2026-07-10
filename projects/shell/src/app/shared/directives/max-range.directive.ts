@@ -1,10 +1,8 @@
-import {
-  Directive,
+import { Directive,
   Inject,
   Injectable,
   Input,
-  numberAttribute,
-} from '@angular/core';
+  numberAttribute } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import {
   DateRange,

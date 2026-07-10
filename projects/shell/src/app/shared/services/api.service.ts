@@ -38,11 +38,11 @@ export class ApiService {
   }
 
   languageFilter = (): string => {
-    if (this.translation.currentLang === 'fr-CD') return 'fr';
+    if (this.translation.currentLang() === 'fr-CD') return 'fr';
 
-    if (this.translation.currentLang === 'en-GB') return 'en';
+    if (this.translation.currentLang() === 'en-GB') return 'en';
 
-    return this.translation.currentLang;
+    return this.translation.currentLang() ?? 'en';
   };
 
   getUrl(path: string, options?: IHttpOptions) {

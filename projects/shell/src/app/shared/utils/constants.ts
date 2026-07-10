@@ -1,5 +1,3 @@
-import { AccChannels } from '@app/home/customer/channels/channels.model';
-
 export default {
   COUNTRY_CODE: {
     KE: 'KE', // KENYA
@@ -76,7 +74,7 @@ export default {
   },
 };
 
-export const CHANNEL_LIST: AccChannels[] = [
+export const CHANNEL_LIST: { channel: { channel: string; subChannel: string; level: number; isChannelActive?: boolean } }[] = [
   {
     channel: {
       channel: 'Web',

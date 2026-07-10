@@ -12,7 +12,7 @@ export class OnlyDecimalDirective {
     this.el = ngControl;
   }
 
-  @HostListener('input', ['$event.target.value'])
+  @HostListener('input', ['$any($event).target.value'])
   onInput(value: string) {
     value = parseFloat(value.replace(/[^0-9]\.[^0-9]/g, '')).toFixed(2);
     if (value == 'NaN') {

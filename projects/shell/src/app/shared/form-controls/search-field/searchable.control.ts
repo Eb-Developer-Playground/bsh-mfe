@@ -17,9 +17,6 @@ import {
   NgControl,
   ControlValueAccessor,
   ReactiveFormsModule,
-  ValidationErrors,
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR,
   UntypedFormControl,
   Validators,
 } from '@angular/forms';
@@ -35,19 +32,18 @@ import { validValue } from './validators';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'searchable-control',
-  standalone: true,
   imports: [
     CommonModule,
     MatAutocompleteModule,
     MatInputModule,
     MatOptionModule,
     ReactiveFormsModule,
-    TranslateModule,
+    TranslatePipe,
   ],
   providers: [
     {

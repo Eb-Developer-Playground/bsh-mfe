@@ -1,6 +1,6 @@
 import CONST from './constants';
 import { MessageBoxType, ToastService } from '@shared/modules/toast';
-import { CustomerProfileData } from '@app/home/customer/channels/channels.model';
+
 import { TranslateService } from '@ngx-translate/core';
 
 const {
@@ -289,7 +289,7 @@ export function lowercaseKeys(obj: any): any {
 }
 
 export function isValidChannelsDialogData(
-    data: CustomerProfileData,
+    data: any,
     toast: ToastService,
     translate: TranslateService
 ): boolean {

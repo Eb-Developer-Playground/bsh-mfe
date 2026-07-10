@@ -1,10 +1,11 @@
-import { Directive } from '@angular/core';
+import { Directive, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[kenyanPassportValidator]',
 })
+
 export class KenyanPassportValidatorDirective {
   constructor() {}
 }

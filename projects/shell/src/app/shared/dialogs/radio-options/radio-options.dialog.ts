@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +10,8 @@ import {
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 export interface IRadioOption {
     value: string;
@@ -33,7 +34,6 @@ export interface IRadioOptionsDialogData {
     selector: 'radio-options-dialog',
     templateUrl: 'radio-options.dialog.html',
     styleUrls: ['radio-options.dialog.scss'],
-    standalone: true,
     imports: [
         CommonModule,
         FormsModule,
@@ -42,9 +42,10 @@ export interface IRadioOptionsDialogData {
         MatButtonModule,
         MatIconModule,
         MatRadioModule,
-        TranslateModule,
+        TranslatePipe,
+        COMPAT_IMPORTS,
     ],
-})
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class RadioOptionsDialog {
     selectedOption: string;
 

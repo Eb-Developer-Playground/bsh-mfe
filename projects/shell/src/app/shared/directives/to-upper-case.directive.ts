@@ -1,9 +1,10 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[toUpperCase]',
 })
+
 export class ToUpperCaseDirective {
   constructor(private el: ElementRef) {}
 

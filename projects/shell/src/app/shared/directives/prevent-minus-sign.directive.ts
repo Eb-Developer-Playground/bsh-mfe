@@ -1,9 +1,10 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Directive({
   selector: '[appPreventMinusSign]',
   standalone: true,
 })
+
 export class PreventMinusSignDirective {
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {

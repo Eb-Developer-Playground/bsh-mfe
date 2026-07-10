@@ -1,0 +1,332 @@
+<div>
+  <form [formGroup]="itemsForm" autocomplete="off">
+    <ng-container formArrayName="items">
+      <ng-container *ngFor="let bulkForm of items.controls; let i = index">
+        <div [formGroupName]="i">
+          <mat-accordion>
+            <mat-expansion-panel [expanded]="isExpanded">
+              <mat-expansion-panel-header>
+                <mat-panel-title style="display: block !important">
+                  <div class="d-flex justify-content-between">
+                    <div class="sub-header">
+                      <div class="indicator-container">
+                        <p class="title-text" style="margin-bottom: 0">
+                          {{
+                            'BULK-TRANFER.ADD-TRANSACTIONS-MANUALLY' | translate
+                          }}
+                        </p>
+                        <p class="subtitle-text">
+                          {{
+                            'BULK-TRANFER.ADD-TRANSACTIONS-MANUALLY-INSTRUCTION'
+                              | translate
+                          }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <hr />
+              <div class="fieldset">
+                <div class="wrapInput">
+                  <mat-form-field appearance="fill">
+                    <mat-label>{{
+                      'BULK-TRANFER.MODE-OF-PAYMENT' | translate
+                    }}</mat-label>
+                    <mat-select
+                      (selectionChange)="modeOfPayment($event)"
+                      formControlName="paymentMode"
+                      required>
+                      <p class="pop-up-title">
+                        {{ 'BULK-TRANFER.MODE-OF-PAYMENT' | translate }}
+                      </p>
+                      <hr class="section-divider" />
+                      <mat-option *ngFor="let item of payMode" [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="wrapInput">
+                  <mat-form-field appearance="fill">
+                    <mat-label>{{
+                      'BULK-TRANFER.BANK-NETWORK' | translate
+                    }}</mat-label>
+                    <mat-select
+                      [disabled]="disableBank"
+                      formControlName="banknetwork"
+                      required>
+                      <p class="pop-up-title">
+                        {{ 'BULK-TRANFER.BANK-OPERATORS' | translate }}
+                      </p>
+                      <hr class="section-divider" />
+                      <form [formGroup]="form" class="search-form">
+                        <div class="search-bar px-15">
+                          <input
+                            (keyup)="onSearch($event)"
+                            [formControlName]="'query'"
+                            autocomplete="off"
+                            matInput
+                            placeholder="Search for bank" />
+                          <div class="search-mats-icons">
+                            <mat-icon
+                              (click)="onClearSearch()"
+                              *ngIf="!form.controls['query'].value"
+                              aria-hidden="true"
+                              class="mat-icon notranslate text-grey clear-search material-icons mat-icon-no-color"
+                              data-mat-icon-type="font"
+                              role="img">
+                              close
+                            </mat-icon>
+                            <mat-icon
+                              aria-hidden="true"
+                              class="mat-icon notranslate search-icon material-icons mat-icon-no-color"
+                              data-mat-icon-type="font"
+                              role="img">
+                              search
+                            </mat-icon>
+                          </div>
+                        </div>
+                      </form>
+                      <mat-option
+                        *ngFor="let item of ListBanks['transaction-' + (i + 1)]"
+                        [value]="item.bankName">
+                        {{ item.bankName }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div *ngIf="sendToOwnAccount" class="wrapInput">
+                  <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>{{
+                      'BULK-TRANFER.ACCOUNT' | translate
+                    }}</mat-label>
+                    <input
+                      formControlName="accountphoneNo"
+                      matInput
+                      numbersOnly
+                      placeholder="Account/Phone no"
+                      required />
+                    <!-- <mat-hint align="end">
+                          {{request.value.length}}/{{100}}
+                      </mat-hint> -->
+                  </mat-form-field>
+                </div>
+
+                <div *ngIf="sendToOtherAccount" class="wrapInput">
+                  <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>{{
+                      'BULK-TRANFER.ACCOUNT' | translate
+                    }}</mat-label>
+                    <input
+                      (ngModelChange)="
+                        validateBeneficiaryAccountNumber($event, i)
+                      "
+                      formControlName="accountphoneNo"
+                      matInput
+                      numbersOnly
+                      placeholder="Account/Phone no"
+                      required />
+                    <!-- <mat-hint align="end">
+                          {{request.value.length}}/{{100}}
+                      </mat-hint> -->
+                  </mat-form-field>
+                </div>
+
+                <div class="wrapInput">
+                  <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>{{
+                      'BULK-TRANFER.BENEFICIARY-NAME' | translate
+                    }}</mat-label>
+                    <input
+                      formControlName="beneficiary"
+                      matInput
+                      placeholder="Beneficiary name"
+                      required />
+                    <!-- <mat-hint align="end">
+                        {{request.value.length}}/{{100}}
+                    </mat-hint> -->
+                  </mat-form-field>
+                </div>
+
+                <!-- Bottom -->
+                <div class="inline-input">
+                  <div style="width: 30%">
+                    <mat-form-field appearance="fill" style="display: contents">
+                      <mat-select
+                        (selectionChange)="getCurrency($event)"
+                        formControlName="currency"
+                        required>
+                        <mat-option
+                          *ngFor="let item of currencies"
+                          [value]="item">
+                          {{ item }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div style="width: 70%">
+                    <mat-form-field appearance="fill" style="display: contents">
+                      <mat-label>{{
+                        'BULK-TRANFER.AMOUNT' | translate
+                      }}</mat-label>
+                      <input
+                        (keyup)="onTyping($event)"
+                        [options]="{
+                          prefix: '',
+                          thousands: ',',
+                          decimal: '.',
+                          allowNegative: false,
+                          align: 'left'
+                        }"
+                        currencyMask
+                        formControlName="amount"
+                        matInput
+                        numbersOnly
+                        placeholder="Amount"
+                        required />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div *ngIf="selectedCurrency !== 'KES'" class="wrapInput">
+                  <mat-form-field appearance="fill">
+                    <mat-label>{{ 'BULK-TRANFER.RATE' | translate }}</mat-label>
+                    <input
+                      [readonly]="!editable"
+                      [value]="exchRates"
+                      formControlName="rate"
+                      matInput
+                      placeholder="Rate" />
+                    <mat-hint align="start">
+                      {{ 'BULK-TRANFER.RATE-DEFAULT' | translate }}
+                    </mat-hint>
+                  </mat-form-field>
+                </div>
+
+                <div class="wrapInput">
+                  <mat-form-field appearance="fill">
+                    <mat-label>{{
+                      'BULK-TRANFER.DEBIT' | translate
+                    }}</mat-label>
+                    <select matNativeControl required>
+                      <option
+                        *ngFor="let item of accountNumber"
+                        [value]="item.accountNumber">
+                        <div class="account-text">
+                          <p class="debit-title">
+                            {{ item.accountName }}
+                          </p>
+                          <p class="debit-desc">
+                            Acco no
+                            {{ item.accountNumber }}
+                            ({{ item.accountCurrency }}) &#x2022;
+
+                            {{ item.schemeType }}
+                          </p>
+                        </div>
+                      </option>
+                    </select>
+                  </mat-form-field>
+                </div>
+
+                <div class="wrapInput">
+                  <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>{{
+                      'BULK-TRANFER.REASON-FOR-PAYMENT' | translate
+                    }}</mat-label>
+                    <mat-select formControlName="paymentReason" required>
+                      <p class="pop-up-title">
+                        {{ 'BULK-TRANFER.REASON-FOR-PAYMENT' | translate }}
+                      </p>
+                      <hr class="section-divider" />
+                      <mat-option
+                        *ngFor="let item of paymentReason"
+                        [value]="item">
+                        {{ item }}
+                      </mat-option>
+                    </mat-select>
+                    <!-- <mat-hint align="end">
+                          {{request.value.length}}/{{100}}
+                      </mat-hint> -->
+                  </mat-form-field>
+                </div>
+
+                <div class="wrapInput">
+                  <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>{{
+                      'BULK-TRANFER.NARRATION' | translate
+                    }}</mat-label>
+                    <input
+                      formControlName="naration"
+                      matInput
+                      placeholder="Narrative"
+                      required />
+                    <mat-hint align="start">
+                      {{ 'BULK-TRANFER.CAPTURE' | translate }}
+                    </mat-hint>
+                  </mat-form-field>
+                </div>
+
+                <ng-container *ngIf="paymentMode === 'SWIFT/RTGS'">
+                  <div class="wrapInput">
+                    <mat-form-field appearance="fill" class="form-field">
+                      <mat-label>{{
+                        'BULK-TRANFER.DESTINATION-COUNTRY' | translate
+                      }}</mat-label>
+                      <mat-select formControlName="destinationCountry" required>
+                        <hr class="section-divider" />
+                        <mat-option *ngFor="let item of countries">
+                          {{ item }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="wrapInput">
+                    <mat-form-field appearance="fill" class="form-field">
+                      <mat-label>{{
+                        'BULK-TRANFER.SWIFT-CODE' | translate
+                      }}</mat-label>
+                      <input
+                        formControlName="swiftCode"
+                        matInput
+                        placeholder="Swift code"
+                        required />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="wrapInput">
+                    <mat-form-field appearance="fill" class="form-field">
+                      <mat-label>{{
+                        'BULK-TRANFER.SECTOR-CODE' | translate
+                      }}</mat-label>
+                      <input
+                        formControlName="sectorCode"
+                        matInput
+                        placeholder="Sector code"
+                        required />
+                    </mat-form-field>
+                  </div>
+                </ng-container>
+              </div>
+
+              <div class="pb-15" fxLayout="row" style="margin-top: 15px">
+                <span fxFlex></span>
+                <button
+                  (click)="addTransaction()"
+                  class="ml-15"
+                  color="primary"
+                  mat-raised-button>
+                  {{ 'BULK-TRANFER.ADD' | translate }}
+                </button>
+                <!-- [disabled]=" !data.status=='VALID'" -->
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </ng-container>
+    </ng-container>
+  </form>
+</div>

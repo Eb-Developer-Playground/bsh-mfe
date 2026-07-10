@@ -1,0 +1,11 @@
+.equity-account-wrapper {
+  ::ng-deep {
+    .stepper {
+      border: 1px solid blue;
+
+      .stepper-wrapper {
+        max-width: 100% !important;
+      }
+    }
+  }
+}

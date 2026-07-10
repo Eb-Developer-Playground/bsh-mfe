@@ -1,0 +1,88 @@
+{
+    "responseObject": [
+        {
+            "bankId": "54",
+            "countryCode": "KE",
+            "countryName": "Kenya",
+            "currency": "KES",
+            "currencySymbol": "Ksh",
+            "nationality": "Kenyan",
+            "dialCode": "254",
+            "icon": "ic-flag-ke",
+            "flagPath": "https://oneequity.blob.core.windows.net/assets/visuals/flags/kenya.svg",
+            "operatingCountry": true,
+            "countryCode3Chars": null,
+            "languages": ["en-GB", "sw-KE"]
+        },
+        {
+            "bankId": "56",
+            "countryCode": "UG",
+            "countryName": "Uganda",
+            "currency": "UGX",
+            "currencySymbol": "Ush",
+            "nationality": "Ugandan",
+            "dialCode": "256",
+            "icon": "ic-flag-ug",
+            "flagPath": "https://oneequity.blob.core.windows.net/assets/visuals/flags/uganda.svg",
+            "operatingCountry": true,
+            "countryCode3Chars": null,
+            "languages": ["en-GB", "sw"]
+        },
+        {
+            "bankId": "55",
+            "countryCode": "TZ",
+            "countryName": "Tanzania",
+            "currency": "TZS",
+            "currencySymbol": "Tsh",
+            "nationality": "Tanzania",
+            "dialCode": "255",
+            "icon": "ic-flag-tz",
+            "flagPath": "https://oneequity.blob.core.windows.net/assets/visuals/flags/tanzania.svg",
+            "operatingCountry": true,
+            "countryCode3Chars": null,
+            "languages": ["en-GB", "sw-TZ"]
+        },
+        {
+            "bankId": "11",
+            "countryCode": "SS",
+            "countryName": "South Sudan",
+            "currency": "SSP",
+            "currencySymbol": "SSP",
+            "nationality": "South Sudanese",
+            "dialCode": "211",
+            "icon": "ic-flag-s-sudan",
+            "flagPath": "https://oneequity.blob.core.windows.net/assets/visuals/flags/south-sudan.svg",
+            "operatingCountry": true,
+            "countryCode3Chars": null,
+            "languages": ["en-GB"]
+        },
+        {
+            "bankId": "50",
+            "countryCode": "RW",
+            "countryName": "Rwanda",
+            "currency": "RWF",
+            "currencySymbol": "RWF",
+            "nationality": "Rwandese",
+            "dialCode": "250",
+            "icon": "ic-flag-rw",
+            "flagPath": "https://oneequity.blob.core.windows.net/assets/visuals/flags/rwanda.svg",
+            "operatingCountry": true,
+            "countryCode3Chars": null,
+            "languages": ["en", "rw-RW", "fr-RW"]
+        },
+        {
+            "bankId": "43",
+            "countryCode": "CD",
+            "countryName": "Democratic Republic of the Congo",
+            "currency": "CDF",
+            "currencySymbol": "FC",
+            "nationality": "Congolese",
+            "dialCode": "243",
+            "icon": "ic-flag-drc",
+            "flagPath": "https://oneequity.blob.core.windows.net/assets/visuals/flags/democratic-republic-of-congo.svg",
+            "operatingCountry": true,
+            "countryCode3Chars": null,
+            "languages": ["fr-CD", "en-GB"]
+        }
+    ]
+}

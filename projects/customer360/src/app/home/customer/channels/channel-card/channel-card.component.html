@@ -1,0 +1,150 @@
+<div class="channel-card" [class.active]="isActive">
+    <div class="top-section">
+        <div class="icon-section">
+            <!-- channel icon -->
+            <div class="icon-div">
+                @if (
+                    channels.channel === 'Mobile' ||
+                    channels.channel === 'USSD' ||
+                    channels.channel === 'Equitel STK'
+                    ) {
+                    <mat-icon class="icon" svgIcon="ic-smartphone">
+                    </mat-icon>
+                } @else if (channels.channel === 'Web') {
+                    <mat-icon class="icon" svgIcon="ic-laptop"></mat-icon>
+                } @else if (channels.channel === 'Chatbot'){
+                    <mat-icon class="icon" svgIcon="ic-communication"></mat-icon>
+                }
+            </div>
+            <div>
+                <!-- channel name -->
+                <div class="channel-name">
+                    {{ channels.channel }}
+                    @if (channels.channel === 'Mobile') {
+                        <span>
+                        ({{ channels.subChannel }})
+                    </span>
+                    }
+                </div>
+                @if (channels.channel !== 'Equitel STK') {
+                    <div>
+                        <!-- active badge -->
+                        @if ( channels.isChannelActive &&
+                        !channels.isChannelBlocked &&
+                        channels.level !== 0 &&
+                        customerStatus !== 'InActive') {
+                            <div class="channel-status">
+                                <mat-icon svgIcon="ic-circle-green-check" class="checkmark"></mat-icon>
+                                <span class="channel-status-text">{{"CUSTOMER.CHANNELS.CARD-ISACTIVE" | translate}}</span>
+                            </div>
+                        }
+
+                        <!-- Not register badge -->
+                        @if (
+                            !channels.isChannelActive &&
+                            !channels.isChannelBlocked &&
+                            customerStatus !== 'InActive') {
+                            <div class="channel-inactive">
+                                <mat-icon svgIcon="ic-warn-circle" class="checkmark"></mat-icon>
+                                <span class="channel-status-text">{{"CUSTOMER.CHANNELS.CARD-NOT-REGISTERED" | translate}}</span>
+                            </div>
+                        }
+                        <!-- block badge -->
+                        @if (
+                            channels.isChannelBlocked ||
+                            customerStatus === 'InActive'
+                            ) {
+                            <div class="channel-blocked">
+                                <mat-icon svgIcon="ic-block-red" class="checkmark"></mat-icon>
+                                <span class="channel-status-text">{{"CUSTOMER.CHANNELS.CARD-ISBLOCKED" | translate }}</span>
+                            </div>
+                        }
+                        <!-- cool off badge -->
+                        @if (
+                            channels.isChannelActive &&
+                            !channels.isChannelBlocked &&
+                            channels.level === 0 &&
+                            customerStatus !== 'InActive'
+                            ) {
+                            <div class="channel-cool-off">
+                                <mat-icon svgIcon="ic-cool-off" class="checkmark cool-off-icon"></mat-icon>
+                                <span class="channel-status-text">{{"CUSTOMER.CHANNELS.CARD-ISCOOLOFF" | translate}}</span>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
+        @if (channels.isChannelActive || channels.isChannelBlocked) {
+            <div [matMenuTriggerFor]="activeChannel">
+                <mat-icon class="icon" svgIcon="ic-more-colored"></mat-icon>
+            </div>
+        }
+        @if (
+            channels.channel !== 'Equitel STK' && !channels.isChannelActive && !channels.isChannelBlocked && customerStatus !== 'InActive'
+            ){
+            <div
+                 (click)="onRegisterChannel(channels.channel.includes('Mobile') ? channels.subChannel : channels.channel)">
+                <mat-icon class="icon" svgIcon="ic-plus"></mat-icon>
+            </div>
+        }
+        @if (channels.channel === 'Equitel STK') {
+            <div>
+                <mat-icon class="icon" svgIcon="ic-plus"></mat-icon>
+            </div>
+        }
+        <mat-menu #activeChannel="matMenu" class="mat-menu custom-mat-menu-wrapper">
+            <div mat-menu-item class="menu-item" (click)="onUpdateProfile(channels, 'ResetPassword')">
+                <span>{{"CUSTOMER.CHANNELS.CARD-MENU-RESETPASSWORD" | translate}}</span>
+            </div>
+            <div mat-menu-item class="menu-item" (click)="onRestrictAccount(channels, 'restrictAccount')">
+                <span>{{"CUSTOMER.CHANNELS.RESTRICT-ACCOUNTS" | translate}}</span>
+            </div>
+            @if (channels.isChannelActive && !channels.isChannelBlocked) {
+                <div mat-menu-item class="menu-item"
+                     (click)="onUpdateProfile(channels, 'BlockChannel')">
+                    <span> {{"CUSTOMER.CHANNELS.CHANNEL-CARD.CARD-MENU.BLOCK"| translate}}</span>
+                </div>
+            }
+            @if (channels.isChannelBlocked) {
+                <div mat-menu-item class="menu-item"
+                     (click)="onUpdateProfile(channels, 'UnblockChannel')">
+                    <span>{{"CUSTOMER.CHANNELS.CHANNEL-CARD.CARD-MENU.UNBLOCK" | translate}}</span>
+                </div>
+            }
+        </mat-menu>
+    </div>
+    <div>
+        @if (customerStatus !== 'InActive') {
+            <div>
+                @if (
+                    channels.isChannelActive || channels.isChannelBlocked && channels.channelCreatedOn
+                    ) {
+                    <p class="body-text">
+                        {{"CUSTOMER.CHANNELS.REGISTRATION-DATE" | translate}}:
+                        {{ channels.channelCreatedOn | date : "dd/MM/yyyy" }}
+                    </p>
+                }
+                @if (
+                    channels.channel !== 'Equitel STK' &&
+                    (!channels.channelCreatedOn || !channels.isChannelActive && !channels.isChannelBlocked)
+                    ) {
+                    <p class="body-text">
+                        {{ "CUSTOMER.CHANNELS.ERROR-UNREGISTERED" | translate }}.
+                    </p>
+                }
+                @if (channels.channel === 'Equitel STK') {
+                    <p class="body-text" >
+                        {{ "CUSTOMER.CHANNELS.EQUITEL-PROCEED-TEXT" | translate }}
+                    </p>
+                }
+            </div>
+
+        } @else {
+            <div>
+                <p class="body-text">{{"CUSTOMER.CHANNELS.CHANNEL-CARD.ISBLOCKED.TEXT"| translate}}</p>
+            </div>
+        }
+    </div>
+</div>

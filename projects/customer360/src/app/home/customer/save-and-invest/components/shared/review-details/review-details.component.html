@@ -1,0 +1,14 @@
+<div class="main">
+  <div class="mb-16 mt-6">
+    <h3 class="mat-headline-6 section-title fw-400 m-0">{{ title }}</h3>
+    <span class="section-subtitle mt-8">{{ subtitle }}</span>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="mt-32 review-details-holder">
+    <h3 class="mat-headline-6 main-label" *ngIf="mainLabel">{{ mainLabel }}</h3>
+    <div class="details-item-holder" *ngFor="let detail of details">
+      <span class="label">{{ detail.label }}</span>
+      <span class="value">{{ detail.value }}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="pdf-dialog-container">
+  <div class="pdf-dialog-header pt-15 pb-15">
+    <div class="pdf-dialog-title">
+      <p class="mat-subtitle-1 m-0">{{ 'DOCUMENTS.DOCUMENT-PREVIEW' | translate }}</p>
+    </div>
+    <div class="pdf-dialog-close">
+      <mat-icon aria-hidden="false" aria-label="close icon" class="close-icon" (click)="closeDialog()">close</mat-icon>
+    </div>
+  </div>
+  <pdf-viewer [src]="src" [render-text]="true" [original-size]="false" external-link-target="true"
+    style="width: auto; height: 460px"></pdf-viewer>
+  <div class="pdf-dialog-footer">
+    <div class="pdf-dialog-footer-left">
+      <button mat-stroked-button color="primary" (click)="closeDialog()">{{ 'COMMON.CANCEL' | translate }}</button>
+    </div>
+    <div class="pdf-dialog-footer-right">
+      <button *ngIf="deliveryMode !== 'Email'" mat-stroked-button color="primary" (click)="printPdf()">{{ 'COMMON.PRINT' | translate }}</button>
+      <button *ngIf="deliveryMode !== 'Email'" mat-raised-button color="primary" (click)="downloadFile()">{{ 'COMMON.DOWNLOAD' | translate }}</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,143 @@
+<div class="topbar mb-24" *ngIf="!is_complete">
+  <mat-toolbar class="toolbar">
+    <div>
+      <span class="title">{{
+        'KNOWN-AGENT.FIND-AGENT.HEADER' | translate
+      }}</span>
+      <span class="vl"></span>
+      <span class="toolbar-page">{{
+        'KNOWN-AGENT.FIND-AGENT.SUBHEADER' | translate
+      }}</span>
+    </div>
+  </mat-toolbar>
+</div>
+
+<div [hidden]="!findAgentFlow">
+  <div class="py-2" [hidden]="!findAgentStep">
+    <app-customer-dedupe-and-identification-details
+      [parentForm]="form"
+      [parentFormControlName]="identificationDetailsFormGroupName"
+      [doNotRedirectToLandingOnCancel]="
+        doNotRedirectExistingCustomerToLandingOnCancel
+      "
+      [sharedRequestId]="sharedRequestId"
+      [redirectExistingToStaticData]="redirectExistingCustomerToStaticData"
+      (onDedupeChecked)="onCustomerDedupeChecked($event)"
+      (onIPRSChecked)="patchWithIPRSResult($event)"
+      (onKRAChecked)="patchWithKRAResult($event)"
+      (onIPRSCheckFailed)="IPRSCheckFailed()"
+      (onDedupeFormIsValid)="dedupeFormIsValid($event)"
+      *ngIf="useNewIDForm">
+    </app-customer-dedupe-and-identification-details>
+  </div>
+
+  <div [hidden]="!detailAgentStep">
+      <div class="container fx-column">
+      <div class="fx-column fx-gap-17 mb-24">
+        <app-known-agent-details
+          [editKraPin]="editKraPin"
+          [editAgentNames]="editAgentNames"
+          [knownAgentDetails]="knownAgentDetails"
+          [agentDetails]="agentDetails"
+          [photoUrl]="photoUrl"
+          [signatureUrl]="signatureUrl"
+          (isDetailsFormValid)="saveForms($event)">
+        </app-known-agent-details>
+        <app-known-agent-additional-information
+          [contactDetails]="contactDetails"
+          (isInformationFormValid)="saveForms($event)">
+        </app-known-agent-additional-information>
+
+        <app-known-agent-edit-functions
+          *ngIf="functionsArray && functionsArray.length !== 0"
+          [functionsArray]="functionsArray"
+          (isFunctionFormValid)="saveForms($event)">
+        </app-known-agent-edit-functions>
+
+        <app-known-agent-limits
+          *ngIf="showAgentLimits"
+          (isLimitFormValid)="saveForms($event)"></app-known-agent-limits>
+      </div>
+    </div>
+  </div>
+
+  <div [hidden]="!uploadDocumentsStep" style="margin-bottom: 30px">
+    <app-documents-upload-drc
+    *ngIf="countryCode === 'CD'"
+    (onUploaded)="getDocuments($event)"
+    [documentSpecs]="UploadDocuments"
+    [allowAdditional]="true"
+    [title]="'DOCUMENTS.TITLE'">
+  </app-documents-upload-drc>
+  
+  <app-documents-upload
+    *ngIf="countryCode !== 'CD'"
+    (onUploaded)="getDocuments($event)"
+    [documentSpecs]="UploadDocuments"
+    [title]="'DOCUMENTS.TITLE'">
+  </app-documents-upload>
+  </div>
+
+  <div [hidden]="!lastStep">
+    <app-known-agent-view-agent-details
+    [knownAgentDetails]="knownAgentDetails"
+      [lastStep]="lastStep"
+      [hideHeader]="true"
+      [knownAgentDetails]="knownAgentDetails"
+      [hideFooter]="true"></app-known-agent-view-agent-details>
+  </div>
+
+  <div class="fx-row fx-align-space-between-start">
+    <button
+      mat-stroked-button
+      color="primary"
+      class="--info-btn"
+      (click)="goBack()">
+      {{ 'COMMON.BACK' | translate }}
+    </button>
+
+    <div class="fx-row fx-align-end-center fx-gap-16">
+      <button
+        mat-raised-button
+        color="primary"
+        class="--info-btn"
+        *ngIf="uploadDocumentsStep"
+        (click)="showAgentDetails()"
+        [disabled]="!uploadedDocsAreValid">
+        {{ 'COMMON.NEXT' | translate }}
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="--info-btn"
+        *ngIf="lastStep"
+        (click)="launchBio()">
+        {{ 'COMMON.SUBMIT' | translate }}
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="--info-btn"
+        *ngIf="detailAgentStep"
+        (click)="continueStep()"
+        [disabled]="!valid">
+        {{ 'COMMON.NEXT' | translate }}
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="--info-btn"
+        (click)="continueStep()"
+        *ngIf="findAgentStep"
+        [disabled]="!agent.valid">
+        {{ 'COMMON.NEXT' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="!findAgentFlow">
+  <app-remove-agent></app-remove-agent>
+</div>

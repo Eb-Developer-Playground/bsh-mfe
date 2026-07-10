@@ -1,0 +1,736 @@
+<div>
+    <mat-toolbar class="toolbar">
+        <div>
+            <span class="title">{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER"| translate}}</span>
+            <span class="vl"></span>
+            <span class="toolbar-page">{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.DETAIL-CAPTURE"| translate}}</span>
+        </div>
+    </mat-toolbar>
+    <div>
+        <form [formGroup]="parentForm">
+            <mat-accordion multi>
+                <mat-expansion-panel [expanded]="panelOpenState === true">
+                    <mat-expansion-panel-header>
+                        <div class="d-flex align-content-center">
+                            <div class="indicator-container">
+                                <button
+                                    mat-mini-fab
+                                    aria-label="Section 1"
+                                    class="color-white bg-green"
+                                    *ngIf="standingOrderService.accountNumber"
+                                >
+                                    <mat-icon class="check">check</mat-icon>
+                                </button>
+                            </div>
+                            <h3 class="mat-headline-6 fw-400 align-self-center mb-0">
+                                {{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.ACCOUNT-DETAILS"| translate}}
+                            </h3>
+                        </div>
+                    </mat-expansion-panel-header>
+                    <app-account-details
+                        [accountNumber]="standingOrderService.accountNumber"
+                    ></app-account-details>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="panelOpenState === true">
+                    <mat-expansion-panel-header>
+                        <div class="d-flex align-content-center">
+                            <div class="indicator-container">
+                                <button
+                                    mat-mini-fab
+                                    color="primary"
+                                    aria-label="Section 1"
+                                    class="color-white"
+                                    *ngIf="beneficiaryDetailsForm.invalid"
+                                >
+                                    1
+                                </button>
+                                <button
+                                    mat-mini-fab
+                                    aria-label="Section 1"
+                                    class="color-white bg-green"
+                                    *ngIf="beneficiaryDetailsForm.valid"
+                                >
+                                    <mat-icon class="check">check</mat-icon>
+                                </button>
+                            </div>
+                            <h3 class="mat-headline-6 fw-400 align-self-center mb-0">
+                                {{
+                                    "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BENEFICIARY_DETAILS"
+                                        | translate
+                                }}
+                            </h3>
+                        </div>
+                    </mat-expansion-panel-header>
+                    <hr class="section-divider" />
+                    <div>
+                        <form
+                            formGroupName="beneficiaryDetailsForm"
+                            class="fieldset"
+                        >
+                            <div class="section">
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING_ORDER_TYPE"
+                                                | translate
+                                        }}</mat-label>
+                                        <mat-select
+                                            formControlName="standingOrderType"
+                                            required
+                                            (ngModelChange)="
+                                                checkStandingOrderType($event)
+                                            "
+                                        >
+                                            <mat-option
+                                                [value]="'WithinEquity'"
+                                            >
+                                                {{
+                                                    "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.WITHIN_EQUITY_BANK"
+                                                        | translate
+                                                }}
+                                            </mat-option>
+                                            <mat-option
+                                                [value]="'OtherLocalBanks'"
+                                            >
+                                                {{
+                                                    "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.OTHER_LOCAL_BANKS"
+                                                        | translate
+                                                }}
+                                            </mat-option>
+                                            <mat-option
+                                                [value]="
+                                                    'OtherinternationalBank'
+                                                "
+                                                disabled
+                                            >
+                                                {{
+                                                    "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.OTHER_INTERNATIONAL"
+                                                        | translate
+                                                }}
+                                                {{
+                                                    "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BANK"
+                                                        | translate
+                                                }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BENEFICIARY_BANK"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            formControlName="beneficiaryBank"
+                                            required
+                                            readonly
+                                            (click)="openBICDialog()"
+                                            matInput
+                                        />
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.ACCOUNT_NUMBER"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="accountNumber"
+                                            numbersOnly
+                                            required
+                                            (ngModelChange)="
+                                                searchCustomerByAccNo($event)
+                                            "
+                                        />
+                                        <mat-error
+                                            *ngIf="
+                                                beneficiaryDetailsForm.controls[
+                                                    'accountNumber'
+                                                ].hasError('required')
+                                            "
+                                        >
+                                            <span> {{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.ACCOUNT-NUMBER-REQUIRED"| translate}}</span>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BENEFICIARY_NAME"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="beneficiaryName"
+                                        />
+                                        <mat-error
+                                            *ngIf="
+                                                beneficiaryDetailsForm.controls[
+                                                    'beneficiaryName'
+                                                ].hasError('required')
+                                            "
+                                        >
+                                            <span
+                                                >{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BENEFICIARY-NAME-REQUIRED"| translate}}</span
+                                            >
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="wrapInput" *ngIf="isOtherBank">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.MOBILE_NUMBER"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="mobileNumber"
+                                        />
+                                        <mat-error
+                                            *ngIf="
+                                                beneficiaryDetailsForm.controls[
+                                                    'mobileNumber'
+                                                ].invalid
+                                            "
+                                        >
+                                            <span>{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.MOBILE-NUMBER-INVALID"| translate}}</span>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput" *ngIf="isOtherBank">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.EMAIL"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="email"
+                                        />
+                                        <mat-error
+                                            *ngIf="
+                                                beneficiaryDetailsForm.controls[
+                                                    'email'
+                                                ].hasError('email')
+                                            "
+                                        >
+                                            <span>{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.EMAIL-INVALID"| translate}}</span>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput" *ngIf="isOtherBank">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.PHYSICAL_ADDRESS"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="physicalAddress"
+                                        />
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput" *ngIf="isOtherBank">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.RECIPIENT_REFERENCE_NUMBER"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="recipientReferanceNumber"
+                                            [required]="
+                                                isRequired(
+                                                    'recipientReferanceNumber'
+                                                )
+                                            "
+                                        />
+                                        <mat-error
+                                            *ngIf="
+                                                beneficiaryDetailsForm.controls[
+                                                    'recipientReferanceNumber'
+                                                ].hasError('required')
+                                            "
+                                        >
+                                            <span
+                                                >{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.RECEPIENT-REFERENCE-NUMBER-REQUIRED"| translate}}</span
+                                            >
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput" *ngIf="isOtherBank">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.REMITTER_DETAIL"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="remitterDetail"
+                                            [required]="
+                                                isRequired('remitterDetail')
+                                            "
+                                        />
+
+                                        <mat-error
+                                            *ngIf="
+                                                beneficiaryDetailsForm.controls[
+                                                    'remitterDetail'
+                                                ].hasError('required')
+                                            "
+                                        >
+                                            <span
+                                                >{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.REMITTER-DETAIL-REQUIRED"| translate}}</span
+                                            >
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput" *ngIf="isOtherBank">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BRANCH_CITY_CODE"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            readonly
+                                            [required]="
+                                                isRequired('branchCityCodeName')
+                                            "
+                                            formControlName="branchCityCodeName"
+                                            (click)="openCityDialog()"
+                                        />
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput" *ngIf="isOtherBank">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BRANCH_CODE"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            readonly
+                                            formControlName="branchCodeName"
+                                            [required]="
+                                                isRequired('branchCodeName')
+                                            "
+                                            (click)="openBranchCodeDialog()"
+                                        />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel
+                    [disabled]="beneficiaryDetailsForm.invalid"
+                    [expanded]="
+                        panelOpenState === true && beneficiaryDetailsForm.valid
+                    "
+                >
+                    <mat-expansion-panel-header>
+                        <div class="d-flex align-content-center">
+                            <div class="indicator-container">
+                                <button
+                                    mat-mini-fab
+                                    color="primary"
+                                    aria-label="Section 2"
+                                    *ngIf="beneficiaryDetailsForm.invalid"
+                                    [ngClass]="{
+                                        'icon-disabled':
+                                            'beneficiaryDetailsForm.invalid'
+                                    }"
+                                >
+                                    2
+                                </button>
+                                <button
+                                    mat-mini-fab
+                                    color="primary"
+                                    aria-label="Section 2"
+                                    class="color-white"
+                                    *ngIf="
+                                        beneficiaryDetailsForm.valid &&
+                                        paymentDetailsForm.invalid
+                                    "
+                                >
+                                    2
+                                </button>
+                                <button
+                                    mat-mini-fab
+                                    aria-label="Section 2"
+                                    class="color-white bg-green"
+                                    *ngIf="paymentDetailsForm.valid"
+                                >
+                                    <mat-icon class="check">check</mat-icon>
+                                </button>
+                            </div>
+                            <h3 class="mat-headline-6 fw-400 align-self-center mb-0">
+                                {{
+                                    "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.PAYMENT_DETAILS"
+                                        | translate
+                                }}
+                            </h3>
+                        </div>
+                    </mat-expansion-panel-header>
+                    <hr class="section-divider" />
+                    <div class="d-flex wrap">
+                        <form
+                            formGroupName="paymentDetailsForm"
+                            class="fieldset"
+                        >
+                            <div class="section">
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "COMMON.CURRENCY" | translate
+                                        }}</mat-label>
+                                        <mat-select
+                                            formControlName="paymentCurrency"
+                                            required
+                                        >
+                                            <mat-option
+                                                *ngFor="
+                                                    let currency of remittanceCurrencies
+                                                "
+                                                [value]="currency"
+                                                required
+                                            >
+                                                {{ currency }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.EXECUTION_TIME"
+                                                | translate
+                                        }}</mat-label>
+                                        <mat-select
+                                            formControlName="executionTime"
+                                            required
+                                        >
+                                            <mat-option
+                                                *ngFor="
+                                                    let executionTime of executionTimes
+                                                "
+                                                [value]="executionTime.value"
+                                            >
+                                                {{ executionTime.label }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.FREQUENCY"
+                                                | translate
+                                        }}</mat-label>
+                                        <mat-select
+                                            #freq
+                                            formControlName="PaymentFrequency"
+                                            required
+                                        >
+                                            <mat-option
+                                                *ngFor="
+                                                    let frequency of PaymentFrequencies
+                                                "
+                                                [value]="frequency"
+                                            >
+                                                {{ frequency }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div
+                                    class="wrapInput"
+                                    *ngIf="
+                                        !['Daily', 'Weekly'].includes(
+                                            freq.value
+                                        ) && freq.value
+                                    "
+                                >
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.FREQUENCY_DATE"
+                                                | translate
+                                        }}</mat-label>
+                                        <mat-select
+                                            formControlName="dayOfExecution"
+                                            required
+                                        >
+                                            <mat-option
+                                                *ngFor="let d of datesOfMonth"
+                                                [value]="d"
+                                            >
+                                                {{ d }}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error
+                                            *ngIf="
+                                                paymentDetailsForm.controls[
+                                                    'dayOfExecution'
+                                                ].hasError('required')
+                                            "
+                                        >
+                                            <strong
+                                                >{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.FREQUENCY-DATE-REQUIRED"| translate}}</strong
+                                            >
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.REVIEW-DETAIL.AMOUNT_TO_SEND"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="amountToSend"
+                                            required
+                                            currencyMask
+                                            [options]="{
+                                                prefix: '',
+                                                thousands: ',',
+                                                decimal: '.',
+                                                allowNegative: false,
+                                                align: 'right'
+                                            }"
+                                            [value]="
+                                            paymentDetailsForm.get(
+                                                'amountToSend'
+                                            )?.value | number: '1.2-2'
+                                            "
+                                        />
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.START_DATE"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            [matDatepicker]="picker"
+                                            [min]="minStartDate"
+                                            formControlName="startDate"
+                                            (dateChange)="
+                                                comparisonStartdateValidator()
+                                            "
+                                            numbersOnly
+                                            required
+                                        />
+                                        <mat-datepicker-toggle
+                                            matSuffix
+                                            [for]="picker"
+                                        ></mat-datepicker-toggle>
+                                        <mat-datepicker
+                                            #picker
+                                        ></mat-datepicker>
+                                        <mat-error
+                                            *ngIf="
+                                                paymentDetailsForm.controls[
+                                                    'startDate'
+                                                ].hasError('invaliddaterange')
+                                            "
+                                        >
+                                            <strong
+                                                >{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.START-DATE-ERROR"| translate}}</strong
+                                            >
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="
+                                                paymentDetailsForm.controls[
+                                                    'startDate'
+                                                ].hasError('required')
+                                            "
+                                        >
+                                        {{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.START-DATE-IS"| translate}}
+                                            <strong>{{"COMMON.REQUIRED"| translate}}</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.END_DATE"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            matInput
+                                            [matDatepicker]="picker1"
+                                            [min]="minEndDate"
+                                            formControlName="endDate"
+                                            (dateChange)="
+                                                comparisonEnddateValidator()
+                                            "
+                                            numbersOnly
+                                        />
+                                        <mat-datepicker-toggle
+                                            matSuffix
+                                            [for]="picker1"
+                                        ></mat-datepicker-toggle>
+                                        <mat-datepicker
+                                            #picker1
+                                        ></mat-datepicker>
+                                        <mat-error
+                                            *ngIf="
+                                                paymentDetailsForm.controls[
+                                                    'endDate'
+                                                ].hasError('invaliddaterange')
+                                            "
+                                        >
+                                            <strong
+                                                >{{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.END-DATE-ERROR"| translate}}</strong
+                                            >
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="
+                                                paymentDetailsForm.controls[
+                                                    'endDate'
+                                                ].hasError('required')
+                                            "
+                                        >
+                                        {{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.END-DATE-IS"| translate}}
+                                            <strong>{{"COMMON.REQUIRED"| translate}}</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="wrapInput">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                            "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.PAYMENT_REASON"
+                                                | translate
+                                        }}</mat-label>
+                                        <input
+                                            #reason
+                                            (keyup)="0"
+                                            matInput
+                                            formControlName="paymentReason"
+                                            required
+                                        />
+                                    </mat-form-field>
+                                    <span class="reason-type"
+                                        [ngClass]="{'text-green': reason.value.length <= 50, 'text-red': reason.value.length > 50}">
+                                       {{"CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.NO-OF-CHARACTERS-LIMIT-IS-50"| translate}}:   {{ "COMMON.COUNT" | translate }}: ({{reason?.value?.length}})</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel
+                    [disabled]="paymentDetailsForm.invalid"
+                    [expanded]="
+                        panelOpenState && paymentDetailsForm.valid
+                    "
+                >
+                    <mat-expansion-panel-header>
+                        <div class="d-flex align-content-center">
+                            <div class="indicator-container">
+                                <button
+                                    mat-mini-fab
+                                    color="primary"
+                                    class="color-white"
+                                    aria-label="Section 3"
+                                    *ngIf="
+                                        !documentVerified &&
+                                        paymentDetailsForm.valid
+                                    "
+                                >
+                                    3
+                                </button>
+                                <button
+                                    mat-mini-fab
+                                    aria-label="Section 3"
+                                    class="color-white"
+                                    *ngIf="paymentDetailsForm.invalid"
+                                >
+                                    3
+                                </button>
+
+                                <button
+                                    mat-mini-fab
+                                    class="color-white bg-green"
+                                    aria-label="Section 3"
+                                    *ngIf="
+                                        documentVerified &&
+                                        paymentDetailsForm.valid
+                                    "
+                                >
+                                    <mat-icon class="check">check</mat-icon>
+                                </button>
+                            </div>
+                            <h3 class="mat-headline-6 fw-400 align-self-center mb-0">
+                                {{
+                                    "CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.UPLOAD_DOCUMENTS"
+                                        | translate
+                                }}
+                            </h3>
+                        </div>
+                    </mat-expansion-panel-header>
+                    <hr class="section-divider" />
+
+                    <app-standing-order-documents
+                        #standingOrderDocuments
+                        (cloneOfObjectsEmitter)="uploadsDocuments($event)"
+                        [orderType]="type"
+                    >
+                    </app-standing-order-documents>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </form>
+    </div>
+
+    <div class="pb-15 space-between" style="margin-top: 15px; display: flex">
+        <button
+            mat-stroked-button
+            color="primary"
+            class="btn-outline"
+            style="width: 90px"
+            (click)="goBack()"
+        >
+            {{ "COMMON.QUIT" | translate }}
+        </button>
+        <span style="flex: 1 1 auto"></span>
+        <button
+            mat-stroked-button
+            class="btn-outline back-btn"
+            color="primary"
+            style="width: 90px"
+            (click)="goBack()"
+        >
+            {{ "COMMON.BACK" | translate }}
+        </button>
+        <button
+            mat-flat-button
+            color="primary"
+            class="ml-15"
+            style="width: 90px"
+            (click)="reviewStandingOrder()"
+            [disabled]="
+                !documentVerified ||
+                paymentDetailsForm.invalid ||
+                beneficiaryDetailsForm.invalid
+            "
+        >
+           {{"COMMON.SUBMIT"| translate}}
+        </button>
+    </div>
+</div>
+
+<!--{{ paymentDetailsForm.value | json}}-->
+<!--{{ paymentDetailsForm.valid | json}}-->

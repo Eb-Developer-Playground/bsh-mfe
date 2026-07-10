@@ -1,0 +1,14 @@
+<app-documents-upload
+  *ngIf="subsidiary.countryCode !== 'CD'"
+  [title]="'DOCUMENTS.UPLOAD-DOCUMENTS'"
+  [allowedFileTypes]="['image/png', 'image/jpeg', 'application/pdf']"
+  [documentSpecs]="requiredDocs"
+  (onUploaded)="updateDocuments($event)">
+</app-documents-upload>
+
+<app-documents-upload-drc
+  *ngIf="subsidiary.countryCode === 'CD'"
+  (onUploaded)="updateDocuments($event)"
+  [documentSpecs]="requiredDocs"
+  [title]="'Documents Upload'">
+</app-documents-upload-drc>

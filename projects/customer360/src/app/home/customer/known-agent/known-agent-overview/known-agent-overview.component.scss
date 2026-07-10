@@ -1,0 +1,45 @@
+.fx-row { display: flex; flex-direction: row; }
+.fx-flex { flex: 1 1 auto; }
+.fx-align-start-center { display: flex; align-items: center; justify-content: flex-start; }
+.fx-align-between-center { display: flex; align-items: center; justify-content: space-between; }
+.fx-align-end-center { display: flex; align-items: center; justify-content: flex-end; }
+.fx-gap-12 { gap: 12px; }
+
+.toolbar {
+  background: #ffffff;
+  /* 1 dp */
+
+  box-shadow:
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+.--no-record-icon {
+  width: 100%;
+  height: 206px;
+}
+
+.vl {
+  border-left: 2px solid #92949733;
+  height: 30px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.overview-container {
+  background: #ffffff;
+  border-radius: 8px 8px 0px 0px;
+
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0;
+  }
+
+  .--button-icon {
+    width: 12px;
+  }
+
+  ::ng-deep .mat-expansion-indicator:after {
+    color: #a32a29;
+  }
+}

@@ -1,0 +1,41 @@
+<div class="mt-44">
+  <div class="fx-row fx-fill fx-flex-100 fx-align-between-start">
+    <p class="mat-subtitle-1 m-0 fw-600">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.CHANGE-MANDATE-SELECT-SIGNATORIES.SELECT_MANDATE_SIGNATORIES'
+          | translate
+      }}
+    </p>
+    <button mat-button color="primary">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.CHANGE-MANDATE-SELECT-SIGNATORIES.ADD_ADDITIONAL_STAKEHOLDER'
+          | translate
+      }}
+    </button>
+  </div>
+</div>
+
+<p class="mat-body-2 text-muted mb-37 mt-0">
+  {{
+    'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.CHANGE-MANDATE-SELECT-SIGNATORIES.ADD_NEW_SIGNATORIES_FROM_THE_LIST_OF_AVAILABLE_STAKEHOLDERS_OR_REMOVE'
+      | translate
+  }}
+  {{
+    'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.CHANGE-MANDATE-SELECT-SIGNATORIES.CURRENT_SIGNATORIES_NEW_SIGNATORIES_MUST_ADD_THEIR_DETAILS_BELOW'
+      | translate
+  }}
+</p>
+
+<div class="signatories-container">
+  <app-change-mandate-select-signatory
+    (signatoryEvent)="signatoriesChange($event)"
+    title="Current signatories"
+    [signatories]="current"></app-change-mandate-select-signatory>
+  <hr class="mb-25" />
+  <app-change-mandate-select-signatory
+    (signatoryEvent)="signatoriesChange($event)"
+    title="Available stakeholders"
+    [signatories]="available"></app-change-mandate-select-signatory>
+</div>
+
+<app-change-mandate-new-signatory></app-change-mandate-new-signatory>

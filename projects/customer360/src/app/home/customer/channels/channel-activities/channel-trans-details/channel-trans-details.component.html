@@ -1,0 +1,607 @@
+<ng-container class="individual">
+  <mat-card appearance="outlined" class="mb-24 header-card">
+    <mat-card-content>
+      <div>
+        <div style="display: flex; gap: 20px" class="header_tab">
+          <p class="mat-headline-6 mb-0 header_tab_title">
+            {{ 'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.SUB-TITLE' | translate }}
+            <span class="header_tab_subtitle"> | {{ transDetailsObj?.reference }}</span>
+          </p>
+          <mat-icon
+            [matMenuTriggerFor]="appMenu"
+            svgIcon="ic-nav"
+            aria-hidden="false"
+            aria-label="action"
+            class="icon-image"
+          >
+          </mat-icon>
+
+          <mat-menu backdropClass="custom__menu" #appMenu="matMenu">
+            <button (click)="navToIssueLog()" mat-menu-item>
+              {{ 'CUSTOMER.CHANNELS.MENU-LOG' | translate }}
+            </button>
+            <button mat-menu-item>
+              {{ 'CUSTOMER.CHANNELS.MENU-REVERSE' | translate }}
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined" class="mb-24">
+    <mat-card-title>
+      <div class="detail_tab">
+        <div>
+          <mat-icon
+            svgIcon="ic-arrow-up"
+            aria-hidden="false"
+            aria-label="action"
+            class="icon-image"
+          ></mat-icon>
+        </div>
+        <div class="detail_tab_title">
+          <div class="detail_tab_title_sub">
+            <span class="detail_tab_title_sub_trans">
+              {{
+                'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSFER.DESTINATION' | translate
+              }}
+              {{ parseData(transDetailsObj?.data)?.DestinationAccount }}</span
+            >
+            <span class="detail_tab_title_sub_amt">
+              - {{ transDetailsObj?.amount | number: '1.2-2' }}
+              {{ transDetailsObj?.currency }}</span
+            >
+          </div>
+          <div>
+            @switch (transDetailsObj.status) {
+              @case ('Successful') {
+                <div class="completed">
+                  {{
+                    'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.STATUS.COMPLETE' | translate
+                  }}
+                </div>
+              }
+              @case ('Failed') {
+                <div class="error">
+                  {{ 'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.STATUS-FAILED' | translate }}
+                </div>
+              }
+              @case ('Approved') {
+                <div class="completed">
+                  {{ 'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.STATUS-APPROVED' | translate }}
+                </div>
+              }
+              @case ('Expired') {
+                <div class="error">
+                  {{
+                    'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.STATUS.EXPIRE' | translate
+                  }}
+                </div>
+              }
+              @case ('Declined') {
+                <div class="error">
+                  {{ 'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.DECLINED' | translate }}
+                </div>
+              }
+              @default {
+                <div class="pending">
+                  {{ transDetailsObj.status }}
+                </div>
+              }
+            }
+          </div>
+        </div>
+      </div>
+    </mat-card-title>
+
+    <div class="pb-1">
+      <mat-divider></mat-divider>
+    </div>
+
+    <mat-card-content>
+      <div class="customer-details-container">
+        <!--          //TODO: translate source-->
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'Source' }}
+          </p>
+          <p class="customer-detail-content">
+            {{ transDetailsObj?.source | titlecase }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.TYPE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ transDetailsObj?.type | titlecase }}
+          </p>
+        </div>
+
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.CHANNELS.DATE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ transactionDate | date: 'medium' }}
+          </p>
+        </div>
+
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.DEBIT-ACCOUNT'
+                | translate
+            }}
+          </p>
+          <p class="customer-detail-content">
+            {{ transDetailsObj?.sourceAccount }}
+          </p>
+        </div>
+
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.CIF' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ transDetailsObj?.customerId }}
+          </p>
+        </div>
+
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.CURRENCY' | translate
+            }}
+          </p>
+          <p class="customer-detail-content">
+            {{ transDetailsObj?.currency }}
+          </p>
+        </div>
+
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.AMOUNT' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ transDetailsObj?.amount | number: '1.2-2' }}
+          </p>
+        </div>
+
+        @if (parseData(transDetailsObj?.data)?.DestinationAccount) {
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'CUSTOMER.CHANNELS.BENEFICIARY-ACCOUNT' | translate }}
+            </p>
+            <p class="customer-detail-content">
+              {{ parseData(transDetailsObj?.data).DestinationAccount }}
+            </p>
+          </div>
+        }
+
+        @if (parseData(transDetailsObj?.data)?.DestinationName) {
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'CUSTOMER.CHANNELS.BENEFICIARY-NAME' | translate }}
+            </p>
+            <p class="customer-detail-content">
+              {{ parseData(transDetailsObj?.data)?.DestinationName }}
+            </p>
+          </div>
+        }
+
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.REFERENCE' | translate
+            }}
+          </p>
+          <p class="customer-detail-content">
+            {{ transDetailsObj?.reference }}
+          </p>
+        </div>
+
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.CHANNEL' | translate
+            }}
+          </p>
+          <p class="customer-detail-content">
+            {{ transDetailsObj?.channel }}
+          </p>
+        </div>
+        <!--          //TODO: translate Charge-->
+
+        @if (parseData(transDetailsObj?.data)?.Charge) {
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'Charge' }}
+            </p>
+            <p class="customer-detail-content">
+              {{ parseData(transDetailsObj?.data)?.Charge | number: '1.2-2' }}
+            </p>
+          </div>
+        }
+        <!--          //TODO: translate Conversion rate-->
+
+        @if (parseData(transDetailsObj?.data)?.ConversionRate) {
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'Conversion Rate' }}
+            </p>
+            <p class="customer-detail-content">
+              {{ parseData(transDetailsObj?.data)?.ConversionRate }}
+            </p>
+          </div>
+        }
+
+        @if (parseData(transDetailsObj?.data)?.PaymentReason) {
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{
+                'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.REASON' | translate
+              }}
+            </p>
+            <p class="customer-detail-content">
+              {{ parseData(transDetailsObj?.data)?.PaymentReason }}
+            </p>
+          </div>
+        }
+      </div>
+
+      @if (parseData(transDetailsObj?.data)?.IsHighValueTransaction) {
+        <ng-container>
+          <div class="pb-1">
+            <mat-divider></mat-divider>
+          </div>
+
+          <p class="documents_title">Linked Ticket</p>
+
+          <div class="linkedTicket">
+            <div>
+              <p>
+                <span class="ticketNo"
+                  >Linked ticket {{ parseData(transDetailsObj?.data)?.TaskId }}
+                </span>
+                {{ transDetailsObj.status }} approval by GPC approver
+              </p>
+              <span class="ticketDate">
+                {{ transDetailsObj.date | date: 'medium' }}
+              </span>
+            </div>
+            <div>
+              <div>
+                @switch (transDetailsObj.status) {
+                    @case ('Successful') {
+                      <div class="completed">
+                        {{
+                          'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.STATUS.COMPLETE'
+                            | translate
+                        }}
+                      </div>
+                    }
+                    @case ('Failed') {
+                      <div class="error">
+                        {{ 'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.STATUS-FAILED' | translate }}
+                      </div>
+                    }
+                    @case ('Approved') {
+                      <div class="completed">
+                        {{ 'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.STATUS-APPROVED' | translate }}
+                      </div>
+                    }
+                    @case ('Expired') {
+                      <div class="error">
+                        {{
+                          'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.STATUS.EXPIRE'
+                            | translate
+                        }}
+                      </div>
+                    }
+                    @case ('Declined') {
+                      <div class="error">
+                        {{ 'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.DECLINED' | translate }}
+                      </div>
+                    }
+                    @default {
+                      <div class="pending">
+                        {{ transDetailsObj.status }}
+                      </div>
+                    }
+                }
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      }
+
+      <!-- supporting Doc -->
+      <ng-container>
+        @if (parseData(transDetailsObj?.data)?.SupportingDocuments?.length > 0) {
+          <div class="pb-1">
+            <mat-divider></mat-divider>
+          </div>
+
+          <p class="documents_title">
+            {{ 'CUSTOMER.CHANNELS.UPLOADED-DOCUMENTS' | translate }}
+          </p>
+
+          <div class="documents">
+            @for (item of parseData(transDetailsObj?.data)?.SupportingDocuments; track item) {
+              <div class="documents_file">
+                <div>
+                  <span class="documents_file_text">{{ item.documentName }}</span>
+                </div>
+                <mat-icon
+                  svgIcon="ic-eye"
+                  (click)="onPreview(item)"
+                  class="documents_file_icon"
+                ></mat-icon>
+              </div>
+            }
+          </div>
+        }
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+
+  <!--  @if (jointAccSignatoriesDetails?.approval) {-->
+  <!--    <mat-expansion-panel-->
+  <!--      [expanded]="true"-->
+  <!--      (opened)="panelOpenState = true"-->
+  <!--      (closed)="panelOpenState = false">-->
+  <!--      <mat-expansion-panel-header>-->
+  <!--        <mat-panel-title-->
+  <!--          style="-->
+  <!--            display: flex;-->
+  <!--            flex-direction: column;-->
+  <!--            align-items: flex-start;-->
+  <!--          ">-->
+  <!--          <span class="title">{{-->
+  <!--            'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.MULTI-APPROVALS.TITLE'-->
+  <!--              | translate-->
+  <!--          }}</span>-->
+  <!--          <span class="sub_title">-->
+  <!--            {{-->
+  <!--              'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.MULTI-APPROVALS.SUB-TITLE'-->
+  <!--                | translate-->
+  <!--            }}</span-->
+  <!--          >-->
+  <!--        </mat-panel-title>-->
+  <!--      </mat-expansion-panel-header>-->
+
+  <!--      <div class="pb-1">-->
+  <!--        <mat-divider></mat-divider>-->
+  <!--      </div>-->
+
+  <!--      <ng-container class="initiator">-->
+  <!--        <p class="initiator_title">-->
+  <!--          {{-->
+  <!--            'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.CUSTOMER-TYPE'-->
+  <!--              | translate-->
+  <!--          }}-->
+  <!--        </p>-->
+  <!--        <div class="initiator_comp">-->
+  <!--          <div class="initiator_comp_icon">-->
+  <!--            <mat-icon-->
+  <!--              svgIcon="ic-avatar"-->
+  <!--              aria-hidden="false"-->
+  <!--              aria-label="action"-->
+  <!--              class="initiator_comp_icon_image"></mat-icon>-->
+  <!--          </div>-->
+  <!--          <div class="initiator_comp_text">-->
+  <!--            <span class="initiator_comp_text_name">-->
+  <!--              {{-->
+  <!--                jointAccSignatoriesDetails?.originator?.firstName | titlecase-->
+  <!--              }}-->
+  <!--              {{-->
+  <!--                jointAccSignatoriesDetails?.originator?.lastName | titlecase-->
+  <!--              }}</span-->
+  <!--            >-->
+  <!--            <span class="initiator_comp_text_date">-->
+  <!--              {{-->
+  <!--                'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.INITIATION-DATE'-->
+  <!--                  | translate-->
+  <!--              }}-->
+  <!--              {{ signatoryApprovalDate | date: 'medium' }}-->
+  <!--            </span>-->
+  <!--          </div>-->
+  <!--        </div>-->
+
+  <!--        <div style="margin-top: 1rem" class="pb-1">-->
+  <!--          <mat-divider></mat-divider>-->
+  <!--        </div>-->
+  <!--      </ng-container>-->
+
+  <!--      <ng-container class="approval">-->
+  <!--        <div class="approval_head">-->
+  <!--          <p class="approval_title">-->
+  <!--            {{-->
+  <!--              'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.MULTI-APPROVALS.APPROVER'-->
+  <!--                | translate-->
+  <!--            }}-->
+  <!--            ({{-->
+  <!--              jointAccSignatoriesDetails?.approval?.signatoryApproval.length-->
+  <!--            }})-->
+  <!--          </p>-->
+  <!--          <p>-->
+  <!--            <ng-container>-->
+  <!--              @switch (jointAccSignatoriesDetails?.approval?.approvalStatus) {-->
+  <!--                @case ('Approved') {-->
+  <!--                  <span class="completed">-->
+  <!--                    {{-->
+  <!--                      'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.STATUS.APPROVED'-->
+  <!--                        | translate-->
+  <!--                    }}-->
+  <!--                  </span>-->
+  <!--                }-->
+  <!--                @case ('Approved') {-->
+  <!--                  <span class="completed">-->
+  <!--                    {{-->
+  <!--                      'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.STATUS.APPROVED'-->
+  <!--                        | translate-->
+  <!--                    }}-->
+  <!--                  </span>-->
+  <!--                }-->
+  <!--                @case ('Rejected') {-->
+  <!--                  <span class="error">-->
+  <!--                    {{-->
+  <!--                      'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.REJECTED'-->
+  <!--                        | translate-->
+  <!--                    }}-->
+  <!--                  </span>-->
+  <!--                }-->
+  <!--                @case ('Declined') {-->
+  <!--                  <span class="error">-->
+  <!--                    {{-->
+  <!--                      'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.DECLINED'-->
+  <!--                        | translate-->
+  <!--                    }}-->
+  <!--                  </span>-->
+  <!--                }-->
+  <!--                @default {-->
+  <!--                  <span class="pending">-->
+  <!--                    {{ jointAccSignatoriesDetails?.approval?.approvalStatus }}-->
+  <!--                  </span>-->
+  <!--                }-->
+  <!--              }-->
+  <!--            </ng-container>-->
+  <!--          </p>-->
+  <!--        </div>-->
+
+  <!--        <br />-->
+
+  <!--        <ng-container>-->
+  <!--          @for (-->
+  <!--            approver of jointAccSignatoriesDetails?.approval?.signatoryApproval;-->
+  <!--            track approver-->
+  <!--          ) {-->
+  <!--            <div class="approver">-->
+  <!--              <div-->
+  <!--                class="channel-cover"-->
+  <!--                [ngClass]="-->
+  <!--                  approver.approvalStatus ? approver.approvalStatus : 'inactive'-->
+  <!--                ">-->
+  <!--                <div class="testing">-->
+  <!--                  @if (approver.approvalStatus === 'Pending') {-->
+  <!--                    <mat-icon svgIcon="ic-warning-caution" class="checkmark">-->
+  <!--                    </mat-icon>-->
+  <!--                  } @else if (approver.approvalStatus === 'AwaitingSignup') {-->
+  <!--                    <mat-icon svgIcon="ic-block-dark" class="checkmark">-->
+  <!--                    </mat-icon>-->
+  <!--                  } @else if (approver.approvalStatus === 'Approved') {-->
+  <!--                    <mat-icon svgIcon="ic-circle-green-check" class="checkmark">-->
+  <!--                    </mat-icon>-->
+  <!--                  } @else if (-->
+  <!--                    approver.approvalStatus === 'Rejected' ||-->
+  <!--                    approver.approvalStatus === 'Declined'-->
+  <!--                  ) {-->
+  <!--                    <mat-icon svgIcon="ic-block-red" class="checkmark">-->
+  <!--                    </mat-icon>-->
+  <!--                  }-->
+  <!--                  <span class="channel-status-text"-->
+  <!--                    >{{ approver.approvalStatus }}-->
+  <!--                  </span>-->
+  <!--                </div>-->
+  <!--              </div>-->
+
+  <!--              <div class="approver_sub">-->
+  <!--                <div class="approver_icon">-->
+  <!--                  <mat-icon-->
+  <!--                    svgIcon="ic-avatar"-->
+  <!--                    aria-hidden="false"-->
+  <!--                    aria-label="action"-->
+  <!--                    class="approver_icon_image"></mat-icon>-->
+  <!--                </div>-->
+  <!--                <div class="approver_text">-->
+  <!--                  <div>-->
+  <!--                    <span class="approver_text_name">-->
+  <!--                      {{ approver.firstName | titlecase }}-->
+  <!--                      {{ approver.lastName | titlecase }}</span-->
+  <!--                    >-->
+
+  <!--                    @if (approver.approvalStatus === 'Approved') {-->
+  <!--                      <span class="approver_text_date">-->
+  <!--                        {{-->
+  <!--                          'CUSTOMER.CHANNELS.CHANNEL-DETAILS.LINKED-ACCOUNTS.TRANSACTION.MULTI-APPROVALS.APPROVE-DATE'-->
+  <!--                            | translate-->
+  <!--                        }}-->
+  <!--                        {{ approver.approvedOn | date: 'medium' }}-->
+  <!--                      </span>-->
+  <!--                    } @else if (approver.approvalStatus === 'Declined') {-->
+  <!--                      <span class="approver_text_date">-->
+  <!--                        {{-->
+  <!--                          'CUSTOMER.CHANNELS.DECLINED-TRANSACTION-ON'-->
+  <!--                            | translate-->
+  <!--                        }}-->
+  <!--                        {{ approver.declineOn | date: 'medium' }}-->
+  <!--                      </span>-->
+  <!--                    }-->
+  <!--                  </div>-->
+
+  <!--                  <div class="approver_text_action">-->
+  <!--                    <span-->
+  <!--                      >{{ 'CUSTOMER.CHANNELS.APPROVAL-REQUIRED' | translate }}-->
+  <!--                    </span>-->
+  <!--                  </div>-->
+  <!--                </div>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--          }-->
+  <!--        </ng-container>-->
+  <!--      </ng-container>-->
+  <!--    </mat-expansion-panel>-->
+  <!--  }-->
+
+  <!--    Transaction Logs-->
+  <mat-expansion-panel style="margin-top: 1.5rem">
+    <mat-expansion-panel-header>
+      <mat-panel-title style="display: flex; flex-direction: column; align-items: flex-start">
+        <span class="title">
+          {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.TRANSACTIONS.TRANSACTION-LOG' | translate }}</span
+        >
+        <span class="sub_title"> Add Subtitle content here </span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="pb-1">
+      <mat-divider></mat-divider>
+    </div>
+
+    <section class="card-content">
+      <div class="indicator-container">
+        <div class="indicator">
+          <span class="grey-dot"></span>
+          <mat-divider vertical style="height: 100px"></mat-divider>
+          <span class="green-dot"></span>
+        </div>
+
+        <div class="trans-details">
+          <div class="start">
+            <span>{{
+              'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.TRANSACTIONS.TRANSACTION-STARTED' | translate
+            }}</span>
+            <div>
+              {{ transDetailsObj?.date | date: 'dd/MM/yyyy' }}
+            </div>
+          </div>
+          <div class="end">
+            <span class="end-text">{{
+              'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.TRANSACTIONS.TRANSACTION-SUCCESS' | translate
+            }}</span>
+            <!--            TODO: Confirm last date-->
+            <div>{{ transDetailsObj.date | date: 'dd/MM/yyyy' }}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </mat-expansion-panel>
+</ng-container>
+
+<div class="pb-15 mt-12">
+  <button (click)="navigateBack()" mat-stroked-button color="primary" class="btn-outline">
+    {{ 'COMMON.BACK' | translate }}
+  </button>
+</div>

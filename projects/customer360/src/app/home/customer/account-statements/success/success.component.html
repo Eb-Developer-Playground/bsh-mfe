@@ -1,0 +1,51 @@
+<div class="success-page">
+  <div class="success">
+    <div class="success-img">
+      <img src="assets/images/agentSuccess.png" alt="" />
+    </div>
+    <div class="success-text">
+      <h1>
+        {{ 'COMMON.YOU-ARE-DONE' | translate }}
+      </h1>
+      <p style="margin-bottom: 35px">
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.PROCESSED-SUCCESSFULLY'
+            | translate
+        }}
+      </p>
+      <div class="gridset">
+        <div *ngFor="let item of successData">
+          <h3 class="title">{{ item.title | translate }}</h3>
+          <span class="text">{{ item.value }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-row pb-15" style="margin-top: 15px">
+    <button
+      mat-stroked-button
+      color="primary"
+      class="btn-outline"
+      (click)="openPreviewDocument(4)">
+      {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.VIEW-STATEMENT' | translate }}
+    </button>
+    <span class="spacer"></span>
+    <button
+      mat-raised-button
+      color="primary"
+      style="margin-right: 15px"
+      (click)="goToProfile()">
+      {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.BACK-PROFILE' | translate }}
+    </button>
+
+    <button
+      *ngIf="pdfInfo.delivery !== 'Email'"
+      mat-raised-button
+      color="primary"
+      class="ml-15"
+      (click)="onClickDownloadPdf()">
+      {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.PRINT-STATEMENT' | translate }}
+    </button>
+  </div>
+</div>

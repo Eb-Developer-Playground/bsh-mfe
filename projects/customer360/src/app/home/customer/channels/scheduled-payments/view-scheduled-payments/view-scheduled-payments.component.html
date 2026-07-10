@@ -1,0 +1,407 @@
+<div class="wrapper">
+  <!-- header -->
+  <div class="container">
+    <div class="topbar">
+      <mat-toolbar class="toolbar">
+        <div>
+          <span class="title">View Scheduled Payment Details</span>
+          <span class="vl"></span>
+          <span class="toolbar-page">Ref: {{ scheduleObj?.transaction?.reference }}</span>
+        </div>
+        <div>
+          <div>
+            @switch (scheduleStatus) {
+              @case ('active') {
+                <div class="completed">Active</div>
+              }
+              @case ('cancelled') {
+                <div class="pending">Cancelled</div>
+              }
+              @case ('past') {
+                <div class="error">Expired</div>
+              }
+              @case ('past') {
+                <div class="error">Expired</div>
+              }
+            }
+          </div>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+  <!-- end header -->
+
+  <!-- body -->
+  <mat-card appearance="outlined" class="channels-body mb-24 activity-card">
+    <div class="mb-1 justify-content-between activity-header">
+      <div class="activity-header-title">
+        <span>Payment Details</span>
+      </div>
+      @if (scheduleStatus === 'active') {
+        <div class="action-btn">
+          <div
+            style="display: flex; align-items: center; justify-content: center; gap: 5px"
+            (click)="cancelSchedule()"
+          >
+            <mat-icon
+              svgIcon="ic-cancel-red"
+              aria-hidden="false"
+              aria-label="action"
+              class="icon-image"
+            ></mat-icon>
+            <span>Cancel payment</span>
+          </div>
+          <div
+            style="display: flex; align-items: center; justify-content: center; gap: 5px"
+            (click)="updateSchedule()"
+          >
+            <mat-icon
+              svgIcon="ic-edit"
+              aria-hidden="false"
+              aria-label="action"
+              class="icon-image"
+            ></mat-icon>
+            <span>Update payment</span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="pb-1">
+      <mat-divider></mat-divider>
+    </div>
+
+    <mat-card-content class="card-content">
+      <div class="mb-24">
+        <div class="customer-details-container">
+          @if (scheduleObj?.createdOn) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Date Created</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.createdOn | date: 'dd/MM/yyyy' }}
+              </p>
+            </div>
+          }
+
+          <div class="customer-detail">
+            <p class="customer-detail-title">Transaction type</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.requestType | titlecase }}
+            </p>
+          </div>
+
+          @if (scheduleObj?.transaction?.destinationAccount) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Beneficiary account</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.destinationAccount }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.transaction?.destinationName) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Beneficiary name</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.destinationName }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.transaction?.destinationBankCode) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Beneficiary bank code</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.destinationBankCode }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.transaction?.destinationCountry) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Beneficiary country</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.destinationCountry }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.transaction?.phoneNumber) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Phone number</p>
+              <p class="customer-detail-content">+ {{ scheduleObj?.transaction?.phoneNumber }}</p>
+            </div>
+          }
+
+          @if (scheduleObj?.transaction?.telco) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Telco</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.telco }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.transaction?.billName) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Bill name</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.billName }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.transaction?.billAccountNumber) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Bill account</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.billAccountNumber }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.transaction?.billerCode) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Bill code</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.billerCode }}
+              </p>
+            </div>
+          }
+
+          <div class="customer-detail">
+            <p class="customer-detail-title">Amount Currency</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.amountCurrency }}
+            </p>
+          </div>
+
+          <div class="customer-detail">
+            <p class="customer-detail-title">Amount</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.amount | number: '1.2-2' }}
+            </p>
+          </div>
+
+          @if (scheduleObj?.transaction?.charge) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Charge</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.charge | number: '1.2-2' }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.transaction?.chargeCurrency) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Charge Currency</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.transaction?.chargeCurrency }}
+              </p>
+            </div>
+          }
+
+          <div class="customer-detail">
+            <p class="customer-detail-title">Start date</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.startDate | date: 'dd/MM/yyyy' }}
+            </p>
+          </div>
+
+          <div class="customer-detail">
+            <p class="customer-detail-title">End date</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.endDate | date: 'dd/MM/yyyy' }}
+            </p>
+          </div>
+
+          <div class="customer-detail">
+            <p class="customer-detail-title">Frequency</p>
+            <p class="customer-detail-content">
+              {{ camelCaseToSpaces(scheduleObj?.frequency) }}
+            </p>
+          </div>
+
+          @if (scheduleObj?.firstName) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Debit account name</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.firstName }} {{ scheduleObj?.lastName }}
+              </p>
+            </div>
+          }
+
+          <div class="customer-detail">
+            <p class="customer-detail-title">Debit account number</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.sourceAccount }}
+            </p>
+          </div>
+
+          <!-- <div class="customer-detail">
+            <p class="customer-detail-title">Source Cif</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.customerId }}
+            </p>
+          </div>
+
+          <div class="customer-detail">
+            <p class="customer-detail-title">High value transaction</p>
+            <p class="customer-detail-content">
+              <span *ngIf="scheduleObj?.isHVT ;else templateName">
+                Yes
+              </span>
+              <ng-template #templateName>
+                No
+              </ng-template>
+            </p>
+          </div> -->
+
+          <div class="customer-detail">
+            <p class="customer-detail-title">Transaction reference no.</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.transaction?.reference }}
+            </p>
+          </div>
+
+          @if (scheduleObj?.nextDueDate) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Next payment date</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.nextDueDate | date: 'dd/MM/yyyy' }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.notificationReminder) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Notification reminder</p>
+              <p class="customer-detail-content">
+                @switch (true) {
+                  @case (
+                    scheduleObj.notificationReminder === 'DailyReminder' &&
+                    scheduleObj.frequencyOfReminder === 1
+                  ) {
+                    <div>1 day before payment</div>
+                  }
+                  @case (
+                    scheduleObj.notificationReminder === 'DailyReminder' &&
+                    scheduleObj.frequencyOfReminder === 2
+                  ) {
+                    <div>2 days before payment</div>
+                  }
+                  @case (
+                    scheduleObj.notificationReminder === 'DailyReminder' &&
+                    scheduleObj.frequencyOfReminder === 3
+                  ) {
+                    <div>3 days before payment</div>
+                  }
+                  @case (
+                    scheduleObj.notificationReminder === 'DailyReminder' &&
+                    scheduleObj.frequencyOfReminder === 5
+                  ) {
+                    <div>5 days before payment</div>
+                  }
+                  @case (
+                    scheduleObj.notificationReminder === 'WeeklyReminder' &&
+                    scheduleObj.frequencyOfReminder === 1
+                  ) {
+                    <div>1 week before payment</div>
+                  }
+                  @case (
+                    scheduleObj.notificationReminder === 'DontRemindMe' &&
+                    scheduleObj.frequencyOfReminder === 0
+                  ) {
+                    <div>Don't remind me</div>
+                  }
+                  @default {
+                    <div>No defined reminder</div>
+                  }
+                }
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.cancelReason) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Cancellation reason</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.cancelReason }}
+              </p>
+            </div>
+          }
+          @if (scheduleObj?.failureReason) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Failure reason</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.failureReason }}
+              </p>
+            </div>
+          }
+
+          @if (scheduleObj?.updateReason) {
+            <div class="customer-detail">
+              <p class="customer-detail-title">Update reason</p>
+              <p class="customer-detail-content">
+                {{ scheduleObj?.updateReason }}
+              </p>
+            </div>
+          }
+
+          <!--
+          <div class="customer-detail">
+            <p class="customer-detail-title">Channel</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.channel | titlecase }}
+            </p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">Beneficiary name</p>
+            <p class="customer-detail-content">
+              {{ scheduleObj?.destinationName }}
+            </p>
+          </div> -->
+        </div>
+      </div>
+    </mat-card-content>
+
+    @if (scheduleObj?.additionalDocuments?.length > 0) {
+      <div class="additional-doc">
+        <div class="pb-1">
+          <mat-divider></mat-divider>
+        </div>
+        <p class="documents_title">Uploaded documents</p>
+        <ng-container>
+          <div class="documents">
+            @for (item of scheduleObj?.additionalDocuments; track item) {
+              <div class="documents_file">
+                <div>
+                  <span class="documents_file_text">{{ item.documentName }}</span>
+                </div>
+                <mat-icon svgIcon="ic-eye" (click)="onPreview(item)" class="documents_file_icon">
+                </mat-icon>
+              </div>
+            }
+          </div>
+        </ng-container>
+      </div>
+    }
+  </mat-card>
+
+  <!-- end body -->
+
+  <!-- footer -->
+
+  <div style="display: flex" class="pb-15 mt-12">
+    <button
+      mat-stroked-button
+      color="primary"
+      routerLink="/services/customer-360/channels/scheduled-payments"
+      class="btn-outline"
+    >
+      Back
+    </button>
+  </div>
+
+  <!-- end footer -->
+</div>

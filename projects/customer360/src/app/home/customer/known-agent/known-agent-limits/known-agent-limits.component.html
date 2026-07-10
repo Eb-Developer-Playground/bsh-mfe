@@ -1,0 +1,77 @@
+<div class="limits-container">
+  <mat-accordion mat-dialog-content color="primary" class="w-100">
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p class="mat-headline-6 m-0">
+            {{ 'KNOWN-AGENT.LIMITS.TITLE' | translate }}
+          </p>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="mt-16 mb-16">
+        <div class="d-flex flex-column pt-28" *ngIf="!edit">
+          <p class="mat-body-2 text-muted m-0">
+            {{ 'KNOWN-AGENT.LIMITS.CASH-LIMITS' | translate }}
+          </p>
+          <p class="mat-subtitle-1">{{ limit | number: '1.2-2' }}</p>
+        </div>
+
+        <form [formGroup]="limitForm" *ngIf="edit">
+          <mat-form-field appearance="fill">
+            <mat-label>{{
+              'KNOWN-AGENT.LIMITS.CASH-LIMITS' | translate
+            }}</mat-label>
+            <!-- <span matPrefix>KES &nbsp;</span> -->
+
+            <input
+              matInput
+              formControlName="limit"
+              currencyMask
+              [options]="{
+                prefix: '',
+                thousands: ',',
+                decimal: '.',
+                allowNegative: false,
+                align: 'left'
+              }"
+              required />
+
+            <mat-error *ngIf="limitForm?.get('limit')?.hasError('required')">
+              <span
+                >{{ 'KNOWN-AGENT.LIMITS.CASH-LIMITS' | translate }}
+                {{ 'COMMON.IS' | translate }}
+                <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+              >
+            </mat-error>
+
+            <mat-error *ngIf="limitForm?.get('limit')?.hasError('max')">
+              <span
+                >{{ 'KNOWN-AGENT.LIMITS.CASH-LIMITS' | translate }}
+                {{ 'COMMON.IS' | translate }}
+                <strong
+                  >{{
+                    'COMMON.MAX_VALUE'
+                      | translate: { maxValue: limitMaxValue | number: '1.2-2' }
+                  }}
+                </strong></span
+              >
+            </mat-error>
+
+            <mat-error *ngIf="limitForm?.get('limit')?.hasError('min')">
+              <span
+                >{{ 'KNOWN-AGENT.LIMITS.CASH-LIMITS' | translate }}
+                {{ 'COMMON.IS' | translate }}
+                <strong
+                  >{{
+                    'COMMON.MIN_VALUE'
+                      | translate: { minValue: limitMinValue | number: '1.2-2' }
+                  }}
+                </strong></span
+              >
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

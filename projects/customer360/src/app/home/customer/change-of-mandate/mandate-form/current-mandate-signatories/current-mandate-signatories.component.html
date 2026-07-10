@@ -1,0 +1,18 @@
+
+<app-new-collapsible
+  *ngIf="isAccountSelected"
+  [title]="'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATORY.ACCOUNT-SIGNATORIES'"
+  [countTitle]="
+  ('CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATORY.ACCOUNT-SIGNATORIES' | translate)
+  + ' (' + (signatories?.length || 0) + ')'
+"  [isActive]="true"
+  [isValid]="true"
+  [hideToggle]="false">
+  <ng-container *ngIf="signatories.length" container>
+    <app-signatory-slider
+      *ngIf="signatoriesImages"
+      [signatories]="signatoriesImages"></app-signatory-slider>
+    <app-signatories-list [signatories]="signatories"></app-signatories-list>
+  </ng-container>
+</app-new-collapsible>
+

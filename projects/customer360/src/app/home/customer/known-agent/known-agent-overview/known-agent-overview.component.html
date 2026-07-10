@@ -1,0 +1,134 @@
+<div class="topbar mb-24">
+  <mat-toolbar class="toolbar">
+    <div class="fx-row fx-flex fx-align-start-center fx-gap-12">
+      <p class="mat-headline-5 m-0">
+        {{ 'KNOWN-AGENT.OVERVIEW.HEADER' | translate }}
+      </p>
+      <span class="vl"></span>
+      <p class="mat-body-2 text-muted m-0">
+        {{ 'KNOWN-AGENT.OVERVIEW.SUBHEADER' | translate }}
+      </p>
+    </div>
+  </mat-toolbar>
+</div>
+<div>
+  <div class="overview-container">
+    <div class="fx-flex" fxLayout="column" fxLayoutAlign="start center" fxFill>
+      <div
+        class="pl-24 pr-24 pt-24 pb-16 fx-row fx-flex fx-align-between-center"
+        fxFill>
+        <p class="mat-headline-6 m-0">
+          {{ 'KNOWN-AGENT.OVERVIEW.TITLE' | translate }}
+        </p>
+
+        <button
+        *ngIf="!hideWhenAmendFunctions || (hideWhenAmendFunctions && !hideAddButton)"
+          mat-flat-button
+          routerLink="/services/known-agent/add-agent">
+          <div class="fx-row fx-align-start-center">
+            <mat-icon
+              class="--button-icon m-0 pr-8"
+              svgIcon="ic-plus"></mat-icon>
+            <p class="subheading-2 color-primary m-0">
+              {{ 'KNOWN-AGENT.OVERVIEW.INTRODUCE' | translate }}
+            </p>
+          </div>
+        </button>
+      </div>
+      <ng-container
+        *ngIf="
+          agents?.length !== 0 || previousAgents?.length !== 0;
+          else NOAGENTS
+        "
+        ><!-- aqui -->
+        <div fxLayoutAlign="start center" fxFill>
+          <span class="hl"></span>
+        </div>
+        <ng-container *ngIf="agents?.length !== 0; else NOAGENTS"
+          ><!-- aqui -->
+          <app-known-agent-list
+            [agents]="agents"
+            [active]="true"
+            [hideRemoveOption]="hideRemoveButton"
+            class="w-100"></app-known-agent-list>
+        </ng-container>
+
+        <mat-accordion
+          mat-dialog-content
+          color="primary"
+          class="w-100"
+          *ngIf="previousAgents?.length !== 0">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <p class="mat-headline-6 m-0">
+                  {{ 'KNOWN-AGENT.OVERVIEW.PREVIOUS-KNOWN-AGENTS' | translate }}
+                </p>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <app-known-agent-list
+              [agents]="previousAgents"
+              [showMenu]="true"
+              [active]="false"
+              class="w-100"></app-known-agent-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- <app-table-data
+    class="w-100"
+    tableTitle="KNOWN-AGENT.HISTORY"
+    [hideFooterTotalItems]="true"
+    [tableActionsButtons]="tableActionsButtons"
+    [tableFields]="tableFields"
+    [data]="data"
+    (tableActionsButtonEvent)="tableActionsButtonHandler($event)"
+    ></app-table-data> --> </ng-container
+      ><!-- aqui -->
+    </div>
+  </div>
+
+  <div class="mt-24">
+    <div
+      class="fx-row fx-align-between-center"
+      fxFill
+      fxFlex="100">
+      <button
+        mat-stroked-button
+        color="primary"
+        class="btn-outline"
+        routerLink="/services">
+        {{ 'COMMON.QUIT' | translate }}
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/services/account-services">
+        {{ 'COMMON.BACK' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <ng-template #NOAGENTS>
+    <div class="fx-flex" fxLayout="column" fxFill fxFlex="100" fxLayoutAlign="center center">
+      <mat-icon
+        svgIcon="ic-no-records-found"
+        class="mb-58 mt-56 --no-record-icon"></mat-icon>
+
+      <p class="mat-body-2 mb-36">
+        {{ 'KNOWN-AGENT.NO-RECORDS-FOUNDS' | translate }}
+      </p>
+
+      <div class="mb-32">
+        <button
+        *ngIf="!hideAddButton"
+          mat-stroked-button
+          color="primary"
+          class="btn-outline"
+          routerLink="/services/known-agent/add-agent">
+          {{ 'KNOWN-AGENT.OVERVIEW.INTRODUCE' | translate }}
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

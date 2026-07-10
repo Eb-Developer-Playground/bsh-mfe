@@ -1,0 +1,161 @@
+<ng-container>
+    <mat-card appearance="outlined">
+        <div class="filter-layout">
+            <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+                <mat-icon svgIcon="ic-funnel-filter" class="icon-size"></mat-icon>
+                <!--          Account Filter-->
+                <mat-form-field class="date-filter" appearance="outline">
+                    <mat-label>{{
+                            'CUSTOMER.CHANNELS.ACCOUNT-NUMBER' | translate
+                        }}
+                    </mat-label>
+                    <mat-select
+                        formControlName="accountNumber"
+                        (selectionChange)="getSelectedAccount($event.value)">
+                        @for (acc of accountsArray(); track acc) {
+                            <mat-option [value]="acc.accountNumber">
+                                {{ acc.accountNumber }} -{{ acc.mandate }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <!--                :TODO translate source-->
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        {{ 'Source' }}
+                    </mat-label>
+                    <mat-select
+                        formControlName="source">
+                        @for (status of sourceList(); track status) {
+                            <mat-option [value]="status.name">{{ status.title }} </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+<!--                <mat-form-field class="form-field" appearance="outline">-->
+<!--                    <mat-label>-->
+<!--                        {{ 'CUSTOMER.CHANNELS.TRANSACTION-TYPE' | translate }}</mat-label-->
+<!--                    >-->
+<!--                    <mat-select formControlName="type">-->
+<!--                        @for (status of transactionTypesList(); track status) {-->
+<!--                            <mat-option [value]="status.name">{{ status.title }} </mat-option>-->
+<!--                        }-->
+<!--                    </mat-select>-->
+<!--                </mat-form-field>-->
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>{{
+                            'CUSTOMER.CHANNELS.TRANSACTION-STATUS' | translate
+                        }}</mat-label>
+                    <mat-select formControlName="status">
+                        @for (status of statusList(); track status) {
+                            <mat-option
+                                [value]="status.name">
+                                {{ status.name }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+<!--                :TODO translate channel-->
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        {{ 'Channels' }}
+                    </mat-label>
+                    <mat-select
+                        formControlName="channel"
+                     >
+                        @for (chan of channelsList(); track chan) {
+                            <mat-option [value]="chan.channel.subChannel" >{{ chan.channel.subChannel }} </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="date-filter" appearance="outline">
+                    <mat-label>{{
+                            'DASHBOARD.TABLE.FILTER.ENTER_DATE_RANGE' | translate
+                        }}</mat-label>
+                    <mat-date-range-input [max]="maxDate()" [rangePicker]="picker">
+                        <input
+                            matStartDate
+                            formControlName="from"
+                            required
+                            (keydown)="keyDown($event)"
+                            placeholder="Start date" />
+                        <input
+                            matEndDate
+                            formControlName="to"
+                            (keydown)="keyDown($event)"
+                            required
+                            placeholder="End date" />
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker [maxRange]="7" #picker></mat-date-range-picker>
+                    @if (filterForm.controls['from'].hasError('matStartDateInvalid')) {
+                        <mat-error >
+                        {{ 'COMMON.INVALID' | translate }}
+                        {{ 'COMMON.START_DATE' | translate }}
+                        </mat-error>
+                    }
+                    @if (filterForm.controls['to'].hasError('matEndDateInvalid')) {
+                        <mat-error
+                            >
+                            {{ 'COMMON.INVALID' | translate }}
+                            {{ 'COMMON.END_DATE' | translate }}
+                        </mat-error>
+                    }
+                </mat-form-field>
+<!--                :TODO translate reference-->
+                @if (referenceSearchOption()) {
+                    <mat-form-field class="date-filter" appearance="outline">
+                        <mat-label>{{
+                                'Reference'
+                            }}
+                        </mat-label>
+                        <input
+                            matInput
+                            [maxLength]="30"
+                            formControlName="reference"
+                        >
+                    </mat-form-field>
+                }
+
+                <span class="filter-btn">
+                    <button type="submit" mat-flat-button color="primary">
+                      {{ 'COMMON.SUBMIT' | translate }}
+                    </button>
+                </span>
+            </form>
+        </div>
+        <div class="filter-chips">
+            <mat-chip-listbox #chipList aria-label="Filter selection">
+                @for (chip of selectedChipItem(); track chip) {
+                    <mat-chip-option
+                        [selectable]="selectable"
+                        [removable]="removable"
+                        (removed)="remove(chip)">
+                        {{ chip.value }}
+
+                        @if (removable) {
+                            <button matChipRemove>
+                                <mat-icon>cancel</mat-icon>
+                            </button>
+                        }
+                    </mat-chip-option>
+                }
+            </mat-chip-listbox>
+            <span>
+                <button mat-stroked-button (click)="clearAllFilters()">
+                    <span  class="clear-btn">
+                        {{ 'COMMON.RESET-FILTERS' | translate }}
+                    </span>
+                </button>
+            </span>
+        </div>
+
+        <mat-divider  style="margin-bottom: 0.8rem"/>
+
+        <!-- the table layout -->
+
+        <app-trans-table (update)="updateTable($event)" [data]="all" [isLoading]="isLoading()" />
+    </mat-card>
+</ng-container>

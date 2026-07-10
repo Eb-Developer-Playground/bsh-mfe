@@ -1,0 +1,68 @@
+<ng-container [formGroup]="FormGroup">
+  <div class="pt-16 fieldset flex-1">
+    <app-card-input
+      inputType="searchable-dropdown"
+      label="Card type"
+      [isRequired]="true"
+      name="cardType"
+      [options]="cardTypeOptions" />
+    <app-card-input
+      label="Card currency"
+      [isRequired]="true"
+      name="cardCurrency" />
+    <app-card-input
+      label="Embossing name"
+      [isRequired]="true"
+      name="cardEmbossingName" />
+  </div>
+  @if (issuanceType !== 'PREMIUM') {
+    <div class="pt-16 fieldset flex-1" style="align-items: flex-start">
+      @if (cardTypeCharges !== 'n/a') {
+        <div class="input-row">
+          <app-card-input
+            [class]="cardTypeCharges === 'loading' ? 'w-full' : ''"
+            label="Daily cash withdrawal limit"
+            [isRequired]="true"
+            [isLoading]="cardTypeCharges === 'loading'"
+            name="withdrawalLimit" />
+          <app-card-input
+            [class]="cardTypeCharges === 'loading' ? 'w-full' : ''"
+            label="Daily E-commerce transaction limit"
+            [isRequired]="true"
+            [isLoading]="cardTypeCharges === 'loading'"
+            name="ecommerceLimit" />
+          <div class="pan-section">
+            <app-card-input
+              [class]="cardTypeCharges === 'loading' ? 'w-full' : ''"
+              [isLoading]="cardTypeCharges === 'loading'"
+              label="PAN"
+              [isRequired]="true"
+              name="cardPAN" />
+            <app-action-button
+              [class]="cardTypeCharges === 'loading' ? 'w-full' : ''"
+              (triggerAction)="validatePan()"
+              buttonText="Validate"
+              [isLoading]="cardTypeCharges === 'loading'"
+              [status]="panValidity" />
+          </div>
+        </div>
+      }
+    </div>
+  }
+  @if (issuanceType === 'PREMIUM') {
+    <div class="pt-16 fieldset flex-1" style="align-items: flex-start">
+      @if (cardTypeCharges !== 'n/a') {
+        <app-card-input
+          label="Daily cash withdrawal limit"
+          [isRequired]="true"
+          [isLoading]="cardTypeCharges === 'loading'"
+          name="withdrawalLimit" />
+        <app-card-input
+          label="Daily E-commerce transaction limit"
+          [isRequired]="true"
+          [isLoading]="cardTypeCharges === 'loading'"
+          name="ecommerceLimit" />
+      }
+    </div>
+  }
+</ng-container>

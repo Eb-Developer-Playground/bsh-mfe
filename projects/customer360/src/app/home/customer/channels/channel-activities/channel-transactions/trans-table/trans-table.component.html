@@ -1,0 +1,134 @@
+<ng-container>
+  <div class="table-designer">
+    @if (isLoading()) {
+      <div
+        class="d-flex justify-content-center align-items-center mt-16"
+        style="height: 30vh">
+        <app-loader
+          [inComponentLoading]="true"
+          [sizeProp]="sizeProps()" />
+      </div>
+    } @else {
+      <table mat-table [dataSource]="dataSource" class="" matSort matSortActive>
+        @for (column of displayedColumns(); track column; let val = $index) {
+          <ng-container matColumnDef="{{ column }}" [sticky]="$first">
+            <th
+              *matHeaderCellDef
+              mat-header-cell
+              mat-sort-header
+              sortActionDescription="Sort by {{
+                displayedColumnTitles()[val]
+              }}">
+              {{ displayedColumnTitles()[val] }}
+            </th>
+            <td *matCellDef="let row; let i = index" mat-cell>
+              @if (column === 'actions') {
+                <mat-menu backdropClass="custom__menu" #appMenu="matMenu">
+                  <button mat-menu-item (click)="logDispute(row)">
+                    {{ 'CUSTOMER.CHANNELS.LOG-DISPUTE' | translate }}
+                  </button>
+
+                  <button mat-menu-item (click)="viewTransDetails(row)">
+                    {{
+                      'CUSTOMER.CHANNELS.VIEW-TRANSACTION-DETAILS' | translate
+                    }}
+                  </button>
+                </mat-menu>
+                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                  <div>
+                    <mat-icon svgIcon="ic-nav"></mat-icon>
+                  </div>
+                </button>
+              } @else if (column === 'status') {
+                @switch (row[column]) {
+                  @case ('Successful') {
+                    <div class="completed">
+                      {{
+                        'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.STATUS-COMPLETE'
+                          | translate
+                      }}
+                    </div>
+                  }
+                  @case ('Failed') {
+                    <div class="error">
+                      {{
+                        'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.STATUS-FAILED'
+                          | translate
+                      }}
+                    </div>
+                  }
+                  @case ('Approved') {
+                    <div class="completed">
+                      {{
+                        'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.STATUS-APPROVED'
+                          | translate
+                      }}
+                    </div>
+                  }
+                  @case ('Expired') {
+                    <div class="error">
+                      {{
+                        'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.STATUS-EXPIRED'
+                          | translate
+                      }}
+                    </div>
+                  }
+                  @case ('Declined') {
+                    <div class="error">
+                      {{
+                        'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.DECLINED'
+                          | translate
+                      }}
+                    </div>
+                  }
+                  @case ('Pending') {
+                    <div class="pending">
+                      {{
+                        'CUSTOMER.CHANNELS.TRANSACTIONS.STATUS.PENDING'
+                          | translate
+                      }}
+                    </div>
+                  }
+                    @default {
+                        <div class="pending">
+                            {{ row[column] }}
+                        </div>
+                    }
+                }
+              } @else if (column === 'date') {
+                {{ row[column] | date: 'dd-mm-yyyy' }}
+              } @else if (column === 'amount') {
+                {{ row[column] | number: '1.2-2' }}
+              } @else if (column === 'data') {
+                {{ parseData(row[column])?.DestinationAccount ? parseData(row[column])?.DestinationAccount : '-' }}
+              } @else {
+                {{ row[column] ? row[column] : '-' }}
+              }
+            </td>
+          </ng-container>
+        }
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns(); sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns()"></tr>
+      </table>
+    }
+
+        @if (!isLoading() && totalTransActivityCount() === 0) {
+            <div class="no-result">
+                <img src="assets/icons/icon-no-results.svg" alt="no results found" />
+                <p>{{ 'CUSTOMER.CHANNELS.TRANSACTIONS-ERROR' | translate }}</p>
+            </div>
+        }
+    </div>
+    <mat-paginator
+        #paginator
+        [length]="totalTransActivityCount()!"
+        [pageSize]="pageSize()"
+        showFirstLastButtons
+        [pageSizeOptions]="pageSizeOptions()"
+        [pageIndex]="currentPage()"
+        (page)="pageChanged($event)"
+        aria-label="Select page of channel transaction">
+    </mat-paginator>
+</ng-container>

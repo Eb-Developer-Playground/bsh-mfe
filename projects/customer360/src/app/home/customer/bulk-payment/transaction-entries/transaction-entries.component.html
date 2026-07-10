@@ -1,0 +1,316 @@
+<mat-card appearance="outlined" *ngIf="suspenseAccount" class="mb-24">
+  <mat-card-content>
+    <div class="section" paymentType>
+      <p class="title-text">
+        {{
+          (paymentType === 'single'
+            ? 'BULK-TRANFER.SELECT-ACCOUNT'
+            : 'BULK-TRANFER.SUSPENSE'
+          ) | translate
+        }}
+      </p>
+      <p class="subtitle-text">
+        {{
+          (paymentType === 'single'
+            ? 'BULK-TRANFER.SINGLE-DEBIT'
+            : 'BULK-TRANFER.MULTIPLE-DEBIT'
+          ) | translate
+        }}
+      </p>
+      <hr class="section-divider" />
+      <form [formGroup]="accountForm">
+        <div class="wrapInput">
+          <mat-form-field
+            *ngIf="paymentType === 'single'"
+            appearance="fill"
+            class="mr-16"
+            style="width: 300px">
+            <mat-label>{{ 'BULK-TRANFER.DEBIT' | translate }}</mat-label>
+            <mat-select
+              (selectionChange)="getSelectedAccount($event)"
+              formControlName="account"
+              required>
+              <hr class="section-divider" />
+              <mat-option
+                *ngFor="let account of accountNumbers"
+                [value]="account.accountNumber">
+                <div class="account-text">
+                  <p class="debit-title">
+                    {{ account.accountName }}
+                  </p>
+                  <p class="debit-desc">
+                    Acco no
+                    {{ account.accountNumber }}
+                    ({{ account.accountCurrency }}) &#x2022;
+
+                    {{ account.schemeType }}
+                  </p>
+                </div>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            *ngIf="suspenseAccount"
+            appearance="fill"
+            style="width: 300px">
+            <mat-label>{{ 'BULK-TRANFER.SUSPENSE' | translate }}</mat-label>
+            <select matNativeControl required>
+              <hr class="section-divider" />
+              <option [value]="suspenseAccount.suspenseAccount">
+                {{ suspenseAccount.suspenseAccount }}
+              </option>
+            </select>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- <div *ngIf="customerAccount!== undefined" >
+<mat-card *ngIf="customerAccount.length > 0 ">
+    <app-manual-entry [filteredAccount]="customerAccount" (onTransaction)="getTransactions($event)" ></app-manual-entry>
+</mat-card>
+</div> -->
+
+<mat-card appearance="outlined">
+  <mat-card-title>
+    <div>
+      <p style="margin-bottom: 0">
+        {{ 'BULK-TRANFER.TRANSACTION-ENTRIES-TITLE' | translate }}
+      </p>
+      <p class="subtitle-text">
+        {{ 'BULK-TRANFER.TRANSACTION-ENTRIES-TITLE-SUBTITLE' | translate }}
+      </p>
+    </div>
+    <div
+      (click)="clearTransactions()"
+      *ngIf="dataSource.data.length"
+      class="clear-t-btn">
+      {{ 'BULK-TRANFER.CLEAR-TRANSACTIONS' | translate }}
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <app-transaction-summary
+      *ngIf="totalAmount.length > 0"
+      [charge]="charge"
+      [totalAmount]="totalAmount">
+    </app-transaction-summary>
+    <!-- table -->
+    <table
+      (matSortChange)="onMatSortChange($event)"
+      [dataSource]="dataSource"
+      mat-table
+      matSort>
+      <!-- Validation Column -->
+      <ng-container matColumnDef="validation">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.VALIDATION' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          <!-- valid -->
+          <mat-icon
+            *ngIf="element.validation"
+            aria-hidden="false"
+            aria-label="check-mark"
+            class="check-mark primary"
+            mdbPopover="Vivamus sagittis
+                            lacus
+                            vel augue laoreet rutrum faucibus."
+            placement="top"
+            svgIcon="ic-check"></mat-icon>
+
+          <!-- errors -->
+          <mat-icon
+            *ngIf="!element.validation"
+            [matMenuTriggerFor]="menu"
+            [matTooltip]="'View Error'"
+            aria-hidden="false"
+            aria-label="check-mark"
+            class="ic-warning-caution"
+            matTooltipClass="view-error-tooltip"
+            matTooltipPosition="right"
+            svgIcon="ic-warning-caution"></mat-icon>
+
+          <mat-menu #menu="matMenu">
+            <div
+              *ngFor="let error of element.validationErrors"
+              class="px-16 mb-16">
+              <span class="row-error-title">{{ error.title }}</span>
+              <p class="row-error-description">
+                {{ error.description }}
+              </p>
+            </div>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <!-- Beneficiary Column -->
+      <ng-container matColumnDef="beneficiaryName">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.BENEFICIARY' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.beneficiaryName }}
+        </td>
+      </ng-container>
+
+      <!-- Bank / Network Column -->
+      <ng-container matColumnDef="bank_Operator">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.BANK' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.bank_Operator }}
+        </td>
+      </ng-container>
+
+      <!-- Account/PhoneNo Column -->
+      <ng-container matColumnDef="account_Phone">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.ACCOUNT' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.account_Phone }}
+        </td>
+      </ng-container>
+
+      <!-- Debit Column -->
+      <ng-container matColumnDef="debitAccount">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.DEBIT' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.debitAccount }}
+        </td>
+      </ng-container>
+
+      <!-- Currency Column -->
+      <ng-container matColumnDef="currency">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.CURRENCY' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.currency }}
+        </td>
+      </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="amount">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.AMOUNT' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.amount | number: '1.2-2' }}
+        </td>
+      </ng-container>
+
+      <!-- Payment reason Column -->
+      <ng-container matColumnDef="paymentReason">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.PAYMENT-REASON' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.paymentReason }}
+        </td>
+      </ng-container>
+
+      <!-- Naration Column -->
+      <ng-container matColumnDef="naration">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.NARRATION' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.naration }}
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef class="row-title" mat-header-cell mat-sort-header>
+          {{ 'BULK-TRANFER.ACTION' | translate }}
+        </th>
+        <td *matCellDef="let element" mat-cell>
+          <mat-icon
+            *ngIf="actionName === 'ManualEntry'"
+            [matMenuTriggerFor]="menu"
+            aria-hidden="false"
+            aria-label="check-mark"
+            class="ic-more-circle"
+            svgIcon="ic-more-circle"></mat-icon>
+
+          <mat-icon
+            (click)="removeTransaction(element, false)"
+            *ngIf="actionName === 'fileUpload'"
+            aria-hidden="false"
+            aria-label="check-mark"
+            class="ic-more-circle"
+            svgIcon="ic-eye">
+          </mat-icon>
+          <mat-menu #menu="matMenu">
+            <button (click)="removeTransaction(element, true)" mat-menu-item>
+              <span>{{ 'BULK-TRANFER.DELETE-ENTRY' | translate }}</span>
+            </button>
+            <button (click)="updateTransaction(element, false)" mat-menu-item>
+              <mat-divider [inset]="true"></mat-divider>
+              <span>{{ 'BULK-TRANFER.UPDATE-ENTRY' | translate }}</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+    </table>
+
+    <mat-paginator
+      #paginator
+      [hidePageSize]="!dataSource.data.length"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageSize]="pageSize"
+      aria-label="Select page of account information"
+      class="table-footer">
+    </mat-paginator>
+
+    <!-- upload file/manual entry -->
+    <div
+      *ngIf="!dataSource.data.length"
+      class="pt-52 pb-49 upload-file-manual-entry">
+      <h5 class="mb-32">{{ 'BULK-TRANFER.UPLOAD-FILE' | translate }}</h5>
+      <p class="upload-file-subtext mb-32">
+        {{ 'BULK-TRANFER.AUTOMATICALLY-PREFILL' | translate }}
+      </p>
+
+      <!--TODO: WE SHALL REVISIT!-->
+      <!-- upload file area -->
+      <div
+        (click)="xlsxReader.click()"
+        (files)="filesDropped($event)"
+        appDragDropDocuments
+        class="upload-file-box mb-32">
+        <input
+          #xlsxReader
+          (change)="uploadDoc($event)"
+          (click)="$any($event.target).value = null"
+          accept=".xlsx"
+          hidden
+          id="file1"
+          type="file" />
+        <mat-icon
+          height="20px"
+          style="transform: scale(1.7)"
+          svgIcon="ic-uploadBackground"></mat-icon>
+        <p class="mt-12 mb-0">
+          {{ 'BULK-TRANFER.YOUR-DOCUMENTS' | translate }}
+        </p>
+        <p class="mt-0 mb-0 drag-n-drop">
+          {{ 'BULK-TRANFER.DRAG_AND_DROP' | translate }}
+          <span class="text-primary">{{
+            'BULK-TRANFER.BROWSE' | translate
+          }}</span>
+          {{ 'BULK-TRANFER.FILES-HERE' | translate }}
+        </p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

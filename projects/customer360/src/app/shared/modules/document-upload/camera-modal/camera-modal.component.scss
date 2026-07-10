@@ -1,0 +1,15 @@
+.camera-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.preview-container {
+  text-align: center;
+}
+
+.captured-img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+}

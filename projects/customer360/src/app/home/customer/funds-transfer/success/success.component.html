@@ -1,0 +1,76 @@
+<mat-card appearance="outlined">
+  <div class="container">
+    <img src="../../../../assets/icons/icon-account-opening-success.svg" />
+    <div style="padding-top: 50px">
+      <div class="header-main-label">
+        <p class="mat-headline-6 m-0">{{ 'MOVE-MONEY.SUCCESS' | translate }}</p>
+      </div>
+      <div class="header-sub-label">
+        <p>{{ 'MOVE-MONEY.SUCCESS-MESSAGE' | translate }}</p>
+      </div>
+
+      <div class="customer-details-container">
+        <div class="customer-detail">
+          <p class="customer-detail-title">{{ 'COMMON.CIF' | translate }}</p>
+          <p class="customer-detail-content">{{ data.currentCustomer.cif }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NUMBER' | translate
+            }}
+          </p>
+          <p class="customer-detail-content">
+            {{ data.transactionDetailsForm.account }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NAME' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ data.currentCustomer.firstName }}
+            {{ data.currentCustomer.lastName }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'MOVE-MONEY.ACCOUNT-CURRENCY' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ data.paymentDetailsForm.paymentCurrency }}
+          </p>
+        </div>
+        <div class="detail">
+          <p class="detail-title">
+            {{ 'MOVE-MONEY.BENEFICIARY_ACCOUNT' | translate }}
+          </p>
+          <p class="detail-content">
+            {{ data.beneficiaryDetailsForm.beneficiaryAccount }}
+          </p>
+        </div>
+        <div class="detail">
+          <p class="detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BENEFICIARY_NAME'
+                | translate
+            }}
+          </p>
+          <p class="detail-content">
+            {{ data.beneficiaryDetailsForm.recepientName }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<div class="d-flex" style="margin-top: 20px; justify-content: flex-end">
+  <span style="flex: 1"></span>
+  <button
+    mat-raised-button
+    class="back-button"
+    [routerLink]="[]"
+    (click)="onClick()">
+    {{ 'MOVE-MONEY.REDIRECT' | translate }}
+  </button>
+</div>

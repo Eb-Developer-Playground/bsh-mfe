@@ -1,0 +1,365 @@
+<mat-card
+  appearance="outlined"
+  class="mat-card mat-focus-indicator main"
+  [@expandCollapse]="expanded ? 'expanded' : 'collapsed'"
+>
+  <div class="head">
+    <span class="form-number">4</span>
+    <span class="title">{{ 'SAVE-INVEST.CDSC.ADDITIONAL-INFO-TITLE' | translate }}</span>
+    <mat-icon
+      class="arrow-icon"
+      (click)="toggleExpandCollapse()"
+      [@rotate]="expanded ? 'rotated' : 'normal'"
+      >expand_more</mat-icon
+    >
+  </div>
+  <mat-divider class="padded-divider"></mat-divider>
+  <form [formGroup]="form">
+    <div formGroupName="additionalInfo">
+      <div formGroupName="divendDisposalPreference">
+        <mat-form-field class="input" appearance="fill">
+          <mat-label>{{ 'SAVE-INVEST.CDSC.DIVIDEND-DISPOSAL-PREFERENCE' | translate }}</mat-label>
+          <mat-select
+            required
+            formControlName="divendDisposalPreferenceType"
+            (selectionChange)="onDivendDisposalPreferenceChange()"
+            [errorStateMatcher]="matcher"
+          >
+            <mat-radio-group>
+              <mat-option class="select-option" value="Cheque">
+                <mat-radio-button
+                  value="Cheque"
+                  [checked]="
+                    form.get(
+                      'additionalInfo.divendDisposalPreference.divendDisposalPreferenceType'
+                    )!.value === 'Cheque'
+                  "
+                  color="primary"
+                  >{{ 'SAVE-INVEST.CHEQUE' | translate }}</mat-radio-button
+                >
+              </mat-option>
+              <mat-divider class="select-item-divider"></mat-divider>
+              <mat-option class="select-option" value="Domestic bank">
+                <mat-radio-button
+                  value="Domestic bank"
+                  [checked]="
+                    form.get(
+                      'additionalInfo.divendDisposalPreference.divendDisposalPreferenceType'
+                    )!.value === 'Domestic bank'
+                  "
+                  color="primary"
+                  >{{ 'SAVE-INVEST.DOMESTIC-BANK' | translate }}</mat-radio-button
+                >
+              </mat-option>
+              <mat-divider class="select-item-divider last-divider"></mat-divider>
+              <mat-option class="select-option" value="International bank">
+                <mat-radio-button
+                  value="International bank"
+                  [checked]="
+                    form.get(
+                      'additionalInfo.divendDisposalPreference.divendDisposalPreferenceType'
+                    )!.value === 'International bank'
+                  "
+                  color="primary"
+                  >{{ 'SAVE-INVEST.INTERNATIONAL-BANK' | translate }}</mat-radio-button
+                >
+              </mat-option>
+              <mat-divider class="select-item-divider last-divider"></mat-divider>
+              <mat-option class="select-option" value="Draft">
+                <mat-radio-button
+                  value="Draft"
+                  [checked]="
+                    form.get(
+                      'additionalInfo.divendDisposalPreference.divendDisposalPreferenceType'
+                    )!.value === 'Draft'
+                  "
+                  color="primary"
+                  >{{ 'SAVE-INVEST.DRAFT' | translate }}</mat-radio-button
+                >
+              </mat-option>
+              <mat-divider class="select-item-divider last-divider"></mat-divider>
+              <mat-option class="select-option" value="Mobile payment">
+                <mat-radio-button
+                  value="Mobile payment"
+                  [checked]="
+                    form.get(
+                      'additionalInfo.divendDisposalPreference.divendDisposalPreferenceType'
+                    )!.value === 'Mobile payment'
+                  "
+                  color="primary"
+                  >{{ 'SAVE-INVEST.MOBILE-PAYMENT' | translate }}</mat-radio-button
+                >
+              </mat-option>
+              <mat-divider class="select-item-divider last-divider"></mat-divider>
+              <mat-option class="select-option" value="Direct payments">
+                <mat-radio-button
+                  value="Direct payments"
+                  [checked]="
+                    form.get(
+                      'additionalInfo.divendDisposalPreference.divendDisposalPreferenceType'
+                    )!.value === 'Direct payments'
+                  "
+                  color="primary"
+                  >{{ 'SAVE-INVEST.DIRECT-PAYMENTS' | translate }}</mat-radio-button
+                >
+              </mat-option>
+              <mat-divider class="select-item-divider last-divider"></mat-divider>
+            </mat-radio-group>
+          </mat-select>
+          <mat-error
+            *ngIf="
+              form.get('additionalInfo.divendDisposalPreference.divendDisposalPreferenceType')!
+                .errors?.['required']
+            "
+          >
+            {{ 'SAVE-INVEST.CDSC.DIVIDEND-DISPOSAL-PREFERENCE-IS' | translate }}
+            <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+          </mat-error>
+        </mat-form-field>
+        <div *ngIf="displayDomesticBankInputs">
+          <mat-form-field class="input" appearance="fill">
+            <mat-label> {{ 'SAVE-INVEST.CDSC.BANK-CODE-NAME' | translate }}</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Enter Code"
+              class="clickable-input"
+              formControlName="domesticBankBankNameCode"
+              [errorStateMatcher]="matcher"
+              (click)="openDomesticBankDialog()"
+              [readonly]="true"
+            />
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.domesticBankBankNameCode')!
+                  .errors?.['required']
+              "
+            >
+              {{ 'SAVE-INVEST.CDSC.BANK-CODE-NAME-IS' | translate
+              }}<strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label> {{ 'SAVE-INVEST.CDSC.BANK-CITY-CODE' | translate }}</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Enter Branch"
+              formControlName="cityCode"
+              [errorStateMatcher]="matcher"
+              class="clickable-input"
+              (click)="openCityDialog()"
+              [readonly]="true"
+            />
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.cityCode')!.errors?.['required']
+              "
+            >
+              {{ 'SAVE-INVEST.CDSC.BANK-CITY-CODE-IS' | translate }}
+              <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>{{ 'COMMON.BRANCH' | translate }}</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Enter Branch"
+              formControlName="domesticBankBranch"
+              class="clickable-input"
+              [errorStateMatcher]="matcher"
+              (click)="openBranchDialog()"
+              [readonly]="true"
+            />
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.domesticBankBranch')!.errors?.[
+                  'required'
+                ]
+              "
+            >
+              {{ 'COMMON.BRANCH-IS' | translate }}
+              <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>{{ 'COMMON.ACCOUNT-NUMBER' | translate }}</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Enter Account number"
+              formControlName="bankAccountNumber"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.bankAccountNumber')!.errors?.[
+                  'required'
+                ]
+              "
+            >
+              {{ 'COMMON.ACCOUNT-NUMBER-IS' | translate }}
+              <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="displayInternationalBankInputs">
+          <mat-form-field class="input" appearance="fill">
+            <mat-label> {{ 'SAVE-INVEST.CDSC.BANk-NUMBER' | translate }}</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Enter Number"
+              formControlName="internationBankNumber"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.internationBankNumber')!.errors?.[
+                  'required'
+                ]
+              "
+            >
+              {{ 'SAVE-INVEST.CDSC.BANK-NUMBER-IS' | translate }}
+              <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>{{ 'SAVE-INVEST.CDSC.SWIFT-BIC' | translate }}</mat-label>
+            <input
+              matInput
+              type="text"
+              class="clickable-input"
+              placeholder="Enter BIC"
+              formControlName="bankSwiftBIC"
+              [errorStateMatcher]="matcher"
+              (click)="openBICDialog()"
+              [readonly]="true"
+            />
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.bankSwiftBIC')!.errors?.[
+                  'required'
+                ]
+              "
+            >
+              {{ 'SAVE-INVEST.CDSC.SWIFT-BIC-IS' | translate }}
+              <strong>>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>>{{ 'COMMON.CURRENCY' | translate }}</mat-label>
+            <mat-select formControlName="bankCurrency" [errorStateMatcher]="matcher">
+              <mat-option *ngFor="let currency of currencies" [value]="currency">
+                {{ currency }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.bankCurrency')!.errors?.[
+                  'required'
+                ]
+              "
+            >
+              {{ 'SAVE-INVEST.CDSC.CURRENCY-IS' | translate }}
+              <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="displayDraftInputs">
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>{{ 'SAVE-INVEST.CDSC.DRAFT-CURRENCY' | translate }}</mat-label>
+            <mat-select formControlName="draftCurrency" [errorStateMatcher]="matcher">
+              <mat-option *ngFor="let currency of currencies" [value]="currency">
+                {{ currency }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.draftCurrency')!.errors?.[
+                  'required'
+                ]
+              "
+            >
+              {{ 'SAVE-INVEST.CDSC.DRAFT-CURRENCY-IS' | translate
+              }}<strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="displayMobilePaymentInputs">
+          <!-- <mat-form-field class="input" appearance="fill">
+          <mat-label>Payment Number</mat-label>
+          <input matInput type="text" placeholder="Enter Number" formControlName="mobilePaymentNumber" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="form.get('additionalInfo.divendDisposalPreference.mobilePaymentNumber')!.errors?.['required']">
+              Payment Number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field> -->
+          <app-phone-otp-validation [form]="phoneNumberForm"> </app-phone-otp-validation>
+        </div>
+        <div *ngIf="displayDirectPaymentsInputs">
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>{{ 'SAVE-INVEST.CDSC.SETTLEMENT-BANK' | translate }}</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Enter Bank"
+              formControlName="directPaymentSettlementBank"
+              [errorStateMatcher]="matcher"
+              (click)="openSettlementBankDialog()"
+              class="clickable-input"
+              [readonly]="true"
+            />
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.directPaymentSettlementBank')!
+                  .errors?.['required']
+              "
+            >
+              {{ 'SAVE-INVEST.CDSC.SETTLEMENT-BANK-IS' | translate }}
+              <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>{{ 'COMMON.ACCOUNT-NUMBER' | translate }}</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Enter Number"
+              formControlName="directPaymentAccountNumber"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.directPaymentAccountNumber')!
+                  .errors?.['required']
+              "
+            >
+              {{ 'COMMON.ACCOUNT-NUMBER-IS' | translate }}
+              <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input" appearance="fill">
+            <mat-label>{{ 'SAVE-INVEST.CDSC.LEGAL-NAME' | translate }}</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Enter Name"
+              formControlName="directPaymentLegalName"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-error
+              *ngIf="
+                form.get('additionalInfo.divendDisposalPreference.directPaymentLegalName')!
+                  .errors?.['required']
+              "
+            >
+              {{ 'SAVE-INVEST.CDSC.LEGAL-NAME-IS' | translate }}
+              <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-card>

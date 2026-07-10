@@ -1,0 +1,237 @@
+<form class="fieldset" [formGroup]="form">
+  @if (currencyOptions.length === 1) {
+    <mat-form-field>
+      <mat-label>{{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.CURRENCY' | translate }}</mat-label>
+      <input formControlName="currency" title="currency" matInput readonly />
+      @if (form.controls['currency']?.errors?.['singleCurrencySpecialCode']) {
+        <mat-error>
+          {{
+            'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.ERRORS.SPECIAL-RATE-SINGLE-CURRENCY'
+              | translate
+          }}
+        </mat-error>
+      }
+    </mat-form-field>
+  } @else {
+    <mat-form-field class="example-full-width">
+      <mat-label>{{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.CURRENCY' | translate }}</mat-label>
+
+      <input
+        matInput
+        aria-label="Currency"
+        [matAutocomplete]="paymentAuto"
+        formControlName="currency"
+        [readonly]="lockedForm"
+      />
+      <mat-autocomplete autoActiveFirstOption #paymentAuto="matAutocomplete">
+        @for (currency of currencyOptions; track currency) {
+          <mat-option [value]="currency">
+            <div class="currency-dropdown">
+              <div class="flag">
+                <mat-icon
+                  [svgIcon]="flagCountryMappings[currency]['flag']"
+                  class="align-self-center ml-5"
+                ></mat-icon>
+              </div>
+              <div class="account-data">
+                <div>
+                  <span class="main-text">{{ currency }}</span>
+                </div>
+                <div class="account-info sub-text">
+                  <span>{{ flagCountryMappings[currency]['currencyName'] }}</span>
+                </div>
+              </div>
+            </div>
+          </mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  }
+
+  <mat-form-field>
+    <mat-label>{{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.AMOUNT' | translate }}</mat-label>
+    <input
+      formControlName="amount"
+      title="amount"
+      type="number"
+      appNoScrollInput
+      appPreventMinusSign
+      matInput
+      [readonly]="lockedForm"
+    />
+    @if (form.controls['amount']?.errors?.['min']) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.ERRORS.ABOVE-ZERO' | translate }}
+      </mat-error>
+    }
+    @if (amountErrors) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.ERRORS.FUNDS-AVAILABLE' | translate }}
+      </mat-error>
+    }
+    @if (form.controls['amount']?.errors?.['required']) {
+      <mat-error>
+        {{
+          'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.ERRORS.TRANSFER-AMOUNT-REQUIRED' | translate
+        }}
+      </mat-error>
+    }
+    @if (form.controls['amount']?.errors?.['dealAmountDifference']) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.ERRORS.DEAL-AMOUNT-DIFFERENCE' | translate
+        }}{{ specialRate?.dealAmount }}
+      </mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.REASON' | translate }}</mat-label>
+    <input formControlName="reason" title="reason" matInput />
+    @if (form.controls['reason']?.errors?.['required']) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.ERRORS.REASON-REQUIRED' | translate }}
+      </mat-error>
+    }
+  </mat-form-field>
+  <div>
+    <div class="ticket-number">
+      <mat-form-field>
+        <mat-label>{{
+          'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.TICKET.TITLE' | translate
+        }}</mat-label>
+        <input
+          formControlName="ticketNumber"
+          title="ticketNumber"
+          matInput
+          [readonly]="lockedForm || isSameCurrency"
+        />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!form.controls['ticketNumber'].value || this.lockedForm || isSameCurrency"
+        (click)="submitExchangeTicket()"
+      >
+        {{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.TICKET.BUTTON' | translate }}
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!lockedForm"
+        (click)="clearExchangeTicket()"
+      >
+        {{ 'COMMON.CANCEL' | translate }}
+      </button>
+    </div>
+    <div class="input-post-label">
+      @if (specialCodeStatus === 'declined') {
+        <span class="error">{{
+          'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.TICKET.INVALID-CODE' | translate
+        }}</span>
+      } @else {
+        {{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.FIELDS.TICKET.TEXT' | translate }}
+      }
+    </div>
+  </div>
+</form>
+@if (currencyOptions.length > 1 && !rate) {
+  <div>{{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.GET-EXCHANGE-RATE-BUTTON' | translate }}:</div>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="calculatingExchangeRate"
+    (click)="triggerExchangeRateCalculation()"
+  >
+    {{ calculatingExchangeRate ? 'Calculating' : 'Calculate Rate' }}
+  </button>
+}
+
+@if (rate && currencyOptions.length > 1) {
+  <div class="exchangeRate mt-10">
+    <div class="details">
+      <div class="title">
+        @if (specialRate) {
+          1 {{ rate.fromCurrency }} =
+          {{ specialRate.dealRate | transformCurrency: rate.toCurrency }}
+
+          <span class="rates special"
+            >{{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.SPECIAL-RATE' | translate }}
+          </span>
+        } @else {
+          1 {{ rate.fromCurrency }} =
+          {{ rate.rate | transformCurrency: rate.toCurrency }}
+
+          <span class="rates daily">{{
+            'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.DAILY-RATE' | translate
+          }}</span>
+        }
+      </div>
+      <div>
+        {{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.RATE-CODE' | translate }}
+        @if (specialRate) {
+          {{ specialRate.dealRateCode }}
+        } @else {
+          {{ rate.rateCode }}
+        }
+      </div>
+      <div>
+        {{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.BASE-EXCHANGE' | translate }}
+        {{ 1 | transformCurrency: rate.fromCurrency }} =
+        {{ rate.rate | transformCurrency: rate.toCurrency }}
+      </div>
+    </div>
+    <div class="paymentAmounts">
+      <div class="amount">
+        @if (flagCountryMappings[debitAccount.accountCurrency]) {
+          <div class="flag">
+            <mat-icon
+              [svgIcon]="flagCountryMappings[debitAccount.accountCurrency]['flag']"
+              class="align-self-center ml-5"
+            ></mat-icon>
+          </div>
+        }
+
+        <div class="figures">
+          <span>{{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.AMOUNT-TO-SEND' | translate }}</span>
+          <span class="value">
+            @if (form.controls['amount'].value) {
+              {{ form.controls['amount']?.value | transformCurrency: selectedCurrency }}
+            } @else {
+              --
+            }
+          </span>
+        </div>
+      </div>
+      <div class="arrows">
+        <mat-icon class="icon" svgIcon="ic-movemoney-reorder"></mat-icon>
+      </div>
+      <div class="amount">
+        @if (flagCountryMappings[creditAccount.accountCurrency]) {
+          <div class="flag">
+            <mat-icon
+              [svgIcon]="flagCountryMappings[creditAccount.accountCurrency]['flag']"
+              class="align-self-center ml-5"
+            ></mat-icon>
+          </div>
+        }
+        <div class="figures">
+          <span>{{ 'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.CONVERTED-AMOUNT' | translate }}</span>
+          <span class="value">
+            @if ((convertedAmount | async) > 0) {
+              {{
+                convertedAmount
+                  | async
+                  | transformCurrency
+                    : (selectedCurrency === rate.toCurrency ? rate.fromCurrency : rate.toCurrency)
+              }}
+            } @else {
+              {{ calculatingExchangeRate ? 'calculating...' : '--' }}
+            }
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+}

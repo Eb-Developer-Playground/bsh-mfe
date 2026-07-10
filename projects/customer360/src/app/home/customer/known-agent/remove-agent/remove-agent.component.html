@@ -1,0 +1,100 @@
+<div
+  class="remove-agent-container fx-column">
+  <div class="topbar mb-24 w-100">
+    <mat-toolbar class="toolbar">
+      <div class="fx-row fx-flex fx-align-start-center fx-gap-12">
+        <p class="mat-headline-5 m-0">
+          {{ 'KNOWN-AGENT.REMOVE-AGENT' | translate }}
+        </p>
+        <span class="vl"></span>
+        <p class="mat-body-2 text-muted m-0">
+          {{ 'KNOWN-AGENT.OVERVIEW.SUBHEADER' | translate }}
+        </p>
+      </div>
+    </mat-toolbar>
+  </div>
+
+  <mat-accordion
+    mat-dialog-content
+    color="primary"
+    class="w-100"
+    *ngIf="agents">
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3 class="mat-headline-6 fw-400 align-self-center">
+            {{ 'KNOWN-AGENT.AGENT-DETAILS' | translate }}
+          </h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div [hidden]="uploadDocumentsStep" class="pt-16">
+        <form [formGroup]="removeForm">
+          <div class="fieldset">
+            <mat-form-field appearance="fill" class="fx-flex-33">
+              <mat-label
+                >{{ 'KNOWN-AGENT.SELECT-AGENT' | translate }}
+              </mat-label>
+              <mat-select required formControlName="agent_name">
+                <mat-option *ngFor="let agent of agents" [value]="agent">
+                  {{ agent.agentName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="fx-flex-33">
+              <mat-label> {{ 'KNOWN-AGENT.EFFECTIVE-DATE' | translate }}</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                [min]="minDate"
+                [max]="maxDate"
+                [value]="today"
+                required
+                formControlName="date" />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> 
+            <mat-form-field appearance="fill" class="fx-flex-33">
+              <mat-label>{{ 'KNOWN-AGENT.REMARKS' | translate }}</mat-label>
+              <textarea 
+                matInput 
+                formControlName="remarks">
+              </textarea>
+            </mat-form-field>   
+            </div>
+        </form>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion
+  mat-dialog-content
+  color="primary"
+  class="w-100">
+    <div class="mt-24">
+      <app-documents-upload-drc
+          *ngIf="subsidiary.countryCode === 'CD'"
+          (onUploaded)="getDocuments($event)"
+          [documentSpecs]="UploadDocuments"
+          [allowAdditional]="true"
+          [title]="'DOCUMENTS.TITLE'">
+      </app-documents-upload-drc>        
+    </div>
+  </mat-accordion>
+
+  <div class="fx-row fx-flex fx-align-space-between-start mt-24 w-100">
+    <button mat-stroked-button color="primary" (click)="showQuitDialog()">
+      &nbsp;{{ 'COMMON.BACK' | translate }}
+    </button>
+    <button
+      *ngIf="!uploadDocumentsStep"
+      mat-flat-button
+      color="primary"
+      [disabled]="removeForm.invalid"
+      (click)="showRemoveDialog()">
+      &nbsp;{{ 'COMMON.NEXT' | translate }}&nbsp;
+    </button>
+  </div>
+</div>

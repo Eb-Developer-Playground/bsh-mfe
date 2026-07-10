@@ -1,0 +1,19 @@
+.buttons-holder {
+  margin-top: 80px;
+  display: block;
+  width: 100%;
+
+  .form-btn {
+    border-color: #a32a29;
+    padding: 1px 48px;
+    border-radius: 8px;
+
+    &:disabled {
+      border-color: #00000042;
+    }
+
+    &.next {
+      float: right;
+    }
+  }
+}

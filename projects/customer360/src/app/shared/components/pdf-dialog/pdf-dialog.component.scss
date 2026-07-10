@@ -1,0 +1,8 @@
+.close-icon { cursor: pointer; }
+.pdf-dialog-container { display: flex; flex-direction: column; }
+.pdf-dialog-header { display: flex; flex-direction: row; align-items: center; width: 100%; }
+.pdf-dialog-title { flex: 1 1 auto; display: flex; flex-direction: row; align-items: center; justify-content: center; }
+.pdf-dialog-close { display: flex; flex-direction: row; align-items: center; justify-content: flex-end; }
+.pdf-dialog-footer { display: flex; flex-direction: row; align-items: center; }
+.pdf-dialog-footer-left { flex: 0 0 60%; display: flex; align-items: center; justify-content: flex-start; }
+.pdf-dialog-footer-right { flex: 0 0 40%; display: flex; align-items: center; justify-content: flex-end; gap: 10px; }

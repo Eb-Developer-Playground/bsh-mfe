@@ -1,0 +1,6 @@
+<div [id]="swiperContainerId" style="position: relative">
+  <ng-content></ng-content>
+  <div class="swiper-button-next" (click)="changeSlide(1)"></div>
+  <div class="swiper-button-prev" (click)="changeSlide(-1)"></div>
+  <!--  <swiper-pagination class="swiper-pagination"></swiper-pagination>-->
+</div>

@@ -1,0 +1,26 @@
+<button
+  (click)="triggerAction.emit()"
+  mat-stroked-button
+  class="mr-4 relative h-50"
+  color="primary"
+  style="border: 1px solid #a32a29"
+  [type]="type"
+  [disabled]="disabled">
+  @if (status === 'loading') {
+    <mat-spinner
+      style="top: 10px; width: 50px; height: 30px; left: 10px"
+      diameter="30"></mat-spinner>
+  }
+  @if (status === 'success') {
+    <mat-icon
+      style="scale: 4"
+      class="absolute-center-check"
+      svgIcon="ic-check"></mat-icon>
+  }
+  <span class="text-14" [class]="status === 'normal' ? '' : 'invisible'">{{
+    buttonText
+  }}</span>
+</button>
+@if (isLoading) {
+  <app-loading-section sectionType="buttonSection" />
+}

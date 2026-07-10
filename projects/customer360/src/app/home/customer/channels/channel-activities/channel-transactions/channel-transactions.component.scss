@@ -1,0 +1,201 @@
+.title {
+  font-weight: 400;
+  font-size: 1.5rem;
+  padding: 0 !important;
+}
+
+.header-card {
+  border-radius: 0.5rem;
+  padding: 1rem 0 1rem 1.5rem !important;
+}
+
+.special-rates-table {
+  padding: 0;
+}
+
+.filter-layout{
+    margin: 1rem 0 0.6rem 0;
+    --mdc-outlined-text-field-container-shape: 15px !important;
+    .form-field {
+        margin-right: 1rem;
+        flex-wrap: wrap;
+        width: 16rem;
+    }
+
+    .date-filter{
+        margin-right: 1rem;
+        flex-wrap: wrap;
+        width: 20rem;
+    }
+
+    .icon-size {
+        margin-right: 0.5rem;
+        font-size: 30px;
+    }
+
+    .filter-btn {
+        .mat-flat-button {
+            font-size: 12px !important;
+        }
+    }
+}
+
+.filter-chips {
+    border-top: 1px solid #e9eaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.4rem;
+    padding: 1rem;
+}
+
+.mat-divider {
+    background-color: #e9eaea;
+}
+
+.dotted-border {
+  border-bottom: 1px dotted #e9eaea;
+}
+
+.exchange-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.filter-toggle-btn {
+  min-width: 25px !important;
+  background-color: #f7f7f7;
+  mat-icon {
+    width: 20px;
+    height: 26px;
+    font-size: medium;
+  }
+}
+
+::ng-deep .mat-mdc-card-header-text {
+  /* CSS styles go here */
+  display: none;
+}
+
+table {
+  width: 100%;
+  box-shadow: none;
+
+  th {
+    background: #e9eaea;
+    color: black;
+  }
+}
+
+.toggle-checked {
+  background-color: #a32a29;
+  color: white;
+}
+:host ::ng-deep .mat-button-toggle__label-content {
+  line-height: 44px !important;
+}
+
+.mat-button-toggle-group {
+  width: 98%;
+}
+
+.toggle-group {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.details-btn {
+  margin-top: 24px;
+}
+
+:host ::ng-deep.filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.subject-filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.date-filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.createdBy-filter-fields .mat-mdc-text-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+.date-error {
+  margin-left: 0.9rem;
+}
+
+.wrap_table_tickets {
+  max-height: 33.75rem;
+  overflow: auto;
+}
+
+::ng-deep .mat-mdc-chip.mat-mdc-standard-chip {
+  background-color: var(--grayscale-white, #fff);
+  color: var(--grayscale-black, #221f1f);
+}
+
+::ng-deep .mat-mdc-standard-chip {
+  border: 1px solid var(--grayscale-cool-grey-300, #d3d4d5) !important;
+}
+
+.clear-btn {
+  color: var(--equity-brown-equity-brown-500, #a32a29);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem;
+  cursor: pointer;
+}
+
+.source-account-td {
+  padding-left: 20px !important;
+}
+
+.filter-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.account-filter {
+  width: 15rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .filter-field {
+        font-size: 12px;
+    }
+
+    .filter-btn {
+        .mat-flat-button {
+            font-size: 12px !important;
+        }
+    }
+    .filter-chips{
+        height: 2.4rem;
+        .mat-chip,
+        .clear-btn{
+            font-size:12px;
+        }
+    }
+    .wrap_table_tickets{
+        padding: 3px;
+        .cell-padding{
+            font-size:11px;
+            padding:0 15px !important;
+            white-space: nowrap;
+        }
+    }
+    .no-result{
+        p{
+            font-size:12px;
+        }
+    }
+    .mat-menu-item{
+        font-size: 12px;
+    }
+}
+.mat-mdc-card {
+    border-radius: 8px;
+    padding: 0.8rem;
+}

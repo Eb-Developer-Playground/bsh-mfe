@@ -1,0 +1,51 @@
+.success-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  position: static;
+  width: 499.5px;
+  height: 288px;
+  left: 540.5px;
+  top: 56px;
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+  margin: 0 1px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.customer-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-details-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.dialog-actions {
+  margin-top: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+}
+
+.customer-detail-content {
+  color: #221f1f;
+}
+
+.customer-detail-title {
+  color: #929497;
+}
+
+.back-button {
+  color: white;
+  background-color: #a32a29;
+}

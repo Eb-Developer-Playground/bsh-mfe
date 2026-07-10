@@ -1,0 +1,92 @@
+<mat-card appearance="outlined" class="main" style="padding: 1.5rem" *ngIf="selectedAccount">
+  <div class="mb-2">
+    <p matCardTitle class="mat-headline-6" style="font-size: 18px;margin-bottom: 4px;">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT-DETAILS.TITLE' | translate
+      }}
+    </p>
+  </div>
+  <mat-divider style="padding-top:20px"></mat-divider>
+  <mat-card-content class="card-content" *ngIf="selectedAccount">
+    <div class="customer-images">
+      <!-- <mat-icon class="customer-image" svgIcon="ic-placeholder-potrait" aria-hidden="false"
+                aria-label="placeholder-potrait" style="width: 141px; height: 141px;">
+            </mat-icon>
+            <mat-icon class="customer-image" svgIcon="ic-placeholder-darker" aria-hidden="false"
+              aria-label="placeholder" style="width: 141px; height: 100px;"></mat-icon> -->
+    </div>
+    <div class="customer-details-content">
+      <div class="customer-name-channels">
+        <!-- <div class="customer-channels-sub">
+          <mat-card-subtitle class="subtitle">{{
+            selectedAccount?.accountName
+          }}</mat-card-subtitle>
+        </div> -->
+        <!-- <mat-icon
+          *ngIf="showBioCaptured"
+          svgIcon="ic-bio-enrolled"
+          aria-hidden="false"
+          aria-label="Bio"
+          class="bio-image"></mat-icon> -->
+      </div>
+      <div class="customer-details-container">
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NAME' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ selectedAccount?.accountName }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NUMBER' | translate
+            }}
+          </p>
+          <p class="customer-detail-content">
+            {{ selectedAccount?.accountNumber }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.CURRENCY' | translate
+            }}
+          </p>
+          <p class="customer-detail-content">
+            {{ selectedAccount?.accountCurrency }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_TYPE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ selectedAccount?.schemeType }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.SCHEME-TYPE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ selectedAccount?.schemeCode }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">{{ 'COMMON.STATUS' | translate }}</p>
+          <p class="customer-detail-content">
+            {{ selectedAccount?.accountStatus === 'A' ? 'Active' : 'Dormant' }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.MANDATE-TYPE' | translate }}
+          </p>
+          <p class="customer-detail-content">{{ selectedAccount?.mandate }}</p>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

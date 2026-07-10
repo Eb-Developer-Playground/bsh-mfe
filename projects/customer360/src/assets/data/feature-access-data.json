@@ -1,0 +1,116 @@
+[
+  {
+      "name": "services",
+      "subsidiary": [
+      {
+          "name": "KE",
+          "enabled": [
+          {
+              "dev": true,
+              "uat": false,
+              "pilot": true,
+              "prod": true
+          }
+        ]
+      },
+      {
+          "name": "UG",
+          "enabled": [
+          {
+              "dev": false,
+              "uat": false,
+              "pilot": true,
+              "prod": true
+          }
+        ]
+      },
+      {
+          "name": "RW",
+          "enabled": [
+          {
+              "dev": true,
+              "uat": false,
+              "pilot": true,
+              "prod": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+      "name": "known-agent",
+      "subsidiary": [
+      {
+          "name": "KE",
+          "enabled": [
+          {
+              "dev": true,
+              "uat": false,
+              "pilot": true,
+              "prod": true
+          }
+        ]
+      },
+      {
+          "name": "UG",
+          "enabled": [
+          {
+              "dev": false,
+              "uat": false,
+              "pilot": true,
+              "prod": true
+          }
+        ]
+      },
+      {
+          "name": "RW",
+          "enabled": [
+          {
+              "dev": true,
+              "uat": false,
+              "pilot": true,
+              "prod": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+      "name": "standing-order",
+      "subsidiary": [
+      {
+          "name": "KE",
+          "enabled": [
+          {
+              "dev": false,
+              "uat": true,
+              "pilot": true,
+              "prod": true
+          }
+        ]
+      },
+      {
+          "name": "UG",
+          "enabled": [
+          {
+              "dev": false,
+              "uat": false,
+              "pilot": true,
+              "prod": true
+          }
+        ]
+      },
+      {
+          "name": "RW",
+          "enabled": [
+          {
+              "dev": true,
+              "uat": false,
+              "pilot": true,
+              "prod": true
+          }
+        ]
+      }
+    ]
+  }
+]

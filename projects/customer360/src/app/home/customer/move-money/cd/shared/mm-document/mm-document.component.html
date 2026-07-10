@@ -1,0 +1,22 @@
+<div class="mm-document">
+  <div class="file-details">
+    @if (isServerFile) {
+      <div class="documentName">{{ document.filename }}</div>
+      @if (document.docSize) {
+        <div class="documentSize">{{ document.docSize | fileSize }}</div>
+      }
+    } @else {
+      <div class="documentName">{{ document.name }}</div>
+      <div class="documentSize">{{ document.fileSize }}</div>
+    }
+  </div>
+  <div class="iconWrapper">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="check-mark"
+      class="ic-eye"
+      (click)="viewDocument()"
+      svgIcon="ic-eye">
+    </mat-icon>
+  </div>
+</div>

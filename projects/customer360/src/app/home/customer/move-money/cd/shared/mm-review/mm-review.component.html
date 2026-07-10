@@ -1,0 +1,243 @@
+@if (transferDetails) {
+  <mat-accordion multi [hideToggle]="false">
+    <mat-expansion-panel [expanded]="true" class="mb-2">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="d-flex flex-column">
+            <h3 class="mat-headline-6 fw-400 align-self-start mt-10 mb-0">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.SEND-MONEY-DETAILS' | translate }}
+            </h3>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="pb-20">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="mt-5 item-wrapper">
+        <div class="item">
+          <div class="title">
+            {{ 'MOVE-MONEY.SECTIONS.REVIEW.DATE-CREATED' | translate }}
+          </div>
+          <div>
+            {{ transferDetails?.PaymentDetails?.dateCreated | date: 'dd MMM yyyy  •  HH:mm z' }}
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            {{ 'MOVE-MONEY.SECTIONS.REVIEW.DEBIT-ACCOUNT-NAME' | translate }}
+          </div>
+          <div>{{ transferDetails.DebitAccountDetails.accountholderName }}</div>
+        </div>
+        <div class="item">
+          <div class="title">
+            {{ 'MOVE-MONEY.SECTIONS.REVIEW.DEBIT-ACCOUNT-NUMBER' | translate }}
+          </div>
+          <div>
+            {{ transferDetails.DebitAccountDetails.accountNumber }}
+            @if (multipleCurrency) {
+              ({{ transferDetails.DebitAccountDetails.accountCurrency }})
+            }
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">{{ 'MOVE-MONEY.BENEFICIARY-NAME' | translate }}</div>
+          <div>{{ transferDetails.BeneficiaryDetails.accountholderName }}</div>
+        </div>
+        <div class="item">
+          <div class="title">
+            {{ 'MOVE-MONEY.BENEFICIARY-ACCOUNT' | translate }}
+          </div>
+          <div>
+            {{ transferDetails.BeneficiaryDetails.accountNumber }}
+            @if (multipleCurrency) {
+              ({{ transferDetails.BeneficiaryDetails.accountCurrency }})
+            }
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            {{ 'MOVE-MONEY.SECTIONS.REVIEW.AMOUNT' | translate }}
+          </div>
+          <div>
+            {{
+              transferDetails.PaymentDetails.amount
+                | transformCurrency: transferDetails.PaymentDetails.currency
+            }}
+          </div>
+        </div>
+        @if (multipleCurrency) {
+          <div class="item">
+            <div class="title">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.CONVERTED-AMOUNT' | translate }}
+            </div>
+            <div>
+              {{
+                transferDetails.PaymentDetails.convertedAmount
+                  | transformCurrency: convertedCurrencyForCrossTrns
+              }}
+            </div>
+          </div>
+          <div class="item">
+            <div class="title">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.RATE-CODE' | translate }}
+            </div>
+            <div>
+              {{ transferRateCode }}
+            </div>
+          </div>
+          @if (transferDetails.PaymentDetails.ticketNumber) {
+            <div class="item">
+              <div class="title">
+                {{ 'MOVE-MONEY.SECTIONS.REVIEW.SPECIAL-RATE-CODE' | translate }}
+              </div>
+              <div>
+                {{ transferDetails.PaymentDetails.ticketNumber }}
+              </div>
+            </div>
+          }
+          <div class="item">
+            <div class="title">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.EXCHANGE-RATE' | translate }}
+            </div>
+            <div>
+              @if (transferRateCode === 'TTB') {
+                {{ 1 | transformCurrency: exchangeRateCurrencyLeft }}
+                =
+                {{
+                  transferDetails.PaymentDetails.exchangeRate
+                    | transformCurrency: exchangeRateCurrencyRight
+                }}
+              } @else {
+                {{ 1 | transformCurrency: exchangeRateCurrencyLeft }}
+                =
+                {{
+                  transferDetails.PaymentDetails.exchangeRate
+                    | transformCurrency: exchangeRateCurrencyRight
+                }}
+              }
+            </div>
+          </div>
+        }
+        <div class="item">
+          <div class="title">
+            {{ 'MOVE-MONEY.SECTIONS.REVIEW.PAYMENT-REASON' | translate }}
+          </div>
+          <div>{{ transferDetails.PaymentDetails.reason }}</div>
+        </div>
+        @if (transferDetails.NarrationDetails.comment) {
+          <div class="item">
+            <div class="title">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.NARRATION' | translate }}
+            </div>
+            <div>{{ transferDetails.NarrationDetails.comment }}</div>
+          </div>
+        }
+      </div>
+      @if (uploadsToUse.length > 0) {
+        <div class="document-wrapper">
+          <div class="pt-20 pb-20">
+            <mat-divider></mat-divider>
+          </div>
+          <div class="title">
+            {{ 'MOVE-MONEY.SECTIONS.REVIEW.SUPPORTING-DOCUMENTS' | translate }}
+          </div>
+          <div class="document-grid pt-10">
+            @for (document of uploadsToSendToServer; track document) {
+              <app-mm-document [isLocalBase64]="true" [document]="document"></app-mm-document>
+            }
+          </div>
+        </div>
+      }
+    </mat-expansion-panel>
+    @if (transferDetails.AdditionalDetails.instrumentNumber) {
+      <mat-expansion-panel [expanded]="true" class="mb-2">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="d-flex flex-column">
+              <h3 class="mat-headline-6 fw-400 align-self-start mt-10 mb-0">
+                {{ 'MOVE-MONEY.SECTIONS.REVIEW.ADDITIONAL-DETAILS' | translate }}
+              </h3>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="pb-20">
+          <mat-divider></mat-divider>
+        </div>
+        <div class="mt-5 item-wrapper">
+          <div class="item">
+            <div class="title">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.INSTRUMENT-TYPE' | translate }}
+            </div>
+            <div>
+              @if (transferDetails.AdditionalDetails.instrumentType === 'CHQ') {
+                Cheque
+              } @else {
+                Inhouse voucher
+              }
+            </div>
+          </div>
+          <div class="item">
+            <div class="title">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.INSTRUMENT-NUMBER' | translate }}
+            </div>
+            <div>{{ transferDetails.AdditionalDetails.instrumentNumber }}</div>
+          </div>
+          <div class="item">
+            <div class="title">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.INSTRUMENT-DATE' | translate }}
+            </div>
+            <div>
+              {{ transferDetails.AdditionalDetails.instrumentDate | date: 'dd/MM/yyyy' }}
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    }
+    <mat-expansion-panel [expanded]="true" class="mb-2">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="d-flex flex-column">
+            <h3 class="mat-headline-6 fw-400 align-self-start mt-10 mb-0">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.CHARGES' | translate }}
+            </h3>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="pb-20">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="mt-5 item-wrapper">
+        <div class="item">
+          <div class="title">
+            {{ 'MOVE-MONEY.SECTIONS.REVIEW.TOTAL-CHARGES' | translate }}
+          </div>
+          <div>
+            {{
+              transferDetails?.PaymentDetails.paymentFee
+                | transformCurrency: account.accountCurrency
+            }}
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            {{ 'MOVE-MONEY.SECTIONS.REVIEW.AVAILABLE-BALANCE' | translate }}
+          </div>
+          @if (account.availableBalance) {
+            {{ account.availableBalance | transformCurrency: account.accountCurrency }}
+          } @else {
+            -
+          }
+          <div></div>
+        </div>
+        <div class="item">
+          <div class="title">
+            {{ 'MOVE-MONEY.SECTIONS.REVIEW.NEW-BALANCE' | translate }}
+          </div>
+          <div>
+            {{ remainingBalance | transformCurrency: account.accountCurrency }}
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+}

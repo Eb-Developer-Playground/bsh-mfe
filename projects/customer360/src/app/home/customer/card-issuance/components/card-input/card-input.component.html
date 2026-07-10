@@ -1,0 +1,59 @@
+@if (!isLoading) {
+  <div [ngSwitch]="inputType">
+    @switch (inputType) {
+      @case ('dropdown') {
+        <mat-form-field appearance="fill">
+          <mat-label class="text-12">{{ label }}</mat-label>
+          <mat-select
+            required
+            [formControlName]="name"
+            class="relative text-14 pt-10">
+            <mat-option class="pl-24 text-16" value="">Please select</mat-option>
+            @for (option of options; track option.value) {
+              <mat-option class="pl-24" [value]="option.value">{{ option.label }}</mat-option>
+            }
+          </mat-select>
+          @if (hint) {
+            <mat-hint class="text-light">{{ hint }}</mat-hint>
+          }
+        </mat-form-field>
+      }
+      @case ('searchable-dropdown') {
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label class="text-12">{{ label }}</mat-label>
+          <input
+            class="relative text-14 pt-10"
+            [required]="isRequired"
+            [formControl]="searchControl"
+            [matAutocomplete]="auto"
+            (focus)="onFocus()"
+            matInput
+            placeholder="Type to search..." />
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            (optionSelected)="onOptionSelected($event.option.value)">
+            @for (option of filteredOptions | async; track option.value) {
+              <mat-option class="pl-24 text-16" [value]="option">{{ option.label }}</mat-option>
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+      }
+      @default {
+        <mat-form-field appearance="fill">
+          <mat-label class="text-12">{{ label }}</mat-label>
+          <input
+            class="relative text-14 pt-10"
+            [required]="isRequired"
+            [type]="type"
+            [formControlName]="name"
+            matInput />
+        </mat-form-field>
+      }
+    }
+  </div>
+}
+<div class="w-full">
+  @if (isLoading) {
+    <app-loading-section sectionType="inputSection" />
+  }
+</div>

@@ -1,0 +1,93 @@
+.main {
+  width: 100%;
+  box-sizing: border-box;
+
+  span.title {
+    display: block;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #221f1f;
+  }
+
+  span.subtitle {
+    display: block;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #929497;
+    margin: 8px 0;
+  }
+
+  form {
+    margin-top: 24px;
+
+    .phone-code-field {
+      width: 70px;
+
+      .phone-code-dropdown {
+        padding-left: 28px;
+        box-sizing: border-box;
+        font-weight: 600;
+        display: block;
+
+        &.kenya {
+          background: url('/assets/flags/kenya.png');
+          white-space: nowrap;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+
+    .phone-number-field {
+      margin-left: 4px;
+      width: calc(100% - 74px);
+    }
+
+    .code-input-holder {
+      margin-top: 24px;
+      display: block;
+
+      input.code-input {
+        width: 36px;
+        height: 36px;
+        background: rgba(146, 148, 151, 0.2);
+        border: 1px solid #929497;
+        box-sizing: border-box;
+        border-radius: 8px;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 28px;
+        padding: 4px 12px;
+        display: inline-block;
+
+        &:not(:first-child) {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    .action-btn {
+      float: right;
+      color: #a32a29;
+
+      .action-btn-label {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: right;
+      }
+    }
+  }
+}

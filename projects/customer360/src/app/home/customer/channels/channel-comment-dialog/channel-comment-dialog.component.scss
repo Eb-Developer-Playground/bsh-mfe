@@ -1,0 +1,67 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-label {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.buttons-div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+
+    button {
+        border-radius: 8px;
+    }
+}
+
+.channel-name {
+    color: #A32A29;
+}
+
+.sub-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .sub-header-texts {
+        width: 80%;
+
+        h2 {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+    }
+
+}
+
+.checker-message {
+    color: #929497;
+}
+@media screen and (max-width: 1024px) {
+    .sub-header{
+        h2{
+        font-size:18px !important;
+    }
+}
+.checker-message{
+    font-size:13px;
+}
+.mat-form-field{
+    font-size:13px;
+}
+.buttons-div{
+    button{
+    font-size:13px;
+}
+}
+
+}

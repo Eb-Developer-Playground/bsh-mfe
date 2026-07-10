@@ -1,0 +1,22 @@
+@if (!loadingDocCodes) {
+  <app-documents-upload-drc
+    class="w-100"
+    [title]="'Supporting Documents'"
+    [documentSpecs]="requiredDocuments"
+    (onUploaded)="updateValidation($event)">
+  </app-documents-upload-drc>
+}
+
+@if (loadingDocCodes) {
+  <div style="overflow: auto" class="flex px-16 pt-16 gap-24">
+    @for (card of [1, 2, 3]; track card) {
+      <div class="summary-card animate-pulse flex-1 overflow-hidden">
+        <div class="w-full bg-gray-200 h-130"></div>
+        <div class="p-8">
+          <div class="w-half bg-gray-200 rounded-md h-10 mb-4"></div>
+          <div class="w-half-plus bg-gray-200 rounded-md h-10"></div>
+        </div>
+      </div>
+    }
+  </div>
+}

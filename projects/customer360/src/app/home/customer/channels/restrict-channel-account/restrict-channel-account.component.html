@@ -1,0 +1,168 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="topbar">
+      <mat-toolbar class="toolbar">
+        <div>
+          <span class="title">{{
+            'CUSTOMER.CHANNELS.RESTRICT-ACCOUNTS' | translate
+          }}</span>
+          <span class="vl"></span>
+          <span class="toolbar-page">{{
+            'CUSTOMER.CHANNELS.APP-CHANNEL' | translate
+          }}</span>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+    <ng-container class="search">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <div class="panel_bar">
+            <span class="panel_bar_title">{{
+              'CUSTOMER.CHANNELS.CHANNEL-RESTRICTION-ACCOUNTS-TITLE' | translate
+            }}</span>
+            <span class="panel_bar_subtitle">{{
+              'CUSTOMER.CHANNELS.CHANNEL-RESTRICTION-ACCOUNTS-TEXT' | translate
+            }}</span>
+          </div>
+        </mat-expansion-panel-header>
+        <hr />
+        <mat-card-content>
+          <ng-container class="linkedAccount">
+            @if (accounts?.length > 0) {
+            <div class="table">
+              <table mat-table [dataSource]="accountsFormControls" matSort>
+                <!-- Account Column -->
+                <ng-container matColumnDef="linkedAccount">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{ 'CUSTOMER.CHANNELS.LINKED-ACCOUNT' | translate }}
+                  </th>
+                  <td
+                    class="td__cls account_cell"
+                    mat-cell
+                    *matCellDef="let element">
+                    <div>
+                      <div>{{ element.accountName }}</div>
+                      {{ element.get('accountName')?.value }}
+                      <div class="account">
+                        <span class="account_number">{{
+                          element.get('accountNumber')?.value
+                        }}</span>
+                        &nbsp; &#8226; &nbsp;
+                        <span class="account_type">{{
+                          element.get('accountType')?.value
+                        }}</span>
+                      </div>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="canView">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{ 'CUSTOMER.CHANNELS.VIEW' | translate }}
+                  </th>
+                  <td class="td__cls" mat-cell *matCellDef="let element">
+                    <div class="action">
+                      <!-- <mat-radio-group [(ngModel)]="element.canView"> -->
+                      <!-- <mat-radio-button [formControl]="element.get('canView')" [value]="control.get('canView')?.value"></mat-radio-button> -->
+                      <!-- </mat-radio-group> -->
+                      <mat-checkbox
+                        [formControl]="element.get('canView')"
+                        [checked]="element.get('canView')?.value"
+                        color="primary"></mat-checkbox>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="canTransact">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    {{ 'CUSTOMER.CHANNELS.TRANSACT' | translate }}
+                  </th>
+                  <td
+                    class="td__cls transact_cell"
+                    mat-cell
+                    *matCellDef="let element">
+                    <div class="action">
+                      <!-- <mat-radio-group [(ngModel)]="element.canTransact"> -->
+                      <!-- <mat-radio-button [formControl]="element.get('canTransact')" [value]="control.get('canTransact')?.value"></mat-radio-button> -->
+                      <!-- </mat-radio-group> -->
+                      <mat-checkbox
+                        [formControl]="element.get('canTransact')"
+                        [checked]="element.get('canTransact')?.value"
+                        color="primary"></mat-checkbox>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <!-- Counter Column  -->
+                <ng-container matColumnDef="counts">
+                  <td
+                    class="td__cls"
+                    mat-footer-cell
+                    *matFooterCellDef
+                    colspan="3">
+                    <div class="item-length">
+                      {{ accounts?.length }} {{ 'COMMON.ITEMS' | translate }}
+                    </div>
+                  </td>
+                </ng-container>
+                <!-- <ng-template #noActions> </ng-template> -->
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="
+                    let control;
+                    let i = index;
+                    columns: displayedColumns
+                  "></tr>
+                <tr mat-footer-row *matFooterRowDef="['counts']"></tr>
+              </table>
+            </div>
+            }
+
+            @if (accounts.length <= 0) {
+            <div class="no-result">
+              <p class="bold-text">
+                {{ 'CUSTOMER.CHANNELS.NO-ACCOUNTS-FOUND' | translate }}
+              </p>
+              <img
+                src="assets/icons/icon-no-results.svg"
+                alt="no results found" />
+              <p>{{ 'CUSTOMER.CHANNELS.NO-LINKED-ACCOUNTS' | translate }}</p>
+            </div>
+            }
+
+            <br />
+          </ng-container>
+        </mat-card-content>
+      </mat-expansion-panel>
+    </ng-container>
+
+    <ng-container class="navigation">
+      <div class="buttons-section">
+        <button
+          mat-button
+          type="button"
+          color="primary"
+          class="quit-btn"
+          routerLink="/services/customer-360/channels">
+          {{ 'COMMON.QUIT' | translate }}
+        </button>
+
+        <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          [disabled]="accountForm.invalid"
+          class="continue-btn">
+          {{ 'COMMON.SUBMIT' | translate }}
+        </button>
+      </div>
+    </ng-container>
+  </form>
+</div>

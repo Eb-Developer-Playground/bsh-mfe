@@ -1,0 +1,13 @@
+<div class="container">
+  <mat-card appearance="outlined" [class]="type()">
+    <mat-card-title-group>
+      <mat-card-title class="mat-subtitle-1 title">{{ title() }}</mat-card-title>
+      @if (subtitle()) {
+        <mat-card-subtitle class="mat-body-1">{{ subtitle() }}</mat-card-subtitle>
+      }
+    </mat-card-title-group>
+    <mat-card-content class="mat-subtitle-2 text">
+      {{ text() }}
+    </mat-card-content>
+  </mat-card>
+</div>

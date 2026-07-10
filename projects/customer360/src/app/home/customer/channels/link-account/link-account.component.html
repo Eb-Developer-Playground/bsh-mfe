@@ -1,0 +1,387 @@
+<div class="topbar">
+    <mat-toolbar class="toolbar">
+        <div class="d-flex justify-content-between w-100">
+            <div>
+                <span class="title">Link New Account</span>
+                <span class="vl"></span>
+                <span class="toolbar-page">{{
+                        stepCount === 1 ? 'Select Accounts' : 'Channel Restriction'
+                    }}</span>
+            </div>
+            <div class="d-flex gap-1 justify-content-center">
+                <p class="m-0 f-14">Step {{ stepCount }} of 2</p>
+                <div
+                    class="step-indicator"
+                    [class.bg_primary]="stepCount > 0"></div>
+                <div
+                    class="step-indicator"
+                    [class.bg_primary]="stepCount === 2"
+                    [class.bg_muted]="stepCount !== 2"></div>
+            </div>
+        </div>
+    </mat-toolbar>
+</div>
+
+@if (stepCount === 1) {
+    <ng-container>
+        <mat-card appearance="outlined" class="channels-body mb-24 activity-card">
+            <div class="mb-1 justify-content-between activity-header">
+                <h3 class="size-3 fw-normal title">
+                    Accounts available for linking to
+                    {{ activeChannel?.channel?.channel }} channel
+                </h3>
+                <p class="subtitle-text">
+                    Below are all the customer’s linked accounts. Select one or more
+                    account to link to the
+                    {{ activeChannel?.channel?.channel }} channel
+                </p>
+            </div>
+            <div class="pb-1">
+                <mat-divider></mat-divider>
+            </div>
+            <mat-card-content class="card-content">
+                @if (unLinkedAccounts?.length > 0) {
+                    <div>
+                        <table mat-table [dataSource]="dataSource" class="w-100">
+                            <!-- Checkbox Column -->
+                            <ng-container matColumnDef="select">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <mat-checkbox
+                                        (change)="$event ? masterToggle() : null"
+                                        [checked]="selection.hasValue() && isAllSelected()"
+                                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                        color="primary">
+                                    </mat-checkbox>
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <mat-checkbox
+                                        (click)="$event.stopPropagation()"
+                                        (change)="$event ? selection.toggle(row) : null"
+                                        [checked]="selection.isSelected(row)"
+                                        color="primary">
+                                    </mat-checkbox>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="accountName">
+                                <th mat-header-cell *matHeaderCellDef>Account Name</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.accountName }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="accountNumber">
+                                <th mat-header-cell *matHeaderCellDef>Account Number</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.accountNumber }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="accountType">
+                                <th mat-header-cell *matHeaderCellDef>Account Type</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.accountType }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="mandate">
+                                <th mat-header-cell *matHeaderCellDef>Account Mandate</th>
+                                <td mat-cell *matCellDef="let element" class="text-capitalize">
+                                    {{ getMandate(element.mandate) }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="role">
+                                <th mat-header-cell *matHeaderCellDef>Customer's Role</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ getRole(element) }}
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr
+                                mat-row
+                                *matRowDef="let row; columns: displayedColumns"
+                                (click)="selection.toggle(row)"></tr>
+                        </table>
+                        <mat-paginator
+                            [pageSizeOptions]="[5, 10, 20]"
+                            [showFirstLastButtons]="true"></mat-paginator>
+                    </div>
+                } @else {
+                    <div
+                        class="d-flex flex-column justify-content-center align-content-center width-60 m-auto">
+                        <img
+                            src="assets/icons/icon-no-results.svg"
+                            alt="no results found"
+                            class="no-result" />
+                        <p class="f-14 mt-0 fw-600">
+                            No other accounts available for linking.
+                        </p>
+                        <p class="text-muted f-14 mt-0">
+                            This customer has already linked all their available accounts to
+                            their
+                            {{ activeChannel?.channel?.channel }} channel. Add an additional
+                            account first and link it to the channel instead.
+                        </p>
+                        <div class="my-2">
+                            <button
+                                mat-raised-button
+                                [matMenuTriggerFor]="menu"
+                                color="primary">
+                                <span class="add-account-text">Add additional account</span>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                @if (canDisplayAddAnotherAccountButton()) {
+                                    <button
+                                        mat-menu-item
+                                        [routerLink]="['/services/customer-360/additional-account']">
+                                        Additional account
+                                    </button>
+                                }
+                                <button mat-menu-item (click)="onboardMinorAccount()">
+                                    Minor account
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                }
+            </mat-card-content>
+        </mat-card>
+        <div class="d-flex justify-content-between">
+            <button
+                type="button"
+                mat-stroked-button
+                color="primary"
+                style="width: 130px; border-color: #a32a29"
+                class="py-12 px-48 mr-24"
+                (click)="quit()">
+                {{ 'CUSTOMER.SEARCH.QUIT' | translate }}
+            </button>
+            <button
+                type="submit"
+                mat-flat-button
+                style="width: 130px"
+                color="primary"
+                class="py-12 px-48"
+                (click)="logSelection()"
+                [disabled]="selection?.selected?.length === 0">
+                Next
+            </button>
+        </div>
+    </ng-container>
+} @else if (stepCount === 2) {
+    <ng-container>
+        <mat-card appearance="outlined" class="channels-body mb-24 activity-card">
+            <div class="mb-1 justify-content-between activity-header">
+                <h3 class="size-3 fw-normal title">
+                    Channel restrictions for linked accounts on
+                    {{ activeChannel?.channel?.channel }} channel
+                </h3>
+                <p class="subtitle-text">
+                    For the account(s) chosen prior, select whether it can only be viewed
+                    or if it can also be used to transact on the
+                    {{ activeChannel?.channel?.channel }} channel
+                </p>
+            </div>
+            <div class="pb-1">
+                <mat-divider></mat-divider>
+            </div>
+            <mat-card-content class="card-content">
+                <div>
+                    <div class="my-1">
+                        <table mat-table [dataSource]="selectedSource" class="w-100">
+                            <ng-container matColumnDef="account">
+                                <th mat-header-cell *matHeaderCellDef>Linked Account</th>
+                                <td mat-cell *matCellDef="let element">
+                                    <div class="d-flex flex-column">
+                                        {{ element?.accountName }}
+                                        <span class="text-muted">
+                                            {{ linkedCustomerDetails?.cif }} •
+                                            {{ element?.accountType }}
+                                        </span>
+                                    </div>
+                                </td>
+                            </ng-container>
+                            <mat-radio-group
+                                aria-label="Select an option"
+                                class="d-flex"
+                                (change)="radioChange($event)">
+                                <ng-container matColumnDef="view">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <div class="d-flex justify-content-center">View Only</div>
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <div class="d-flex justify-content-center">
+                                            <mat-radio-button
+                                                color="primary"
+                                                class="m-1 flex-1"
+                                                [value]="getValue('1', element?.accountNumber)"
+                                                name="permissions">
+                                            </mat-radio-button>
+                                        </div>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="viewandtransact">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <div class="d-flex justify-content-center">
+                                            View and Transact
+                                        </div>
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <div class="d-flex justify-content-center">
+                                            <mat-radio-button
+                                                color="primary"
+                                                class="m-1 flex-1"
+                                                [value]="getValue('0', element?.accountNumber)"
+                                                name="permissions">
+                                            </mat-radio-button>
+                                        </div>
+                                    </td>
+                                </ng-container>
+                            </mat-radio-group>
+<!--                            <mat-card-->
+<!--                                appearance="outlined"-->
+<!--                                class="channels-body mb-24 activity-card">-->
+<!--                                <div class="mb-1 justify-content-between activity-header">-->
+<!--                                    <h3 class="size-3 fw-normal title">-->
+<!--                                        Channel restrictions for linked accounts on-->
+<!--                                        {{ activeChannel?.channel?.channel }} channel-->
+<!--                                    </h3>-->
+<!--                                    <p class="subtitle-text">-->
+<!--                                        For the account(s) chosen prior, select whether it can only-->
+<!--                                        be viewed or if it can also be used to transact on the-->
+<!--                                        {{ activeChannel?.channel?.channel }} channel-->
+<!--                                    </p>-->
+<!--                                </div>-->
+<!--                                <div class="pb-1">-->
+<!--                                    <mat-divider></mat-divider>-->
+<!--                                </div>-->
+<!--                                <mat-card-content class="card-content">-->
+<!--                                    <div>-->
+<!--                                        <div class="my-1">-->
+<!--                                            <table-->
+<!--                                                mat-table-->
+<!--                                                [dataSource]="selectedSource"-->
+<!--                                                class="w-100">-->
+<!--                                                <ng-container matColumnDef="account">-->
+<!--                                                    <th mat-header-cell *matHeaderCellDef>-->
+<!--                                                        Linked Account-->
+<!--                                                    </th>-->
+<!--                                                    <td mat-cell *matCellDef="let element">-->
+<!--                                                        <div class="d-flex flex-column">-->
+<!--                                                            {{ element?.accountName }}-->
+<!--                                                            <span class="text-muted">-->
+<!--                                                                {{ element?.accountNumber }} •-->
+<!--                                                                {{ element?.accountType }}-->
+<!--                                                            </span>-->
+<!--                                                        </div>-->
+<!--                                                    </td>-->
+<!--                                                </ng-container>-->
+
+<!--                                                <ng-container matColumnDef="view">-->
+<!--                                                    <th mat-header-cell *matHeaderCellDef>-->
+<!--                                                        <div class="d-flex justify-content-around">-->
+<!--                                                            <div class="d-flex justify-content-center">-->
+<!--                                                                View Only-->
+<!--                                                            </div>-->
+<!--                                                            <div class="d-flex justify-content-center">-->
+<!--                                                                View and Transact-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </th>-->
+<!--                                                    <td mat-cell *matCellDef="let element">-->
+<!--                                                        <mat-radio-group-->
+<!--                                                            aria-label="Select an option"-->
+<!--                                                            class="d-flex"-->
+<!--                                                            (change)="radioChange($event)">-->
+<!--                                                            <div class="d-flex justify-content-around w-100">-->
+<!--                                                                <div class="d-flex justify-content-center">-->
+<!--                                                                    <mat-radio-button-->
+<!--                                                                        color="primary"-->
+<!--                                                                        class="m-1 flex-1"-->
+<!--                                                                        [value]="-->
+<!--                                                                              getValue('1', element?.accountNumber)-->
+<!--                                                                            "-->
+<!--                                                                        [name]="element?.accountNumber">-->
+<!--                                                                    </mat-radio-button>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="d-flex justify-content-center">-->
+<!--                                                                    <mat-radio-button-->
+<!--                                                                        color="primary"-->
+<!--                                                                        class="m-1 flex-1"-->
+<!--                                                                        [value]="-->
+<!--                                                                                  getValue('0', element?.accountNumber)-->
+<!--                                                                                "-->
+<!--                                                                        [name]="element?.accountNumber">-->
+<!--                                                                    </mat-radio-button>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </mat-radio-group>-->
+<!--                                                    </td>-->
+<!--                                                </ng-container>-->
+<!--                                                &lt;!&ndash; <ng-container matColumnDef="viewandtransact">-->
+<!--                                                                              <th mat-header-cell *matHeaderCellDef>-->
+<!--                                                                                  <div class="d-flex justify-content-center">-->
+<!--                                                                                      View and Transact-->
+<!--                                                                                  </div>-->
+<!--                                                                              </th>-->
+<!--                                                                              <td mat-cell *matCellDef="let element">-->
+<!--                                                                                  <div class="d-flex justify-content-center">-->
+<!--                                                                                          <mat-radio-button-->
+<!--                                                                                              color="primary"-->
+<!--                                                                                              class="m-1 flex-1"-->
+<!--                                                                                              [value]="-->
+<!--                                                                                                  getValue(-->
+<!--                                                                                                      '0',-->
+<!--                                                                                                      element.accountNumber-->
+<!--                                                                                                  )-->
+<!--                                                                                              "-->
+<!--                                                                                              [name]="element.accountNumber"-->
+<!--                                                                                          >-->
+<!--                                                                                          </mat-radio-button>-->
+<!--                                                                                      </div>-->
+<!--                                                                              </td>-->
+<!--                                                                          </ng-container> &ndash;&gt;-->
+
+<!--                                                <tr mat-header-row *matHeaderRowDef="seleColumns"></tr>-->
+<!--                                                <tr-->
+<!--                                                    mat-row-->
+<!--                                                    *matRowDef="let row; columns: seleColumns"-->
+<!--                                                    (click)="selection.toggle(row)"></tr>-->
+<!--                                            </table>-->
+<!--                                            <mat-paginator-->
+<!--                                                [pageSizeOptions]="[5, 10, 20]"-->
+<!--                                                [showFirstLastButtons]="true">-->
+<!--                                            </mat-paginator>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </mat-card-content>-->
+<!--                            </mat-card>-->
+                            <div class="d-flex justify-content-between">
+                                <button
+                                    type="button"
+                                    mat-stroked-button
+                                    color="primary"
+                                    style="width: 130px; border-color: #a32a29"
+                                    class="py-12 px-48 mr-24"
+                                    (click)="quit()">
+                                    {{ 'CUSTOMER.SEARCH.QUIT' | translate }}
+                                </button>
+                                <button
+                                    type="submit"
+                                    mat-flat-button
+                                    style="width: 130px"
+                                    color="primary"
+                                    class="py-12 px-48"
+                                    (click)="submit()"
+                                    [disabled]="accountMandates?.length === 0">
+                                    Submit
+                                </button>
+                            </div>
+                            <tr mat-header-row *matHeaderRowDef="seleColumns"></tr>
+                            <tr
+                                mat-row
+                                *matRowDef="let row; columns: seleColumns"
+                                (click)="selection.toggle(row)"></tr>
+                        </table>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+}

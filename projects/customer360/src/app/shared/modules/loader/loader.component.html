@@ -1,0 +1,10 @@
+@if (loading) {
+    <div class="progress-loader" >
+        <ng-lottie [options]="options" width="125px" height="125px"></ng-lottie>
+    </div>
+}
+@if (inComponentLoading) {
+    <div class="in-component-progress-loader">
+        <ng-lottie [options]="options" [width]="sizeProp().width" [height]="sizeProp().height"></ng-lottie>
+    </div>
+}

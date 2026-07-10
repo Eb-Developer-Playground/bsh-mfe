@@ -1,0 +1,420 @@
+<mat-card appearance="outlined" class="main-card">
+  <mat-card-title>{{
+    'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.STATEMENT-DETAILS' | translate
+  }}</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="section">
+      <div class="dialog-header">
+        <p class="title-text">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.STATEMENT-PERIOD' | translate
+          }}
+        </p>
+      </div>
+      <p class="subtitle-text">
+        {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.SELECT-PERIOD' | translate }}
+      </p>
+      <div class="pb-1"></div>
+
+      <div class="fieldset">
+        <div *ngFor="let item of buttonText; let i = index">
+          <button
+            [ngClass]="selectedIndex === i ? 'period-button' : ''"
+            mat-stroked-button
+            (click)="getPeriod(item.key, i)">
+            {{ item.title | translate }}
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="buttonValue === '0'">
+        <form class="period-form" [formGroup]="periodForm" autocomplete="off">
+          <div class="fieldset">
+            <mat-form-field appearance="fill">
+              <mat-label>
+                {{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.START-DATE' | translate
+                }}
+              </mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="startDate"
+                required
+                [max]="maxStartDate"
+                [min]="minStartDate"
+                numbersOnly />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+                *ngIf="periodForm.get('startDate')?.hasError('required')">
+                <span>{{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.START-DATE-REQUIRED'
+                    | translate
+                }}</span>
+              </mat-error>
+              <mat-error *ngIf="startDateIsMore">
+                <span>{{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.START-DATE-CANNOT-BE-GREATER'
+                    | translate
+                }}</span>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>
+                {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.END-DATE' | translate }}
+              </mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker1"
+                [max]="maxDate"
+                formControlName="endDate"
+                required
+                numbersOnly />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+              <mat-error
+                *ngIf="periodForm.get('endDate')?.hasError('required')">
+                <span>{{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.END-DATE-REQUIRED'
+                    | translate
+                }}</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </form>
+      </div>
+    </div>
+    <hr class="section-divider" />
+    <div class="section">
+      <p class="title-text">
+        {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.STATEMENT-TYPE' | translate }}
+      </p>
+      <p class="subtitle-text">
+        {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.SELECT-TYPE' | translate }}
+      </p>
+
+      <mat-radio-group
+        aria-label="Select an option"
+        color="primary"
+        (change)="getStatementType($event)">
+        <div class="radio-buttons">
+          <mat-radio-button value="full">
+            <div class="title-text">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.FULL-STATEMENT' | translate
+              }}
+            </div>
+            <div class="subtitle-text">
+              <p class="m-0" style="white-space: normal">
+                {{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.FULL-STATEMENT-MESSAGE'
+                    | translate
+                }}
+              </p>
+            </div>
+          </mat-radio-button>
+          <mat-radio-button value="debit">
+            <div class="title-text">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.DEBIT-STATEMENT'
+                  | translate
+              }}
+            </div>
+            <div class="subtitle-text">
+              <p class="m-0" style="white-space: normal">
+                {{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.DEBIT-STATEMENT-MESSAGE'
+                    | translate
+                }}
+              </p>
+            </div>
+          </mat-radio-button>
+          <mat-radio-button value="credit">
+            <div class="title-text">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.CREDIT-STATEMENT'
+                  | translate
+              }}
+            </div>
+            <div class="subtitle-text">
+              <p class="m-0" style="white-space: normal">
+                {{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.CREDIT-STATEMENT-MESSAGE'
+                    | translate
+                }}
+              </p>
+            </div>
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </div>
+    <hr class="section-divider" />
+    <div class="section">
+      <p class="title-text">
+        {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.DELIVERY-MODE' | translate }}
+      </p>
+      <p class="subtitle-text">
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.DELIVERY-MODE-MESSAGE'
+            | translate
+        }}
+      </p>
+      <div *ngIf="isPrinting" class="notification">
+        <app-notifications
+          [title]="warningTitle"
+          [text]="warningText"
+          status="warning">
+        </app-notifications>
+      </div>
+      <mat-radio-group
+        aria-label="Select an option"
+        (change)="deliveryMode($event)"
+        [value]="delivery"
+        color="primary">
+        <div class="radio-buttons">
+          <mat-radio-button [disabled]="disabledEmail" value="EmailStatement">
+            <div class="title-text">
+              {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.SEND-EMAIL' | translate }}
+            </div>
+            <div class="subtitle-text">
+              <p class="m-0" style="white-space: normal">
+                {{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.SEND-EMAIL-MESSAGE'
+                    | translate
+                }}
+              </p>
+            </div>
+
+            <mat-error *ngIf="disabledEmail">
+              <span>
+                {{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.NO-EMAIL-FOUND'
+                    | translate
+                }}
+              </span>
+            </mat-error>
+          </mat-radio-button>
+          <mat-radio-button value="PrintStatement">
+            <div class="title-text">
+              {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.PRINT-ONLY' | translate }}
+            </div>
+            <div class="subtitle-text">
+              <p class="m-0" style="white-space: normal">
+                {{ printingChargePerPageText }}
+              </p>
+            </div>
+          </mat-radio-button>
+    
+          <mat-radio-button value="CertifyPrintStatement"[disabled]="isCertifyDisabled()" >
+            <div class="title-text" 
+            [ngClass]="{ 'disabled-text': isCertifyDisabled() }"
+            >
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.PRINT-CERTIFY-STATEMENT'
+                  | translate
+              }}
+            </div>
+            <div class="subtitle-text">
+              <p class="m-0" style="white-space: normal">
+                {{ printCertifyChargeText }}
+              </p>
+            </div>
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </div>
+    <hr class="section-divider" *ngIf="isPrinting" />
+    <div class="section" *ngIf="isPrinting">
+      <p class="title-text">
+        {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.MODE-OF-PAYMENT' | translate }}
+      </p>
+      <p class="subtitle-text">
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.MODE-OF-PAYMENT-MESSAGE'
+            | translate
+        }}
+      </p>
+      <mat-radio-group
+        aria-label="Select an option"
+        (change)="paymentMode($event)"
+        color="primary">
+        <div class="radio-buttons">
+          <mat-radio-button value="DebitAccount" checked>
+            <div class="title-text">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.DEBIT-ACCOUNT' | translate
+              }}
+            </div>
+            <div class="subtitle-text">
+              <p class="m-0" style="white-space: normal">
+                {{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.DEBIT-ACCOUNT-MESSAGE'
+                    | translate
+                }}
+              </p>
+            </div>
+          </mat-radio-button>
+          <mat-radio-button 
+          value="WaiveCharges" 
+          [disabled]="shouldDisableWaiveCharges()">
+            <div class="title-text">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.WAIVE-CHARGES' | translate
+              }}
+            </div>
+            <div class="subtitle-text">
+              <p class="m-0" style="white-space: normal">
+                {{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.WAIVE-CHARGES-MESSAGE'
+                    | translate
+                }}
+              </p>
+            </div>
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </div>
+  </mat-card-content>
+  <mat-card-footer
+    *ngIf="customerNotPresentFlow || (isPrinting && !waiveCharges)">
+    <hr class="section-divider" />
+    <div class="account-form-container">
+      <div class="section" *ngIf="customerNotPresentFlow">
+        <div class="blocked-info">
+          <p class="title-text">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.GENERATE-ACCOUNT' | translate
+            }}
+          </p>
+          <p class="subtitle-text">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.GENERATE-ACCOUNT-MESSAGE'
+                | translate
+            }}
+          </p>
+          <form [formGroup]="generateAccountForm">
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>
+                  {{
+                    'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.GENERATE-ACCOUNT'
+                      | translate
+                  }}</mat-label
+                >
+                <mat-select required formControlName="generateAccountNo">
+                  <mat-option
+                    *ngFor="let account of accountNumbers"
+                    [value]="account.accountNumber">
+                    {{ account.accountNumber }} - {{ account.accountName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="section" *ngIf="isPrinting && !waiveCharges">
+        <div class="blocked-info">
+          <p class="title-text">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.CHARGE-ACCOUNT' | translate
+            }}
+          </p>
+          <p class="subtitle-text">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.CHARGE-ACCOUNT-MESSAGE'
+                | translate
+            }}
+          </p>
+          <form [formGroup]="accountForm">
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>
+                  {{
+                    'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.ACCOUNT' | translate
+                  }}</mat-label
+                >
+                <mat-select required formControlName="accountNo">
+                  <mat-option
+                    *ngFor="let account of accountNumbers"
+                    [value]="account.accountNumber">
+                    {{ account.accountNumber }} - {{ account.accountName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div *ngIf="newSelectedAccount">
+                <h3 class="mat-body-2 text-grey fw-400">
+                  {{
+                    'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.AVAILABLE-BALANCE'
+                      | translate
+                  }}
+                </h3>
+                <span class="mat-body-2"
+                  >{{ newSelectedAccount.accountCurrency }}
+                  {{ newSelectedAccount.availableBalance }}</span
+                >
+              </div>
+              <mat-error *ngIf="insufficient && !waiveCharges" class="errorMessage">
+                {{
+                  'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.INSUFFICIENT-FUNDS'
+                    | translate
+                }}
+              </mat-error>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Waiver reason input (UG only; roles 150/200) -->
+      <div class="section" *ngIf="waiveCharges">
+        <div class="blocked-info">
+          <p class="title-text">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.WAIVER-REASON' | translate }}
+          </p>
+          <p class="subtitle-text">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.WAIVER-REASON-MESSAGE' | translate }}
+          </p>
+          <form [formGroup]="waiverForm">
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>{{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.WAIVER-REASON' | translate }}</mat-label>
+              <input matInput formControlName="reason" required />
+              <mat-error *ngIf="waiverForm?.get('reason')?.hasError('required')">
+                {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.WAIVER-REASON-REQUIRED' | translate }}
+              </mat-error>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-footer>
+</mat-card>
+
+<div   class="d-flex justify-content-between mt-15 pb-15" >
+  <button
+    mat-stroked-button
+    color="primary"
+    class="btn-outline"
+    style="width: 90px"
+    (click)="quit()">
+    {{ 'COMMON.QUIT' | translate }}
+  </button>
+
+  <button
+    [disabled]="
+      !((validPeriod || periodForm.valid) && validStatement && validDelivery) ||
+      (waiveCharges && !waiverForm?.valid)
+    "
+    mat-raised-button
+    color="primary"
+    class="ml-15"
+    style="width: 90px"
+    (click)="accountStatementV2()">
+    {{ 'COMMON.GENERATE' | translate }}
+  </button>
+</div>

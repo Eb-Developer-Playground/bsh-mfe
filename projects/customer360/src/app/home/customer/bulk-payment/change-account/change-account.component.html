@@ -1,0 +1,39 @@
+<div>
+  <div class="header">
+    <div class="d-flex justify-content-between">
+      <h2>{{ 'BULK-TRANFER.CHANGE-DEBIT-ACCOUNT' | translate }}</h2>
+      <div>
+        <!-- *ngIf="i > 0" -->
+        <button mat-button mat-dialog-close>
+          <mat-icon
+            class="close-icon"
+            color="primary"
+            svgIcon="ic-close"></mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <p>{{ 'BULK-TRANFER.CHANGE-DEBIT-CONFIRM' | translate }}</p>
+    <div class="bottom-buttons">
+      <div class="pb-15" fxLayout="row" style="margin-top: 15px">
+        <span fxFlex></span>
+        <button
+          (click)="closeDialog(false)"
+          class="btn-outline"
+          color="primary"
+          mat-stroked-button
+          style="margin-right: 10px">
+          {{ 'BULK-TRANFER.CANCEL' | translate }}
+        </button>
+        <button
+          (click)="submit(true)"
+          class="ml-15"
+          color="primary"
+          mat-raised-button>
+          {{ 'BULK-TRANFER.CONFIRM' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

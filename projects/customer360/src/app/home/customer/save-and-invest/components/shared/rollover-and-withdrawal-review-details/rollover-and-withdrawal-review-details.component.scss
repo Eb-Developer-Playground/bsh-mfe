@@ -1,0 +1,36 @@
+.subtitle {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  display: block;
+  align-items: center;
+  color: #929497;
+}
+
+.section-title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-size: 18px;
+  line-height: 20px;
+  display: block;
+  align-items: center;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  div {
+    width: 260px;
+    .value {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-size: 16px;
+      line-height: 20px;
+      display: block;
+      align-items: center;
+    }
+  }
+}

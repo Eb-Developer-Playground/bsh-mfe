@@ -1,11 +1,9 @@
-import {
-  AfterViewInit,
+import { AfterViewInit,
   Component,
   Input,
   OnInit,
   ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+  ViewContainerRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   AbstractControl,
   UntypedFormControl,
@@ -18,12 +16,14 @@ import {
   MatAutocomplete,
   MatAutocompleteTrigger,
 } from '@angular/material/autocomplete';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-autocomplete',
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class AutocompleteComponent implements OnInit, AfterViewInit {
   @ViewChild('auto') autoComplete!: MatAutocomplete;
   @ViewChild('trigger', { read: MatAutocompleteTrigger })

@@ -1,11 +1,12 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AbstractControl, UntypedFormControl } from '@angular/forms';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-new-collapsible',
@@ -16,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDividerModule,
     MatExpansionModule,
     MatIconModule,
-    TranslateModule,
+    TranslatePipe,
   ],
   template: `
     <mat-expansion-panel

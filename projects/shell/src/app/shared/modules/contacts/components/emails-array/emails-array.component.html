@@ -1,6 +1,6 @@
 <div class="wrapper">
   <ng-template #templateRef>
-    @if (formArray.errors?.missingRequiredEmailType) {
+    @if (formArray.errors?.['missingRequiredEmailType']) {
       <span class="d-block">
         {{
           'FORMS.CONTACT_DETAILS.ERRORS.CONTACT_TYPE_MISSING'
@@ -8,7 +8,7 @@
         }}
       </span>
     }
-    @if (formArray.errors?.hasRepeatedEmails) {
+    @if (formArray.errors?.['hasRepeatedEmails']) {
       <span class="d-block">
         {{
           'FORMS.CONTACT_DETAILS.ERRORS.DUPLICATED_ITEMS'
@@ -16,7 +16,7 @@
         }}
       </span>
     }
-    @if (formArray.errors?.missingPreferred) {
+    @if (formArray.errors?.['missingPreferred']) {
       <span class="d-block">
         {{
           'FORMS.CONTACT_DETAILS.ERRORS.MISSING_PREFERRED'
@@ -24,7 +24,7 @@
         }}
       </span>
     }
-    @if (formArray.errors?.moreThanOnePreferred) {
+    @if (formArray.errors?.['moreThanOnePreferred']) {
       <span class="d-block">
         {{
           'FORMS.CONTACT_DETAILS.ERRORS.MISSING_PREFERRED'
@@ -57,7 +57,7 @@
         [form]="getEmailAddressForm(ind)"
         [selectedTypes]="selectedEmailTypes"
         [fieldStates]="getEmailAddressState(ind)"
-        (preferredToggled)="preferredEmailToggled($event, ind)"
+        (preferredToggled)="preferredEmailToggled($any($event), ind)"
         [otpInputViewMode]="otpInputViewMode"
         [otpVerificationMode]="otpVerificationMode"
         [dedupeOperationMode]="dedupeOperationMode"></app-email>

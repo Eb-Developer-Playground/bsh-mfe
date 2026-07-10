@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   AbstractControl,
   UntypedFormArray,
   UntypedFormControl,
   UntypedFormGroup,
 } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { StepperComponent } from './stepper.component';
 
 @Component({ template: `` })

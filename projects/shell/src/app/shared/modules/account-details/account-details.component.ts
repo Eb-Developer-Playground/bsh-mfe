@@ -1,17 +1,19 @@
-import {
-  ChangeDetectorRef,
+import { ChangeDetectorRef,
   Component,
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import {
-  MAT_DIALOG_DATA,
   MatDialog,
-  MatDialogRef,
+  MatDialogModule,
 } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { TranslatePipe } from '@ngx-translate/core';
+import { MaritalStatusPipe } from '../../pipes/marital-status.pipe';
 import { AccountService, SessionService } from '../../services';
 import { MessageBoxType, ToastService } from '../toast';
 import { ImagePreviewDialog } from '../../dialogs';
@@ -21,6 +23,14 @@ import { ISubsidiary } from '@app/shared/services/session/session.service';
   selector: 'app-account-details',
   templateUrl: './account-details.component.html',
   styleUrls: ['./account-details.component.scss'],
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatCardModule,
+    MatIconModule,
+    TranslatePipe,
+    MaritalStatusPipe,
+  ],
 })
 export class AccountDetailsComponent implements OnInit, OnChanges {
   @Input() accountNumber!: any;
@@ -54,16 +64,16 @@ export class AccountDetailsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.subsidiary = this.session.subsidiary;
-    if (changes?.accountNumber?.currentValue) {
-      this.accountNumber = changes?.accountNumber.currentValue;
+    if (changes?.['accountNumber']?.currentValue) {
+      this.accountNumber = changes?.['accountNumber'].currentValue;
       this.setup();
     }
-    if (changes?.customerId) {
-      this.customerId = changes?.customerId.currentValue;
+    if (changes?.['customerId']) {
+      this.customerId = changes?.['customerId'].currentValue;
       this.performCIFInquiry(this.customerId, this.isEntity);
     }
-    if (changes?.cifDetails?.currentValue) {
-      this.cifDetails = changes?.cifDetails?.currentValue;
+    if (changes?.['cifDetails']?.currentValue) {
+      this.cifDetails = changes?.['cifDetails']?.currentValue;
     }
   }
 

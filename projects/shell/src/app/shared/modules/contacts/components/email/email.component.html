@@ -9,14 +9,14 @@
         placeholder="Enter address"
         type="text" />
       @if (
-        form.get('emailAddress')!.errors?.isEmail ||
-        form.get('emailAddress')!.errors?.email
+        form.get('emailAddress')!.errors?.['isEmail'] ||
+        form.get('emailAddress')!.errors?.['email']
       ) {
         <mat-error>
           {{ 'COMMON.INVALID_EMAIL' | translate }}
         </mat-error>
       }
-      @if (form.get('emailAddress')!.errors?.required) {
+      @if (form.get('emailAddress')!.errors?.['required']) {
         <mat-error>
           {{ 'COMMON.EMAIL_ADDRESS' | translate }}&nbsp;{{
             'COMMON.IS' | translate
@@ -73,12 +73,12 @@
             placeholder="Enter address"
             type="text" />
           @if (
-            form.get('emailAddress')?.errors?.isEmail ||
-            form.get('emailAddress')?.errors?.email
+            form.get('emailAddress')?.errors?.['isEmail'] ||
+            form.get('emailAddress')?.errors?.['email']
           ) {
             <mat-error>{{ 'COMMON.INVALID_EMAIL' | translate }}</mat-error>
           }
-          @if (form.get('emailAddress')?.errors?.required) {
+          @if (form.get('emailAddress')?.errors?.['required']) {
             <mat-error>
               {{ 'COMMON.EMAIL_ADDRESS' | translate }}&nbsp;{{
                 'COMMON.IS' | translate
@@ -118,7 +118,7 @@
         <div class="d-flex mt-5">
           <app-email-otp-section
             #otpInputComponent
-            (onVerified)="readonly = $event"
+            (onVerified)="readonly = $any($event)"
             [enableVerification]="enableVerification"
             [ticketId]="ticketId"
             [customerId]="customerId"

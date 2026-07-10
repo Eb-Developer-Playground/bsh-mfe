@@ -1,12 +1,4 @@
-import {
-  Component,
-  DestroyRef,
-  inject,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, DestroyRef, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   UntypedFormArray,
@@ -16,7 +8,7 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { IPhoneNumberFieldStates } from '@app/shared/models/customer/shared';
 import { OTPInputViewMode } from '@app/shared/modules/contacts';
 import { PhoneNumberComponent } from '@app/shared/modules/contacts/components/phone-number/phone-number.component';
@@ -33,13 +25,12 @@ import { validatePhoneCityCode } from '@app/shared/validators/phone-city-code-va
 
 @Component({
   selector: 'app-phone-numbers-array',
-  standalone: true,
   imports: [
     MatButtonModule,
     MatDividerModule,
     PhoneNumberComponent,
     NotificationsModule,
-    TranslateModule,
+    TranslatePipe,
   ],
   templateUrl: './phone-numbers-array.component.html',
   styleUrls: ['./phone-numbers-array.component.scss'],
@@ -56,25 +47,27 @@ export class PhoneNumbersArrayComponent implements OnInit, OnChanges {
   @Input() otpInputViewMode!: OTPInputViewMode;
   @Input() otpVerificationMode!: OTPVerificationMode;
   @Input() dedupeOperationMode!: DedupeOperationMode;
-  @Input() formArray: UntypedFormArray = this.fb.array([
-    this.fb.group({
-      id: [null],
-      phoneType: ['', Validators.required],
-      countryCode: ['', [Validators.required, validateCountryCode]],
-      cityCode: [''],
-      number: ['', [Validators.required]],
-      comment: [''],
-      isPreferred: [true],
-      toBeDeleted: [false],
-      isMandatory: [false],
-      verified: [null],
-      unique: [null],
-    }),
-  ]);
   @Input() required!: boolean;
+  @Input() formArray!: UntypedFormArray;
   selectedPhoneTypes: string[] = [];
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {
+    this.formArray = this.fb.array([
+      this.fb.group({
+        id: [null],
+        phoneType: ['', Validators.required],
+        countryCode: ['', [Validators.required, validateCountryCode]],
+        cityCode: [''],
+        number: ['', [Validators.required]],
+        comment: [''],
+        isPreferred: [true],
+        toBeDeleted: [false],
+        isMandatory: [false],
+        verified: [null],
+        unique: [null],
+      }),
+    ]);
+  }
 
   ngOnInit() {
     if (this.parentForm && this.parentFormControlName) {
@@ -89,7 +82,7 @@ export class PhoneNumbersArrayComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.fieldStates?.currentValue) {
+    if (changes?.['fieldStates']?.currentValue) {
       this.patchValues();
     }
   }

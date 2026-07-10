@@ -1,5 +1,4 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnChanges,
@@ -7,28 +6,31 @@ import {
   OnInit,
   Output,
   SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { FileSizePipe } from './file-size.pipe';
+import { FilenameLabelPipe } from './filenameLabel.pipe';
+
 import { SessionService, UIService } from '@app/shared/services';
 import { DocumentsService } from '@app/shared/services/document/document.service';
 import { TranslateService } from '@ngx-translate/core';
 import { catchError, of, retry, Subject, takeUntil, timer } from 'rxjs';
 import { CameraModalComponent } from '../document-upload/camera-modal/camera-modal.component';
 import { MessageBoxType, ToastService } from '../toast';
-import { FileSizePipe } from './file-size.pipe';
 import { IDocumentSpec, IUploadedDocument } from './models';
 
 @Component({
   selector: 'app-documents-upload',
   templateUrl: './documents-upload.component.html',
   styleUrls: ['./documents-upload.component.scss'],
-})
+  imports: [COMPAT_IMPORTS, FileSizePipe, FilenameLabelPipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DocumentsUploadComponent implements OnInit, OnChanges, OnDestroy {
   /*
     Some file types: 'image/svg+xml', 'image/png', 'image/jpeg', 'application/pdf'
@@ -55,9 +57,7 @@ export class DocumentsUploadComponent implements OnInit, OnChanges, OnDestroy {
   cloneOfObjects: Array<IUploadedDocument> = [];
   placeholderImage =
     '../../../../../../../assets/images/Illustration-background.svg';
-  confirmationForm: UntypedFormGroup = this.fb.group({
-    confirm: [false, [Validators.required]],
-  });
+  confirmationForm: UntypedFormGroup = new UntypedFormGroup({});
   _defaultTypes: string[] = [
     'image/svg+xml',
     'image/png',
@@ -74,7 +74,11 @@ export class DocumentsUploadComponent implements OnInit, OnChanges, OnDestroy {
     private translate: TranslateService,
     private session: SessionService,
     private documentsService: DocumentsService
-  ) {}
+  ) {
+    this.confirmationForm = this.fb.group({
+      confirm: [false, [Validators.required]],
+    });
+  }
 
   ngOnInit(): void {
     this.confirmationForm.valueChanges
@@ -85,8 +89,8 @@ export class DocumentsUploadComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes?.documentSpecs?.currentValue) {
-      this.documentSpecs = changes?.documentSpecs?.currentValue;
+    if (changes?.['documentSpecs']?.currentValue) {
+      this.documentSpecs = changes?.['documentSpecs']?.currentValue;
       this.cloneOfObjects = this.documentSpecs?.map((doc: IDocumentSpec) => ({
         success: false,
         document: {

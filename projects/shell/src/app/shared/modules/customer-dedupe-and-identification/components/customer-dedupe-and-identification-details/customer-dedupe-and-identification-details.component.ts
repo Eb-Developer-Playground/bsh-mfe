@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormGroup,
   UntypedFormBuilder,
@@ -20,13 +20,15 @@ import {
   IDedupeResult,
 } from '../../../identification/dedupe.service';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { ISubsidiary } from '@app/shared/services/session/session.service';
 
 @Component({
   selector: 'app-customer-dedupe-and-identification-details',
   templateUrl: './customer-dedupe-and-identification-details.component.html',
   styleUrls: ['./customer-dedupe-and-identification-details.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class CustomerDedupeAndIdentificationDetailsComponent implements OnInit {
   @Input() subsidiaryCountry!: string;
   @Input() parentForm!: UntypedFormGroup;

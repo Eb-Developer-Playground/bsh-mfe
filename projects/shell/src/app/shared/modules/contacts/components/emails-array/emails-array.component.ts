@@ -1,12 +1,4 @@
-import {
-  Component,
-  DestroyRef,
-  inject,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, DestroyRef, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   UntypedFormArray,
@@ -16,7 +8,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { IEmailAddressFieldStates } from '@app/shared/models/customer/shared';
 import { OTPInputViewMode } from '@app/shared/modules/contacts';
 import { EmailComponent } from '@app/shared/modules/contacts/components';
@@ -30,14 +22,13 @@ import { ISubsidiary } from '@app/shared/services/session/session.service';
 
 @Component({
   selector: 'app-emails-array',
-  standalone: true,
   imports: [
     MatButtonModule,
     MatDividerModule,
     MatSlideToggleModule,
     EmailComponent,
     NotificationsModule,
-    TranslateModule,
+    TranslatePipe,
   ],
   templateUrl: './emails-array.component.html',
   styleUrls: ['./emails-array.component.scss'],
@@ -54,21 +45,23 @@ export class EmailsArrayComponent implements OnInit, OnChanges {
   @Input() otpInputViewMode!: OTPInputViewMode;
   @Input() otpVerificationMode!: OTPVerificationMode;
   @Input() dedupeOperationMode!: DedupeOperationMode;
-  @Input() formArray: UntypedFormArray = this.fb.array([
-    this.fb.group({
-      id: [null],
-      emailType: [null],
-      emailAddress: [null],
-      comment: [null],
-      isPreferred: [true],
-      toBeDeleted: [false],
-      verified: [null],
-    }),
-  ]);
   @Input() required!: boolean;
+  @Input() formArray!: UntypedFormArray;
   selectedEmailTypes: string[] = [];
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {
+    this.formArray = this.fb.array([
+      this.fb.group({
+        id: [null],
+        emailType: [null],
+        emailAddress: [null],
+        comment: [null],
+        isPreferred: [true],
+        toBeDeleted: [false],
+        verified: [null],
+      }),
+    ]);
+  }
 
   ngOnInit() {
     if (this.parentForm && this.parentFormControlName) {
@@ -83,7 +76,7 @@ export class EmailsArrayComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.fieldStates?.currentValue) {
+    if (changes?.['fieldStates']?.currentValue) {
       this.patchValues();
     }
   }

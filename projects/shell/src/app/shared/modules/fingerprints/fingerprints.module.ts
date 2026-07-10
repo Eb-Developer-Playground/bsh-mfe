@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { TranslateModule } from '@ngx-translate/core';
 import { ToastModule } from '../toast';
 import { PipesModule } from '../../pipes/pipes.module';
 import { AutocompleteModule } from '../autocomplete/autocomplete.module';
@@ -23,7 +22,15 @@ import {
 import { TransformProfileActionPipe } from './pipes/transform-profile-action.pipe';
 
 @NgModule({
-  declarations: [
+
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    MaterialModule,
+    AutocompleteModule,
+    ToastModule,
     FingerprintsComponent,
     FingerComponent,
     HandComponent,
@@ -33,16 +40,6 @@ import { TransformProfileActionPipe } from './pipes/transform-profile-action.pip
     VerifySkipBioDialog,
     VerifyBioDialog,
     TransformProfileActionPipe,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
-    MaterialModule,
-    AutocompleteModule,
-    ToastModule,
-    TranslateModule,
   ],
   exports: [
     FingerprintsComponent,
@@ -54,5 +51,6 @@ import { TransformProfileActionPipe } from './pipes/transform-profile-action.pip
     VerifySkipBioDialog,
     VerifyBioDialog,
   ],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FingerprintsModule {}

@@ -16,7 +16,7 @@
       [selectableIdTypes]="selectableIdTypes"
       [documentForm]="getIdDocumentForm(ind)"
       [fieldStates]="getIdDocumentState(f.get('idType')?.value)"
-      (preferredToggled)="preferredIdToggled($event, ind)">
+      (preferredToggled)="preferredIdToggled($any($event), ind)">
     </app-id-document>
     <button
       *ngIf="!f.get('isMandatory')?.value"

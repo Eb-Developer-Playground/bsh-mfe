@@ -42,7 +42,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  standalone: true,
   selector: 'phone-number-input',
   templateUrl: 'phone-number.input.html',
   styleUrls: ['phone-number.input.scss'],
@@ -73,17 +72,7 @@ export class PhoneNumberInput
   @ViewChild('city') cityCodeInput!: HTMLInputElement;
   @ViewChild('number') numberInput!: HTMLInputElement;
   @Input() collapsedMode: boolean = false;
-  @Input() formGroup: UntypedFormGroup = this._formBuilder.group({
-    id: [''],
-    type: ['COMMPH1'],
-    countryCode: this._formBuilder.control(''),
-    cityCode: this._formBuilder.control(''),
-    number: this._formBuilder.control(''),
-    isPreferred: [false],
-    comment: [null],
-    toBeDeleted: [false],
-    isMandatory: [false],
-  });
+  @Input() formGroup!: UntypedFormGroup;
   @Output() onCountrySelected: EventEmitter<any> = new EventEmitter<any>();
   countries: ICountry[] = [];
   filteredOptions!: Observable<ICountry[]>;
@@ -192,6 +181,17 @@ export class PhoneNumberInput
     if (this.ngControl !== null) {
       this.ngControl.valueAccessor = this;
     }
+    this.formGroup = this._formBuilder.group({
+      id: [''],
+      type: ['COMMPH1'],
+      countryCode: this._formBuilder.control(''),
+      cityCode: this._formBuilder.control(''),
+      number: this._formBuilder.control(''),
+      isPreferred: [false],
+      comment: [null],
+      toBeDeleted: [false],
+      isMandatory: [false],
+    });
   }
 
   ngOnInit() {
@@ -341,11 +341,11 @@ export class PhoneNumberInput
 
     if (this.formGroup.valid) {
       // Good
-    } else if (this.formGroup.controls.countryCode.valid) {
+    } else if (this.formGroup.controls['countryCode'].valid) {
       this._focusMonitor.focusVia(this.cityCodeInput, 'program');
-    } else if (this.formGroup.controls.cityCode.valid) {
+    } else if (this.formGroup.controls['cityCode'].valid) {
       this._focusMonitor.focusVia(this.numberInput, 'program');
-    } else if (this.formGroup.controls.number.valid) {
+    } else if (this.formGroup.controls['number'].valid) {
       this._focusMonitor.focusVia(this.countryInput, 'program');
     } else {
       this._focusMonitor.focusVia(this.countryInput, 'program');

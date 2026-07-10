@@ -1,11 +1,9 @@
-import {
-  Component,
+import { Component,
   ElementRef,
   Input,
   OnDestroy,
   OnInit,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   AbstractControl,
@@ -24,6 +22,7 @@ import { StaticDataService } from '../../../../services/static-data.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 
 @Component({
   selector: 'app-countries-control',

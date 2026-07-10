@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import {
   FieldType,
   TableData,
@@ -11,7 +12,8 @@ import { Customer } from 'src/app/shared/models/customer/customer.model';
   selector: 'app-dedupe-search-result',
   templateUrl: './dedupe-search-result.component.html',
   styleUrls: ['./dedupe-search-result.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DedupeSearchResultComponent implements OnInit {
   @Input() ICIFItem!: ICIFItem[];
   @Output() selectedICIFItem: EventEmitter<ICIFItem> =

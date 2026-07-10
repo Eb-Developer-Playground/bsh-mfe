@@ -1,11 +1,8 @@
 import {
-  LowerCasePipe,
   NgClass,
-  NgForOf,
-  NgIf,
   TitleCasePipe,
 } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
@@ -13,6 +10,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { IContactDedupeItem } from '@app/shared/modules/contacts/fields/phone-number/types';
 import {
   ISubsidiary,
@@ -23,14 +21,11 @@ import {
   selector: 'dialog-matched-profiles',
   standalone: true,
   imports: [
-    NgIf,
-    NgForOf,
     NgClass,
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
     TitleCasePipe,
-    LowerCasePipe,
   ],
   templateUrl: './matched-profiles.dialog.html',
   styleUrls: ['./matched-profiles.dialog.scss'],

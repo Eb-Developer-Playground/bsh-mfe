@@ -1,19 +1,18 @@
-import {
-  Component,
+import { Component,
   ElementRef,
   EventEmitter,
   Inject,
   Input,
   OnInit,
   Output,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { MessageBoxType } from '@app/shared/modules/toast/models';
 import {
   ISubsidiary,
@@ -29,7 +28,8 @@ import { CameraModalComponent } from './camera-modal/camera-modal.component';
   selector: 'app-document-upload',
   templateUrl: './document-upload.component.html',
   styleUrls: ['./document-upload.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DocumentUploadComponent implements OnInit {
   @Input() cloneOfObjects: Array<any> = [];
   @Input() allowedFileTypes: string[] = [
@@ -55,9 +55,7 @@ export class DocumentUploadComponent implements OnInit {
   private destroySubject$ = new Subject();
   scanner: any;
   subsidiary!: ISubsidiary;
-  confirmationForm: UntypedFormGroup = this.fb.group({
-    confirm: [false, [Validators.required]],
-  });
+  confirmationForm!: UntypedFormGroup;
 
   constructor(
     private toastService: ToastService,
@@ -66,7 +64,11 @@ export class DocumentUploadComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialog: MatDialog,
     private session: SessionService
-  ) {}
+  ) {
+    this.confirmationForm = this.fb.group({
+      confirm: [false, [Validators.required]],
+    });
+  }
 
   async ngOnInit(): Promise<void> {
     this.subsidiary = this.session.subsidiary;

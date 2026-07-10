@@ -1,23 +1,23 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnDestroy,
   OnInit,
-  Output,
-} from '@angular/core';
+  Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { Finger, FingerPrintState } from '../../models';
 import { SkipEnrolBioDialog } from '../../dialogs';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 
 @Component({
   selector: 'app-fingerprints',
   templateUrl: './fingerprints.component.html',
   styleUrls: ['./fingerprints.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class FingerprintsComponent implements OnInit, OnDestroy {
   @Input() title = 'Biometrics scan';
   @Input() description: string =
@@ -101,9 +101,7 @@ export class FingerprintsComponent implements OnInit, OnDestroy {
       state: FingerPrintState.NOTCAPTURED,
     },
   ];
-  skipBioForm: UntypedFormGroup = this.fb.group({
-    skipCheckBox: false,
-  });
+  skipBioForm!: UntypedFormGroup;
   leftFingerArray: any[] = [];
   rightFingerArray: any[] = [];
   fingersArray: any[] = [];

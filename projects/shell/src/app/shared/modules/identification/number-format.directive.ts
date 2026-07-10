@@ -1,16 +1,15 @@
-import {
-  Directive,
+import { Directive,
   ElementRef,
   HostListener,
   Input,
-  Renderer2,
-} from '@angular/core';
+  Renderer2, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ID_TYPES } from './types';
 import { IdDocumentService } from './id-document.service';
 
 @Directive({
   selector: 'input[numberFormat]',
 })
+
 export class NumberFormatDirective {
   @Input() idType?: ID_TYPES;
   @Input() countryCode?: string;

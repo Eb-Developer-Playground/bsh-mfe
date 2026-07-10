@@ -1,17 +1,16 @@
-import {
-  Component,
+import { Component,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormArray,
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { Subject } from 'rxjs';
 import { startWith, takeUntil } from 'rxjs/operators';
 import { IdDocumentService } from '../id-document.service';
@@ -21,7 +20,8 @@ import { ID_TYPES, IdDocumentFieldStates, IdTypeDescription } from '../types';
   selector: 'app-id-documents',
   templateUrl: './id-documents.component.html',
   styleUrls: ['./id-documents.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class IdDocumentsComponent implements OnInit, OnChanges, OnDestroy {
   @Input() nationality!: string;
   @Input() countryOfResidence!: string;
@@ -34,22 +34,25 @@ export class IdDocumentsComponent implements OnInit, OnChanges, OnDestroy {
   @Input() readonly!: boolean;
   @Input() parentForm!: UntypedFormGroup;
   @Input() parentFormControlName!: string;
-  @Input() documentsFormArray: UntypedFormArray = this.fb.array([]);
+  @Input() documentsFormArray!: UntypedFormArray;
   @Input() fieldStates?: IdDocumentFieldStates[];
   @Input() stateChanged!: boolean;
   @Input() enableMultiple = true;
   selectableIdTypes: IdTypeDescription[] = [];
   selectedIdTypes: string[] = [];
-  nationalityForm: UntypedFormGroup = this.fb.group({
-    nationality: [null, Validators.required],
-    countryOfResidence: [null, Validators.required],
-  });
+  nationalityForm!: UntypedFormGroup;
   destroy$: Subject<any> = new Subject<any>();
 
   constructor(
     private fb: UntypedFormBuilder,
     private service: IdDocumentService
-  ) {}
+  ) {
+    this.documentsFormArray = this.fb.array([]);
+    this.nationalityForm = this.fb.group({
+      nationality: [null, Validators.required],
+      countryOfResidence: [null, Validators.required],
+    });
+  }
 
   ngOnInit() {
     if (this.nationality && this.countryOfResidence && this.dedupeIdType)
@@ -74,10 +77,10 @@ export class IdDocumentsComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.fieldStates?.currentValue) {
+    if (changes['fieldStates']?.currentValue) {
       this.patchValues();
     }
-    if (changes.nationality || changes.countryOfResidence) {
+    if (changes['nationality'] || changes['countryOfResidence']) {
       this.setMandatoryDocuments();
     }
   }

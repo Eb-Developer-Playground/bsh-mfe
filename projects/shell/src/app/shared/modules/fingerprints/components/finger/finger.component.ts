@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { Finger, FingerPrintState } from '../../models';
 import { FingerprintsService } from '../../fingerprints.service';
 import { MessageBoxType, ToastService } from '../../../toast';
@@ -10,7 +11,8 @@ import { isProd, isUat } from '../../../../utils';
   selector: 'app-finger',
   templateUrl: './finger.component.html',
   styleUrls: ['./finger.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class FingerComponent implements OnInit {
   @Input() finger: Finger = {
     id: null,
@@ -38,11 +40,11 @@ export class FingerComponent implements OnInit {
 
   initSecugenLicense = () => {
     if (isUat()) {
-      this.secugenLicense = envUAT.secugenLicenseUAT;
+      this.secugenLicense = (envUAT as any).secugenLicenseUAT;
     }
 
     if (isProd()) {
-      this.secugenLicense = envProd.secugenLicenseProd;
+      this.secugenLicense = (envProd as any).secugenLicenseProd;
     }
   };
 

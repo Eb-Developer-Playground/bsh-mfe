@@ -1,4 +1,5 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { Subject } from 'rxjs';
 import { delay, takeUntil } from 'rxjs/operators';
 import { LoaderService } from './loader.service';
@@ -7,7 +8,8 @@ import { LoaderService } from './loader.service';
   selector: 'app-loader',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class LoaderComponent implements OnDestroy {
   loading = false;
   @Input() inComponentLoading = false;

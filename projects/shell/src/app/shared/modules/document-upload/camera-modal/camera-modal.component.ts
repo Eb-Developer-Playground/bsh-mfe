@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-camera-modal',
   templateUrl: './camera-modal.component.html',
   styleUrls: ['./camera-modal.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class CameraModalComponent implements OnInit {
   capturedImage: string | null = null;
   videoElement!: HTMLVideoElement;

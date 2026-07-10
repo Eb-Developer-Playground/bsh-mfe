@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PhoneNumberInput } from './phone-number.input';
 import { PhoneNumber } from './types';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 
 @Component({
   standalone: true,

@@ -1,15 +1,14 @@
-import {
-  AfterViewInit,
+import { AfterViewInit,
   Component,
   OnDestroy,
   OnInit,
   QueryList,
   ViewChild,
-  ViewChildren,
-} from '@angular/core';
+  ViewChildren, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CdkStepper } from '@angular/cdk/stepper';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { Subject } from 'rxjs';
 import { OnFinish, OnQuit } from './models';
 
@@ -32,7 +31,7 @@ export class StepperParentComponent
   ngAfterViewInit(): void {
     this.stepComponents.first?.onActive(); // Activate first component by default
     this.route.queryParams.subscribe(params => {
-      const step = params?.step || null;
+      const step = params?.['step'] || null;
       if (step) {
         try {
           this.stepperComp.linear = false;

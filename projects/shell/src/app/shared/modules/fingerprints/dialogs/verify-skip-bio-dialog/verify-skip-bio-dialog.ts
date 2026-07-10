@@ -1,5 +1,5 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { Component, Inject, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,6 +9,8 @@ import { BioVerifyInput } from '../../models';
 
 import { isDevOrUat } from '../../../../utils';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
+import { TransformProfileActionPipe } from '../../pipes/transform-profile-action.pipe';
 
 export enum reasonOption {
   CUSTOMER_NOT_PRESENT = 'customerNotPresent',
@@ -20,14 +22,11 @@ export enum reasonOption {
   selector: 'app-verify-skip-bio',
   templateUrl: './verify-skip-bio-dialog.html',
   styleUrls: ['./verify-skip-bio-dialog.scss'],
-})
+  imports: [COMPAT_IMPORTS, TransformProfileActionPipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class VerifySkipBioDialog implements OnInit, OnDestroy {
   reasonOptionSelected!: reasonOption;
-  reasonForm = this.formBuilder.group({
-    reason: ['', Validators.required],
-    comment: ['', Validators.required],
-    action: [''],
-  });
+  reasonForm!: UntypedFormGroup;
   actionsArray: string[] = [];
   reasonOptionArray: any[] = [];
   requiredUploadDocument = true;
@@ -48,6 +47,11 @@ export class VerifySkipBioDialog implements OnInit, OnDestroy {
     private toast: ToastService,
     private sessionService: SessionService
   ) {
+    this.reasonForm = this.formBuilder.group({
+      reason: ['', Validators.required],
+      comment: ['', Validators.required],
+      action: [''],
+    });
     if (isDevOrUat()) {
       if (this.sessionService.userWorkClass === '080') {
         this.reasonOptionArray = [
@@ -117,23 +121,23 @@ export class VerifySkipBioDialog implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.accountData = this.data;
-    this.reasonForm.controls.action.valueChanges
+    this.reasonForm.controls['action'].valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
         this.requiredUploadDocument = this.actionNoDocumentsRequired(value);
       });
-    this.reasonForm.controls.reason.valueChanges
+    this.reasonForm.controls['reason'].valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe((value: reasonOption) => {
         this.reasonOptionSelected = value;
         if (value === reasonOption.CUSTOMER_NOT_PRESENT) {
-          this.reasonForm.controls.action.addValidators(Validators.required);
+          this.reasonForm.controls['action'].addValidators(Validators.required);
           if (this.actionsArray.length === 0) {
             this.getCustomerNotPresentActions();
           }
         } else {
-          this.reasonForm.controls.action.clearValidators();
-          this.reasonForm.controls.action.updateValueAndValidity();
+          this.reasonForm.controls['action'].clearValidators();
+          this.reasonForm.controls['action'].updateValueAndValidity();
         }
       });
   }
@@ -169,7 +173,7 @@ export class VerifySkipBioDialog implements OnInit, OnDestroy {
       return;
     }
     const base64 = await this.toBase64(files[0]);
-    const prefixDocument = this.reasonForm.controls.action.value;
+    const prefixDocument = this.reasonForm.controls['action'].value;
     this.cloneOfObjects.push({
       name: files[0].name,
       description: files[0].name,
@@ -243,7 +247,7 @@ export class VerifySkipBioDialog implements OnInit, OnDestroy {
       }
     }
     const base64 = await this.toBase64(file.files[0]);
-    const prefixDocument = this.reasonForm.controls.action.value;
+    const prefixDocument = this.reasonForm.controls['action'].value;
     this.cloneOfObjects.push({
       name: file.files[0].name,
       description: file.files[0].name,

@@ -13,7 +13,7 @@ import {
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { IPhoneNumberFieldStates } from '@app/shared/models/customer/shared';
 import { MatchedProfilesDialog } from '@app/shared/modules/contacts/dialogs/matched-profiles.dialog';
 import { PhoneNumberInput } from '@app/shared/modules/contacts/fields/phone-number';
@@ -22,12 +22,11 @@ import { DedupeOperationMode } from '@app/shared/modules/contacts/types';
 
 @Component({
   selector: 'app-phone-number-group',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
     PhoneNumberInput,
-    TranslateModule,
+    TranslatePipe,
   ],
   templateUrl: './phone-number-group.component.html',
   styleUrls: ['./phone-number-group.component.scss'],
@@ -67,7 +66,7 @@ export class PhoneNumberGroupComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes?.fieldStates?.currentValue) this.patchValues();
+    if (changes?.['fieldStates']?.currentValue) this.patchValues();
   }
 
   patchValues(): void {

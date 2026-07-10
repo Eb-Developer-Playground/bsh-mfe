@@ -1,12 +1,10 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
+import { ChangeDetectionStrategy,
   Component,
   ElementRef,
   Input,
   QueryList,
-  ViewChildren,
-} from '@angular/core';
+  ViewChildren, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -18,6 +16,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 
 function getFormArray(size: number): FormArray {
   const arr = [];

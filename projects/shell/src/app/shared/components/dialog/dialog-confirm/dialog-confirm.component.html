@@ -1,0 +1,135 @@
+<div class="wrp_toast">
+  <div mat-dialog-title class="d-flex w-100 justify-content-between">
+    <p
+      class="mat-headline-6 m-0 w-100 align-self-center"
+      [innerHTML]="title | translate"></p>
+    <mat-icon
+      aria-hidden="false"
+      aria-label="close icon"
+      class="align-self-end close-icon"
+      *ngIf="showCloseIcon"
+      (click)="closeDialog()"
+      >close</mat-icon
+    >
+  </div>
+
+  <section mat-dialog-content>
+    <div class="d-flex mt-10 mb-10" *ngIf="data?.pillText">
+      <app-pills
+        color="red"
+        icon="ic-exclamation-red"
+        [text]="data?.pillText"></app-pills>
+    </div>
+
+    <ng-container *ngIf="bodyDescription">
+      <p
+        class="mat-subtitle-1 m-0 text-muted"
+        [innerHTML]="bodyDescription | translate"></p>
+    </ng-container>
+
+    <div class="gridset" *ngIf="dataObject && dataObject.length !== 0">
+      <div *ngFor="let item of dataObject">
+        <h3 class="mat-subtitle-1 text-muted m-0">
+          {{ item.title | translate }}
+        </h3>
+        <span class="mat-subtitle-1 fw-400">{{ item.value }}</span>
+      </div>
+    </div>
+    <app-documents-upload-drc
+      *ngIf="data?.isRemoveAgent && data?.showDocumentUpload"
+      (onUploaded)="getDocuments($event)"
+      [documentSpecs]="data?.documents"
+      [allowAdditional]="true"
+      [title]="'DOCUMENTS.TITLE'">
+    </app-documents-upload-drc>
+
+    <ng-container *ngIf="showDocumentUpload && !data?.isRemoveAgent">
+      <div class="mb-12 mt-12">
+        <p class="mat-subtitle-2 fw-300">
+          {{ 'DOCUMENTS.UPLOAD-DOCUMENTS' | translate }}
+        </p>
+        <h5 class="text-muted">
+          {{ 'DOCUMENTS.UPLOAD-INSTRUCTION' | translate }}<br />{{
+            'DOCUMENTS.SHOULD-NOT-EXCEED-1MB' | translate
+          }}
+        </h5>
+      </div>
+      <div>
+        <div
+          fxLayout="row"
+          fxFill
+          fxFlex="100"
+          fxLayoutAlign="space-between start"
+          fxLayoutGap="24px">
+          <div fxFlex="50">
+            <div class="scanner">
+              <div
+                class="col drag-drop"
+                (files)="filesDropped($event)"
+                appDragDropDocuments
+                (click)="filedrag.click()">
+                <input
+                  type="file"
+                  #filedrag
+                  (change)="onChange(filedrag)"
+                  style="display: none" />
+                <div>
+                  <mat-icon
+                    height="20px"
+                    svgIcon="ic-uploadBackground"
+                    style="transform: scale(1.7)"></mat-icon>
+                  <p class="text drop-text">
+                    {{ 'DOCUMENTS.UPLOAD-ADDITIONAL-DOCUMENTS' | translate }}
+                  </p>
+                  <p class="text instruction">
+                    {{ 'DOCUMENTS.DRAG-AND-DROP' | translate }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          fxLayout="column"
+          fxFill
+          fxFlex="50"
+          fxLayoutAlign="center start"
+          fxLayoutGap="10px">
+          <div *ngFor="let obj of cloneOfObjects" class="doc-list">
+            <div class="docs">
+              <div class="align-self-center" [matTooltip]="obj.documentName">
+                <p class="mat-subtitle-2 fw-400 mb-2 format-name-text">
+                  {{ obj.documentName }}
+                </p>
+                <p class="text-muted mb-2">{{ obj.fileSize }}</p>
+              </div>
+            </div>
+            <div class="more-icon">
+              <button mat-icon-button (click)="deleteUpload(obj)">
+                <mat-icon svgIcon="ic-delete"> </mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </section>
+  <section mat-dialog-actions class="btn_section">
+    <button mat-button color="primary" (click)="closeDialog(false)">
+      {{ cancelButtonLabel | translate }}
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="
+        (countryCode === 'CD' && uploadedDocsAreValid) ||
+        (countryCode !== 'CD' &&
+          cloneOfObjects.length === 0 &&
+          showDocumentUpload &&
+          customerNotPresent)
+      "
+      (click)="closeDialog(true)">
+      {{ confirmButtonLabel | translate }}
+    </button>
+  </section>
+</div>

@@ -1,0 +1,82 @@
+@use 'sass:map';
+
+$font-weights: (
+  '200': 200,
+  '300': 300,
+  '400': 400,
+  '500': 500,
+  '600': 600,
+  '700': 700,
+  '800': 800,
+  '900': 900,
+);
+
+@each $suf, $value in $font-weights {
+  .fw-#{$suf} {
+    font-weight: $value !important;
+  }
+}
+
+@for $i from 0 through 100 {
+  .w-#{$i} {
+    width: $i * 1px;
+  }
+
+  .h-#{$i} {
+    height: $i * 1px;
+  }
+
+  .m-#{$i} {
+    margin: $i * 1px !important;
+  }
+
+  .p-#{$i} {
+    padding: $i * 1px;
+  }
+
+  .mt-#{$i} {
+    margin-top: $i * 1px;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: $i * 1px;
+  }
+
+  .ml-#{$i} {
+    margin-left: $i * 1px;
+  }
+
+  .mr-#{$i} {
+    margin-right: $i * 1px;
+  }
+
+  .pt-#{$i} {
+    padding-top: $i * 1px;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: $i * 1px;
+  }
+
+  .pr-#{$i} {
+    padding-right: $i * 1px;
+  }
+
+  .pl-#{$i} {
+    padding-left: $i * 1px;
+  }
+}
+
+.p-05m {
+  padding: 0.5rem;
+}
+
+.p-1m {
+  padding: 1rem;
+}
+
+@for $i from 0 through 100 {
+  .gap-#{$i} {
+    gap: $i * 1px !important;
+  }
+}

@@ -1,0 +1,27 @@
+.container {
+  width: 1080px;
+  margin: 0 auto;
+  background: #ffffff;
+  box-shadow:
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  border-radius: 8px;
+
+  & .light-gray {
+    color: #929497;
+  }
+
+  & .hands-box {
+    width: 1032px;
+  }
+
+  & .divider {
+    width: 100%;
+    border-bottom: 1px solid rgba(146, 148, 151, 0.2);
+  }
+}
+
+.skip-biometric-box {
+  margin-top: 34px;
+}

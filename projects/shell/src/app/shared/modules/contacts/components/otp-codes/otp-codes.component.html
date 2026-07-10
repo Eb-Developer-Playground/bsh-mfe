@@ -1,0 +1,19 @@
+<div class="d-flex align-items-center">
+  <div class="code-input-holder">
+    <input
+      #otpInput
+      *ngFor="let input of inputs.controls; let i = index"
+      [attr.autocomplete]="'off'"
+      (keypress)="handleKeyPress($event, i)"
+      (keydown)="handleKeyDown($event, i)"
+      (paste)="handlePaste($event, i)"
+      (focus)="handleFocus($event)"
+      (blur)="onTouched?.()"
+      (input)="handleInput()"
+      [formControl]="$any(input)"
+      type="text"
+      inputmode="numeric"
+      class="code-input"
+      matInput />
+  </div>
+</div>

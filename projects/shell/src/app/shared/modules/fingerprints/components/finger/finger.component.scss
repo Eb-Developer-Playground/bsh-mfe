@@ -1,0 +1,27 @@
+.finger-print-box {
+  width: 84.8px;
+  height: 128px;
+  border: 1px solid rgba(146, 148, 151, 0.2);
+  box-sizing: border-box;
+  border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  & .fp-not-captured,
+  .fp-in-progress {
+    height: 48px;
+    width: 43.03px;
+  }
+
+  & .fp-captured {
+    height: 108px;
+    width: 71px;
+  }
+}
+
+.fingerprint-icon {
+  height: 8.99rem;
+  width: 6rem;
+}

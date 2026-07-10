@@ -1,0 +1,110 @@
+$type: var(--type);
+$background: var(--background);
+
+$borderL: var(--borderL);
+$borderR: var(--borderR);
+$borderB: var(--borderB);
+$borderT: var(--borderT);
+
+:root {
+    --type: #e60000;
+    --background: #ffffff;
+    --borderL: inherit;
+    --borderR: inherit;
+    --borderB: inherit;
+    --borderT: inherit;
+}
+
+.mat-mdc-snack-bar-container {
+    height: auto;
+    max-width: 509px;
+    padding: 4px 4px;
+    border-left: $borderL;
+    border-right: $borderR;
+    border-bottom: $borderB;
+    border-top: $borderT;
+    background: $background;
+    border-radius: 5px;
+    box-shadow:
+        0 4px 4px 4px rgba(0, 0, 0, 0.1),
+        0 4px 4px 0 rgba(0, 0, 0, 0.14),
+        0 4px 4px 0 rgba(0, 0, 0, 0.12) !important;
+
+    .mat-mdc-snack-bar-label {
+        background: $background;
+    }
+    .mdc-snackbar__surface {
+        background: $background;
+        box-shadow: none;
+    }
+    & .type-icon {
+        height: 32px;
+        width: 32px;
+    }
+
+    & .success {
+        & .title {
+            color: #221f1f;
+        }
+        & .text {
+            cursor: pointer;
+            color: #2f9803;
+        }
+        .close-text {
+            color: #2f9803;
+            cursor: pointer;
+        }
+    }
+
+    & .info {
+        & .title {
+            color: #221f1f;
+        }
+        & .text {
+            cursor: pointer;
+            color: #24bbfa;
+        }
+        .close-text {
+            color: #24bbfa;
+            cursor: pointer;
+        }
+    }
+
+    & .warning {
+        & .title {
+            color: #f8ca3c;
+        }
+        & .text {
+            cursor: pointer;
+            color: #f8ca3c;
+        }
+        .close-text {
+            color: #f8ca3c;
+            cursor: pointer;
+        }
+    }
+
+    & .danger {
+        & .title {
+            color: #e60000;
+        }
+        & .text {
+            cursor: pointer;
+            color: #a32a29;
+        }
+        .close-text {
+            color: #a32a29;
+            cursor: pointer;
+        }
+    }
+
+    & .divider {
+        border-left: 1px solid rgba(146, 148, 151, 0.2);
+        margin: 0 2rem;
+    }
+
+    & .close-icon {
+        cursor: pointer;
+        color: #a32a29;
+    }
+}

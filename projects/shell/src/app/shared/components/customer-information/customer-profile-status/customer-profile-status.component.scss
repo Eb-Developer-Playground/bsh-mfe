@@ -1,0 +1,59 @@
+.channels-title {
+  font-size: 14px;
+  background-color: #929497;
+  font-weight: 400;
+}
+
+.blocked-info-text {
+  font-size: 14px;
+  background-color: #929497;
+  font-weight: 400;
+}
+
+.blocked-info-description {
+  font-size: 14px;
+  background-color: #a32a29;
+  font-weight: 400;
+}
+
+.active {
+  background-color: #2f9803;
+}
+
+.blocked {
+  background-color: rgba(230, 0, 0, 1);
+}
+
+.inactive {
+  background-color: #585a5b;
+}
+
+.blocked-info {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+}
+
+.description-div {
+  width: 55%;
+}
+
+.block-section {
+  width: 50%;
+}
+
+.sim-swap {
+  background-color: red;
+  font-weight: 600;
+}
+
+.status-icon {
+  padding: 8px 18px;
+  border-radius: 32px;
+  color: #fff;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  margin: 0;
+  margin-bottom: 1rem;
+}

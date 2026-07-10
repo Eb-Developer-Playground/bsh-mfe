@@ -1,0 +1,29 @@
+@for (section of serviceSections; track section.title) {
+  <mat-card class="container">
+    <div class="flex items-center justify-between">
+      <h3 class="mat-title">{{ section.title | translate }}</h3>
+      <div class="flex items-center color-primary icon-container">
+        <mat-icon class="icon">search</mat-icon>
+        <mat-icon class="icon">info</mat-icon>
+      </div>
+    </div>
+    <div class="color-grey">{{ section.text | translate }}</div>
+    <div class="py-1">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="fieldset">
+      @for (service of section.services; track service.value) {
+        <mat-card class="service-card" (click)="onClick(service.value)">
+          <div class="bg-top"></div>
+          <div class="card-content">
+            <div class="service-icon">
+              <mat-icon>{{ service.icon }}</mat-icon>
+            </div>
+            <div class="mat-subheading-2 service-title" [innerHTML]="service.title | translate"></div>
+            <p class="color-grey">{{ service.text | translate }}</p>
+          </div>
+        </mat-card>
+      }
+    </div>
+  </mat-card>
+}

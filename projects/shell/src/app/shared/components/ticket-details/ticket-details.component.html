@@ -1,0 +1,39 @@
+<mat-card appearance="outlined" class="mb-2" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 fw-400">
+      {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.STATEMENT-DETAILS' | translate }}
+    </h3>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <div class="gridset">
+    <div *ngFor="let item of data">
+      <h3 class="mat-body-2 text-grey fw-400">{{ item.title }}</h3>
+      <span class="mat-body-2">{{ item.value }}</span>
+    </div>
+  </div>
+  <!-- <div class="gridset">
+        <div>
+            <h3 class="mat-body-2 text-grey fw-400">Ticket ID</h3>
+            <span class="mat-body-2">1234ASD</span>
+        </div>
+        <div>
+            <h3 class="mat-body-2 text-grey fw-400">Maker</h3>
+            <span class="mat-body-2">olashile.adegbite@azenia.com</span>
+        </div>
+        <div>
+            <h3 class="mat-body-2 text-grey fw-400">Action</h3>
+            <span class="mat-body-2">Block Card</span>
+        </div>
+        <div>
+            <h3 class="mat-body-2 text-grey fw-400">Application Date</h3>
+            <span class="mat-body-2">11/11/2021</span>
+        </div>
+        <div>
+            <h3 class="mat-body-2 fw-400">Comment</h3>
+            <span class="mat-body-2 text-grey fw-400">olashile.adegbite@azenia.com</span><br />
+            <span class="mat-body-2 text-grey fw-400">11/11/2021</span>
+        </div>
+    </div> -->
+</mat-card>

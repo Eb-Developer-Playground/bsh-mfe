@@ -1,0 +1,18 @@
+<div class="profile_right">
+  <div class="profile_right_pic">
+    <mat-icon
+      svgIcon="ic-corporate"
+      aria-hidden="false"
+      class="img_1"
+      aria-label="placeholder-potrait">
+    </mat-icon>
+  </div>
+  <div class="profile_right_name">
+    <span>
+      {{ customerDetails?.firstName }} {{ customerDetails?.middleName }}
+      {{ customerDetails?.lastName }}
+    </span>
+  </div>
+  <app-customer-profile-status
+    [customerStatus]="customerStatus"></app-customer-profile-status>
+</div>

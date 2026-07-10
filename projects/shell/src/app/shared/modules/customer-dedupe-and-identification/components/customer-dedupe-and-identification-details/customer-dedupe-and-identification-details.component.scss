@@ -1,0 +1,38 @@
+.btn-holder {
+    text-align: right;
+}
+
+.mat-mdc-outlined-button {
+    border: 1px solid #a32a29;
+    width: 141px;
+}
+
+.divider-holder {
+    position: relative;
+}
+
+.card-title-text {
+    display: inline-block;
+}
+
+.card-title-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    height: 30px;
+}
+
+button[mat-mini-fab] {
+    width: 24px;
+    height: 24px;
+    background: rgba(146, 148, 151, 0.2);
+
+    &:disabled {
+        color: #929497;
+    }
+}
+
+::ng-deep .mat-mdc-mini-fab .mat-button-wrapper {
+    padding: 0;
+    display: block;
+}

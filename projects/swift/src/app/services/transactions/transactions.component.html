@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="p-1m min-w-80" style="max-width: 1320px; margin: 1rem auto 0">
+    <mat-card>
+      <div class="d-flex mb-10 flex-wrap-sm p-05m">
+        <div class="d-flex align-content-center me-auto">
+          <h2 class="align-self-center mb-0 mt-0">
+            {{ 'COMMON.TRANSACTIONS' | translate }}
+          </h2>
+          <span class="text-muted align-self-center hide-sm">&nbsp;|&nbsp;{{ transType }}</span>
+        </div>
+      </div>
+    </mat-card>
+    <div class="stepper-body bg-white p-2m mt-2 mb-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

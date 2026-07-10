@@ -1,0 +1,61 @@
+.dialog {
+  padding: 0.3rem;
+
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dialog-content {
+    width: 25vw;
+  }
+
+  .tick-icon {
+    transform: scale(0.8);
+    cursor: pointer;
+    position: relative;
+    top: 8px;
+    padding-right: 10px;
+  }
+
+  .success-container {
+    background: rgba(47, 152, 3, 0.04);
+    border-radius: 32px;
+    padding: 1px;
+  }
+
+  .eq-btn {
+    width: 100px;
+    background: transparent;
+    /* Equity Brown/Equity Brown - 500 */
+    color: #a32a29;
+    border: 1px solid #a32a29;
+    box-sizing: border-box;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &.active,
+    &:focus,
+    &:hover {
+      color: #ffffff;
+      background-color: #a32a29;
+    }
+
+    :disabled {
+      color: white;
+      border: 1px solid #e0e0e0;
+      background-color: #e0e0e0;
+    }
+  }
+
+  .button-container {
+    padding: 8px;
+    padding-right: 0px;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .pl-1 {
+    padding-left: 0.5rem;
+  }
+}

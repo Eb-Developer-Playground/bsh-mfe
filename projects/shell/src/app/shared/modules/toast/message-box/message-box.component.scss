@@ -1,0 +1,60 @@
+.container {
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  & .mat-mdc-card {
+    box-shadow: unset;
+  }
+
+  & .success {
+    & .title {
+      color: #2f9803;
+    }
+
+    & .text {
+      color: #221f1f;
+    }
+
+    background: rgba(47, 152, 3, 0.04);
+    border: 1px solid #2f9803;
+  }
+
+  & .info {
+    & .title {
+      color: #24bbfa;
+    }
+
+    & .text {
+      color: #221f1f;
+    }
+
+    background: rgba(47, 152, 3, 0.04);
+    border: 1px solid #24bbfa;
+  }
+
+  & .warning {
+    & .title {
+      color: #f8ca3c;
+    }
+
+    & .text {
+      color: #221f1f;
+    }
+
+    background: rgba(47, 152, 3, 0.04);
+    border: 1px solid #f8ca3c;
+  }
+
+  & .danger {
+    & .title {
+      color: #e60000;
+    }
+
+    & .text {
+      color: #221f1f;
+    }
+
+    background: rgba(47, 152, 3, 0.04);
+    border: 1px solid #e60000;
+  }
+}

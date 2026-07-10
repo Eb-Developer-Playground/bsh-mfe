@@ -1,0 +1,363 @@
+{
+  "EQUITY": {
+    "MOTTO": "More than just banking."
+  },
+  "COMMON": {
+    "FILTER": "Filter",
+    "HELLO": "Hello",
+    "USERNAME": "Username",
+    "WELCOME": "Welcome to",
+    "CHARGES": "Gebühren",
+    "CHARGE_OPTION_DEFAULTS_TO_SHA": "Wenn Sie die Gebührenoption ablehnen, wird standardmäßig SHA verwendet",
+    "CHARGE_OPTION_DEFAULTS_TO_OUR": "Wenn Sie die Gebührenoption ablehnen, wird standardmäßig OUR verwendet",
+    "CONFIRM": "Confirm",
+    "CANCEL": "Cancel",
+    "BACK": "Back",
+    "QUIT": "Quit",
+    "SUBMIT": "Submit",
+    "APPROVE": "Approve",
+    "RETURN": "Return",
+    "REJECT": "Reject",
+    "NEXT": "Next",
+    "COUNTRY": "Country",
+    "BRANCH": "Branch",
+    "WORKCLASS": "Work Class",
+    "STATUS": "Status",
+    "COMMENT": "Comment",
+    "TABLE": "Table",
+    "DOCUMENTS": {
+      "LABEL": "Supporting Documents",
+      "STATEMENT_DETAILS": "Statement Details",
+      "FILE_SIZE_TXT_1": "File Size:",
+      "FILE_SIZE_TXT_2": "The file should not exceed 10MB",
+      "SIZE_LIMIT_ERROR": "File size exceeds the maximum limit of 10MB",
+      "UNSUPPORTED_TYPE_ERROR": "Unsupported file type",
+      "RESIZE_SCANNED_IMAGE": "Unable to resize scanned image",
+      "ERROR_SCANNER": "Scanner error occurred",
+      "IMAGE_LARGE": "Image is too large",
+      "RESIZE_IMAGE_ERROR": "Unable to resize image"
+    },
+    "APPROVAL": {
+      "LABEL": "Approval",
+      "TEXT": "Please approve and give additional comments."
+    },
+    "REQUIRED_DOCUMENTS": {
+      "LABEL": "Attach required documents",
+      "TEXT": "Please upload supporting documents in PDF or Jpeg format. The maximum file size per document should not exceed 1mb.",
+      "CUSTOMER_INSTRUCTIONS": "Customer Instruction",
+      "SUPPORTING_DOCUMENT": "Supporting Document"
+    }
+  },
+  "PAGES": {
+    "NORMAL_MT299": {
+      "TITLE": "Normal MT299"
+    },
+    "BULK_UPLOAD": {
+      "TITLE": "Bulk Upload"
+    },
+    "CASH_REQUEST_202": {
+      "TITLE": "Cash Request 202"
+    },
+    "CASH_REQUEST_299": {
+      "TITLE": "Cash Request 299"
+    },
+    "CASH_REQUEST_299_CANCELLATION": {
+      "TITLE": "Cash Request Cancellation 299"
+    },
+    "CASH_REQUEST_199": {
+      "TITLE": "MT199 Amendment Provision Of Details"
+    },
+    "CASH_REQUEST_MT199_CORRESPONDENT_QUERY": {
+      "TITLE": "MT199 Amendment Correspondent Query"
+    },
+    "CASH_REQUEST_MT199_PROVISION_OF_DETAILS": {
+      "TITLE": "MT199 Amendment Provision Of Details"
+    },
+    "MT199_AMENDMENT_CONFIRMATION_OF_MT103": {
+      "TITLE": "MT199 Amendment Confirmation Of MT103"
+    },
+    "CASH_REQUEST_192_RECALL": {
+      "TITLE": "Cash Request 192 Recall"
+    },
+    "CANCELLATION_192": {
+      "TITLE": "Cancellation / Recall MT 192"
+    },
+    "STATEMENT_940_950": {
+      "TITLE": "Statement 940/ 950"
+    },
+    "STATEMENT_940_950_CANCELLATION": {
+      "TITLE": "Statement 940/ 950 Cancellation"
+    },
+    "MT_199_AMENDMENT_CONFIRMATION": {
+      "TITLE": "MT199 Amendment Confirmation Of MT103"
+    },
+    "FUNDS_TRANSFER_MT103": {
+      "ACCOUNT_DETAILS": "Account Details",
+      "ADDITIONAL_FIELDS": "Additional Fields",
+      "ADDITIONAL_ACCOUNT_DETAILS": "Additional Account Details",
+      "BENEFICIARY_DETAILS": "Beneficiary Details",
+      "BENEFICIARY_BANK_DETAILS": "Beneficiary Bank Details",
+      "CHARGE_DETAILS": "Charge Details",
+      "DENOMINATION": "Denomination",
+      "ENTER_AMOUNT": "Enter Amount",
+      "EXCHANGE_DETAILS": "Exchange Details",
+      "REMITTER_ACCOUNT_DETAILS": "Remitter Account Details",
+      "SENDER_TO_RECEIVER_INFORMATION": "Sender To Receiver Information",
+      "TRANSACTION_INFORMATION": "Transaction information",
+      "TITLE": "Fund Transfer MT103",
+      "TOTAL_VALUE": "TOTAL VALUE"
+    }
+  },
+  "LOGIN": {
+    "COMMON": {
+      "SIGN-IN": "Sign In",
+      "LOG-OUT": "Log out",
+      "LOGGED-IN": "You are logged in as ",
+      "LOG-IN-TEXT": "You are not logged in at the moment. Please login to continue serving our customers."
+    },
+    "MICROSOFT-SSO": {
+      "SIGN-IN": "Sign in with Microsoft",
+      "INSTRUCTIONS": "To continue serving our customers, sign in with your username and password."
+    }
+  },
+  "LOCALE": {
+    "PREFERENCE": {
+      "CURRENT-LANGUAGE-SET": "Current language set to",
+      "SELECT-DEFAULT-LANGUAGE": "Please select your default language",
+      "NONE": "None"
+    },
+    "LANGUAGES": {
+      "ENGLISH": "English, ITL",
+      "ENGLISH-KE": "English, KE",
+      "ENGLISH-UG": "English, UG",
+      "KISWAHILI-KE": "Kiswahili, KE",
+      "KISWAHILI-TZ": "Kiswahili, TZ",
+      "RWANDESE": "Kinyarwanda, RW",
+      "SUDANESE": "Hausa, SS",
+      "FRENCH-DRC": "French, DRC"
+    }
+  },
+  "MENU": {
+    "MY-DASHBOARD": "My Dashboard",
+    "CUSTOMER-SERVICES": "Customer Services",
+    "SEND-MONEY": "Send Money",
+    "MORE": "More",
+    "CORPORATE-SERVICES": "Corporate services",
+    "CREDIT-SERVICES": "Credit services",
+    "AGENCY-SERVICES": "Agency services",
+    "SPECIAL-PROJECTS": "Special projects",
+    "INSURANCE": "Insurance",
+    "CUSTODY": "Custody",
+    "FOREIGN-EXCHANGE": "Foreign exchange",
+    "REPORTS": "Reports",
+    "ADMINISTRATION": "Administration",
+    "CARD-MANAGEMENT": "Card Management",
+    "CARD-PORTAL": "Card Portal",
+    "TICKETS": "Tickets",
+    "SWIFT": "SWIFT"
+  },
+  "TICKETS": {
+    "MY-TICKETS": "My tickets",
+    "COLS": {
+      "SUBJECT": "Subject",
+      "NAME": "Customer Name",
+      "CIF": "Customer Cif",
+      "TICKET-ID": "Ticket Id",
+      "DATE-CREATED": "Date Created",
+      "CREATED-BY": "Created By",
+      "STATUS": "Status"
+    }
+  },
+  "BREADCRUMBS": {
+    "SEND-MONEY": "Send Money"
+  },
+  "SERVICES": {
+    "SECTIONS": {
+      "SEND-MONEY": {
+        "TITLE": "Send money",
+        "TEXT": "Easily assist new and existing customers by selecting the relevant option"
+      },
+      "PAY-OR-BUY": {
+        "TITLE": "Pay or buy",
+        "TEXT": "Easily assist new and existing customers by selecting the relevant option"
+      },
+      "WITHDRAW": {
+        "TITLE": "Withdraw",
+        "TEXT": "Easily assist new and existing customers by selecting the relevant option"
+      }
+    },
+    "SEND-MONEY-TO-EQUITY": {
+      "TITLE": "Send Money to Equity",
+      "TEXT": "Onboard a new customer and help them open an account"
+    },
+    "SWIFT-RTGS-EAPPS-REPPS": {
+      "TITLE": "SWIFT / RTGS / EAPS / REPS",
+      "TEXT": "Message copy lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    "BUY-AIRTIME": {
+      "TITLE": "Buy airtime",
+      "TEXT": "Onboard a new customer and help them open an account"
+    },
+    "PAY-BILL": {
+      "TITLE": "Pay bill",
+      "TEXT": "Message copy lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    "PAY-LOAN": {
+      "TITLE": "Pay loan",
+      "TEXT": "Message copy lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    "WITHDRAW": {
+      "TITLE": "Withdraw",
+      "TEXT": "Onboard a new customer and help them open an  account"
+    }
+  },
+  "SELECTION-DIALOG": {
+    "LABEL": "Transfer type selection and verification",
+    "TEXT": "Choose the right transfer type and other options to proceed?",
+    "TRANSFER-TYPES": {
+      "LABEL": "Transfer type",
+      "TEXT": "Select transfer type",
+      "REQUIRED-ERROR": "You must make a selection",
+      "INVALID-ERROR": "Your selection is invalid",
+      "CHOICES": {
+        "NONE": "Fund transfer 103",
+        "MT-103": "Fund transfer 103",
+        "CR-202": "Cash request 202",
+        "CRC-909": "Cash request cancellation 909",
+        "N-299": "Normal 299",
+        "STATEMENT": "Statement"
+      }
+    },
+    "TRANSACTION-TYPES": {
+      "LABEL": "Transaction type",
+      "TEXT": "Please select a transaction type to proceed",
+      "REQUIRED-ERROR": "You must select a transaction type to proceed",
+      "INVALID-ERROR": "Your selection is invalid",
+      "CHOICES": {
+        "SWIFT": {
+          "LABEL": "SWIFT",
+          "TEXT": "Society for Worldwide Financial Telecommunication (SWIFT) - International transfer"
+        },
+        "RTGS": {
+          "LABEL": "RTGS",
+          "TEXT": "Real Time Gross Settlement (RTGS) – Localized money transfer"
+        },
+        "EAPP": {
+          "LABEL": "EAPP",
+          "TEXT": "East Africa Payment Settlement System (EAPP) - Bank transfer within East Africa"
+        },
+        "COMESA": {
+          "LABEL": "COMESA",
+          "TEXT": "Regional Payment Settlement System (REPPS) - Bank transfer within COMESA countries"
+        }
+      }
+    },
+    "CASH-CENTERS": {
+      "LABEL": "Cash center",
+      "TEXT": "please select a cash center",
+      "REQUIRED-ERROR": "You must enter a cash center",
+      "INVALID-ERROR": "Your selection is invalid"
+    },
+    "RECALL-CANCELLATION-TYPE": {
+      "LABEL": "Recall / Cancellation Type",
+      "TEXT": "please select a cancellation type",
+      "REQUIRED-ERROR": "You must enter a cancellation type",
+      "INVALID-ERROR": "Your selection is invalid"
+    },
+    "REQUEST-TYPE": {
+      "LABEL": "Request Type",
+      "TEXT": "please select a request type",
+      "REQUIRED-ERROR": "You must enter a request type",
+      "INVALID-ERROR": "Your selection is invalid"
+    },
+    "REMITTANCE-ACCOUNT": {
+      "LABEL": "Please enter the customer’s account number",
+      "TEXT": "Enter account number",
+      "REQUIRED-ERROR": "You must enter a transaction number to proceed",
+      "INVALID-ERROR": "Your selection is invalid"
+    },
+    "ACTIONS": {
+      "CLEAR": "Clear",
+      "CANCEL": "Cancel",
+      "NEXT": "Next",
+      "VERIFY": "Verify",
+      "CLOSE": "Close"
+    }
+  },
+  "STEPPER": {
+    "LABEL": "Send Money",
+    "STEP": "Step",
+    "OF": "of",
+    "ACCOUNT-DETAILS": "Account Details",
+    "DOCUMENTS-UPLOAD": "Documents Upload",
+    "DOCUMENTS-UPLOAD-TITLE": "Upload required documents",
+    "DOCUMENTS-UPLOAD-TEXT": "Please upload supporting documents in PDF or Jpeg format. The maximum file size  per document should not exceed 10mb.",
+    "ACTIONS": {
+      "BACK": "Back",
+      "NEXT": "Next",
+      "QUIT": "Quit",
+      "FINISH": "Finish"
+    }
+  },
+  "DOCUMENT-TYPES": {
+    "NATIONAL-ID": {
+      "TITLE": "National ID",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "PASSPORT-PHOTO": {
+      "TITLE": "Passport Photo",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "KRA-PIN": {
+      "TITLE": "KRA PIN",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "EDD-FORM": {
+      "TITLE": "EDD Form",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "SIGNATURE-SAMPLE": {
+      "TITLE": "Signature sample",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "ADDITIONAL": {
+      "TITLE": "Upload Documents",
+      "TEXT": "Drag and Drop or files here"
+    }
+  },
+  "GUIDES": {
+    "TYPOGRAPHY-LEVELS": "Typography Levels"
+  },
+  "FIELDS": {
+    "TRANSACTION_NARRATION": "Transaction Narration",
+    "RECEIVER_BANK": "Receiver Bank (BIC)",
+    "VAT": "MwSt.",
+    "RSC": "RSC",
+    "NORMAL_CHARGE": "Normale Gebühr",
+    "SUM_OF_CHARGES": "Summe der Gebühren (MwSt. + RSC)",
+    "CHARGE_AMOUNT": "Gesamtgebühr",
+    "CHARGE_AMOUNT_CURRENCY": "Gebührenwährung"
+  },
+  "TRANSACTIONS": {
+    "LABEL": "Transaction Summary",
+    "TEXT": "Total amount and cumulative transaction charges calculated from bulk upload.",
+    "TOTAL_AMOUNT": "Total Amount",
+    "CUMULATIVE_TRANSACTION_CHARGES": "Cumulative transaction charges",
+    "RATES": "Rates",
+    "APPROVAL": "Approval",
+    "FETCH_SPECIAL_EXCHANGE_RATE": "Fetch Special Exchange Rate",
+    "FETCH_CREDIT_ACCOUNT": "Fetch Credit Account",
+    "DENOMINATION": {
+      "LABEL": "Denomination",
+      "BAGS": "Bags",
+      "ENTER_AMOUNT": "Enter Amount",
+      "TOTAL_VALUE": "TOTAL VALUE",
+      "OFFICIAL": "OFFICIAL",
+      "DELIVERED_BY": "Delivered By",
+      "PF_NUMBER": "PF Number",
+      "NAME": "Name",
+      "ENTER_NAME": "Enter name",
+      "ENTER_PF_NUMBER": "Enter PF Number"
+    }
+  }
+}

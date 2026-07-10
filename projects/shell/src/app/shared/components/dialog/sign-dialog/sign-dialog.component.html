@@ -1,0 +1,95 @@
+<div class="dialog">
+  <div class="dialog-header">
+    <div class="">
+      <span class="dialog-header mat-headline-6">{{
+        'BIOMETRICS.SIGN-DIALOG-TITLE' | translate
+      }}</span>
+      <mat-icon
+        svgIcon="ic-close"
+        style="transform: scale(0.6); cursor: pointer; float: right"
+        mat-dialog-close>
+      </mat-icon>
+    </div>
+    <div class="text-muted subtitle">
+      {{ 'BIOMETRICS.SIGN-DIALOG-SUBTITLE' | translate }}
+    </div>
+  </div>
+
+  <mat-dialog-content class="mat-typography">
+    <!-- <div class="text-muted mb-1">
+            <small>{{'BIOMETRICS.REQUIREMENTS' | translate }} </small> <br />
+            <small>{{'BIOMETRICS.PLACE-HOLD-FINGER' | translate }} </small>
+        </div> -->
+    <div class="mb-1">
+      <div class="d-flex align-content-center mb-1">
+        <div class="rounded-circle">JD</div>
+        <div class="align-self-center">
+          <div>John Doe</div>
+          <div class="text-muted">{{ 'COMMON.ACCOUNT-NAME' | translate }}</div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-content class="mat-typography">
+    <Form [formGroup]="forms">
+      <div class="fieldset">
+        <mat-radio-group
+          aria-labelledby="option-radio-group-label"
+          class="option-radio-group"
+          formControlName="authoptions"
+          (change)="setCanVerify($event)">
+          <mat-radio-button
+            color="primary"
+            class="radioBtnCls"
+            value="canVerify">
+            <div class="align-self-center">
+              <div>{{ options[0].authtitle }}</div>
+              <div class="text-muted text-wrap subtitle-text">
+                {{ options[0].authsubtitle }}
+              </div>
+            </div>
+          </mat-radio-button>
+          <mat-radio-button
+            color="primary"
+            class="radioBtnCls"
+            value="canNotVerify">
+            <div class="align-self-center">
+              <div>{{ options[1].authtitle }}</div>
+              <div class="text-muted text-wrap subtitle-text">
+                {{ options[1].authsubtitle }}
+              </div>
+            </div>
+          </mat-radio-button>
+
+          <!-- <div class="align-self-center"><div>{{option.authtitle}}</div><div class="text-muted text-wrap">{{option.authsubtitle}}</div></div> -->
+        </mat-radio-group>
+      </div>
+      <!-- <div class="button-container"> -->
+      <!-- <button
+                mat-raised-button
+                color="primary"
+                style="margin-left: 10px"
+                (click)="submit()"
+                [disabled]="forms.invalid"
+            >
+                Block card
+            </button>
+        </div> -->
+
+      <div mat-dialog-actions class="dialog-actions">
+        <button mat-button color="primary" (click)="onNoClick()">
+          {{ 'COMMON.CANCEL' | translate }}
+        </button>
+        <button
+          mat-button
+          mat-flat-button
+          color="primary"
+          (click)="continue()"
+          [disabled]="data.canVerify === ''">
+          {{ 'COMMON.CONTINUE' | translate }}
+        </button>
+      </div>
+    </Form>
+  </mat-dialog-content>
+</div>

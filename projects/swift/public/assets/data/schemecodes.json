@@ -1,0 +1,112 @@
+{
+  "data": [
+    {
+      "AccountType": "Equity savings accounts",
+      "SchemeCode": "SB142",
+      "SchemeDesc": "EAZZY SAVE ACCOUNT",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Current Accounts ",
+      "SchemeCode": "CA201",
+      "SchemeDesc": "PERSONNAL CURRENT",
+      "SchemeType": "CAA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB100",
+      "SchemeDesc": "EQUITY ORDINARY ACCOUNT",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB110",
+      "SchemeDesc": "NON RESIDENT BANK ACCOUNT",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Current Accounts ",
+      "SchemeCode": "CA205",
+      "SchemeDesc": "PERSONAL CURRENT PRESTIGE",
+      "SchemeType": "CAA"
+    },
+    {
+      "AccountType": "Current Accounts ",
+      "SchemeCode": "CA210",
+      "SchemeDesc": "NON RESIDENT CURRENT ACCT",
+      "SchemeType": "CAA"
+    },
+    {
+      "AccountType": "Current Accounts ",
+      "SchemeCode": "CA215",
+      "SchemeDesc": "NON-CITIZEN CURRENT",
+      "SchemeType": "CAA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB190",
+      "SchemeDesc": "STAFF  ACCOUNT",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB115",
+      "SchemeDesc": "EQUITY NON-CITIZEN ORD",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB188",
+      "SchemeDesc": "SUPREME PERSONAL ACCOUNT",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB121",
+      "SchemeDesc": "EGF - WINGS TO FLY",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Current Accounts ",
+      "SchemeCode": "CA207",
+      "SchemeDesc": "AGENCY CURRENT",
+      "SchemeType": "CAA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB108",
+      "SchemeDesc": "EQUITY ACHIEVERS STUDENT",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB117",
+      "SchemeDesc": "ORDINARY ACCT-EQTY AGENCY",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB102",
+      "SchemeDesc": "SUPER JUNIOR INVESTMENT A",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB111",
+      "SchemeDesc": "EQUITY ORDINARY  PRESTIGE",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Ordinary savings accounts ",
+      "SchemeCode": "SB140",
+      "SchemeDesc": "REMITTANCE ACCOUNT",
+      "SchemeType": "SBA"
+    },
+    {
+      "AccountType": "Equity savings accounts",
+      "SchemeCode": "SB123",
+      "SchemeDesc": "ORDINARY - SCHOOL FEE",
+      "SchemeType": "SBA"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+.top,
+.content {
+    margin: 0 16px;
+}
+
+.top {
+    margin-bottom: 10px;
+
+    .title {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+    }
+}
+
+.middle {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-gap: 1rem;
+}

@@ -1,0 +1,68 @@
+.profile_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -5.5rem;
+  width: 16rem;
+  &_pic {
+    height: 160px;
+    width: 160px;
+    border: 3.5px solid #fff;
+    border-radius: 50%;
+    background-color: #f1ece9;
+    display: flex;
+    .img_1 {
+      border-radius: 50%;
+      -o-object-fit: cover;
+      object-fit: cover;
+      width: 50%;
+      margin: auto;
+      height: 50%;
+    }
+  }
+  &_name {
+    margin: 1rem 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #3a3b3c;
+    width: 160px;
+  }
+  &_chip {
+    height: 50px;
+    div {
+      padding: 8px;
+      /* width: 39px !important; */
+      height: 7px !important;
+      background: #2f9803;
+      border-radius: 32px;
+      color: #fff;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      /* line-height: 16px; */
+      padding-bottom: 1.5rem;
+      margin: 0;
+      margin-bottom: 1rem;
+    }
+  }
+  &_signature {
+    height: 68px;
+    width: 160px;
+    border: 2px solid #929497;
+    border-radius: 8px;
+    .img_2 {
+      border-radius: 8px;
+      width: 100%;
+      height: 68px;
+    }
+  }
+}
+
+.customer-images {
+  display: flex;
+  flex-direction: column;
+}

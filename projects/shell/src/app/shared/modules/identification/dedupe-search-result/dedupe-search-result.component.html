@@ -1,0 +1,26 @@
+<p class="mat-headline-6 pt-24 pb-24">
+  {{ 'COMMON.SEARCH_RESULTS' | translate }}
+</p>
+<mat-divider></mat-divider>
+
+<div class="pt-16 notification">
+  <app-notifications
+    [title]="warningTitle"
+    [text]="warningText"
+    status="danger">
+  </app-notifications>
+</div>
+
+<div class="pt-20">
+  <app-table-data
+    tableTitle="COMMON.ALL"
+    [hideFooterTotalItems]="true"
+    [hideTableHead]="true"
+    [clickableRows]="true"
+    [tableFields]="tableFields"
+    [data]="data"
+    (tableActionsButtonEvent)="tableActionsButtonHandler($event)"
+    (tableSelectedRowEvent)="tableSelectedRowEventHandler($event)"
+    (tablePageChanged)="loadData($event)"
+    (tableFilter)="tableFilter($event)"></app-table-data>
+</div>

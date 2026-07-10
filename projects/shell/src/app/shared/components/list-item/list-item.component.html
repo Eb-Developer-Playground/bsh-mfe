@@ -1,0 +1,40 @@
+<ng-container
+  [ngTemplateOutletContext]="{
+    displayInfo
+  }"
+  [ngTemplateOutlet]="dynamicTemplateType(displayInfo.type)"></ng-container>
+
+<ng-template let-displayInfo="displayInfo" #LABELANDVALUE>
+  <div
+    class="d-flex flex-column align-items-center text-container"
+    style="
+      width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    ">
+    <p class="mat-body-1 text-muted m-0">{{ displayInfo.label | translate }}</p>
+    <p class="mat-subtitle-1">{{ displayInfo.value }}</p>
+  </div>
+</ng-template>
+
+<ng-template let-displayInfo="displayInfo" #ICONNAMEINITIALS>
+  <div class="d-flex">
+    <div class="name-avatar mr-16">{{ nameIntial }}</div>
+    <div class="d-flex flex-column w-300">
+      <p class="mat-subtitle-1 m-0">{{ displayInfo.label }}</p>
+      <p class="mat-body-1 text-muted m-0">{{ displayInfo.value }}</p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template let-displayInfo="displayInfo" #ICONITEM>
+  <div class="d-flex">
+    <div class="d-flex flex-column">
+      <p class="mat-subheading-2 m-0">{{ displayInfo.label | translate }}</p>
+      <p class="mat-body-1 text-muted m-0">
+        {{ displayInfo.value | translate }}
+      </p>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,53 @@
+.pill {
+  .pill-icon {
+    height: 22px;
+    width: 22px;
+  }
+
+  border-radius: 32px;
+  padding: 8px 12px;
+  margin-right: 12px;
+  &.--red {
+    background: linear-gradient(
+        0deg,
+        rgba(230, 0, 0, 0.1),
+        rgba(230, 0, 0, 0.1)
+      ),
+      #ffffff;
+    color: #e60000;
+  }
+
+  &.--green {
+    background: linear-gradient(
+        0deg,
+        rgba(47, 152, 3, 0.1),
+        rgba(47, 152, 3, 0.1)
+      ),
+      #ffffff;
+    color: #2f9803;
+  }
+
+  &.--gray {
+    background: linear-gradient(
+        0deg,
+        rgba(88, 89, 91, 0.1),
+        rgba(88, 89, 91, 0.1)
+      ),
+      #ffffff;
+    color: #58595b;
+  }
+  &.--orange {
+    background: linear-gradient(
+        0deg,
+        rgba(88, 89, 91, 0.1),
+        rgba(88, 89, 91, 0.1)
+      ),
+      #ffffff;
+    color: #f38707;
+  }
+
+  &.--orange-1 {
+    color: #f38707;
+    background: rgba(243, 135, 7, 0.05);
+  }
+}

@@ -1,0 +1,139 @@
+<ng-container *ngIf="toggleFilter">
+  <div class="tickect-filter-container">
+    <div class="d-flex flex-column gap-1">
+      <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex gap-1 flex-row align-self-center">
+            <mat-form-field class="filter-fields" appearance="outline">
+              <mat-label>{{ 'FILTER.FILTER' | translate }}</mat-label>
+              <mat-select formControlName="filters">
+                <mat-option
+                  [value]="option"
+                  *ngFor="let option of searchFields$ | async"
+                  >{{ option.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!--  -->
+            <mat-form-field
+              appearance="outline"
+              *ngIf="dropDownHasValues && !showRangeDate">
+              <mat-label>{{ 'FILTER.SEARCH-TEXT' | translate }}</mat-label>
+              <mat-select formControlName="search">
+                <mat-option
+                  [value]="option"
+                  *ngFor="let option of dropDownSearch"
+                  >{{ option.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field
+              appearance="outline"
+              *ngIf="!dropDownHasValues && !showRangeDate">
+              <mat-label>{{ 'FILTER.SEARCH-TEXT' | translate }}</mat-label>
+              <input
+                type="text"
+                placeholder="Search"
+                aria-label="Created By"
+                matInput
+                formControlName="search" />
+            </mat-form-field>
+            <!--  -->
+            <mat-form-field
+              class="date-filter-fields"
+              appearance="outline"
+              *ngIf="!dropDownHasValues && showRangeDate">
+              <mat-label>{{
+                'DASHBOARD.TABLE.FILTER.ENTER_DATE_RANGE' | translate
+              }}</mat-label>
+              <mat-date-range-input [rangePicker]="picker">
+                <input
+                  matStartDate
+                  formControlName="fromDate"
+                  required
+                  (keypress)="keyDown($event)"
+                  placeholder="Start date" />
+                <input
+                  matEndDate
+                  formControlName="toDate"
+                  (keypress)="keyDown($event)"
+                  required
+                  placeholder="End date" />
+              </mat-date-range-input>
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+              <mat-error
+                *ngIf="
+                  filterForm.controls['fromDate'].hasError('matStartDateInvalid')
+                ">
+                {{ 'COMMON.INVALID' | translate }}
+                {{ 'COMMON.START_DATE' | translate }}
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  filterForm.controls['toDate'].hasError('matEndDateInvalid')
+                ">
+                {{ 'COMMON.INVALID' | translate }}
+                {{ 'COMMON.END_DATE' | translate }}
+              </mat-error>
+              <mat-error *ngIf="checkDateError">{{ errorMessage }}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="d-flex gap-1 flex-row align-self-center">
+            <div>
+              <button
+                type="submit"
+                mat-flat-button
+                color="primary"
+                [disabled]="!filterForm.valid">
+                {{ 'FILTER.APPLY' | translate }}
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                mat-stroked-button
+                color="accent"
+                (click)="clearFilters()">
+                {{ 'COMMON.CANCEL' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <mat-divider></mat-divider>
+
+      <div class="d-flex justify-content-between flex-row">
+        <div class="d-flex">
+          <mat-chip-listbox #chipList aria-label="Filter selection">
+            <mat-chip-option
+              *ngFor="let chip of selectedChipItem"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="remove(chip)">
+              {{ chip.display }}
+              <button matChipRemove *ngIf="removable">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-option>
+          </mat-chip-listbox>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button
+            mat-stroked-button
+            color="primary"
+            (click)="clearAllFilters()">
+            {{ 'FILTER.CLEAR-FILTERS' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

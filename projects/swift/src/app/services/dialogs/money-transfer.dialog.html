@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>{{ 'SERVICES.MONEY_TRANSFER.TITLE' | translate }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="transferForm" class="flex flex-col gap-4">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'SERVICES.MONEY_TRANSFER.TRANSFER_TYPE' | translate }}</mat-label>
+      <mat-select formControlName="transferType" (selectionChange)="getTransferOptions($event.value)">
+        @for (type of transferTypes; track type.type) {
+          <mat-option [value]="type.type">{{ type.type }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">{{ 'COMMON.CANCEL' | translate }}</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="transferForm.invalid || processing">
+    {{ 'COMMON.SUBMIT' | translate }}
+  </button>
+</mat-dialog-actions>

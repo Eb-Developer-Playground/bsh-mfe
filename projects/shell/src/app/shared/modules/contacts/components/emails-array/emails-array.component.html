@@ -1,0 +1,93 @@
+<div class="wrapper">
+  <ng-template #templateRef>
+    @if (formArray.errors?.['missingRequiredEmailType']) {
+      <span class="d-block">
+        {{
+          'FORMS.CONTACT_DETAILS.ERRORS.CONTACT_TYPE_MISSING'
+            | translate: { type: 'Mailing' }
+        }}
+      </span>
+    }
+    @if (formArray.errors?.['hasRepeatedEmails']) {
+      <span class="d-block">
+        {{
+          'FORMS.CONTACT_DETAILS.ERRORS.DUPLICATED_ITEMS'
+            | translate: { contact: 'email address' }
+        }}
+      </span>
+    }
+    @if (formArray.errors?.['missingPreferred']) {
+      <span class="d-block">
+        {{
+          'FORMS.CONTACT_DETAILS.ERRORS.MISSING_PREFERRED'
+            | translate: { contact: 'email address' }
+        }}
+      </span>
+    }
+    @if (formArray.errors?.['moreThanOnePreferred']) {
+      <span class="d-block">
+        {{
+          'FORMS.CONTACT_DETAILS.ERRORS.MISSING_PREFERRED'
+            | translate: { contact: 'email address' }
+        }}
+      </span>
+    }
+  </ng-template>
+  @if (formArray?.errors) {
+    <div class="mb-10 ml-16 mr-16">
+      <app-notifications
+        [title]="'COMMON.PHONE_SECTION.PHONE_ISSUE'"
+        [status]="'warning'"
+        [textTemplate]="templateRef"></app-notifications>
+    </div>
+  }
+  @for (
+    f of formArray.controls;
+    track ind;
+    let ind = $index;
+    let isLast = $last
+  ) {
+    <div>
+      <app-email
+        [index]="ind"
+        [subsidiary]="subsidiary"
+        [required]="required"
+        [ticketId]="ticketId"
+        [customerId]="customerId"
+        [form]="getEmailAddressForm(ind)"
+        [selectedTypes]="selectedEmailTypes"
+        [fieldStates]="getEmailAddressState(ind)"
+        (preferredToggled)="preferredEmailToggled($any($event), ind)"
+        [otpInputViewMode]="otpInputViewMode"
+        [otpVerificationMode]="otpVerificationMode"
+        [dedupeOperationMode]="dedupeOperationMode"></app-email>
+      @if (ind > 0 && enableMultiple) {
+        <button
+          mat-flat-button
+          class="color-primary ps-0"
+          style="margin-left: 16px"
+          (click)="removeEmailAddress(ind)">
+          <strong>{{ 'COMMON.REMOVE_EMAIL' | translate }}</strong>
+        </button>
+      }
+      @if (formArray.controls.length > 1 && !isLast) {
+        <div class="mt-15 mb-15">
+          <mat-divider></mat-divider>
+        </div>
+      }
+    </div>
+  }
+  <div class="separator"></div>
+  <div class="add-contacts">
+    <button
+      (click)="addEmailAddress()"
+      [disabled]="formArray.invalid"
+      color="primary"
+      mat-button>
+      <span style="font-size: 1.5em; margin-right: 5px">&plus;</span>
+      <span class="add-another-text">{{
+        'COMMON.ADD_ANOTHER' | translate
+      }}</span>
+    </button>
+  </div>
+</div>

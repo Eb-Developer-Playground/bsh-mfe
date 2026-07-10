@@ -1,0 +1,740 @@
+<mat-card class="mb-2" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="mat-title fw-400">{{ title }}</h3>
+  </div>
+  <mat-divider></mat-divider>
+
+  @if (denominations) {
+    <div class="pt-18 pb-18">
+      <form [formGroup]="fieldsForm" autocomplete="off">
+        @if (country === 'KE') {
+          <table cellspacing="0" class="deno-table">
+            <thead class="table_header">
+              <tr>
+                <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }}</th>
+                <th>
+                  {{ 'TRANSACTIONS.DENOMINATION.ENTER_AMOUNT' | translate }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (c of Denominations.controls; track c; let i = $index) {
+                <ng-container formArrayName="Denominations">
+                  <tr [formGroupName]="i">
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <input
+                          type="text"
+                          matInput
+                          required
+                          formControlName="DenominationName"
+                          autocomplete="off"
+                          readonly
+                        />
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <input
+                          type="text"
+                          matInput
+                          required
+                          formControlName="DenominationValue"
+                          autocomplete="off"
+                          currencyMask
+                          [options]="{
+                            prefix: '',
+                            thousands: ',',
+                            decimal: '.',
+                            allowNegative: false,
+                            align: 'left',
+                          }"
+                          (ngModelChange)="calcTotalValue()"
+                        />
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </ng-container>
+              }
+            </tbody>
+          </table>
+          <ng-container>
+            <div class="total_row">
+              <span
+                ><b>{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }} </b></span
+              >
+              <span>
+                <mat-form-field appearance="fill">
+                  <input
+                    type="text"
+                    matInput
+                    required
+                    [value]="totalValue['KE'] | number: '.2'"
+                    disabled
+                  />
+                </mat-form-field>
+              </span>
+            </div>
+            <ng-container formArrayName="ManagedBy">
+              <div class="mb-10">
+                <mat-divider></mat-divider>
+              </div>
+              @for (managedBy of ManagedBy.controls; track managedBy; let i = $index) {
+                <tr [formGroupName]="i">
+                  <td>{{ 'TRANSACTIONS.DENOMINATION.OFFICIAL' | translate }}:</td>
+                  <td>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        formControlName="Name"
+                        class="name"
+                        autocomplete="off"
+                      />
+                    </mat-form-field>
+                  </td>
+                </tr>
+              }
+            </ng-container>
+          </ng-container>
+        }
+        @if (country === 'UG' && transactionType === 'Deposit') {
+          <div class="deposit-ug">
+            <div class="table-one">
+              <table cellspacing="0" class="deno-table">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }} (FIT)</th>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.BAGS' | translate }} (COINS)</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.ENTER_AMOUNT' | translate }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (c of Denominations.controls; track c; let i = $index) {
+                    <ng-container formArrayName="Denominations">
+                      @if (
+                        c.value.DenominationPackageName === 'coin' &&
+                        c.value.DenominationCategory === 'FIT'
+                      ) {
+                        <tr [formGroupName]="i">
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="text"
+                                matInput
+                                required
+                                formControlName="DenominationName"
+                                autocomplete="off"
+                                readonly
+                              />
+                            </mat-form-field>
+                          </td>
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="number"
+                                matInput
+                                required
+                                formControlName="DenominationPackage"
+                                autocomplete="off"
+                                min="0"
+                              />
+                            </mat-form-field>
+                          </td>
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="text"
+                                matInput
+                                required
+                                formControlName="DenominationValue"
+                                autocomplete="off"
+                                currencyMask
+                                [options]="{
+                                  prefix: '',
+                                  thousands: ',',
+                                  decimal: '.',
+                                  allowNegative: false,
+                                  align: 'left',
+                                }"
+                                (ngModelChange)="calcTotalValue()"
+                              />
+                            </mat-form-field>
+                          </td>
+                        </tr>
+                      }
+                    </ng-container>
+                  }
+                </tbody>
+              </table>
+              <ng-container>
+                <div class="total_row">
+                  <span
+                    ><b
+                      >{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }}
+                      (FIT)
+                    </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        [value]="totalValue['UG']['Deposit']['FIT']['coin'] | number: '.2'"
+                        disabled
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+              </ng-container>
+              <table cellspacing="0" class="deno-table">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }} (UNFIT)</th>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.BAGS' | translate }} (COINS)</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.ENTER_AMOUNT' | translate }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (c of Denominations.controls; track c; let i = $index) {
+                    <ng-container formArrayName="Denominations">
+                      @if (
+                        c.value.DenominationPackageName === 'coin' &&
+                        c.value.DenominationCategory === 'UNFIT'
+                      ) {
+                        <tr [formGroupName]="i">
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="text"
+                                matInput
+                                required
+                                formControlName="DenominationName"
+                                autocomplete="off"
+                                readonly
+                              />
+                            </mat-form-field>
+                          </td>
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="number"
+                                matInput
+                                required
+                                formControlName="DenominationPackage"
+                                autocomplete="off"
+                                min="0"
+                              />
+                            </mat-form-field>
+                          </td>
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="text"
+                                matInput
+                                required
+                                formControlName="DenominationValue"
+                                autocomplete="off"
+                                currencyMask
+                                [options]="{
+                                  prefix: '',
+                                  thousands: ',',
+                                  decimal: '.',
+                                  allowNegative: false,
+                                  align: 'left',
+                                }"
+                                (ngModelChange)="calcTotalValue()"
+                              />
+                            </mat-form-field>
+                          </td>
+                        </tr>
+                      }
+                    </ng-container>
+                  }
+                </tbody>
+              </table>
+              <ng-container>
+                <div class="total_row">
+                  <span
+                    ><b
+                      >{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }}
+                      (UNFIT)
+                    </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        [value]="totalValue['UG']['Deposit']['UNFIT']['coin'] | number: '.2'"
+                        disabled
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+                <div class="total_row">
+                  <span
+                    ><b>{{ 'TRANSACTIONS.DENOMINATION.GRAND_TOTAL_VALUE' | translate }} </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        [value]="
+                          +totalValue['UG']['Deposit']['FIT']['total'] +
+                            +totalValue['UG']['Deposit']['UNFIT']['total'] | number: '.2'
+                        "
+                        disabled
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+                <ng-container>
+                  <div class="mb-1 mt-20">
+                    <h3 class="mat-title fw-400">
+                      {{ 'TRANSACTIONS.DENOMINATION.DELIVERED_BY' | translate }}
+                    </h3>
+                  </div>
+                  <div class="pt-5 pb-18">
+                    <mat-divider></mat-divider>
+                  </div>
+                  <table cellspacing="0" class="deno-delivery">
+                    <thead class="table_header">
+                      <tr>
+                        <th>
+                          {{ 'TRANSACTIONS.DENOMINATION.NAME' | translate }}
+                        </th>
+                        <th>
+                          {{ 'TRANSACTIONS.DENOMINATION.PF_NUMBER' | translate }}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (c of ManagedBy.controls; track c; let i = $index) {
+                        <ng-container formArrayName="ManagedBy">
+                          @if (c.value.DenominationPackageName === 'coin') {
+                            <tr [formGroupName]="i">
+                              <td>
+                                <mat-form-field appearance="fill">
+                                  <mat-label>{{
+                                    'TRANSACTIONS.DENOMINATION.ENTER_NAME' | translate
+                                  }}</mat-label>
+                                  <input
+                                    type="text"
+                                    matInput
+                                    required
+                                    formControlName="Name"
+                                    autocomplete="off"
+                                  />
+                                </mat-form-field>
+                              </td>
+                              <td>
+                                <mat-form-field appearance="fill">
+                                  <mat-label>{{
+                                    'TRANSACTIONS.DENOMINATION.ENTER_PF_NUMBER' | translate
+                                  }}</mat-label>
+                                  <input
+                                    type="text"
+                                    matInput
+                                    required
+                                    formControlName="PFNumber"
+                                    autocomplete="off"
+                                  />
+                                </mat-form-field>
+                              </td>
+                            </tr>
+                          }
+                        </ng-container>
+                      }
+                    </tbody>
+                  </table>
+                </ng-container>
+              </ng-container>
+            </div>
+            <div class="table-two">
+              <table cellspacing="0" class="deno-table">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }} (FIT)</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.BUNDLES' | translate }}
+                      (NOTES)
+                    </th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.ENTER_AMOUNT' | translate }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (c of Denominations.controls; track c; let i = $index) {
+                    <ng-container formArrayName="Denominations">
+                      @if (
+                        c.value.DenominationPackageName === 'note' &&
+                        c.value.DenominationCategory === 'FIT'
+                      ) {
+                        <tr [formGroupName]="i">
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="text"
+                                matInput
+                                required
+                                formControlName="DenominationName"
+                                autocomplete="off"
+                                readonly
+                              />
+                            </mat-form-field>
+                          </td>
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="number"
+                                matInput
+                                required
+                                formControlName="DenominationPackage"
+                                autocomplete="off"
+                                min="0"
+                              />
+                            </mat-form-field>
+                          </td>
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="text"
+                                matInput
+                                required
+                                formControlName="DenominationValue"
+                                autocomplete="off"
+                                currencyMask
+                                [options]="{
+                                  prefix: '',
+                                  thousands: ',',
+                                  decimal: '.',
+                                  allowNegative: false,
+                                  align: 'left',
+                                }"
+                                (ngModelChange)="calcTotalValue()"
+                              />
+                            </mat-form-field>
+                          </td>
+                        </tr>
+                      }
+                    </ng-container>
+                  }
+                </tbody>
+              </table>
+              <ng-container>
+                <div class="total_row">
+                  <span
+                    ><b
+                      >{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }}
+                      (FIT)
+                    </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        [value]="totalValue['UG']['Deposit']['FIT']['note'] | number: '.2'"
+                        disabled
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+              </ng-container>
+              <table cellspacing="0" class="deno-table">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }} (UNFIT)</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.BUNDLES' | translate }}
+                      (NOTES)
+                    </th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.ENTER_AMOUNT' | translate }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (c of Denominations.controls; track c; let i = $index) {
+                    <ng-container formArrayName="Denominations">
+                      @if (
+                        c.value.DenominationPackageName === 'note' &&
+                        c.value.DenominationCategory === 'UNFIT'
+                      ) {
+                        <tr [formGroupName]="i">
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="text"
+                                matInput
+                                required
+                                formControlName="DenominationName"
+                                autocomplete="off"
+                                readonly
+                              />
+                            </mat-form-field>
+                          </td>
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="number"
+                                matInput
+                                required
+                                formControlName="DenominationPackage"
+                                autocomplete="off"
+                                min="0"
+                              />
+                            </mat-form-field>
+                          </td>
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <input
+                                type="text"
+                                matInput
+                                required
+                                formControlName="DenominationValue"
+                                autocomplete="off"
+                                currencyMask
+                                [options]="{
+                                  prefix: '',
+                                  thousands: ',',
+                                  decimal: '.',
+                                  allowNegative: false,
+                                  align: 'left',
+                                }"
+                                (ngModelChange)="calcTotalValue()"
+                              />
+                            </mat-form-field>
+                          </td>
+                        </tr>
+                      }
+                    </ng-container>
+                  }
+                </tbody>
+              </table>
+              <ng-container>
+                <div class="total_row">
+                  <span
+                    ><b
+                      >{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }}
+                      (UNFIT)
+                    </b></span
+                  >
+                  <span>
+                    <mat-form-field appearance="fill">
+                      <input
+                        type="text"
+                        matInput
+                        required
+                        [value]="totalValue['UG']['Deposit']['UNFIT']['note'] | number: '.2'"
+                        disabled
+                      />
+                    </mat-form-field>
+                  </span>
+                </div>
+                <ng-container>
+                  <div class="mb-1 mt-20">
+                    <h3 class="mat-title fw-400">
+                      {{ 'TRANSACTIONS.DENOMINATION.DELIVERED_BY' | translate }}
+                    </h3>
+                  </div>
+                  <div class="pt-5 pb-18">
+                    <mat-divider></mat-divider>
+                  </div>
+                  <table cellspacing="0" class="deno-delivery">
+                    <thead class="table_header">
+                      <tr>
+                        <th>
+                          {{ 'TRANSACTIONS.DENOMINATION.NAME' | translate }}
+                        </th>
+                        <th>
+                          {{ 'TRANSACTIONS.DENOMINATION.PF_NUMBER' | translate }}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (c of ManagedBy.controls; track c; let i = $index) {
+                        <ng-container formArrayName="ManagedBy">
+                          @if (c.value.DenominationPackageName === 'note') {
+                            <tr [formGroupName]="i">
+                              <td>
+                                <mat-form-field appearance="fill">
+                                  <mat-label>{{
+                                    'TRANSACTIONS.DENOMINATION.ENTER_NAME' | translate
+                                  }}</mat-label>
+                                  <input
+                                    type="text"
+                                    matInput
+                                    required
+                                    formControlName="Name"
+                                    autocomplete="off"
+                                  />
+                                </mat-form-field>
+                              </td>
+                              <td>
+                                <mat-form-field appearance="fill">
+                                  <mat-label>{{
+                                    'TRANSACTIONS.DENOMINATION.ENTER_PF_NUMBER' | translate
+                                  }}</mat-label>
+                                  <input
+                                    type="text"
+                                    matInput
+                                    required
+                                    formControlName="PFNumber"
+                                    autocomplete="off"
+                                  />
+                                </mat-form-field>
+                              </td>
+                            </tr>
+                          }
+                        </ng-container>
+                      }
+                    </tbody>
+                  </table>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        }
+        @if (country === 'UG' && transactionType === 'Withdraw') {
+          <table cellspacing="0" class="deno-table">
+            <thead class="table_header">
+              <tr>
+                <th>{{ 'TRANSACTIONS.DENOMINATION.LABEL' | translate }}</th>
+                <th>
+                  {{ 'TRANSACTIONS.DENOMINATION.ENTER_AMOUNT' | translate }}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (c of Denominations.controls; track c; let i = $index) {
+                <ng-container formArrayName="Denominations">
+                  <tr [formGroupName]="i">
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <input
+                          type="text"
+                          matInput
+                          required
+                          formControlName="DenominationName"
+                          autocomplete="off"
+                          readonly
+                        />
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <input
+                          type="text"
+                          matInput
+                          required
+                          formControlName="DenominationValue"
+                          autocomplete="off"
+                          currencyMask
+                          [options]="{
+                            prefix: '',
+                            thousands: ',',
+                            decimal: '.',
+                            allowNegative: false,
+                            align: 'left',
+                          }"
+                          (ngModelChange)="calcTotalValue()"
+                        />
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </ng-container>
+              }
+            </tbody>
+          </table>
+          <ng-container>
+            <div class="total_row">
+              <span
+                ><b>{{ 'TRANSACTIONS.DENOMINATION.TOTAL_VALUE' | translate }} </b></span
+              >
+              <span>
+                <mat-form-field appearance="fill">
+                  <input
+                    type="text"
+                    matInput
+                    required
+                    [value]="totalValue['UG']['Withdraw'] | number: '.2'"
+                    disabled
+                  />
+                </mat-form-field>
+              </span>
+            </div>
+            <ng-container>
+              <div class="mb-1 mt-20">
+                <h3 class="mat-title fw-400">
+                  {{ 'TRANSACTIONS.DENOMINATION.PICKED_BY' | translate }}
+                </h3>
+              </div>
+              <div class="pt-5 pb-18">
+                <mat-divider></mat-divider>
+              </div>
+              <table cellspacing="0" class="deno-delivery">
+                <thead class="table_header">
+                  <tr>
+                    <th>{{ 'TRANSACTIONS.DENOMINATION.NAME' | translate }}</th>
+                    <th>
+                      {{ 'TRANSACTIONS.DENOMINATION.PF_NUMBER' | translate }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (c of ManagedBy.controls; track c; let i = $index) {
+                    <ng-container formArrayName="ManagedBy">
+                      <tr [formGroupName]="i">
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <mat-label>{{
+                              'TRANSACTIONS.DENOMINATION.ENTER_NAME' | translate
+                            }}</mat-label>
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              formControlName="Name"
+                              autocomplete="off"
+                            />
+                          </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="fill">
+                            <mat-label>{{
+                              'TRANSACTIONS.DENOMINATION.ENTER_PF_NUMBER' | translate
+                            }}</mat-label>
+                            <input
+                              type="text"
+                              matInput
+                              required
+                              formControlName="PFNumber"
+                              autocomplete="off"
+                            />
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  }
+                </tbody>
+              </table>
+            </ng-container>
+          </ng-container>
+        }
+      </form>
+    </div>
+  }
+</mat-card>

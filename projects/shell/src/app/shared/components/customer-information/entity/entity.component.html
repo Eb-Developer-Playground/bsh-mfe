@@ -1,0 +1,257 @@
+<div class="frozen-section" *ngIf="customerStatus === 'InActive'">
+  <p class="support-title">
+    {{ 'CUSTOMER.CUSTOMER-PROFILE.CUSTOMER-PROFILE-BLOCKED' | translate }}
+  </p>
+  <p class="support-content">
+    {{
+      'CUSTOMER.CUSTOMER-PROFILE.CUSTOMER-PROFILE-BLOCKED-MESSAGE' | translate
+    }}
+  </p>
+</div>
+
+<mat-card appearance="outlined" class="main" style="padding: 1.5rem">
+  <div class="mb-1 header-tab">
+    <h3 class="mat-headline-6 fw-400">
+      {{ 'CUSTOMER.CUSTOMER-INFORMATION.TITLE' | translate }}
+    </h3>
+    <p (click)="updateProfile()">
+      <mat-icon
+        svgIcon="ic-edit"
+        aria-hidden="false"
+        aria-label="Bio"></mat-icon>
+      <span class="pb-1">
+        {{
+          'CUSTOMER.CUSTOMER-PROFILE.UPDATE-PROFILE-DETAILS' | translate
+        }}</span
+      >
+    </p>
+  </div>
+  <div class="header-tab-banner"></div>
+  <mat-card-content class="card-content">
+    <div class="customer-images">
+      <app-entity-image
+        *ngIf="canDisplayImage"
+        [acc]="accountNumber"
+        [customerDetails]="customerDetails"
+        [customerStatus]="customerStatus">
+      </app-entity-image>
+    </div>
+
+    <div class="customer-details-content ml-24">
+      <div class="top-section">
+        <div class="customer-channels">
+          <div class="channels">
+            <div
+              *ngFor="let channel of displayChannels"
+              class="channel-cover"
+              [ngClass]="
+                channel.status === 'Active' && customerStatus === 'Active'
+                  ? channel.level === 0
+                    ? 'cool-off'
+                    : 'active'
+                  : customerStatus === 'InActive' ||
+                      (customerStatus === 'Active' &&
+                        channel.status === 'Blocked')
+                    ? 'blocked'
+                    : 'inactive'
+              "
+              [matTooltip]="
+                customerStatus
+                  ? customerStatus !== 'InActive'
+                    ? channel.status
+                      ? channel.level === 0 && channel.status === 'Active'
+                        ? 'Cool Off'
+                        : channel.status === 'Blocked'
+                          ? 'Blocked - ' + channel.blockReason
+                          : channel.status === 'InActive'
+                            ? 'Not Registered'
+                            : 'Active'
+                      : ''
+                    : 'Blocked'
+                  : 'Not Registered'
+              "
+              [matTooltipPosition]="'above'">
+              <div class="channel-sub-cover">
+                <mat-icon
+                  svgIcon="ic-warning-caution"
+                  *ngIf="
+                    (customerStatus === 'Active' || !customerStatus) &&
+                    channel.status === 'InActive'
+                  "
+                  class="checkmark"></mat-icon>
+                <mat-icon
+                  svgIcon="ic-block-red"
+                  *ngIf="
+                    customerStatus === 'Active' && channel.status === 'Blocked'
+                  "
+                  class="checkmark"></mat-icon>
+                <mat-icon
+                  svgIcon="ic-cool-off"
+                  *ngIf="
+                    customerStatus === 'Active' &&
+                    channel.status === 'Active' &&
+                    channel.level === 0
+                  "
+                  class="checkmark cool-off-icon"></mat-icon>
+                <mat-icon
+                  svgIcon="ic-circle-green-check"
+                  *ngIf="
+                    customerStatus === 'Active' &&
+                    channel.status === 'Active' &&
+                    channel.level === 1
+                  "
+                  class="checkmark"></mat-icon>
+                <mat-icon
+                  svgIcon="ic-block-red"
+                  *ngIf="customerStatus === 'InActive'"
+                  class="checkmark"></mat-icon>
+                <span class="channel-status-text"
+                  >{{ channel.channel }}
+                  <span
+                    *ngIf="channel.channel === 'Mobile' && channel.subChannel">
+                    ({{ channel.subChannel }})</span
+                  ></span
+                >
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="channels-title"
+            routerLink="/services/customer-360/channels">
+            <span>{{
+              'CUSTOMER.CUSTOMER-PROFILE.MANAGE-CHANNELS' | translate
+            }}</span>
+            <mat-icon
+              color="primary"
+              aria-hidden="false"
+              aria-label="chevron_right icon"
+              >chevron_right
+            </mat-icon>
+          </p>
+        </div>
+        <span style="display: flex; align-items: center; gap: 10px">
+          <mat-icon
+            *ngIf="showBioCaptured"
+            svgIcon="ic-bio"
+            aria-hidden="false"
+            aria-label="Bio"
+            class="bio-image">
+          </mat-icon>
+          {{ 'BIOMETRICS.BIO-ENROLLED' | translate }}
+        </span>
+        <app-legal-search
+          *ngIf="searchLegal"
+          [legalSearchCode]="searchLegal"></app-legal-search>
+      </div>
+      <div
+        *ngIf="
+          customerDetails?.firstName ||
+          customerDetails?.middleName ||
+          customerDetails?.lastName
+        "
+        class="customer-details-container">
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.CUSTOMER-PROFILE.ENTITY-NAME' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.firstName }}
+            {{ customerDetails?.middleName }}
+            {{ customerDetails?.lastName }}
+          </p>
+        </div>
+        <div
+          *ngIf="customerDetails?.identifications?.[0]?.['id']"
+          class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ID-NUMBER' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.identifications?.[0]?.['id'] }}
+          </p>
+        </div>
+        <div *ngIf="type" class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.CUSTOMER-PROFILE.ENTITY-TYPE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ type }}
+          </p>
+        </div>
+        <div *ngIf="customerDetails?.dateOfBirth" class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.CUSTOMER-PROFILE.REGISTRATION-DATE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.dateOfBirth | date: 'dd/MM/yyyy' }}
+          </p>
+        </div>
+        <div
+          *ngIf="cifInquiryObj?.companyDetails?.countryOfResidence"
+          class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.COUNTRY' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ cifInquiryObj?.companyDetails?.countryOfResidence }}
+          </p>
+        </div>
+        <div *ngIf="kraPin" class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              bankId === '54'
+                ? ('COMMON.KRAPINNUMBER' | translate)
+                : ('COMMON.TAX-NUM' | translate)
+            }}
+          </p>
+          <p class="customer-detail-content">{{ kraPin }}</p>
+        </div>
+        <div *ngIf="customerDetails?.cif" class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.CIF' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.cif }}
+          </p>
+        </div>
+        <div
+          *ngIf="customerDetails?.phoneNumber1 || customerDetails?.phoneNumber2"
+          class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.PRIMARY-PHONENUMBER' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{
+              customerDetails?.phoneNumber1
+                ? customerDetails?.phoneNumber1
+                : customerDetails?.phoneNumber2
+            }}
+          </p>
+        </div>
+        <div *ngIf="customerDetails?.email" class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.EMAILADDRESS' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.email }}
+          </p>
+        </div>
+        <div *ngIf="physicalAddress" class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.PHYSICAL-ADDRESS' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ physicalAddress }}
+          </p>
+        </div>
+      </div>
+      <div class="soft-delete-text">
+        <button mat-button color="primary" (click)="goToSearch()">
+          {{ 'CUSTOMER.OMNI-CHANNEL-PROFILE.VIEW-TITLE' | translate }}
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+  <ng-content></ng-content>
+</mat-card>

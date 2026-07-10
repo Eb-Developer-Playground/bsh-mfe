@@ -1,0 +1,50 @@
+<div class="main">
+  <span class="title">{{ 'COMMON.PRIMARY-PHONE-NUMBER' | translate }}</span>
+  <span class="subtitle">{{
+    'DIALOG.ENTER-PHONE-NUMBER-VERIFICATION' | translate
+  }}</span>
+  <form [formGroup]="form">
+    <mat-form-field class="phone-code-field" appearance="fill">
+      <mat-select
+        [(value)]="phoneCode"
+        [ngClass]="getPhoneCodeClass"
+        class="phone-code-dropdown"
+        formControlName="countryCode">
+        <mat-option value="254">
+          <img
+            with="24"
+            height="24"
+            src="assets/flags/kenya.png"
+            style="vertical-align: middle; margin-right: 8px" />
+          <strong>+254</strong>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="phone-number-field" appearance="fill">
+      <mat-label>{{ 'COMMON.MOBILE-NUMBER' | translate }}</mat-label>
+      <input
+        required
+        type="text"
+        matInput
+        placeholder="Enter number"
+        numbersOnly
+        formControlName="number" />
+      <!-- <mat-error *ngIf="form.get('nextOfKin.middleName')!.errors?.required">
+          Middle name is <strong>required</strong>
+      </mat-error> -->
+    </mat-form-field>
+    <div class="code-input-holder" *ngIf="false">
+      <input matInput class="code-input" maxlength="1" numbersOnly />
+      <input matInput class="code-input" maxlength="1" numbersOnly />
+      <input matInput class="code-input" maxlength="1" numbersOnly />
+      <input matInput class="code-input" maxlength="1" numbersOnly />
+      <input matInput class="code-input" maxlength="1" numbersOnly />
+      <input matInput class="code-input" maxlength="1" numbersOnly />
+      <button mat-flat-button class="action-btn">
+        <span class="action-btn-label">{{
+          'DIALOG.VERIFY-MOBILE-NUMBER' | translate
+        }}</span>
+      </button>
+    </div>
+  </form>
+</div>

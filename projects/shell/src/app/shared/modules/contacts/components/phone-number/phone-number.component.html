@@ -1,0 +1,81 @@
+<form [formGroup]="form">
+  <div class="d-flex align-items-center top mb-10">
+    <span class="title">
+      {{ title | translate }}
+      @if (index > 1) {
+        {{ this.index - 1 }}
+      }
+    </span>
+    <span class="spacer"></span>
+    <mat-slide-toggle
+      [color]="'primary'"
+      [disabled]="form.invalid"
+      formControlName="isPreferred">
+      {{ 'COMMON.PREFERRED' | translate }}
+    </mat-slide-toggle>
+  </div>
+  <div class="content">
+    <div class="middle">
+      <mat-form-field
+        appearance="fill"
+        [ngClass]="
+          readonly || fieldStates?.phoneType?.readonly ? 'pointer-none' : ''
+        ">
+        <mat-label>{{ 'STATIC_DATA.PHONE_TYPE' | translate }}</mat-label>
+        <mat-select formControlName="phoneType">
+          @for (phoneType of phoneTypes; track $index) {
+            <mat-option
+              [disabled]="
+                form.get('phoneType')?.value !== phoneType.value &&
+                selectedTypes.includes(phoneType.value)
+              "
+              [value]="phoneType.value">
+              {{ phoneType.localetext | translate }}
+            </mat-option>
+          }
+        </mat-select>
+        @if (form.get('phoneType')?.errors?.['required']) {
+          <mat-error>
+            {{ 'STATIC_DATA.PHONE_TYPE' | translate }}
+            {{ 'COMMON.IS' | translate }}
+            <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+          </mat-error>
+        }
+      </mat-form-field>
+      <app-phone-number-group
+        #numComp
+        [form]="form"
+        [index]="index"
+        [required]="required"
+        [dedupeMatches]="dedupeMatches"
+        [dedupeOperationMode]="dedupeOperationMode"
+        [fieldStates]="fieldStates"
+        [readonly]="
+          readonly || fieldStates?.number?.readonly
+        "></app-phone-number-group>
+      <mat-form-field
+        appearance="fill"
+        [ngClass]="readonly ? 'pointer-none' : ''">
+        <mat-label>{{ 'COMMON.COMMENT' | translate }}</mat-label>
+        <input
+          matInput
+          formControlName="comment"
+          oninput="this.value = this.value.toUpperCase()"
+          [readonly]="readonly || fieldStates?.comment?.readonly"
+          [placeholder]="'COMMON.COMMENT' | translate"
+          type="text" />
+      </mat-form-field>
+    </div>
+    @if (showOtpInput) {
+      <div class="d-flex mt-5">
+        <app-phone-otp-section
+          #otpInputComponent
+          (onVerified)="readonly = $any($event)"
+          [enableVerification]="enableVerification"
+          [ticketId]="ticketId"
+          [customerId]="customerId"
+          [phoneInputForm]="form"></app-phone-otp-section>
+      </div>
+    }
+  </div>
+</form>

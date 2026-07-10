@@ -1,0 +1,37 @@
+<ng-template
+  [ngTemplateOutlet]="menu"
+  [ngTemplateOutletContext]="{
+    tableField
+  }"></ng-template>
+
+<!-- Custom Template -->
+
+<ng-template #menu let-context="context">
+  <ng-container>
+    <!-- Action Menu Items -->
+    <button mat-icon-button [matMenuTriggerFor]="mainMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #mainMenu="matMenu">
+      <button mat-menu-item>
+        <strong>{{ tableField.label }}</strong>
+      </button>
+
+      <ng-container *ngFor="let button of menuOptions">
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="menuOptionClick(button)">
+          {{ button.label }}
+        </button>
+      </ng-container>
+    </mat-menu>
+
+    <mat-menu #subMenu="matMenu">
+      <!-- <button mat-menu-item (click)="rowAction('sub_action_1',element)">Sub Action 1</button>
+        <button mat-menu-item (click)="rowAction('sub_action_2',element)">Sub Action 2</button> -->
+    </mat-menu>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <!-- Normat table cell values -->
+    <!-- {{element[col]}} -->
+  </ng-template>
+</ng-template>

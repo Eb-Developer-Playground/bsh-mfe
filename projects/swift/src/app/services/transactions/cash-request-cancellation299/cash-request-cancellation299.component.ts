@@ -1,0 +1,156 @@
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageBoxType, ToastService } from '../../../../shared/modules/toast';
+import { TransactionsService } from '../../../../core/services';
+import { AdditionalFieldsComponent } from '../form-sections';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { COUNTRY_CODES, FIELDS, PROCESSES, REQUIRED_DOCS } from '../../../../shared/static';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '../../../shared-stubs/translate.pipe';
+import { COMPAT_IMPORTS } from '../../../shared-stubs/compat-barrel';
+import { DocumentsUploadComponent } from '../../../shared-stubs/documents-upload';
+
+@Component({
+  imports: [...COMPAT_IMPORTS, DocumentsUploadComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  selector: 'app-cash-request-cancellation299',
+  templateUrl: './cash-request-cancellation299.component.html',
+  styleUrls: ['./cash-request-cancellation299.component.scss'],
+})
+export class CashRequestCancellation299Component implements OnInit, AfterViewInit, OnDestroy {
+  fields: any[] = FIELDS[PROCESSES['CASH_REQUEST_CANCELLATION_299']];
+  requiredDocs: any[] = REQUIRED_DOCS;
+  documents!: any[];
+  countryCode!: any;
+  fieldsForm!: UntypedFormGroup;
+  actionForm!: UntypedFormGroup;
+  destroy$: Subject<any> = new Subject<any>();
+  isReturnTicket!: boolean;
+  submitted!: boolean;
+  @ViewChild('fieldsComp') fieldsComponent!: any;
+
+  constructor(
+    private fb: UntypedFormBuilder,
+    private router: Router,
+    private toast: ToastService,
+    private transService: TransactionsService,
+    private translate: TranslateService
+  ) {}
+
+  ngOnInit(): void {
+    if (!this.transService.ticket) {
+      this.toast.show('', 'Transaction ticket has not been created', MessageBoxType.DANGER);
+    }
+    this.isReturnTicket = this.transService.ticket.status === 'Returned';
+    this.actionForm = this.fb.group({
+      action: [null, Validators.required],
+      fields: [null, Validators.required],
+      comment: [''],
+    });
+  }
+
+  ngAfterViewInit() {
+    this.fieldsForm = this.fieldsComponent.form;
+    this.fieldsForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(vc => {
+      this.actionForm.controls['fields'].patchValue(this.fieldsForm.valid ? true : null);
+    });
+    this.countryCode = COUNTRY_CODES.find(code => code.bankId === this.transService.ticket.bankId).countryCode;
+    const taskData = JSON.parse(this.transService.ticket.taskData);
+    this.fieldsForm.patchValue({
+      TransactionType: this.transService.contextData.selectionForm.transactionType,
+      TransferType: this.transService.contextData.selectionForm.transferType,
+      CenterNumber: this.transService.contextData.selectionForm.centerNumber.split(' - ')[1] || null,
+      CountryCode: this.countryCode,
+      RecieverBIC: taskData?.RecieverBIC,
+      Original299RefNumber: taskData?.Original299RefNumber,
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+    if (this.transService.ticket.status === 'New' && !this.submitted) {
+      const form = JSON.stringify(this.fieldsForm.value);
+      this.transService.updateTicketData(this.transService.ticket.id, { data: form }).subscribe(res => {
+        if (res.successful && res.responseObject) {
+          this.toast.show(
+            '',
+            `Saved... Ticket ID: ${this.transService.ticket.id} can be continued`,
+            MessageBoxType.SUCCESS
+          );
+        }
+      });
+    }
+  }
+
+  submit(): void {
+    if (!this.fieldsForm.valid) {
+      this.toast.show('', 'Please fill in the required fields to proceed', MessageBoxType.INFO);
+      return;
+    }
+    const ticketId = this.transService.ticket.id.toString();
+    const documentName = this.translate.instant('COMMON.REQUIRED_DOCUMENTS.CUSTOMER_INSTRUCTIONS');
+    const requiredExists = this.documents?.some(doc => doc.documentName === documentName && doc?.uploadedFile);
+
+    if (!requiredExists) {
+      this.toast.show(null, `COMMON.ERROR.DOCUMENT_SELECTION`, MessageBoxType.INFO);
+      return;
+    }
+
+    this.completeSubmission(ticketId);
+  }
+
+  completeSubmission(ticketId: any): void {
+    const data = {
+      Country: this.countryCode,
+      ticketNumber: ticketId,
+      Service: 'NewGenSwift',
+      documents: this.documents
+        .map((docs: any) => ({ ...docs.document, filename: docs.documentName }))
+        .filter(d => !!d.data),
+    };
+    this.transService.uploadDocuments(data).subscribe(
+      docRes => {
+        if (docRes.successful && docRes.responseObject) {
+          const docs = docRes.responseObject;
+          const isErrorFile = docs.some((doc: any) => !doc.success);
+          if (isErrorFile) {
+            docs.forEach((doc: any) => {
+              if (!doc.success) {
+                this.toast.show('', `Failed to upload ${doc.filename}. Reason: ${doc.message}`, MessageBoxType.DANGER);
+              }
+            });
+            return;
+          }
+          if (this.documents.length > 0) {
+            this.toast.show('', `Documents uploaded successfully!`, MessageBoxType.SUCCESS);
+          }
+          this.submitTicket(ticketId);
+        }
+      },
+      docErr => console.log(docErr)
+    );
+  }
+
+  submitTicket(ticketId: any) {
+    this.transService.submitTicket(ticketId, { ...this.fieldsForm.value }, 'cancellation-mt299').subscribe(
+      res => {
+        if (res.successful && res.responseObject) {
+          this.submitted = true;
+          this.toast.show('', `Ticket ${ticketId} submitted to Checker successfully!`, MessageBoxType.SUCCESS);
+          this.clear();
+          this.router.navigateByUrl('/dashboard');
+        }
+      },
+      err => console.log(err)
+    );
+  }
+
+  clear(): void {
+    this.fieldsForm.reset();
+    this.actionForm.reset();
+    this.documents = [];
+  }
+}

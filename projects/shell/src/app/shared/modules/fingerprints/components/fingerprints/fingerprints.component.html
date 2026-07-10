@@ -1,0 +1,57 @@
+<ng-container *ngIf="contentOnly" [ngTemplateOutlet]="content"></ng-container>
+<mat-card
+  appearance="outlined"
+  *ngIf="!contentOnly"
+  fxLayout="column"
+  class="mb-2"
+  style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 fw-400">{{ title | translate }}</h3>
+    <p class="text-grey">{{ description | translate }}</p>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <div fxLayout="column" fxFlex="100" style="margin-top: 1.5rem">
+    <div class="hands-box p-1m">
+      <ng-container [ngTemplateOutlet]="content"></ng-container>
+    </div>
+    <div
+      fxLayout="row"
+      fxFill
+      fxFlex="100"
+      fxLayoutAlign="space-between center"
+      class="p-1m mt-10">
+      <div class="skip-biometric-box" [formGroup]="skipBioForm">
+        <mat-checkbox color="primary" formControlName="skipCheckBox"
+          ><span class="mat-subtitle-2"
+            >Skip biometrics scan</span
+          ></mat-checkbox
+        >
+      </div>
+    </div>
+  </div>
+</mat-card>
+<ng-template #content>
+  <div
+    fxLayout="row"
+    fxFill
+    fxFlex="100"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap="24px">
+    <div fxLayout="column" fxFlex="50" class="hand-box">
+      <app-hand
+        (handChangePrints)="onLeftHand($event)"
+        [hand]="leftHand"
+        [disabled]="disabled"
+        label="Left hand"></app-hand>
+    </div>
+    <div fxLayout="column" fxFlex="50" class="hand-box">
+      <app-hand
+        (handChangePrints)="onRightHand($event)"
+        [hand]="rightHand"
+        [disabled]="disabled"
+        label="Right hand"></app-hand>
+    </div>
+  </div>
+</ng-template>

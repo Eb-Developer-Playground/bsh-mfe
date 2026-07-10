@@ -1,0 +1,87 @@
+<div
+  role="group"
+  class="d-flex phone-number-input-container"
+  [ngClass]="{ international: !localMode }"
+  [formGroup]="formGroup"
+  [attr.aria-labelledby]="_formField.getLabelId()"
+  (focusin)="onFocusIn($event)"
+  (focusout)="onFocusOut($event)">
+  <span
+    matPrefix
+    *ngIf="
+      (formGroup.get('countryCode')?.valid ||
+        formGroup.get('countryCode')?.disabled) &&
+      !!formGroup.get('countryCode')?.value
+    ">
+    &plus;&nbsp;
+  </span>
+  <input
+    type="text"
+    matInput
+    aria-label="Country code"
+    formControlName="countryCode"
+    [style.width.px]="countryCodeWidth"
+    (keypress)="handleKeyPress($event)"
+    [matAutocomplete]="auto"
+    #country />
+  <mat-autocomplete
+    autoActiveFirstOption
+    #auto="matAutocomplete"
+    [panelWidth]="'300px'">
+    <mat-option
+      *ngFor="let option of filteredOptions | async"
+      [value]="option.dialCode"
+      (click)="
+        _handleInput(
+          'country',
+          formGroup.controls['countryCode'],
+          localMode ? city : numberInput
+        );
+        onCountrySelected.emit(option)
+      ">
+      <img
+        style="
+          height: 18px;
+          width: 18px;
+          margin-right: 0;
+          margin-top: 5px;
+          border-radius: 9px;
+        "
+        src="{{ option.flagPath }}"
+        alt="{{ option.countryName }}" />
+      +{{ option.dialCode }} {{ option.countryName }}
+    </mat-option>
+  </mat-autocomplete>
+  <span class="phone-number-input-spacer">&nbsp;</span>
+  <input
+    id="cityCode"
+    class="phone-number-input-element"
+    formControlName="cityCode"
+    aria-label="Area code"
+    [attr.maxLength]="localMode ? 3 : 1"
+    [attr.size]="localMode ? 3 : 1"
+    [attr.type]="
+      (formGroup.get('countryCode')?.valid ||
+        formGroup.get('countryCode')?.disabled) &&
+      localMode
+        ? 'text'
+        : 'hidden'
+    "
+    (input)="_handleInput('city', formGroup.controls['cityCode'], number)"
+    (keypress)="handleKeyPress($event)"
+    (keyup.backspace)="autoFocusPrev(formGroup.controls['cityCode'], country)"
+    #city />
+  <span class="phone-number-input-spacer">&nbsp;</span>
+  <input
+    class="phone-number-input-element"
+    formControlName="number"
+    aria-label="Subscriber number"
+    [attr.maxLength]="localMode ? 6 : 12"
+    [attr.size]="localMode ? 6 : 12"
+    (input)="_handleInput('number', formGroup.controls['number'])"
+    (keyup.backspace)="
+      autoFocusPrev(formGroup.controls['number'], localMode ? city : country)
+    "
+    (keypress)="handleKeyPress($event)"
+    #number />
+</div>

@@ -1,0 +1,53 @@
+<div fxLayout="column">
+  <div
+    fxLayout="row"
+    fxFlex="100"
+    fxLayoutAlign="center center"
+    class="pt-15 pb-15">
+    <div fxLayout="row" fxFlex fxFlexOffset="33" fxLayoutAlign="center center">
+      <p class="mat-subtitle-1 m-0">
+        {{ 'DOCUMENTS.DOCUMENT-PREVIEW' | translate }}
+      </p>
+    </div>
+    <div fxLayout="row" fxFlex fxLayoutAlign="end center">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="close icon"
+        class="close-icon"
+        (click)="closeDialog()"
+        >close</mat-icon
+      >
+    </div>
+  </div>
+
+  <pdf-viewer
+    [src]="src"
+    [render-text]="true"
+    [original-size]="false"
+    external-link-target="true"
+    style="width: auto; height: 460px"></pdf-viewer>
+
+  <div fxLayout="row">
+    <div fxFlex="60" fxLayoutAlign="start center">
+      <button mat-stroked-button color="primary" (click)="closeDialog()">
+        {{ 'COMMON.CANCEL' | translate }}
+      </button>
+    </div>
+    <div fxFlex="40" fxLayoutAlign="end center" fxLayoutGap="10px">
+      <button
+        *ngIf="deliveryMode !== 'Email'"
+        mat-stroked-button
+        color="primary"
+        (click)="printPdf()">
+        {{ 'COMMON.PRINT' | translate }}
+      </button>
+      <button
+        *ngIf="deliveryMode !== 'Email' && showDownloadButton"
+        mat-raised-button
+        color="primary"
+        (click)="downloadFile()">
+        {{ 'COMMON.DOWNLOAD' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

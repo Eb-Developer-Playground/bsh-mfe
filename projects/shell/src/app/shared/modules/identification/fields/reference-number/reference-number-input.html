@@ -1,0 +1,14 @@
+<div
+  role="group"
+  class="reference-number-input-container"
+  [attr.aria-labelledby]="_formField.getLabelId()"
+  (focusin)="onFocusIn($event)"
+  (focusout)="onFocusOut($event)">
+  <input
+    [formControl]="refNumCtl"
+    aria-label="Reference number"
+    class="reference-number-input-element"
+    size="3"
+    maxlength="3"
+    #input />
+</div>

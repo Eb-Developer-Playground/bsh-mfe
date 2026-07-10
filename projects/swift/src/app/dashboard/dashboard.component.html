@@ -1,0 +1,274 @@
+<div class="ticket-table">
+  <div class="table-head">
+    <span class="table-head-label">
+      {{ 'TICKETS.MY-TICKETS' | translate }}
+    </span>
+    <span class="table-head-filter">
+      <button mat-flat-button class="filter-toggle-btn" (click)="toggle()">
+        <mat-icon>filter_alt</mat-icon>
+        <span>{{ 'COMMON.FILTER' | translate }}</span>
+      </button>
+    </span>
+  </div>
+
+  @if (toggleFilter) {
+    <div class="ticket-filter">
+      <div class="filter">
+        <form [formGroup]="filterForm" class="filter-form" (ngSubmit)="onSubmit()">
+          <span class="filter-field">
+            <mat-form-field class="filter-fields" appearance="outline">
+              <mat-label>{{ 'TICKETS.COLS.SUBJECT' | translate }}</mat-label>
+              <mat-select formControlName="subject">
+                @for (option of subjectDropdown; track option) {
+                  <mat-option [value]="option">{{ option }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="filter-fields" appearance="outline">
+              <mat-label>{{ 'TICKETS.COLS.CUSTOMER-ID' | translate }}</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="customerId" type="number" min="0" />
+            </mat-form-field>
+            <mat-form-field class="filter-fields" appearance="outline">
+              <mat-label>{{ 'TICKETS.COLS.TICKET-ID' | translate }}</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="ticketId" type="number" min="0" />
+            </mat-form-field>
+            <mat-form-field class="createdBy-filter-fields" appearance="outline">
+              <mat-label>{{ 'TICKETS.COLS.CREATED-BY' | translate }}</mat-label>
+              <input
+                type="text"
+                placeholder=" Search Created By"
+                aria-label="Created By"
+                matInput
+                formControlName="createdBy"
+                [matAutocomplete]="auto" />
+              <mat-autocomplete #auto="matAutocomplete">
+                @for (option of filteredCreatedByOptions | async; track option) {
+                  <mat-option [value]="option">{{ option }}</mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class="date-filter-fields" appearance="outline">
+              <mat-label>{{ 'TICKETS.COLS.DATE_RANGE' | translate }}</mat-label>
+              <mat-date-range-input [rangePicker]="picker">
+                <input
+                  matStartDate
+                  formControlName="fromDate"
+                  required
+                  (keypress)="keyDown($event)"
+                  placeholder="Start date" />
+                <input
+                  matEndDate
+                  formControlName="toDate"
+                  required
+                  (keypress)="keyDown($event)"
+                  placeholder="End date" />
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+              @if (filterForm.controls['fromDate'].hasError('matStartDateInvalid')) {
+                <mat-error>{{ 'COMMON.ERROR.INVALID_START_DATE' | translate }}</mat-error>
+              }
+              @if (filterForm.controls['toDate'].hasError('matEndDateInvalid')) {
+                <mat-error>{{ 'COMMON.ERROR.INVALID_END_DATE' | translate }}</mat-error>
+              }
+              @if (checkDateError) {
+                <mat-error>{{ errorMessage }}</mat-error>
+              }
+            </mat-form-field>
+          </span>
+
+          <span class="filter-btn">
+            <button type="submit" mat-flat-button color="primary">
+              {{ 'COMMON.SUBMIT' | translate }}
+            </button>
+            <button type="button" mat-stroked-button color="accent" (click)="clearFilters()">
+              {{ 'COMMON.CANCEL' | translate }}
+            </button>
+          </span>
+        </form>
+      </div>
+      <div class="filter-chips">
+        <mat-chip-set>
+          @for (chip of selectedChipItem; track chip) {
+            <mat-chip [removable]="removable" (removed)="remove(chip)">
+              {{ chip.value }}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+          }
+        </mat-chip-set>
+        <span>
+          <button mat-stroked-button color="primary" (click)="clearAllFilters()">
+            {{ 'COMMON.CLEAR_FILTERS' | translate }}
+          </button>
+        </span>
+      </div>
+    </div>
+  }
+
+  <div class="wrap_table_tickets">
+    <table
+      mat-table
+      class="full-width-table"
+      [dataSource]="dataSource"
+      matSort
+      matSortActive
+      matSortDisableClear
+      matSortDirection="desc"
+      aria-label="Elements">
+      <ng-container matColumnDef="subject">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ 'TICKETS.COLS.SUBJECT' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let row" [class]="row.actionCssClass">
+          <div class="mt-2" (click)="handleTicketRouting(row)">
+            {{ row.subject }}
+          </div>
+          <div class="mt-2 mb-2 text-muted">
+            {{ row?.label || '' }}
+            @if (row.label) {
+              <span> | </span>
+            }
+            {{ row?.actionFlowName || row?.actionFlowDescription }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customerName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.customerName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdBy">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Created By</th>
+        <td [matTooltip]="row.createdBy" class="td-ellipsis" mat-cell *matCellDef="let row">
+          {{ row.createdBy }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customerCif">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer CIF</th>
+        <td mat-cell *matCellDef="let row">{{ row.customerCif }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ticket Id</th>
+        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdOnUtc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.createdOnUtc + 'Z' | date: 'medium' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let row">
+          @switch (row.status) {
+            @case ('Error') {
+              <div class="status-badge error">
+                <button
+                  mat-icon-button
+                  aria-label="a red error tooltip"
+                  [matTooltip]="row.error"
+                  matTooltipPosition="left"
+                  matTooltipClass="error-tooltip-red">
+                  <mat-icon>error</mat-icon>
+                </button>
+                Error
+              </div>
+            }
+            @case ('Aborted') {
+              <div class="status-badge error">
+                {{ 'COMMON.TICKET_STATUS.ABORTED' | translate }}
+              </div>
+            }
+            @case ('Rejected') {
+              <div class="status-badge error">
+                <button
+                  mat-icon-button
+                  aria-label="a red error tooltip"
+                  [matTooltip]="row.note"
+                  matTooltipPosition="left"
+                  matTooltipClass="error-tooltip-red">
+                  <mat-icon>error</mat-icon>
+                </button>
+                {{ 'COMMON.TICKET_STATUS.REJECTED' | translate }}
+              </div>
+            }
+            @case ('Completed') {
+              <div class="status-badge completed">
+                {{ 'COMMON.TICKET_STATUS.COMPLETED' | translate }}
+              </div>
+            }
+            @case ('Pending') {
+              <div class="status-badge pending">
+                {{ 'COMMON.TICKET_STATUS.PENDING' | translate }}
+              </div>
+            }
+            @case ('Returned') {
+              <div class="status-badge pending">
+                <button
+                  mat-icon-button
+                  aria-label="a yellow returned tooltip"
+                  [matTooltip]="row.note"
+                  matTooltipPosition="left"
+                  matTooltipClass="returned-tooltip-yellow">
+                  <mat-icon>error</mat-icon>
+                </button>
+                {{ 'COMMON.TICKET_STATUS.RETURNED' | translate }}
+              </div>
+            }
+            @case ('Submitted') {
+              <div class="status-badge completed">
+                {{ 'COMMON.TICKET_STATUS.SUBMITTED' | translate }}
+              </div>
+            }
+            @case ('SubmittedToChecker') {
+              <div class="status-badge pending">
+                {{ 'COMMON.TICKET_STATUS.SUBMITTED_TO_CHECKER' | translate }}
+              </div>
+            }
+            @case ('SubmittedToCheckerLevel1') {
+              <div class="status-badge pending">
+                {{ 'COMMON.TICKET_STATUS.SUBMITTED_TO_CHECKER_LEVEL_1' | translate }}
+              </div>
+            }
+            @case ('SubmittedToCheckerLevel2') {
+              <div class="status-badge pending">
+                {{ 'COMMON.TICKET_STATUS.SUBMITTED_TO_CHECKER_LEVEL_2' | translate }}
+              </div>
+            }
+            @case ('SubmittedToNewGen') {
+              <div class="status-badge pending">Submitted To NewGen</div>
+            }
+            @default {
+              <div [class]="'status-badge ' + row.cssStatusClass">
+                {{ row.statusText }}
+              </div>
+            }
+          }
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="handleTicketRouting(row)"
+        class="hover-row"></tr>
+    </table>
+  </div>
+  <mat-paginator
+    class="table-footer"
+    #paginator
+    [length]="totalTicketsCount!"
+    [pageIndex]="0"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page">
+  </mat-paginator>
+</div>

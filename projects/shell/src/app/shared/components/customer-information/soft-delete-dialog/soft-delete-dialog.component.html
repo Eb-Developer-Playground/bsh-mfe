@@ -1,0 +1,26 @@
+<div>
+  <div class="sub-header">
+    <h2 class="title">{{ 'SOFT-DELETE.BLOCKED-PROFILE-TITLE' | translate }}</h2>
+    <mat-icon color="primary" class="cursor-pointer" mat-dialog-close
+      >close</mat-icon
+    >
+  </div>
+
+  <p class="sub-text">
+    {{ 'SOFT-DELETE.BLOCKED-PROFILE-CONFIRM' | translate }}
+  </p>
+
+  <div class="buttons-div">
+    <button mat-button color="primary" class="quit-btn" mat-dialog-close>
+      {{ 'COMMON.QUIT' | translate }}
+    </button>
+    <button
+      mat-button
+      mat-flat-button
+      color="primary"
+      class="--details-btn"
+      (click)="goToSoftDelete()">
+      {{ 'COMMON.PROCEED' | translate }}
+    </button>
+  </div>
+</div>

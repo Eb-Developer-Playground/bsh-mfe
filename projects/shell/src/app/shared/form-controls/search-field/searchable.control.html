@@ -1,0 +1,36 @@
+<mat-form-field
+  [ngClass]="disabled ? 'pointer-none' : ''"
+  appearance="fill"
+  style="width: 100%">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    #input
+    matInput
+    type="text"
+    (blur)="_onTouched?.()"
+    (input)="onSelectValue(input.value)"
+    [placeholder]="placeholder"
+    [formControl]="inputControl"
+    [matAutocomplete]="autocomplete" />
+  <mat-autocomplete
+    #autocomplete="matAutocomplete"
+    (optionSelected)="onSelectValue($event.option.value)">
+    <mat-option *ngFor="let c of filteredItems | async" [value]="c.toString()">
+      {{ c.toString() }}
+    </mat-option>
+  </mat-autocomplete>
+  <mat-hint *ngIf="hint"
+    ><span>{{ hint }}</span></mat-hint
+  >
+  <mat-error>
+    <span *ngIf="inputControl?.hasError('required')">
+      {{ label }} {{ 'COMMON.IS' | translate }}
+      <strong> {{ 'COMMON.REQUIRED' | translate }}</strong
+      >.
+    </span>
+    <span *ngIf="inputControl?.hasError('invalid')">
+      <strong>{{ 'COMMON.INVALID' | translate }}</strong>
+      {{ label | lowercase }}.
+    </span>
+  </mat-error>
+</mat-form-field>

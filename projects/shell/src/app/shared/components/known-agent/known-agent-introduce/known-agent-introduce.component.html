@@ -1,0 +1,282 @@
+<div class="topbar mb-24">
+  <mat-toolbar class="toolbar">
+    <div fxLayout="row" fxFlex fxLayoutAlign="start center" fxLayoutGap="12px">
+      <div
+        fxLayout="row"
+        fxFlex
+        fxLayoutAlign="start center"
+        fxLayoutGap="12px">
+        <p class="mat-headline-5 m-0">
+          {{ 'KNOWN-AGENT.OVERVIEW.HEADER' | translate }}
+        </p>
+        <span class="vl"></span>
+        <p class="mat-body-2 text-muted m-0">
+          {{ 'KNOWN-AGENT.OVERVIEW.SUBHEADER' | translate }}
+        </p>
+      </div>
+      <div>
+        <app-pills color="gray" text="COMMON.TICKET_STATUS.PENDING"></app-pills>
+      </div>
+    </div>
+  </mat-toolbar>
+</div>
+
+<mat-accordion mat-dialog-content color="primary" class="w-100">
+  <mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div
+          fxLayout="row"
+          fxFlex="100"
+          fxLayoutAlign="start center"
+          fxFill
+          class="pt-16 pb-16">
+          <div fxLayoutAlign="center center" class="circle-name-avatar">
+            <div *ngIf="personalDetails">
+              {{
+                getAvatarName(
+                  personalDetails.firstName + ' ' + personalDetails.lastName
+                )
+              }}
+            </div>
+            <div *ngIf="companyDetails">
+              {{ getAvatarName(companyDetails.companyName) }}
+            </div>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex class="pl-24">
+            <p class="mat-subtitle-1 m-0">
+              <ng-container *ngIf="personalDetails">
+                {{ personalDetails?.firstName }} {{ personalDetails?.lastName }}
+              </ng-container>
+              <ng-container *ngIf="companyDetails">
+                {{ companyDetails?.companyName }}
+              </ng-container>
+            </p>
+          </div>
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div fxLayout="column" fxFlex="100" fxLayoutAlign="start start">
+      <div
+        fxLayout="row"
+        fxFlex="100"
+        fxLayoutAlign="start"
+        class="pl-24 mt-12 pr-24"
+        fxLayoutGap="20px"
+        fxFill>
+        <div fxLayout="column" fxLayoutAlign="start">
+          <app-known-agent-customer-image
+            *ngIf="showCustomerPhoto"
+            [acc]="accountNumber"
+            [CIF]="customerId">
+          </app-known-agent-customer-image>
+          <!-- <mat-icon  svgIcon="ic-placeholder-potrait" aria-hidden="false"  aria-label="placeholder-potrait" style="width: 141px; height: 141px;">
+                            </mat-icon>
+                            <mat-icon  svgIcon="ic-placeholder-darker" aria-hidden="false" aria-label="placeholder" style="width: 141px; height: 100px;">
+                            </mat-icon> -->
+        </div>
+        <div fxLayout="row" fxFlex fxLayoutAlign="start" fxfill>
+          <div
+            fxLayout="column"
+            fxFlex
+            fxLayoutAlign="start"
+            *ngIf="personalDetails">
+            <div fxLayout="row">
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'COMMON.NATIONALITY' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ personalDetails?.nationality }}
+                </p>
+              </div>
+
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'COMMON.COUNTRY-OF-RESIDENCE' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ personalDetails?.countryOfResidence }}
+                </p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.ID-TYPE' | translate }}
+                </p>
+                <p class="mat-subtitle-1">{{ personalDetails?.idType }}</p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.ID-NUMBER' | translate }}
+                </p>
+                <p class="mat-subtitle-1">{{ personalDetails?.idNumber }}</p>
+              </div>
+            </div>
+            <!-- second line -->
+            <div fxLayout="row">
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.FIRST-NAME' | translate }}
+                </p>
+                <p class="mat-subtitle-1">{{ personalDetails?.firstName }}</p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.MIDDLE-NAME' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ personalDetails?.middleName }}
+                </p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.LAST-NAME' | translate }}
+                </p>
+                <p class="mat-subtitle-1">{{ personalDetails?.lastName }}</p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.DATE-BIRTH' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ personalDetails?.birthDate | date: 'dd/MM/yyyy' }}
+                </p>
+              </div>
+            </div>
+
+            <div fxLayout="row">
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.KRA-PIN' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ personalDetails?.krapInNumber }}
+                </p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.ID-SERIAL-NUMBER' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ personalDetails?.idSerialNumber }}
+                </p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'COMMON.GENDER' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{
+                    'COMMON.CODES.GENDER.' +
+                      personalDetails?.gender?.toUpperCase() | translate
+                  }}
+                </p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'COMMON.MARITAL-STATUS' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{
+                    'COMMON.CODES.MARITAL-STATUS.' +
+                      personalDetails?.maritalStatus?.toUpperCase() | translate
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            fxLayout="column"
+            fxFlex
+            fxLayoutAlign="start"
+            *ngIf="companyDetails">
+            <div fxLayout="row">
+              <div fxLayout="column" fxFlex="50" fxLayoutAlign="center start">
+                <p class="mat-headline-6 mb-4">
+                  {{ companyDetails?.companyName }}
+                </p>
+                <p class="mat-body-2 mb-20 mt-1">
+                  {{ 'KNOWN-AGENT.REVIEW-DETAILS' | translate }}
+                </p>
+              </div>
+              <div fxFlex="50" fxLayoutAlign="end center">
+                <mat-icon
+                  svgIcon="ic-bio-enrolled-not"
+                  aria-hidden="false"
+                  aria-label="Bio"
+                  class="bio-image"></mat-icon>
+              </div>
+            </div>
+            <div fxLayout="row">
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.BUSINESS-TYPE' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ this.companyDetails?.businessType }}
+                </p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.REGISTRATION-NUMBER' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ companyDetails?.registrationNumber }}
+                </p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.COMPANY-NAME' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ companyDetails?.companyName }}
+                </p>
+              </div>
+            </div>
+            <!-- second line -->
+            <div fxLayout="row">
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.REGISTRATION-DATE' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ companyDetails?.registrationDate | date: 'dd/MM/yyyy' }}
+                </p>
+              </div>
+              <div fxFlex="25">
+                <p class="mat-body-2 mb-1 text-muted">
+                  {{ 'KNOWN-AGENT.KRA-PIN' | translate }}
+                </p>
+                <p class="mat-subtitle-1">
+                  {{ companyDetails?.krapInNumber }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        fxLayout="column"
+        fxFlex="100"
+        fxLayoutAlign="start start"
+        class="pt-58 w-100">
+        <mat-divider class="w-100"></mat-divider>
+        <div class="mt-16">
+          <h3 class="mat-headline-6 fw-400 mb-0">
+            {{ 'KNOWN-AGENT.REQUIRED-DOCUMENTS' | translate }}
+          </h3>
+        </div>
+
+        <app-documents-review
+          class="w-100"
+          [contentOnly]="true"
+          [ticketId]="ticketId">
+        </app-documents-review>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

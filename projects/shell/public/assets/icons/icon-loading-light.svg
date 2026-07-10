@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1.64909" height="4.98249" rx="0.824546" transform="matrix(0.862927 0.505328 -0.494691 0.869069 16.3545 3.00488)" fill="#ffffff" fill-opacity="0.75"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.3193 2.8216C11.3193 2.36784 11.6872 2 12.1409 2C12.5947 2 12.9625 2.36784 12.9625 2.8216V6.1784C12.9625 6.63216 12.5947 7 12.1409 7C11.6872 7 11.3193 6.63216 11.3193 6.1784V2.8216Z" fill="#ffffff" fill-opacity="0.7"/>
+<rect width="1.66083" height="4.94727" rx="0.830414" transform="matrix(0.49469 0.86907 -0.862927 0.505329 20.3018 6.32129)" fill="#ffffff" fill-opacity="0.2"/>
+<rect x="21.9531" y="11.2144" width="1.66667" height="4.92958" rx="0.833333" transform="rotate(90 21.9531 11.2144)" fill="#ffffff" fill-opacity="0.25"/>
+<rect width="1.66083" height="4.94728" rx="0.830415" transform="matrix(-0.49469 0.869069 -0.862927 -0.505329 21.123 16.3213)" fill="#ffffff" fill-opacity="0.3"/>
+<rect width="1.64909" height="4.98249" rx="0.824546" transform="matrix(-0.862927 0.505329 -0.49469 -0.869069 17.7773 20.3252)" fill="#ffffff" fill-opacity="0.35"/>
+<rect x="12.9619" y="22" width="1.64319" height="5" rx="0.821594" transform="rotate(180 12.9619 22)" fill="#ffffff" fill-opacity="0.4"/>
+<rect width="1.64909" height="4.98249" rx="0.824546" transform="matrix(-0.862927 -0.505328 0.49469 -0.869069 7.91797 21.1587)" fill="#ffffff" fill-opacity="0.45"/>
+<rect width="1.66083" height="4.94728" rx="0.830415" transform="matrix(-0.49469 -0.869069 0.862927 -0.505328 4.04688 17.7646)" fill="#ffffff" fill-opacity="0.5"/>
+<rect x="2.23438" y="12.8809" width="1.66667" height="4.92958" rx="0.833333" transform="rotate(-90 2.23438 12.8809)" fill="#ffffff" fill-opacity="0.55"/>
+<rect width="1.66083" height="4.94728" rx="0.830414" transform="matrix(0.494691 -0.869069 0.862927 0.505328 3.22559 7.76465)" fill="#ffffff" fill-opacity="0.6"/>
+<rect width="1.64909" height="4.98249" rx="0.824546" transform="matrix(0.862927 -0.505328 0.49469 0.869069 6.49512 3.83838)" fill="#ffffff" fill-opacity="0.65"/>
+</svg>

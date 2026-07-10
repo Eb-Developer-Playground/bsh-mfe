@@ -1,0 +1,41 @@
+<mat-card appearance="outlined">
+  <div class="pl-24">
+    <app-header
+      [title]="'KNOWN-AGENT.APPROVAL-AGENT.APPROVAL' | translate"></app-header>
+  </div>
+  <mat-card-content class="pl-24">
+    <form [formGroup]="approvalForm">
+      <div
+        fxLayout="row"
+        fxFlex
+        fxLayoutAlign="start center"
+        fxLayoutGap="18px">
+        <mat-form-field appearance="fill">
+          <mat-label>{{
+            'KNOWN-AGENT.APPROVAL-AGENT.APPROVAL-STATUS' | translate
+          }}</mat-label>
+          <mat-select formControlName="approvalStatus" required>
+            <mat-option
+              *ngFor="let option of approvalOptions"
+              [value]="option.code"
+              >{{ option.description }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>{{
+            'KNOWN-AGENT.APPROVAL-AGENT.COMMENT-SECTION' | translate
+          }}</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="commentSection"
+            #comment />
+          <mat-hint align="end">
+            {{ comment.value.length }}/{{ 100 }}
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

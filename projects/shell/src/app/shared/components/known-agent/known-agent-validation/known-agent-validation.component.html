@@ -1,0 +1,50 @@
+<mat-card appearance="outlined">
+  <div class="pl-24">
+    <app-header title="Customer Validation"></app-header>
+  </div>
+  <mat-card-content class="pl-24">
+    <form [formGroup]="validationForm">
+      <div
+        fxLayout="row"
+        fxFlex
+        fxLayoutAlign="space-between center"
+        fxLayoutGap="18px">
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>{{ 'KNOWN-AGENT.CUSTOMER' | translate }}</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="customer" />
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>{{ 'KNOWN-AGENT.DATE-OF-CALL' | translate }}</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="dateOfCall" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>{{ 'COMMON.TIME' | translate }}</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            type="time"
+            formControlName="time" />
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>{{
+            'KNOWN-AGENT.CUSTOMER-MOBILE-NUMBER' | translate
+          }}</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="customerMobileNumber" />
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,174 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) ? isSidenavOpened : true"
+    [style.width.px]="(isHandset$ | async) ? 230 : (isSidenavOpened ? 230 : 64)">
+    <mat-toolbar class="toolbarLeft">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="toggleSidenav()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <img
+        *ngIf="session.user?.bankId === '43'"
+        class="equity-logo"
+        src="assets/logos/equity-bcdc.svg"
+        alt=""
+        srcset="" />
+      <img
+        *ngIf="session.user && session.user.bankId !== '43'"
+        class="equity-logo"
+        src="assets/logos/equity.svg"
+        alt=""
+        srcset="" />
+    </mat-toolbar>
+    <div class="sidenav-scroll-wrapper">
+      <div class="sidenav-scroll-inner">
+        <app-navigation [isSidenavOpened]="isSidenavOpened"></app-navigation>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content [style.marginLeft.px]="(isHandset$ | async) ? 0 : (isSidenavOpened ? 230 : 64)">
+    <mat-toolbar class="main-toolbar">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <app-breadcrumb></app-breadcrumb>
+      <span class="spacer"></span>
+      <app-network-speed />
+      <button mat-icon-button aria-label="Search for customer">
+        <mat-icon svgIcon="ic-search"></mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Search for customer">
+        <mat-icon svgIcon="ic-help"></mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Branch notifications">
+        <mat-icon svgIcon="ic-alerts"></mat-icon>
+      </button>
+      <button mat-button [matMenuTriggerFor]="langMenu">
+        <span class="fw-400">{{ selectedLocale?.id || 'en-GB' }}</span>
+      </button>
+      <mat-menu #langMenu="matMenu">
+        <button
+          mat-menu-item
+          (click)="changeLocale(loc.id)"
+          *ngFor="let loc of session.subsidiary?.languages">
+          {{ loc.name | translate }} ({{ loc.id }})
+        </button>
+      </mat-menu>
+      <mat-icon
+        class="ml-10 mr-10"
+        *ngIf="session.subsidiary?.icon"
+        [svgIcon]="session.subsidiary?.icon"></mat-icon>
+      <div class="user-action" [matMenuTriggerFor]="profileMenu">
+        <span class="user-action-short">{{ session.userInitials }}</span>
+        <span class="user-action-username">{{
+            session?.user?.staffNo || 'Username'
+          }}</span>
+        <div class="ms-auto">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-down"
+            viewBox="0 0 16 16">
+            <path
+              fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
+      </div>
+      <mat-menu #profileMenu xPosition="before">
+        <div style="margin: 16px">
+          <span class="text-muted">{{ 'COMMON.HELLO' | translate }}</span
+          ><br />
+          <ng-container *ngIf="session.isLoggedIn()">
+            <span class="color-primary fs-3 mt-2 mb-2 text-capitalize">{{
+                session.userFullName
+              }}</span
+            ><br />
+            <strong style="word-wrap: break-word">{{
+                session.user.username.toLowerCase()
+              }}</strong
+            ><br />
+            <p>{{ 'LOGIN.COMMON.ACCOUNT_HEADER' | translate }}.</p>
+            <div class="mt-5 mb-5">
+              <mat-divider></mat-divider>
+            </div>
+            <table>
+              <tr class="mb-05">
+                <td>{{ 'COMMON.COUNTRY' | translate }}</td>
+                <td>
+                  <strong>{{
+                      session.userCountryCode | transformSubsidiary
+                    }}</strong>
+                </td>
+              </tr>
+              <tr>
+                <td>{{ 'COMMON.BRANCH' | translate }}</td>
+                <td>
+                  <strong>{{ session.userBranch }}</strong>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  {{ 'COMMON.WORKCLASS' | translate }}
+                </td>
+                <td>
+                  <strong>{{ session.userWorkClass }}</strong>
+                </td>
+              </tr>
+            </table>
+          </ng-container>
+          <ng-container *ngIf="!session.isLoggedIn()">
+            <p>{{ 'LOGIN.COMMON.LOG-IN-TEXT' | translate }}</p>
+          </ng-container>
+          <div class="mt-5 mb-5">
+            <mat-divider></mat-divider>
+          </div>
+          <div class="d-flex">
+            <button
+              mat-button
+              *ngIf="session.isLoggedIn()"
+              (click)="logout()"
+              [routerLink]="['/auth']">
+              {{ 'LOGIN.COMMON.LOG-OUT' | translate }}
+            </button>
+            <button
+              mat-button
+              *ngIf="!session.isLoggedIn()"
+              (click)="session.setUrlParameter(window.location.href)"
+              [routerLink]="['/auth']">
+              {{ 'LOGIN.COMMON.SIGN-IN' | translate }}
+            </button>
+            <span class="spacer"></span>
+            <button
+              mat-button
+              *ngIf="session.isLoggedIn() && (isDev || isLocal)"
+              (click)="showProfileDetails()">
+              {{ 'LOGIN.COMMON.MORE_INFO' | translate }}&nbsp;&raquo;
+            </button>
+          </div>
+        </div>
+      </mat-menu>
+    </mat-toolbar>
+    <main class="main" [style.overflow]="isLoading ? 'hidden' : ''">
+      <app-loader></app-loader>
+      <div [style.visibility]="isLoading ? 'hidden' : 'visible'" style="height: 100%">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,435 @@
+<form [formGroup]="accountForm" autocomplete="off">
+  <mat-card class="card-container">
+    <h3 class="mat-title fw-400 align-self-center">Enhanced due diligence</h3>
+    <hr />
+    <div class="fieldset">
+      <mat-form-field appearance="fill">
+        <mat-label>High risk category</mat-label>
+        <input
+          type="text"
+          matInput
+          required
+          aria-label="High risk category"
+          formControlName="highRiskCustomerDescription"
+          [matAutocomplete]="auto"
+          oninput="this.value = this.value.toUpperCase()" />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredCategoryOptions | async"
+            [value]="option.category">
+            {{ option.category }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error
+          *ngIf="
+            accountForm.controls['highRiskCustomerDescription'].hasError(
+              'requireCategoryMatch'
+            ) &&
+            !accountForm.controls['highRiskCustomerDescription'].hasError(
+              'required'
+            )
+          ">
+          Value does not match available options
+        </mat-error>
+        <mat-error
+          *ngIf="
+            accountForm.controls['highRiskCustomerDescription'].hasError(
+              'required'
+            )
+          ">
+          Risk category is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Type of review</mat-label>
+        <mat-select required formControlName="typeOfReview">
+          <mat-option value="onboarding"> ONBOARDING </mat-option>
+          <mat-option value="periodic"> PERIODIC </mat-option>
+          <mat-option value="trigger_driven"> TRIGGER DRIVEN </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="accountForm.controls['typeOfReview'].hasError('required')">
+          Review type is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Review date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          readonly
+          [value]="today"
+          required
+          formControlName="dateOfReview" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker"
+          disabled></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error
+          *ngIf="
+            accountForm.controls['dateOfReview'].hasError('required') &&
+            !accountForm.controls['dateOfReview'].hasError('matDatepickerParse')
+          ">
+          Review date is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            accountForm.controls['dateOfReview'].hasError('matDatepickerParse')
+          ">
+          Invalid date format
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last review date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          [value]="today"
+          readonly
+          required
+          formControlName="lastReviewDate" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker1"
+          disabled></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error
+          *ngIf="
+            accountForm.controls['lastReviewDate'].hasError('required') &&
+            !accountForm.controls['lastReviewDate'].hasError('matDatepickerParse')
+          ">
+          Last review date is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            accountForm.controls['lastReviewDate'].hasError('matDatepickerParse')
+          ">
+          Invalid date format
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Next review date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker2"
+          [min]="today"
+          required
+          formControlName="nextReviewDate" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error
+          *ngIf="
+            accountForm.controls['nextReviewDate'].hasError('required') &&
+            !accountForm.controls['nextReviewDate'].hasError('matDatepickerParse')
+          ">
+          Next review date is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            accountForm.controls['nextReviewDate'].hasError('matDatepickerParse')
+          ">
+          Invalid date format
+        </mat-error>
+        <mat-error
+          *ngIf="
+            accountForm.controls['nextReviewDate'].hasError('matDatepickerMin')
+          ">
+          Please provide a future date
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-card>
+  <mat-card class="card-container">
+    <h3 class="mat-title fw-400 align-self-center">Customer accounts</h3>
+    <hr />
+    <app-accounts-list></app-accounts-list>
+  </mat-card>
+  <mat-card class="card-container">
+    <h3 class="mat-title fw-400 align-self-center">Transaction analysis</h3>
+    <hr />
+    <div class="fieldset" formGroupName="transactionAnalysis">
+      <mat-form-field appearance="fill">
+        <mat-label>Findings</mat-label>
+        <input
+          matInput
+          required
+          formControlName="findings"
+          oninput="this.value = this.value.toUpperCase()" />
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('transactionAnalysis.findings')
+              ?.hasError('required')
+          ">
+          Findings are required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Period</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker3"
+          required
+          [min]="today"
+          formControlName="period" />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('transactionAnalysis.period')
+              ?.hasError('required') &&
+            !accountForm
+              .get('transactionAnalysis.period')
+              ?.hasError('matDatepickerParse')
+          ">
+          Period is required
+        </mat-error>
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('transactionAnalysis.period')
+              ?.hasError('matDatepickerParse')
+          ">
+          Invalid date format
+        </mat-error>
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('transactionAnalysis.period')
+              ?.hasError('matDatepickerMin')
+          ">
+          Please provide a future date
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Analysis warrants raising of an SAR number</mat-label>
+        <input
+          matInput
+          required
+          formControlName="analysisWarrants"
+          oninput="this.value = this.value.toUpperCase()" />
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('transactionAnalysis.analysisWarrants')
+              ?.hasError('required')
+          ">
+          Analysis SAR number is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>AML related issue raised previously</mat-label>
+        <input
+          matInput
+          required
+          formControlName="amlRelated"
+          oninput="this.value = this.value.toUpperCase()" />
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('transactionAnalysis.amlRelated')
+              ?.hasError('required')
+          ">
+          Previously raised AML related issue is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-card>
+  <mat-card class="card-container">
+    <h3 class="mat-title fw-400 align-self-center">Contact details</h3>
+    <hr />
+    <div formGroupName="contactDetails" class="fieldset">
+      <div
+        formGroupName="phone"
+        class="d-flex align-content-start overflow-x-hidden">
+        <mat-form-field
+          appearance="fill"
+          floatLabel="always"
+          class="w-3 me-05"
+          readonly>
+          <input matInput formControlName="code" type="number" readonly />
+          <span matPrefix>
+            <img
+              class="code-img align-self-center"
+              aria-hidden
+              src="assets/flags/kenya.png" />
+          </span>
+          <span matSuffix>
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          </span>
+        </mat-form-field>
+        <mat-form-field
+          appearance="fill"
+          floatLabel="always"
+          class="w-sm-97 w-100">
+          <mat-label>Mobile number</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="*** *** ***"
+            formControlName="number"
+            required
+            id="mobile_no"
+            maxlength="9"
+            oninput="this.value = this.value.toUpperCase()" />
+          <mat-error
+            *ngIf="
+              accountForm.get('contactDetails.number')?.hasError('pattern') &&
+              !accountForm.get('contactDetails.number')?.hasError('required') &&
+              !(
+                accountForm
+                  .get('contactDetails.number')
+                  ?.hasError('minlength') &&
+                accountForm.get('contactDetails.number')?.hasError('maxlength')
+              )
+            ">
+            Numbers only
+          </mat-error>
+          <mat-error
+            *ngIf="
+              !accountForm.get('contactDetails.number')?.hasError('pattern') &&
+              !accountForm.get('contactDetails.number')?.hasError('required') &&
+              (accountForm
+                .get('contactDetails.number')
+                ?.hasError('minlength') ||
+                accountForm.get('contactDetails.number')?.hasError('maxlength'))
+            ">
+            Mobile number is incomplete
+          </mat-error>
+          <mat-error
+            *ngIf="
+              accountForm.get('contactDetails.number')?.hasError('required')
+            ">
+            Mobile number is required
+          </mat-error>
+          <span matPrefix>+254</span>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          type="email"
+          required
+          oninput="this.value = this.value.toUpperCase()" />
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('contactDetails.number')
+              ?.hasError('invalidEmail') &&
+            !accountForm.get('contactDetails.number')?.hasError('required')
+          ">
+          Invalid email address format
+        </mat-error>
+        <mat-error
+          *ngIf="
+            accountForm.get('contactDetails.number')?.hasError('required')
+          ">
+          Email address is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-card>
+  <mat-card class="card-container">
+    <h3 class="mat-title fw-400 align-self-center">Occupation details</h3>
+    <hr />
+    <div class="fieldset" formGroupName="occupation">
+      <mat-form-field appearance="fill">
+        <mat-label>Occupation</mat-label>
+        <input
+          type="text"
+          aria-label="Occupation"
+          matInput
+          formControlName="occupation"
+          [matAutocomplete]="auto1"
+          required
+          oninput="this.value = this.value.toUpperCase()" />
+        <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOccupationOptions | async"
+            [value]="option.codeDesc">
+            {{ option.codeDesc }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('occupation.occupation')
+              ?.hasError('requireOccupationMatch') &&
+            !accountForm.get('occupation.occupation')?.hasError('required')
+          ">
+          Value does not match available options
+        </mat-error>
+        <mat-error
+          *ngIf="
+            accountForm.get('occupation.occupation')?.hasError('required')
+          ">
+          Occupation is required
+        </mat-error>
+        <!-- <mat-error *ngIf="occupationControl.errors?.requireOccupationMatch">Value does not match available options</mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Employer name</mat-label>
+        <input
+          matInput
+          required
+          formControlName="nameOfEmployer"
+          oninput="this.value = this.value.toUpperCase()" />
+        <mat-error
+          *ngIf="
+            accountForm.get('occupation.nameOfEmployer')?.hasError('required')
+          ">
+          Employer name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-card>
+  <mat-card class="card-container">
+    <h3 class="mat-title fw-400 align-self-center">Source of wealth</h3>
+    <hr />
+    <div class="fieldset" formGroupName="sourceOfWealth">
+      <mat-form-field appearance="fill">
+        <mat-label>Association with high risk category</mat-label>
+        <input
+          matInput
+          required
+          formControlName="associationWithHRC"
+          oninput="this.value = this.value.toUpperCase()" />
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('sourceOfWealth.associationWithHRC')
+              ?.hasError('required')
+          ">
+          Association with high risk category is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Source of wealth</mat-label>
+        <input
+          matInput
+          required
+          formControlName="sourceOfWealth"
+          oninput="this.value = this.value.toUpperCase()" />
+        <mat-error
+          *ngIf="
+            accountForm
+              .get('sourceOfWealth.sourceOfWealth')
+              ?.hasError('required')
+          ">
+          Source of wealth is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-card>
+  <!--<mat-card>-->
+  <!--    <button type="button" mat-stroked-button color="primary" (click)="openDialog()">Preview EDD Form</button>-->
+  <!--</mat-card>-->
+</form>

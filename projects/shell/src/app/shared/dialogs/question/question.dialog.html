@@ -1,0 +1,23 @@
+<div mat-dialog-content>
+  <div fxLayout="row" mat-dialog-title>
+    <span>{{ data.title }}</span>
+    <span fxFlex></span>
+    <span [mat-dialog-close]="" class="close-btn color-red">&times;</span>
+  </div>
+  <div class="content">
+    <p class="msg-title">
+      <mat-icon [svgIcon]="data.icon || 'ic-info'"></mat-icon>
+      <span class="title">{{ data.subTitle }}</span>
+    </p>
+    <p>{{ data.message }}</p>
+  </div>
+  <div class="action-gp" fxLayout="row" mat-dialog-actions>
+    <span fxFlex></span>
+    <button [mat-dialog-close]="" color="primary" mat-raised-button>
+      {{ 'COMMON.NO' | translate }}
+    </button>
+    <button [mat-dialog-close]="true" color="primary" mat-raised-button>
+      {{ 'COMMON.YES' | translate }}
+    </button>
+  </div>
+</div>

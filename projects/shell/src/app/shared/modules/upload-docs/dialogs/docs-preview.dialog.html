@@ -1,0 +1,48 @@
+<div class="dialog-header" mat-dialog-title>
+  <span></span>
+  <h3 mat-dialog-title class="mat-headline-6 fw-400">Documents Preview</h3>
+  <mat-icon
+    svgIcon="ic-close"
+    style="transform: scale(0.6); cursor: pointer"
+    [mat-dialog-close]="false"></mat-icon>
+</div>
+<div>
+  <mat-divider></mat-divider>
+</div>
+<div class="img-container" mat-dialog-content>
+  <div *ngIf="data.type">
+    <img
+      [src]="sanitizedURL"
+      alt="preview"
+      *ngIf="data.type !== 'application/pdf'" />
+  </div>
+  <div *ngIf="!data.type">
+    <img
+      [src]="sanitizedURL"
+      alt="preview"
+      *ngIf="data.upload.format !== 'pdf'" />
+  </div>
+  <div *ngIf="data.type === 'application/pdf' || data.upload.format === 'pdf'">
+    <iframe
+      [src]="sanitizedURL"
+      frameborder="0"
+      scrolling="auto"
+      height="500px"
+      width="900px"
+      class="content_viewport">
+    </iframe>
+  </div>
+</div>
+<div class="button-container" mat-dialog-actions>
+  <button mat-stroked-button class="eq-btn" [mat-dialog-close]="false">
+    Cancel
+  </button>
+  <div>
+    <button mat-stroked-button class="eq-btn mr-1" (click)="printDocument()">
+      Print
+    </button>
+    <button mat-stroked-button class="eq-btn" (click)="documentDownload()">
+      Download
+    </button>
+  </div>
+</div>

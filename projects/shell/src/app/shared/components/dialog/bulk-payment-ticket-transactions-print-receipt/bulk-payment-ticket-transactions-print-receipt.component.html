@@ -1,0 +1,102 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="header">
+        <span class="title"> </span>
+        <span class="close" (click)="close()">
+          <mat-icon
+            svgIcon="ic-close"
+            style="transform: scale(0.6); cursor: pointer"
+            mat-dialog-close></mat-icon>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row details-holder">
+    <div class="print-container">
+      <div class="receipt-header">
+        <img
+          class="equity-logo"
+          src="assets/images/equity-img.png"
+          alt=""
+          srcset="" />
+
+        <div class="header-message"></div>
+      </div>
+
+      <div class="info">
+        {{ 'BULK-TRANSFER.TICKET-PRINT-SUCCESS' | translate }} <br />
+        <!-- {{ data.ticket.actionFlow.description === 'Deposit' ? 'Cash Management - Deposit' : 'Cash Management - Withdraw' }} -->
+      </div>
+
+      <div *ngFor="let transactions of data.responseObject">
+        <span class="detail-group">
+          <span class="detail-label"> {{ 'COMMON.AMOUNT' | translate }}</span>
+          <span class="detail-value">
+            {{ transactions.totalAmount | number: '1.2-2' }}
+          </span>
+        </span>
+
+        <span class="detail-group">
+          <span class="detail-label">
+            {{ 'BULK-TRANSFER.TRANSACTION-DATE' | translate }}
+          </span>
+          <span class="detail-value"> {{ transactions.tranDate }} </span>
+        </span>
+
+        <span class="detail-group">
+          <span class="detail-label">
+            {{ 'BULK-TRANSFER.TRAN-REFERENCE' | translate }}
+          </span>
+          <span class="detail-value"> {{ transactions.tranReference }} </span>
+        </span>
+
+        <span class="detail-group">
+          <span class="detail-label"> {{ 'COMMON.STATUS' | translate }} </span>
+          <span class="detail-value">
+            {{ transactions.transactionStatus }}
+          </span>
+        </span>
+
+        <span class="detail-group">
+          <span class="detail-label">{{
+            'BULK-TRANSFER.TRANSACTION-DETAILS' | translate
+          }}</span>
+          <span class="detail-value">
+            <table>
+              <thead>
+                <tr>
+                  <th>{{ 'BULK-TRANSFER.ACCOUNTNUMBER' | translate }}</th>
+                  <th>{{ 'COMMON.AMOUNT' | translate }}</th>
+                  <th>{{ 'COMMON.CURRENCY' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container
+                  *ngFor="
+                    let paymentTransaction of transactions.paymentTransactions
+                  ">
+                  <tr *ngIf="paymentTransaction">
+                    <td>{{ paymentTransaction.accountNumber }}</td>
+                    <td>{{ paymentTransaction.amount | number: '1.2-2' }}</td>
+                    <td>{{ paymentTransaction.currency }}</td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row wrap_btm_btn">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <button class="next_btn" (click)="print()">
+        <span>{{ 'COMMON.PRINT' | translate }}</span>
+      </button>
+    </div>
+  </div>
+</div>

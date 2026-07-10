@@ -1,0 +1,327 @@
+@if (ticket && canBeSubmitted) {
+  <div>
+    @if (
+      isSubmittedToCardCenter || ticket?.status === 'SubmittedToCheckerLevel1'
+    ) {
+      <mat-accordion>
+        <mat-expansion-panel class="expansion-panel" expanded>
+          <mat-expansion-panel-header>
+            <div class="d-flex align-content-center">
+              <h3 class="mat-headline-6 fw-400">
+                {{ 'TICKETS.APPROVAL.TITLE' | translate }}
+              </h3>
+            </div>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <div class="details-container">
+            <div class="status-div">
+              <div class="status" [ngClass]="ticket?.status">
+                @switch (ticket?.status) {
+                  @case ('SubmittedToChecker') {
+                    {{ 'TICKETS.STATUS.PENDING' | translate }}
+                  }
+                  @case ('SubmittedToCheckerLevel1') {
+                    {{ 'TICKETS.STATUS.PENDING' | translate }}
+                  }
+                  @case ('Completed') {
+                    {{ 'TICKETS.STATUS.APPROVED' | translate }}
+                  }
+                  @case ('Returned') {
+                    {{ 'TICKETS.STATUS.RETURNED' | translate }}
+                  }
+                  @case ('Rejected') {
+                    {{ 'TICKETS.STATUS.REJECTED' | translate }}
+                  }
+                  @case ('Aborted') {
+                    {{ 'TICKETS.STATUS.ABORTED' | translate }}
+                  }
+                }
+              </div>
+            </div>
+
+            <div class="checker-div">
+              <!-- <div > -->
+              <div class="checker-person">
+                <div class="ic-person-container">
+                  <mat-icon
+                    class="--icon person-icon"
+                    svgIcon="ic-person-white"></mat-icon>
+                </div>
+                <div>
+                  <div>
+                    <span class="checker-author"
+                      >{{ ticket.taskNotes[0]?.author }}
+                    </span>
+                    @switch (ticket.status) {
+                      @case ('Completed') {
+                        {{ 'TICKETS.STATUS_ACTIONS.APPROVED' | translate }}
+                      }
+                      @case ('Returned') {
+                        {{ 'TICKETS.STATUS_ACTIONS.RETURNED' | translate }}
+                      }
+                      @case ('Rejected') {
+                        {{ 'TICKETS.STATUS_ACTIONS.REJECTED' | translate }}
+                      }
+                      @case ('Aborted') {
+                        {{ 'TICKETS.STATUS_ACTIONS.ABORTED' | translate }}
+                      }
+                    }
+                    <span class="checker-ticket-number">
+                      {{ 'TICKETS.LABELS.TICKET' | translate }}
+                      {{ ticket.id }}</span
+                    >
+                  </div>
+                  <div class="checker-modified-date">
+                    {{ ticket?.modifiedOnUtc | date: 'mediumDate' }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="checker-comments-div">
+                <mat-icon
+                  class="--icon conversation-icon"
+                  svgIcon="ic-conversation"></mat-icon>
+                <div class="checker-comments">
+                  <p class="checker-comment-title">
+                    {{ 'TICKETS.APPROVAL.BRANCH-COMMENTS' | translate }}
+                  </p>
+                  <p class="checker-comment-note">
+                    {{ ticket.taskNotes.slice(-1)[0]?.note }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    }
+    <mat-card class="mt-24" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ title | translate }}</mat-card-title>
+        <mat-card-subtitle>{{ description | translate }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider class="my-2"></mat-divider>
+      <mat-card-content>
+        <div class="fieldset">
+          <mat-form-field appearance="fill" style="flex: 1">
+            <mat-label>{{ actionsDescription }}</mat-label>
+            <mat-select
+              [(value)]="selectedItem"
+              (selectionChange)="selectionChanged($event)">
+              <mat-select-trigger>
+                <span>{{ selectedItem?.label || '' | translate }}</span>
+              </mat-select-trigger>
+              @for (status of selectableStatuses; track status) {
+                <mat-option [value]="status">
+                  <span class="fw-600">{{ status.label | translate }}</span
+                  ><br />
+                  <span class="fw-400">{{
+                    status.description | translate
+                  }}</span>
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" style="flex: 1">
+            <mat-label>{{
+              'TICKETS.APPROVAL.COMMENTS-LABEL' | translate
+            }}</mat-label>
+            <input
+              matInput
+              [maxLength]="100"
+              [placeholder]="
+                'TICKETS.APPROVAL.COMMENTS-PLACEHOLDER' | translate
+              "
+              autocomplete="off"
+              #comment />
+            <mat-hint align="end">
+              {{ comment.value.length }}/{{ 100 }}
+            </mat-hint>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <div fxLayout class="mt-24">
+      <button
+        mat-stroked-button
+        style="width: 90px"
+        color="primary"
+        (click)="redirectToDashboard()">
+        {{ 'COMMON.QUIT' | translate }}
+      </button>
+      <span fxFlex></span>
+      <button
+        mat-flat-button
+        style="width: 90px"
+        color="primary"
+        [disabled]="
+          disabledSummitButton ||
+          !status ||
+          (['reject', 'refer back'].includes(status) &&
+            comment.value.trim().length === 0) ||
+          (approvalCommentsRequired() && comment.value.trim().length === 0)
+        "
+        (click)="submit({ status, comment: comment?.value?.trim() })">
+        {{ 'COMMON.SUBMIT' | translate }}
+      </button>
+    </div>
+  </div>
+} @else {
+  <div>
+    <mat-accordion>
+      <mat-expansion-panel class="expansion-panel" expanded>
+        <mat-expansion-panel-header>
+          <div class="d-flex align-content-center">
+            <h3 class="mat-headline-6 fw-400">
+              {{ 'TICKETS.APPROVAL.TITLE' | translate }}
+            </h3>
+          </div>
+        </mat-expansion-panel-header>
+        <mat-divider></mat-divider>
+        <div class="details-container">
+          <div class="status-div">
+            <div class="status" [ngClass]="ticket?.status">
+              @switch (ticket?.status) {
+                @case ('SubmittedToChecker') {
+                  {{ 'TICKETS.STATUS.PENDING' | translate }}
+                }
+                @case ('SubmittedToCheckerLevel1') {
+                  {{ 'TICKETS.STATUS.PENDING' | translate }}
+                }
+                @case ('Completed') {
+                  {{ 'TICKETS.STATUS.APPROVED' | translate }}
+                }
+                @case ('Returned') {
+                  {{ 'TICKETS.STATUS.RETURNED' | translate }}
+                }
+                @case ('Rejected') {
+                  {{ 'TICKETS.STATUS.REJECTED' | translate }}
+                }
+                @case ('Aborted') {
+                  {{ 'TICKETS.STATUS.ABORTED' | translate }}
+                }
+              }
+            </div>
+          </div>
+          <div class="checker-div">
+            @for (taskNote of ticket.taskNotes; track taskNote.id) {
+              <div class="task-note-entry">
+                <div class="checker-person">
+                  <div class="ic-person-container">
+                    <mat-icon
+                      class="--icon person-icon"
+                      svgIcon="ic-person-white"></mat-icon>
+                  </div>
+                  <div>
+                    <div>
+                      <span class="checker-author">{{ taskNote.author }}</span>
+                      @switch (ticket?.status) {
+                        @case ('Completed') {
+                          {{ 'TICKETS.STATUS.APPROVED' | translate }}
+                        }
+                        @case ('SubmittedToCheckerLevel1') {
+                          {{
+                            'COMMON.TICKET_STATUS.SUBMITTED_TO_CHECKER_LEVEL_1'
+                              | translate
+                          }}
+                        }
+                        @case ('Returned') {
+                          {{ 'TICKETS.STATUS.RETURNED' | translate }}
+                        }
+                        @case ('Rejected') {
+                          {{ 'TICKETS.STATUS.REJECTED' | translate }}
+                        }
+                        @case ('Aborted') {
+                          {{ 'TICKETS.STATUS.ABORTED' | translate }}
+                        }
+                      }
+                      <span class="checker-ticket-number">
+                        {{ 'TICKETS.LABELS.TICKET' | translate }}
+                        {{ ticket?.id }}
+                      </span>
+                    </div>
+                    <div class="checker-modified-date">
+                      {{ taskNote.modifiedOnUtc | date: 'mediumDate' }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="checker-comments-div">
+                  <mat-icon
+                    class="--icon conversation-icon"
+                    svgIcon="ic-conversation"></mat-icon>
+                  <div class="checker-comments">
+                    <p class="checker-comment-title">
+                      {{ 'TICKETS.APPROVAL.BRANCH-COMMENTS' | translate }}
+                    </p>
+                    <p class="checker-comment-note">{{ taskNote.note }}</p>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <div fxLayout class="mt-24">
+      @if (!inProcess) {
+        <button
+          mat-stroked-button
+          style="width: 90px"
+          color="primary"
+          (click)="redirectToDashboard()">
+          Quit
+        </button>
+      }
+
+      <span fxFlex></span>
+      @if (ticket.status === 'Completed') {
+        <button
+          mat-raised-button
+          color="primary"
+          class="ml-15"
+          [disabled]="isPrinted"
+          (click)="onClickDownloadPdf()">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.PRINT-STATEMENT' | translate
+          }}
+        </button>
+        <div *ngIf="isPrinted" class="ml-15 d-flex align-items-center locked-indicator">
+          <mat-icon class="mr-1 mt-1" color="warn">lock</mat-icon>
+          <span class="mat-body-2 text-secondary">{{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.LOCKED-PRINTED' | translate }}</span>
+        </div>
+      }
+      @if (ticket.status === 'Returned' && returnEnabled && !inProcess) {
+        <div class="abort-div">
+          <button
+            mat-stroked-button
+            style="width: 90px"
+            color="primary"
+            (click)="abort()">
+            Abort
+          </button>
+          <button
+            mat-flat-button
+            style="width: 90px"
+            color="primary"
+            (click)="submit({ status })">
+            Submit
+          </button>
+        </div>
+      }
+      @if (
+        (ticket?.status === 'Rejected' ||
+          ticket?.status === 'Request Declined') &&
+        ticket?.actionFlow?.name === 'UnblockCard'
+      ) {
+        <button
+          mat-flat-button
+          style="width: 90px"
+          color="primary"
+          (click)="onClose()">
+          Close
+        </button>
+      }
+    </div>
+  </div>
+}

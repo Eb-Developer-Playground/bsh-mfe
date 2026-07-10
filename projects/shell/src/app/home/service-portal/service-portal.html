@@ -1,0 +1,34 @@
+<div class="portal-container">
+  <header class="portal-header">
+    <h1 class="portal-title">Service Portal</h1>
+    <p class="portal-subtitle">Easily assist new and existing customers by the relevant option</p>
+  </header>
+  <hr class="portal-divider" />
+  <div class="portal-grid">
+    @for (card of cards; track card.id) {
+      <a class="portal-card" [routerLink]="card.route" [attr.aria-label]="card.title">
+        <div [class]="'card-banner card-banner-' + card.id">
+          <svg class="card-pattern" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true">
+            <polygon points="0,0 50,0 25,40 0,30" fill="rgba(255,255,255,0.08)" />
+            <polygon points="50,0 100,0 75,40 25,40" fill="rgba(255,255,255,0.05)" />
+            <polygon points="100,0 150,0 125,40 75,40" fill="rgba(255,255,255,0.08)" />
+            <polygon points="150,0 200,0 175,40 125,40" fill="rgba(255,255,255,0.05)" />
+            <polygon points="0,30 25,40 0,60" fill="rgba(255,255,255,0.06)" />
+            <polygon points="175,40 200,30 200,60" fill="rgba(255,255,255,0.06)" />
+            <polygon points="25,40 75,40 100,80 50,80" fill="rgba(255,255,255,0.06)" />
+            <polygon points="75,40 125,40 150,80 100,80" fill="rgba(255,255,255,0.04)" />
+            <polygon points="125,40 175,40 200,60 200,80 150,80" fill="rgba(255,255,255,0.06)" />
+            <polygon points="0,60 25,40 50,80 0,80" fill="rgba(255,255,255,0.04)" />
+          </svg>
+        </div>
+        <div class="card-body">
+          <div class="card-icon-wrapper" aria-hidden="true">
+            <mat-icon class="card-icon">{{ card.icon }}</mat-icon>
+          </div>
+          <h3 class="card-title">{{ card.title }}</h3>
+          <p class="card-desc">{{ card.description }}</p>
+        </div>
+      </a>
+    }
+  </div>
+</div>

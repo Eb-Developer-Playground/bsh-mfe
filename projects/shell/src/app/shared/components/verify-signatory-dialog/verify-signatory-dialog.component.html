@@ -1,0 +1,236 @@
+<div matDialogContent>
+  <div class="dialog-header">
+    <div class="sub-header">
+      <h2 mat-dialog-title style="margin-bottom: 20px">
+        {{ 'BIOMETRICS.SIGNATORIES-BIO-VERIFICATION' | translate }}
+      </h2>
+      <mat-icon color="primary" class="cursor-pointer" (click)="closeDialog()"
+        >close</mat-icon
+      >
+    </div>
+  </div>
+  <div class="mat-typography">
+    <div class="w-100" *ngIf="!showBioInterface()">
+      <div class="text-muted mb-1">
+        <h4>{{ 'BIOMETRICS.SIGN-DIALOG-SUBTITLE' | translate }}</h4>
+      </div>
+      <div class="d-flex align-content-center">
+        <div class="rounded-circle">
+          {{ data.user.firstName[0] }}{{ data.user.lastName[0] }}
+        </div>
+        <div style="display: grid">
+          <div class="align-self-center">
+            {{
+              data?.accountsSelected?.accountName ||
+                data.user.accounts[0]?.accountName
+            }}
+            <br />
+            <h4 class="text-muted">{{ 'COMMON.ACCOUNT-NAME' | translate }}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="gridset">
+        <div>
+          <span class="text-muted">{{
+            'COMMON.ACCOUNT-NUMBER' | translate
+          }}</span>
+          <h4>
+            {{
+              data?.accountsSelected?.accountNumber ||
+                data.user.accounts[0]?.accountNumber
+            }}
+          </h4>
+        </div>
+        <div>
+          <span class="text-muted">{{
+            'COMMON.ACCOUNT-TYPE' | translate
+          }}</span>
+          <h4>
+            {{
+              data?.accountsSelected?.schemeType ||
+                data.user.accounts[0]?.schemeType
+            }}
+          </h4>
+        </div>
+        <div>
+          <span class="text-muted">{{
+            'COMMON.ACCOUNT-MANDATE' | translate
+          }}</span>
+          <h4>
+            {{
+              'FORMS.ACCOUNT_DETAILS.OPTIONS.MANDATES.' + accountMandate
+                | translate
+            }}
+          </h4>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="review-instructions align-self-center mb-3"
+      *ngIf="!showBioInterface()">
+      <h4
+        class="mat-subtitle-2 fw-400 mandate-color"
+        style="margin-bottom: 4px">
+        {{ 'BIOMETRICS.MANDATE-DETAILS' | translate }}:
+        <span
+          >{{
+            accountMandate
+              ? ('FORMS.ACCOUNT_DETAILS.OPTIONS.MANDATES.' + accountMandate
+                | translate)
+              : 'Own to sign'
+          }}
+          {{ 'BIOMETRICS.TO-SIGN' | translate }}</span
+        >
+      </h4>
+      <h5 class="text text-black">
+        {{ 'BIOMETRICS.ALL_SIGNATORIES_TEXT' | translate }}
+      </h5>
+    </div>
+    <!-- <div class="review-instructions align-self-center ">
+        <h4 class="mat-body-2 fw-400 mandate-color" style="margin-bottom: 8px;">Mandate details: <span>All to sign</span></h4>
+        <h5 class="text text-black">All signatories listed below should be present. If they are not all present, additional documentation will be required to allow account access..</h5>
+    </div> -->
+    <div>
+      <mat-radio-group class="radioGroupCls" (change)="setCanVerify($event)">
+        <div *ngIf="!showBioInterface()">
+          <mat-radio-button
+            color="primary"
+            class="bio-selection align-self-center"
+            value="canVerify"
+            [ngClass]="{ 'bottom-border': data.canVerify === 'canVerify' }">
+            <div class="pl-1 pt-2">
+              <div style="margin-bottom: 2px">
+                <span>
+                  {{
+                    'BIOMETRICS.AUTHORIZED-SIGNATORIES-PRESENT' | translate
+                  }}</span
+                >
+              </div>
+              <div>
+                <span class="text-wrap text-muted"
+                  >{{
+                    'BIOMETRICS.REQUIRED-SIGNATORIES-PRESENT-INSTRUCTION'
+                      | translate
+                  }}.</span
+                >
+              </div>
+            </div>
+          </mat-radio-button>
+        </div>
+        <div
+          *ngIf="data.canVerify === 'canVerify' && !showBioInterface()"
+          class="signatory-section">
+          <div class="d-flex justify-content-between">
+            <span>
+              <p class="mat-subtitle-1 mb-16 fw-600">
+                {{
+                  data?.accountsSelected?.accountName ||
+                    data.user.accounts[0]?.accountName
+                }}({{ signatories.subtasks.length }})
+              </p>
+            </span>
+            <span class="example-list-section">
+              <mat-checkbox
+                class="example-margin"
+                [checked]="allComplete"
+                color="primary"
+                [indeterminate]="someComplete()"
+                (change)="setAll($event.checked)">
+                {{ 'BIOMETRICS.SELECT-ALL' | translate }}
+              </mat-checkbox>
+            </span>
+          </div>
+          <div>
+            <div
+              fxLayout="row wrap"
+              fxFill
+              fxFlex="100"
+              fxLayoutAlign="space-between start">
+              <div
+                fxFlex="0 0 50%"
+                fxLayoutAlign="start center"
+                *ngFor="let signatory of signatoriesArray"
+                class="mb-32">
+                <mat-checkbox
+                  [(ngModel)]="signatory.current"
+                  color="primary"
+                  (ngModelChange)="updateAllComplete()">
+                  <div
+                    fxLayout="row"
+                    fxFill
+                    fxFlex="100"
+                    fxLayoutAlign="center center"
+                    fxLayoutGap="8px">
+                    <div class="circle-name-avatar">
+                      <p class="p-text">{{ getAvatarName(signatory.name) }}</p>
+                    </div>
+                  </div>
+                </mat-checkbox>
+                <div class="sig__name">
+                  <span>{{ signatory.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between mb-1">
+          <div class="bio-status-warning pb-1 pt-1">
+            <span class="status_cls">
+              <span>
+                <mat-icon
+                  svgIcon="ic-unverified-caution"
+                  class="tick-icon"></mat-icon>
+              </span>
+              <p>{{ 'BIOMETRICS.SIGNATORIES-REQUIRED-MANDATE' | translate }}</p>
+            </span>
+          </div>
+          <!--                <div>-->
+          <!--                    <button mat-button (click)="SkipBio()" color="primary">&nbsp;Not all are present&nbsp;</button>-->
+          <!--                </div>-->
+        </div>
+        <!--            <mat-radio-button *ngIf="!data.inProcess" color="primary" class="bio-selection align-self-center" value="knownCannotVerify">-->
+        <!--                <div class="pl-1">-->
+        <!--                    <div style="margin-bottom: 10px;">-->
+        <!--                        <span>Known agent is present</span>-->
+        <!--                    </div>-->
+        <!--                    <div>-->
+        <!--                        <span class="text-wrap text-muted">The known agent will have to present their identification and-->
+        <!--                            instruction document from account signatories to proceed to the account.</span>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+
+        <!--            </mat-radio-button>-->
+        <mat-radio-button
+          *ngIf="!data.inProcess && data.approvalType !== 'DORMANT_ACTIVATION'"
+          color="primary"
+          class="bio-selection align-self-center"
+          value="canNotVerify">
+          <div class="pl-1">
+            <div style="margin-bottom: 2px">
+              <span> {{ 'BIOMETRICS.SKIP-BIOMETRICS' | translate }}</span>
+            </div>
+            <div>
+              <span class="text-wrap text-muted">{{
+                'BIOMETRICS.SUBMIT-BIO-OVERRIDE' | translate
+              }}</span>
+            </div>
+          </div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="closeDialog()" color="primary">
+    &nbsp;{{ 'COMMON.CANCEL' | translate }}&nbsp;
+  </button>
+  <button
+    mat-button
+    mat-flat-button
+    color="primary"
+    (click)="continue()"
+    [disabled]="!data.canVerify">
+    {{ 'COMMON.CONTINUE' | translate }}
+  </button>
+</div>

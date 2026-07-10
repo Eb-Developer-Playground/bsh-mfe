@@ -1,0 +1,695 @@
+{
+  "EQUITY": {
+    "MOTTO": "Plus qu'une simple banque."
+  },
+  "COMMON": {
+    "FILTER": "Filtrer",
+    "HELLO": "Bonjour",
+    "USERNAME": "Nom d'utilisateur",
+    "WELCOME": "Bienvenu à ",
+    "CHARGES": "Frais",
+    "CHARGE_OPTION_DEFAULTS_TO_SHA": "En refusant l'option de frais, SHA sera appliqué par défaut",
+    "CHARGE_OPTION_DEFAULTS_TO_OUR": "En refusant l'option de frais, OUR sera appliqué par défaut",
+    "CONFIRM": "Confirmer",
+    "CANCEL": "Annuler",
+    "OPEN_ACCOUNT": "Créer un compte",
+    "ACTIVATE_ACCOUNT": "Activer le compte",
+    "UNFREEZE_ACCOUNT": "Dégeler un Compte",
+    "CLEAR_FILTERS": "Effacer les filtres",
+    "BACK": "Retourner",
+    "QUIT": "Quitter",
+    "SUBMIT": "Soumettre",
+    "APPROVE": "Approuver",
+    "RETURN": "Retourner",
+    "RETURNED_REASON": "Raisons pour lesquelles le ticket est retourné / quels détails à modifier par l'initiateur",
+    "REJECT": "Rejeter",
+    "NEXT": "Suivant",
+    "COUNTRY": "Pays",
+    "BRANCH": "Agence",
+    "WORKCLASS": "Work Class",
+    "TRANSACTIONS": "Transactions",
+    "STATUS": "Statuts",
+    "RETRY": "Réessayer",
+    "CLEAR": "Effacer",
+    "CLEAR_FILTER": "Effacer le filtre",
+    "CLOSE": "Clôturer",
+    "ACTIONS": "Actions",
+    "TICKET_STATUS": {
+      "NEW": "Nouveau",
+      "TITLE": "Statuts",
+      "ABORTED": "Annullé / Abandonné",
+      "REJECTED": "Rejeté",
+      "COMPLETED": "Terminé",
+      "PENDING": "En attente",
+      "RETURNED": "Retourné",
+      "SUBMITTED": "Soumis",
+      "SUBMITTED_TO_CHECKER": "Soumis au Checker",
+      "SUBMITTED_TO_CHECKER_LEVEL_1": "Soumis au Checker Niveau 1",
+      "SUBMITTED_TO_CHECKER_LEVEL_2": "Soumis au Checker Niveau 2",
+      "SUBMITTED_TO_NEWGEN": "Soumis à NewGen",
+      "SUBMITTED_TO_OPERATIONS_MANAGER": "Soumis au Responsable des Operations",
+      "UNKNOWN_STATUS": "Status Inconnu",
+      "APPROVAL": "Approbation"
+    },
+    "COMMENT": "Commentaires",
+    "TABLE": "Tableau",
+    "NATIONALITY": "Nationalité",
+    "MARITAL": {
+      "LABEL": "Mariage",
+      "STATUS": {
+        "MARRIED": "Marié€",
+        "SINGLE": "Célibataire",
+        "OTHER": "AUTRE"
+      }
+    },
+    "GENDER": {
+      "LABEL": "Genre",
+      "STATUS": {
+        "FEMALE": "FEMELLE",
+        "MALE": "MALE"
+      },
+      "CURRENCIES": {
+        "KES": "KES",
+        "USD": "USD"
+      }
+    },
+    "PAGE": {
+      "NORMAL_299": "Normal 299",
+      "CASH_REQUEST_299": "Demande de cash 299",
+      "CASH_REQUEST_199": "MT199 Modification des informations détaillées",
+      "CASH_REQUEST_192": "Demande de cash 192 Rappel",
+      "CANCELLATION_192": "Annulation / Rappel MT 192",
+      "STATEMENT_940_950": "Relevé 940/ 950",
+      "CANCELLATION 940_950": "Relevé 940/950 Annulation",
+      "CASH_REQUEST_202": "Demande de cash 202",
+      "MT199_AMENDMENT": "MT199 Confirmation de la modification du MT103"
+    },
+    "DOCUMENTS": {
+      "LABEL": "Documents justificatifs",
+      "STATEMENT_DETAILS": " Détails de la déclaration ",
+      "FILE_SIZE_TXT_1": " Taille du fichier:",
+      "FILE_SIZE_TXT_2": " Le fichier ne doit pas dépasser 10 Mo ",
+      "SIZE_LIMIT_ERROR": "La taille du fichier dépasse la limite maximale de 10 Mo",
+      "UNSUPPORTED_TYPE_ERROR": "Type de fichier non pris en charge",
+      "RESIZE_SCANNED_IMAGE": "Impossible de redimensionner l'image numérisée",
+      "ERROR_SCANNER": "Une erreur du scanner s'est produite",
+      "IMAGE_LARGE": "L'image est trop volumineuse",
+      "RESIZE_IMAGE_ERROR": "Impossible de redimensionner l'image"
+    },
+    "APPROVAL": {
+      "LABEL": " Approbation ",
+      "TEXT": " Veuillez approuver et donner des commentaires supplémentaires."
+    },
+    "REQUIRED_DOCUMENTS": {
+      "LABEL": "Attacher les documents requis",
+      "TEXT": " Veuillez télécharger les documents justificatifs au format PDF ou Jpeg. La taille maximale du fichier par document ne doit pas dépasser 1 Mo.",
+      "CUSTOMER_INSTRUCTIONS": "Instructions du client",
+      "SUPPORTING_DOCUMENT": " Documents justificatifs "
+    },
+    "ERROR": {
+      "IS_REQUIRED": "Est requis",
+      "DOCUMENT_SELECTION": "Veuillez attacher les documents requis!",
+      "INVALID_CHARACTERS": "Caractères non valides, caractères spéciaux non autorisés",
+      "INVALID_START_DATE": "Date de début invalide",
+      "INVALID_END_DATE": "Date de fin Invalide",
+      "REQUIRED_MARITAL_STATUS": "L'état civil est obligatoire",
+      "REQUIRED_GENDER": "Le genre est obligatoire",
+      "INVALID_INSTRUMENT_NUMBER": "Numéro d'instrument invalide",
+      "INVALID_KRA_NUMBER": "Numéro d'identification KRA invalide",
+      "REQUIRED_KRA_NUMBER": "Le numéro PIN KRA est obligatoire.",
+      "INVALID_DATE": "Forlat de date invalide",
+      "REQUIRED_DATE": "Date d'anniversaire requise",
+      "REQUIRED_SURNAME": "Surnom Obligatoire",
+      "ALPHABETICAL_ONLY": "Lettres Aphabétiques uniquement",
+      "REQUIRED_FIRST": "Le prénom est obligatoire",
+      "NUMBERS_ONLY": "Numéros uniquement",
+      "REQUIRED_MOBILE_NUMBER": "Le numéro de téléphone portable est obligatoire",
+      "INVALID_MOBILE_NUMBER": "Numéro de téléphone mobile incomplet",
+      "REQUIRED_EMAIL": "Adresse mail requise",
+      "INVALID_EMAIL": "Format d'adresse mail Invalide",
+      "MINIMUM_CHARACTERS": "Minimum de {{valeur}} caractères",
+      "VERIFY_PHONE_NUMBER": "Verifier le Numéro de téléphone",
+      "REQUIRED_SCHEME_TYPE": "Type de Scheme obligatoire",
+      "REQUIRED_STATEMENT_DISPATCH": "Envoi du relevé requis",
+      "REQUIRED_STATEMENT_FREQUENCY": "Fréquence du relevé requise",
+      "COUNTRY_NAME_NOT_ALLOWED": "Les transferts d'argent vers le pays {{valeur1}} ne sont pas autorisés",
+      "COUNTRY_IBAN_NUMBER_IN_BENEFICIARY_FIELD": "Utilisez le numéro IBAN dans le champ « Compte du bénéficiaire » pour les virements vers ce pays {{valeur1}} ",
+      "FILL_REQUIRED_FIELDS": "Veuillez remplir les champs obligatoires pour continuer",
+      "NOT_REQUIRED_BALANCE": "Le client ne dispose pas du solde suffisant pour cette transaction"
+    }
+  },
+  "ACTIONS": {
+    "COPY_TOKEN": "Copier le TOKEN",
+    "CLOSE": "Fermer/Cloturer",
+    "REFRESH_SESSION": "Actualiser"
+  },
+  "LOGIN": {
+    "COMMON": {
+      "SIGN-IN": "Connexion",
+      "LOG-OUT": "Se déconnecter",
+      "LOGGED-IN": "Vous êtes connecté en tant que ",
+      "ACCOUNT_HEADER": "Ci-dessous les détails de votre comptes",
+      "RETURN_TO_DASHBOARD": "Retour au tableau de bord",
+      "LOG-IN-TEXT": "Vous n'êtes pas connecté pour le moment. Veuillez vous connecter pour continuer à servir nos clients.",
+      "UNAUTHORIZED": "Non Autorisé",
+      "REQUEST-UNAUTHORIZED": "Désolé. Il semble que votre session ait expiré. Veuillez vous reconnecter pour continuer.",
+      "FORBIDDEN": "Interdit",
+      "MORE_INFO": "Plus d'Information",
+      "REQUEST-FORBIDDEN": "Désolé. Vous n'avez pas l'autorisation d'accéder à cette page ou à cette ressource. Veuillez vous connecter avec les identifiants appropriés"
+    },
+    "MICROSOFT-SSO": {
+      "SIGN-IN": "Se connecter avec Microsoft",
+      "INSTRUCTIONS": "Pour continuer à servir nos clients, connectez-vous avec votre nom d'utilisateur et votre mot de passe."
+    },
+    "BIOMETRIC": {
+      "ACTION-RETRY": "Analyser à nouveau",
+      "ACTION-SCAN": "Scanner l'empreinte digitale",
+      "ACTION-VERIFY": "Vérifier",
+      "INSTRUCTIONS": "Placez votre pouce sur le lecteur biométrique pour vous connecter",
+      "INSTRUCTIONS-THUMB": "Placez votre pouce sur le scanner",
+      "SIGN-IN": "Connectez-vous à l'aide de votre empreinte digitale"
+    }
+  },
+  "PAGES": {
+    "NORMAL_MT299": {
+      "TITLE": "Normal MT299"
+    },
+    "BULK_UPLOAD": {
+      "TITLE": " Téléchargement en masse ",
+      "TOTAL_AMOUNT": " Montant total ",
+      "CUMULATIVE_TRANSACTION_CHARGES": " Frais de transaction cumulés ",
+      "RATES": "Taux"
+    },
+    "CASH_REQUEST_202": {
+      "TITLE": " Demande de paiement en espèces 202"
+    },
+    "CASH_REQUEST_299": {
+      "TITLE": " Demande de paiement en espèces 299",
+      "WITHDRAW_TABLE": "Tableau des retraits"
+    },
+    "CASH_REQUEST_299_CANCELLATION": {
+      "TITLE": " Annulation de demande de retrait d'espèces Table 299"
+    },
+    "CASH_REQUEST_199": {
+      "TITLE": "MT199 Modification des dispositions relatives aux détails "
+    },
+    "CASH_REQUEST_MT199_CORRESPONDENT_QUERY": {
+      "TITLE": "MT199 Requête du correspondant d'amendement "
+    },
+    "CASH_REQUEST_MT199_PROVISION_OF_DETAILS": {
+      "TITLE": "MT199 Modification des dispositions relatives aux détails "
+    },
+    "MT199_AMENDMENT_CONFIRMATION_OF_MT103": {
+      "TITLE": "MT199 Confirmation de l'amendement MT103"
+    },
+    "CASH_REQUEST_192": {
+      "TITLE": " Demande de paiement en espèces 192"
+    },
+    "CASH_REQUEST_192_RECALL": {
+      "TITLE": " Rappel de la Demande de paiement en espèces 192"
+    },
+    "CANCELLATION_192": {
+      "TITLE": "Annulation / Rappel MT 192"
+    },
+    "STATEMENT_940_950": {
+      "TITLE": " Déclaration 940/ 950"
+    },
+    "STATEMENT_940_950_CANCELLATION": {
+      "TITLE": " Déclaration 940/ 950 Annulation"
+    },
+    "FUNDS_TRANSFER_MT103": {
+      "ACCOUNT_DETAILS": "Détails du compte",
+      "ADDITIONAL_FIELDS": "Champs supplémentaires",
+      "ADDITIONAL_ACCOUNT_DETAILS": " Détails supplémentaires sur le compte ",
+      "BENEFICIARY_DETAILS": " Coordonnées du bénéficiaire ",
+      "BENEFICIARY_BANK_DETAILS": " Coordonnées bancaires du bénéficiaire ",
+      "CHARGE_DETAILS": " Détails des frais ",
+      "LICENSE_DETAILS": "Details de licence",
+      "DENOMINATION": "Dénomination",
+      "ENTER_AMOUNT": " Entrer le montant ",
+      "EXCHANGE_DETAILS": " Détails de l'échange ",
+      "REMITTER_DETAILS": "Informations du client",
+      "REMITTER_ACCOUNT_DETAILS": " Détails du compte de l'expéditeur ",
+      "SENDER_TO_RECEIVER_INFORMATION": " Informations de l'expéditeur au destinataire",
+      "TRANSACTION_INFORMATION": " Informations sur la transaction ",
+      "TITLE": " Transfert des fonds MT103",
+      "TOTAL_VALUE": "VALEUR TOTALE",
+      "EXCHANGE_RATE_INFO": " Informations sur le taux de change ",
+      "REMITTANCE_ADDITIONAL_INFO": " Informations sur les transferts de fonds (informations supplémentaires)",
+      "FETCH_CREDIT_ACCOUNT": "Rechercher un compte de crédit",
+      "FETCH_SPECIAL_EXCHANGE_RATE": "Obtenir le taux de change spécial"
+    }
+  },
+  "LOCALE": {
+    "PREFERENCE": {
+      "CURRENT-LANGUAGE-SET": "La langue actuelle est définie sur ",
+      "SELECT-DEFAULT-LANGUAGE": " Veuillez sélectionner votre langue par défaut ",
+      "NONE": "Aucun"
+    },
+    "LANGUAGES": {
+      "ENGLISH": "Anglais",
+      "SWAHILI": "Swahili",
+      "FRENCH": "Française",
+      "ENGLISH-KE": "Anglais, KE",
+      "ENGLISH-UG": "Anglais, UG",
+      "KISWAHILI-KE": "Swahili, KE",
+      "KISWAHILI-TZ": "Swahili, TZ",
+      "RWANDESE": "Kinyarwanda, RW",
+      "SUDANESE": "Anglais, SS",
+      "FRENCH-DRC": "Français, DRC"
+    }
+  },
+  "MENU": {
+    "MY-DASHBOARD": "Mon tableau de bord",
+    "CUSTOMER-SERVICES": " Services à la clientèle ",
+    "CUSTOMER-360": "Client 360",
+    "CUSTOMER-ONBOARDING": "Customer Onboarding",
+    "CUSTOMER-SWIFT": "Transfert des fonds",
+    "CUSTOMER-MAIN": "Portail Principal",
+    "SEND-MONEY": " Envoyer de l'argent ",
+    "MORE": "Plus",
+    "CORPORATE-SERVICES": "Services aux entreprises",
+    "CREDIT-SERVICES": "Services de crédit",
+    "AGENCY-SERVICES": "Services d'agence",
+    "SPECIAL-PROJECTS": "Projets spéciaux",
+    "INSURANCE": "Assurance",
+    "CUSTODY": "Garde",
+    "FOREIGN-EXCHANGE": "Change étranger",
+    "REPORTS": "Rapports",
+    "ADMINISTRATION": "Administration",
+    "CARD-MANAGEMENT": "Gestion des cartes",
+    "CARD-PORTAL": "Portail des cartes",
+    "TICKETS": "Tickets",
+    "SWIFT": "SWIFT"
+  },
+  "TICKETS": {
+    "MY-TICKETS": "Mes tickets",
+    "COLS": {
+      "SUBJECT": "Sujet",
+      "NAME": "Nom du client",
+      "CIF": "CIF du client",
+      "TICKET-ID": "Identification du Ticket",
+      "DATE-CREATED": "Date de création",
+      "CREATED-BY": "Crée par",
+      "STATUS": "Statuts",
+      "CUSTOMER-ID": "Identifiant client",
+      "DATE_RANGE": "Entrez une série de dates",
+      "DATE": "date"
+    }
+  },
+  "BREADCRUMBS": {
+    "SEND-MONEY": " Envoyer de l'argent "
+  },
+  "SERVICES": {
+    "SECTIONS": {
+      "SEND-MONEY": {
+        "TITLE": " Envoyer de l'argent ",
+        "TEXT": " Assister facilement les clients nouveaux et existants en sélectionnant l'option appropriée ",
+        "ACCOUNT_DETAILS": "Détails du compte",
+        "ADDITIONAL_ACCOUNT_DETAILS": "Détails du compte additionnel",
+        "TRANSACTION_INFORMATION": "Informations de la Transaction",
+        "COLS": {
+          "NATIONALITY": "Nationalité",
+          "COUNTRY_RESIDENCE": "Pays de résidence",
+          "ID_TYPE": "Type d'ID",
+          "ID_NUMBER": "Numéro ID",
+          "FIRST_NAME": "Prénom",
+          "MIDDLE NAME": "Deuxième prénom",
+          "SURNAME": "Surnom",
+          "DATE_BIRTH": "Date de naissance",
+          "ID_SERIAL_NUMBER": "Numéro de série ID",
+          "KRA_NUMBER": "Code PIN KRA",
+          "GENDER": "Genre",
+          "MARITAL_STATUS": "Etat Civil"
+        },
+        "EXCHANGE_RATE_INFO": "Informations sur les taux de change",
+        "ENABLE_MOBILE_BANKING": "Activer les services bancaires mobiles",
+        "INFO_MESSAGE_CUSTOMER_MOBILE": "Veuillez saisir le numéro de téléphone mobile du client et le vérifier à l'aide du code de vérification qui lui a été envoyé.",
+        "PRIMARY_MOBILE_NUMBER": "Numéro de téléphone portable principal",
+        "ENABLE_INTERNET_BANKING": "Activer les services bancaires en ligne",
+        "INFO_MESSAGE_CUSTOMER_EMAIL": "Veuillez saisir l'adresse e-mail du client et la vérifier à l'aide du code de vérification qui lui a été envoyé.",
+        "PRIMARY_EMAIL": "Adresse Email Principale",
+        "INFO_MESSAGE_VERIFICATION_CODE": "Ajoutez un code de vérification valide.",
+        "PRIMARY_EMAIL_COMMENT": "Commentaire sur l'adresse e-mail principale",
+        "INFO_MESSAGE_VERIFICATION_MOBILE_CODE": "Veuillez saisir le numéro de téléphone mobile du client et le vérifier à l'aide du code de vérification qui lui a été envoyé.",
+        "MOBILE_NUMBER": "Numéro de téléphone mobile",
+        "EMAIL": "Adresse Email",
+        "VERIFY_EMAIL": "Vérifier l'adresse Mail",
+        "REMOVE_NUMBER_EMAIL": "Retirer le numéro et l'Email",
+        "ADD_NUMBER_EMAIL": "Ajouter un autre Numéro et Email",
+        "BENEFICIARY_DETAILS": "Détails du bénéficiaire",
+        "HIGH_RISK_CUSTOMER": "CLIENT A HAUT RISQUE",
+        "STAFF_MEMBER": "MEMBRE DU STAFF",
+        "JOINT_ACCOUNT": "COMPTE JOINT",
+        "MINOR": "MINEUR",
+        "BENEFICIARY_BANK_DETAILS": "Informations de la banque du bénéficiaire",
+        "ACCOUNT_TYPE": "Type de compte",
+        "ACCOUNT_CURRENCY": "Devise de compte",
+        "SCHEME_TYPE": "Type de Scheme",
+        "INFO_MESSAGE_ACCOUNT_TYPE": "Veuillez d'abord sélectionner un type de compte.",
+        "DISPATCH_MODE": "Mode de Dispatch",
+        "DISPATCH_MODE_OPTIONS": {
+          "COLLECT_ONLY": "COLLECTE UNIQUEMENT",
+          "EMAIL_ONLY": "EMAIL UNIQUEMENT",
+          "POST_ONLY": "POST UNIQUEMENT"
+        },
+        "STATEMENT_FREQUENCY": "FREQUENCE DU RELEVE",
+        "STATEMENT_FREQUENCY_OPTIONS": {
+          "DAILY": "JOURNALIEREMENT",
+          "WEEKLY": "HEBDOMADAIREMENT",
+          "MONTHLY": "MENSUELLEMENT",
+          "YEARLY": "ANNUELLEMENT"
+        },
+        "REMITTANCE_INFORMATION": "Information sur le transfer des fonds",
+        "STATEMENT_START_DATE": "Date de début du relevé",
+        "CHARGE_DETAILS": "Détails des frais",
+        "SENDER_RECEIVER_INFORMATION": "Informations de l'expéditeur au destinataire"
+      },
+      "PAY-OR-BUY": {
+        "TITLE": "Payer ou acheter",
+        "TEXT": " Assister facilement les clients nouveaux et existants en sélectionnant l'option appropriée "
+      },
+      "WITHDRAW": {
+        "TITLE": "Retrait",
+        "TEXT": " Aider facilement les clients nouveaux et existants en sélectionnant l'option appropriée "
+      }
+    },
+    "SEND-MONEY-TO-EQUITY": {
+      "TITLE": " Envoyer de l'argent à Equity",
+      "TEXT": " Accueillez un nouveau client et aidez-le à ouvrir un compte "
+    },
+    "SWIFT-RTGS-EAPPS-REPPS": {
+      "TITLE": "SWIFT / RTGS / EAPS / REPS",
+      "TEXT": " Copie du message lorem ipsum dolor sit amet, consectetur adipiscing elit "
+    },
+    "BUY-AIRTIME": {
+      "TITLE": " Acheter du credit dappel ",
+      "TEXT": " Accueillez un nouveau client et aidez-le à ouvrir un compte "
+    },
+    "PAY-BILL": {
+      "TITLE": "Payer les factures",
+      "TEXT": " Copie du message lorem ipsum dolor sit amet, consectetur adipiscing elit "
+    },
+    "PAY-LOAN": {
+      "TITLE": "Payer les credits bancaires",
+      "TEXT": " Copie du message lorem ipsum dolor sit amet, consectetur adipiscing elit "
+    },
+    "WITHDRAW": {
+      "TITLE": " Retirer ",
+      "TEXT": " Accueillez un nouveau client et aidez-le à ouvrir un compte "
+    }
+  },
+  "SELECTION-DIALOG": {
+    "LABEL": " Sélection et vérification du type de transfert ",
+    "TEXT": " Choisir le bon type de transfert et d'autres options pour continuer ?",
+    "UPDATE_REMITTER_ADDRESS": {
+      "COUNTRY": {
+        "LABEL": "Pays",
+        "TEXT": "Selectionner le Pays"
+      },
+      "REMITTER_ADDRESS_1": {
+        "LABEL": "Adresse Ligne 1",
+        "TEXT": "Entrer l'adresse, ligne 1"
+      },
+      "REGION": {
+        "LABEL": "Province",
+        "TEXT": "Sélectionner la province"
+      },
+      "STATE": {
+        "LABEL": "Etat / Commune",
+        "TEXT": "Sélectionner l'Etat / Commune"
+      },
+      "TOWN_CITY": {
+        "LABEL": "Ville/Cité",
+        "TEXT": "Selectionner Ville/Cité"
+      },
+      "REQUIRED-ERROR": "Ce champ est obligatoire",
+      "INVALID-ERROR": "Votre saisie n'est pas valide.",
+      "MINIMUM-ERROR": "Doit comporter au moins 10 caractères"
+    },
+    "TRANSFER-TYPES": {
+      "LABEL": "Type de transfert",
+      "TEXT": " Sélectionner le type de transfert ",
+      "REQUIRED-ERROR": " Vous devez faire une sélection ",
+      "INVALID-ERROR": " Votre sélection n'est pas valide ",
+      "CHOICES": {
+        "NONE": "Transfert des fonds 103",
+        "MT-103": " Transfert des fonds 103",
+        "CR-202": " Demande de paiement en espèces 202",
+        "CRC-909": "Annulation de la Demande de paiement en espèces 909",
+        "N-299": "Normal 299",
+        "STATEMENT": "Déclaration"
+      }
+    },
+    "TRANSACTION-TYPES": {
+      "LABEL": "Type de transactions",
+      "TEXT": " Veuillez sélectionner un type de transaction pour continuer ",
+      "REQUIRED-ERROR": " Vous devez sélectionner un type de transaction pour continuer",
+      "INVALID-ERROR": " Votre sélection n'est pas valide ",
+      "CHOICES": {
+        "SWIFT": {
+          "LABEL": "SWIFT",
+          "TEXT": "Society for Worldwide Financial Telecommunication (SWIFT) – Transfert International"
+        },
+        "RTGS": {
+          "LABEL": "RTGS",
+          "TEXT": "Real Time Gross Settlement (RTGS) – Transfert d'argent localisé "
+        },
+        "EAPP": {
+          "LABEL": "EAPP",
+          "TEXT": "East Africa Payment Settlement System (EAPP) - Transfert bancaire en Afrique de l'Est "
+        },
+        "COMESA": {
+          "LABEL": "COMESA",
+          "TEXT": "Regional Payment Settlement System (REPPS) - Transfert bancaire dans les pays du COMESA "
+        }
+      }
+    },
+    "CASH-CENTERS": {
+      "LABEL": " Centre de paiement ",
+      "TEXT": " Veuillez sélectionner un centre de paiement ",
+      "REQUIRED-ERROR": " Vous devez saisir un centre de paiement ",
+      "INVALID-ERROR": " Votre sélection n'est pas valide "
+    },
+    "RECALL-CANCELLATION-TYPE": {
+      "LABEL": " Type de Rappel / Annulation",
+      "TEXT": " Veuillez sélectionner un type d'annulation ",
+      "REQUIRED-ERROR": " Veuillez sélectionner un type d'annulation ",
+      "INVALID-ERROR": " Votre sélection n'est pas valide "
+    },
+    "REQUEST-TYPE": {
+      "LABEL": " Type de demande ",
+      "TEXT": " Veuillez sélectionner un type de demande ",
+      "REQUIRED-ERROR": " Vous devez saisir un type de demande ",
+      "INVALID-ERROR": " Votre sélection n'est pas valide "
+    },
+    "REMITTANCE-ACCOUNT": {
+      "LABEL": " Veuillez saisir le numéro de compte du client ",
+      "TEXT": " Entrez le numéro de compte ",
+      "REQUIRED-ERROR": " Vous devez saisir un numéro de transaction pour continuer ",
+      "INVALID-ERROR": " Votre sélection n'est pas valide "
+    },
+    "ACTIONS": {
+      "CLEAR": "Effacer",
+      "CANCEL": "Annuler",
+      "NEXT": " Suivant ",
+      "VERIFY": "Vérifier",
+      "CLOSE": "Clôturer"
+    },
+    "SEARCH_BANKS_COUNTRIES": "Rechercher les banques/pays",
+    "IMAGE_PREVIEW": "Aperçu de l'image"
+  },
+  "STEPPER": {
+    "LABEL": "Envoyer de l'argent",
+    "STEP": " Étape ",
+    "OF": "ou",
+    "ACCOUNT-DETAILS": "Détails du compte",
+    "DOCUMENTS-UPLOAD": "Charger les documents",
+    "DOCUMENTS-UPLOAD-TITLE": "Charger les documents requis",
+    "DOCUMENTS-UPLOAD-TEXT": " Veuillez télécharger les documents justificatifs au format PDF ou Jpeg. La taille maximale par document ne doit pas dépasser 10 Mo.",
+    "ACTIONS": {
+      "BACK": "Retour",
+      "NEXT": "Suivant",
+      "QUIT": "Quitter",
+      "FINISH": "Terminer"
+    }
+  },
+  "DOCUMENT-TYPES": {
+    "NATIONAL-ID": {
+      "TITLE": "Identification National",
+      "TEXT": "Le fichier ne doit pas dépasser 10 Mo "
+    },
+    "PASSPORT-PHOTO": {
+      "TITLE": "Photo Passport",
+      "TEXT": "Le fichier ne doit pas dépasser 10 Mo "
+    },
+    "KRA-PIN": {
+      "TITLE": "Code PIN KRA",
+      "TEXT": " Le fichier ne doit pas dépasser 10 Mo "
+    },
+    "EDD-FORM": {
+      "TITLE": " Formulaire EDD ",
+      "TEXT": " Le fichier ne doit pas dépasser 10 Mo "
+    },
+    "SIGNATURE-SAMPLE": {
+      "TITLE": "Spécimen de signature ",
+      "TEXT": "Le fichier ne doit pas dépasser 10 Mo "
+    },
+    "ADDITIONAL": {
+      "TITLE": " Charger des documents ",
+      "TEXT": " Faire glisser et déposer vos fichiers ici "
+    }
+  },
+  "GUIDES": {
+    "TYPOGRAPHY-LEVELS": " Niveaux de typographie "
+  },
+  "FIELDS": {
+    "TRANSACTION_NARRATION": " Commentaires de la transaction",
+    "RECEIVER_BANK": "Banque de réception (BIC)",
+    "ORIGINAL_299_REFERENCE_NUMBER": "Numéro de référence original 299",
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom de famille",
+    "FULL_NAME": "Nom complet",
+    "ID_NUMBER": "Numéro ID",
+    "CIF": "Cif",
+    "ACCOUNT_BALANCE": "Solde du compte",
+    "MOBILE_NUMBER": "Numéro de portable",
+    "EMAIL_ADDRESS": "Adresse Email",
+    "POSTAL_ADDRESS": "Adresse Postale",
+    "REASON": "Raison ",
+    "NEW_VALUE": "Nouvelle valeure",
+    "MANDATE": "Mandat",
+    "IS_GL_ACCOUNT": "Comptes Grand Livre GL",
+    "NEWGEN_WORK_ITEM_NUMBER": "Numéro de dossier NewGen",
+    "INITIATION_DATE": "Date de début",
+    "USER_NAME": "Nom d'utilisateur",
+    "ONE_EQUITY_NUMBER": "Numéro One Equity",
+    "RECALL_CANCELLATION_TYPE": "Type d'annulation du rappel",
+    "REQUESTING_BRANCH": "Agence de demande",
+    "PRODUCT_CODE": "Code de Produit",
+    "RELATED_REFERENCE_NUMBER": "Numéro de référence associé",
+    "DEBIT_ACCOUNT_NUMBER": "Numéro de compte à débiter",
+    "IBAN_NUMBER": "Numéro IBAN",
+    "ACCOUNT_CURRENCY": "Dévise du compte",
+    "DEBIT_ACCOUNT_NAME": "Intitulé du compte à débiter",
+    "CHARGE_ACCOUNT_NUMBER": "Numéro de compte client",
+    "REMITTANCE_CURRENCY": "Devise de transfert",
+    "REMITTANCE_AMOUNT": "Montant de transfert",
+    "DEBIT_VALUE_DATE": "Date de valeur du débit",
+    "REMITTERS_PHYSICAL_ADDRESS_1": {
+      "LABEL": "Adresse physique du donneur d'ordre 1",
+      "TOAST": "Entrer la rue, le quartier et la description du lieu de résidence du client."
+    },
+    "REMITTER_ADDRESS_2": {
+      "LABEL": "Adresse physique du donneur d'ordre 2",
+      "TOAST": "Entrer la description de la ville et du pays"
+    },
+    "INSTRUMENT_TYPE": "Type d'Instrument ",
+    "INSTRUMENT_DATE": "Date d'Instrument ",
+    "INSTRUMENT_NUMBER": "Numéro d'Instrument ",
+    "LICENSE_NUMBER_1": "Numéro de licence 1",
+    "LICENSE_NUMBER_2": "Numéro de licence 2",
+    "LICENSE_NUMBER_3": "Numéro de licence 3",
+    "LICENSE_PURPOSE_CATEGORY": "Catégorie d'objet de la licence",
+    "LICENSE_PURPOSE_CODE": "Code d'objet de la licence",
+    "LICENSE_PURPOSE": "Objet de la licence",
+    "TTC_NUMBER": "Numéro TTC",
+    "CREDIT_ACCOUNT_NUMBER": "Numéro de compte à créditer",
+    "CREDIT_ACCOUNT_NAME": "Intitulé du compte à créditer",
+    "CENTRAL_BANK_CODE": "Code bancaire du crédit",
+    "CENTRAL_BANK_CODE_DESC": "Code de la banque de crédit Desc",
+    "MT103_REF_NUMBER": "MT103 Numéro de référence",
+    "ORIGINAL_MESSAGE_DATE": "Date du message original",
+    "REQUEST_TYPE": "Type de demande",
+    "AMOUNT": "Renseigner le montant",
+    "CENTER_NUMBER": "Numéro du centre",
+    "CENTER_NAME": "Nom du centre",
+    "TRANSACTION_DATE": "Date de Transaction ",
+    "VALUE_DATE": "Date de validité",
+    "TRANSFER_TYPE": "Type de Transfert ",
+    "TRANSACTION_TYPE": "Type de Transaction ",
+    "COUNTRY_CODE": "Code pays",
+    "CURRENCY": "Devise",
+    "FIELD_79": "Champ 79",
+    "TRANSACTION_REFERENCE": "Référence de la Transaction ",
+    "RELATED_REF_NUMBER": "Numéro de référence associé",
+    "ACCOUNT_NUMBER": "Numéro de compte",
+    "STATEMENT_TYPE": "Type de relevé",
+    "RECEIVER_BIC": "Banque de réception (BIC)",
+    "FREQUENCY": "Fréquence",
+    "START_DATE": "Date de début",
+    "END_DATE": "Date de fin",
+    "BENEFICIARY_ACCOUNT_NUMBER_IBAN": "Numéro de compte Bénéficiaire/IBAN",
+    "BENEFICIARY_NAME_1": "Nom du Bénéficiaire 1",
+    "BENEFICIARY_NAME_2": "Nom du Bénéficiaire 2",
+    "BENEFICIARY_NAME_3": "Nom du Bénéficiaire 3",
+    "BENEFICIARY_NAME_4": "Nom du Bénéficiaire 4",
+    "BENEFICIARY_PHYSICAL_ADDRESS_1": "Addresse Physique du bénéficiaire 1",
+    "BENEFICIARY_PHYSICAL_ADDRESS_2": "Addresse Physique du bénéficiaire 2",
+    "BENEFICIARY_PHYSICAL_ADDRESS_1_2_TOAST": "Entrez la rue, le quartier et la description du lieu de résidence du bénéficiaire",
+    "PURPOSE_CODE": "Code d'objet",
+    "ACCOUNT_WITH_INSTITUTION_BIC": "Compte avec l'Institution BIC",
+    "ROUTING_CODE": "Routing Code",
+    "ROUTING_CODE_VALUE": "Valeur du Routing Code",
+    "FIELD_26T": "Champ 26T (CBK Remittances)",
+    "INTERMEDIARY_BANK_BIC": "Bank Intermediaire Bic",
+    "BENEFICIARY_COUNTRY_CODE": "Code du pays bénéficiaire",
+    "BENEFICIARY_BANK_CODE": "Code Banque du Beneficiaire",
+    "BENEFICIARY_BRANCH_CODE": "Code de l'agence bénéficiaire",
+    "LINE_1": "Ligne 1",
+    "LINE_2": "Ligne 2",
+    "CHARGE_OPTION": "Option de tarification",
+    "CHARGE_AMOUNT": "Montant des frais",
+    "CHARGE_AMOUNT_CURRENCY": "Devise de frais",
+    "RATE_CODE": "Code tarifaire",
+    "EXCHANGE_RATE": "Taux de change",
+    "BASE_EXCHANGE_RATE": "Taux de change de base",
+    "TREASURY_RATE": "Taux du Trésor",
+    "SPECIAL_RATE_COUPON_NUMBER": "Numéro du coupon à tarif spécial",
+    "SEARCH_BY_CIF": "Rechercher par Cif",
+    "CONVERTED_CURRENCY": "Devise convertie",
+    "CONVERTED_AMOUNT": "Montant Converti",
+    "REMITTANCE_INFO_1": "Informations sur les transferts de fonds Ligne 1",
+    "REMITTANCE_INFO_2": "Informations sur les transferts de fonds Ligne 2",
+    "REMITTANCE_INFO_3": "Informations sur les transferts de fonds Ligne 3",
+    "REMITTANCE_INFO_4": "Informations sur les transferts de fonds Ligne 4"
+  },
+  "TRANSACTIONS": {
+    "LABEL": "Résumé de la transaction",
+    "TEXT": " Montant total et frais de transaction cumulés calculés à partir du transfert groupé. ",
+    "TOTAL_AMOUNT": "MontantTotal",
+    "CUMULATIVE_TRANSACTION_CHARGES": " Frais de transaction cumulés ",
+    "RATES": "Taux",
+    "APPROVAL": "Approbations",
+    "UPDATE_REMITTER_ADDRESS": "Mise à jour Addresse",
+    "FETCH_SPECIAL_EXCHANGE_RATE": " Obtenir un taux de change préférentiel ",
+    "FETCH_CREDIT_ACCOUNT": " Obtenir un compte à créditer ",
+    "DENOMINATION": {
+      "LABEL": "Dénomination",
+      "BAGS": "Sacs",
+      "ENTER_AMOUNT": "Entrer le montant",
+      "TOTAL_VALUE": "VALEUR TOTALE",
+      "GRAND_TOTAL_VALUE": "VALEUR TOTALE GLOBALE",
+      "OFFICIAL": "OFFICIEL",
+      "DELIVERED_BY": "Délivré par ",
+      "PF_NUMBER": " Le numéro PF ",
+      "NAME": "Nom",
+      "ENTER_NAME": "Entrer le nom",
+      "ENTER_PF_NUMBER": "Entrer le numéro PF"
+    }
+  },
+  "ERRORS": {
+    "UNKNOWN-ERROR": "Une erreur inconnue s'est produite",
+    "SERVER-ERROR": "Erreur de Serveur",
+    "SERVER-ERROR-TEXT": "Une erreur système s'est produite. Veuillez le signaler à l'administrateur"
+  },
+  "USER_PROFILE": {
+    "STAFF_NO": "Numéro Staff",
+    "ROLES": "Rôles",
+    "PERMISSIONS": "Autorisations",
+    "PROCESSES": "Processus",
+    "MY_ROLES": "Mes Rôles",
+    "MY_ROLE_PERMISSIONS": "Mes autorisations de rôle",
+    "MY_PROCESSES": "Mes Processesus"
+  }
+}

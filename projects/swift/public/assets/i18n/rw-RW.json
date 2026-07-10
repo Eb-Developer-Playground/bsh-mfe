@@ -1,0 +1,568 @@
+{
+  "EQUITY": {
+    "MOTTO": "More than just banking."
+  },
+  "COMMON": {
+    "FILTER": "Filter",
+    "HELLO": "Hello",
+    "USERNAME": "Username",
+    "WELCOME": "Welcome to",
+    "CHARGES": "Amafaranga",
+    "CHARGE_OPTION_DEFAULTS_TO_SHA": "Nuhakana uburyo bw’amafaranga, SHA izahita ikoreshwa",
+    "CHARGE_OPTION_DEFAULTS_TO_OUR": "Nuhakana uburyo bw'amafaranga, OUR izahita ikoreshwa",
+    "CONFIRM": "Confirm",
+    "CANCEL": "Cancel",
+    "OPEN_ACCOUNT": "Open Account",
+    "CLEAR_FILTERS": "Clear Filters",
+    "BACK": "Back",
+    "QUIT": "Quit",
+    "SUBMIT": "Submit",
+    "APPROVE": "Approve",
+    "RETURN": "Return",
+    "REJECT": "Reject",
+    "NEXT": "Next",
+    "COUNTRY": "Country",
+    "BRANCH": "Branch",
+    "WORKCLASS": "Work Class",
+    "TRANSACTIONS": "Transactions",
+    "STATUS": "Status",
+    "COMMENT": "Comment",
+    "TABLE": "Table",
+    "NATIONALITY": "Nationality",
+    "MARITAL": {
+      "LABEL": "Marriage",
+      "STATUS": {
+        "MARRIED": "MARRIED",
+        "SINGLE": "SINGLE",
+        "OTHER": "OTHER"
+      }
+    },
+    "GENDER": {
+      "LABEL": "Gender",
+      "STATUS": {
+        "FEMALE": "FEMALE",
+        "MALE": "MALE"
+      },
+      "CURRENCIES": {
+        "KES": "KES",
+        "USD": "USD"
+      }
+    },
+    "PAGE": {
+      "NORMAL_299": "Normal 299",
+      "CASH_REQUEST_299": "Cash Request 299",
+      "CASH_REQUEST_199": "MT199 Amendment Provision Of Details",
+      "CASH_REQUEST_192": "Cash Request 192 Recall",
+      "CANCELLATION_192": "Cancellation / Recall MT 192",
+      "STATEMENT_940_950": "Statement 940/ 950",
+      "CANCELLATION 940_950": "Statement 940/ 950 Cancellation",
+      "CASH_REQUEST_202": "Cash Request 202",
+      "MT199_AMENDMENT": "MT199 Amendment Confirmation Of MT103"
+    },
+    "DOCUMENTS": {
+      "LABEL": "Supporting Documents",
+      "STATEMENT_DETAILS": "Statement Details",
+      "FILE_SIZE_TXT_1": "File Size:",
+      "FILE_SIZE_TXT_2": "The file should not exceed 10MB",
+      "SIZE_LIMIT_ERROR": "File size exceeds the maximum limit of 10MB",
+      "UNSUPPORTED_TYPE_ERROR": "Unsupported file type",
+      "RESIZE_SCANNED_IMAGE": "Unable to resize scanned image",
+      "ERROR_SCANNER": "Scanner error occurred",
+      "IMAGE_LARGE": "Image is too large",
+      "RESIZE_IMAGE_ERROR": "Unable to resize image"
+    },
+    "APPROVAL": {
+      "LABEL": "Approval",
+      "TEXT": "Please approve and give additional comments."
+    },
+    "REQUIRED_DOCUMENTS": {
+      "LABEL": "Attach required documents",
+      "TEXT": "Please upload supporting documents in PDF or Jpeg format. The maximum file size per document should not exceed 1mb.",
+      "CUSTOMER_INSTRUCTIONS": "Customer Instruction",
+      "SUPPORTING_DOCUMENT": "Supporting Document"
+    },
+    "ERROR": {
+      "INVALID_START_DATE": "Invalid start date",
+      "INVALID_END_DATE": "Invalid end date",
+      "REQUIRED_MARITAL_STATUS": "Marital status is required",
+      "REQUIRED_GENDER": "Gender is required",
+      "INVALID_KRA_NUMBER": "Invalid KRA pin number",
+      "REQUIRED_KRA_NUMBER": "KRA pin number is required",
+      "INVALID_DATE": "Invalid date format",
+      "REQUIRED_DATE": "Date of Birth is required",
+      "REQUIRED_SURNAME": "Surname is required",
+      "ALPHABETICAL_ONLY": "Alphabetical letters only",
+      "REQUIRED_FIRST": "First name is required",
+      "NUMBERS_ONLY": "Numbers only",
+      "REQUIRED_MOBILE_NUMBER": "Mobile number is required",
+      "INVALID_MOBILE_NUMBER": "Mobile number is incomplete",
+      "REQUIRED_EMAIL": "Email address is required",
+      "INVALID_EMAIL": "Invalid email address format",
+      "MINIMUM_CHARACTERS": "Minimum of {{value}} characters",
+      "VERIFY_PHONE_NUMBER": "Verify phone number",
+      "REQUIRED_SCHEME_TYPE": "Scheme type is required",
+      "REQUIRED_STATEMENT_DISPATCH": "Statement dispatch is required",
+      "REQUIRED_STATEMENT_FREQUENCY": "Statement frequency is required"
+    }
+  },
+  "PAGES": {
+    "NORMAL_MT299": {
+      "TITLE": "Normal MT299"
+    },
+    "BULK_UPLOAD": {
+      "TITLE": "Bulk Upload",
+      "TOTAL_AMOUNT": "Total Amount",
+      "CUMULATIVE_TRANSACTION_CHARGES": "Cumulative transaction charges",
+      "RATES": "Rates"
+    },
+    "CASH_REQUEST_202": {
+      "TITLE": "Cash Request 202"
+    },
+    "CASH_REQUEST_299": {
+      "TITLE": "Cash Request 299",
+      "WITHDRAW_TABLE": "Withdraw Table"
+    },
+    "CASH_REQUEST_299_CANCELLATION": {
+      "TITLE": "Cash Request Cancellation 299"
+    },
+    "CASH_REQUEST_199": {
+      "TITLE": "MT199 Amendment Provision Of Details"
+    },
+    "CASH_REQUEST_MT199_CORRESPONDENT_QUERY": {
+      "TITLE": "MT199 Amendment Correspondent Query"
+    },
+    "CASH_REQUEST_MT199_PROVISION_OF_DETAILS": {
+      "TITLE": "MT199 Amendment Provision Of Details"
+    },
+    "MT199_AMENDMENT_CONFIRMATION_OF_MT103": {
+      "TITLE": "MT199 Amendment Confirmation Of MT103"
+    },
+    "CASH_REQUEST_192": {
+      "TITLE": "Cash Request 192"
+    },
+    "CASH_REQUEST_192_RECALL": {
+      "TITLE": "Cash Request 192 Recall"
+    },
+    "CANCELLATION_192": {
+      "TITLE": "Cancellation / Recall MT 192"
+    },
+    "STATEMENT_940_950": {
+      "TITLE": "Statement 940/ 950"
+    },
+    "STATEMENT_940_950_CANCELLATION": {
+      "TITLE": "Statement 940/ 950 Cancellation"
+    },
+    "FUNDS_TRANSFER_MT103": {
+      "ACCOUNT_DETAILS": "Account Details",
+      "ADDITIONAL_FIELDS": "Additional Fields",
+      "ADDITIONAL_ACCOUNT_DETAILS": "Additional Account Details",
+      "BENEFICIARY_DETAILS": "Beneficiary Details",
+      "BENEFICIARY_BANK_DETAILS": "Beneficiary Bank Details",
+      "CHARGE_DETAILS": "Charge Details",
+      "DENOMINATION": "Denomination",
+      "ENTER_AMOUNT": "Enter Amount",
+      "EXCHANGE_DETAILS": "Exchange Details",
+      "REMITTER_ACCOUNT_DETAILS": "Remitter Account Details",
+      "SENDER_TO_RECEIVER_INFORMATION": "Sender To Receiver Information",
+      "TRANSACTION_INFORMATION": "Transaction information",
+      "TITLE": "Fund Transfer MT103",
+      "TOTAL_VALUE": "TOTAL VALUE",
+      "EXCHANGE_RATE_INFO": "Exchange Rate Information",
+      "REMITTANCE_ADDITIONAL_INFO": "Remittance Information (Additional information)",
+      "FETCH_CREDIT_ACCOUNT": "Fetch Credit Account",
+      "FETCH_SPECIAL_EXCHANGE_RATE": "Fetch Special Exchange Rate"
+    }
+  },
+  "LOGIN": {
+    "COMMON": {
+      "SIGN-IN": "Sign In",
+      "LOG-OUT": "Log out",
+      "LOGGED-IN": "You are logged in as ",
+      "ACCOUNT_HEADER": "Hano haribisobanuro birambuye kuri konte yawe",
+      "LOG-IN-TEXT": "You are not logged in at the moment. Please login to continue serving our customers."
+    },
+    "MICROSOFT-SSO": {
+      "SIGN-IN": "Sign in with Microsoft",
+      "INSTRUCTIONS": "To continue serving our customers, sign in with your username and password."
+    }
+  },
+  "LOCALE": {
+    "PREFERENCE": {
+      "CURRENT-LANGUAGE-SET": "Current language set to",
+      "SELECT-DEFAULT-LANGUAGE": "Please select your default language",
+      "NONE": "None"
+    },
+    "LANGUAGES": {
+      "ENGLISH": "English",
+      "SWAHILI": "Kiswahili",
+      "FRENCH": "Française",
+      "ENGLISH-KE": "English, KE",
+      "ENGLISH-UG": "English, UG",
+      "KISWAHILI-KE": "Kiswahili, KE",
+      "KISWAHILI-TZ": "Kiswahili, TZ",
+      "RWANDESE": "Kinyarwanda, RW",
+      "SUDANESE": "English, SS",
+      "FRENCH-DRC": "French, DRC"
+    }
+  },
+  "MENU": {
+    "MY-DASHBOARD": "My Dashboard",
+    "CUSTOMER-SERVICES": "Customer Services",
+    "SEND-MONEY": "Send Money",
+    "MORE": "More",
+    "TICKETS": "Tickets"
+  },
+  "TICKETS": {
+    "MY-TICKETS": "My tickets",
+    "COLS": {
+      "SUBJECT": "Subject",
+      "NAME": "Customer Name",
+      "CIF": "Customer Cif",
+      "TICKET-ID": "Ticket Id",
+      "DATE-CREATED": "Date Created",
+      "CREATED-BY": "Created By",
+      "STATUS": "Status",
+      "CUSTOMER-ID": "Customer Id",
+      "DATE_RANGE": "Enter a date range",
+      "DATE": "date"
+    }
+  },
+  "BREADCRUMBS": {
+    "SEND-MONEY": "Send Money"
+  },
+  "SERVICES": {
+    "SECTIONS": {
+      "SEND-MONEY": {
+        "TITLE": "Send money",
+        "TEXT": "Easily assist new and existing customers by selecting the relevant option",
+        "ACCOUNT_DETAILS": "Account Details",
+        "ADDITIONAL_ACCOUNT_DETAILS": "Additional account details",
+        "TRANSACTION_INFORMATION": "Transaction information",
+        "COLS": {
+          "NATIONALITY": "Nationality",
+          "COUNTRY_RESIDENCE": "Country of residence",
+          "ID_TYPE": "ID type",
+          "ID_NUMBER": "ID number",
+          "FIRST_NAME": "First name",
+          "MIDDLE NAME": "Middle name",
+          "SURNAME": "Surname",
+          "DATE_BIRTH": "Date of birth",
+          "ID_SERIAL_NUMBER": "ID serial number",
+          "KRA_NUMBER": "KRA pin number",
+          "GENDER": "Gender",
+          "MARITAL_STATUS": "Marital status"
+        },
+        "EXCHANGE_RATE_INFO": "Exchange rate info",
+        "ENABLE_MOBILE_BANKING": "Enable mobile banking",
+        "INFO_MESSAGE_CUSTOMER_MOBILE": "Please enter the customer’s mobile number and verify it using the verification code sent to them",
+        "PRIMARY_MOBILE_NUMBER": "Primary mobile number",
+        "ENABLE_INTERNET_BANKING": "Enable internet banking",
+        "INFO_MESSAGE_CUSTOMER_EMAIL": "Please enter the customer’s email address and verify it using the verification code sent to them",
+        "PRIMARY_EMAIL": "Primary email address",
+        "INFO_MESSAGE_VERIFICATION_CODE": "Please add a valid verification code",
+        "PRIMARY_EMAIL_COMMENT": "Primary email comment",
+        "INFO_MESSAGE_VERIFICATION_MOBILE_CODE": "Please enter the customer’s mobile number and verify it using the verification code sent to them",
+        "MOBILE_NUMBER": "Mobile Number",
+        "EMAIL": "Email address",
+        "VERIFY_EMAIL": "Verify email address",
+        "REMOVE_NUMBER_EMAIL": "Remove number and email",
+        "ADD_NUMBER_EMAIL": "+ Add another number and email",
+        "BENEFICIARY_DETAILS": "Beneficiary details",
+        "HIGH_RISK_CUSTOMER": "HIGH RISK CUSTOMER",
+        "STAFF_MEMBER": "STAFF MEMBER",
+        "JOINT_ACCOUNT": "JOINT ACCOUNT",
+        "MINOR": "MINOR",
+        "BENEFICIARY_BANK_DETAILS": "Beneficiary bank details",
+        "ACCOUNT_TYPE": "Account type",
+        "ACCOUNT_CURRENCY": "Account currency",
+        "SCHEME_TYPE": "Scheme type",
+        "INFO_MESSAGE_ACCOUNT_TYPE": "Please select an account type first",
+        "DISPATCH_MODE": "Dispatch mode",
+        "DISPATCH_MODE_OPTIONS": {
+          "COLLECT_ONLY": "COLLECT ONLY",
+          "EMAIL_ONLY": "EMAIL ONLY",
+          "POST_ONLY": "POST ONLY"
+        },
+        "STATEMENT_FREQUENCY": "STATEMENT FREQUENCY",
+        "STATEMENT_FREQUENCY_OPTIONS": {
+          "DAILY": "DAILY",
+          "WEEKLY": "WEEKLY",
+          "MONTHLY": "MONTHLY",
+          "YEARLY": "YEARLY"
+        },
+        "REMITTANCE_INFORMATION": "Remittance information",
+        "STATEMENT_START_DATE": "Statement start date",
+        "CHARGE_DETAILS": "Charge details",
+        "SENDER_RECEIVER_INFORMATION": "Sender to receiver information"
+      },
+      "PAY-OR-BUY": {
+        "TITLE": "Pay or buy",
+        "TEXT": "Easily assist new and existing customers by selecting the relevant option"
+      },
+      "WITHDRAW": {
+        "TITLE": "Withdraw",
+        "TEXT": "Easily assist new and existing customers by selecting the relevant option"
+      }
+    },
+    "SEND-MONEY-TO-EQUITY": {
+      "TITLE": "Send Money to Equity",
+      "TEXT": "Onboard a new customer and help them open an account"
+    },
+    "SWIFT-RTGS-EAPPS-REPPS": {
+      "TITLE": "SWIFT / RTGS / EAPS / REPS",
+      "TEXT": "Message copy lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    "BUY-AIRTIME": {
+      "TITLE": "Buy airtime",
+      "TEXT": "Onboard a new customer and help them open an account"
+    },
+    "PAY-BILL": {
+      "TITLE": "Pay bill",
+      "TEXT": "Message copy lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    "PAY-LOAN": {
+      "TITLE": "Pay loan",
+      "TEXT": "Message copy lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    "WITHDRAW": {
+      "TITLE": "Withdraw",
+      "TEXT": "Onboard a new customer and help them open an  account"
+    }
+  },
+  "SELECTION-DIALOG": {
+    "LABEL": "Transfer type selection and verification",
+    "TEXT": "Choose the right transfer type and other options to proceed?",
+    "TRANSFER-TYPES": {
+      "LABEL": "Transfer type",
+      "TEXT": "Select transfer type",
+      "REQUIRED-ERROR": "You must make a selection",
+      "INVALID-ERROR": "Your selection is invalid",
+      "CHOICES": {
+        "NONE": "Fund transfer 103",
+        "MT-103": "Fund transfer 103",
+        "CR-202": "Cash request 202",
+        "CRC-909": "Cash request cancellation 909",
+        "N-299": "Normal 299",
+        "STATEMENT": "Statement"
+      }
+    },
+    "TRANSACTION-TYPES": {
+      "LABEL": "Transaction type",
+      "TEXT": "Please select a transaction type to proceed",
+      "REQUIRED-ERROR": "You must select a transaction type to proceed",
+      "INVALID-ERROR": "Your selection is invalid",
+      "CHOICES": {
+        "SWIFT": {
+          "LABEL": "SWIFT",
+          "TEXT": "Society for Worldwide Financial Telecommunication (SWIFT) - International transfer"
+        },
+        "RTGS": {
+          "LABEL": "RTGS",
+          "TEXT": "Real Time Gross Settlement (RTGS) – Localized money transfer"
+        },
+        "EAPP": {
+          "LABEL": "EAPP",
+          "TEXT": "East Africa Payment Settlement System (EAPP) - Bank transfer within East Africa"
+        },
+        "COMESA": {
+          "LABEL": "COMESA",
+          "TEXT": "Regional Payment Settlement System (REPPS) - Bank transfer within COMESA countries"
+        }
+      }
+    },
+    "CASH-CENTERS": {
+      "LABEL": "Cash center",
+      "TEXT": "please select a cash center",
+      "REQUIRED-ERROR": "You must enter a cash center",
+      "INVALID-ERROR": "Your selection is invalid"
+    },
+    "RECALL-CANCELLATION-TYPE": {
+      "LABEL": "Recall / Cancellation Type",
+      "TEXT": "please select a cancellation type",
+      "REQUIRED-ERROR": "You must enter a cancellation type",
+      "INVALID-ERROR": "Your selection is invalid"
+    },
+    "REQUEST-TYPE": {
+      "LABEL": "Request Type",
+      "TEXT": "please select a request type",
+      "REQUIRED-ERROR": "You must enter a request type",
+      "INVALID-ERROR": "Your selection is invalid"
+    },
+    "REMITTANCE-ACCOUNT": {
+      "LABEL": "Please enter the customer’s account number",
+      "TEXT": "Enter account number",
+      "REQUIRED-ERROR": "You must enter a transaction number to proceed",
+      "INVALID-ERROR": "Your selection is invalid"
+    },
+    "ACTIONS": {
+      "CLEAR": "Clear",
+      "CANCEL": "Cancel",
+      "NEXT": "Next",
+      "VERIFY": "Verify",
+      "CLOSE": "Close"
+    },
+    "SEARCH_BANKS_COUNTRIES": "Search Banks/Countries",
+    "IMAGE_PREVIEW": "Image preview"
+  },
+  "STEPPER": {
+    "LABEL": "Send Money",
+    "STEP": "Step",
+    "OF": "of",
+    "ACCOUNT-DETAILS": "Account Details",
+    "DOCUMENTS-UPLOAD": "Documents Upload",
+    "DOCUMENTS-UPLOAD-TITLE": "Upload required documents",
+    "DOCUMENTS-UPLOAD-TEXT": "Please upload supporting documents in PDF or Jpeg format. The maximum file size  per document should not exceed 10mb.",
+    "ACTIONS": {
+      "BACK": "Back",
+      "NEXT": "Next",
+      "QUIT": "Quit",
+      "FINISH": "Finish"
+    }
+  },
+  "DOCUMENT-TYPES": {
+    "NATIONAL-ID": {
+      "TITLE": "National ID",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "PASSPORT-PHOTO": {
+      "TITLE": "Passport Photo",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "KRA-PIN": {
+      "TITLE": "KRA PIN",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "EDD-FORM": {
+      "TITLE": "EDD Form",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "SIGNATURE-SAMPLE": {
+      "TITLE": "Signature sample",
+      "TEXT": "The file should not exceed 10MB"
+    },
+    "ADDITIONAL": {
+      "TITLE": "Upload Documents",
+      "TEXT": "Drag and Drop or files here"
+    }
+  },
+  "GUIDES": {
+    "TYPOGRAPHY-LEVELS": "Typography Levels"
+  },
+  "FIELDS": {
+    "TRANSACTION_NARRATION": "Transaction Narration",
+    "RECEIVER_BANK": "Receiver Bank (BIC)",
+    "ORIGINAL_299_REFERENCE_NUMBER": "Original 299 Reference Number",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "FULL_NAME": "Full Name",
+    "ID_NUMBER": "Id Number",
+    "CIF": "Cif",
+    "ACCOUNT_BALANCE": "Account Balance",
+    "MOBILE_NUMBER": "Mobile Number",
+    "EMAIL_ADDRESS": "Email Address",
+    "POSTAL_ADDRESS": "Postal Address",
+    "REASON": "Reason",
+    "NEW_VALUE": "New Value",
+    "MANDATE": "Mandate",
+    "NEWGEN_WORK_ITEM_NUMBER": "NewGen Work Item Number",
+    "INITIATION_DATE": "Initiation Date",
+    "USER_NAME": "User Name",
+    "ONE_EQUITY_NUMBER": "One Equity Number",
+    "RECALL_CANCELLATION_TYPE": "Recall Cancellation Type",
+    "REQUESTING_BRANCH": "Requesting Branch",
+    "PRODUCT_CODE": "Product Code",
+    "RELATED_REFERENCE_NUMBER": "Related Reference Number",
+    "DEBIT_ACCOUNT_NUMBER": "Debit Account Number",
+    "ACCOUNT_CURRENCY": "Account Currency",
+    "DEBIT_ACCOUNT_NAME": "Debit Account Name",
+    "CHARGE_ACCOUNT_NUMBER": "Charge Account Number",
+    "REMITTANCE_CURRENCY": "Remittance Currency",
+    "REMITTANCE_AMOUNT": "Remittance Amount",
+    "DEBIT_VALUE_DATE": "Debit Value Date",
+    "REMITTERS_PHYSICAL_ADDRESS_1": "Remitter's Physical Address 1",
+    "REMITTER_ADDRESS_2": "Remitter Address 2",
+    "INSTRUMENT_TYPE": "Instrument Type",
+    "INSTRUMENT_DATE": "Instrument Date",
+    "INSTRUMENT_NUMBER": "Instrument Number",
+    "CREDIT_ACCOUNT_NUMBER": "Credit Account Number",
+    "CREDIT_ACCOUNT_NAME": "Credit Account Name",
+    "MT103_REF_NUMBER": "MT103 Ref Number",
+    "ORIGINAL_MESSAGE_DATE": "Original Message Date",
+    "REQUEST_TYPE": "Request Type",
+    "AMOUNT": "Amount",
+    "CENTER_NUMBER": "Center Number",
+    "CENTER_NAME": "Center Name",
+    "TRANSACTION_DATE": "Transaction Date",
+    "VALUE_DATE": "Value Date",
+    "TRANSFER_TYPE": "Transfer Type",
+    "TRANSACTION_TYPE": "Transaction Type",
+    "COUNTRY_CODE": "Country Code",
+    "CURRENCY": "Currency",
+    "FIELD_79": "Field 79",
+    "TRANSACTION_REFERENCE": "Transaction Reference",
+    "RELATED_REF_NUMBER": "Related Ref Number",
+    "ACCOUNT_NUMBER": "Account Number",
+    "STATEMENT_TYPE": "Statement Type",
+    "RECEIVER_BIC": "Receiver BIC",
+    "FREQUENCY": "Frequency",
+    "START_DATE": "Start Date",
+    "END_DATE": "End Date",
+    "BENEFICIARY_ACCOUNT_NUMBER_IBAN": "Beneficiary Account Number/IBAN",
+    "BENEFICIARY_NAME_1": "Beneficiary Name 1",
+    "BENEFICIARY_NAME_2": "Beneficiary Name 2",
+    "BENEFICIARY_NAME_3": "Beneficiary Name 3",
+    "BENEFICIARY_NAME_4": "Beneficiary Name 4",
+    "BENEFICIARY_PHYSICAL_ADDRESS_1": "Beneficiary Physical Address 1",
+    "BENEFICIARY_PHYSICAL_ADDRESS_2": "Beneficiary Physical Address 2",
+    "PURPOSE_CODE": "Purpose Code",
+    "ACCOUNT_WITH_INSTITUTION_BIC": "Account With Institution BIC",
+    "ROUTING_CODE": "Routing Code",
+    "ROUTING_CODE_VALUE": "Routing Code Value",
+    "FIELD_26T": "Field 26T (CBK Remittances)",
+    "INTERMEDIARY_BANK_BIC": "Intermediary Bank Bic",
+    "BENEFICIARY_COUNTRY_CODE": "Beneficiary Country Code",
+    "LINE_1": "Line 1",
+    "LINE_2": "Line 2",
+    "CHARGE_OPTION": "Charge Option",
+    "VAT": "VAT",
+    "RSC": "RSC",
+    "NORMAL_CHARGE": "Amafaranga asanzwe",
+    "SUM_OF_CHARGES": "Igiteranyo cy’amafaranga (VAT + RSC)",
+    "CHARGE_AMOUNT": "Amafaranga yose",
+    "CHARGE_AMOUNT_CURRENCY": "Ifaranga ry'ubwishyu",
+    "RATE_CODE": "Rate Code",
+    "EXCHANGE_RATE": "Exchange Rate",
+    "BASE_EXCHANGE_RATE": "Base Exchange Rate",
+    "TREASURY_RATE": "Treasury Rate",
+    "SPECIAL_RATE_COUPON_NUMBER": "Special Rate Coupon Number",
+    "SEARCH_BY_CIF": "Search By Cif",
+    "CONVERTED_CURRENCY": "Converted Currency",
+    "CONVERTED_AMOUNT": "Converted Amount",
+    "REMITTANCE_INFO_1": "Remittance Info 1",
+    "REMITTANCE_INFO_2": "Remittance Info 2",
+    "REMITTANCE_INFO_3": "Remittance Info 3",
+    "REMITTANCE_INFO_4": "Remittance Info 4"
+  },
+  "TRANSACTIONS": {
+    "LABEL": "Transaction Summary",
+    "TEXT": "Total amount and cumulative transaction charges calculated from bulk upload.",
+    "TOTAL_AMOUNT": "Total Amount",
+    "CUMULATIVE_TRANSACTION_CHARGES": "Cumulative transaction charges",
+    "RATES": "Rates",
+    "APPROVAL": "Approval",
+    "FETCH_SPECIAL_EXCHANGE_RATE": "Fetch Special Exchange Rate",
+    "FETCH_CREDIT_ACCOUNT": "Fetch Credit Account",
+    "DENOMINATION": {
+      "LABEL": "Denomination",
+      "BAGS": "Bags",
+      "ENTER_AMOUNT": "Enter Amount",
+      "TOTAL_VALUE": "TOTAL VALUE",
+      "OFFICIAL": "OFFICIAL",
+      "DELIVERED_BY": "Delivered By",
+      "PF_NUMBER": "PF Number",
+      "NAME": "Name",
+      "ENTER_NAME": "Enter name",
+      "ENTER_PF_NUMBER": "Enter PF Number"
+    }
+  }
+}

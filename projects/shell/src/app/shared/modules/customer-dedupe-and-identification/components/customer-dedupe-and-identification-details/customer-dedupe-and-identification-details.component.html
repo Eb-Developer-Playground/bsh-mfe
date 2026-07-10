@@ -1,0 +1,60 @@
+<mat-card appearance="outlined" style="padding: 1.5rem">
+  <div class="mb-1">
+    <!-- <div class="card-title-icon">
+          <button
+            mat-mini-fab
+            disabled
+            *ngIf="!dedupeChecked"
+          >
+            1
+          </button>
+          <mat-icon *ngIf="dedupeChecked" svgIcon="ic-success" style="color: #2F9803;" aria-hidden="false" class="type-icon" ></mat-icon>
+        </div> -->
+    <h3 class="mat-headline-6 fw-400 mb-0 card-title-text">
+      {{ 'KNOWN-AGENT.FIND-AGENT.FIND-AGENT' | translate }}
+    </h3>
+  </div>
+  <p *ngIf="subsidiary.countryCode !== 'CD'" class="fw-300 fs-09 mt-0 mb-0">
+    Dedupe, KRA, IPRS, and EFIS checks must be performed before proceeding to
+    create an account. Select the document type for the customer to go ahead
+    with this validation.
+  </p>
+
+  <div class="pt-18 pb-18 divider-holder">
+    <mat-divider></mat-divider>
+  </div>
+  <app-dedupe-form
+    [dedupeForm]="dedupeForm"
+    (onDedupeChecked)="dedupeCheckPerformed($any($event))"
+    [hideDedupeFormButton]="true"
+    (onDedupeFormIsValid)="dedupeFormIsValid($any($event))">
+  </app-dedupe-form>
+</mat-card>
+
+<!-- <mat-card style="padding: 1.5rem" class="mt-16" *ngIf="shouldDisplayFullIdForm">
+    <div class="mb-1">
+        <div class="card-title-icon">
+          <button
+            mat-mini-fab
+            disabled
+            *ngIf="!idDetailsFormIsValid"
+          >
+            2
+          </button>
+          <mat-icon *ngIf="idDetailsFormIsValid" svgIcon="ic-success" style="color: #2F9803;" aria-hidden="false" class="type-icon" ></mat-icon>
+        </div>
+        <h3 class="mat-title fw-400 mb-0 card-title-text">Identification details</h3>
+    </div>
+    <div class="pt-18 pb-18 divider-holder">
+        <mat-divider></mat-divider>
+    </div>
+    <app-id-documents
+      [nationality]="selectedNationality"
+      [countryOfResidence]="selectedCountryOfResidence"
+      [dedupeIdType]="selectedIdType"
+      [parentForm]="parentForm"
+      [parentFormControlName]="parentFormControlName"
+      [fieldStates]="primaryIdFieldState ? [primaryIdFieldState!] : undefined"
+    >
+    </app-id-documents>
+</mat-card> -->

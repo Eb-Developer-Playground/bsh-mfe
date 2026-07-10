@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="p-1m min-w-80" style="max-width: 100%; margin: 1rem 0 0 1rem">
+    <mat-card appearance="outlined">
+      <div class="d-flex mb-10 flex-wrap-sm p-05m">
+        <div class="d-flex align-content-center me-auto">
+          <h2 class="align-self-center mb-0 mt-0">
+            {{ stepperLabel }}
+          </h2>
+          <span class="text-muted align-self-center hide-sm"
+            >&nbsp;|&nbsp;{{ selected?.label }}</span
+          >
+        </div>
+        <span class="text-muted hide-md">{{ selected?.label }}</span>
+        <div>
+          <span class="d-inline color-primary"
+            >{{ 'COMMON.STEP' | translate }} {{ selectedIndex + 1 }}
+            {{ 'COMMON.OF' | translate }} {{ steps.length }}</span
+          >
+          <div class="d-inline progress ms-5">
+            <div
+              *ngFor="let step of steps; let i = index"
+              (click)="selectStepByIndex(i)"
+              class="d-inline-block progress-item ms-5"
+              [class.active]="selectedIndex >= i"></div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+    <div class="stepper-body bg-white p-2m mtr-1 mbr-1">
+      <div [ngTemplateOutlet]="selected ? selected.content : null"></div>
+    </div>
+    <div class="d-flex mtb-10 justify-content-between" *ngIf="!hideNavControls">
+      <button mat-stroked-button color="primary" (click)="onQuit.next('')">
+        {{ 'COMMON.QUIT' | translate }}
+      </button>
+      <div role="group" aria-label="Next step">
+        <button
+          color="primary"
+          style="margin-right: 16px"
+          mat-stroked-button
+          *ngIf="selectedIndex > 0 && showBackButton"
+          (click)="previousStep()">
+          {{ 'COMMON.BACK' | translate }}
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="submitDisabled"
+          [innerText]="
+            selectedIndex !== steps.length - 1
+              ? ('COMMON.NEXT' | translate)
+              : lastStepButtonOveride
+                ? lastStepButtonOveride
+                : ('COMMON.COMPLETE' | translate)
+          "
+          (click)="onSave.emit(selected?.label)"></button>
+      </div>
+    </div>
+  </div>
+</div>

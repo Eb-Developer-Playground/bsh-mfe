@@ -1,0 +1,52 @@
+<div class="container min-w-80" style="max-width: 1320px; margin: 1rem auto 0">
+  <mat-card>
+    <div class="flex flex-wrap mb-10 p-1m">
+      <div class="flex items-center me-auto">
+        <h2 class="self-center mb-0 mt-0">
+          {{ 'STEPPER.LABEL' | translate }}
+        </h2>
+        <span class="text-gray-400 self-center hidden sm:inline">&nbsp;|&nbsp;{{ selected?.label }}</span>
+      </div>
+      <span class="text-gray-400 hide-md">{{ selected?.label }}</span>
+      <div>
+        <span class="inline color-primary"
+          >{{ 'STEPPER.STEP' | translate }} {{ selectedIndex + 1 }} {{ 'STEPPER.OF' | translate }}
+          {{ steps.length }}</span
+        >
+        <div class="inline progress ms-5">
+          @for (step of steps; track step; let i = $index) {
+            <div
+              (click)="selectStepByIndex(i)"
+              class="inline-block progress-item ms-5"
+              [class.active]="selectedIndex >= i"></div>
+          }
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <div class="stepper-body bg-white p-2m mt-2 mb-2">
+    <div [ngTemplateOutlet]="selected ? selected.content : null"></div>
+  </div>
+  <div class="flex mtb-10 justify-between">
+    <button mat-stroked-button color="primary" (click)="onQuit.next('')">
+      {{ 'STEPPER.ACTIONS.QUIT' | translate }}
+    </button>
+    <div class="flex" role="toolbar" aria-label="Stepper control button groups">
+      @if (selectedIndex > 0) {
+        <button mat-stroked-button class="me-2" color="primary" cdkStepperPrevious>
+          {{ 'STEPPER.ACTIONS.BACK' | translate }}
+        </button>
+      }
+      @if (selectedIndex === steps.length - 1) {
+        <button type="button" mat-raised-button color="primary" (click)="onSubmit.emit()">
+          {{ 'STEPPER.ACTIONS.FINISH' | translate }}
+        </button>
+      }
+      @if (selectedIndex < steps.length - 1) {
+        <button type="button" mat-raised-button color="primary" cdkStepperNext>
+          {{ 'STEPPER.ACTIONS.NEXT' | translate }}
+        </button>
+      }
+    </div>
+  </div>
+</div>

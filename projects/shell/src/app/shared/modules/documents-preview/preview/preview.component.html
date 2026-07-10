@@ -1,0 +1,42 @@
+<div class="dialog-header">
+  <span></span>
+  <h3 mat-dialog-title class="mat-headline-6 fw-400">Document Preview</h3>
+  <mat-icon
+    svgIcon="ic-close"
+    style="transform: scale(0.6); cursor: pointer"
+    mat-dialog-close></mat-icon>
+</div>
+<div>
+  <mat-divider></mat-divider>
+</div>
+<div class="img-container mb-8">
+  <embed
+    *ngIf="!isImage"
+    [src]="sanitizedURL"
+    height="500px"
+    width="900px"
+    type="application/pdf" />
+  <img
+    *ngIf="!imgError && isImage"
+    [src]="sanitizedURL"
+    (error)="imgError = true"
+    height="90%"
+    width="900px"
+    alt="preview" />
+  <div *ngIf="imgError">
+    <img
+      [src]="sanitizedURL"
+      height="90%"
+      width="900px"
+      class="content_viewport" />
+  </div>
+</div>
+<div class="button-container">
+  <button mat-stroked-button class="eq-btn" mat-dialog-close>Cancel</button>
+  <div>
+    <button mat-stroked-button class="eq-btn mr-1">Print</button>
+    <button mat-stroked-button class="eq-btn" (click)="documentDownload()">
+      Download
+    </button>
+  </div>
+</div>

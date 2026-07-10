@@ -39,6 +39,13 @@ testem.log
 /typings
 __screenshots__/
 .playwright-mcp/
+.beads
+# Temp/utility scripts
+*.py
+
+# Test artifacts
+test-results/
+
 # System files
 .DS_Store
 Thumbs.db

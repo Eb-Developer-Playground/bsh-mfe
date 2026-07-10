@@ -1,0 +1,183 @@
+<div class="dialog-header" mat-dialog-title>
+  <div class="sub-header">
+    <mat-icon
+      svgIcon="ic-back-arrow"
+      class="cursor-pointer"
+      style="transform: scale(0.7)"
+      [mat-dialog-close]="'back'"></mat-icon>
+    <h2 mat-dialog-title style="margin-bottom: 0px">Skip Biometric</h2>
+    <mat-icon color="primary" class="cursor-pointer" [mat-dialog-close]="null"
+      >close</mat-icon
+    >
+  </div>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="w-100 mb-1">
+    <div class="text-muted mb-1">
+      <h4>
+        Please give a reason for skipping biometrics below and attach supporting
+        documents.
+      </h4>
+    </div>
+    <div class="d-flex align-content-center">
+      <div class="rounded-circle">{{ getAvatarName(data.fullName) }}</div>
+      <div class="align-self-center">
+        {{ data.fullName }}
+        <br />
+        <h4 class="text-muted">Account Name</h4>
+      </div>
+    </div>
+    <div class="gridset mb-1">
+      <div>
+        <span class="text-muted">Account Number</span>
+        <h4>{{ data.account.accountNumber }}</h4>
+      </div>
+      <div>
+        <span class="text-muted">Account Type</span>
+        <h4>{{ data.account.schemeType }}</h4>
+      </div>
+      <div>
+        <span class="text-muted">Account Mandate</span>
+        <h4>{{ data.account.mandate }}</h4>
+      </div>
+    </div>
+    <div class="review-instructions align-self-center">
+      <h4 class="mat-subtitle-2 fw-400" style="margin-bottom: 4px">
+        Requirements for bio-override
+      </h4>
+      <h5 class="text text-black">
+        The board of resolution form must be uploaded for the bio-override
+        request to be approved. Please <br />upload the document below.
+      </h5>
+    </div>
+  </div>
+  <form [formGroup]="reasonForm" autocomplete="off">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Select reason for skipping biometrics*</mat-label>
+      <mat-select formControlName="reason" required>
+        <mat-option disabled value="">Select reason </mat-option>
+        <mat-option
+          *ngFor="let option of reasonOptionArray"
+          [value]="option.code"
+          class="border-bottom h-auto w-100">
+          <div class="d-flex flex-column cust-option">
+            <strong>{{ option.title }} </strong>
+            <div class="color-grey white-space">{{ option.description }}</div>
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      appearance="fill"
+      class="w-100"
+      *ngIf="reasonOptionSelected === 'customerNotPresent'">
+      <mat-label>Action</mat-label>
+      <mat-select formControlName="action" required>
+        <mat-option disabled value="">Select Action</mat-option>
+        <mat-option
+          *ngFor="let action of actionsArray"
+          [value]="action"
+          class="border-bottom h-auto w-100">
+          <div class="d-flex flex-column cust-option">
+            <strong> {{ action | transformProfileAction }} </strong>
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <ng-container *ngIf="reasonOptionSelected">
+      <p class="mat-subtitle-2 fw-300">
+        Enter reason for viewing customer's profile
+      </p>
+      <div mat-dialog-content class="dialog-content mb-8">
+        <textarea
+          formControlName="comment"
+          name="comment"
+          id=""
+          cols="20"
+          rows="4"></textarea>
+      </div>
+      <p
+        class="form-error"
+        *ngIf="reasonForm.get('comment')!.errors?.['maxlength']">
+        Max length of 300 characters exceeded.
+      </p>
+    </ng-container>
+  </form>
+  <ng-container *ngIf="reasonOptionSelected">
+    <div class="mb-12 mt-12">
+      <p class="mat-subtitle-2 fw-300">Upload documents</p>
+      <h5 class="text-muted">
+        Upload supporting documents in PDF or Jpeg format. The maximum file size
+        per document <br />should not exceed 1mb.
+      </h5>
+    </div>
+    <div>
+      <div
+        fxLayout="row"
+        fxFill
+        fxFlex="100"
+        fxLayoutAlign="space-between start"
+        fxLayoutGap="24px">
+        <div fxFlex="50">
+          <div class="scanner">
+            <div
+              class="col drag-drop"
+              (files)="filesDropped($event)"
+              appDragDropDocuments
+              (click)="fileDrag.click()">
+              <input
+                type="file"
+                #fileDrag
+                (change)="onChange(fileDrag)"
+                style="display: none" />
+              <div>
+                <mat-icon
+                  svgIcon="ic-uploadBackground"
+                  style="height: 20px; transform: scale(1.7)"></mat-icon>
+                <p class="text drop-text">Upload additional documents</p>
+                <p class="text instruction">Drag & drop or browse file here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          fxLayout="column"
+          fxFill
+          fxFlex="50"
+          fxLayoutAlign="center start"
+          fxLayoutGap="10px">
+          <div *ngFor="let obj of cloneOfObjects" class="doc-list">
+            <div class="docs">
+              <div class="align-self-center">
+                <p class="mat-subtitle-2 fw-400" style="margin-bottom: 2px">
+                  {{ obj.name }}
+                </p>
+                <p class="text-muted" style="margin-bottom: 2px">
+                  {{ obj.fileSize }}
+                </p>
+              </div>
+            </div>
+            <div class="more-icon">
+              <button mat-icon-button (click)="deleteUpload(obj)">
+                <mat-icon svgIcon="ic-delete"> </mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="goBack()">
+    &nbsp;Cancel&nbsp;
+  </button>
+  <button
+    mat-flat-button
+    cdkFocusInitial
+    [disabled]="!isFormValid()"
+    (click)="onSubmit()"
+    color="primary">
+    &nbsp;Continue&nbsp;
+  </button>
+</mat-dialog-actions>

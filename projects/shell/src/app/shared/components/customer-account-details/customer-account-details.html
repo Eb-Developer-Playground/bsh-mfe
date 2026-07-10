@@ -1,0 +1,62 @@
+<div>
+  <mat-card-title>Account Details</mat-card-title>
+  <div class="customer-details-content">
+    <div class="customer-details-container">
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{
+            (isEntityOrJoint ? 'COMMON.ACCOUNT-HOLDER' : 'COMMON.ACCOUNT-NAME')
+              | translate
+          }}
+        </p>
+        <p class="customer-detail-content">{{ accountData?.accountName }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.ACCOUNT-NUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ accountData?.accountNumber }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.ACCOUNT-CURRENCY' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ accountData?.accountCurrency }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.SCHEME-TYPE' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ accountData?.schemeType }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.ACCOUNT-STATUS' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ accountData?.accountStatus }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'CUSTOMER.TAB-ACCOUNT-BALANCE.MANDATE_TYPE' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ accountData?.mandate }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.PHONE-NUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ (cifData$ | async)?.phoneNumber1 }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.EMAILADDRESS' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ (cifData$ | async)?.email }}</p>
+      </div>
+    </div>
+  </div>
+</div>

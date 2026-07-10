@@ -1,36 +1,30 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, effect, inject, Input } from '@angular/core';
 import { MenuItem } from '../../shared/models';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 import { SessionService } from '../../shared/services';
 import { BSHServices } from '../../shared/services/bsh-services';
+import { COMPAT_IMPORTS } from '../../shared/compat-barrel';
 
 @Component({
   selector: 'app-navigation',
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
-export class NavigationComponent implements OnInit, OnDestroy {
+export class NavigationComponent {
   menuItems!: MenuItem[];
-  destroy$: Subject<any> = new Subject<any>();
   @Input() isSidenavOpened: boolean = true;
+  private cdr = inject(ChangeDetectorRef);
 
   constructor(
     private bshService: BSHServices,
     private session: SessionService
   ) {
-    this.updateItems();
-  }
-
-  ngOnInit(): void {
-    this.session.onChanged
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => this.updateItems());
-  }
-
-  ngOnDestroy() {
-    this.destroy$.next('');
-    this.destroy$.complete();
+    effect(() => {
+      this.session.user;
+      this.updateItems();
+      this.cdr.markForCheck();
+    });
   }
 
   updateItems() {

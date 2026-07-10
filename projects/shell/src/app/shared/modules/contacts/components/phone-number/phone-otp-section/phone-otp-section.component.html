@@ -1,0 +1,51 @@
+<div class="d-flex align-items-center">
+  <app-otp-codes #inputComp [formControl]="otpFormControl"></app-otp-codes>
+  @if (!otpCode && !hasSentOtp) {
+    <button
+      class="ml-10 mr-10"
+      color="primary"
+      (click)="sendOtp()"
+      [disabled]="otpDisabled"
+      mat-button>
+      {{ 'COMMON.PHONE_SECTION.SEND_OTP' | translate }}
+    </button>
+  }
+  @if (otpCode && !hasVerifiedOtp) {
+    <button
+      class="ml-10 mr-10"
+      color="primary"
+      (click)="validateOtp()"
+      [disabled]="(!otpCode && countDown === 0) || invalidInputs"
+      mat-button>
+      {{ 'COMMON.PHONE_SECTION.VERIFY' | translate }}
+    </button>
+  }
+  @if (hasVerifiedOtp) {
+    <button class="ml-10 mr-10" mat-flat-button>
+      <mat-icon [svgIcon]="'ic-circle-check'"></mat-icon>
+      {{ 'COMMON.PHONE_SECTION.VERIFIED_BUTTON_LABEL' | translate }}
+    </button>
+  }
+  <mat-chip-set
+    [disabled]="!hasSentOtp || countDown === 0"
+    [ngClass]="hasSentOtp && !hasVerifiedOtp ? 'ml-5 mr-10' : ''"
+    aria-label="Validity countdown">
+    <mat-chip>
+      <img
+        matChipAvatar
+        src="../../../../../../../assets/icons/icon-clock.svg"
+        alt="Timer countdown" />
+      <span class="text-muted">00:{{ countDown || '00' }}</span>
+    </mat-chip>
+  </mat-chip-set>
+  <span class="ml-10" [ngClass]="canResend !== true ? 'text-muted' : ''">
+    {{ 'COMMON.PHONE_SECTION.ERROR_MESSAGE' | translate }}
+  </span>
+  <button
+    [disabled]="canResend !== true"
+    (click)="sendOtp(true)"
+    color="primary"
+    mat-button>
+    {{ 'COMMON.PHONE_SECTION.RESEND_OTP' | translate }}
+  </button>
+</div>

@@ -1,0 +1,130 @@
+.dialog {
+  padding: 1.5rem;
+
+  .dialog-header {
+    text-align: center;
+  }
+
+  .header-left {
+    margin-left: 50px;
+  }
+
+  .dialog-sub-header {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .fieldset {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+
+  .eq-btn {
+    width: 100px;
+    background: transparent;
+    /* Equity Brown/Equity Brown - 500 */
+    color: #a32a29;
+    border: 1px solid #a32a29;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    &.active,
+    &:focus,
+    &:hover {
+      color: #ffffff;
+      background-color: #a32a29;
+    }
+
+    :disabled {
+      color: white;
+      border: 1px solid #e0e0e0;
+      background-color: #e0e0e0;
+    }
+  }
+
+  .button-container {
+    padding: 16px;
+    padding-right: 0px;
+    justify-content: flex-end;
+    display: flex;
+  }
+
+  .dialog-actions {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+  }
+  .subtitle-text {
+    font-weight: 400;
+  }
+  .mat-mdc-form-field-error {
+    color: red;
+  }
+  .radioGroupCls {
+    justify-content: flex-start;
+  }
+
+  .radioBtnCls {
+    margin-top: 10px;
+    border: 2px solid #92949733;
+    border-radius: 5px;
+    padding: 13px;
+  }
+}
+
+.option-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+::ng-deep .mdc-label {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+::ng-deep .mdc-radio__outer-circle {
+  border-color: #a32a29;
+  height: 15px;
+  width: 15px;
+}
+// ::ng-deep .mat-form-field-appearance-fill .mat-form-field-subscript-wrapper {
+//     padding: 0px;
+// }
+
+.rounded-circle {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #a32a29;
+  margin-right: 1.5rem;
+  text-align: center;
+  line-height: 3.5rem;
+}
+.scanner {
+  height: 18rem;
+  width: calc(100% - 1rem);
+  border: 1px solid #929497;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.text-wrap {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.mat-mdc-dialog-title {
+  margin: 0 !important;
+  text-align: center !important;
+}
+.subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+}

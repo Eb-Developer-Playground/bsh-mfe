@@ -1,0 +1,51 @@
+::ng-deep .mat-mdc-radio-button {
+    flex: 1;
+    min-width: 280px;
+
+    .mdc-radio {
+        padding: 8px;
+
+        .mdc-radio__outer-circle {
+            border-color: #a32a29 !important;
+            border-width: 2px !important;
+        }
+
+        .mdc-radio__inner-circle {
+            border-color: #a32a29 !important;
+            background-color: #a32a29 !important;
+            // left: calc(50% ); /*'10px'-same as your required circle radius*/
+            // top: calc(50% ); /*'10px'-same as your required circle radius*/
+        }
+
+        .mdc-checkbox__background {
+            width: 30px !important;
+            height: 30px !important;
+            top: 50% !important;
+            /* Added */
+            left: 50% !important;
+            /* Added */
+            transform: translate(-50%, -50%) !important;
+            /* Added */
+        }
+    }
+
+    &.mat-mdc-radio-checked .mdc-radio .mdc-radio__outer-circle {
+        border-color: #a32a29 !important;
+    }
+}
+
+.muted-bordered-card {
+    border: 1px solid rgba(233, 234, 234, 1);
+    border-radius: 8px;
+    border-width: 1px;
+    padding-top: 16px;
+    padding-right: 8px;
+    padding-bottom: 16px;
+    padding-left: 8px;
+}
+
+.icon-container mat-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}

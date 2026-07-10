@@ -1,0 +1,36 @@
+<ng-container *ngIf="contentOnly" [ngTemplateOutlet]="cards"></ng-container>
+<mat-card appearance="outlined" *ngIf="!contentOnly">
+  <div class="header-main-label">
+    <p class="mat-headline-6 fw-400">Required documents</p>
+  </div>
+  <ng-container [ngTemplateOutlet]="cards"></ng-container>
+</mat-card>
+<ng-template #cards>
+  <div class="card-grid mt-10">
+    <mat-card appearance="outlined" class="card" *ngFor="let obj of documents">
+      <mat-card-header>
+        <div class="card-title">
+          <span class="subjectCls">{{ obj.filename }}</span>
+          <span *ngIf="obj?.uploadDate" class="sizeCls">{{
+            obj.uploadDate | date: 'dd/MM/yyyy'
+          }}</span>
+          <span *ngIf="!obj?.uploadDate" class="sizeCls">{{
+            obj.size || 1024 | fileSize
+          }}</span>
+
+          <span *ngIf="obj?.fileName" class="subjectCls">
+            {{ obj.fileName }}
+          </span>
+          <span *ngIf="!obj?.fileSize" class="sizeCls">
+            {{ obj.fileSize }}</span
+          >
+        </div>
+      </mat-card-header>
+      <div class="more-icon">
+        <button mat-icon-button (click)="previewDocument(obj)">
+          <mat-icon svgIcon="ic-view"></mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</ng-template>

@@ -1,0 +1,60 @@
+.check-box {
+    transform: scale(2);
+
+    input[type='checkbox'] {
+        appearance: none;
+        position: relative;
+        width: 28px;
+        height: 14px;
+        background: white;
+        border: 1px solid #C8C8C8;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background 0.35s, opacity 0.35s;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            top: 0;
+            left: 0;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            transition: left 0.35s, background 0.35s;
+        }
+
+        /* Checked → matches your red image */
+        &:checked {
+            background: #A32A29;                // solid --equity fill
+
+            &::after {
+                left: calc(100% - 12px);
+            }
+        }
+
+        /* Disabled → matches your gray image exactly */
+        &:disabled {
+            cursor: not-allowed;
+            opacity: 1;                                // we control colors manually
+            background: #E5E5E5;                      // exact track color from your image
+            border-color: #C8C8C8;                     // subtle gray border
+
+            &::after {
+                background: white;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+            }
+
+            /* Keep thumb position when disabled + checked */
+            &:checked {
+                background: #E5E5E5;                    // same gray track
+                border-color: #C8C8C8;
+
+                &::after {
+                    left: calc(100% - 12px);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<div fxLayout="column">
+  <div class="_wrapHeaderTitle">
+    <p class="mat-headline">{{ titleKey | translate }}</p>
+  </div>
+  <div class="_wrapHeaderBreadCrumb">
+    <ul class="breadcrumb">
+      <li *ngFor="let b of breadcrumbs">
+        <a [routerLink]="[b.path]"
+          ><span class="mat-subheading-1">{{ b.label | translate }}</span></a
+        >
+      </li>
+    </ul>
+  </div>
+</div>

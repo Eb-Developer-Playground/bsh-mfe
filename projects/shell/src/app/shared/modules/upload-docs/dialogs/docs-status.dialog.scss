@@ -1,0 +1,122 @@
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-instructions {
+  max-width: 61vw;
+  height: 84px;
+  padding: 16px;
+  background-color: rgba(47, 152, 3, 0.04);
+  border: 1px solid #2f9803;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin: 0.7rem;
+}
+
+.text {
+  line-height: 24px;
+  margin-top: 0;
+  margin-bottom: 2px;
+}
+
+.text-black {
+  color: #221f1f;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.text-success {
+  color: #2f9803;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.doc-name {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #221f1f;
+  align-self: stretch;
+  margin: 4px 0;
+}
+
+.doc-size {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #929497;
+  align-self: stretch;
+  margin: 4px 0;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
+
+.pt-1 {
+  padding-top: 1rem;
+}
+
+.doc-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 61vw;
+}
+
+.doc-list {
+  flex-basis: 35vh;
+  flex-shrink: 1;
+  flex-grow: 1;
+  padding: 8px 16px;
+  margin: 0.7rem;
+  height: 72px;
+  background: #f7f7f7;
+  border: 1px solid rgba(146, 148, 151, 0.2);
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.docs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.mbr-1 {
+  margin-bottom: 1rem;
+}
+
+.mbr-05 {
+  margin-bottom: 0.5rem;
+}
+
+.ms-auto {
+  margin: 0.7rem;
+}
+
+.eq-btn {
+  width: 140px;
+  background: transparent;
+  /* Equity Brown/Equity Brown - 500 */
+  color: #a32a29;
+  border: 1px solid #a32a29;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  &.active,
+  &:focus,
+  &:hover {
+    color: #ffffff;
+    background-color: #a32a29;
+  }
+
+  :disabled {
+    color: white;
+    border: 1px solid #e0e0e0;
+    background-color: #e0e0e0;
+  }
+}

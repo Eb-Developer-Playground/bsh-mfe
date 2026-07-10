@@ -1,0 +1,11 @@
+<div
+  class="d-flex justify-content-center pill"
+  [ngClass]="{
+    '--red': color === 'red',
+    '--green': color === 'green',
+    '--gray': color === 'gray',
+    '--orange': color === 'orange'
+  }">
+  <mat-icon class="mr-8" *ngIf="icon" [svgIcon]="icon"></mat-icon>
+  <p class="mat-body-2 fw-400 m-0">{{ text | translate }}</p>
+</div>

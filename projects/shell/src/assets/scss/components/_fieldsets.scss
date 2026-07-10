@@ -1,0 +1,28 @@
+.button-outline {
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #a32a29;
+  background-color: transparent;
+  color: #a32a29;
+}
+
+.button-disabled {
+  border-radius: 8px;
+  background-color: #e9eaea;
+  border: none;
+  color: #929497;
+}
+
+.button-disabled-outline {
+  border-radius: 8px;
+  background-color: #e9eaea;
+  border-color: #929497;
+  color: #929497;
+}
+
+.button-filled {
+  border-radius: 8px;
+  background-color: #a32a29;
+  border: none;
+  color: #fff;
+}

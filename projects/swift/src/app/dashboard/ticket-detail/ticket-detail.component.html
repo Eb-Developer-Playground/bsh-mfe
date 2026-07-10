@@ -1,0 +1,67 @@
+<div>
+  <mat-card class="main p-6">
+    <div class="mb-4">
+      <h3 class="mat-title font-normal text-xl">
+        {{ ticket?.subject }}
+      </h3>
+    </div>
+    <div class="pb-4">
+      <mat-divider></mat-divider>
+    </div>
+    <mat-card-content class="flex flex-row py-6 px-0">
+      <div class="w-[87%]">
+        <div class="grid grid-cols-4 gap-5">
+          @if (ticket?.customerName) {
+            <div class="flex flex-col">
+              <p class="text-[#929497] mb-0">Account</p>
+              <p class="text-[#221f1f] mt-1">
+                {{ ticket.customerName }}
+              </p>
+            </div>
+          }
+          @if (ticket?.channel) {
+            <div class="flex flex-col">
+              <p class="text-[#929497] mb-0">Channel</p>
+              <p class="text-[#221f1f] mt-1">
+                {{ ticket.channel }}
+              </p>
+            </div>
+          }
+          <div class="flex flex-col">
+            <p class="text-[#929497] mb-0">Description</p>
+            <p class="text-[#221f1f] mt-1">
+              {{ ticket?.actionFlow?.description }}
+            </p>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-[#929497] mb-0">Status</p>
+            <p class="text-[#221f1f] mt-1">
+              {{ ticket?.status }}
+            </p>
+          </div>
+          @if (ticket?.taskNotes?.length) {
+            <div class="flex flex-col">
+              <p class="text-[#929497] mb-0">Comment</p>
+              <p class="text-[#221f1f] mt-1">
+                {{ ticket.taskNotes[0].note }}
+              </p>
+            </div>
+          }
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="flex items-center justify-between">
+    <button mat-stroked-button color="primary" (click)="GoBack()">Back</button>
+    @if (['Error'].includes(ticket?.status)) {
+      <button mat-flat-button color="primary" (click)="onRetry(ticket)">
+        {{ 'COMMON.RETRY' | translate }}
+      </button>
+    }
+    @if (ticket?.status === 'New' || ticket?.status === 'Pending' || ticket?.status === 'SubmittedToChecker') {
+      <button mat-stroked-button color="primary" (click)="proceed()">
+        Continue
+      </button>
+    }
+  </div>
+</div>

@@ -1,0 +1,60 @@
+.signature {
+    display: flex;
+    flex-direction: column;
+    max-width: 190px;
+    align-items: center;
+
+    & .img_1 {
+        width: 157px;
+        max-height: 150px;
+        -o-object-fit: contain;
+        object-fit: contain;
+        border-radius: 5px;
+        padding: 8px;
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+
+    & .img_2 {
+        width: 80%;
+        height: 50px;
+        cursor: pointer;
+    }
+}
+
+.customer-details-content {
+    width: 87%;
+}
+
+.customer-images {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-name-channels {
+    display: flex;
+    justify-content: space-between;
+}
+
+.customer-channels {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+}
+
+.customer-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-details-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    //   grid-auto-rows: minmax(100px, auto);
+}
+
+.label {
+    color: #929497;
+    margin-bottom: 0;
+}

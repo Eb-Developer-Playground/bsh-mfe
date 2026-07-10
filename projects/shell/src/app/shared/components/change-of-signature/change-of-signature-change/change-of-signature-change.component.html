@@ -1,0 +1,95 @@
+<mat-card appearance="outlined" style="padding: 1.5rem">
+  <mat-card-title-group>
+    <div style="width: 100%">
+      <h3 class="mat-headline-6 fw-400 align-self-center">
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.SIGNATURE-CHANGE-TITLE'
+            | translate
+        }}
+      </h3>
+      <p matCardSubtitle>
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.SIGNATURE-CHANGE-SUBTITLE'
+            | translate
+        }}
+      </p>
+    </div>
+  </mat-card-title-group>
+  <mat-card-content>
+    <hr />
+    <form [formGroup]="changeForm" *ngIf="!readonly">
+      <div class="fieldset" fxLayoutGap="8px">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'COMMON.EFFECTIVE-DATE' | translate }}</mat-label>
+          <input
+            [readonly]="readonly"
+            matInput
+            [min]="minDate"
+            [max]="maxDate"
+            [matDatepicker]="picker"
+            required
+            formControlName="effectiveDate" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'COMMON.EXPIRY-DATE' | translate }}</mat-label>
+          <input
+            [readonly]="readonly"
+            matInput
+            [min]="minDate"
+            [matDatepicker]="expiryPicker"
+            required
+            formControlName="expiryDate" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="expiryPicker"></mat-datepicker-toggle>
+          <mat-datepicker #expiryPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.CHANGE-REASON'
+                | translate
+            }}</mat-label
+          >
+          <input
+            [readonly]="readonly"
+            matInput
+            formControlName="reasonForChanging" />
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="customer-details-container" *ngIf="readonly">
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.EFFECTIVE-DATE' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ effectiveDate | date: 'dd/MM/yyyy' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.EXPIRY-DATE' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ expiryDate | date: 'dd/MM/yyyy' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.CHANGE-REASON'
+              | translate
+          }}
+        </p>
+        <p class="customer-detail-content">
+          {{ reasonForChanging }}
+        </p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

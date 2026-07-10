@@ -1,0 +1,73 @@
+@use '../../../../../assets/scss/colors';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    justify-content: center;
+  }
+}
+
+.signatories-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 1032px;
+  height: 311px;
+  padding: 16px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #92949733;
+  margin-top: 24px;
+  justify-content: space-between;
+}
+
+.signatory-card {
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  padding: 16px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.individual-card {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #a32a29;
+  margin-bottom: 12px;
+  mat-icon {
+    color: white;
+  }
+}
+
+.signatory-details {
+  flex: 1;
+  gap: 44px !important;
+}
+
+.signatory-id {
+  font-size: 14px;
+  color: #757575;
+}
+
+mat-divider {
+  margin-top: 12px;
+  width: 100%;
+}

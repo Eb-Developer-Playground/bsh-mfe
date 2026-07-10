@@ -1,0 +1,10 @@
+<div class="profile-header">
+    <span class="initials">{{ initials }}</span>
+    &nbsp;&nbsp;
+    <div class="profile-title">
+        <span [ngClass]="subTitle ? 'title' : 'title-l'" [innerText]="fullName"></span>
+        <span *ngIf="subTitle" class="sub-title text-muted">
+            {{ subTitle | titlecase }}
+        </span>
+    </div>
+</div>

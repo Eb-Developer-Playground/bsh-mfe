@@ -1,0 +1,117 @@
+/* Multi-select dropdown styles - reusing global classes from styles.scss */
+.multi-select-dropdown {
+  .multi-select {
+    .mat-mdc-select-panel {
+      max-height: 400px;
+    }
+  }
+
+  .search-option {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 8px;
+
+    .search-container {
+      position: relative;
+      width: 100%;
+
+      .search-input {
+        width: 100%;
+        padding: 8px 35px 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        outline: none;
+        background-color: #f9f9f9;
+
+        &:focus {
+          border-color: #007bff;
+          background-color: #fff;
+        }
+
+        &::placeholder {
+          color: #999;
+        }
+      }
+
+      .search-icon {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        pointer-events: none;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .select-option {
+    .mat-mdc-option-text {
+      width: 100%;
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    font-style: italic;
+  }
+}
+
+// Global styles for mat-select panel
+::ng-deep .mat-mdc-select-panel {
+  .search-option {
+    padding: 8px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    margin-bottom: 8px !important;
+    pointer-events: auto !important;
+
+    &:hover {
+      background-color: transparent !important;
+    }
+
+    .search-container {
+      position: relative;
+      width: 100%;
+
+      .search-input {
+        width: 100%;
+        padding: 8px 35px 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        outline: none;
+        background-color: #f9f9f9;
+
+        &:focus {
+          border-color: #007bff;
+          background-color: #fff;
+        }
+
+        &::placeholder {
+          color: #999;
+        }
+      }
+
+      .search-icon {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        pointer-events: none;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .select-option {
+    .mat-mdc-option-text {
+      width: 100% !important;
+    }
+  }
+}
+
+.me-8 {
+  margin-right: 8px;
+}

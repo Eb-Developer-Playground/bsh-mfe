@@ -1,0 +1,213 @@
+.title {
+    font-weight: 400;
+    font-size: 1.5rem;
+    padding: 0 !important;
+}
+
+.header-card {
+    border-radius: 0.5rem;
+    padding: 1rem 0 1rem 1.5rem !important;
+}
+
+.special-rates-table {
+    padding: 0;
+}
+
+.body-header {
+    flex-direction: column;
+    padding-left: 8px;
+}
+.body-title {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.body-text {
+    font-size: 14px;
+    color: #929497;
+    font-weight: 400;
+}
+
+.bolden {
+    font-weight: 600;
+}
+
+.body-content {
+    text-align: center;
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.special-rate-card {
+    width: 95%;
+    height: 140px;
+    border: 1px solid #e9eaea;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.special-rate-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 24px;
+}
+
+.special-rate-title {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    margin: 0;
+}
+
+.special-rate-amount {
+    font-size: 14px;
+    color: #757679;
+    text-align: left;
+    margin-top: 4px;
+    border-bottom: 8px;
+}
+
+.special-rate-header {
+    border-bottom: 1px dotted #e9eaea;
+}
+
+.dotted-border {
+    border-bottom: 1px dotted #e9eaea;
+}
+
+.exchange-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.special-rates-table {
+    border-radius: 0.5rem;
+}
+
+.table-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+
+    .table-head-label {
+        font-size: 20px;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .table-head-filter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .filter-toggle-btn {
+            background-color: #f7f7f7;
+            mat-icon {
+                width: 17px;
+                height: 23px;
+                font-size: medium;
+                margin-right: 9px;
+                align-items: center;
+            }
+            span {
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 24px;
+                color: #a32a29;
+            }
+        }
+    }
+}
+
+::ng-deep .mat-mdc-card-header-text {
+    /* CSS styles go here */
+    display: none;
+}
+table {
+    width: 100%;
+    box-shadow: none;
+
+    th {
+        background: #e9eaea;
+        color: black;
+    }
+}
+.mat-mdc-button-toggle-group {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    .mat-mdc-button-toggle {
+        flex-grow: 1;
+    }
+    // .mat-button-toggle-checked {
+    //     background-color: #a32a29;
+    //     color: white;
+    // }
+}
+
+.toggle-checked {
+    background-color: #a32a29;
+    color: white;
+}
+:host ::ng-deep .mat-mdc-button-toggle-label-content {
+    line-height: 44px !important;
+}
+.mat-mdc-button-toggle-group {
+    width: 98%;
+}
+
+.toggle-group {
+    display: flex;
+    justify-content: center;
+}
+
+.cell-padding {
+    padding: 0 12px !important;
+}
+
+.details-btn {
+    margin-top: 24px;
+}
+
+:host ::ng-deep.filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.subject-filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.date-filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.createdBy-filter-fields .mat-mdc-text-field-wrapper {
+    padding-bottom: 0em !important;
+}
+
+// :host ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+//     padding: 0.5em 0 1em 0 !important;
+// }
+
+.rate-flag {
+    display: inline-flex;
+    align-items: center;
+}
+
+.rate-icon {
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 17px;
+}
+
+.rate-currency {
+    color: #757679;
+}
+
+.rate-currency-div {
+    text-align: left;
+
+    p {
+        margin: 0 0 5px 0;
+    }
+}
+
+.date-error {
+    margin-left: 0.9rem;
+}

@@ -1,0 +1,38 @@
+import { Component, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
+import {
+  MenuActions,
+  MenuOptionsButtons,
+} from '../../models/menu-button-action.models';
+import { TableFields } from '../../models/table-fields.models';
+import { TableDataService } from '../../services/table-data.service';
+
+@Component({
+  selector: 'app-table-fields-header-menu',
+  templateUrl: './table-fields-header-menu.component.html',
+  styleUrls: ['./table-fields-header-menu.component.scss'],
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
+export class TableFieldsHeaderMenuComponent implements OnInit {
+  @Input() tableField!: TableFields;
+
+  menuOptions: MenuOptionsButtons[] = [
+    { label: 'Sort ASC', action: MenuActions.ASC },
+    { label: 'Sort DESC', action: MenuActions.DESC },
+    { label: 'Hide column', action: MenuActions.HIDE },
+    { label: 'Show column(s)', action: MenuActions.SHOW },
+  ];
+
+  constructor(private tableDataService: TableDataService) {}
+
+  ngOnInit(): void {}
+
+  menuOptionClick(button: MenuOptionsButtons) {
+    const menuOptionsButtons: MenuOptionsButtons = {
+      ...button,
+      selectedTableField: this.tableField,
+    };
+
+    this.tableDataService.setMenuTrigger(menuOptionsButtons);
+  }
+}

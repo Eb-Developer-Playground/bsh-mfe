@@ -1,0 +1,181 @@
+<mat-card class="mb-2" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="mat-title fw-400">
+      {{ 'PAGES.FUNDS_TRANSFER_MT103.REMITTER_DETAILS' | translate }}
+    </h3>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+  @if (!dropdownOptions.headOffice) {
+    <app-account-details
+      #accComp
+      [accountNumber]="accountDetailsInfo?.accountNumber || taskData?.AccountDetails?.AccountNumber"
+    ></app-account-details>
+  }
+  @if (dropdownOptions.headOffice) {
+    <app-gl-account-details [accountDetails]="customerAccountDetails"></app-gl-account-details>
+  }
+</mat-card>
+<!--<app-additional-fields #accComp [collapsible]=true-->
+<!--                       [title]="'PAGES.FUNDS_TRANSFER_MT103.ACCOUNT_DETAILS' | translate"-->
+<!--                       [fieldAttributes]="accountFormFields">-->
+<!--</app-additional-fields>-->
+<!--<div class="mt-15 mb-15"></div>-->
+<app-additional-fields
+  #remAccComp
+  [collapsible]="true"
+  [sectionNumber]="2"
+  [title]="'PAGES.FUNDS_TRANSFER_MT103.REMITTER_ACCOUNT_DETAILS' | translate"
+  [fieldAttributes]="remitterAccDetailsFields"
+>
+</app-additional-fields>
+<div class="mt-15 mb-15"></div>
+<app-additional-fields
+  #transComp
+  [collapsible]="true"
+  [sectionNumber]="3"
+  [title]="'PAGES.FUNDS_TRANSFER_MT103.TRANSACTION_INFORMATION' | translate"
+  [fieldAttributes]="TransactionDetailsFields"
+>
+</app-additional-fields>
+<div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem">
+  <!--  <button-->
+  <!--    mat-flat-button-->
+  <!--    color="primary"-->
+  <!--    (click)="updateRemitterAddress()"-->
+  <!--    [disabled]="viewType === 'Checker'"-->
+  <!--    *ngIf="countryCode === 'CD'">-->
+  <!--    <span>{{ 'TRANSACTIONS.UPDATE_REMITTER_ADDRESS' | translate }}</span>-->
+  <!--  </button>-->
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="fetchCreditAccountValues()"
+    [disabled]="
+      !$any(transComp).form.get('RemittanceCurrency')?.value ||
+      !$any(transComp).form.get('RemittanceAmount')?.value ||
+      viewType === 'Checker'
+    "
+  >
+    <span>{{ 'TRANSACTIONS.FETCH_CREDIT_ACCOUNT' | translate }}</span>
+  </button>
+</div>
+<div class="mt-15 mb-15"></div>
+<app-additional-fields
+  #excDetailComp
+  [collapsible]="true"
+  [sectionNumber]="4"
+  [title]="'PAGES.FUNDS_TRANSFER_MT103.EXCHANGE_RATE_INFO' | translate"
+  [fieldAttributes]="ExchangeDetailsFields"
+>
+</app-additional-fields>
+<div style="display: flex; justify-content: flex-end; margin-top: 0.5rem">
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="getSpecialExchangeRates()"
+    [disabled]="!$any(excDetailComp).form.get('TicketNumber')?.value || viewType === 'Checker'"
+  >
+    <span>{{ 'TRANSACTIONS.FETCH_SPECIAL_EXCHANGE_RATE' | translate }}</span>
+  </button>
+</div>
+<div class="mt-15 mb-15"></div>
+<app-additional-fields
+  #benComp
+  [collapsible]="true"
+  [sectionNumber]="5"
+  [title]="'PAGES.FUNDS_TRANSFER_MT103.BENEFICIARY_DETAILS' | translate"
+  [fieldAttributes]="beneficiaryDetailsFields"
+>
+</app-additional-fields>
+<div class="mt-15 mb-15"></div>
+<app-additional-fields
+  #benBankComp
+  [purposeCodes]="purposeCodeList"
+  [RTGSPurposeCodes]="RTGSPurposeCodeList"
+  [bankCodes]="staticBankCodes"
+  [branchCodes]="staticBranchCodes"
+  [collapsible]="true"
+  [sectionNumber]="6"
+  [title]="'PAGES.FUNDS_TRANSFER_MT103.BENEFICIARY_BANK_DETAILS' | translate"
+  [fieldAttributes]="beneficiaryBankDetailsFields"
+>
+</app-additional-fields>
+<div class="mt-15 mb-15"></div>
+<app-additional-fields
+  #chargeDetailComp
+  [collapsible]="true"
+  [sectionNumber]="7"
+  [title]="'PAGES.FUNDS_TRANSFER_MT103.CHARGE_DETAILS' | translate"
+  [fieldAttributes]="ChargeDetailsFields"
+>
+</app-additional-fields>
+<div class="mt-15 mb-15"></div>
+@if (countryCode === 'CD' && transactionType !== 'RTGS') {
+  <app-additional-fields
+    #licenseDetailComp
+    [collapsible]="true"
+    [sectionNumber]="8"
+    [title]="'PAGES.FUNDS_TRANSFER_MT103.LICENSE_DETAILS' | translate"
+    [fieldAttributes]="LicenseDetailsFields"
+  >
+  </app-additional-fields>
+}
+<div class="mt-15 mb-15"></div>
+<app-additional-fields
+  #additionalComp
+  [collapsible]="true"
+  [sectionNumber]="9"
+  [title]="'PAGES.FUNDS_TRANSFER_MT103.REMITTANCE_ADDITIONAL_INFO' | translate"
+  [fieldAttributes]="AdditionalFields"
+>
+</app-additional-fields>
+<div class="mt-15 mb-15"></div>
+<app-additional-fields
+  #senToRecComp
+  [collapsible]="true"
+  [sectionNumber]="10"
+  [title]="'PAGES.FUNDS_TRANSFER_MT103.SENDER_TO_RECEIVER_INFORMATION' | translate"
+  [fieldAttributes]="senderToReceiverInformationFields"
+>
+</app-additional-fields>
+<div class="mt-15 mb-15"></div>
+
+@if (countryCode === 'KE') {
+  <app-documents-upload
+    [title]="'COMMON.REQUIRED_DOCUMENTS.LABEL' | translate"
+    [description]="'COMMON.REQUIRED_DOCUMENTS.TEXT' | translate"
+    [requiredDocuments]="KeRequiredDocs"
+    (onUploaded)="documents = $event"
+  >
+  </app-documents-upload>
+} @else if (countryCode === 'CD') {
+  <app-documents-upload-drc
+    [title]="'COMMON.REQUIRED_DOCUMENTS.LABEL' | translate"
+    [description]="'COMMON.REQUIRED_DOCUMENTS.TEXT' | translate"
+    (onUploaded)="updateDocuments($any($event))"
+    [allowAdditional]="false"
+    [documentSpecs]="DRCRequiredDocs"
+    [contentOnly]="false"
+  >
+  </app-documents-upload-drc>
+} @else {
+  <app-documents-upload
+    [title]="'COMMON.REQUIRED_DOCUMENTS.LABEL' | translate"
+    [description]="'COMMON.REQUIRED_DOCUMENTS.TEXT' | translate"
+    [requiredDocuments]="KeRequiredDocs"
+    (onUploaded)="documents = $event"
+  >
+  </app-documents-upload>
+}
+<div class="mt-15 mb-15"></div>
+<div class="flex flex-row mt-15">
+  <button mat-stroked-button color="primary" (click)="back()">
+    {{ 'COMMON.QUIT' | translate }}
+  </button>
+  <span class="flex-1"></span>
+  <button mat-flat-button color="primary" (click)="submit()" [disabled]="!isFormValid">
+    {{ 'COMMON.SUBMIT' | translate }}
+  </button>
+</div>

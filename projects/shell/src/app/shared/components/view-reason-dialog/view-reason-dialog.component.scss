@@ -1,0 +1,46 @@
+.dialog {
+  padding: 1.5rem;
+  .dialog-title {
+    color: #a32a29;
+  }
+
+  .dialog-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    textarea {
+      padding: 1rem;
+      width: 100%;
+      outline: none;
+      border: 1px solid rgba(146, 148, 151, 0.2);
+      font-family: 'Open Sans';
+      border-radius: 4px;
+      font-size: 13px;
+
+      &:focus-within {
+        outline: #a32a29;
+      }
+    }
+  }
+
+  .dialog-actions {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+}
+
+.form-error {
+  color: #a32a29;
+}
+
+.mat-mdc-dialog-content {
+  margin: 0px -27px !important;
+}
+
+.mat-mdc-dialog-actions {
+  margin-bottom: -20px !important;
+}

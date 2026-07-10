@@ -1,0 +1,74 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.main-toolbar {
+  background: #f7f7f7 !important;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 16px;
+  overscroll-behavior-x: auto !important;
+}
+
+.main-toolbar .spacer {
+  flex: 1 1 auto;
+}
+
+.user-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.user-action:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.user-action-short {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #a32a29;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.user-action-username {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+.equity-logo {
+  height: 32px;
+  width: auto;
+  margin-left: 8px;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  background: #a32a29;
+  color: #fff;
+}
+
+.sidenav-scroll-wrapper {
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.sidenav-scroll-inner {
+  min-height: 100%;
+}

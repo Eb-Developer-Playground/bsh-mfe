@@ -1,0 +1,42 @@
+.customer-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-details-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.customer-detail-title {
+  color: #929497;
+  margin-bottom: 0;
+}
+
+.customer-detail-content {
+  color: #221f1f;
+  margin-top: 3px;
+}
+
+.main {
+  box-shadow:
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mat-card {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  .customer-details-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+}

@@ -1,0 +1,27 @@
+<div class="main">
+  <span class="title">{{ 'COMMON.PRIMARY-EMAILADDRESS' | translate }}</span>
+  <span class="subtitle">{{
+    'DIALOG.ENTER-EMAIL-INSTRUCTION' | translate
+  }}</span>
+  <form [formGroup]="form">
+    <mat-form-field class="email-number-field" appearance="fill">
+      <mat-label>{{ 'COMMON.EMAIL-ADDRESS' | translate }}</mat-label>
+      <input
+        required
+        type="text"
+        matInput
+        placeholder="Enter address"
+        formControlName="emailAddress" />
+      <!-- <mat-error *ngIf="form.get('nextOfKin.middleName')!.errors?.required">
+          Middle name is <strong>required</strong>
+      </mat-error> -->
+    </mat-form-field>
+    <div class="button-holder" *ngIf="false">
+      <button mat-flat-button class="action-btn">
+        <span class="action-btn-label">{{
+          'DIALOG.RESEND-EMAIL-LINK' | translate
+        }}</span>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,19 @@
+<mat-card appearance="outlined" *ngIf="ticketDocs && ticketDocs.length !== 0">
+  <div class="pl-24">
+    <app-header
+      [title]="'KNOWN-AGENT.SUPPORTING-DOCUMENTS' | translate"></app-header>
+  </div>
+  <mat-card-content>
+    <div fxLayout="row wrap" fxLayoutAlign="start start">
+      <div
+        *ngFor="let file of ticketDocs; let i = index"
+        class="--box-margin"
+        (click)="openPreviewDocument(file)">
+        <app-file-box
+          [deleteIcon]="false"
+          [file]="file"
+          (confirmEmitter)="deleteDocument($event, file.id)"></app-file-box>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

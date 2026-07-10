@@ -1,0 +1,15 @@
+<div fxLayout="column" class="hand-box">
+  <div>
+    <p class="mat-subtitle-1">{{ label }}</p>
+  </div>
+  <div
+    fxLayout="row"
+    fxFlex="100"
+    fxLayoutGap="12px"
+    fxLayoutAlign="space-between center">
+    <app-biometrics-finger
+      (onCapture)="getCapturedFingerPrints($event)"
+      *ngFor="let finger of hand"
+      [finger]="finger"></app-biometrics-finger>
+  </div>
+</div>

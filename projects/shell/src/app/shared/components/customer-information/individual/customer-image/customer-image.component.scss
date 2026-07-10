@@ -1,0 +1,109 @@
+.profile_right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 16rem;
+
+    &.--minus-margin-top {
+        margin-top: -5.5rem;
+    }
+
+    // & .img_1 {
+    //   //width: 100%;
+    //   width: 157px;
+    //   max-height:150px;
+    //   -o-object-fit: contain;
+    //   object-fit: contain;
+    //   border-radius: 5px;
+    //   padding: 8px;
+    //   //border: solid 1px #cecece;
+    //   background-color: #ffffff;
+    //   cursor: pointer;
+    // //   position: relative;
+    // //   left: 0px;
+    // }
+    // & .img_2 {
+    //   width: 80%;
+    //   height: 50px;
+    //   //position: relative;
+    //   //right: 20px;
+    //   cursor: pointer;
+    // }
+    &_pic {
+        height: 160px;
+        width: 160px;
+        border: 3.5px solid #fff;
+        border-radius: 50%;
+        background-color: #f1ece9;
+
+        .img_1 {
+            border-radius: 50%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            width: 100%;
+            height: 160px;
+            cursor: pointer;
+        }
+    }
+
+    &_name {
+        margin: 1rem 0;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #3a3b3c;
+        width: 160px;
+        word-wrap: break-word;
+    }
+
+    &_chip {
+        height: 50px;
+
+        div {
+            padding: 8px;
+            /* width: 39px !important; */
+            height: 7px !important;
+            background: #2f9803;
+            border-radius: 32px;
+            color: #fff;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12px;
+            /* line-height: 16px; */
+            padding-bottom: 1.5rem;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &_signature {
+        height: 68px;
+        width: 160px;
+        border: 2px solid #929497;
+        border-radius: 8px;
+
+        .img_2 {
+            border-radius: 8px;
+            width: 100%;
+            height: 68px;
+            cursor: pointer;
+        }
+    }
+}
+
+.customer-images {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1024px) {
+    .profile_right {
+        font-size: 12px;
+    }
+    .profile_right_name span {
+        font-size: 12px;
+    }
+}

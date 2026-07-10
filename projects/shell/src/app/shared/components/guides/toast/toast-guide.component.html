@@ -1,0 +1,19 @@
+<mat-card appearance="outlined">
+  <p class="mat-headline-6">Toast Demo</p>
+  <hr />
+  <mat-form-field appearance="fill">
+    <mat-label>TYPE</mat-label>
+    <mat-select [(value)]="type">
+      <mat-option value="success">success</mat-option>
+      <mat-option value="danger">danger</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button
+    mat-stroked-button
+    (click)="openToast()"
+    aria-label="Show an example snack-bar">
+    open Toast!
+  </button>
+  <p class="mat-body-2">See usage in a component</p>
+  <code>src/shared/components/guides/toast/toast.component.ts</code>
+</mat-card>

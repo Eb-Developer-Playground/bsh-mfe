@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>
+  Dedupe results for {{ data.contact }}
+  <br />
+  <small style="font-size: 14px">
+    <span style="color: #929497"
+      >The following list of profiles were matched. Total</span
+    >
+    &nbsp;
+    <strong>{{ data.profiles.length }}</strong>
+    .
+  </small>
+</h2>
+<div mat-dialog-content>
+  <div class="mt-10 fieldset">
+    @for (prof of data.profiles; track $index) {
+      <div class="profile align-items-center d-flex" style="flex: 1 auto">
+        <img src="assets/icons/icon-avatar.svg" alt="avatar" class="w-40" />
+        <div class="d-flex flex-column ml-5">
+          <span
+            [ngClass]="'title'"
+            [innerText]="prof.firstName + ' ' + prof.lastName"></span>
+          <small class="sub-title text-muted">{{
+            prof.cifId | titlecase
+          }}</small>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+<div mat-dialog-actions class="d-flex mt-15">
+  <span class="spacer"></span>
+  <button
+    color="primary"
+    cdkFocusInitial
+    mat-raised-button
+    style="margin-left: 10px; border-radius: 8px; width: 90px"
+    [mat-dialog-close]="true">
+    Close
+  </button>
+</div>

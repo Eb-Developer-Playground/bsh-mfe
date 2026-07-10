@@ -1,0 +1,7 @@
+<div class="check-box mt-2">
+  <input
+    type="checkbox"
+    [checked]="internalToggledState()"
+    [disabled]="isDisabled()"
+    (click)="onToggle()" />
+</div>

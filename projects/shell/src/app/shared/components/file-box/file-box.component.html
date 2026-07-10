@@ -1,0 +1,18 @@
+<div class="file-box-container">
+  <div class="--upper-container">
+    <img class="--upper-image" src="/assets/icons/icon-placeholder.svg" />
+  </div>
+
+  <div fxLayout="row" class="--lower-container pl-16 pt-12">
+    <div fxLayout="column" fxFlex fxLayoutAlign="start" class="mb-4">
+      <p class="mat-subtitle-1 m-0">{{ file?.filename || file?.FileName }}</p>
+      <p class="mat-subtitle-2 m-0">{{ file?.filesize || file?.FileSize }}</p>
+    </div>
+
+    <div *ngIf="deleteIcon" fxLayout="row" fxFlex fxLayoutAlign="end center">
+      <button mat-icon-button (click)="deleteDocument($event)">
+        <mat-icon svgIcon="ic-trash"> </mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

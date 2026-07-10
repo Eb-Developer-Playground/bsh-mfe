@@ -1,0 +1,92 @@
+<div class="success-container">
+  <mat-card appearance="outlined" class="container">
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutAlign="start center" class="pl-24">
+        <div fxFlex="40">
+          <img src="assets/icons/icon-transaction-confirmation.svg" />
+        </div>
+        <div fxFlex fxLayout="column">
+          <p class="mat-headline-6 mb-6">
+            {{ 'COMMON.YOU-ARE-DONE' | translate }}
+          </p>
+          <p class="mat-caption m-0">
+            {{ 'KNOWN-AGENT.SUBMITTED-SUCCESS' | translate }}
+          </p>
+
+          <div fxFlex fxLayout="row">
+            <div fxFlex fxLayout="column">
+              <p class="mat-caption mb-0 text-muted">
+                {{ 'KNOWN-AGENT.AGENT-NAME' | translate }}
+              </p>
+              <p
+                *ngIf="successData?.agentData?.agentName"
+                class="mat-subtitle-1">
+                {{ successData?.agentData?.agentName }}
+              </p>
+            </div>
+
+            <div fxFlex fxLayout="column">
+              <p class="mat-caption mb-0 text-muted">
+                {{ 'KNOWN-AGENT.CIF' | translate }}
+              </p>
+              <p
+                *ngIf="successData?.agentData?.custId"
+                class="mat-subtitle-1 m-0">
+                {{ successData?.agentData?.custId }}
+              </p>
+            </div>
+
+            <div fxFlex fxLayout="column">
+              <p class="mat-caption mb-0 text-muted">
+                {{ 'KNOWN-AGENT.EFFECTIVE-DATE' | translate }}
+              </p>
+              <p class="mat-subtitle-1 m-0">
+                {{ successData?.agentData?.effectiveDate | date: 'mediumDate' }}
+              </p>
+            </div>
+          </div>
+
+          <div fxFlex fxLayout="row" class="mt-40 mb-36">
+            <div fxFlex fxLayout="column">
+              <p class="mat-caption m-0 text-muted">
+                {{ 'KNOWN-AGENT.ACCOUNT-NAME' | translate }}
+              </p>
+              <p
+                *ngIf="successData?.agentData?.acctName"
+                class="mat-subtitle-1 m-0">
+                {{ successData?.agentData?.acctName }}
+              </p>
+            </div>
+
+            <div fxFlex fxLayout="column">
+              <p class="mat-caption m-0 text-muted">
+                {{ 'KNOWN-AGENT.ACCOUNT-NUMBER' | translate }}
+              </p>
+              <p
+                *ngIf="successData?.agentData?.acctNum"
+                class="mat-subtitle-1 m-0">
+                {{ successData?.agentData?.acctNum }}
+              </p>
+            </div>
+
+            <div fxFlex fxLayout="column">
+              <p class="mat-caption m-0 text-muted">
+                {{ 'COMMON.ACCOUNT-TYPE' | translate }}
+              </p>
+              <p class="mat-subtitle-1 m-0">
+                {{ accMgntObj?.accountType || accountType || 'N/A' }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div fxLayout="row" class="button-container">
+    <span fxFlex></span>
+    <button mat-raised-button class="back-button" (click)="onClick()">
+      {{ 'KNOWN-AGENT.REDIRECT' | translate }}
+    </button>
+  </div>
+</div>

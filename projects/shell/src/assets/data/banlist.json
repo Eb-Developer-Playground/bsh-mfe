@@ -1,0 +1,38 @@
+[
+  {
+    "CountryName": "Cuba",
+    "CountryCode": "CU"
+  },
+  {
+    "CountryName": "Iran",
+    "CountryCode": "IR"
+  },
+  {
+    "CountryName": "Syria",
+    "CountryCode": "SY"
+  },
+  {
+    "CountryName": "Venezuela",
+    "CountryCode": "VE"
+  },
+  {
+    "CountryName": "Afghanistan",
+    "CountryCode": "AF"
+  },
+  {
+    "CountryName": "Myanmar/Burma",
+    "CountryCode": "MM"
+  },
+  {
+    "CountryName": "Iraq",
+    "CountryCode": "IQ"
+  },
+  {
+    "CountryName": "Somalia",
+    "CountryCode": "SO"
+  },
+  {
+    "CountryName": "Sudan",
+    "CountryCode": "SD"
+  }
+]

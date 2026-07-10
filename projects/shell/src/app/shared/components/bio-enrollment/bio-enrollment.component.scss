@@ -1,0 +1,32 @@
+.mb-2 {
+  margin-bottom: 1.5rem;
+}
+
+.dialog-actions {
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+}
+
+.eq-btn {
+  width: 100px;
+  background: transparent;
+  /* Equity Brown/Equity Brown - 500 */
+  color: #a32a29;
+  border: 1px solid #a32a29;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  &.active,
+  &:focus,
+  &:hover {
+    color: #ffffff;
+    background-color: #a32a29;
+  }
+
+  :disabled {
+    color: white;
+    border: 1px solid #e0e0e0;
+    background-color: #e0e0e0;
+  }
+}

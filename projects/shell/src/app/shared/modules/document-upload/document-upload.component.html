@@ -1,0 +1,78 @@
+<div
+  class="doc-container"
+  fxLayout="row"
+  fxFlex="100"
+  fxLayoutAlign="space-between start"
+  fxLayoutGap="24px">
+  <div fxFlex="50" class="doc-actions">
+    <div class="scanner">
+      <div
+        class="col drag-drop"
+        (files)="filesDropped($event)"
+        appDragDropDocuments
+        (click)="filedrag.click()">
+        <input
+          type="file"
+          #filedrag
+          (change)="onChange(filedrag)"
+          style="display: none" />
+        <div>
+          <!-- Icon for upload -->
+          <mat-icon
+            style="width: 50px; height: 50px"
+            svgIcon="ic-uploadBackground"></mat-icon>
+
+          <!-- Upload documents text -->
+          <p class="text drop-text">
+            {{ 'DOCUMENTS.UPLOAD-ADDITIONAL-DOCUMENTS' | translate }}
+          </p>
+          <p class="text instruction">
+            {{ 'DOCUMENTS.DRAG-AND-DROP' | translate }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Scan and Use Camera Buttons -->
+      <div class="options">
+        <button
+          mat-button
+          class="option-btn scan-btn"
+          (click)="scanDocument(cloneOfObjects)">
+          <mat-icon svgIcon="ic-scan"></mat-icon>
+          {{ 'DOCUMENTS.SCAN' | translate }}
+        </button>
+        <button
+          mat-button
+          class="option-btn camera-btn"
+          (click)="openCameraModal()">
+          <mat-icon svgIcon="ic-camera"></mat-icon>
+          {{ 'DOCUMENTS.USE-CAMERA' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="doc-preview"
+    fxLayout="column"
+    fxFill
+    fxFlex="50"
+    fxLayoutAlign="center start"
+    fxLayoutGap="10px">
+    <div *ngFor="let obj of cloneOfObjects" class="doc-list">
+      <div class="docs">
+        <div class="align-self-center" [matTooltip]="obj.documentName">
+          <p class="mat-subtitle-2 fw-400 mb-2 format-name-text">
+            {{ obj.documentName }}
+          </p>
+          <p class="text-muted mb-2">{{ obj.fileSize }}</p>
+        </div>
+      </div>
+      <div class="more-icon">
+        <button mat-icon-button (click)="deleteUpload(obj)">
+          <mat-icon svgIcon="ic-delete"> </mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

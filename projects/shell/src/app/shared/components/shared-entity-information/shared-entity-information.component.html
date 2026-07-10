@@ -1,0 +1,49 @@
+<div class="main-div">
+  <div class="customer-details-content">
+    <div class="customer-details-container">
+      <div class="customer-detail">
+        <p class="customer-detail-title">Company Name</p>
+
+        <p class="customer-detail-content">
+          {{ data?.companyDetails?.companyName }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">Registration Date</p>
+        <p class="customer-detail-content">
+          {{ data?.companyDetails?.registrationDate | date }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">Registration Number</p>
+        <p class="customer-detail-content">
+          {{ data?.companyDetails?.registrationNumber }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">CIF</p>
+        <p class="customer-detail-content">
+          {{ data?.companyDetails?.customerId }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">Phone Number</p>
+        <p class="customer-detail-content">
+          {{ data?.contactDetails?.phoneNumbers[0]?.phoneNumber }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">Pin Number</p>
+        <p class="customer-detail-content">
+          {{ data?.companyDetails?.krapInNumber }}
+        </p>
+      </div>
+      <!--            <div class="customer-detail" >-->
+      <!--                <p class="customer-detail-title">Memo</p>-->
+      <!--                <p class="customer-detail-content">-->
+      <!--                    {{ customerData?.memo }}-->
+      <!--                </p>-->
+      <!--            </div>-->
+    </div>
+  </div>
+</div>

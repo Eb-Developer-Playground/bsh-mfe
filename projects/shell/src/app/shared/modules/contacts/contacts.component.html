@@ -1,0 +1,36 @@
+@if (contentOnly) {
+  <ng-container [ngTemplateOutlet]="content"></ng-container>
+} @else {
+  <mat-card>
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </mat-card>
+}
+<ng-template #content>
+  <app-phone-numbers-array
+    [subsidiary]="subsidiary"
+    [ticketId]="ticketId"
+    [required]="required"
+    [customerId]="customerId"
+    [formArray]="phoneNumbersForm"
+    [fieldStates]="fieldStates?.phoneNumbers"
+    [otpInputViewMode]="phoneOtpInputViewMode || otpInputViewMode"
+    [otpVerificationMode]="phoneOTPVerificationMode || otpVerificationMode"
+    [dedupeOperationMode]="phoneDedupeOperationMode || dedupeOperationMode"
+    [enableMultiple]="
+      enableMultiplePhones || enableMultiple
+    "></app-phone-numbers-array>
+  <div class="mt-10">
+    <app-emails-array
+      [subsidiary]="subsidiary"
+      [ticketId]="ticketId"
+      [customerId]="customerId"
+      [formArray]="emailAddressesForm"
+      [fieldStates]="fieldStates?.emailAddresses"
+      [otpInputViewMode]="emailOtpInputViewMode || otpInputViewMode"
+      [otpVerificationMode]="emailOTPVerificationMode || otpVerificationMode"
+      [dedupeOperationMode]="emailDedupeOperationMode || dedupeOperationMode"
+      [enableMultiple]="
+        enableMultipleEmails || enableMultiple
+      "></app-emails-array>
+  </div>
+</ng-template>

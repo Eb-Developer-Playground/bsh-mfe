@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-between">
+  <h2 mat-dialog-title>{{ 'BIOMETRICS.SKIP-BIOMETRICS' | translate }}</h2>
+  <mat-icon color="primary" class="cursor-pointer" mat-dialog-close
+    >close</mat-icon
+  >
+</div>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="reasonForm" autocomplete="off">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>{{ 'BIOMETRICS.SELECT-REASON' | translate }}</mat-label>
+      <mat-select formControlName="reason" required>
+        <mat-option disabled value=""
+          >{{ 'BIOMETRICS.SELECT-REASON' | translate }}
+        </mat-option>
+        <mat-option
+          value="Biometrics system down"
+          class="border-bottom h-auto w-100">
+          <div class="d-flex flex-column cust-option">
+            <strong
+              >{{ 'BIOMETRICS.BIOMETRIC-SYSTEM-DOWN' | translate }}
+            </strong>
+            <div class="color-grey white-space">
+              Lorem ipsum dolor sit amet consectetur
+            </div>
+          </div>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="primary">
+    &nbsp;{{ 'COMMON.CANCEL' | translate }}&nbsp;
+  </button>
+  <button
+    mat-flat-button
+    cdkFocusInitial
+    [disabled]="reasonForm.invalid"
+    (click)="onSubmit()"
+    color="primary">
+    &nbsp;{{ 'COMMON.CONTINUE' | translate }}&nbsp;
+  </button>
+</mat-dialog-actions>

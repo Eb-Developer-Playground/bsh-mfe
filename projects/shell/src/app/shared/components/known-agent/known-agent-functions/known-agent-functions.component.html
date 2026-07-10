@@ -1,0 +1,30 @@
+<mat-accordion
+  mat-dialog-content
+  color="primary"
+  class="w-100"
+  *ngIf="assignedFunctions">
+  <mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="panel-title-container">
+          <p class="mat-headline-6 m-0">
+            {{ 'KNOWN-AGENT.AGENT-FUNCTIONS' | translate }}
+          </p>
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <ng-container *ngIf="assignedFunctions && assignedFunctions.length !== 0">
+      <div class="functions-grid">
+        <div
+          class="function-item"
+          *ngFor="let assignedFunction of assignedFunctions">
+          <p class="mat-body-2 text-muted m-0">
+            {{ 'KNOWN-AGENT.FUNCTIONS.NAME' | translate }}
+          </p>
+          <p class="mat-subtitle-1 m-0">{{ assignedFunction | translate }}</p>
+        </div>
+      </div>
+    </ng-container>
+  </mat-expansion-panel>
+</mat-accordion>

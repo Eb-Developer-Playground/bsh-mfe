@@ -1,0 +1,89 @@
+<mat-nav-list [ngClass]="{'is-collapsed': !isSidenavOpened}">
+  <ng-container *ngFor="let nav of menuItems">
+    <mat-list-item routerLinkActive="active-route" *ngIf="!nav.children">
+      <a
+        [routerLink]="nav.path"
+        routerLinkActive="active"
+        class="nav-items"
+        *ngIf="!nav.sub_menu">
+        <button color="primary" class="nav-items-btn" mat-icon-button>
+          <mat-icon
+            matListItemIcon
+            class="nav-items-icon"
+            [svgIcon]="nav.icon"></mat-icon>
+        </button>
+        <span class="nav-items-text fw-400">{{ nav.name | translate }}</span>
+      </a>
+      <a
+        [href]="nav.path"
+        routerLinkActive="active"
+        class="nav-items"
+        *ngIf="nav.sub_menu">
+        <button class="nav-items-btn" mat-icon-button>
+          <mat-icon
+            matListItemIcon
+            class="nav-items-icon"
+            [svgIcon]="nav.icon"></mat-icon>
+        </button>
+        <small class="nav-items-text-small fw-400" *ngIf="nav.sub_menu">{{
+          nav.name | translate
+        }}</small>
+      </a>
+    </mat-list-item>
+
+    <ng-container *ngIf="nav.children">
+      <!-- The parent menu item (e.g. More) -->
+      <mat-list-item routerLinkActive="active-route">
+        <a
+          [routerLink]="nav.path"
+          routerLinkActive="active"
+          (click)="toggleMenu(nav, $event)"
+          class="nav-items nav-items-parent">
+          <button color="primary" class="nav-items-btn" mat-icon-button>
+            <mat-icon
+              matListItemIcon
+              class="nav-items-icon"
+              [svgIcon]="nav.icon"></mat-icon>
+          </button>
+          <span class="nav-items-text fw-400">{{ nav.name | translate }}</span>
+          <span class="spacer" style="flex: 1 1 auto;"></span>
+          <mat-icon class="expand-icon" style="color: #929497;">{{ nav.isExpanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+        </a>
+      </mat-list-item>
+
+      <!-- The child menu items -->
+      <div class="submenu-container" *ngIf="nav.isExpanded">
+        <mat-list-item routerLinkActive="active-route" *ngFor="let child of nav.children">
+          <a
+            [routerLink]="child.path"
+            routerLinkActive="active"
+            class="nav-items nav-items-child"
+            *ngIf="!child.sub_menu">
+            <button color="primary" class="nav-items-btn" mat-icon-button>
+              <mat-icon
+                matListItemIcon
+                class="nav-items-icon"
+                [svgIcon]="child.icon"></mat-icon>
+            </button>
+            <span class="nav-items-text fw-400">{{ child.name | translate }}</span>
+          </a>
+          <a
+            [href]="child.path"
+            routerLinkActive="active"
+            class="nav-items nav-items-child dark-item"
+            *ngIf="child.sub_menu">
+            <button class="nav-items-btn" mat-icon-button>
+              <mat-icon
+                matListItemIcon
+                class="nav-items-icon"
+                [svgIcon]="child.icon"></mat-icon>
+            </button>
+            <span class="nav-items-text fw-400" *ngIf="child.sub_menu">{{
+              child.name | translate
+            }}</span>
+          </a>
+        </mat-list-item>
+      </div>
+    </ng-container>
+  </ng-container>
+</mat-nav-list>

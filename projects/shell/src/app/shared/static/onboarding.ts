@@ -1,0 +1,18 @@
+export const account_purposes: { name: string }[] = [
+  { name: 'Payments of Everyday Expenses' },
+  { name: 'Line of Credit' },
+  { name: 'Send Money Abroad' },
+  { name: 'Long term savings' },
+  { name: 'Short term savings' },
+  { name: 'Save Money for Dependents (e.g., Children, Grandchildren)' },
+  { name: 'Investments in Stock Market' },
+  { name: 'Investments in Bonds' },
+  { name: 'Investments (All)' },
+  { name: 'Retirement Investments' },
+  { name: 'Short-term Investments' },
+  { name: 'Estate Planning' },
+  { name: 'Custody of Intangible Assets' },
+  { name: 'Custody of Tangible Assets' },
+  { name: 'Receiving Salary' },
+  { name: 'Running of a business' },
+];

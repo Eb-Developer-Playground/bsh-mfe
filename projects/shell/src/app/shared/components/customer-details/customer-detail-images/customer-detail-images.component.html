@@ -1,0 +1,33 @@
+<div *ngIf="customerPhotos; else no_photos">
+  <div class="wrap_bd_right" *ngFor="let photo of customerPhotos">
+    <img
+      *ngIf="photo?.photo"
+      (click)="displayImageModal(photo?.photo)"
+      class="img_1"
+      [src]="photo?.photo"
+      alt="" />
+    <img
+      *ngIf="photo?.signaturePhoto"
+      (click)="displayImageModal(photo?.signaturePhoto)"
+      class="img_2"
+      [src]="photo?.signaturePhoto"
+      alt="" />
+  </div>
+</div>
+<ng-template #no_photos>
+  <div class="customer-images">
+    <mat-icon
+      class="customer-image"
+      svgIcon="ic-placeholder-potrait"
+      aria-hidden="false"
+      aria-label="placeholder-potrait"
+      style="width: 141px; height: 141px">
+    </mat-icon>
+    <mat-icon
+      class="customer-image"
+      svgIcon="ic-placeholder-darker"
+      aria-hidden="false"
+      aria-label="placeholder"
+      style="width: 141px; height: 100px"></mat-icon>
+  </div>
+</ng-template>

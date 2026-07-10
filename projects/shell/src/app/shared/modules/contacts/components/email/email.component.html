@@ -1,0 +1,130 @@
+<form [formGroup]="form">
+  @if (addressOnly) {
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>{{ 'COMMON.EMAIL_ADDRESS' | translate }}</mat-label>
+      <input
+        formControlName="emailAddress"
+        matInput
+        oninput="this.value = this.value.toUpperCase()"
+        placeholder="Enter address"
+        type="text" />
+      @if (
+        form.get('emailAddress')!.errors?.['isEmail'] ||
+        form.get('emailAddress')!.errors?.['email']
+      ) {
+        <mat-error>
+          {{ 'COMMON.INVALID_EMAIL' | translate }}
+        </mat-error>
+      }
+      @if (form.get('emailAddress')!.errors?.['required']) {
+        <mat-error>
+          {{ 'COMMON.EMAIL_ADDRESS' | translate }}&nbsp;{{
+            'COMMON.IS' | translate
+          }}&nbsp;{{ 'COMMON.REQUIRED' | translate }}
+        </mat-error>
+      }
+    </mat-form-field>
+  } @else {
+    <div class="d-flex align-items-center top mb-10">
+      <span class="title">
+        {{ title | translate }}
+        @if (index > 1) {
+          {{ this.index - 1 }}
+        }
+      </span>
+      <span class="spacer"></span>
+      <mat-slide-toggle
+        [color]="'primary'"
+        [disabled]="form.invalid"
+        formControlName="isPreferred">
+        {{ 'COMMON.PREFERRED' | translate }}
+      </mat-slide-toggle>
+    </div>
+    <div class="content">
+      <div class="middle">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'STATIC_DATA.EMAIL_TYPE' | translate }}</mat-label>
+          <mat-select formControlName="emailType">
+            <mat-option [value]="null">--</mat-option>
+            @for (emailType of emailTypes; track $index) {
+              <mat-option
+                [disabled]="
+                  form.get('emailType')?.value !== emailType.value &&
+                  selectedTypes.includes(emailType.value)
+                "
+                [value]="emailType.value">
+                {{ emailType.localetext | translate }}
+              </mat-option>
+            }
+          </mat-select>
+          @if (form.get('emailType')?.hasError('missingRequiredType')) {
+            <mat-error>
+              {{ 'STATIC_DATA.EMAIL_COMMUNICATION_ERROR' | translate }}&nbsp;
+              <strong>{{ 'STATIC_DATA.COMMUNICATION' | translate }}</strong>
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 100%">
+          <mat-label>{{ 'COMMON.EMAIL_ADDRESS' | translate }}</mat-label>
+          <input
+            formControlName="emailAddress"
+            matInput
+            oninput="this.value = this.value.toUpperCase()"
+            placeholder="Enter address"
+            type="text" />
+          @if (
+            form.get('emailAddress')?.errors?.['isEmail'] ||
+            form.get('emailAddress')?.errors?.['email']
+          ) {
+            <mat-error>{{ 'COMMON.INVALID_EMAIL' | translate }}</mat-error>
+          }
+          @if (form.get('emailAddress')?.errors?.['required']) {
+            <mat-error>
+              {{ 'COMMON.EMAIL_ADDRESS' | translate }}&nbsp;{{
+                'COMMON.IS' | translate
+              }}&nbsp;{{ 'COMMON.REQUIRED' | translate }}
+            </mat-error>
+          }
+          @if (
+            !form.get('emailAddress')?.errors &&
+            dedupeOperationMode &&
+            dedupeOperationMode !== DedupeOperationMode.NEVER
+          ) {
+            <mat-hint>
+              <strong
+                (click)="showMatches()"
+                class="color-primary cursor-pointer">
+                {{ dedupeMatches.length }} profile{{
+                  dedupeMatches.length > 1 ? 's' : ''
+                }}
+              </strong>
+              &nbsp;{{
+                dedupeMatches.length > 1 ? 'have' : 'has'
+              }}&nbsp;matched.
+            </mat-hint>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'COMMON.COMMENT' | translate }}</mat-label>
+          <input
+            formControlName="comment"
+            matInput
+            oninput="this.value = this.value.toUpperCase()"
+            placeholder="Comment"
+            type="text" />
+        </mat-form-field>
+      </div>
+      @if (showOtpInput) {
+        <div class="d-flex mt-5">
+          <app-email-otp-section
+            #otpInputComponent
+            (onVerified)="readonly = $any($event)"
+            [enableVerification]="enableVerification"
+            [ticketId]="ticketId"
+            [customerId]="customerId"
+            [emailInputForm]="form"></app-email-otp-section>
+        </div>
+      }
+    </div>
+  }
+</form>

@@ -1,0 +1,617 @@
+<!-- Shared form template -->
+<ng-template #formTemplate>
+  @if (form) {
+    <form [class]="layoutStyleClass" [formGroup]="form" role="form" enctype="multipart/form-data">
+      @for (field of fields; track field) {
+        @switch (field.controlType) {
+          @case ('lineInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <input
+                (focus)="showToast(field?.toast)"
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [type]="field.type"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+                [autocomplete]="field.autocomplete"
+                [attr.maxlength]="field.maximum ? field.maximum : null"
+                matInput
+              />
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-hint>
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('minlength')) {
+                <mat-error> Minimum number of characters ({{ field?.minimum }}). </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('maxlength')) {
+                <mat-error> Maximum number of characters ({{ field?.maximum }}). </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('fixedLength')) {
+                <mat-error>
+                  Number of characters required is
+                  {{ form.get(field.key)?.getError('fixedLength') }}.
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('pattern')) {
+                <mat-error>
+                  {{ 'COMMON.ERROR.INVALID_CHARACTERS' | translate }}
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('IBANDigitsError')) {
+                <mat-error>
+                  {{ form.get(field.key)?.getError('IBANDigitsError')?.message }}
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('invalidInstrumentNumber')) {
+                <mat-error>
+                  {{
+                    form.get(field.key)?.getError('invalidInstrumentNumber')?.message | translate
+                  }}
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('lineAmountInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <input
+                (focus)="showToast(field?.toast)"
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [type]="field.type"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+                [autocomplete]="field.autocomplete"
+                [readonly]="field.readonly"
+                [attr.maxlength]="field.maximum ? field.maximum : null"
+                matInput
+                currencyMask
+                [options]="{
+                  prefix: '',
+                  thousands: ',',
+                  decimal: '.',
+                  allowNegative: false,
+                  align: 'left',
+                }"
+              />
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-hint>
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('minlength')) {
+                <mat-error> Minimum number of characters ({{ field?.minimum }}). </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('maxlength')) {
+                <mat-error> Maximum number of characters ({{ field?.maximum }}). </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('fixedLength')) {
+                <mat-error>
+                  Number of characters required is
+                  {{ form.get(field.key)?.getError('fixedLength') }}.
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('pattern')) {
+                <mat-error>
+                  {{ 'COMMON.ERROR.INVALID_CHARACTERS' | translate }}
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('IBANDigitsError')) {
+                <mat-error>
+                  {{ form.get(field.key)?.getError('IBANDigitsError')?.message }}
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('emailInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <input
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [type]="field.type"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+                [autocomplete]="field.autocomplete"
+                [readonly]="field.readonly"
+                matInput
+              />
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint
+                  >{{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.</mat-hint
+                >
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('passwordInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <input
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [type]="field.type"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+                [autocomplete]="field.autocomplete"
+                [readonly]="field.readonly"
+                matInput
+              />
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint
+                  >{{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.</mat-hint
+                >
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('numberInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <input
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [type]="field.type"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+                [autocomplete]="field.autocomplete"
+                [readonly]="field.readonly"
+                matInput
+              />
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-hint>
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('dropdownInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <mat-select
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+              >
+                @for (opt of field.options; track opt) {
+                  <mat-option [value]="opt.value" [disabled]="opt.disabled">{{
+                    opt.label
+                  }}</mat-option>
+                }
+              </mat-select>
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-hint>
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('autoCompleteInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <input
+                [matAutocomplete]="auto"
+                [formControl]="getFormControl(field.key)"
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [type]="field.type"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+                [autocomplete]="field.autocomplete"
+                [readonly]="field.readonly"
+                [disabled]="field.readonly"
+                matInput
+              />
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option disabled>Search...</mat-option>
+                @for (opt of filteredOptions | async; track opt) {
+                  <mat-option [value]="opt">{{ opt }}</mat-option>
+                }
+              </mat-autocomplete>
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-hint>
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('bicAutoCompleteInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <input
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [type]="field.type"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+                [autocomplete]="field.autocomplete"
+                [readonly]="field.readonly"
+                (click)="openBICDialog(field.key)"
+                matInput
+              />
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-hint>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-hint>
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+              <mat-icon
+                (click)="openBICDialog(field.key)"
+                matSuffix
+                class="status-indicator-icon"
+                svgIcon="ic-search"
+                aria-hidden="false"
+                aria-label="Search"
+              >
+              </mat-icon>
+            </mat-form-field>
+          }
+          @case ('multilineInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <textarea
+                matInput
+                [formControlName]="field.key"
+                [value]="field.value"
+                [required]="!!field.required"
+                [id]="field.key"
+                [rows]="field.rows"
+                [readonly]="field.readonly"
+              ></textarea>
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-hint>
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('pattern')) {
+                <mat-error>
+                  {{ 'COMMON.ERROR.INVALID_CHARACTERS' | translate }}
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('IBANDigitsError')) {
+                <mat-error>
+                  {{ form.get(field.key)?.getError('IBANDigitsError')?.message }}
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('dateInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <input
+                matInput
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+                [autocomplete]="field.autocomplete"
+                [max]="field.maximum"
+                [min]="field.minimum"
+                [matDatepicker]="td"
+                [readonly]="field.readonly"
+                required
+              />
+              <mat-datepicker-toggle matSuffix [for]="td"></mat-datepicker-toggle>
+              <mat-datepicker #td></mat-datepicker>
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint
+                  >{{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.</mat-hint
+                >
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('dateTimeInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <input
+                [formControlName]="field.key"
+                [value]="field.value"
+                [id]="field.key"
+                [required]="!!field.required"
+                [placeholder]="field.placeholder"
+                [autocomplete]="field.autocomplete"
+                [max]="field.maximum"
+                [min]="field.minimum"
+                matInput
+                [matDatepicker]="td"
+                [readonly]="field.readonly"
+                required
+              />
+              <mat-datepicker-toggle matSuffix [for]="td"></mat-datepicker-toggle>
+              <mat-datepicker #td></mat-datepicker>
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint
+                  >{{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.</mat-hint
+                >
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }}
+                  {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('equityMatSelectSearchInput') {
+            <mat-form-field appearance="fill" [class]="field.styleClass">
+              <mat-label>{{ field.label | translate }}</mat-label>
+              <mat-select [formControlName]="field.key" placeholder="{{ field.placeholder }}">
+                <!-- Search input: explicitly check field.controlType and field.key for each searchable select -->
+                <mat-option>
+                  @if (
+                    field.controlType === 'equityMatSelectSearchInput' &&
+                    field.key === 'BeneficiaryBankCode'
+                  ) {
+                    <equity-mat-select-search
+                      [placeholderLabel]="field.placeholder"
+                      [searching]="searchingBankCode()"
+                      [formControl]="bankCodeFilteringCtrl"
+                      [noEntriesFoundLabel]="'No Matching Entry'"
+                    />
+                  }
+                  @if (
+                    field.controlType === 'equityMatSelectSearchInput' &&
+                    field.key === 'BeneficiaryBranchCode'
+                  ) {
+                    <equity-mat-select-search
+                      [placeholderLabel]="field.placeholder"
+                      [searching]="searchingBranchCode()"
+                      [formControl]="branchCodeFilteringCtrl"
+                      [noEntriesFoundLabel]="'No Matching Entry'"
+                    />
+                  }
+                  @if (
+                    field.controlType === 'equityMatSelectSearchInput' &&
+                    field.key === 'PurposeCode'
+                  ) {
+                    <equity-mat-select-search
+                      [placeholderLabel]="field.placeholder"
+                      [searching]="searching()"
+                      [formControl]="purposeCodeFilteringCtrl"
+                      [noEntriesFoundLabel]="'No Matching Entry'"
+                    />
+                  }
+                  @if (
+                    field.controlType === 'equityMatSelectSearchInput' &&
+                    field.key === 'LicensePurposeCode'
+                  ) {
+                    <equity-mat-select-search
+                      [placeholderLabel]="field.placeholder"
+                      [searching]="searchingLicensePurposeCode()"
+                      [formControl]="licensePurposeCodeFilteringCtrl"
+                      [noEntriesFoundLabel]="'No Matching Entry'"
+                    />
+                  }
+                </mat-option>
+                <!-- Options list: explicitly check field.controlType and field.key for each searchable select -->
+                @if (
+                  field.controlType === 'equityMatSelectSearchInput' &&
+                  field.key === 'BeneficiaryBankCode'
+                ) {
+                  @for (item of $filteredBankCodeList(); track $index) {
+                    <mat-option [value]="item.code">{{ item.label }}</mat-option>
+                  }
+                }
+                @if (
+                  field.controlType === 'equityMatSelectSearchInput' &&
+                  field.key === 'BeneficiaryBranchCode'
+                ) {
+                  @for (item of $filteredBranchCodeList(); track $index) {
+                    <mat-option [value]="item.code">{{ item.label }}</mat-option>
+                  }
+                }
+                @if (
+                  field.controlType === 'equityMatSelectSearchInput' && field.key === 'PurposeCode'
+                ) {
+                  @for (item of $filteredPurposeCodeList(); track $index) {
+                    <mat-option [value]="item.code">{{ item.label }}</mat-option>
+                  }
+                }
+                @if (
+                  field.controlType === 'equityMatSelectSearchInput' &&
+                  field.key === 'LicensePurposeCode'
+                ) {
+                  @for (item of $filteredLicensePurposeCodeList(); track $index) {
+                    <mat-option [value]="item.value">{{ item.label }}</mat-option>
+                  }
+                }
+              </mat-select>
+              @if (
+                field.required && form.get(field.key)?.untouched && !form.get(field.key)?.value
+              ) {
+                <mat-hint>
+                  {{ field.label | translate }} {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-hint>
+              }
+              @if (form.get(field.key)?.hasError('required')) {
+                <mat-error>
+                  {{ field.label | translate }} {{ 'COMMON.ERROR.IS_REQUIRED' | translate }}.
+                </mat-error>
+              }
+              @if (form.get(field.key)?.hasError('bankCodeMismatch')) {
+                <mat-error>
+                  {{ form.get(field.key)?.getError('bankCodeMismatch')?.message }}
+                </mat-error>
+              }
+            </mat-form-field>
+          }
+          @case ('hiddenInput') {
+            <input
+              type="hidden"
+              [formControlName]="field.key"
+              [value]="field.value"
+              [id]="field.key"
+              [placeholder]="field.placeholder"
+            />
+          }
+        }
+      }
+    </form>
+  }
+</ng-template>
+
+@if (collapsible) {
+  <mat-accordion class="mb-2">
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="d-flex align-content-center">
+            <div class="indicator-container">
+              @if (!form.valid) {
+                @if (sectionNumber !== null) {
+                  <span class="section-number-badge" [attr.aria-label]="'Section ' + sectionNumber">
+                    {{ sectionNumber }}
+                  </span>
+                } @else {
+                  <mat-icon
+                    class="status-indicator-icon"
+                    svgIcon="ic-exclamation-red"
+                    aria-hidden="false"
+                    aria-label="Section has validation errors"
+                  >
+                  </mat-icon>
+                }
+              }
+              @if (form.valid) {
+                <mat-icon
+                  class="status-indicator-icon"
+                  svgIcon="ic-section-done"
+                  aria-hidden="false"
+                  aria-label="Section is valid"
+                >
+                </mat-icon>
+              }
+            </div>
+            <h3 class="mat-title fw-400 align-self-center mb-0">
+              {{ title | translate }}
+            </h3>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ description | translate }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+}
+
+@if (!collapsible) {
+  <mat-card class="mb-2" style="padding: 1.5rem">
+    <div class="mb-1">
+      <h3 class="mat-title fw-400" [ngClass]="!description ? 'mb-0' : ''">
+        {{ title | translate }}
+      </h3>
+      @if (!description) {
+        <div class="mat-sub-title fw-200">
+          {{ description | translate }}
+        </div>
+      }
+    </div>
+    <div class="pt-18 pb-18">
+      <mat-divider></mat-divider>
+    </div>
+    <ng-container *ngTemplateOutlet="formTemplate"></ng-container>
+  </mat-card>
+}

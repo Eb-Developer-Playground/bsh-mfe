@@ -1,0 +1,16 @@
+@if (loading) {
+  <div class="progress-loader">
+    <app-skeleton-loader
+      [headers]="headers"
+      [itemCount]="itemCount">
+    </app-skeleton-loader>
+  </div>
+}
+@if (inComponentLoading) {
+  <div class="in-component-progress-loader">
+    <app-skeleton-loader
+      [headers]="headers"
+      [itemCount]="itemCount">
+    </app-skeleton-loader>
+  </div>
+}

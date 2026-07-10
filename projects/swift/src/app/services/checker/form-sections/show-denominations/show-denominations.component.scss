@@ -1,0 +1,42 @@
+.table_header {
+  background: #e9eaea;
+  height: 55px;
+  color: #221f1f;
+}
+
+.table_header th {
+  padding: 14px;
+}
+
+.table_header th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.table_header th:last-child {
+  border-top-right-radius: 10px;
+}
+
+tbody:before {
+  content: '-';
+  display: block;
+  line-height: 1em;
+  color: transparent;
+}
+
+tr {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.deno-delivery td {
+  text-align: center;
+}
+
+.deposit-ug {
+  display: flex;
+  gap: 40px;
+
+  .deno-table {
+    padding-bottom: 20px;
+  }
+}

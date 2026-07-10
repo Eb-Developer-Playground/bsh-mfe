@@ -1,0 +1,26 @@
+#dedupe-btn {
+  width: 130px;
+  height: 36px;
+  line-height: 1px;
+  border-radius: 8px;
+  &:enabled {
+      color: #a32a29;
+      border: 1px solid #a32a29;
+  }
+  &:disabled {
+      background: #e9eaea;
+      border: 1px solid #929497;
+  }
+}
+
+.toast {
+  background-color: rgba(243, 135, 7, 0.04);
+  padding: 0.5em;
+  font-weight: 400;
+  vertical-align: baseline;
+  border-radius: 3em;
+
+  span {
+      vertical-align: middle;
+  }
+}

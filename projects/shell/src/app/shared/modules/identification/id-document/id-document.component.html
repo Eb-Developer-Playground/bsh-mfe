@@ -1,0 +1,204 @@
+<div class="group" [formGroup]="documentForm">
+  <div class="d-flex align-items-center mb-15">
+    <span class="fw-400" style="font-size: 18px">{{ title }}</span>
+    <span class="spacer"></span>
+    <mat-slide-toggle
+      [color]="'primary'"
+      class="pointer-none"
+      formControlName="preferredUniqueId">
+      Preferred
+    </mat-slide-toggle>
+  </div>
+  <div class="fieldset">
+    <mat-form-field
+      [ngClass]="
+        readonly || fieldStates?.idType?.readonly || isMandatory
+          ? 'pointer-none'
+          : ''
+      "
+      appearance="fill">
+      <mat-label>ID Type</mat-label>
+      <mat-select formControlName="idType" #typeControl required>
+        <mat-option
+          *ngFor="let idType of selectableIdTypes || service.allIdTypes"
+          [value]="idType.value"
+          [disabled]="
+            documentForm.get('type')?.value !== idType.value &&
+            selectedTypes.includes(idType.value)
+          ">
+          {{ idType.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Document Number</mat-label>
+      <input
+        matInput
+        required
+        numberFormat
+        oninput="this.value = this.value.toUpperCase()"
+        [readonly]="readonly || fieldStates?.refNum?.readonly"
+        [idType]="typeControl.value"
+        formControlName="refNum" />
+      <mat-hint>
+        <ng-container
+          *ngIf="documentForm.get('refNum')?.hasError('dedupeFailed')">
+          <span><strong>Dedupe</strong> failed. Document number exists</span
+          ><br />
+        </ng-container>
+        <span *ngIf="valuesConf?.hint"> Example {{ valuesConf.hint }}. </span>
+      </mat-hint>
+      <mat-error *ngIf="documentForm.get('refNum')?.errors">
+        <span *ngIf="documentForm.get('refNum')?.hasError('charactersError')">
+          <strong>Invalid</strong> characters.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('required')">
+          Document Number is <strong>required</strong>.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('pattern')">
+          <strong>Invalid</strong> document number format.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('maxlength')">
+          Document Number has a max length of {{ valuesConf.maxLength }}.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('minlength')">
+          Document Number has a min length of {{ valuesConf.minLength }}.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('dedupeFailed')">
+          <strong>Dedupe</strong> has failed.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('invalidNumber')">
+          ID Number is <strong>invalid</strong>.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('nationalIdInvalid')">
+          ID digit is <strong>incomplete</strong>.
+        </span>
+        <span
+          *ngIf="documentForm.get('refNum')?.hasError('invalidLicenseNumber')">
+          License Number is Invalid.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('invalidLicense')">
+          License is invalid.
+        </span>
+        <span
+          *ngIf="documentForm.get('refNum')?.hasError('invalidPassportNumber')">
+          Passport number is invalid.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('invalidPassport')">
+          Passport is invalid.
+        </span>
+        <span
+          *ngIf="
+            documentForm.get('refNum')?.hasError('invalidRefugeeIDDigits')
+          ">
+          Refugee ID Number is <strong>invalid</strong>.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('invalidRefugeeID')">
+          Refugee ID should be 11 - 13 characters long.
+        </span>
+        <span *ngIf="documentForm.get('refNum')?.hasError('invalidUNHCRProof')">
+          UNHCR Proof is <strong>invalid</strong>.
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field *ngIf="displaySerialNumber" appearance="fill">
+      <mat-label>Document serial number</mat-label>
+      <input
+        matInput
+        required
+        numbersOnly
+        formControlName="serialNumber"
+        [readonly]="readonly || fieldStates?.serialNumber?.readonly"
+        maxlength="11"
+        minlength="6" />
+    </mat-form-field>
+    <mat-form-field
+      [ngClass]="{
+        'pointer-none': readonly || fieldStates?.docIssueDt?.readonly
+      }"
+      appearance="fill">
+      <mat-label>Issue Date</mat-label>
+      <input
+        matInput
+        required
+        [max]="valuesConf?.maxIssueDate"
+        [min]="valuesConf?.minIssueDate || minIssueDate"
+        [readonly]="readonly || fieldStates?.docIssueDt?.readonly"
+        [matDatepicker]="issuePicker"
+        formControlName="docIssueDt" />
+      <mat-datepicker-toggle
+        [for]="issuePicker"
+        matSuffix></mat-datepicker-toggle>
+      <mat-datepicker
+        #issuePicker
+        [disabled]="
+          readonly || fieldStates?.docIssueDt?.readonly
+        "></mat-datepicker>
+      <mat-error>
+        <ng-container
+          *ngIf="documentForm.get('docIssueDt')?.hasError('required')">
+          <span>Issue Date is <strong>required</strong></span>
+        </ng-container>
+        <ng-container
+          *ngIf="documentForm.get('docIssueDt')?.hasError('matDatepickerMax')">
+          Issue Date should be <strong>earlier</strong>!
+        </ng-container>
+        <ng-container
+          *ngIf="documentForm.get('docIssueDt')?.hasError('matDatepickerMin')">
+          Issue Date should be <strong>later</strong>!
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="displayExpiryDate"
+      [ngClass]="{ 'pointer-none': readonly || fieldStates?.expDt?.readonly }"
+      appearance="fill">
+      <mat-label>Expiry Date</mat-label>
+      <input
+        matInput
+        required
+        [min]="minExpiryDate"
+        [matDatepicker]="expiryPicker"
+        [readonly]="readonly || fieldStates?.expDt?.readonly"
+        formControlName="expDt" />
+      <mat-datepicker-toggle
+        [for]="expiryPicker"
+        matSuffix></mat-datepicker-toggle>
+      <mat-datepicker
+        #expiryPicker
+        [disabled]="readonly || fieldStates?.expDt?.readonly"></mat-datepicker>
+      <mat-error *ngIf="documentForm.get('expDt')?.hasError('required')">
+        <ng-container *ngIf="documentForm.get('expDt')?.hasError('required')">
+          <span>Expiry Date is <strong>required</strong></span>
+        </ng-container>
+        <ng-container
+          *ngIf="documentForm.get('expDt')?.hasError('matDatepickerMax')">
+          Expiry Date should be <strong>earlier</strong>!
+        </ng-container>
+        <ng-container
+          *ngIf="documentForm.get('expDt')?.hasError('matDatepickerMin')">
+          Expiry Date should be <strong>later</strong>!
+        </ng-container>
+      </mat-error>
+    </mat-form-field>
+    <searchable-control
+      *ngIf="displayCountryOfIssue"
+      [label]="'Country of issue'"
+      [formControlName]="'countryOfIssue'"
+      [dataSource]="countries$"
+      [ngClass]="
+        readonly || fieldStates?.countryOfIssue?.readonly ? 'pointer-none' : ''
+      "
+      [required]="true">
+    </searchable-control>
+    <searchable-control
+      [label]="'Place of issue'"
+      [formControlName]="'placeOfIssue'"
+      [dataSource]="cities$"
+      [ngClass]="
+        readonly || fieldStates?.placeOfIssue?.readonly ? 'pointer-none' : ''
+      "
+      [required]="true">
+    </searchable-control>
+  </div>
+</div>

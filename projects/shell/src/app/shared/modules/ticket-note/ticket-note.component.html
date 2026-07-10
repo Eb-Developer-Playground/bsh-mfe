@@ -1,0 +1,23 @@
+<div class="d-flex">
+  <mat-icon
+    *ngIf="status === 'sent'"
+    [svgIcon]="'ic-status-sent'"
+    class="align-self-center"></mat-icon>
+  <mat-icon
+    *ngIf="status === 'received'"
+    [svgIcon]="'ic-status-received'"
+    class="align-self-center"></mat-icon>
+  <mat-icon
+    *ngIf="status === 'pending'"
+    [svgIcon]="'ic-status-pending'"
+    class="align-self-center"></mat-icon>
+  <mat-icon
+    [svgIcon]="'ic-generic-avatar'"
+    class="align-self-center ml-5"></mat-icon>
+  <div class="align-self-center ml-5">
+    <p class="m-0">
+      <strong>{{ sender }}</strong> {{ note }}
+    </p>
+    <small class="text-muted">{{ time | date: 'long' }}</small>
+  </div>
+</div>

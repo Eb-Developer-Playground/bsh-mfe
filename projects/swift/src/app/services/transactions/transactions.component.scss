@@ -1,0 +1,70 @@
+.container-fluid {
+  min-width: 80%;
+  margin: 0 auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.ms-5 {
+  margin-left: 5px;
+}
+
+.me-2 {
+  margin-right: 2rem;
+}
+
+.btn-toolbar {
+  display: flex;
+}
+
+.ms-auto {
+  margin-left: auto;
+}
+
+.stepper-body {
+  border-radius: 12px;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.min-w-80 {
+  min-width: 80% !important;
+}
+
+.hide-md {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .hide-sm {
+    display: none !important;
+  }
+  .container-fluid {
+    min-width: 90%;
+    margin: 0 auto;
+  }
+  .hide-md {
+    display: block !important;
+  }
+  .mt-2 {
+    margin-top: 1.5rem;
+  }
+  .mb-2 {
+    margin-bottom: 1.5rem;
+  }
+  .me-2 {
+    margin-right: 1rem;
+  }
+}

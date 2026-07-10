@@ -1,0 +1,35 @@
+<mat-form-field
+  [ngClass]="_disabled ? 'pointer-none' : ''"
+  appearance="fill"
+  style="width: 100%">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    #input
+    matInput
+    type="text"
+    (blur)="_onTouched?.()"
+    (input)="onSelectValue(input.value)"
+    [formControl]="inputControl"
+    [matAutocomplete]="countryAutocomplete"
+    oninput="this.value = this.value.toUpperCase()" />
+  <mat-autocomplete
+    #countryAutocomplete="matAutocomplete"
+    (optionSelected)="onSelectValue($event.option.value)">
+    <mat-option
+      *ngFor="let c of filteredCountries | async"
+      [value]="c.countryName">
+      {{ c.countryName }}
+    </mat-option>
+  </mat-autocomplete>
+  <mat-hint *ngIf="hint"
+    ><span>{{ hint }}</span></mat-hint
+  >
+  <mat-error>
+    <span *ngIf="inputControl?.hasError('required')">
+      {{ label }} is <strong>required</strong>.
+    </span>
+    <span *ngIf="inputControl?.hasError('invalid')">
+      <strong>Invalid</strong> {{ label | lowercase }}.
+    </span>
+  </mat-error>
+</mat-form-field>

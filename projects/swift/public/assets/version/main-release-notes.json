@@ -1,0 +1,32 @@
+{
+  "KE": {
+    "whatsNew": ["Customer profile review step"],
+    "improvements": ["Clearer validation guidance on required fields", "Faster loading on onboarding forms"],
+    "otherUpdates": ["Bug fixes and performance improvements"]
+  },
+  "UG": {
+    "whatsNew": ["Guided review prompts before submission"],
+    "improvements": ["Translation updates", "Improved consistency across localized labels"],
+    "otherUpdates": ["Bug fixes and performance improvements"]
+  },
+  "TZ": {
+    "whatsNew": ["Minor onboarding", "Minor profile summary review"],
+    "improvements": ["Improved upload flow for supporting documents"],
+    "otherUpdates": ["Bug fixes and performance improvements"]
+  },
+  "SS": {
+    "whatsNew": ["Entity onboarding", "Entity details confirmation step"],
+    "improvements": ["Improved entity form completion flow"],
+    "otherUpdates": ["Bug fixes and performance improvements"]
+  },
+  "RW": {
+    "whatsNew": ["Cleaner onboarding progress tracking"],
+    "improvements": ["Improved screen loading stability", "Refined inline error feedback"],
+    "otherUpdates": ["Bug fixes and performance improvements"]
+  },
+  "CD": {
+    "whatsNew": ["New DRC onboarding flow"],
+    "improvements": ["Faster account creation", "Smoother progression between onboarding sections"],
+    "otherUpdates": ["Bug fixes and performance improvements"]
+  }
+}

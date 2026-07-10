@@ -1,0 +1,25 @@
+.card-container {
+  margin-bottom: 16px;
+}
+.no-pointer {
+  pointer-events: none !important;
+}
+hr {
+  background-color: rgba(146, 148, 151, 0.2) !important;
+  margin-block-start: 0em;
+  margin-block-end: 1rem;
+  // background-color: #929497 !important;
+  opacity: 0.35;
+}
+.w-3 {
+  width: 5rem !important;
+  min-width: 5rem !important;
+}
+.me-05 {
+  margin-right: 0.3rem;
+}
+.code-img {
+  height: 1.7rem;
+  width: 1.7rem;
+  object-fit: cover;
+}

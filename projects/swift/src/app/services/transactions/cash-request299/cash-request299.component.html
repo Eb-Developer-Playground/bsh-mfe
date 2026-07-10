@@ -1,0 +1,58 @@
+<app-additional-fields
+  #fieldsComp
+  [title]="'PAGES.CASH_REQUEST_299.TITLE' | translate"
+  [fieldAttributes]="fields"
+>
+</app-additional-fields>
+<div class="mt-15 mb-15"></div>
+<div class="mt-15 mb-15" class="flex flex-row">
+  <app-denominations
+    #denomComp
+    [title]="
+      transService.ticket?.transactionType === 'Deposit'
+        ? ('PAGES.CASH_REQUEST_299.DEPOSIT_TABLE' | translate)
+        : ('PAGES.CASH_REQUEST_299.WITHDRAW_TABLE' | translate)
+    "
+    [transactionType]="transService.ticket?.transactionType"
+    [denominationsValue]="denominationsValue"
+    [managedByValue]="managedByValue"
+    (onDenominations)="denominations = $any($event)"
+    (onManagedBy)="managedBy = $any($event)"
+  >
+  </app-denominations>
+  <div class="ml-15"></div>
+  @if (
+    countryCode === 'KE' ||
+    (countryCode === 'UG' && transService.ticket?.transactionType === 'Withdraw')
+  ) {
+    <app-documents-upload
+      [title]="'COMMON.REQUIRED_DOCUMENTS.LABEL' | translate"
+      [description]="'STEPPER.DOCUMENTS-UPLOAD-TEXT' | translate"
+      [requiredDocuments]="requiredDocs"
+      (onUploaded)="documents = $event"
+    >
+    </app-documents-upload>
+  }
+</div>
+<div class="mt-15 mb-15"></div>
+<div class="mt-15 mb-15">
+  @if (countryCode === 'UG' && transService.ticket?.transactionType === 'Deposit') {
+    <app-documents-upload
+      [title]="'COMMON.REQUIRED_DOCUMENTS.LABEL' | translate"
+      [description]="'STEPPER.DOCUMENTS-UPLOAD-TEXT' | translate"
+      [requiredDocuments]="requiredDocs"
+      (onUploaded)="documents = $event"
+    >
+    </app-documents-upload>
+  }
+</div>
+<div class="mt-15 mb-15"></div>
+<div class="flex flex-row mt-15">
+  <button mat-stroked-button color="primary" [routerLink]="['/services/']">
+    {{ 'COMMON.QUIT' | translate }}
+  </button>
+  <span class="flex-1"></span>
+  <button mat-flat-button color="primary" [disabled]="!fieldsForm?.valid" (click)="submit()">
+    {{ 'COMMON.SUBMIT' | translate }}
+  </button>
+</div>

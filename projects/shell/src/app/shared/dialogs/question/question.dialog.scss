@@ -1,0 +1,26 @@
+.msg-title {
+  line-height: 30px;
+  padding: 1rem;
+  background: rgba(230, 0, 0, 0.04);
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+
+  & .title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    color: #e60000;
+    margin-left: 0.5rem;
+  }
+}
+
+.action-gp {
+  margin-bottom: 0.5px;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 16pt;
+  font-weight: 300;
+}

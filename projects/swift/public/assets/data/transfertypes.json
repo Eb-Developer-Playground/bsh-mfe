@@ -1,0 +1,189 @@
+[
+  {
+    "type": "Fund transfer 103 - HeadOffice",
+    "transactionTypes": [
+        { "type": "SWIFT", "value": "SWIFT" },
+        { "type": "RTGS", "value": "RTGS" },
+        { "type": "EAPS", "value": "EAPS" },
+        { "type": "REPS", "value": "REPS" },
+        { "type": "Recall / Cancellation & Amendments", "value": "Recall / Cancellation & Amendm" }
+    ],
+    "recallCancelationTypes": [
+        { "type": "Cancellation/Recall MT 192", "value": "Recall" },
+        { "type": "MT199 Amendment Correspondent Query", "value": "CorrespondentQuery" },
+        { "type": "MT199 Amendment Provision of Details", "value": "ProvisonOfDetails" },
+        { "type": "MT199 Amendment Confirmation of MT103", "value": "ConfirmationOfMT103" }
+    ]
+  },
+  {
+    "type": "Fund transfer 103",
+    "transactionTypes": [
+        { "type": "SELECTION-DIALOG.TRANSACTION-TYPES.CHOICES.SWIFT.LABEL", "value": "SWIFT" },
+        {
+            "type": "SWIFT LOCAL",
+            "value": "LOCALSWIFT"
+        },
+        { "type": "RTGS", "value": "RTGS" },
+        { "type": "EAPS", "value": "EAPS" },
+        { "type": "REPS", "value": "REPS" },
+        { "type": "Recall / Cancellation & Amendments", "value": "Recall / Cancellation & Amendm" }
+    ],
+    "recallCancelationTypes": [
+        { "type": "Cancellation / Recall MT 192", "value": "Recall" },
+        { "type": "MT199 Amendment Correspondent Query", "value": "CorrespondentQuery" },
+        { "type": "MT199 Amendment Provision of Details", "value": "ProvisonOfDetails" },
+        { "type": "MT199 Amendment Confirmation of MT103", "value": "ConfirmationOfMT103" }
+    ]
+  },
+  {
+    "type": "Cash request 202",
+    "cashCentres": [
+      {
+        "bankId": "54",
+        "list": [
+            { "code": "001", "name": "Nairobi - 001" },
+            { "code": "002", "name": "Mombasa - 002" },
+            { "code": "003", "name": "Kisumu - 003" },
+            { "code": "004", "name": "Eldoret - 004" },
+            { "code": "005", "name": "Nyeri - 005" },
+            { "code": "006", "name": "Nakuru - 006" },
+            { "code": "007", "name": "Meru - 007" },
+            { "code": "008", "name": "Kisii - 008" }
+        ]
+      },
+      {
+        "bankId": "56",
+        "list": [
+            { "code": "ARU", "name": "Arua - ARU" },
+            { "code": "FOT", "name": "Fort Portal - FOT" },
+            { "code": "GUL", "name": "Gulu - GUL" },
+            { "code": "JJA", "name": "Jinja - JJA" },
+            { "code": "KBL", "name": "Kabale - KBL" },
+            { "code": "KLA", "name": "Kampala - KLA" },
+            { "code": "MKA", "name": "Masaka - MKA" },
+            { "code": "MBL", "name": "Mbale - MBL" },
+            { "code": "MBR", "name": "Mbarara - MBR" },
+            { "code": "LAR", "name": "Lira - LAR" }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Cash request 299",
+    "transactionTypes": [
+        { "type": "Deposit", "value": "Deposit" },
+        { "type": "Withdraw", "value": "Withdraw" }
+    ],
+    "cashCentres": [
+      {
+        "bankId": "54",
+        "list": [
+            { "code": "001", "name": "Nairobi - 001" },
+            { "code": "002", "name": "Mombasa - 002" },
+            { "code": "003", "name": "Kisumu - 003" },
+            { "code": "004", "name": "Eldoret - 004" },
+            { "code": "005", "name": "Nyeri - 005" },
+            { "code": "006", "name": "Nakuru - 006" },
+            { "code": "007", "name": "Meru - 007" },
+            { "code": "008", "name": "Kisii - 008" }
+        ]
+      },
+      {
+        "bankId": "56",
+        "list": [
+            { "code": "ARU", "name": "Arua - ARU" },
+            { "code": "FOT", "name": "Fort Portal - FOT" },
+            { "code": "GUL", "name": "Gulu - GUL" },
+            { "code": "JJA", "name": "Jinja - JJA" },
+            { "code": "KBL", "name": "Kabale - KBL" },
+            { "code": "KLA", "name": "Kampala - KLA" },
+            { "code": "MKA", "name": "Masaka - MKA" },
+            { "code": "MBL", "name": "Mbale - MBL" },
+            { "code": "MBR", "name": "Mbarara - MBR" },
+            { "code": "LAR", "name": "Lira - LAR" }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Cash request cancellation 299",
+    "transactionTypes": [
+        { "type": "Deposit", "value": "Deposit" },
+        { "type": "Withdraw", "value": "Withdraw" }
+    ],
+    "cashCentres": [
+      {
+        "bankId": "54",
+        "list": [
+            { "code": "001", "name": "Nairobi - 001" },
+            { "code": "002", "name": "Mombasa - 002" },
+            { "code": "003", "name": "Kisumu - 003" },
+            { "code": "004", "name": "Eldoret - 004" },
+            { "code": "005", "name": "Nyeri - 005" },
+            { "code": "006", "name": "Nakuru - 006" },
+            { "code": "007", "name": "Meru - 007" },
+            { "code": "008", "name": "Kisii - 008" }
+        ]
+      },
+      {
+        "bankId": "56",
+        "list": [
+            { "code": "ARU", "name": "Arua - ARU" },
+            { "code": "FOT", "name": "Fort Portal - FOT" },
+            { "code": "GUL", "name": "Gulu - GUL" },
+            { "code": "JJA", "name": "Jinja - JJA" },
+            { "code": "KBL", "name": "Kabale - KBL" },
+            { "code": "KLA", "name": "Kampala - KLA" },
+            { "code": "MKA", "name": "Masaka - MKA" },
+            { "code": "MBL", "name": "Mbale - MBL" },
+            { "code": "MBR", "name": "Mbarara - MBR" },
+            { "code": "LAR", "name": "Lira - LAR" }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Normal MT299",
+    "cashCentres": [
+      {
+        "bankId": "54",
+        "list": [
+            { "code": "001", "name": "Nairobi - 001" },
+            { "code": "002", "name": "Mombasa - 002" },
+            { "code": "003", "name": "Kisumu - 003" },
+            { "code": "004", "name": "Eldoret - 004" },
+            { "code": "005", "name": "Nyeri - 005" },
+            { "code": "006", "name": "Nakuru - 006" },
+            { "code": "007", "name": "Meru - 007" },
+            { "code": "008", "name": "Kisii - 008" }
+        ]
+      },
+      {
+        "bankId": "56",
+        "list": [
+            { "code": "ARU", "name": "Arua - ARU" },
+            { "code": "FOT", "name": "Fort Portal - FOT" },
+            { "code": "GUL", "name": "Gulu - GUL" },
+            { "code": "JJA", "name": "Jinja - JJA" },
+            { "code": "KBL", "name": "Kabale - KBL" },
+            { "code": "KLA", "name": "Kampala - KLA" },
+            { "code": "MKA", "name": "Masaka - MKA" },
+            { "code": "MBL", "name": "Mbale - MBL" },
+            { "code": "MBR", "name": "Mbarara - MBR" },
+            { "code": "LAR", "name": "Lira - LAR" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Statement",
+    "requestTypes": [
+      {
+        "type": "New Request"
+      },
+      {
+        "type": "Existing Request"
+      }
+    ]
+    }
+]

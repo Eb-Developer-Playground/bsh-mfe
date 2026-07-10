@@ -1,0 +1,22 @@
+<app-additional-fields
+  #fieldsComp
+  [title]="'PAGES.MT199_AMENDMENT_CONFIRMATION_OF_MT103.TITLE' | translate"
+  [fieldAttributes]="formFields">
+</app-additional-fields>
+<div class="mt-15 mb-15"></div>
+<app-documents-upload
+  [title]="'COMMON.REQUIRED_DOCUMENTS.LABEL' | translate"
+  [description]="'COMMON.REQUIRED_DOCUMENTS.TEXT' | translate"
+  [requiredDocuments]="requiredDocs"
+  (onUploaded)="documents = $event">
+</app-documents-upload>
+<div class="mt-15 mb-15"></div>
+<div class="flex flex-row mt-15">
+  <button mat-stroked-button color="primary" [routerLink]="['/services/']">
+    {{ 'COMMON.QUIT' | translate }}
+  </button>
+  <span class="flex-1"></span>
+  <button mat-raised-button color="primary" [disabled]="!fieldsForm?.valid" (click)="submit()">
+    {{ 'COMMON.SUBMIT' | translate }}
+  </button>
+</div>

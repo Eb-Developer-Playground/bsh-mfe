@@ -23,7 +23,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { isDevOrUat, uuid4 } from '@app/shared/utils';
 import { Observable, timer } from 'rxjs';
 import { finalize, scan, takeWhile, tap } from 'rxjs/operators';
@@ -33,13 +33,12 @@ import { OtpCodesComponent } from '../../otp-codes/otp-codes.component';
 
 @Component({
   selector: 'app-phone-otp-section',
-  standalone: true,
   imports: [
     NgClass,
     MatChipsModule,
     MatButtonModule,
     MatIconModule,
-    TranslateModule,
+    TranslatePipe,
     OtpCodesComponent,
     ReactiveFormsModule,
   ],
@@ -78,7 +77,7 @@ export class PhoneOtpSection
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes?.enableVerification?.currentValue) this.toggleVerification();
+    if (changes?.['enableVerification']?.currentValue) this.toggleVerification();
   }
 
   ngAfterViewInit() {

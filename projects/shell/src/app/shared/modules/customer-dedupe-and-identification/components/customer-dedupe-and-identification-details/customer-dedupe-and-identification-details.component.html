@@ -25,9 +25,9 @@
   </div>
   <app-dedupe-form
     [dedupeForm]="dedupeForm"
-    (onDedupeChecked)="dedupeCheckPerformed($event)"
+    (onDedupeChecked)="dedupeCheckPerformed($any($event))"
     [hideDedupeFormButton]="true"
-    (onDedupeFormIsValid)="dedupeFormIsValid($event)">
+    (onDedupeFormIsValid)="dedupeFormIsValid($any($event))">
   </app-dedupe-form>
 </mat-card>
 

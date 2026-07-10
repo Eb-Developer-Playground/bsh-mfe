@@ -13,7 +13,7 @@ export class LocalizationService {
   urlLang!: string;
 
   get preferredLang(): string {
-    return this.translate.currentLang;
+    return this.translate.currentLang() as string;
   }
 
   constructor(
@@ -22,12 +22,12 @@ export class LocalizationService {
     private router: Router
   ) {
     this.route.queryParams.subscribe(params => {
-      if (params?.lang) {
-        this.urlLang = params?.lang;
+      if (params?.['lang']) {
+        this.urlLang = params?.['lang'];
       }
     });
     this.translate.onLangChange.subscribe(ch => {
-      this.onLangChange.emit(ch.lang);
+      this.onLangChange.emit(ch['lang']);
     });
   }
 
@@ -42,12 +42,12 @@ export class LocalizationService {
 
   public setLocale(localeId: string) {
     if (this.isValidLang(localeId)) {
-      if (localeId !== this.translate.currentLang) {
+      if (localeId !== this.translate.currentLang()) {
         localStorage.setItem(
           'user-locale',
           JSON.stringify({ language: localeId })
         );
-        this.session._onChanged.next(true);
+        this.session.notifyChanged(true);
         this.translate.use(localeId);
         this.urlLang = localeId;
         this.setUrlLocale().then(() => {});

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
@@ -7,9 +7,12 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { ILocale } from './models';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-language-pref',
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="container" fxLayout="column" fxLayoutAlign="start">
       <div fxLayout="row" fxFlex="100" fxLayoutAlign="end center">
@@ -33,8 +36,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
           </h4>
           <mat-form-field appearance="fill" class="w-100">
             <mat-label>{{
-              'LOCALE.PREFERENCE.SELECT-DEFAULT-LANGUAGE' | translate
-            }}</mat-label>
+              'LOCALE.PREFERENCE.SELECT-DEFAULT-LANGUAGE' | translate</mat-label>
             <mat-select formControlName="language">
               <mat-option
                 *ngFor="let language of languages"
@@ -95,6 +97,6 @@ export class PreferenceDialog implements OnInit {
   }
 
   closeDialog() {
-    this.dialogRef.close({ language: this.form.controls.language.value });
+    this.dialogRef.close({ language: this.form.controls['language'].value });
   }
 }

@@ -98,7 +98,7 @@
       </div>
       <p
         class="form-error"
-        *ngIf="reasonForm.get('comment')!.errors?.maxlength">
+        *ngIf="reasonForm.get('comment')!.errors?.['maxlength']">
         Max length of 300 characters exceeded.
       </p>
     </ng-container>

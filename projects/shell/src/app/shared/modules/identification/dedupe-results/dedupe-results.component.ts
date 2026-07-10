@@ -1,24 +1,23 @@
 import { CommonModule } from '@angular/common';
-import {
-  AfterViewInit,
+import { AfterViewInit,
   Component,
   EventEmitter,
   Input,
   OnChanges,
   Output,
   SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import {
   MatTable,
   MatTableDataSource,
   MatTableModule,
 } from '@angular/material/table';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { IDedupeCIFResult } from '../types';
 import { SessionService } from '../../../services';
 import { environment as env } from '../../../../../environments/environment';
@@ -33,7 +32,7 @@ import { environment as env } from '../../../../../environments/environment';
     MatRadioModule,
     MatSortModule,
     MatPaginatorModule,
-    TranslateModule,
+    TranslatePipe,
   ],
   templateUrl: './dedupe-results.component.html',
   styleUrls: ['./dedupe-results.component.scss'],
@@ -73,7 +72,7 @@ export class DedupeResultsComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.data?.currentValue) {
+    if (changes['data']?.currentValue) {
       this.dataSource = new MatTableDataSource(this.data);
       this.selectedId = null;
     }
@@ -89,7 +88,7 @@ export class DedupeResultsComponent implements AfterViewInit, OnChanges {
   }
 
   goToProfile(customerId: string) {
-    const url = new URL(env.appUrl);
+    const url = new URL((env as any).appUrl);
     const params = new URLSearchParams({
       option: 'CIF',
       intent: 'canVerify',

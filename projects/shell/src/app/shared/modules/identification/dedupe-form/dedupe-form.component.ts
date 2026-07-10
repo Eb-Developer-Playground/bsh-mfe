@@ -1,5 +1,4 @@
-import {
-  Component,
+import { Component,
   DestroyRef,
   EventEmitter,
   inject,
@@ -8,8 +7,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
-  ViewEncapsulation,
-} from '@angular/core';
+  ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   FormControl,
   UntypedFormBuilder,
@@ -47,6 +45,9 @@ import CONST from '@app/shared/utils/constants';
 import { DRCRegions } from '@app/shared/models/regions-drc';
 import { subYears } from 'date-fns';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
+import { NgxMaskDirective } from 'ngx-mask';
+import { NumberFormatModule } from '../number-format.module';
 import drc_blacklisted_countries from '../../../../../assets/data/drc_blacklisted_countries.json';
 import { RestrictedCountryDialog } from '@app/shared/dialogs/restricted-country-dialog/restricted-country.dialog';
 import {
@@ -60,7 +61,8 @@ const { COUNTRY_CODE } = CONST;
   templateUrl: './dedupe-form.component.html',
   styleUrls: ['./dedupe-form.component.scss'],
   encapsulation: ViewEncapsulation.None,
-})
+  imports: [COMPAT_IMPORTS, NgxMaskDirective, NumberFormatModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DedupeFormComponent implements OnInit, OnDestroy {
   private readonly _destroyRef = inject(DestroyRef);
   @Output() onDedupeChecked: EventEmitter<any> = new EventEmitter<any>();
@@ -75,12 +77,7 @@ export class DedupeFormComponent implements OnInit, OnDestroy {
   @Input() customerAgeGroup: 'Adult' | 'Minor' = 'Adult';
   @Input() showVerify = true;
   @Input() isCivilServant = false;
-  @Input() dedupeForm = this.fb.group({
-    nationality: [null, Validators.required],
-    countryOfResidence: [null, Validators.required],
-    refNum: [null, Validators.required],
-    idType: [null, Validators.required],
-  });
+  @Input() dedupeForm!: UntypedFormGroup;
   @Input() hideDedupeFormButton = false;
 
   countries$: BehaviorSubject<Country[]> = new BehaviorSubject<Country[]>([]);
@@ -97,16 +94,7 @@ export class DedupeFormComponent implements OnInit, OnDestroy {
 
   selectedDedupe: any;
   destroy$: Subject<any> = new Subject<any>();
-  phoneNumberForm: UntypedFormGroup = this.fb.group({
-    id: [''],
-    phoneType: ['COMMPH1'],
-    countryCode: [''],
-    cityCode: [null],
-    number: [null, [Validators.required]],
-    comment: [null],
-    isPreferred: [true],
-    toBeDeleted: [false],
-  });
+  phoneNumberForm!: UntypedFormGroup;
   subsidiary: ISubsidiary;
   cities$: BehaviorSubject<FinacleCity[]> = new BehaviorSubject<FinacleCity[]>(
     []
@@ -118,7 +106,7 @@ export class DedupeFormComponent implements OnInit, OnDestroy {
     IMaritalStatus[]
   >([]);
 
-  restrictedCountries = drc_blacklisted_countries;
+  restrictedCountries: { countryCode: string }[] = drc_blacklisted_countries;
   public minDate: Date = subYears(new Date(), 100);
   public maxDate: Date = subYears(new Date(), 18);
   isTZCD: boolean = false;
@@ -134,6 +122,23 @@ export class DedupeFormComponent implements OnInit, OnDestroy {
     private router: Router
   ) {
     this.subsidiary = this.session.subsidiary;
+
+    this.dedupeForm = this.fb.group({
+      nationality: [null, Validators.required],
+      countryOfResidence: [null, Validators.required],
+      refNum: [null, Validators.required],
+      idType: [null, Validators.required],
+    });
+    this.phoneNumberForm = this.fb.group({
+      id: [''],
+      phoneType: ['COMMPH1'],
+      countryCode: [''],
+      cityCode: [null],
+      number: [null, [Validators.required]],
+      comment: [null],
+      isPreferred: [true],
+      toBeDeleted: [false],
+    });
 
     forkJoin([
       this.dataService.getCountries(),
@@ -360,7 +365,7 @@ export class DedupeFormComponent implements OnInit, OnDestroy {
   // }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.fieldStates?.currentValue) this.patchForm();
+    if (changes['fieldStates']?.currentValue) this.patchForm();
   }
 
   setIdTypes() {

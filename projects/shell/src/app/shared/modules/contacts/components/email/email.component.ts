@@ -22,7 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { OTPInputViewMode } from '@app/shared/modules/contacts';
 import { EmailOtpSection } from '@app/shared/modules/contacts/components';
 import { MatchedProfilesDialog } from '@app/shared/modules/contacts/dialogs/matched-profiles.dialog';
@@ -41,14 +41,13 @@ import { validateEmail } from '@app/shared/validators/email-validator';
 
 @Component({
   selector: 'app-email',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatSlideToggleModule,
-    TranslateModule,
+    TranslatePipe,
     EmailOtpSection,
   ],
   templateUrl: './email.component.html',
@@ -204,7 +203,7 @@ export class EmailComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.fieldStates?.currentValue) this.patchValues();
+    if (changes?.['fieldStates']?.currentValue) this.patchValues();
   }
 
   validateGroup(ch: any): void {

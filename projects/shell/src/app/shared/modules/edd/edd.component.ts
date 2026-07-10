@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   AbstractControl,
   UntypedFormBuilder,
+  UntypedFormGroup,
   ValidationErrors,
   ValidatorFn,
   Validators,
@@ -21,6 +22,7 @@ import {
 } from '../stepper';
 import { DocumentsService } from '../../services/document/document.service';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 export function requireCategoryMatch(dummyCat: any): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -61,7 +63,8 @@ export function validateEmail(
   selector: 'app-edd',
   templateUrl: './edd.component.html',
   styleUrls: ['./edd.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class EddComponent
   extends StepperChildComponent
   implements OnInit, OnActive, OnSave
@@ -114,45 +117,7 @@ export class EddComponent
   // occupationControl = new FormControl(null, [requireOccupationMatch(this.dummyOccupation)]);
   filteredCategoryOptions: Observable<any[]> | undefined;
   filteredOccupationOptions: Observable<any[]> | undefined;
-  accountForm = this.formBuilder.group({
-    highRiskCustomerDescription: [
-      null,
-      [Validators.required, requireCategoryMatch(this.dummyCat)],
-    ],
-    typeOfReview: [null, Validators.required],
-    dateOfReview: [null, Validators.required],
-    lastReviewDate: [null, Validators.required],
-    nextReviewDate: [null, Validators.required],
-    transactionAnalysis: this.formBuilder.group({
-      findings: ['', [Validators.required]],
-      period: ['', [Validators.required]],
-      analysisWarrants: ['', [Validators.required]],
-      amlRelated: ['', [Validators.required]],
-    }),
-    contactDetails: this.formBuilder.group({
-      phone: this.formBuilder.group({
-        code: ['254', [Validators.required]],
-        number: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern('[0-9+]*'),
-            Validators.minLength(9),
-            Validators.maxLength(9),
-          ],
-        ],
-      }),
-      email: ['', [Validators.required]],
-    }),
-    occupation: this.formBuilder.group({
-      occupation: ['', [Validators.required]],
-      nameOfEmployer: ['', [Validators.required]],
-    }),
-    sourceOfWealth: this.formBuilder.group({
-      sourceOfWealth: ['', [Validators.required]],
-      associationWithHRC: ['', [Validators.required]],
-    }),
-  });
+  accountForm!: UntypedFormGroup;
   countryCodes: any;
 
   constructor(
@@ -164,6 +129,44 @@ export class EddComponent
     private toast: ToastService
   ) {
     super();
+    this.accountForm = this.formBuilder.group({
+      highRiskCustomerDescription: [
+        null,
+        [Validators.required, requireCategoryMatch(this.dummyCat)],
+      ],
+      typeOfReview: [null, Validators.required],
+      dateOfReview: [null, Validators.required],
+      lastReviewDate: [null, Validators.required],
+      nextReviewDate: [null, Validators.required],
+      transactionAnalysis: this.formBuilder.group({
+        findings: ['', [Validators.required]],
+        period: ['', [Validators.required]],
+        analysisWarrants: ['', [Validators.required]],
+        amlRelated: ['', [Validators.required]],
+      }),
+      contactDetails: this.formBuilder.group({
+        phone: this.formBuilder.group({
+          code: ['254', [Validators.required]],
+          number: [
+            '',
+            [
+              Validators.required,
+              Validators.minLength(9),
+              Validators.maxLength(9),
+            ],
+          ],
+        }),
+        email: ['', [Validators.required]],
+      }),
+      occupation: this.formBuilder.group({
+        occupation: ['', [Validators.required]],
+        nameOfEmployer: ['', [Validators.required]],
+      }),
+      sourceOfWealth: this.formBuilder.group({
+        sourceOfWealth: ['', [Validators.required]],
+        associationWithHRC: ['', [Validators.required]],
+      }),
+    });
   }
 
   onActive(): void {
@@ -176,14 +179,14 @@ export class EddComponent
       lastReviewDate: moment(this.today).format('yyyy-MM-DD'),
     });
     this.filteredCategoryOptions =
-      this.accountForm.controls.highRiskCustomerDescription.valueChanges.pipe(
+      this.accountForm.controls['highRiskCustomerDescription'].valueChanges.pipe(
         startWith(''),
-        map(value => this._filterCategories(value))
+        map((value: string) => this._filterCategories(value))
       );
     this.filteredOccupationOptions =
-      this.accountForm.controls.occupation.valueChanges.pipe(
+      this.accountForm.controls['occupation'].valueChanges.pipe(
         startWith(''),
-        map(value => this._filterOccupations(value))
+        map((value: string) => this._filterOccupations(value))
       );
     // let countryInfo = JSON.parse(localStorage.getItem('countryInfo')!);
     // this.countryCodes = countryInfo;

@@ -1,13 +1,11 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
@@ -16,6 +14,7 @@ import {
 import { MessageBoxType, ToastService } from '../../toast';
 import { IDocumentSpec, IUploadedDocument } from '../models';
 import { FileSizePipe } from '../file-size.pipe';
+import { FilenameLabelPipe } from '../filenameLabel.pipe';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import {
@@ -26,12 +25,14 @@ import { CameraModalComponent } from '../../document-upload/camera-modal/camera-
 import { UIService } from '@app/shared/services';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-documents-upload-drc',
   templateUrl: './documents-upload-drc.component.html',
   styleUrls: ['./documents-upload-drc.component.scss'],
-})
+  imports: [COMPAT_IMPORTS, FileSizePipe, FilenameLabelPipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DocumentsUploadDrcComponent
   implements OnInit, OnChanges, OnDestroy
 {
@@ -58,9 +59,7 @@ export class DocumentsUploadDrcComponent
   selectedObject: IUploadedDocument | null = null;
   placeholderImage =
     '../../../../../../../assets/images/Illustration-background.svg';
-  confirmationForm: UntypedFormGroup = this.fb.group({
-    confirm: [false, [Validators.required]],
-  });
+  confirmationForm: UntypedFormGroup = new UntypedFormGroup({});
   _defaultTypes: string[] = [
     'image/svg+xml',
     'image/png',
@@ -81,7 +80,11 @@ export class DocumentsUploadDrcComponent
     private uiService: UIService,
     public translateService: TranslateService,
     private router: Router
-  ) {}
+  ) {
+    this.confirmationForm = this.fb.group({
+      confirm: [false, [Validators.required]],
+    });
+  }
 
   async ngOnInit(): Promise<void> {
     this.subsidiary = this.session.subsidiary;
@@ -98,7 +101,7 @@ export class DocumentsUploadDrcComponent
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.documentSpecs || changes.photoReuse || changes.signatuReuse) {
+    if (changes['documentSpecs'] || changes['photoReuse'] || changes['signatuReuse']) {
       this.initializeCloneOfObjects();
     }
   }

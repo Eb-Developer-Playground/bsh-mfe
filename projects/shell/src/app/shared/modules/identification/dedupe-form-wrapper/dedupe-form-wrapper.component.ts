@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
+import { Component,
   EventEmitter,
   inject,
   Input,
   Output,
-  ViewChild,
-} from '@angular/core';
-import { FormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MessageBoxType, ToastService } from '../../toast';
 import {
   DedupeResultsComponent,
@@ -25,6 +23,7 @@ import { environment as env } from '../../../../../environments/environment';
 import { DedupeFormComponent } from '@app/shared/modules/identification';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { ISubsidiary } from '@app/shared/services/session/session.service';
 import { TranslateService } from '@ngx-translate/core';
 import CONST from '@app/shared/utils/constants';
@@ -49,8 +48,7 @@ const { COUNTRY_CODE } = CONST;
     NotificationsModule,
     DedupeResultsComponent,
   ],
-  styleUrls: ['./dedupe-form-wrapper.component.scss'],
-})
+  styleUrls: ['./dedupe-form-wrapper.component.scss']})
 export class DedupeFormWrapperComponent {
   private translate = inject(TranslateService);
   @Input() subsidiary!: ISubsidiary;
@@ -59,12 +57,7 @@ export class DedupeFormWrapperComponent {
   @Input() showCustomerPresentOptions = true;
   @Input() fieldStates!: IDedupeFieldStates;
   @Input() showVerify = true;
-  @Input() dedupeForm = this.fb.group({
-    nationality: ['KE', Validators.required],
-    countryOfResidence: ['KE', Validators.required],
-    refNum: [null, Validators.required],
-    idType: [null, Validators.required],
-  });
+  @Input() dedupeForm!: UntypedFormGroup;
   @Input() readonly!: boolean;
   @Input() showActions!: boolean;
   dedupeCifResults!: IDedupeCIFResult[];
@@ -77,7 +70,14 @@ export class DedupeFormWrapperComponent {
     private sessionService: SessionService,
     private toast: ToastService,
     private api: ApiService
-  ) {}
+  ) {
+    this.dedupeForm = this.fb.group({
+      nationality: ['KE', Validators.required],
+      countryOfResidence: ['KE', Validators.required],
+      refNum: [null, Validators.required],
+      idType: [null, Validators.required],
+    });
+  }
 
   ngOnInit() {
     this.dedupeForm.patchValue({
@@ -310,7 +310,7 @@ export class DedupeFormWrapperComponent {
    * @param result Array of customer data
    */
   goToProfile() {
-    const url = new URL(env.appUrl);
+    const url = new URL((env as any).appUrl);
     const params = new URLSearchParams({
       option: 'CIF',
       intent: 'canVerify',

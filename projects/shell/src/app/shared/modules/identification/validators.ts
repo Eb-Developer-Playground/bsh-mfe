@@ -1,4 +1,4 @@
-import { Directive, forwardRef, Injectable, Input } from '@angular/core';
+import { Directive, forwardRef, Injectable, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   AbstractControl,
   AsyncValidator,
@@ -7,6 +7,7 @@ import {
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import CONST from '@app/shared/utils/constants';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';

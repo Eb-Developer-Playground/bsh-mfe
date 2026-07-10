@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AbstractControl, UntypedFormControl } from '@angular/forms';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-collapsible',
@@ -60,6 +61,8 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
       }
     `,
   ],
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CollapsibleComponent implements OnInit {
   @Input() title!: string;

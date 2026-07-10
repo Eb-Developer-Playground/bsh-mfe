@@ -1,14 +1,16 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ToastService, MessageBoxType } from '@app/shared/modules/toast';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-document-preview',
   templateUrl: './docs-preview.dialog.html',
   styleUrls: ['./docs-preview.dialog.scss'],
   encapsulation: ViewEncapsulation.None,
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DocsPreviewDialog implements OnInit {
   sanitizedURL: any;
   popup: any;

@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from './material.module';
 import { ToastModule } from '../toast';
 import { DocumentsUploadComponent } from './documents-upload.component';
@@ -15,7 +14,13 @@ import { FileSizePipe } from './file-size.pipe';
 import { FilenameLabelPipe } from './filenameLabel.pipe';
 
 @NgModule({
-  declarations: [
+
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ToastModule,
+    MaterialModule,
+    FlexLayoutModule,
     DocumentsUploadComponent,
     DocumentsReviewComponent,
     DocumentPreviewComponent,
@@ -25,14 +30,6 @@ import { FilenameLabelPipe } from './filenameLabel.pipe';
     FileSizePipe,
     FilenameLabelPipe,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    ToastModule,
-    TranslateModule,
-    MaterialModule,
-    FlexLayoutModule,
-  ],
   exports: [
     DocumentsUploadComponent,
     DocumentsReviewComponent,
@@ -41,5 +38,6 @@ import { FilenameLabelPipe } from './filenameLabel.pipe';
     FileSizePipe,
     FilenameLabelPipe,
   ],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DocumentsUploadModule {}

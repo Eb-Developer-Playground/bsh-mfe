@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageBoxType, ToastService } from '../toast';
 import { MatSelectChange } from '@angular/material/select';
@@ -9,6 +9,7 @@ import {
   PdfDialogComponent,
 } from '@app/shared/components/dialog/pdf-dialog/pdf-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 export declare interface Status {
   value: string;
@@ -25,7 +26,8 @@ export declare interface IApprovalStatus {
   selector: 'app-ticket-approval',
   templateUrl: './ticket-approval.component.html',
   styleUrls: ['./ticket-approval.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class TicketApprovalComponent implements OnInit {
   @Input() title: string =
     'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATORY.APPROVAL';
@@ -174,7 +176,7 @@ export class TicketApprovalComponent implements OnInit {
   private markAsPrinted() {
     if (this.isPrinted) return;
 
-    this.accountStatementService
+    (this.accountStatementService as any)
       .setPartialData('isPrinted', { isPrinted: true }, this.ticket.id)
       .subscribe({
         next: () => {

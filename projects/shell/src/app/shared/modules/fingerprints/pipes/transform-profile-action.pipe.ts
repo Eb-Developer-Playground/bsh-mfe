@@ -3,6 +3,7 @@ import { default as ACTIONS } from '../../../../../assets/data/profileactions.js
 
 @Pipe({
   name: 'transformProfileAction',
+  standalone: true,
 })
 export class TransformProfileActionPipe implements PipeTransform {
   transform(value: string, ...args: unknown[]): string {

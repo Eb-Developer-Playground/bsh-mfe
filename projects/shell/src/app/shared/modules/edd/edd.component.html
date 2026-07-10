@@ -22,10 +22,10 @@
         </mat-autocomplete>
         <mat-error
           *ngIf="
-            accountForm.controls.highRiskCustomerDescription.hasError(
+            accountForm.controls['highRiskCustomerDescription'].hasError(
               'requireCategoryMatch'
             ) &&
-            !accountForm.controls.highRiskCustomerDescription.hasError(
+            !accountForm.controls['highRiskCustomerDescription'].hasError(
               'required'
             )
           ">
@@ -33,7 +33,7 @@
         </mat-error>
         <mat-error
           *ngIf="
-            accountForm.controls.highRiskCustomerDescription.hasError(
+            accountForm.controls['highRiskCustomerDescription'].hasError(
               'required'
             )
           ">
@@ -48,7 +48,7 @@
           <mat-option value="trigger_driven"> TRIGGER DRIVEN </mat-option>
         </mat-select>
         <mat-error
-          *ngIf="accountForm.controls.typeOfReview.hasError('required')">
+          *ngIf="accountForm.controls['typeOfReview'].hasError('required')">
           Review type is required
         </mat-error>
       </mat-form-field>
@@ -68,14 +68,14 @@
         <mat-datepicker #picker></mat-datepicker>
         <mat-error
           *ngIf="
-            accountForm.controls.dateOfReview.hasError('required') &&
-            !accountForm.controls.dateOfReview.hasError('matDatepickerParse')
+            accountForm.controls['dateOfReview'].hasError('required') &&
+            !accountForm.controls['dateOfReview'].hasError('matDatepickerParse')
           ">
           Review date is required
         </mat-error>
         <mat-error
           *ngIf="
-            accountForm.controls.dateOfReview.hasError('matDatepickerParse')
+            accountForm.controls['dateOfReview'].hasError('matDatepickerParse')
           ">
           Invalid date format
         </mat-error>
@@ -96,14 +96,14 @@
         <mat-datepicker #picker1></mat-datepicker>
         <mat-error
           *ngIf="
-            accountForm.controls.lastReviewDate.hasError('required') &&
-            !accountForm.controls.lastReviewDate.hasError('matDatepickerParse')
+            accountForm.controls['lastReviewDate'].hasError('required') &&
+            !accountForm.controls['lastReviewDate'].hasError('matDatepickerParse')
           ">
           Last review date is required
         </mat-error>
         <mat-error
           *ngIf="
-            accountForm.controls.lastReviewDate.hasError('matDatepickerParse')
+            accountForm.controls['lastReviewDate'].hasError('matDatepickerParse')
           ">
           Invalid date format
         </mat-error>
@@ -122,20 +122,20 @@
         <mat-datepicker #picker2></mat-datepicker>
         <mat-error
           *ngIf="
-            accountForm.controls.nextReviewDate.hasError('required') &&
-            !accountForm.controls.nextReviewDate.hasError('matDatepickerParse')
+            accountForm.controls['nextReviewDate'].hasError('required') &&
+            !accountForm.controls['nextReviewDate'].hasError('matDatepickerParse')
           ">
           Next review date is required
         </mat-error>
         <mat-error
           *ngIf="
-            accountForm.controls.nextReviewDate.hasError('matDatepickerParse')
+            accountForm.controls['nextReviewDate'].hasError('matDatepickerParse')
           ">
           Invalid date format
         </mat-error>
         <mat-error
           *ngIf="
-            accountForm.controls.nextReviewDate.hasError('matDatepickerMin')
+            accountForm.controls['nextReviewDate'].hasError('matDatepickerMin')
           ">
           Please provide a future date
         </mat-error>

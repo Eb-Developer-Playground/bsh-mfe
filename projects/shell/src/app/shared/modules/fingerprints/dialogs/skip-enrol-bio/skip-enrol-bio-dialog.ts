@@ -1,16 +1,18 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 
 @Component({
   selector: 'app-dialog-skip-enrol',
   templateUrl: './skip-enrol-bio-dialog.html',
   styleUrls: ['./skip-enrol-bio-dialog.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class SkipEnrolBioDialog implements OnInit {
   form!: UntypedFormGroup;
   label = 'Reason*';
@@ -30,6 +32,6 @@ export class SkipEnrolBioDialog implements OnInit {
   }
 
   closeDialog() {
-    this.dialogRef.close(this.form.controls.reason.value);
+    this.dialogRef.close(this.form.controls['reason'].value);
   }
 }

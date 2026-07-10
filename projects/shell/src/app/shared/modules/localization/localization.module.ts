@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { LocalizationService } from './localization.service';
@@ -14,19 +13,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [PreferenceDialog],
+
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     MatDialogModule,
-    TranslateModule,
     MatIconModule,
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
     ToastModule,
+    PreferenceDialog,
   ],
   providers: [LocalizationService],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LocalizationModule {}

@@ -1,6 +1,6 @@
 <div class="wrapper">
   <ng-template #templateRef>
-    @if (formArray.errors?.hasRepeatedPhones) {
+    @if (formArray.errors?.['hasRepeatedPhones']) {
       <span class="d-block">
         {{
           'FORMS.CONTACT_DETAILS.ERRORS.DUPLICATED_ITEMS'
@@ -8,7 +8,7 @@
         }}
       </span>
     }
-    @if (formArray.errors?.missingPreferred) {
+    @if (formArray.errors?.['missingPreferred']) {
       <span class="d-block">
         {{
           'FORMS.CONTACT_DETAILS.ERRORS.MISSING_PREFERRED'
@@ -16,7 +16,7 @@
         }}
       </span>
     }
-    @if (formArray.errors?.moreThanOnePreferred) {
+    @if (formArray.errors?.['moreThanOnePreferred']) {
       <span class="d-block">
         {{
           'FORMS.CONTACT_DETAILS.ERRORS.MISSING_PREFERRED'
@@ -53,7 +53,7 @@
         [otpVerificationMode]="otpVerificationMode"
         [dedupeOperationMode]="dedupeOperationMode"
         (preferredToggled)="
-          preferredNumberToggled($event, ind)
+          preferredNumberToggled($any($event), ind)
         "></app-phone-number>
       @if (ind > 0 && enableMultiple) {
         <button

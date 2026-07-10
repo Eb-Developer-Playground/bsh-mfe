@@ -1,25 +1,26 @@
-import {
-  ChangeDetectionStrategy,
+import { ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Subject, from } from 'rxjs';
 import { mergeMap, takeUntil } from 'rxjs/operators';
 import { ApiService } from '@shared/services';
 import { DocumentPreviewComponent } from '@shared/modules/upload-docs';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
+import { FileSizePipe } from '../file-size.pipe';
 
 @Component({
   selector: 'app-documents-review',
   templateUrl: './documents-review.component.html',
   styleUrls: ['./documents-review.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-})
+  imports: [COMPAT_IMPORTS, FileSizePipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DocumentsReviewComponent implements OnInit, OnChanges, OnDestroy {
   @Input() ticketId!: any;
   @Input() documents!: any[];
@@ -36,7 +37,7 @@ export class DocumentsReviewComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.ticketId?.currentValue) {
+    if (changes['ticketId']?.currentValue) {
       this.getDocuments();
     }
   }

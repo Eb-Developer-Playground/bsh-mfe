@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -8,7 +8,7 @@ import { EddComponent } from './edd.component';
 import { EddFormPrintComponent } from './form-print/edd-form-print.component';
 
 @NgModule({
-  declarations: [EddComponent, EddFormPrintComponent],
+
   imports: [
     CommonModule,
     FormsModule,
@@ -16,7 +16,10 @@ import { EddFormPrintComponent } from './form-print/edd-form-print.component';
     FlexLayoutModule,
     MaterialModule,
     AccountsListModule,
+    EddComponent,
+    EddFormPrintComponent,
   ],
   exports: [EddComponent],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class EddModule {}

@@ -33,7 +33,7 @@ export class FingerprintsService {
   }
 
   launchBio() {
-    const url = environment.bioExtPage;
+    const url = (environment as any).bioExtPage;
     window.open(url, '_blank');
   }
 

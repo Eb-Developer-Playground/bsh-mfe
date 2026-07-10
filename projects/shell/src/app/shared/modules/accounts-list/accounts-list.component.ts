@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import {
   CustomerAccountsDataSource,
@@ -6,12 +6,14 @@ import {
 } from './customer-accounts-datasource';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-accounts-list',
   templateUrl: './accounts-list.component.html',
   styleUrls: ['./accounts-list.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class AccountsListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

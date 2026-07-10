@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 
 enum CHOICES {
   INDETERMINATE,
@@ -22,7 +23,8 @@ enum CHOICES {
   selector: 'app-verify-signatory-dialog',
   templateUrl: './verify-signatory-dialog.html',
   styleUrls: ['./verify-signatory-dialog.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class VerifySignatoryDialog implements OnInit, OnDestroy {
   accountSignatories: AccountSignatory[] = [];
   CHOICES = CHOICES;

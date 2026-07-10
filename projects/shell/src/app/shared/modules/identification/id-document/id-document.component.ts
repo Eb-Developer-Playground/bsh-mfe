@@ -1,18 +1,18 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
+import { NumberFormatModule } from '../number-format.module';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -36,30 +36,14 @@ import { FinacleCity } from '../../../models/finacle-city';
   selector: 'app-id-document',
   templateUrl: './id-document.component.html',
   styleUrls: ['./id-document.component.scss'],
-})
+  imports: [COMPAT_IMPORTS, NumberFormatModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class IdDocumentComponent implements OnInit, OnChanges, OnDestroy {
   @Input() index!: number;
   @Input() readonly!: boolean;
   @Input() fieldStates!: IdDocumentFieldStates;
   @Input() selectedTypes!: string[];
-  @Input() documentForm: UntypedFormGroup = this.fb.group({
-    documentId: [''],
-    idType: [''],
-    countryOfIssue: [''],
-    placeOfIssue: ['', Validators.required],
-    docCode: [''],
-    docDescr: [''],
-    docTypeCode: [''],
-    docTypeDesc: [''],
-    docIssueDt: [''],
-    expDt: [''],
-    refNum: [''],
-    serialNumber: [''],
-    isMandatory: [false],
-    isDocumentVerified: [false],
-    preferredUniqueId: [false],
-    idIssuedOrganisation: [''],
-  });
+  @Input() documentForm!: UntypedFormGroup;
   @Input() valuesConf!: IdTypeSpec;
   @Input() minIssueDate: Date = new Date(new Date().getFullYear() - 100, 1, 1);
   @Input() maxIssueDate: Date = new Date();
@@ -114,6 +98,24 @@ export class IdDocumentComponent implements OnInit, OnChanges, OnDestroy {
     private dataService: StaticDataService,
     public service: IdDocumentService
   ) {
+    this.documentForm = this.fb.group({
+      documentId: [''],
+      idType: [''],
+      countryOfIssue: [''],
+      placeOfIssue: ['', Validators.required],
+      docCode: [''],
+      docDescr: [''],
+      docTypeCode: [''],
+      docTypeDesc: [''],
+      docIssueDt: [''],
+      expDt: [''],
+      refNum: [''],
+      serialNumber: [''],
+      isMandatory: [false],
+      isDocumentVerified: [false],
+      preferredUniqueId: [false],
+      idIssuedOrganisation: [''],
+    });
     this.dataService.getCountries().subscribe(data => {
       data.sort((a, b) => a.countryName.localeCompare(b.countryName));
       this.countries$.next(data.map(c => new Country(c)));
@@ -182,7 +184,7 @@ export class IdDocumentComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.fieldStates?.currentValue) {
+    if (changes['fieldStates']?.currentValue) {
       this.patchValues();
     }
   }

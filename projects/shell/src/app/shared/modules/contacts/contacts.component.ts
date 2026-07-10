@@ -24,7 +24,6 @@ import { validateEmail } from '@app/shared/validators/email-validator';
 
 @Component({
   selector: 'app-contacts',
-  standalone: true,
   imports: [
     MatCardModule,
     NgTemplateOutlet,
@@ -54,41 +53,44 @@ export class ContactsComponent implements OnInit {
   @Input() parentForm!: UntypedFormGroup;
   @Input() parentPhoneNumbersFormControlName!: string;
   @Input() parentEmailAddressesFormControlName!: string;
-  @Input() phoneNumbersForm: UntypedFormArray = this.fb.array([
-    this.fb.group({
-      id: [null],
-      phoneType: ['', Validators.required],
-      countryCode: ['', [Validators.required, validateCountryCode]],
-      cityCode: [''],
-      number: ['', [Validators.required]],
-      comment: [''],
-      isPreferred: [true],
-      toBeDeleted: [false],
-      isMandatory: [false],
-      verified: [null],
-      unique: [null],
-    }),
-  ]);
-  @Input() emailAddressesForm: UntypedFormArray = this.fb.array([
-    this.fb.group({
-      id: [null],
-      emailType: ['', Validators.required],
-      emailAddress: ['', [Validators.required, validateEmail]],
-      comment: ['', Validators.minLength(3)],
-      isPreferred: [true],
-      toBeDeleted: [false],
-      isMandatory: [false],
-      verified: [null],
-      unique: [null],
-    }),
-  ]);
+  @Input() phoneNumbersForm!: UntypedFormArray;
+  @Input() emailAddressesForm!: UntypedFormArray;
   @Input() fieldStates!: IContactDetailsFieldStates;
   @Input() required: boolean = true;
 
   constructor(
     private fb: UntypedFormBuilder,
     public service: ContactsService
-  ) {}
+  ) {
+    this.phoneNumbersForm = this.fb.array([
+      this.fb.group({
+        id: [null],
+        phoneType: ['', Validators.required],
+        countryCode: ['', [Validators.required, validateCountryCode]],
+        cityCode: [''],
+        number: ['', [Validators.required]],
+        comment: [''],
+        isPreferred: [true],
+        toBeDeleted: [false],
+        isMandatory: [false],
+        verified: [null],
+        unique: [null],
+      }),
+    ]);
+    this.emailAddressesForm = this.fb.array([
+      this.fb.group({
+        id: [null],
+        emailType: ['', Validators.required],
+        emailAddress: ['', [Validators.required, validateEmail]],
+        comment: ['', Validators.minLength(3)],
+        isPreferred: [true],
+        toBeDeleted: [false],
+        isMandatory: [false],
+        verified: [null],
+        unique: [null],
+      }),
+    ]);
+  }
 
   ngOnInit(): void {
     if (this.parentForm && this.parentPhoneNumbersFormControlName) {

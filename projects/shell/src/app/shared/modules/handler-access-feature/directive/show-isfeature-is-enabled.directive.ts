@@ -1,9 +1,10 @@
-import { Directive, ViewContainerRef, TemplateRef, Input } from '@angular/core';
+import { Directive, ViewContainerRef, TemplateRef, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FeatureAccessService } from '../services/handler-access-feature/feature-access.service';
 
 @Directive({
   selector: '[showIsfeatureIsEnabled]',
 })
+
 export class ShowIsfeatureIsEnabledDirective {
   constructor(
     private featureAccessService: FeatureAccessService,

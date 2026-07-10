@@ -1,11 +1,9 @@
-import {
-  Component,
+import { Component,
   ElementRef,
   Inject,
   OnDestroy,
   OnInit,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -18,13 +16,15 @@ import { environment as envUAT } from '../../../../../../environments/environmen
 import { environment as envProd } from '../../../../../../environments/environment.prod';
 import { isDev, isDevOrUat, isUat } from '../../../../utils';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-verify-signatory-bio-dialog',
   templateUrl: './verify-signatory-bio-dialog.html',
   styleUrls: ['./verify-signatory-bio-dialog.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class VerifySignatoryBioDialog implements OnInit, OnDestroy {
   @ViewChild('RIGHT_INDEX_1', { read: ElementRef })
   right_index_finger!: ElementRef;
@@ -65,7 +65,7 @@ export class VerifySignatoryBioDialog implements OnInit, OnDestroy {
     if (isDev()) {
       uriString = 'timeout=10000&quality=75&licstr=';
     } else if (isUat()) {
-      this.secugenLicenseStr = envUAT.secugenLicenseUAT;
+      this.secugenLicenseStr = (envUAT as any).secugenLicenseUAT;
       uriString =
         'timeout=10000&quality=50&licstr=' +
         encodeURIComponent(this.secugenLicenseStr) +
@@ -74,7 +74,7 @@ export class VerifySignatoryBioDialog implements OnInit, OnDestroy {
       // use this for production once the license is ready
       // this.secugenLicenseStr = environment.secugenLicenseUAT;
       // uriString = 'timeout=10000&quality=50&licstr=' + encodeURIComponent(this.secugenLicenseStr);
-      this.secugenLicenseStr = envProd.secugenLicenseProd;
+      this.secugenLicenseStr = (envProd as any).secugenLicenseProd;
       uriString =
         'timeout=10000&quality=50&licstr=' +
         encodeURIComponent(this.secugenLicenseStr) +

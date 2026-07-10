@@ -1,16 +1,14 @@
 /* eslint-disable @angular-eslint/no-input-rename */
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import {
-  Component,
+import { Component,
   ElementRef,
   Inject,
   Input,
   OnDestroy,
   Optional,
   Self,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -24,6 +22,7 @@ import {
   MatFormField,
   MatFormFieldControl,
 } from '@angular/material/form-field';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { Subject } from 'rxjs';
 
 @Component({

@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
+import { Directive, EventEmitter, Output } from '@angular/core';
 
 interface FileHandle {
   file: File;
@@ -6,35 +6,36 @@ interface FileHandle {
 
 @Directive({
   selector: '[appDragDropDocuments]',
+  host: {
+    '(dragover)': 'onDragOver($event)',
+    '(dragleave)': 'onDragLeave($event)',
+    '(drop)': 'onDrop($event)',
+  },
 })
+
 export class DragDropDocumentsDirective {
   @Output() files: EventEmitter<FileHandle[]> = new EventEmitter();
 
   constructor() {}
 
-  @HostListener('dragover', ['$event'])
-  public onDragOver(evt: DragEvent) {
+  public onDragOver(evt: Event) {
     evt.preventDefault();
     evt.stopPropagation();
   }
 
-  @HostListener('dragleave', ['$event'])
-  public onDragLeave(evt: DragEvent) {
+  public onDragLeave(evt: Event) {
     evt.preventDefault();
     evt.stopPropagation();
   }
 
-  @HostListener('drop', ['$event'])
-  public drop(evt: {
-    preventDefault: () => void;
-    stopPropagation: () => void;
-    dataTransfer: { files: any };
-  }) {
+  public onDrop(evt: Event) {
     evt.preventDefault();
     evt.stopPropagation();
-    const files = evt.dataTransfer.files;
-    if (files.length > 0) {
-      this.files.emit(files);
+    const dragEvent = evt as DragEvent;
+    const files = dragEvent.dataTransfer?.files;
+    if (files && files.length > 0) {
+      const fileHandles: FileHandle[] = Array.from(files).map(file => ({ file }));
+      this.files.emit(fileHandles);
     }
   }
 }

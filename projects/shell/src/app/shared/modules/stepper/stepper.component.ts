@@ -1,19 +1,19 @@
-import {
-  AfterViewInit,
+import { AfterViewInit,
   Component,
   EventEmitter,
   Input,
   OnInit,
-  Output,
-} from '@angular/core';
+  Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CdkStepper } from '@angular/cdk/stepper';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss'],
   providers: [{ provide: CdkStepper, useExisting: StepperComponent }],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class StepperComponent
   extends CdkStepper
   implements OnInit, AfterViewInit

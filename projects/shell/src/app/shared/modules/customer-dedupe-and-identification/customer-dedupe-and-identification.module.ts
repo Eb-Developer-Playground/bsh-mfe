@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
 import { IdentificationModule } from '../identification';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [CustomerDedupeAndIdentificationDetailsComponent],
+
   imports: [
     CommonModule,
     MatDividerModule,
@@ -26,10 +25,11 @@ import { MatButtonModule } from '@angular/material/button';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslateModule,
     IdentificationModule,
+    CustomerDedupeAndIdentificationDetailsComponent,
   ],
   providers: [CustomerCifDetailsFilteringService],
   exports: [CustomerDedupeAndIdentificationDetailsComponent],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CustomerDedupeAndIdentificationModule {}

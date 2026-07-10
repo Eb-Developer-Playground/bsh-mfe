@@ -1,17 +1,17 @@
-import {
-  Component,
+import { Component,
   ContentChild,
   Input,
   OnInit,
-  TemplateRef,
-} from '@angular/core';
+  TemplateRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { NotificationsContentDirective } from './notifications-content.directive';
 
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class NotificationsComponent implements OnInit {
   @Input()
   textTemplate!: TemplateRef<any>;

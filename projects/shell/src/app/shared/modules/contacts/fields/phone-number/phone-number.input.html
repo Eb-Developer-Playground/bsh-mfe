@@ -34,7 +34,7 @@
       (click)="
         _handleInput(
           'country',
-          formGroup.controls.countryCode,
+          formGroup.controls['countryCode'],
           localMode ? city : numberInput
         );
         onCountrySelected.emit(option)
@@ -67,9 +67,9 @@
         ? 'text'
         : 'hidden'
     "
-    (input)="_handleInput('city', formGroup.controls.cityCode, number)"
+    (input)="_handleInput('city', formGroup.controls['cityCode'], number)"
     (keypress)="handleKeyPress($event)"
-    (keyup.backspace)="autoFocusPrev(formGroup.controls.cityCode, country)"
+    (keyup.backspace)="autoFocusPrev(formGroup.controls['cityCode'], country)"
     #city />
   <span class="phone-number-input-spacer">&nbsp;</span>
   <input
@@ -78,9 +78,9 @@
     aria-label="Subscriber number"
     [attr.maxLength]="localMode ? 6 : 12"
     [attr.size]="localMode ? 6 : 12"
-    (input)="_handleInput('number', formGroup.controls.number)"
+    (input)="_handleInput('number', formGroup.controls['number'])"
     (keyup.backspace)="
-      autoFocusPrev(formGroup.controls.number, localMode ? city : country)
+      autoFocusPrev(formGroup.controls['number'], localMode ? city : country)
     "
     (keypress)="handleKeyPress($event)"
     #number />

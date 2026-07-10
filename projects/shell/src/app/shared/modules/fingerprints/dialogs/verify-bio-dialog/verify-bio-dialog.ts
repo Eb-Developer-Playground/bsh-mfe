@@ -1,13 +1,11 @@
-import {
-  Component,
+import { Component,
   ElementRef,
   EventEmitter,
   Inject,
   OnDestroy,
   OnInit,
   Output,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Subject, takeUntil } from 'rxjs';
@@ -25,12 +23,14 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 
 @Component({
   selector: 'app-verify-bio-dialog',
   templateUrl: './verify-bio-dialog.html',
   styleUrls: ['./verify-bio-dialog.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class VerifyBioDialog implements OnInit, OnDestroy {
   @ViewChild('RIGHT_INDEX_1', { read: ElementRef })
   right_index_finger!: ElementRef;
@@ -135,7 +135,7 @@ export class VerifyBioDialog implements OnInit, OnDestroy {
     if (isDev()) {
       uriString = 'timeout=10000&quality=75&licstr=';
     } else if (isUat()) {
-      this.secugenLicenseStr = envUAT.secugenLicenseUAT;
+      this.secugenLicenseStr = (envUAT as any).secugenLicenseUAT;
       uriString =
         'timeout=10000&quality=50&licstr=' +
         encodeURIComponent(this.secugenLicenseStr) +
@@ -144,7 +144,7 @@ export class VerifyBioDialog implements OnInit, OnDestroy {
       // use this for production once the license is ready
       // this.secugenLicenseStr = environment.secugenLicenseUAT;
       // uriString = 'timeout=10000&quality=50&licstr=' + encodeURIComponent(this.secugenLicenseStr);
-      this.secugenLicenseStr = envProd.secugenLicenseProd;
+      this.secugenLicenseStr = (envProd as any).secugenLicenseProd;
       uriString =
         'timeout=10000&quality=50&licstr=' +
         encodeURIComponent(this.secugenLicenseStr) +

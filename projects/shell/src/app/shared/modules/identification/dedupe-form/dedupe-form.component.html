@@ -18,14 +18,14 @@
         matInput
         personalNameInput
         oninput="this.value = this.value.toUpperCase()" />
-      <mat-error *ngIf="dedupeForm.get('firstName')?.errors?.required">
+      <mat-error *ngIf="dedupeForm.get('firstName')?.errors?.['required']">
         {{ 'FORMS.PERSONAL_DETAILS.LABELS.FIRST_NAME' | translate }}
         {{ 'COMMON.IS_REQUIRED' | translate }}
       </mat-error>
       <mat-error
         *ngIf="
-          !dedupeForm.get('firstName')?.errors?.required &&
-          dedupeForm.get('firstName')?.errors?.invalidPersonalName
+          !dedupeForm.get('firstName')?.errors?.['required'] &&
+          dedupeForm.get('firstName')?.errors?.['invalidPersonalName']
         ">
         {{ 'STATIC_DATA.NAME_ERROR' | translate }}
       </mat-error>
@@ -46,7 +46,7 @@
         personalNameInput
         oninput="this.value = this.value.toUpperCase()" />
       <mat-error
-        *ngIf="dedupeForm.get('middleName')?.errors?.invalidPersonalName">
+        *ngIf="dedupeForm.get('middleName')?.errors?.['invalidPersonalName']">
         {{ 'STATIC_DATA.NAME_ERROR' | translate }}
       </mat-error>
     </mat-form-field>
@@ -65,14 +65,14 @@
         matInput
         personalNameInput
         oninput="this.value = this.value.toUpperCase()" />
-      <mat-error *ngIf="dedupeForm.get('lastName')?.errors?.required">
+      <mat-error *ngIf="dedupeForm.get('lastName')?.errors?.['required']">
         {{ 'FORMS.PERSONAL_DETAILS.LABELS.LAST_NAME' | translate }}
         {{ 'COMMON.IS_REQUIRED' | translate }}
       </mat-error>
       <mat-error
         *ngIf="
-          !dedupeForm.get('lastName')?.errors?.required &&
-          dedupeForm.get('lastName')?.errors?.invalidPersonalName
+          !dedupeForm.get('lastName')?.errors?.['required'] &&
+          dedupeForm.get('lastName')?.errors?.['invalidPersonalName']
         ">
         {{ 'STATIC_DATA.NAME_ERROR' | translate }}
       </mat-error>
@@ -568,6 +568,6 @@
   <app-dedupe-results
     [data]="dedupeCifResults"
     [showActions]="showActions"
-    (selectedCif)="onCifSelected($event)">
+    (selectedCif)="onCifSelected($any($event))">
   </app-dedupe-results>
 </div>

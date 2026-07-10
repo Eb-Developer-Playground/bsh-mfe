@@ -18,11 +18,12 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { IPhoneNumberFieldStates } from '@app/shared/models/customer/shared';
 import { OTPInputViewMode } from '@app/shared/modules/contacts';
 import { IContactDedupeItem } from '@app/shared/modules/contacts/fields/phone-number/types';
@@ -49,7 +50,6 @@ interface IPhone {
 
 @Component({
   selector: 'app-phone-number',
-  standalone: true,
   imports: [
     NgClass,
     ReactiveFormsModule,
@@ -59,7 +59,7 @@ interface IPhone {
     MatSelectModule,
     PhoneOtpSection,
     PhoneNumberGroupComponent,
-    TranslateModule,
+    TranslatePipe,
   ],
   templateUrl: './phone-number.component.html',
   styleUrls: ['./phone-number.component.scss'],
@@ -86,18 +86,7 @@ export class PhoneNumberComponent implements OnInit, OnChanges {
   @Input() readonly?: boolean;
   @Input() selectedTypes: string[] = [];
   @Input() label: string = '';
-  @Input() form: UntypedFormGroup = this.fb.group({
-    id: [null],
-    phoneType: [null, Validators.required],
-    countryCode: [null, [Validators.required, validateCountryCode]],
-    cityCode: [null],
-    number: [null, [Validators.required]],
-    comment: [null],
-    isPreferred: [true],
-    toBeDeleted: [false],
-    verified: [null],
-    unique: [null],
-  });
+  @Input() form!: UntypedFormGroup;
   @Input() required!: boolean;
   dedupeMatches: IContactDedupeItem[] = [];
   showOtpInput!: boolean;
@@ -108,7 +97,20 @@ export class PhoneNumberComponent implements OnInit, OnChanges {
     private fb: UntypedFormBuilder,
     private session: SessionService,
     private service: ContactsService
-  ) {}
+  ) {
+    this.form = this.fb.group({
+      id: [null],
+      phoneType: [null, Validators.required],
+      countryCode: [null, [Validators.required, validateCountryCode]],
+      cityCode: [null],
+      number: [null, [Validators.required]],
+      comment: [null],
+      isPreferred: [true],
+      toBeDeleted: [false],
+      verified: [null],
+      unique: [null],
+    });
+  }
 
   get title(): string {
     if (this.index === 0) {
@@ -207,7 +209,7 @@ export class PhoneNumberComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes?.fieldStates?.currentValue) {
+    if (changes?.['fieldStates']?.currentValue) {
       this.toggleVerification();
       this.patchValues();
     }
@@ -246,7 +248,7 @@ export class PhoneNumberComponent implements OnInit, OnChanges {
 
   patchValues(): void {
     if (this.fieldStates) {
-      this.form.controls.phoneType.setValue(null);
+      this.form.controls['phoneType'].setValue(null);
       this.form.patchValue({
         id: this.fieldStates.id?.value,
         countryCode: this.fieldStates.countryCode?.value,

@@ -12,7 +12,6 @@ import { DedupeFormComponent } from './dedupe-form/dedupe-form.component';
 import { SearchableFormControl } from '../../form-controls';
 import { DedupeSearchResultComponent } from './dedupe-search-result/dedupe-search-result.component';
 import { TableDataModule } from '../../components/table-data/table-data.module';
-import { TranslateModule } from '@ngx-translate/core';
 import { NotificationsModule } from '../notifications';
 import { AutoCompleteField } from '@app/shared/components/auto-complete';
 import { NgxMaskDirective } from 'ngx-mask';
@@ -25,14 +24,7 @@ import { DedupeResultsComponent } from './dedupe-results/dedupe-results.componen
 import { ContactsModule } from '../contacts';
 
 @NgModule({
-  declarations: [
-    IdDocumentsComponent,
-    IdDocumentComponent,
-    DedupeFormComponent,
-    IdTypePipe,
-    DedupeValidatorDirective,
-    DedupeSearchResultComponent,
-  ],
+
   exports: [
     DedupeSearchResultComponent,
     IdDocumentsComponent,
@@ -47,7 +39,6 @@ import { ContactsModule } from '../contacts';
     DirectivesModule,
     SearchableFormControl,
     TableDataModule,
-    TranslateModule,
     AutoCompleteField,
     NgxMaskDirective,
     NumberFormatModule,
@@ -58,6 +49,12 @@ import { ContactsModule } from '../contacts';
     DedupeResultsComponent,
     NotificationsModule,
     ContactsModule,
+    IdDocumentsComponent,
+    IdDocumentComponent,
+    DedupeFormComponent,
+    IdTypePipe,
+    DedupeValidatorDirective,
+    DedupeSearchResultComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

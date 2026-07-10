@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between">
+  <h2 mat-dialog-title>
+    {{
+      'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.BIO-DIALOG-TITLE'
+        | translate
+    }}
+  </h2>
+  <mat-icon color="primary" class="cursor-pointer" mat-dialog-close
+    >close</mat-icon
+  >
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="text-muted mb-1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit psum dolor sit amet.
+  </div>
+  <mat-card appearance="outlined" class="mb-1">
+    <div class="d-flex align-content-center mb-1">
+      <div class="rounded-circle">{{ stakeholderInitials }}</div>
+      <div class="align-self-center">{{ data.stakeholderName }}</div>
+    </div>
+    <div class="scanner d-flex justify-content-center align-content-center">
+      <img
+        src="assets/images/fingerprint-icon.png"
+        alt="finger-print"
+        class="fingerprint" />
+    </div>
+  </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex justify-content-between align-content-center">
+  <mat-checkbox color="primary" (click)="reasonBioSkip()">{{
+    'COMMON.SKIP-BIO' | translate
+  }}</mat-checkbox>
+  <button
+    mat-flat-button
+    cdkFocusInitial
+    (click)="onClickVerify()"
+    color="primary">
+    &nbsp;&nbsp;{{"COMMON.VERIFY"}| translate}&nbsp;&nbsp;
+  </button>
+</mat-dialog-actions>

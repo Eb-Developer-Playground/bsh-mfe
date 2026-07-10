@@ -1,0 +1,9 @@
+<div *ngFor="let breadcrumb of config; let i = index; let l = count">
+  <a
+    mat-button
+    [color]="breadcrumb.active ? 'warn' : 'primary'"
+    [attr.href]="breadcrumb.url ? breadcrumb.url : null">
+    {{ breadcrumb.label }}
+  </a>
+  <mat-icon *ngIf="i < l - 1" class="arrow"> chevron_right </mat-icon>
+</div>

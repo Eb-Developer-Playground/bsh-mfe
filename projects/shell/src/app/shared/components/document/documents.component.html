@@ -1,0 +1,8 @@
+<div class="doc-set">
+  <app-document-card
+    style="flex-grow: 1"
+    *ngFor="let doc of RequiredDocuments"
+    [doc]="doc"
+    (onFileUpload)="fileUpload(doc)"
+    (onDeleteUpload)="deleteUpload(doc)"></app-document-card>
+</div>

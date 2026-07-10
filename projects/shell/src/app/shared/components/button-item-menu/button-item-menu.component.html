@@ -1,0 +1,18 @@
+<mat-menu backdropClass="custom__menu" #appMenu="matMenu">
+  <button
+    *ngFor="let item of menuElementsArray"
+    mat-menu-item
+    (click)="emit(item)">
+    {{ item.label | translate }}
+  </button>
+</mat-menu>
+
+<button mat-flat-button [matMenuTriggerFor]="appMenu">
+  <div class="d-flex pt-9 pb-9">
+    <mat-icon
+      [svgIcon]="icon"
+      aria-hidden="false"
+      aria-label="Change limit"
+      class="icon-image"></mat-icon>
+  </div>
+</button>

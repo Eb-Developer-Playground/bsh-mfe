@@ -1,0 +1,301 @@
+<mat-card appearance="outlined" class="mb-2" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 matCardTitle class="fw-400">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.UPLOAD-DOCUMENTS-TITLE'
+          | translate
+      }}
+    </h3>
+    <p matCardSubtitle class="text instruction">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.UPLOAD-DOCUMENTS-TEXT'
+          | translate
+      }}
+    </p>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+
+  <div class="d-flex wrap">
+    <div class="file-col">
+      <div class="empty-file-container">
+        <div
+          *ngIf="!readonly"
+          class="file-image"
+          [ngStyle]="{
+            'background-image': customerSigFormObj.uploadedFile
+              ? 'url(' + customerSigFormObj.Url + ')'
+              : 'url(../../../../../assets/images/file-img.png)',
+            'background-size': customerSigFormObj.uploadedFile && 'cover'
+          }"></div>
+        <div *ngIf="readonly" class="file-image">
+          <img [src]="customerSigFormObj.Url" />
+        </div>
+        <div class="footer py-12 px-16 d-flex justify-content-between">
+          <div class="info align-self-center">
+            <p class="mt-0 mb-4 size-5">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.CUSTOMER-SIGNATURE-FORM'
+                  | translate
+              }}
+            </p>
+            <span class="size-5">{{
+              'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.FILE-EXCEED-5MB'
+                | translate
+            }}</span>
+          </div>
+          <div
+            *ngIf="!readonly"
+            class="icon align-self-center cursor-pointer"
+            (files)="filesDropped($event)"
+            appDragDropDocuments>
+            <div
+              *ngIf="customerSigFormObj.icon === 'ic-upload'"
+              (click)="
+                !customerSigFormObj.uploadedFile &&
+                  customerSignatureFormFile.click()
+              ">
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/svg+xml, application/pdf"
+                #customerSignatureFormFile
+                (change)="
+                  onDefaultFileChange(
+                    customerSignatureFormFile,
+                    'customerSigFormObj'
+                  )
+                "
+                style="display: none" />
+              <mat-icon
+                [svgIcon]="customerSigFormObj.icon"
+                (click)="
+                  customerSigFormObj.uploadedFile &&
+                    deleteDefaultFileUpload(
+                      customerSigFormObj,
+                      'customerSigFormObj'
+                    )
+                ">
+              </mat-icon>
+            </div>
+            <mat-icon
+              *ngIf="customerSigFormObj.icon === 'ic-delete'"
+              [svgIcon]="customerSigFormObj.icon"
+              (click)="
+                customerSigFormObj.uploadedFile &&
+                  deleteDefaultFileUpload(
+                    customerSigFormObj,
+                    'customerSigFormObj'
+                  )
+              ">
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="file-col">
+      <div class="empty-file-container">
+        <div
+          *ngIf="!readonly"
+          class="file-image"
+          [ngStyle]="{
+            'background-image': newSignatureObj.uploadedFile
+              ? 'url(' + newSignatureObj.Url + ')'
+              : 'url(../../../../../assets/images/file-img.png)',
+            'background-size': newSignatureObj.uploadedFile && 'cover'
+          }"></div>
+        <div *ngIf="readonly" class="file-image">
+          <img [src]="newSignatureObj.Url" />
+        </div>
+        <div class="footer py-12 px-16 d-flex justify-content-between">
+          <div class="info align-self-center">
+            <p class="mt-0 mb-4 size-5">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.NEW-SIGNATURE'
+                  | translate
+              }}
+            </p>
+            <span class="size-5">{{
+              'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.FILE-EXCEED-200KB'
+                | translate
+            }}</span>
+          </div>
+          <div
+            *ngIf="!readonly"
+            class="icon align-self-center cursor-pointer"
+            (files)="filesDropped($event)"
+            appDragDropDocuments>
+            <div
+              *ngIf="newSignatureObj.icon === 'ic-upload'"
+              (click)="
+                !newSignatureObj.uploadedFile && newSignatureFile.click()
+              ">
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/svg+xml"
+                #newSignatureFile
+                (change)="
+                  onDefaultFileChange(newSignatureFile, 'newSignatureObj')
+                "
+                style="display: none" />
+              <mat-icon
+                [svgIcon]="newSignatureObj.icon"
+                (click)="
+                  newSignatureObj.uploadedFile &&
+                    deleteDefaultFileUpload(newSignatureObj, 'newSignatureObj')
+                ">
+              </mat-icon>
+            </div>
+            <mat-icon
+              *ngIf="newSignatureObj.icon === 'ic-delete'"
+              [svgIcon]="newSignatureObj.icon"
+              (click)="
+                newSignatureObj.uploadedFile &&
+                  deleteDefaultFileUpload(newSignatureObj, 'newSignatureObj')
+              ">
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="file-col">
+      <div class="empty-file-container">
+        <div
+          *ngIf="!readonly"
+          class="file-image"
+          [ngStyle]="{
+            'background-image': profilePhotoObj.uploadedFile
+              ? 'url(' + profilePhotoObj.Url + ')'
+              : 'url(../../../../../assets/images/file-img.png)',
+            'background-size': profilePhotoObj.uploadedFile && 'cover'
+          }"></div>
+        <div *ngIf="readonly" class="file-image">
+          <img [src]="profilePhotoObj.Url" />
+        </div>
+        <div class="footer py-12 px-16 d-flex justify-content-between">
+          <div class="info align-self-center">
+            <p class="mt-0 mb-4 size-5">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.PROFILE-PHOTO'
+                  | translate
+              }}
+            </p>
+            <span class="size-5">{{
+              'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.FILE-EXCEED-200KB'
+                | translate
+            }}</span>
+          </div>
+          <div
+            *ngIf="!readonly"
+            class="icon align-self-center cursor-pointer"
+            (files)="filesDropped($event)"
+            appDragDropDocuments>
+            <div
+              *ngIf="profilePhotoObj.icon === 'ic-upload'"
+              (click)="
+                !profilePhotoObj.uploadedFile && profilePhotoFile.click()
+              ">
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/svg+xml"
+                #profilePhotoFile
+                (change)="
+                  onDefaultFileChange(profilePhotoFile, 'profilePhotoObj')
+                "
+                style="display: none" />
+              <mat-icon
+                [svgIcon]="profilePhotoObj.icon"
+                (click)="
+                  profilePhotoObj.uploadedFile &&
+                    deleteDefaultFileUpload(profilePhotoObj, 'profilePhotoObj')
+                ">
+              </mat-icon>
+            </div>
+            <mat-icon
+              *ngIf="profilePhotoObj.icon === 'ic-delete'"
+              [svgIcon]="profilePhotoObj.icon"
+              (click)="
+                profilePhotoObj.uploadedFile &&
+                  deleteDefaultFileUpload(profilePhotoObj, 'profilePhotoObj')
+              ">
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="col document-card"
+      (click)="!obj.uploadedFile && file.click()"
+      [ngStyle]="{
+        'background-image': obj.uploadedFile
+          ? 'url(' + obj.Url + ')'
+          : 'url(' + supportDocumentBackground + ')',
+        'background-size': obj.uploadedFile && 'cover'
+      }"
+      *ngFor="let obj of cloneOfObjects"
+      [ngClass]="{ 'upload-card': obj.uploadedFile }">
+      <div class="radiobuton-container">
+        <mat-icon *ngIf="obj.uploadedFile" svgIcon="ic-radiobutton"></mat-icon>
+      </div>
+      <div style="display: initial">
+        <div class="upload-instruction">
+          <div style="padding: 8px" class="d-flex justify-content-between">
+            <input
+              type="file"
+              accept="image/png, image/jpeg, image/svg+xml"
+              #file
+              #attachments
+              (change)="onChange(file, obj)"
+              style="display: none" />
+            <div>
+              <p class="text doc">{{ obj.documentName }}</p>
+              <p class="text instruction">
+                {{
+                  obj.uploadedFile
+                    ? 'File Size:' + ' ' + obj.fileSize
+                    : 'The file should not exceed 1MB'
+                }}
+              </p>
+            </div>
+
+            <div>
+              <mat-icon
+                [svgIcon]="obj.icon"
+                (click)="obj.uploadedFile && deleteUpload(obj)"></mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="!readonly"
+      class="col drag-drop empty-file-container"
+      (files)="filesDropped($event)"
+      appDragDropDocuments
+      (click)="filedrag.click()">
+      <input
+        type="file"
+        accept="image/png, image/jpeg, image/svg+xml"
+        #filedrag
+        (change)="onChange(filedrag)"
+        style="display: none" />
+      <div>
+        <mat-icon
+          height="20px"
+          svgIcon="ic-uploadBackground"
+          style="transform: scale(1.7)"></mat-icon>
+        <p class="text drop-text">
+          {{ 'COMMON.UPLOAD-DOCUMENTS' | translate }}
+        </p>
+        <p class="text instruction">
+          {{ 'COMMON.DRAG-AND-DROP' | translate
+          }}<span class="drag-text">{{ 'COMMON.BROWSE' | translate }}</span>
+          {{ 'COMMON.FILES-HERE' | translate }}
+        </p>
+      </div>
+    </div>
+  </div>
+</mat-card>

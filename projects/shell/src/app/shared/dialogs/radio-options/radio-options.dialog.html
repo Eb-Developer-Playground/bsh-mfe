@@ -1,0 +1,54 @@
+<div class="pr-20 pl-20 pt-20">
+    <section class="d-flex justify-content-between">
+        <p class="mat-headline-6 m-0">{{ data.title || "" | translate }}</p>
+        <div class="icon-container">
+            <mat-icon svgIcon="ic-close" [mat-dialog-close]="false"></mat-icon>
+        </div>
+    </section>
+    <section>
+        @if (data.subTitle) {
+            <p class="text-muted mat-subtitle-2 m-0">
+                {{ data.subTitle | translate }}
+            </p>
+        }
+    </section>
+</div>
+
+<div class="content" mat-dialog-content>
+    @if (data.message) {
+        <p>{{ data.message | translate }}</p>
+    }
+
+    <div>
+        <mat-radio-group
+            [(ngModel)]="selectedOption"
+            (change)="onOptionChange($event.value)"
+            class="radio-group"
+        >
+            @for (option of data.options; track option.value) {
+                <article class="muted-bordered-card mb-16">
+                    <mat-radio-button
+                        [value]="option.value"
+                        [disabled]="option.disabled"
+                        class="radio-option fs-5"
+                    >
+                        {{ option.label | translate }}
+                    </mat-radio-button>
+                </article>
+            }
+        </mat-radio-group>
+    </div>
+</div>
+<div class="d-flex justify-content-end" mat-dialog-actions>
+    <button [mat-dialog-close]="" mat-flat-button>
+        {{ data.cancelButtonText || "COMMON.CANCEL" | translate }}
+    </button>
+    <button
+        (click)="onConfirm()"
+        color="primary"
+        mat-flat-button
+        [disabled]="!selectedOption"
+    >
+        {{ data.confirmButtonText || "COMMON.CONFIRM" | translate }}
+    </button>
+</div>

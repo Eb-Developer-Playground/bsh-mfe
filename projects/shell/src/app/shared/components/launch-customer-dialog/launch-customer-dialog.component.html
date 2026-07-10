@@ -1,0 +1,27 @@
+<div class="dialog">
+  <h2 mat-dialog-title>{{ 'DIALOG.LAUNCH-CUSTOMER-TITLE' | translate }}:</h2>
+
+  <div mat-dialog-content>
+    <mat-radio-group class="radioGroupCls" (change)="setCanVerify($event)">
+      <mat-radio-button color="primary" class="radioBtnCls" value="canVerify"
+        >{{ 'DIALOG.CUSTOMER-VERIFY-FINGERPRINTS' | translate }}
+      </mat-radio-button>
+      <mat-radio-button color="primary" class="radioBtnCls" value="canNotVerify"
+        >{{ 'DIALOG.NOT-VERIFY-FINGERPRINTS' | translate }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-stroked-button color="primary" (click)="onNoClick()">
+      {{ 'COMMON.CANCEL' | translate }}
+    </button>
+    <button
+      mat-button
+      mat-flat-button
+      color="primary"
+      (click)="next()"
+      [disabled]="data.canVerify === ''">
+      {{ 'COMMON.NEXT' | translate }}
+    </button>
+  </div>
+</div>

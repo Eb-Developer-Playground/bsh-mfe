@@ -1,0 +1,462 @@
+<mat-card appearance="outlined">
+  <div class="pl-24">
+    <app-header title="Agent Details"></app-header>
+  </div>
+
+  <mat-card-content
+    class="pl-24"
+    *ngIf="!editAgentNames && countryCode !== 'CD'">
+    <div fxLayout="row" fxFlex fxLayoutAlign="start">
+      <div fxLayout="column" fxFlex fxLayoutAlign="start">
+        <div fxLayout="row wrap" fxLayout.lt-md="column">
+          <div fxFlex="20">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.FIRST-NAME' | translate }}
+            </p>
+            <p class="mat-subtitle-1">{{ knownAgentDetails?.firstName }}</p>
+          </div>
+          <div fxFlex="20">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.MIDDLE-NAME' | translate }}
+            </p>
+            <p class="mat-subtitle-1">{{ knownAgentDetails?.middleName }}</p>
+          </div>
+          <div fxFlex="20">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.LAST-NAME' | translate }}
+            </p>
+            <p class="mat-subtitle-1">{{ knownAgentDetails?.lastName }}</p>
+          </div>
+          <div fxFlex="20" *ngIf="!editKraPin">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.ID-SERIAL-NUMBER' | translate }}
+            </p>
+            <p class="mat-subtitle-1">
+              {{ knownAgentDetails?.serialNumber }}
+            </p>
+          </div>
+          <div fxFlex="20" *ngIf="!editKraPin">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.KRA-PIN' | translate }}
+            </p>
+            <p class="mat-subtitle-1">{{ knownAgentDetails?.kraPin }}</p>
+          </div>
+          <div fxFlex="20" *ngIf="editKraPin">
+            <form [formGroup]="detailskraPin" class="fieldset">
+              <div fxLayout="row wrap" fxLayout.lt-md="column">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{ 'KNOWN-AGENT.KRA-PIN' | translate }}</mat-label>
+                  <input matInput formControlName="kraPin" required />
+
+                  <mat-error
+                    *ngIf="detailskraPin.controls.kraPin.hasError('required')">
+                    <span
+                      >{{ 'KNOWN-AGENT.KRA-PIN' | translate }}
+                      {{ 'COMMON.IS' | translate }}
+                      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+                    >
+                  </mat-error>
+
+                  <mat-error
+                    *ngIf="
+                      detailskraPin.controls.kraPin.hasError('invalidKraPin')
+                    ">
+                    <span
+                      >{{ 'KNOWN-AGENT.KRA-PIN' | translate }}
+                      {{ 'COMMON.IS' | translate }}
+                      <strong>{{ 'COMMON.INVALID' | translate }}</strong></span
+                    >
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </form>
+          </div>
+          <div fxFlex="20">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.SERVICE-REQUEST' | translate }}
+            </p>
+            <p class="mat-subtitle-1">
+              {{ 'KNOWN-AGENT.INTRODUCE' | translate }}
+            </p>
+          </div>
+          <div fxFlex="20" *ngIf="knownAgentDetails?.customerId">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.CIF' | translate }}
+            </p>
+            <p class="mat-subtitle-1">{{ knownAgentDetails?.customerId }}</p>
+          </div>
+          <div fxFlex="20">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.ID-TYPE' | translate }}
+            </p>
+            <p class="mat-subtitle-1">
+              {{ knownAgentDetails?.identityDocumentType }}
+            </p>
+          </div>
+          <div fxFlex="20">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.ID-NUMBER' | translate }}
+            </p>
+            <p class="mat-subtitle-1">
+              {{ knownAgentDetails?.identityDocumentNumber }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-content
+    class="pl-24"
+    *ngIf="editAgentNames && countryCode !== 'CD'">
+    <form [formGroup]="detailsForm" class="fieldset">
+      <div fxLayout="row" fxFlex fxLayoutAlign="start">
+        <div fxLayout="column" fxFlex fxLayoutAlign="start">
+          <div fxLayout="row wrap" fxLayout.lt-md="column">
+            <div fxFlex="20">
+              <mat-form-field appearance="fill">
+                <mat-label>{{
+                  'KNOWN-AGENT.FIRST-NAME' | translate
+                }}</mat-label>
+                <input matInput formControlName="firstName" required />
+                <mat-error
+                  *ngIf="detailsForm.controls.firstName.hasError('required')">
+                  <span
+                    >{{ 'KNOWN-AGENT.FIRST-NAME' | translate }}
+                    {{ 'COMMON.IS' | translate }}
+                    <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+                  >
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="20">
+              <mat-form-field appearance="fill">
+                <mat-label>{{
+                  'KNOWN-AGENT.MIDDLE-NAME' | translate
+                }}</mat-label>
+                <input matInput formControlName="middleName" />
+              </mat-form-field>
+            </div>
+            <div fxFlex="20">
+              <mat-form-field appearance="fill">
+                <mat-label>{{ 'KNOWN-AGENT.LAST-NAME' | translate }}</mat-label>
+                <input matInput formControlName="lastName" required />
+                <mat-error
+                  *ngIf="detailsForm.controls.lastName.hasError('required')">
+                  <span
+                    >{{ 'KNOWN-AGENT.LAST-NAME' | translate }}
+                    {{ 'COMMON.IS' | translate }}
+                    <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+                  >
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="20">
+              <mat-form-field appearance="fill">
+                <mat-label>{{
+                  'KNOWN-AGENT.ID-SERIAL-NUMBER' | translate
+                }}</mat-label>
+                <input matInput formControlName="idSerialNumber" required />
+                <mat-error
+                  *ngIf="
+                    detailsForm.controls.idSerialNumber.hasError('required')
+                  ">
+                  <span
+                    >{{ 'KNOWN-AGENT.ID-SERIAL-NUMBER' | translate }}
+                    {{ 'COMMON.IS' | translate }}
+                    <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+                  >
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="20">
+              <mat-form-field appearance="fill">
+                <mat-label>{{ 'KNOWN-AGENT.KRA-PIN' | translate }}</mat-label>
+                <input matInput formControlName="kraPin" required />
+                <mat-error
+                  *ngIf="detailsForm.controls.kraPin.hasError('required')">
+                  <span>
+                    {{ 'KNOWN-AGENT.KRA-PIN' | translate }}
+                    {{ 'COMMON.IS' | translate }}
+                    <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+                  </span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="20">
+              <p class="mat-body-2 mb-1 text-muted">
+                {{ 'KNOWN-AGENT.SERVICE-REQUEST' | translate }}
+              </p>
+              <p class="mat-subtitle-1">
+                {{ 'KNOWN-AGENT.INTRODUCE' | translate }}
+              </p>
+            </div>
+            <div fxFlex="20">
+              <p class="mat-body-2 mb-1 text-muted">
+                {{ 'KNOWN-AGENT.ID-TYPE' | translate }}
+              </p>
+              <p class="mat-subtitle-1">
+                {{ knownAgentDetails?.identityDocumentType }}
+              </p>
+            </div>
+            <div fxFlex="20">
+              <p class="mat-body-2 mb-1 text-muted">
+                {{ 'KNOWN-AGENT.ID-NUMBER' | translate }}
+              </p>
+              <p class="mat-subtitle-1">
+                {{ knownAgentDetails?.identityDocumentNumber }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+
+  <div class="main-div" *ngIf="!editAgentNames && countryCode === 'CD'">
+    <div class="customer-images">
+      <app-legacy-customer-image [acc]="account" [cif]="customerCif">
+      </app-legacy-customer-image>
+    </div>
+
+    <div
+      class="customer-details-container"
+      *ngIf="!editAgentNames && countryCode === 'CD'">
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'KNOWN-AGENT.FIRST-NAME' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.firstName }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'KNOWN-AGENT.MIDDLE-NAME' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.middleName }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'KNOWN-AGENT.LAST-NAME' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ knownAgentDetails?.lastName }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">{{ 'COMMON.GENDER' | translate }}</p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.gender === 'F' ? 'Female' : 'Male' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.NATIONALITY' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.nationality }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.COUNTRY-OF-RESIDENCE' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.countryOfResidence }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.DATE-OF-BIRTH' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.birthDate }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.PLACE-OF-BIRTH' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.placeOfBirth }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.REGION' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ knownAgentDetails?.region }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.MARITAL-STATUS' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.maritalStatus }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'FORMS.PERSONAL_DETAILS.LABELS.PREFERRED_LANGUAGE' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{
+            knownAgentDetails?.language ||
+              knownAgentDetails?.preferredLanguageCode
+          }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'KNOWN-AGENT.CIF' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.customerId || 'N/A' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.ID-TYPE' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.identityDocumentType || 'N/A' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.ID-NUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ knownAgentDetails?.identityDocumentNumber || 'N/A' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">Tax number</p>
+        <p class="customer-detail-content"></p>
+      </div>
+    </div>
+
+    <div
+      class="customer-details-container"
+      *ngIf="editAgentNames && countryCode === 'CD'">
+      <form [formGroup]="detailsForm" class="fieldset">
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'KNOWN-AGENT.FIRST-NAME' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.firstName }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'KNOWN-AGENT.MIDDLE-NAME' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.middleName }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'KNOWN-AGENT.LAST-NAME' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.lastName }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">{{ 'COMMON.GENDER' | translate }}</p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.gender === 'F' ? 'Female' : 'Male' }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.NATIONALITY' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.nationality }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.COUNTRY-OF-RESIDENCE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.countryOfResidence }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.DATE-OF-BIRTH' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.birthDate }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.PLACE-OF-BIRTH' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.placeOfBirth }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.REGION' | translate }}
+          </p>
+          <p class="customer-detail-content">{{ knownAgentDetails?.region }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.MARITAL-STATUS' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.maritalStatus }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'FORMS.PERSONAL_DETAILS.LABELS.PREFERRED_LANGUAGE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{
+              knownAgentDetails?.language ||
+                knownAgentDetails?.preferredLanguageCode
+            }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'KNOWN-AGENT.CIF' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.customerId || 'N/A' }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ID-TYPE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.identityDocumentType || 'N/A' }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ID-NUMBER' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ knownAgentDetails?.identityDocumentNumber || 'N/A' }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">Tax number</p>
+          <p class="customer-detail-content"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>

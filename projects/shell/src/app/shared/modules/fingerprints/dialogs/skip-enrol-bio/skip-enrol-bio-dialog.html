@@ -1,0 +1,41 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start">
+  <div fxLayout="row" fxFill fxFlex="100" fxLayoutAlign="start">
+    <div fxLayout="row" fxFlex="90">
+      <div fxLayout="column" fxLayoutAlign="start">
+        <p class="mat-headline-6">Skip biometrics</p>
+        <p class="mat-body-2 light-gray">
+          Please enter your reason for skipping the biometric scan
+        </p>
+      </div>
+    </div>
+    <div fxLayout="row" fxFlex="10" fxLayoutAlign="end start ">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="close icon"
+        class="close"
+        mat-dialog-close
+        >close</mat-icon
+      >
+    </div>
+  </div>
+  <div fxLayout="row" fxFill fxFlex="100" fxLayoutAlign="start center">
+    <form [formGroup]="form" class="full-width">
+      <app-autocomplete
+        [form]="form"
+        [label]="label"
+        [controlName]="controlName"
+        [options]="options">
+      </app-autocomplete>
+    </form>
+  </div>
+  <div fxLayout="row" fxFill fxFlex="100" fxLayoutAlign="end center">
+    <button
+      [disabled]="!form.valid"
+      style="width: 167px"
+      mat-flat-button
+      color="primary"
+      (click)="closeDialog()">
+      Continue
+    </button>
+  </div>
+</div>

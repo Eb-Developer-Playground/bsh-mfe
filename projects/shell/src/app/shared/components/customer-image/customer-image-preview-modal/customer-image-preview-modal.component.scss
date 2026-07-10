@@ -1,0 +1,37 @@
+.main {
+  padding: 20px;
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h4 {
+      font-size: 16px;
+      font-weight: 900;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.38;
+      letter-spacing: 0.03px;
+      text-align: left;
+      color: #656565;
+    }
+
+    .close {
+      background: transparent;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  div.modal-body {
+    text-align: center;
+  }
+
+  :host {
+    min-width: 700px;
+  }
+}

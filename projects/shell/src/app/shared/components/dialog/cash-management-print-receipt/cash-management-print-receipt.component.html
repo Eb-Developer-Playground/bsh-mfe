@@ -1,0 +1,227 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="header">
+        <span class="title"> </span>
+        <span class="close" (click)="close()">
+          <mat-icon
+            svgIcon="ic-close"
+            style="transform: scale(0.6); cursor: pointer"
+            mat-dialog-close></mat-icon>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row details-holder">
+    <div class="print-container">
+      <div class="receipt-header">
+        <img
+          class="equity-logo"
+          src="assets/images/equity-img.png"
+          alt=""
+          srcset="" />
+
+        <div class="header-message"></div>
+      </div>
+
+      <div class="info">
+        {{ 'CASH-MANAGEMENT.PRINT-SUCCESS-MESSAGE' | translate }} <br />
+        {{
+          data.ticket.actionFlow.description === 'Deposit'
+            ? 'Cash Management - Deposit'
+            : 'Cash Management - Withdraw'
+        }}
+      </div>
+
+      <span class="detail-group">
+        <span class="detail-label"> {{ 'COMMON.AMOUNT' | translate }} </span>
+        <span class="detail-value">
+          {{ +details?.Amount | number: '1.2-2' }} {{ details?.CurrencyCode }}
+        </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.DENOMINATION-DETAILS' | translate }}
+        </span>
+        <span class="detail-value">
+          <table>
+            <thead>
+              <tr>
+                <th>{{ 'CASH-MANAGEMENT.DENOMINATION' | translate }}</th>
+                <th>{{ 'CASH-MANAGEMENT.COUNT' | translate }}</th>
+                <th>{{ 'CASH-MANAGEMENT.TYPE' | translate }}</th>
+                <th>{{ 'CASH-MANAGEMENT.TOTAL' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let denomination of details.Denominations">
+                <tr *ngIf="denomination.DenominationCount > 0">
+                  <td>{{ denomination.DenominationValue }}</td>
+                  <td>{{ denomination.DenominationCount }}</td>
+                  <td>{{ denomination.DenominationType }}</td>
+                  <td>
+                    {{ denomination.DenominationTotalAmount | number: '1.2-2' }}
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </span>
+      </span>
+
+      <!-- <span
+        *ngIf="details?.SenderDetails?.SourceAccountCurrency !== details?.BeneficiaryDetails?.DestinationAccountCurrency">
+        <span class="detail-group">
+          <span class="detail-label"> Exchange rate </span>
+          <span class="detail-value" *ngIf="details?.ExchangeDetails?.RateCode === 'TTB'"> 1 {{
+            details?.SenderDetails?.SourceAccountCurrency }} = {{ details?.ExchangeDetails?.ExchangeRate }} {{
+            details?.BeneficiaryDetails?.DestinationAccountCurrency }} </span>
+          <span class="detail-value" *ngIf="details?.ExchangeDetails?.RateCode === 'TTS'"> 1 {{
+            details?.BeneficiaryDetails?.DestinationAccountCurrency }} = {{ details?.ExchangeDetails?.ExchangeRate }} {{
+            details?.SenderDetails?.SourceAccountCurrency }} </span>
+        </span>
+
+        <span class="detail-group">
+          <span class="detail-label"> Converted amount </span>
+          <span class="detail-value"> {{ +details?.ExchangeDetails?.ConvertedAmount | number: '1.2-2' }} {{
+            details?.CustomerDetails?.AccountCurrency }} </span>
+        </span>
+      </span> -->
+
+      <span class="detail-group" *ngIf="details?.ExchangeDetails?.TicketNumber">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.SPECIAL-RATE' | translate }}
+        </span>
+        <span class="detail-value">
+          {{ 'CASH-MANAGEMENT.APPLIED' | translate }} -
+          {{ details?.ExchangeDetails?.TicketNumber }}
+        </span>
+      </span>
+
+      <span
+        class="detail-group"
+        *ngIf="
+          details?.CurrencyCode !== details?.CustomerDetails?.AccountCurrency
+        ">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.CONVERTED-AMOUNT' | translate }}
+        </span>
+        <span class="detail-value">
+          {{ +details?.ExchangeDetails?.ConvertedAmount | number: '1.2-2' }}
+          {{ details?.CustomerDetails?.AccountCurrency }}
+        </span>
+        <span class="detail-value">
+          1 {{ details?.CurrencyCode }} =
+          {{ details?.ExchangeDetails?.ExchangeRate }}
+          {{ details?.CustomerDetails?.AccountCurrency }}
+        </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.CHARGES' | translate }}
+        </span>
+        <span class="detail-value">
+          {{ +details?.FeeDetails?.TotalAmount | number: '1.2-2' }}
+          {{ details?.CustomerDetails?.AccountCurrency }}
+        </span>
+      </span>
+
+      <span class="detail-group" *ngIf="details?.DepositorData?.DepositorName">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.DEPOSITOR-NAME' | translate }}
+        </span>
+        <span class="detail-value">
+          {{ details?.DepositorData?.DepositorName }}
+        </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label"
+          >{{ 'CASH-MANAGEMENT.PAYMENT-REFERENCE' | translate }}
+        </span>
+        <span class="detail-value"> {{ details?.ReferenceId }} </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.TRANSACTION-ID' | translate }}</span
+        >
+        <span class="detail-value"> {{ details?.FinacleTransactionId }} </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.DATE-TIME' | translate }}</span
+        >
+        <span class="detail-value"> {{ localDateTime }} </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label">
+          {{
+            data.ticket.actionFlow.description === 'Deposit'
+              ? 'Deposited to'
+              : 'Withdrawn from'
+          }}
+        </span>
+        <span class="detail-value">
+          {{ maskAccount(details?.CustomerDetails?.AccountNumber) }}
+        </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.PAYMENT-REASON' | translate }}
+        </span>
+        <span class="detail-value"> {{ details?.PaymentReason }} </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.BRANCH-ID' | translate }}
+        </span>
+        <span class="detail-value"> {{ data?.ticket?.branchId }} </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.SERVED-BY' | translate }}</span
+        >
+        <span class="detail-value"> {{ details?.CreatedByFullName }} </span>
+      </span>
+
+      <span class="detail-group">
+        <span class="detail-label">
+          {{ 'CASH-MANAGEMENT.CUSTOMER-SIGNATURE' | translate }}
+        </span>
+        <span class="detail-signature"> </span>
+      </span>
+
+      <div class="footer-info">
+        <div class="detail-label">
+          {{ 'CASH-MANAGEMENT.DOWNLOAD-ONE-EQUITY' | translate }}
+        </div>
+        <a
+          class="footer-link"
+          href="https://equityonline.equitygroupholdings.com">
+          https://equityonline.equitygroupholdings.com
+        </a>
+        <div class="footer-details">
+          {{ 'COMMON.CALL' | translate }} +254 763 063000
+          {{ 'COMMON.OR' | translate }} {{ 'COMMON.EMAIL' | translate }} <br />
+          help&#64;equitygroup.com {{ 'COMMON.FOR-SUPPORT' | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row wrap_btm_btn">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <button class="next_btn" (click)="print()">
+        <span>{{ 'CPMMON.PRINT' | translate }}</span>
+      </button>
+    </div>
+  </div>
+</div>

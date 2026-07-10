@@ -1,0 +1,28 @@
+<mat-card-title>{{ title }}</mat-card-title>
+<div class="mt-10">
+  <ng-container *ngIf="documents?.length; else emptyState">
+    <div class="card-grid">
+      <mat-card
+        class="card"
+        appearance="outlined"
+        *ngFor="let obj of documents">
+        <div class="card-title">
+          <span class="subjectCls">{{ obj.filename }}</span>
+          <span class="sizeCls">{{ obj.size || 1024 | fileSize }}</span>
+        </div>
+        <div class="more-icon">
+          <button
+            mat-icon-button
+            (click)="documentReviewService.previewDocument(obj)">
+            <mat-icon svgIcon="ic-view"></mat-icon>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </ng-container>
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <p>No documents available.</p>
+    </div>
+  </ng-template>
+</div>

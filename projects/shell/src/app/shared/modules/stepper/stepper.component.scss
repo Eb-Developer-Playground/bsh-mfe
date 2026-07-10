@@ -1,0 +1,128 @@
+.container-fluid {
+  min-width: 80%;
+  margin: 0 auto;
+}
+
+.ms-2 {
+  margin-left: 2px;
+}
+
+.ms-5 {
+  margin-left: 5px;
+}
+
+.me-2 {
+  margin-right: 2rem;
+}
+
+.btn-toolbar {
+  display: flex;
+}
+
+.p-1m {
+  padding: 1rem;
+}
+
+.p-05m {
+  padding: 0.5rem;
+}
+
+.mb-10 {
+  margin: 10px;
+}
+
+.stepper-header {
+  border: 1px solid #a32a29;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+.stepper-body {
+  border-radius: 12px;
+}
+
+.progress {
+  background: transparent;
+}
+
+.progress-item {
+  width: 58.33px;
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+
+  &.active {
+    background-color: #a32a29;
+  }
+}
+
+h2 {
+  font-weight: 600;
+}
+
+.mat-mdc-outlined-button:not(
+    .mat-stroked-button.mat-button-disabled.mat-button-disabled
+  ) {
+  border: 1px solid #a32a29;
+}
+
+.mtr-1 {
+  margin-top: 1rem;
+}
+
+.mbr-1 {
+  margin-bottom: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.min-w-80 {
+  min-width: 80% !important;
+}
+
+.hide-md {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .progress-item {
+    width: 2rem;
+    height: 6px;
+  }
+
+  .hide-sm {
+    display: none !important;
+  }
+
+  .container-fluid {
+    min-width: 90%;
+    margin: 0 auto;
+  }
+
+  .hide-md {
+    display: block !important;
+  }
+
+  .mt-2 {
+    margin-top: 1.5rem;
+  }
+
+  .mb-2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .me-2 {
+    margin-right: 1rem;
+  }
+}
+
+button {
+  border-radius: 8px;
+  width: 100px;
+}

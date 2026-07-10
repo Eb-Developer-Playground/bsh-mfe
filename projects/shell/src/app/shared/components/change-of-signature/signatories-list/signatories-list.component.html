@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="signatories-container">
+    <div class="signatory-card" *ngFor="let signatory of signatories">
+      <div class="individual-card">
+        <div class="avatar-container">
+          <mat-icon [svgIcon]="'ic-person-white'"></mat-icon>
+        </div>
+        <div class="signatory-details">
+          <div class="mat-subheading-2 fw-600">
+            {{ signatory.signatoryName }}
+          </div>
+          <div class="signatory-id color-grey white-space">
+            {{ signatory.cif }} - {{ signatory.cifType }}
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+</div>

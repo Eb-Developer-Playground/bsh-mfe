@@ -1,0 +1,74 @@
+<!-- <app-dedupe-form
+*ngIf="subsidiary.countryCode !== 'CD'"
+  #dedupeFormComp
+  [readonly]="readonly"
+  [dedupeForm]="dedupeForm"
+  (onDedupeChecked)="onDedupeResults($event)">
+  <div *ngIf="showCustomerPresentOptions && customerId">
+    <mat-card
+      style="display: grid; place-items: center"
+      class="mt-10 mat-elevation-z0">
+      <div class="text-center" style="max-width: 550px; margin: 20px 0">
+        <img
+          src="../../../../../assets/icons/no-results-illustration.svg"
+          alt="No results" />
+        <p>
+          <strong
+            >We found a customer matching the selected criteria. CIF:
+            {{ customerId }}</strong
+          ><br />
+          <span class="text-muted"
+            >Please take another look at the dedupe details. Click
+            <strong>Try again</strong> to start a fresh or
+            <strong>View customer profile</strong> try again to proceed to the
+            Customer 360 profile view.</span
+          >
+        </p>
+        <div class="mt-20">
+          <button
+            mat-stroked-button
+            class="border-primary"
+            color="primary"
+            (click)="resetSearch()">
+            Try again
+          </button>
+        </div>
+      </div>
+    </mat-card>
+    <div class="d-flex mt-10">
+      <span class="spacer"></span>
+      <div role="group" aria-label="Next step">
+        <button
+          style="margin-left: 10px !important"
+          mat-raised-button
+          color="primary"
+          (click)="goToProfile()">
+          View customer profile
+        </button>
+      </div>
+    </div>
+  </div>
+</app-dedupe-form> -->
+
+<app-dedupe-form
+  #dedupeFormComp
+  [showVerify]="showVerify"
+  [readonly]="readonly"
+  [dedupeForm]="dedupeForm"
+  [fieldStates]="fieldStates"
+  (onDedupeChecked)="onDedupeResults($event)">
+  @if (dedupeCifResults?.length) {
+    <div class="mt-10">
+      <app-notifications
+        [title]="'NOTIFICATIONS.DEDUPE.EXISTING_TITLE'"
+        [text]="
+          phoneflag
+            ? 'NOTIFICATIONS.DEDUPE.EXISTING_WITH_PHONE'
+            : 'NOTIFICATIONS.DEDUPE.EXISTING_DESCRIPTION'
+        "></app-notifications>
+      <app-dedupe-results
+        [data]="dedupeCifResults"
+        [showActions]="showActions"></app-dedupe-results>
+    </div>
+  }
+</app-dedupe-form>

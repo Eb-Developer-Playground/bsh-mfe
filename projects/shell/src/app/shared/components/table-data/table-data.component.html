@@ -1,0 +1,198 @@
+<ng-container
+  *ngIf="data && data.items && data.items.length !== 0; else NORESULTS"
+  ><!-- aqui -->
+  <div class="d-flex flex-column ticket-table flex-fill">
+    <ng-container *ngTemplateOutlet="TABLEHEAD"></ng-container>
+    <div
+      class="table-container"
+      [ngClass]="{ 'table-container-head-hidden': hideTableHead }">
+      <div [ngClass]="{ 'report-width-overflow': reportWidth }">
+        <table
+          mat-table
+          matSort
+          [dataSource]="dataSource"
+          class="mat-elevation-0 full-width-table"
+          [ngClass]="{ 'report-width': reportWidth }"
+          multiTemplateDataRows>
+          <ng-container
+            *ngFor="let tableField of tableFields; let last = last"
+            [matColumnDef]="tableField.name">
+            <!-- sorted icon logic -->
+            <ng-container>
+              <!-- <th mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Sort by number"> {{ tableField.label }}  -->
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                [width]="
+                  tableField?.widthPercentage
+                    ? tableField?.widthPercentage + '%'
+                    : 'inherit'
+                ">
+                <ng-container [ngSwitch]="tableField.type">
+                  <div *ngSwitchCase="'CHECK'">
+                    <mat-checkbox
+                      (change)="$event ? masterToggle() : null"
+                      [checked]="isAllSelected()"
+                      [indeterminate]="anySelected()"></mat-checkbox>
+                  </div>
+                  <div *ngSwitchDefault>
+                    <span>{{ tableField.label }}</span>
+                    <app-table-fields-header-menu
+                      *ngIf="tableField.sorted"
+                      [tableField]="tableField"></app-table-fields-header-menu>
+                  </div>
+                </ng-container></th
+            ></ng-container>
+
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [class]="'_' + tableField.label"
+              [ngClass]="{ clickable: clickableRows }"
+              [attr.colspan]="
+                tableField.type === 'EXPANDEDDETAILS'
+                  ? (displayedColumns$ | async)?.length
+                  : 1
+              ">
+              <div
+                *ngIf="tableField.type === 'EXPANDEDDETAILS'"
+                [@detailExpand]="
+                  element === expandedElement ? 'expanded' : 'collapsed'
+                "
+                class="example-element-detail">
+                <app-table-fields-template
+                  class="w-100"
+                  [data]="element"
+                  [tableField]="tableField"></app-table-fields-template>
+              </div>
+
+              <div *ngIf="tableField.type !== 'EXPANDEDDETAILS'">
+                <app-table-fields-template
+                  (click)="handlerRowClic(element, tableField)"
+                  [data]="element"
+                  [tableField]="tableField"></app-table-fields-template>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns$ | async"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns$ | async"
+            [class.example-expanded-row]="expandedElement === row"></tr>
+
+          <ng-container *ngIf="showExpandedDetail">
+            <tr
+              mat-row
+              *matRowDef="let row; columns: ['expandedDetail']"
+              class="example-detail-row"></tr>
+          </ng-container>
+        </table>
+      </div>
+
+      <ng-container *ngIf="!hideFooterTotalItems">
+        <div
+          class="d-flex flex-row justify-content-end total-footer-items-container pr-16">
+          <p class="mat-body-2">
+            {{ dataSource.data.length }}
+            {{
+              (dataSource.data.length <= 1
+                ? 'PAGINATOR.ITEM'
+                : 'PAGINATOR.ITEMS'
+              ) | translate
+            }}
+          </p>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!hideFooterPaginator">
+        <mat-paginator
+          #paginator
+          [pageSizeOptions]="[5, 10, 20, 100]"
+          (page)="pageChanged($event)"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #TABLEHEAD>
+  <div
+    class="d-flex flex-row flex-fill table-head"
+    [ngClass]="{ 'table-head-hidden': hideTableHead }">
+    <div class="d-flex flex-column w-100" *ngIf="!hideTableHead">
+      <div class="d-flex flex-row w-100 pr-4 justify-content-end">
+        <div class="d-flex flex-row flex-fill">
+          <p class="mat-headline-6 m-0 pl-16 align-self-center">
+            {{ tableTitle | translate }}
+          </p>
+        </div>
+        <ng-container
+          *ngFor="let button of tableActionsButtons; let last = last">
+          <button mat-flat-button (click)="clickTableButtons(button)">
+            <div class="d-flex flex-row">
+              <mat-icon
+                class="mr-10 table-button-icon align-self-center"
+                [svgIcon]="button.icon"></mat-icon>
+              <p class="subheading-2 color-primary">
+                {{ button.label | translate }}
+              </p>
+            </div>
+          </button>
+        </ng-container>
+        <ng-container>
+          <button mat-flat-button (click)="clickTableButtons(filterButton)">
+            <div class="d-flex flex-row">
+              <mat-icon
+                class="mr-10 table-button-icon align-self-center"
+                svgIcon="ic-filter"></mat-icon>
+              <p class="subheading-2 color-primary">
+                {{ 'COMMON.FILTER' | translate }}
+              </p>
+            </div>
+          </button>
+        </ng-container>
+      </div>
+
+      <div class="w-100">
+        <app-table-filter
+          [toggleFilter]="toggleFilter"
+          [searchFields$]="searchFields$"></app-table-filter>
+      </div>
+    </div>
+  </div>
+
+  <div class="drop-down-container pl-16 pt-8" *ngIf="dropDownFilter?.options">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ dropDownFilter.label | translate }}</mat-label>
+
+      <mat-select (selectionChange)="onSelectionChange($event)">
+        <mat-option
+          [value]="option"
+          *ngFor="let option of dropDownFilter.options"
+          >{{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</ng-template>
+
+<ng-template #NORESULTS>
+  <div>
+    <ng-container *ngTemplateOutlet="TABLEHEAD"></ng-container>
+  </div>
+  <div class="d-flex justify-content-center flex-column">
+    <img
+      height="250"
+      src="../../../../assets/icons/icon-no-results.svg"
+      alt="no results found" />
+    <p class="d-flex justify-content-center">
+      {{ 'COMMON.NO_RESULT_FOUND' | translate }}
+    </p>
+    <p class="d-flex justify-content-center" *ngIf="data?.statusMessage">
+      {{ data?.statusMessage }}
+    </p>
+  </div>
+</ng-template>

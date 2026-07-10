@@ -1,0 +1,260 @@
+<mat-card-content class="card-content">
+  <div *ngIf="customerPhotos; else no_photos">
+    <div class="wrap_bd_right" *ngFor="let photo of customerPhotos">
+      <img
+        *ngIf="photo?.photo"
+        (click)="displayImageModal(photo?.photo)"
+        class="img_1"
+        [src]="photo?.photo"
+        alt="" />
+      <img
+        *ngIf="photo?.signaturePhoto"
+        (click)="displayImageModal(photo?.signaturePhoto)"
+        class="img_2"
+        [src]="photo?.signaturePhoto"
+        alt="" />
+    </div>
+  </div>
+  <ng-template #no_photos>
+    <div class="customer-images">
+      <mat-icon
+        class="customer-image"
+        svgIcon="ic-placeholder-potrait"
+        aria-hidden="false"
+        aria-label="placeholder-potrait"
+        style="width: 141px; height: 141px">
+      </mat-icon>
+      <mat-icon
+        class="customer-image"
+        svgIcon="ic-placeholder-darker"
+        aria-hidden="false"
+        aria-label="placeholder"
+        style="width: 141px; height: 100px"></mat-icon>
+    </div>
+  </ng-template>
+  <div class="customer-details-content ml-24" *ngIf="!isEntity">
+    <div class="customer-name-channels">
+      <div class="customer-channels-sub">
+        <mat-card-subtitle class="subtitle"
+          >{{ cifDetails?.firstName }} {{ cifDetails?.middleName }}
+          {{ cifDetails?.lastName }}
+        </mat-card-subtitle>
+      </div>
+    </div>
+    <div class="customer-details-container">
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.NATIONALITY' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ cifDetails?.nationality }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.COUNTRY-OF-RESIDENCE' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ cifDetails?.countryOfResidence || '***' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">{{ 'COMMON.ID-TYPE' | translate }}</p>
+        <p class="customer-detail-content">{{ idDetails?.docDesc }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.ID-NUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ idDetails?.referenceNum }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.FIRST-NAME' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ cifDetails?.firstName }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.LAST-NAME' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ cifDetails?.middleName }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">{{ 'COMMON.SURNAME' | translate }}</p>
+        <p class="customer-detail-content">{{ cifDetails?.lastName }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.DATE-OF-BIRTH' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ cifDetails?.birthDate | date: 'dd/MM/yyyy' }}
+        </p>
+      </div>
+      <div class="customer-detail" *ngIf="subsidiary?.countryCode !== 'CD'">
+        <p class="customer-detail-title">
+          {{ 'COMMON.ID-SERIAL-NUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ cifDetails?.idSerialNumber || '***' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{
+            (subsidiary.countryCode === 'KE'
+              ? 'COMMON.KRAPINNUMBER'
+              : 'COMMON.TAX-NUM')
+              | translate
+          }}
+        </p>
+        <p class="customer-detail-content">{{ cifDetails?.krapInNumber }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">{{ 'COMMON.GENDER' | translate }}</p>
+        <p class="customer-detail-content">{{ cifDetails?.gender }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.MARITAL-STATUS' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{
+            cifDetails?.maritalStatus ? (cifDetails?.maritalStatus | maritalStatus) : ''
+          }}
+        </p>
+      </div>
+      <ng-container *ngIf="accountInfo">
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ACCOUNTID' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ accountInfo?.accountId || accountNumber }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ACCOUNT-CURRENCY' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ accountInfo?.accountCurrency }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ACCOUNT-BALANCE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ accountInfo?.availableBalance | number: '1.2-2' }}
+            {{ accountInfo?.accountCurrency }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.MANDATE' | translate }}
+          </p>
+          <p class="customer-detail-content">{{ accountInfo?.mandate }}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="customer-details-content ml-24" *ngIf="isEntity">
+    <div class="customer-name-channels">
+      <div class="customer-channels-sub">
+        <mat-card-subtitle class="subtitle"
+          >{{ cifDetails?.companyName }}
+        </mat-card-subtitle>
+      </div>
+    </div>
+    <div class="customer-details-container">
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.CUSTOMER-ID' | translate }}
+        </p>
+        <p class="customer-detail-content">{{ cifDetails?.customerId }}</p>
+      </div>
+
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.REGISTRATION-DATE' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ cifDetails?.registrationDate | date: 'dd/MM/yyyy' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.REGISTRATION-NUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ cifDetails?.registrationNumber || '***' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.KRAPINNUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ cifDetails?.krapInNumber || '***' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.COUNTRY-OF-RESIDENCE' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ cifDetails?.countryOfResidence || '***' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.PEP-DESCRIPTION' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ cifDetails?.pepDesc || '***' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.HIGH-RISK-CATEGORY' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ cifDetails?.highRiskCategory || '***' }}
+        </p>
+      </div>
+      <ng-container *ngIf="accountInfo">
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ACCOUNT-ID' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ accountInfo?.accountId || accountNumber }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ACCOUNT-CURRECY' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ accountInfo?.accountCurrency }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ACCOUNT-BALANCE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ accountInfo?.availableBalance | number: '1.2-2' }}
+            {{ accountInfo?.accountCurrency }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.MANDATE' | translate }}
+          </p>
+          <p class="customer-detail-content">{{ accountInfo?.mandate }}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</mat-card-content>

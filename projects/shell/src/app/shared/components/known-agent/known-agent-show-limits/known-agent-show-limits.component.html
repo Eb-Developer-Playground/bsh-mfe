@@ -1,0 +1,20 @@
+<div class="mb-16 w-100">
+  <mat-accordion mat-dialog-content color="primary" class="w-100 mb-16">
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <p class="mat-headline-6 m-0">
+            {{ 'KNOWN-AGENT.LIMITS.TITLE' | translate }}
+          </p>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div fxLayout="column" fxLayoutAlign="center start " class="pt-28">
+        <p class="mat-body-2 text-muted m-0">
+          {{ 'KNOWN-AGENT.LIMITS.CASH-LIMITS' | translate }}
+        </p>
+        <p class="mat-subtitle-1">{{ agentLimit | number: '1.2-2' }} KES</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

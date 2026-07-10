@@ -1,0 +1,25 @@
+.w-100 {
+  width: 100%;
+}
+::ng-deep .custom-option > .mat-mdc-option-text {
+  display: flex !important;
+  align-content: center !important;
+}
+
+.h-auto {
+  height: auto !important;
+}
+.border-bottom {
+  border-bottom: 1px solid rgba(146, 148, 151, 0.2);
+  display: inline-block;
+}
+.white-space {
+  white-space: normal;
+  line-height: 2em;
+}
+.color-grey {
+  color: #929497 !important;
+}
+.mat-mdc-form-field {
+  line-height: inherit;
+}

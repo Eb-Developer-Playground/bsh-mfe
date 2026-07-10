@@ -1,0 +1,164 @@
+<mat-card-header
+  class="body-header"
+  *ngIf="
+    showHeading || (!showHeading && activeRates && activeRates.length > 0)
+  ">
+  <h3 class="body-title">
+    {{ 'SPECIAL-FOREX-RATES.ACTIVE-SPECIAL-RATES' | translate }}
+  </h3>
+  <p class="body-text">
+    {{ 'SPECIAL-FOREX-RATES.ACTIVE-SPECIAL-RATES-TEXT' | translate }}
+  </p>
+</mat-card-header>
+<mat-divider></mat-divider>
+<mat-card-content class="body-content" *ngIf="!activeRates?.length">
+  <p class="bolden">
+    {{ 'SPECIAL-FOREX-RATES.NO-ACTIVE-SPECIAL-RATES' | translate }}
+  </p>
+  <p class="body-text">
+    {{ 'SPECIAL-FOREX-RATES.NO-RATES-ERROR' | translate }}
+  </p>
+</mat-card-content>
+<mat-card-content
+  class="body-content"
+  *ngIf="activeRates && activeRates.length > 0">
+  <div class="special-rate-wrapper">
+    <div class="special-rate-card" *ngFor="let specialRate of activeRates">
+      <div class="special-rate-header">
+        <h2 class="special-rate-title">
+          1
+          <span *ngIf="specialRate.amountCurrency === 'USD'">{{
+            'SPECIAL-FOREX-RATES.UNITED-STATES-DOLLAR' | translate
+          }}</span>
+          <span *ngIf="specialRate.amountCurrency === 'GBP'">{{
+            'SPECIAL-FOREX-RATES.GREAT-BRITAIN-POUND' | translate
+          }}</span>
+          <span *ngIf="specialRate.amountCurrency === 'KES'">{{
+            'SPECIAL-FOREX-RATES.KENYAN-SHILLING' | translate
+          }}</span>
+          <span *ngIf="specialRate.amountCurrency === 'EUR'">{{
+            'SPECIAL-FOREX-RATES.EURO' | translate
+          }}</span>
+          {{ 'SPECIAL-FOREX-RATES.EQUALS' | translate }}
+        </h2>
+        <p class="special-rate-amount">
+          {{ specialRate.specialRate }}
+          <span *ngIf="specialRate.destinationCurrency === 'KES'">{{
+            'SPECIAL-FOREX-RATES.KENYAN-SHILLING' | translate
+          }}</span>
+          <span *ngIf="specialRate.destinationCurrency === 'USD'">{{
+            'SPECIAL-FOREX-RATES.UNITED-STATES-DOLLAR' | translate
+          }}</span>
+          <span *ngIf="specialRate.destinationCurrency === 'GBP'">{{
+            'SPECIAL-FOREX-RATES.UNITED-STATES-DOLLAR' | translate
+          }}</span>
+          <span *ngIf="specialRate.destinationCurrency === 'EUR'">{{
+            'SPECIAL-FOREX-RATES.EURO' | translate
+          }}</span>
+        </p>
+      </div>
+      <div class="exchange-info">
+        <div class="rate-flag">
+          <mat-icon
+            svgIcon="ic-flag-usa"
+            class="rate-icon"
+            *ngIf="specialRate.amountCurrency === 'USD'"></mat-icon>
+
+          <mat-icon
+            svgIcon="ic-flag-uk"
+            class="rate-icon"
+            *ngIf="specialRate.amountCurrency === 'GBP'"></mat-icon>
+
+          <mat-icon
+            svgIcon="ic-flag-ke"
+            class="rate-icon"
+            *ngIf="specialRate.amountCurrency === 'KES'"></mat-icon>
+
+          <mat-icon
+            svgIcon="ic-flag-euro"
+            class="rate-icon"
+            *ngIf="specialRate.amountCurrency === 'EUR'"></mat-icon>
+          <div class="rate-currency-div">
+            <span *ngIf="specialRate.amountCurrency === 'USD'">{{
+              'SPECIAL-FOREX-RATES.USA' | translate
+            }}</span>
+            <span *ngIf="specialRate.amountCurrency === 'GBP'">{{
+              'SPECIAL-FOREX-RATES.GREAT-BRITAIN' | translate
+            }}</span>
+            <span *ngIf="specialRate.amountCurrency === 'KES'">{{
+              'SPECIAL-FOREX-RATES.KENYA' | translate
+            }}</span>
+            <span *ngIf="specialRate.amountCurrency === 'EUR'">{{
+              'SPECIAL-FOREX-RATES.EUROPE' | translate
+            }}</span>
+            <p class="rate-currency">
+              <span *ngIf="specialRate.amountCurrency === 'USD'">{{
+                'SPECIAL-FOREX-RATES.US-DOLLAR' | translate
+              }}</span>
+              <span *ngIf="specialRate.amountCurrency === 'GBP'">{{
+                'SPECIAL-FOREX-RATES.GREAT-BRITAIN-POUND' | translate
+              }}</span>
+              <span *ngIf="specialRate.amountCurrency === 'KES'">{{
+                'SPECIAL-FOREX-RATES.KENYAN-SHILLING' | translate
+              }}</span>
+              <span *ngIf="specialRate.amountCurrency === 'EUR'">{{
+                'SPECIAL-FOREX-RATES.EURO' | translate
+              }}</span>
+            </p>
+          </div>
+        </div>
+
+        <mat-icon svgIcon="ic-exchange"></mat-icon>
+        <div class="rate-flag">
+          <mat-icon
+            svgIcon="ic-flag-usa"
+            class="rate-icon"
+            *ngIf="specialRate.destinationCurrency === 'USD'"></mat-icon>
+
+          <mat-icon
+            svgIcon="ic-flag-uk"
+            class="rate-icon"
+            *ngIf="specialRate.destinationCurrency === 'GBP'"></mat-icon>
+
+          <mat-icon
+            svgIcon="ic-flag-ke"
+            class="rate-icon"
+            *ngIf="specialRate.destinationCurrency === 'KES'"></mat-icon>
+
+          <mat-icon
+            svgIcon="ic-flag-euro"
+            class="rate-icon"
+            *ngIf="specialRate.destinationCurrency === 'EUR'"></mat-icon>
+          <div class="rate-currency-div">
+            <span *ngIf="specialRate.destinationCurrency === 'USD'">{{
+              'SPECIAL-FOREX-RATES.USA' | translate
+            }}</span>
+            <span *ngIf="specialRate.destinationCurrency === 'GBP'">{{
+              'SPECIAL-FOREX-RATES.GREAT-BRITAIN' | translate
+            }}</span>
+            <span *ngIf="specialRate.destinationCurrency === 'KES'">{{
+              'SPECIAL-FOREX-RATES.KENYA' | translate
+            }}</span>
+            <span *ngIf="specialRate.destinationCurrency === 'EUR'">{{
+              'SPECIAL-FOREX-RATES.EUROPE' | translate
+            }}</span>
+            <p class="rate-currency">
+              <span *ngIf="specialRate.destinationCurrency === 'USD'">{{
+                'SPECIAL-FOREX-RATES.US-DOLLAR' | translate
+              }}</span>
+              <span *ngIf="specialRate.destinationCurrency === 'GBP'">{{
+                'SPECIAL-FOREX-RATES.GREAT-BRITAIN-POUND' | translate
+              }}</span>
+              <span *ngIf="specialRate.destinationCurrency === 'KES'">{{
+                'SPECIAL-FOREX-RATES.KENYAN-SHILLING' | translate
+              }}</span>
+              <span *ngIf="specialRate.destinationCurrency === 'EUR'">{{
+                'SPECIAL-FOREX-RATES.EURO' | translate
+              }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card-content>

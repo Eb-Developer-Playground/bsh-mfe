@@ -1,0 +1,144 @@
+<div class="dialog-header" mat-dialog-title>
+  <div class="sub-header">
+    <h2 mat-dialog-title style="margin-bottom: 0px">
+      {{ 'BIOMETRICS.BIOMETRIC-VERIFICATION' | translate }}
+    </h2>
+    <mat-icon color="primary" class="cursor-pointer" mat-dialog-close
+      >close</mat-icon
+    >
+  </div>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="w-100">
+    <div class="text-muted mb-1">
+      <h4>
+        {{ 'BIOMETRICS.SIGNATORY-ABSENT-INSTRUCTION' | translate }}<br />{{
+          'BIOMETRICS.OVERRIDE-REQUEST' | translate
+        }}
+      </h4>
+    </div>
+    <div class="d-flex align-content-center">
+      <div class="rounded-circle">
+        {{ accountInfo?.initials }}
+      </div>
+      <div style="display: grid">
+        <div class="align-self-center">
+          {{ accountInfo?.name }}
+          <br />
+          <h4 class="text-muted">
+            {{ 'BIOMETRICS.CUSTOMER-NAME' | translate }}
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="gridset mb-1">
+      <div>
+        <span class="text-muted">{{
+          'COMMON.ACCOUNT-NUMBER' | translate
+        }}</span>
+        <h4>{{ accountInfo.accountNumber }}</h4>
+      </div>
+      <div>
+        <span class="text-muted">{{ 'COMMON.ACCOUNT-TYPE' | translate }}</span>
+        <h4>{{ accountInfo.schemeType }}</h4>
+      </div>
+      <div>
+        <span class="text-muted">{{
+          'COMMON.ACCOUNT-MANDATE' | translate
+        }}</span>
+        <h4>
+          {{
+            'FORMS.ACCOUNT_DETAILS.OPTIONS.MANDATES.' + accountMandate
+              | translate
+          }}
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div class="mb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <div class="text-muted mb-1">
+    <h4>{{ 'BIOMETRICS.PLACE-FINGER' | translate }}</h4>
+  </div>
+  <div class="d-flex pb-1" style="justify-content: space-between">
+    <div class="w-45">
+      <div class="scanner" [ngClass]="{ 'activate-success': allCaptured }">
+        <img
+          #RIGHT_INDEX_1
+          [src]="defaultImage"
+          alt="finger-print"
+          class="fingerprint" />
+        <!-- <h4 mat-dialog-title >Biometric data missing</h4>
+                <h4 class="text-muted">This signatory has not enrolled on biometric authentication.</h4>
+                <h4 class="text-muted">Select the present signatory and start bio-verification.</h4>
+                <button mat-button mat-flat-button color="primary" (click)="enrollBio()">
+                    Enroll Bio
+                </button> -->
+      </div>
+    </div>
+    <div class="scroll w-45">
+      <div
+        class="verify-box mb-1"
+        [ngClass]="{
+          'activate-success': signatory.captured,
+          selected: signatory.active
+        }"
+        *ngFor="let signatory of Signatories"
+        (click)="selectedUser(signatory)">
+        <div class="d-flex align-content-center">
+          <div class="rounded-circle">{{ getAvatarName(signatory.name) }}</div>
+          <div class="align-self-center">
+            {{ signatory.name }}
+            <br />
+            <h4 class="text-muted" style="margin-bottom: 4px">
+              {{ 'BIOMETRICS.BIO-REQUIRED' | translate }}
+            </h4>
+          </div>
+        </div>
+        <div style="padding: 8px">
+          <!-- <mat-icon svgIcon="ic-bio-not-enrolled" aria-hidden="false" aria-label="Bio"
+                    class="bio-image">
+                    </mat-icon> -->
+          <div class="bio-status-warning" *ngIf="!signatory.captured">
+            <h5 class="mat-subtitle-2 fw-200 badge-warning">
+              <span>
+                <mat-icon
+                  svgIcon="ic-unverified-caution"
+                  class="tick-icon"></mat-icon> </span
+              >{{ 'BIOMETRICS.UNVERIFIED' | translate }}
+            </h5>
+          </div>
+          <div class="bio-status-success" *ngIf="signatory.captured">
+            <h5 class="mat-subtitle-2 fw-200 badge-success">
+              <span>
+                <mat-icon
+                  svgIcon="ic-verified-tick"
+                  class="tick-icon"></mat-icon> </span
+              >{{ 'BIOMETRICS.VERIFIED' | translate }}
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions class="dialog-actions">
+  <button
+    *ngIf="!data.inProcess"
+    mat-button
+    mat-dialog-close
+    color="primary"
+    (click)="skipBio()">
+    &nbsp;{{ 'COMMON.SKIP-BIO' | translate }}&nbsp;
+  </button>
+  <button
+    mat-button
+    mat-flat-button
+    color="primary"
+    (click)="continue()"
+    [disabled]="!allCaptured || isSubmitting">
+    <mat-spinner *ngIf="isSubmitting" [diameter]="18" style="display:inline-block;vertical-align:middle;margin-right:6px;"></mat-spinner>
+    {{ 'COMMON.CONTINUE' | translate }}
+  </button>
+</div>

@@ -1,0 +1,11 @@
+<div>
+  <p *ngIf="customerStatus === 'Active'" class="active status-icon">
+    {{ 'CUSTOMER.CUSTOMER-PROFILE.ACTIVE' | translate }}
+  </p>
+  <p *ngIf="customerStatus === 'InActive'" class="blocked status-icon">
+    {{ 'CUSTOMER.CUSTOMER-PROFILE.BLOCKED' | translate }}
+  </p>
+  <p *ngIf="!customerStatus" class="inactive status-icon">
+    {{ 'CUSTOMER.CUSTOMER-PROFILE.NOT-FOUND' | translate }}
+  </p>
+</div>

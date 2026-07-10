@@ -1,0 +1,95 @@
+<mat-accordion mat-dialog-content color="primary" class="w-100 mb-16">
+  <mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <p class="mat-headline-6 m-0">
+          {{ 'KNOWN-AGENT.CONTACT-DETAILS' | translate }}
+        </p>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div fxLayout="row" fxFlex fxLayoutAlign="start">
+      <div fxLayout="column" fxFlex fxLayoutAlign="start">
+        <div fxLayout="row wrap">
+          <div fxFlex="20" *ngIf="knownAgentDetails?.FirstName">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.NAME' | translate }}
+            </p>
+            <p class="mat-subtitle-1">
+              {{ knownAgentDetails?.FirstName }}
+              {{ knownAgentDetails?.LastName }}
+            </p>
+          </div>
+          <div fxFlex="20">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.PRIMARY-MOBILE-NUMBER' | translate }}
+            </p>
+            <p
+              *ngIf="knownAgentDetails?.PrimaryPhoneNumber?.Code"
+              class="mat-subtitle-1">
+              {{ knownAgentDetails?.PrimaryPhoneNumber?.Code }}
+              {{ knownAgentDetails?.PrimaryPhoneNumber?.Number }}
+            </p>
+          </div>
+          <div
+            fxFlex="20"
+            *ngIf="knownAgentDetails?.SecondaryPhoneNumber?.Code">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.SECONDARY-MOBILE-NUMBER' | translate }}
+            </p>
+            <p class="mat-subtitle-1">
+              {{ knownAgentDetails?.SecondaryPhoneNumber?.Code }}
+              {{ knownAgentDetails?.SecondaryPhoneNumber?.Number }}
+            </p>
+          </div>
+          <div fxFlex="20">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.PRIMARY-EMAIL-ADDRESS' | translate }}
+            </p>
+            <p *ngIf="knownAgentDetails?.PrimaryEmail" class="mat-subtitle-1">
+              {{ knownAgentDetails?.PrimaryEmail }}
+            </p>
+          </div>
+          <div fxFlex="20" *ngIf="knownAgentDetails?.SecondaryEmail">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.SECONDARY-EMAIL-ADDRESS' | translate }}
+            </p>
+            <p class="mat-subtitle-1">
+              {{ knownAgentDetails?.SecondaryEmail }}
+            </p>
+          </div>
+          <div fxFlex="20" *ngIf="knownAgentDetails?.RiskLevel">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.SECONDARY-HIGH-LEVEL' | translate }}
+            </p>
+            <p class="mat-subtitle-1">{{ knownAgentDetails?.RiskLevel }}</p>
+          </div>
+          <div fxFlex="20" *ngIf="knownAgentDetails?.RiskType">
+            <p class="mat-body-2 mb-1 text-muted">
+              {{ 'KNOWN-AGENT.HIGH-RISK-TYPE' | translate }}
+            </p>
+            <p class="mat-subtitle-1">{{ knownAgentDetails?.RiskType }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="start start" fxFill class="pt-24">
+
+        <div fxLayout="column" fxLayoutAlign="center start " [fxFlex]="regularDistribution" >
+            <p class="mat-body-1 mb-1 text-muted">{{ 'KNOWN-AGENT.FIRST-NAME' | translate }}</p>
+            <p class="mat-subheading-2">{{ knownAgentDetails?.firstName }}</p>
+        </div>
+        </div> -->
+  </mat-expansion-panel>
+</mat-accordion>
+
+<!-- <mat-card *ngIf="knownAgentDetails">
+    <div class="pl-24">
+        <app-header title="Agent Detailsdddd"></app-header>
+    </div>
+    <mat-card-content class="pl-24">
+
+    </mat-card-content>
+
+</mat-card> -->

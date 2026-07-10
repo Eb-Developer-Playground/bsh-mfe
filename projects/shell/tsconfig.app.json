@@ -3,7 +3,19 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": []
+    "types": [],
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@env/*": ["src/environments/*"],
+      "@assets/*": ["src/assets/*"],
+      "src/app/*": ["src/app/*"],
+      "@angular/flex-layout": ["src/app/shared/flex-layout-stubs/index.ts"],
+      "@angular/flex-layout/flex": ["src/app/shared/flex-layout-stubs/flex.ts"],
+      "@angular/flex-layout/extended": ["src/app/shared/flex-layout-stubs/extended.ts"]
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.spec.ts"]

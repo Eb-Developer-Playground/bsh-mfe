@@ -1,0 +1,46 @@
+<div class="group">
+  <!--    <div [formGroup]="nationalityForm" class="fieldset">-->
+  <!--        <app-nationality-control-->
+  <!--            formControlName="nationality">-->
+  <!--        </app-nationality-control>-->
+  <!--        <app-countries-control-->
+  <!--            formControlName="countryOfResidence">-->
+  <!--        </app-countries-control>-->
+  <!--    </div>-->
+  <div
+    class="document"
+    *ngFor="let f of documentsFormArray.controls; index as ind">
+    <app-id-document
+      [index]="ind"
+      [selectedTypes]="selectedIdTypes"
+      [selectableIdTypes]="selectableIdTypes"
+      [documentForm]="getIdDocumentForm(ind)"
+      [fieldStates]="getIdDocumentState(f.get('idType')?.value)"
+      (preferredToggled)="preferredIdToggled($event, ind)">
+    </app-id-document>
+    <button
+      *ngIf="!f.get('isMandatory')?.value"
+      [disabled]="ind === 0 || isDocumentReadOnly(f.get('idType')?.value)"
+      (click)="removeIdDocument(ind)"
+      class="color-primary"
+      id="delete-btn"
+      mat-flat-button>
+      <strong>Remove</strong>
+    </button>
+  </div>
+  <div class="add-group">
+    <button
+      mat-button
+      *ngIf="enableMultiple"
+      (click)="addIdDocument()"
+      [disabled]="
+        selectableIdTypes
+          ? documentsFormArray.length >= selectableIdTypes.length
+          : true
+      "
+      color="primary">
+      <span style="font-size: 1.5em; margin-right: 5px">&plus;</span>
+      <span class="add-another-text">Add another</span>
+    </button>
+  </div>
+</div>

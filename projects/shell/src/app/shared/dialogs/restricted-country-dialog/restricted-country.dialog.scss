@@ -1,0 +1,32 @@
+.fill {
+    color: #f38707;
+    margin-right: 0.5rem;
+}
+
+.header {
+    mat-icon {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .material-icons {
+        font-size: 18px !important;
+    }
+}
+
+.toast {
+    background-color: rgba(243, 135, 7, 0.04);
+    padding: 0.75em;
+    font-weight: 700;
+    vertical-align: baseline;
+    border-radius: 3em;
+    margin-bottom: 0.5rem;
+
+    span {
+        vertical-align: middle;
+    }
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}

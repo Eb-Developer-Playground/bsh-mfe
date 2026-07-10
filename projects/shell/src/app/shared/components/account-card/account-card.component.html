@@ -1,0 +1,35 @@
+<div
+  [class.active]="isActive"
+  class="card-container p-16 cursor-pointer flex"
+  [title]="account.accountName">
+  <div *ngIf="!isActive" class="overlay"></div>
+  <div class="meta-data d-flex justify-content-between">
+    <span *ngIf="account.accountStatus === 'A'" class="active py-4 px-8">
+      <div class="wrap_icon">
+        <mat-icon svgIcon="ic-green-tick"> </mat-icon>
+      </div>
+      {{ 'COMMON.ACTIVE' | translate }}
+    </span>
+    <span *ngIf="account.accountStatus === 'D'" class="dormant py-4 px-8">
+      {{ 'COMMON.DORMANT' | translate }}
+    </span>
+    <span *ngIf="isMainAccount" class="main py-4 px-8">{{
+      'CARDS.MAIN' | translate
+    }}</span>
+  </div>
+
+  <div class="name mt-4">
+    {{ account.accountName }}
+  </div>
+
+  <div class="account">
+    <div class="wrap_account">
+      <span>{{ account.accountNumber }}</span> •<span>{{
+        account.schemeType
+      }}</span>
+    </div>
+    <div class="wrap_currency">
+      <span>{{ account.accountCurrency }}</span>
+    </div>
+  </div>
+</div>

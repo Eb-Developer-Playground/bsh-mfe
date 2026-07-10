@@ -1,0 +1,573 @@
+<!-- DRC dedupe Form -->
+<form
+  *ngIf="subsidiary.countryCode === 'CD' && customerAgeGroup === 'Adult'"
+  [formGroup]="dedupeForm"
+  class="fieldset">
+  @if (subsidiary.countryCode === 'CD') {
+    <mat-form-field
+      appearance="fill"
+      [ngClass]="
+        readonly || fieldStates?.firstName?.readonly ? 'pointer-none' : ''
+      ">
+      <mat-label>{{
+        'FORMS.PERSONAL_DETAILS.LABELS.FIRST_NAME' | translate
+      }}</mat-label>
+      <input
+        type="text"
+        formControlName="firstName"
+        matInput
+        personalNameInput
+        oninput="this.value = this.value.toUpperCase()" />
+      <mat-error *ngIf="dedupeForm.get('firstName')?.errors?.required">
+        {{ 'FORMS.PERSONAL_DETAILS.LABELS.FIRST_NAME' | translate }}
+        {{ 'COMMON.IS_REQUIRED' | translate }}
+      </mat-error>
+      <mat-error
+        *ngIf="
+          !dedupeForm.get('firstName')?.errors?.required &&
+          dedupeForm.get('firstName')?.errors?.invalidPersonalName
+        ">
+        {{ 'STATIC_DATA.NAME_ERROR' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="fill"
+      [ngClass]="
+        readonly || fieldStates?.middleName?.readonly ? 'pointer-none' : ''
+      ">
+      <mat-label>{{
+        'FORMS.PERSONAL_DETAILS.LABELS.MIDDLE_NAME' | translate
+      }}</mat-label>
+      <input
+        type="text"
+        formControlName="middleName"
+        matInput
+        personalNameInput
+        oninput="this.value = this.value.toUpperCase()" />
+      <mat-error
+        *ngIf="dedupeForm.get('middleName')?.errors?.invalidPersonalName">
+        {{ 'STATIC_DATA.NAME_ERROR' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="fill"
+      [ngClass]="
+        readonly || fieldStates?.lastName?.readonly ? 'pointer-none' : ''
+      ">
+      <mat-label>{{
+        'FORMS.PERSONAL_DETAILS.LABELS.LAST_NAME' | translate
+      }}</mat-label>
+      <input
+        type="text"
+        formControlName="lastName"
+        matInput
+        personalNameInput
+        oninput="this.value = this.value.toUpperCase()" />
+      <mat-error *ngIf="dedupeForm.get('lastName')?.errors?.required">
+        {{ 'FORMS.PERSONAL_DETAILS.LABELS.LAST_NAME' | translate }}
+        {{ 'COMMON.IS_REQUIRED' | translate }}
+      </mat-error>
+      <mat-error
+        *ngIf="
+          !dedupeForm.get('lastName')?.errors?.required &&
+          dedupeForm.get('lastName')?.errors?.invalidPersonalName
+        ">
+        {{ 'STATIC_DATA.NAME_ERROR' | translate }}
+      </mat-error>
+    </mat-form-field>
+  }
+  <autocomplete-field
+    [disabled]="readonly || fieldStates?.nationality?.readonly"
+    [label]="'FORMS.DEDUPE.LABELS.NATIONALITY' | translate"
+    [controlKey]="'nationality'"
+    [dataSource]="nationalities$">
+    @if (dedupeForm.get('nationality')?.hasError('required')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.NATIONALITY' | translate }}
+        {{ 'COMMON.IS_REQUIRED' | translate }}.
+      </mat-error>
+    }
+  </autocomplete-field>
+
+  <autocomplete-field
+    [disabled]="readonly || fieldStates?.countryOfResidence?.readonly"
+    [label]="'FORMS.DEDUPE.LABELS.COUNTRY_OF_RESIDENCE' | translate"
+    [controlKey]="'countryOfResidence'"
+    [dataSource]="countries$">
+    @if (dedupeForm.get('countryOfResidence')?.hasError('required')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.COUNTRY_OF_RESIDENCE' | translate }}
+        {{ 'COMMON.IS_REQUIRED' | translate }}.
+      </mat-error>
+    }
+  </autocomplete-field>
+
+  <mat-form-field
+    [ngClass]="readonly || fieldStates?.idType?.readonly ? 'pointer-none' : ''"
+    appearance="fill">
+    <mat-label>{{
+      'FORMS.DEDUPE.LABELS.IDENTIFICATION_TYPE' | translate
+    }}</mat-label>
+    <mat-select formControlName="idType" #typeControl>
+      @for (idType of selectableIdTypes; track $index) {
+        <mat-option [value]="idType.value">
+          {{ idType.name | translate }}
+        </mat-option>
+      }
+    </mat-select>
+    @if (dedupeForm.get('idType')?.hasError('required')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.IDENTIFICATION_TYPE' | translate }}
+        {{ 'COMMON.IS_REQUIRED' | translate }}.
+      </mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field
+    appearance="fill"
+    [floatLabel]="valuesConf?.inputMask ? 'always' : 'auto'">
+    <mat-label>{{
+      'FORMS.DEDUPE.LABELS.DOCUMENT_NUMBER' | translate
+    }}</mat-label>
+    @if (valuesConf?.inputMask) {
+      <input
+        matInput
+        required
+        numberFormat
+        mask="{{ valuesConf?.inputMask }}"
+        [dropSpecialCharacters]="!!valuesConf?.dropMaskChars"
+        oninput="this.value = this.value.toUpperCase().trim()"
+        [readonly]="readonly || fieldStates?.refNum?.readonly"
+        [idType]="typeControl.value"
+        [countryCode]="subsidiary.countryCode"
+        formControlName="refNum" />
+    } @else {
+      <input
+        matInput
+        required
+        numberFormat
+        oninput="this.value = this.value.toUpperCase().trim()"
+        [readonly]="readonly || fieldStates?.refNum?.readonly"
+        [idType]="typeControl.value"
+        [countryCode]="subsidiary.countryCode"
+        formControlName="refNum" />
+    }
+    @if (dedupeForm.get('refNum')?.pristine && valuesConf?.hint) {
+      <mat-hint
+        >{{ 'COMMON.HINT' | translate }}: {{ valuesConf.hint }}</mat-hint
+      >
+    }
+    @if (dedupeForm.get('refNum')?.hasError('charactersError')) {
+      <mat-error>
+        <strong>{{ 'COMMON.INVALID' | translate }}</strong>
+        characters.
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('required')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.DOCUMENT_NUMBER' | translate }}
+        {{ 'COMMON.IS' | translate }}
+        <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        .
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('pattern')) {
+      <mat-error>
+        <strong>{{ 'COMMON.INVALID' | translate }}</strong>
+        {{ 'COMMON.DOCUMENTS.NUMBER_FORMAT' | translate }}
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('maxlength')) {
+      <mat-error>
+        {{ 'COMMON.DOCUMENTS.MAXIMUM_LENGTH' | translate }}
+        {{ valuesConf.maxLength }}.
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('minlength')) {
+      <mat-error>
+        {{ 'COMMON.DOCUMENTS.MINIMUM_LENGTH' | translate }}
+        {{ valuesConf.minLength }}.
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('invalidNumber')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.DOCUMENT_NUMBER' | translate }}
+        {{ 'COMMON.IS' | translate }}
+        <strong>{{ 'COMMON.INVALID' | translate }}</strong>
+        .
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('nationalIdInvalid')) {
+      <mat-error>
+        {{ 'IDENTIFICATION_DETAILS.ID_LENGTH' | translate }}
+        {{ 'COMMON.IS' | translate }}
+        <strong>{{ 'COMMON.INCOMPLETE' | translate | lowercase }}</strong>
+        .
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('invalidFormat')) {
+      <mat-error>
+        {{ 'IDENTIFICATION_DETAILS.ID_FORMAT' | translate }}
+        {{ 'COMMON.IS' | translate }}
+        <strong>{{ 'COMMON.INVALID' | translate }}</strong>
+        .
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('invalidLicenseNumber')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.LICENSE_NUMBER' | translate }}
+        {{ 'COMMON.IS_INVALID' | translate }}
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('invalidLicense')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.LICENSE_NUMBER' | translate }}
+        {{ 'COMMON.IS_INVALID' | translate }}.
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('invalidPassportNumber')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.PASSPORT_NUMBER' | translate }}
+        {{ 'COMMON.IS_INVALID' | translate }}.
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('invalidPassport')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.PASSPORT' | translate }}
+        {{ 'COMMON.IS_INVALID' | translate }}.
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('invalidRefugeeIDDigits')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.REFUGEE_ID_NUMBER' | translate }}
+        {{ 'COMMON.IS' | translate }}
+        <strong>{{ 'COMMON.INVALID' | translate }}</strong>
+        .
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('invalidRefugeeID')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.REFUGEE_ID' | translate }}
+        {{ 'COMMON.IS' | translate }}
+        <strong>{{ 'COMMON.INVALID' | translate }}</strong>
+        .
+      </mat-error>
+    }
+    @if (dedupeForm.get('refNum')?.hasError('invalidUNHCRProof')) {
+      <mat-error>
+        {{ 'FORMS.DEDUPE.LABELS.UNHCR_PROOF' | translate }}
+        {{ 'COMMON.IS' | translate }}
+        <strong>{{ 'COMMON.INVALID' | translate }}</strong>
+        .
+      </mat-error>
+    }
+  </mat-form-field>
+  <!-- @if (subsidiary.countryCode === "TZ" && customerAgeGroup === "Adult") {
+      <app-phone-number
+          [required]="false"
+          [label]="'FORMS.CONTACT_DETAILS.LABELS.PHONE_NUMBER' | translate"
+          [form]="phoneNumberForm"></app-phone-number>
+      <mat-form-field
+          appearance="fill"
+          [ngClass]="readonly || fieldStates?.emailAddress?.readonly ? 'pointer-none' : ''">
+          <mat-label>{{ "FORMS.CONTACT_DETAILS.LABELS.EMAIL_ADDRESS" | translate }}</mat-label>
+          <input
+              matInput
+              required
+              oninput="this.value = this.value.toUpperCase()"
+              formControlName="emailAddress" />
+          @if (dedupeForm.get("emailAddress")?.hasError("required")) {
+              <mat-error>
+                  {{ "FORMS.CONTACT_DETAILS.LABELS.EMAIL_ADDRESS" | translate }}&nbsp;
+                  {{ "COMMON.IS_REQUIRED" | translate }}
+              </mat-error>
+          }
+      </mat-form-field>
+  } -->
+
+  @if (subsidiary.countryCode === 'CD') {
+    <autocomplete-field
+      [label]="'FORMS.DEDUPE.LABELS.CITY_OF_BIRTH' | translate"
+      [controlKey]="'birthPlace'"
+      [dataSource]="cities$"
+      [ngClass]="
+        readonly || fieldStates?.birthPlace?.readonly ? 'pointer-none' : ''
+      ">
+      @if (dedupeForm.get('birthPlace')?.hasError('required')) {
+        <mat-error>
+          {{ 'FORMS.DEDUPE.LABELS.CITY_OF_BIRTH' | translate }}
+          {{ 'COMMON.IS_REQUIRED' | translate }}.
+        </mat-error>
+      }
+    </autocomplete-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{
+        'FORMS.PERSONAL_DETAILS.LABELS.DATE_OF_BIRTH' | translate
+      }}</mat-label>
+      <input
+        matInput
+        type="text"
+        [readonly]="true"
+        [matDatepicker]="picker"
+        [max]="maxDate"
+        [min]="minDate"
+        formControlName="birthDate"
+        required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error>
+        <span>
+          {{ 'FORMS.PERSONAL_DETAILS.LABELS.DATE_OF_BIRTH' | translate }}
+          {{ 'COMMON.IS' | translate }}
+          <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </span>
+      </mat-error>
+    </mat-form-field>
+
+    <app-phone-number-group
+      [required]="true"
+      [label]="'FORMS.CONTACT_DETAILS.LABELS.PHONE_NUMBER' | translate"
+      [form]="phoneNumberForm"></app-phone-number-group>
+
+    <mat-form-field
+      appearance="fill"
+      [ngClass]="
+        readonly || fieldStates?.emailAddress?.readonly ? 'pointer-none' : ''
+      ">
+      <mat-label>{{
+        'FORMS.CONTACT_DETAILS.LABELS.EMAIL_ADDRESS' | translate
+      }}</mat-label>
+      <input
+        matInput
+        oninput="this.value = this.value.toUpperCase()"
+        formControlName="emailAddress" />
+    </mat-form-field>
+  }
+</form>
+
+<!-- @if (subsidiary.countryCode === "CD" && customerAgeGroup === "Adult") {
+  <div class="d-flex mt-5 mb-5">
+    @if (
+        dedupeForm.get("nationality")?.valid &&
+        dedupeForm.get("countryOfResidence")?.valid &&
+        selectableIdTypes.length === 0
+    ) {
+        <div class="toast color-red d-flex align-items-center">
+            <mat-icon aria-hidden="false" aria-label="info icon" class="align-self-center fill">
+                error_outline
+            </mat-icon>
+            <small class="ml-5">
+                {{ "STATIC_DATA.RESIDENCE_DETAILS_ERROR" | translate }}
+                {{ subsidiary.countryName }}/{{ subsidiary.nationality }}.
+            </small>
+        </div>
+    }
+    <span class="spacer"></span>
+    @if (showVerify) {
+        <button
+            mat-flat-button
+            [disabled]="dedupeForm.invalid || readonly"
+            (click)="performDedupeDRC()"
+            id="dedupe-btn">
+            @if (dedupeCompleted) {
+                <mat-icon [svgIcon]="'ic-tick-primary'"></mat-icon>
+            }
+            @if (!dedupeCompleted) {
+                <span>{{ "COMMON.VERIFY" | translate }}</span>
+            }
+        </button>
+    }
+  </div>
+} -->
+
+<div *ngIf="subsidiary.countryCode === 'CD'" class="d-flex mt-5 mb-5">
+  <div
+    *ngIf="
+      subsidiary.countryCode === 'CD' &&
+      dedupeForm.get('nationality')?.valid &&
+      dedupeForm.get('countryOfResidence')?.valid &&
+      selectableIdTypes.length === 0
+    "
+    class="toast color-red d-flex align-items-center">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="info icon"
+      class="align-self-center fill">
+      error_outline
+    </mat-icon>
+    <small class="ml-5">
+      {{ 'STATIC_DATA.RESIDENCE_DETAILS_ERROR' | translate }}
+      {{ subsidiary.countryName }}/{{ subsidiary.nationality }}.
+    </small>
+  </div>
+
+  <span class="spacer"></span>
+
+  <button
+    *ngIf="subsidiary.countryCode === 'CD' && showVerify"
+    mat-flat-button
+    [disabled]="dedupeForm.invalid || readonly"
+    (click)="performDedupeDRC()"
+    id="dedupe-btn">
+    <mat-icon *ngIf="dedupeCompleted" [svgIcon]="'ic-tick-primary'"></mat-icon>
+    <span *ngIf="!dedupeCompleted">{{ 'COMMON.VERIFY' | translate }}</span>
+  </button>
+</div>
+
+<!-- Dedupe Form for other subsidiaries -->
+
+<form
+  *ngIf="subsidiary.countryCode !== 'CD'"
+  [formGroup]="dedupeForm"
+  class="fieldset">
+  <searchable-control
+    [label]="'Nationality'"
+    [formControlName]="'nationality'"
+    [dataSource]="nationalities$"
+    [ngClass]="
+      readonly || fieldStates?.nationality?.readonly ? 'pointer-none' : ''
+    ">
+  </searchable-control>
+  <searchable-control
+    [label]="'Country of residence'"
+    [formControlName]="'countryOfResidence'"
+    [dataSource]="countries$"
+    [ngClass]="
+      readonly || fieldStates?.countryOfResidence?.readonly
+        ? 'pointer-none'
+        : ''
+    ">
+  </searchable-control>
+  <mat-form-field
+    [ngClass]="readonly || fieldStates?.idType?.readonly ? 'pointer-none' : ''"
+    appearance="fill">
+    <mat-label>ID Type</mat-label>
+    <mat-select formControlName="idType" #typeControl required>
+      <mat-option
+        *ngFor="let idType of selectableIdTypes"
+        [value]="idType.value">
+        {{ idType.name }}
+      </mat-option>
+    </mat-select>
+    <mat-error>
+      <span *ngIf="dedupeForm.get('idType')?.hasError('required')">
+        Id Type is required.
+      </span>
+      <span *ngIf="dedupeForm.get('idType')?.hasError('unavailable')">
+        Customer must be in Kenya or Kenyan.
+      </span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Document Number</mat-label>
+    <input
+      matInput
+      required
+      numberFormat
+      oninput="this.value = this.value.toUpperCase().trim()"
+      [readonly]="readonly || fieldStates?.refNum?.readonly"
+      [idType]="typeControl.value"
+      formControlName="refNum" />
+    <mat-hint *ngIf="dedupeForm.get('refNum')?.pristine && valuesConf?.hint">
+      Example {{ valuesConf.hint }}
+    </mat-hint>
+    <mat-error *ngIf="dedupeForm.get('refNum')?.errors">
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('charactersError')">
+        <strong>Invalid</strong> characters.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('required')">
+        Document Number is <strong>required</strong>.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('pattern')">
+        <strong>Invalid</strong> document number format.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('maxlength')">
+        Document Number has a maximum character length of
+        {{ valuesConf.maxLength }}.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('minlength')">
+        Document Number has a minimum character length of
+        {{ valuesConf.minLength }}.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('invalidNumber')">
+        ID Number is <strong>invalid</strong>.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('nationalIdInvalid')">
+        ID digit is <strong>incomplete</strong>.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('invalidLicenseNumber')">
+        License Number is Invalid.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('invalidLicense')">
+        License is invalid.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('invalidPassportNumber')">
+        Passport number is invalid.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('invalidPassport')">
+        Passport is invalid.
+      </span>
+      <span
+        *ngIf="dedupeForm.get('refNum')?.hasError('invalidRefugeeIDDigits')">
+        Refugee ID Number is <strong>invalid</strong>.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('invalidRefugeeID')">
+        Refugee ID is <strong>invalid</strong>.
+      </span>
+      <span *ngIf="dedupeForm.get('refNum')?.hasError('invalidUNHCRProof')">
+        UNHCR Proof is <strong>invalid</strong>.
+      </span>
+    </mat-error>
+  </mat-form-field>
+</form>
+<div *ngIf="subsidiary.countryCode !== 'CD'" class="d-flex mt-5 mb-5">
+  <ng-container
+    *ngIf="
+      dedupeForm.get('nationality')?.valid &&
+      dedupeForm.get('countryOfResidence')?.valid &&
+      selectableIdTypes.length === 0
+    ">
+    <div class="toast color-red d-flex align-items-center">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="info icon"
+        class="align-self-center fill"
+        >error_outline</mat-icon
+      >
+      <small class="ml-5"
+        >Either the Country of Residence or Nationality or both must be
+        Kenya/Kenyan.</small
+      >
+    </div>
+  </ng-container>
+  <span class="spacer"></span>
+
+  <button
+    *ngIf="!hideDedupeFormButton"
+    mat-flat-button
+    [disabled]="dedupeForm.invalid || readonly"
+    (click)="performDedupe()"
+    id="dedupe-btn">
+    <mat-icon *ngIf="dedupeCompleted" [svgIcon]="'ic-tick-primary'"></mat-icon>
+    <span *ngIf="!dedupeCompleted">Verify</span>
+  </button>
+</div>
+
+<ng-content></ng-content>
+
+<!-- <div *ngIf="iCIFItemResult && iCIFItemResult.length > 1">
+  <app-dedupe-search-result
+    [ICIFItem]="iCIFItemResult"
+    (selectedICIFItem)="onSelectedICIFItem($event)"></app-dedupe-search-result>
+</div> -->
+<div *ngIf="dedupeCifResults && dedupeCifResults.length > 1">
+  <app-dedupe-results
+    [data]="dedupeCifResults"
+    [showActions]="showActions"
+    (selectedCif)="onCifSelected($event)">
+  </app-dedupe-results>
+</div>

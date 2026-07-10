@@ -1,0 +1,48 @@
+<div class="container" fxLayout="column">
+  <div fxFill fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxFlex="80" fxLayout="start">
+      <p mat-dialog-title class="mat-headline-6">
+        {{ 'DIALOG.YOUVE-BEEN-INACTIVE' | translate }}
+      </p>
+    </div>
+    <div fxFlex="10" fxLayout="end">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="close icon"
+        class="close-icon"
+        mat-dialog-close
+        >close</mat-icon
+      >
+    </div>
+  </div>
+  <div
+    mat-dialog-content
+    class="bodySectionCls"
+    fxFill
+    fxFlex="100"
+    fxLayout="row"
+    fxLayoutAlign="start center">
+    <span class="mat-subtitle-2"
+      >{{ 'DIALOG.YOU-WILL-BE-LOCKED-OUT-IN' | translate }}
+      <b style="color: #a32a29">{{ timeToLogout }}s </b></span
+    >
+  </div>
+  <div
+    mat-dialog-actions
+    class="btnSectionCls"
+    fxFill
+    fxFlex="100"
+    fxLayout="row"
+    fxLayoutAlign="space-between center">
+    <div fxLayout="start">
+      <button (click)="stayLoggedIn()" color="primary" mat-flat-button>
+        {{ 'DIALOG.STAY' | translate }}
+      </button>
+    </div>
+    <div fxLayout="end">
+      <button (click)="logoutNow()" color="primary" mat-stroked-button>
+        {{ 'COMMON.LOG-OUT' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

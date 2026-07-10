@@ -5,6 +5,7 @@ export default withNativeFederation({
 
   exposes: {
     './Component': './projects/swift/src/app/app.ts',
+    './Routes': './projects/swift/src/app/app.routes.ts',
   },
 
   shared: {

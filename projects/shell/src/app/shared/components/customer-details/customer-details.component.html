@@ -1,0 +1,125 @@
+<mat-card appearance="outlined" class="main" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 fw-400">
+      {{ 'CUSTOMER.CUSTOMER-INFORMATION.TITLE' | translate }}
+    </h3>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <mat-card-content class="card-content">
+    <div class="customer-images">
+      <app-customer-detail-images *ngIf="canDisplayImage">
+      </app-customer-detail-images>
+    </div>
+    <div class="customer-details-content ml-24">
+      <div class="customer-name-channels">
+        <div class="customer-channels-sub">
+          <mat-card-subtitle class="subtitle"
+            >{{ customerDetails?.firstName }}
+            {{ customerDetails?.middleName }}
+            {{ customerDetails?.lastName }}</mat-card-subtitle
+          >
+          <div *ngIf="channels.length">
+            <p class="channels-title">
+              {{ 'COMMON.CUSTOMER-CHANNELS' | translate }}
+            </p>
+            <div class="customer-channels">
+              <p
+                *ngFor="let channel of channels"
+                [ngClass]="{
+                  active: channel.status === 'Active',
+                  inactive: channel.status === 'InActive',
+                  blocked: channel.status === 'Blocked'
+                }">
+                {{ channel.channel }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <app-customer-details-profile></app-customer-details-profile> -->
+      <div class="customer-details-container">
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ID-NUMBER' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.identifications?.[0]?.['id'] }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.CIF' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.cif }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.DATE-OF-BIRTH' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.dateOfBirth | date: 'dd/MM/yyyy' }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.NATIONALITY' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.preferredAddress?.countryCode }}
+          </p>
+        </div>
+        <!-- <div class="customer-detail">
+                    <p class="customer-detail-title">
+                        {{ "COMMON.KRAPINNUMBER" | translate }}
+                    </p>
+                    <p class="customer-detail-content">{{ kraPin }}</p>
+                </div> -->
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.CURRENCY' | translate }}
+          </p>
+          <p class="customer-detail-content">KES</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.MOBILENUMBER' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.phoneNumber1 }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.EMAILADDRESS' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.email }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.MEMO' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ customerDetails?.memo }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <!-- <mat-card-footer class="customer-info-footer">
+        <mat-accordion class="accordion customer-info-accordion p-0 m-0">
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header class="p-0">
+                    <mat-panel-title class="panel-title">
+                        {{'COMMON.ADDITIONAL-CUSTOMER-INFORMATION' | translate}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-footer> -->
+</mat-card>

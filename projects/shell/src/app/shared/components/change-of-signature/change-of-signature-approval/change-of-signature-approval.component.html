@@ -1,0 +1,58 @@
+<mat-card appearance="outlined">
+  <div class="pl-24">
+    <div class="mb-1">
+      <p class="mat-headline-6">
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.APPROVAL-TITLE'
+            | translate
+        }}
+      </p>
+      <p class="subtitle">
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.APPROVAL-SUBTITLE'
+            | translate
+        }}
+      </p>
+    </div>
+    <div class="pb-16">
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+  <mat-card-content class="pl-24">
+    <form [formGroup]="approvalForm">
+      <div
+        fxLayout="row"
+        fxFlex
+        fxLayoutAlign="start center"
+        fxLayoutGap="18px">
+        <mat-form-field appearance="fill">
+          <mat-label>{{
+            'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.APPROVAL-STATUS'
+              | translate
+          }}</mat-label>
+          <mat-select formControlName="approvalStatus" required>
+            <mat-option
+              *ngFor="let option of approvalOptions"
+              [value]="option.code"
+              >{{ option.description }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>{{
+            'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.COMMENT-SECTION'
+              | translate
+          }}</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="commentSection"
+            #comment />
+          <mat-hint align="end">
+            {{ comment.value.length }}/{{ 100 }}
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

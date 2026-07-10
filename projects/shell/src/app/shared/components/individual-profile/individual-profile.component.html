@@ -1,0 +1,106 @@
+@if (true || stakeholderlDetails) {
+  <mat-card>
+    <mat-accordion multi>
+      <mat-expansion-panel [expanded]="expanded">
+        <mat-expansion-panel-header
+          [expandedHeight]="expandedHeight"
+          [collapsedHeight]="collapsedHeight">
+          <mat-panel-title>
+            <app-header
+              [fullName]="fullName"
+              [subTitle]="subTitle"></app-header>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-primary-details
+          [subsidiary]="subsidiary"
+          [stakeholderlDetails]="stakeholderlDetails"
+          [showAccountDetails]="showAccountDetails"
+          [showAccountImagesAndSignatures]="showAccountImagesAndSignatures"
+          [signatureAndPhoto]="signatureAndPhoto" ></app-primary-details>
+
+        @if (showUploadDocs || false) {
+          <app-photo-signature
+            (reuseChanged)="onReuseToggle($event)"></app-photo-signature>
+          <mat-divider class="pb-4 pt-4"></mat-divider>
+          @if (reusePhotoSignature) {
+            <app-photo-signature-reuse
+              [accountList]="accountList"
+              (onApply)="handleApply($event)">
+            </app-photo-signature-reuse>
+          }
+
+          <app-documents-upload-drc
+            (onUploaded)="updateDocuments($event)"
+            [documentSpecs]="UploadDocuments"
+            [photoReuse]="photoReuse"
+            [signatuReuse]="signatuReuse"
+            [allowAdditional]="false"
+            [title]="'DOCUMENTS.OTHER_TITLE'">
+          </app-documents-upload-drc>
+        }
+      </mat-expansion-panel>
+
+      <!-- @if (cifObject && showMoreInfo) {
+                <mat-expansion-panel [expanded]="false" class="mat-elevation-z0 mb-2">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <div class="d-flex align-content-center">
+                                <h3 class="mat-title fw-400 align-self-center mb-0">
+                                    {{ "COMMON.MORE_INFORMATION" | translate }}
+                                </h3>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="pb-1">
+                        <mat-divider></mat-divider>
+                    </div>
+                    <app-additional-details
+                        [cif]="cifObject"
+                        [additionaStakeholderlDetails]="additionaStakeholderlDetails"
+                        [subsidiary]="subsidiary"></app-additional-details>
+                </mat-expansion-panel>
+            } -->
+      <!-- @if (accounts?.length && showAccounts && showListOfAccounts) {
+                <mat-expansion-panel [expanded]="true" class="mat-elevation-z0 mb-2">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <div class="d-flex align-content-center">
+                                <h3 class="mat-title fw-400 align-self-center mb-0">
+                                    {{ "COMMON.ACCOUNTS" | translate }}
+                                </h3>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="pb-1">
+                        <mat-divider></mat-divider>
+                    </div>
+                    <app-accounts [accounts]="accounts"></app-accounts>
+                </mat-expansion-panel>
+            } -->
+      <!-- @if (
+                (customerId || cifObject) &&
+                (showDocuments || documentsTicketId || documents?.length)
+            ) {
+                <mat-expansion-panel [expanded]="true" class="mat-elevation-z0 mb-10">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <div class="d-flex align-content-center">
+                                <h3 class="mat-title fw-400 align-self-center mb-0">
+                                    {{ "DOCUMENTS.REQUIRED_DOCUMENTS" | translate }}
+                                </h3>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="pb-1">
+                        <mat-divider></mat-divider>
+                    </div>
+                    <app-documents-view
+                        [contentOnly]="true"
+                        [documents]="documents"
+                        [documentService]="documentService"
+                        [ticketId]="documentsTicketId"></app-documents-view>
+                </mat-expansion-panel>
+            } -->
+    </mat-accordion>
+  </mat-card>
+}

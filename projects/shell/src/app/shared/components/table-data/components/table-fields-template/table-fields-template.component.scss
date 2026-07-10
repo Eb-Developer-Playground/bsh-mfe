@@ -1,0 +1,94 @@
+.status_pill {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 7px;
+  gap: 4px;
+  //width: 65px;
+  height: 26px;
+  border-radius: 32px;
+
+  &.Active,
+  &.Created,
+  &.on {
+    background: linear-gradient(
+        0deg,
+        rgba(47, 152, 3, 0.1),
+        rgba(47, 152, 3, 0.1)
+      ),
+      #ffffff;
+    color: #2f9803;
+  }
+
+  &.Pending {
+    background: linear-gradient(
+        0deg,
+        rgba(243, 135, 7, 0.1),
+        rgba(243, 135, 7, 0.1)
+      ),
+      #ffffff;
+    color: #f38707;
+  }
+
+  &.off,
+  &.Rejected,
+  &.Disabled {
+    color: #ed2f33;
+    background: linear-gradient(
+        0deg,
+        rgba(254, 0, 0, 0.1),
+        rgba(253, 4, 4, 0.1)
+      ),
+      #ffffff;
+  }
+
+  &.Deactivated,
+  &.unkwon,
+  &.ActiveDirectory {
+    color: #58595b;
+    background: linear-gradient(
+        0deg,
+        rgba(88, 89, 91, 0.1),
+        rgba(88, 89, 91, 0.1)
+      ),
+      #ffffff;
+  }
+}
+
+.menu-background {
+  background-color: white !important;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+tr.queue-detail-row {
+  height: 0;
+}
+
+tr.queue-element-row:not(.queue-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.queue-element-row:not(.queue-expanded-row):active {
+  background: #efefef;
+}
+
+.queue-element-row {
+  border-bottom-width: 0;
+}
+
+.queue-element-detail {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expanded-details-container {
+  height: 100%;
+  line-height: initial;
+}

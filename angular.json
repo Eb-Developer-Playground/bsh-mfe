@@ -54,7 +54,10 @@
                 "input": "projects/shell/public"
               }
             ],
-            "styles": ["projects/shell/src/styles.css"],
+            "styles": ["projects/shell/src/styles.css", "projects/shell/src/assets/scss/app.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["projects/shell/src"]
+            },
             "polyfills": ["es-module-shims"]
           },
           "configurations": {
@@ -93,7 +96,9 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 4200
+            "port": 4200,
+            "host": "0.0.0.0",
+            "allowedHosts": ["host.docker.internal"]
           }
         }
       }
@@ -185,7 +190,9 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 4201
+            "port": 4201,
+            "host": "0.0.0.0",
+            "allowedHosts": ["host.docker.internal"]
           }
         }
       }
@@ -238,7 +245,7 @@
                 "input": "projects/swift/public"
               }
             ],
-            "styles": ["projects/swift/src/styles.css"],
+            "styles": ["projects/swift/src/styles.css", "projects/swift/src/assets/scss/app.scss"],
             "polyfills": ["es-module-shims"]
           },
           "configurations": {
@@ -277,7 +284,9 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 4203
+            "port": 4203,
+            "host": "0.0.0.0",
+            "allowedHosts": ["host.docker.internal"]
           }
         }
       }
@@ -369,7 +378,9 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 4202
+            "port": 4202,
+            "host": "0.0.0.0",
+            "allowedHosts": ["host.docker.internal"]
           }
         }
       }

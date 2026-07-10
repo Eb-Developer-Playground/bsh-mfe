@@ -1,0 +1,122 @@
+.doc-container {
+  display: flex;
+  width: 100%;
+}
+
+.doc-actions {
+  flex: 1;
+  padding: 10px;
+}
+
+.doc-preview {
+  flex: 1;
+  padding: 10px;
+}
+
+.scanner {
+  border: 1px dashed #dcdcdc;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f7f7f7;
+}
+
+.upload-icon {
+  color: #a32626; /* Red color for the upload icon */
+  margin-bottom: 12px;
+}
+
+.text {
+  color: #6e6e6e;
+  font-size: 14px;
+}
+
+.instruction {
+  margin-top: 0;
+}
+
+.browse-text {
+  color: #a32626;
+}
+
+.options {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 16px;
+}
+
+.option-btn {
+  color: #a32626;
+  font-weight: 600;
+}
+
+.scan-btn {
+  border-right: 1px solid #dcdcdc;
+}
+
+.col {
+  height: 192px;
+  margin: 0.5em 0;
+  background: #eeeeee;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: inherit;
+  cursor: pointer;
+}
+
+.drag-drop {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  &:hover {
+    background-color: #d5d5d5;
+  }
+}
+
+.drop-text {
+  font-weight: normal;
+  line-height: 20px;
+  text-align: center;
+  color: #221f1f;
+}
+
+.drag-text {
+  color: #a32a29;
+}
+
+.doc-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  position: static;
+  width: 100%;
+  height: 72px;
+  background: #f7f7f7;
+  border: 1px solid rgba(146, 148, 151, 0.2);
+  box-sizing: border-box;
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  margin: 0.5rem 0rem;
+}
+
+.more-icon {
+  position: relative;
+  float: right;
+}
+
+.docs {
+  max-width: 75%;
+  .format-name-text {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

@@ -1,0 +1,127 @@
+<ng-container
+  [ngTemplateOutletContext]="{
+    tableField,
+    data
+  }"
+  [ngTemplateOutlet]="dynamicTemplateType(tableField.type)"></ng-container>
+
+<ng-template let-tableField="tableField" let-data="data" #CHECKBUTTON>
+  <mat-checkbox
+    [checked]="data?.selected"
+    (change)="checkBoxSelected(data, $event.checked)"></mat-checkbox>
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #RADIOBUTTON>
+  <mat-radio-button (click)="radioOptionSelected(data)"></mat-radio-button>
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #NUMBER>
+  <ng-container *ngIf="tableField?.format; else noformat">
+    {{
+      data[tableField.name]
+        | number: (tableField?.format ? tableField.format : '1.2-2')
+    }}
+  </ng-container>
+  <ng-template #noformat>
+    {{ data[tableField.name] }}
+  </ng-template>
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #STRING>
+  {{ '' + data[tableField.name] | titlecase }}
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #IMG>
+  <mat-icon [svgIcon]="data[tableField.name]"></mat-icon>
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #DATE>
+  {{
+    data[tableField.name]
+      | date: (tableField?.format ? tableField.format : 'yyyy/MM/dd')
+  }}
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #PILLS>
+  <ng-container *ngIf="!data[tableField.value + 'PillsValue']">
+    <app-table-pills
+      [icon]="tableField?.icon"
+      [color]="tableField?.color ? tableField.color : data[tableField.name]"
+      [text]="data[tableField.name]"></app-table-pills>
+  </ng-container>
+
+  <ng-container *ngIf="data[tableField.value + 'PillsValue']">
+    <app-table-pills
+      [icon]="data[tableField.value + 'PillsValue']?.icon"
+      [color]="data[tableField.value + 'PillsValue']?.color"
+      [text]="data[tableField.value + 'PillsValue']?.text"></app-table-pills>
+  </ng-container>
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #MENUACTIONS>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Actions">
+    <mat-icon svgIcon="ic-more-vertical" class=""></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <div class="menu-background">
+      <ng-container
+        *ngFor="let item of tableField.rowMenuActionItems; let first = first">
+        <mat-divider *ngIf="!first"></mat-divider>
+        <button mat-menu-item (click)="menuActionItemSelected(data, item)">
+          <span>{{ item.action }}</span>
+        </button>
+      </ng-container>
+    </div>
+  </mat-menu>
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #DYNAMICMENUACTIONS>
+  <ng-container
+    *ngIf="
+      data[tableField.value] &&
+      data[tableField.value].rowMenuActionItems &&
+      data[tableField.value].rowMenuActionItems.length !== 0
+    ">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Actions">
+      <mat-icon svgIcon="ic-more-vertical" class=""></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div class="menu-background">
+        <ng-container
+          *ngFor="
+            let item of data[tableField.value].rowMenuActionItems;
+            let first = first
+          ">
+          <mat-divider *ngIf="!first"></mat-divider>
+          <button mat-menu-item (click)="menuActionItemSelected(data, item)">
+            <span>{{ item.action }}</span>
+          </button>
+        </ng-container>
+      </div>
+    </mat-menu>
+  </ng-container>
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #EXTRA>
+  {{ data[tableField.name] }}
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #EXPANDED>
+  {{ 'COMMON.DETAILS' | translate }}
+  <button
+    mat-icon-button
+    aria-label="expand row"
+    (click)="expandedButtonClick(data)">
+    <mat-icon *ngIf="!expanded">keyboard_arrow_down</mat-icon>
+    <mat-icon *ngIf="expanded">keyboard_arrow_up</mat-icon>
+  </button>
+  <!-- <div>
+   {{data[tableField.type] }}
+   </div> -->
+</ng-template>
+
+<ng-template let-tableField="tableField" let-data="data" #EXPANDEDDETAILS>
+  <div
+    class="expanded-details-container mt-24 mb-24"
+    [innerHTML]="data[tableField.value]"></div>
+</ng-template>

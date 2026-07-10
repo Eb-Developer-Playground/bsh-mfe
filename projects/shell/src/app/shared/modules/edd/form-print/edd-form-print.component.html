@@ -1,0 +1,373 @@
+<div mat-dialog>
+  <div class="wrap" id="printPdfWrap" #printPdfWrap>
+    <div class="grid-container">
+      <ul>
+        <li>
+          <div class="logo">
+            <img
+              src="../../../../../assets/doc/equity-logo@3x.png"
+              alt="logo" />
+          </div>
+        </li>
+        <li>
+          <div class="logo_1">
+            <img
+              src="../../../../../assets/doc/one-equity@3x.png"
+              alt="logo_name" />
+          </div>
+        </li>
+        <li>
+          <div class="rt_details">
+            <h1>Enhanced Due Diligence (EDD) Form</h1>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrap_body">
+      <!--  personal details container-->
+      <div class="pd_container">
+        <h6>
+          Details From: {{ personalDetails?.name }}, CIF:
+          {{ personalDetails?.cif }}
+        </h6>
+        <br />
+        <h6>Review Information</h6>
+        <table style="position: relative; top: 1px">
+          <tbody>
+            <tr>
+              <th class="tbl1_label">Type Of Review</th>
+              <td class="tbl1_description" *ngIf="data?.typeOfReview">
+                {{ data?.typeOfReview }}
+              </td>
+              <td class="tbl1_description" *ngIf="!data?.typeOfReview">----</td>
+            </tr>
+            <tr>
+              <th class="tbl1_label">Date Of Review</th>
+              <td class="tbl1_description" *ngIf="data?.dateOfReview">
+                {{ data?.dateOfReview }}
+              </td>
+              <td class="tbl1_description" *ngIf="!data?.dateOfReview">----</td>
+            </tr>
+            <tr>
+              <th class="tbl1_label">Last Review Date</th>
+              <td class="tbl1_description" *ngIf="data?.lastReviewDate">
+                {{ data?.lastReviewDate }}
+              </td>
+              <td class="tbl1_description" *ngIf="!data?.lastReviewDate">
+                ----
+              </td>
+            </tr>
+            <tr>
+              <th class="tbl1_label">Next Review Date</th>
+              <td class="tbl1_description" *ngIf="data?.nextReviewDate">
+                {{ data?.nextReviewDate }}
+              </td>
+              <td class="tbl1_description" *ngIf="!data?.nextReviewDate">
+                ----
+              </td>
+            </tr>
+            <tr>
+              <th class="tbl1_label">High Risk Category Type</th>
+              <td
+                class="tbl1_description"
+                *ngIf="data?.highRiskCustomerDescription">
+                {{ data?.highRiskCustomerDescription }}
+              </td>
+              <td
+                class="tbl1_description"
+                *ngIf="!data?.highRiskCustomerDescription">
+                ----
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <h6>Customer Accounts</h6>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Cif</th>
+              <th scope="col">Account Name</th>
+              <th scope="col">Account Number</th>
+              <th scope="col">Scheme Code</th>
+              <th scope="col">Source of Funds</th>
+              <th scope="col">Verification Document</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let account of data.accountDetails; let i = index">
+              <td>
+                <span>{{ account?.cif }}</span>
+              </td>
+              <td>
+                <span>{{ account?.accountName }}</span>
+              </td>
+              <td>
+                <span>{{ account?.accountNumber }}</span>
+              </td>
+              <td>
+                <span>{{ account?.schemeCode }}</span>
+              </td>
+              <td>
+                <span>{{ account?.sourceOfFunds }}</span>
+              </td>
+              <td>
+                <span>{{ account?.verificationDocuments }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <span class="no_accounts_cls" *ngIf="data.accountDetails?.length < 1">
+          The Customer Doesn't Have Existing Accounts
+        </span>
+      </div>
+      <!--  contact details container-->
+      <div class="cd_container">
+        <h6>Transactional Analysis</h6>
+        <table>
+          <tbody>
+            <tr>
+              <th class="tbl1_label">Findings</th>
+              <td
+                class="tbl1_description"
+                *ngIf="data?.transactionAnalysis.findings">
+                {{ data?.transactionAnalysis.findings }}
+              </td>
+              <td
+                class="tbl1_description"
+                *ngIf="!data?.transactionAnalysis.findings">
+                ----
+              </td>
+            </tr>
+            <tr>
+              <th class="tbl1_label">Period</th>
+              <td
+                class="tbl1_description"
+                *ngIf="data?.transactionAnalysis.period">
+                {{ data?.transactionAnalysis.period }}
+              </td>
+              <td
+                class="tbl1_description"
+                *ngIf="!data?.transactionAnalysis.period">
+                ----
+              </td>
+            </tr>
+            <tr>
+              <th class="tbl1_label">
+                Analysis Warrants Raising of an SAR Number
+              </th>
+              <td
+                class="tbl1_description"
+                *ngIf="data?.transactionAnalysis.analysisWarrants">
+                {{ data?.transactionAnalysis.analysisWarrants }}
+              </td>
+              <td
+                class="tbl1_description"
+                *ngIf="!data?.transactionAnalysis.analysisWarrants">
+                ----
+              </td>
+            </tr>
+            <tr>
+              <th class="tbl1_label">AML Related Issue Raised Previously</th>
+              <td
+                class="tbl1_description"
+                *ngIf="data?.transactionAnalysis.amlRelated">
+                {{ data?.transactionAnalysis.amlRelated }}
+              </td>
+              <td
+                class="tbl1_description"
+                *ngIf="!data?.transactionAnalysis.amlRelated">
+                ----
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--  current address container-->
+      <div class="ca_container">
+        <h6>Contact Details</h6>
+        <table>
+          <tbody>
+            <tr>
+              <th class="tbl_label">Telephone Number</th>
+              <td
+                class="tbl_description"
+                *ngIf="
+                  data?.contactDetails.phone.code &&
+                  data?.contactDetails.phone.number
+                ">
+                {{ data?.contactDetails.phone.code }}-{{
+                  data?.contactDetails.phone.number
+                }}
+              </td>
+              <td
+                class="tbl_description"
+                *ngIf="
+                  !data?.contactDetails.phone.code &&
+                  !data?.contactDetails.phone.number
+                ">
+                ----
+              </td>
+              <th class="tbl_label">Email Address</th>
+              <td class="tbl_description" *ngIf="data?.contactDetails.email">
+                {{ data?.contactDetails.email }}
+              </td>
+              <td class="tbl_description" *ngIf="!data?.contactDetails.email">
+                ----
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--  permanent address container-->
+      <div class="pa_container">
+        <h6>Occupation</h6>
+        <table>
+          <tbody>
+            <tr>
+              <th class="tbl1_label">Occupation</th>
+              <td class="tbl1_description" *ngIf="data?.occupation.occupation">
+                {{ occupation.occupation }}
+              </td>
+              <td class="tbl1_description" *ngIf="!data?.occupation.occupation">
+                ----
+              </td>
+            </tr>
+            <tr>
+              <th class="tbl1_label">Name Of Employer</th>
+              <td
+                class="tbl1_description"
+                *ngIf="data?.occupation.nameOfEmployer">
+                {{ occupation.nameOfEmployer }}
+              </td>
+              <td
+                class="tbl1_description"
+                *ngIf="!data?.occupation.nameOfEmployer">
+                ----
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--  postal address container-->
+      <div class="pos_container">
+        <h6>Source Of Wealth</h6>
+        <table>
+          <tbody>
+            <tr>
+              <th class="tbl_label">Source Of Wealth</th>
+              <td
+                class="tbl_description"
+                *ngIf="data?.sourceOfWealth.sourceOfWealth">
+                {{ data?.sourceOfWealth.sourceOfWealth }}
+              </td>
+              <td
+                class="tbl_description"
+                *ngIf="!data?.sourceOfWealth.sourceOfWealth">
+                ----
+              </td>
+            </tr>
+            <tr>
+              <th class="tbl_label">Association With High Risk Category</th>
+              <td
+                class="tbl_description"
+                *ngIf="data?.sourceOfWealth.associationWithHRC">
+                {{ data?.sourceOfWealth.associationWithHRC }}
+              </td>
+              <td
+                class="tbl_description"
+                *ngIf="!data?.sourceOfWealth.associationWithHRC">
+                ----
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr />
+      <!--  Declarations container-->
+      <div class="dec_container">
+        <h6>declaration:</h6>
+        <p>
+          I the undersigned confirm I have read and understood the terms of the
+          privacy policy and hereby give express,unequivocal, free,specific and
+          informed authority to Equity Bank (Kenya) Limited and its affiliates
+          to collect, use and process my data as per the policy provided at
+          <a href="https://equitygroupholdings.com/privacy-policy/"
+            ><u>https://equitygroupholdings.com/privacy-policy/</u></a
+          >
+        </p>
+      </div>
+      <!--  customer signature container-->
+      <div class="cs_container">
+        <h6>customer signature</h6>
+        <p class="pp">
+          Note: Customer signature to be within the gray box and not anywhere
+          else.
+        </p>
+        <div class="sig_gridContainer">
+          <ul>
+            <li>
+              <div class="wrap_sig_box">
+                <div class="sig_box"></div>
+              </div>
+            </li>
+            <li>
+              <div class="date_box">
+                <img
+                  src="../../../../../../../assets/doc/equity-logo-watermark@3x.png"
+                  alt="img_watermark" />
+                <p>
+                  Date&nbsp;..................................................................................................................................
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <!--  official use signature container-->
+      <div class="of_container">
+        <h6>For Official Use Only</h6>
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              Authorizing Officer Signature&nbsp;
+              .................................................................
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              Date&nbsp;.........................................................................................................
+            </p>
+          </div>
+        </div>
+        <!--      <div class="off-grid-container">-->
+        <!--        <ul>-->
+        <!--          <li>-->
+        <!--            <div class="auth_box">-->
+
+        <!--            </div>-->
+        <!--          </li>-->
+        <!--          <li>-->
+        <!--            <div class="auth_date_box">-->
+        <!--             </div>-->
+        <!--          </li>-->
+        <!--        </ul>-->
+
+        <!--      </div>-->
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6 button-container">
+      <!-- <button class="next_btn" >
+        <span>Submit</span><img src="./assets/images/Shape@3x.png" class="img-fluid" alt="Responsive image">
+      </button> -->
+      <button mat-stroked-button (click)="onSubmit()" class="eq-btn">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.code-input-holder {
+    display: inline-block;
+
+    input.code-input {
+        width: 36px;
+        height: 36px;
+        background: rgba(146, 148, 151, 0.2);
+        border: 1px solid #2f9803;
+        box-sizing: border-box;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 28px;
+        text-align: center;
+        display: inline-block;
+
+        &:not(:first-child) {
+            margin-left: 8px;
+        }
+    }
+}

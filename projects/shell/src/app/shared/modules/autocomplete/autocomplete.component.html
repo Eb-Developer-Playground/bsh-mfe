@@ -1,0 +1,19 @@
+<div [hidden]="hideComponent">
+  <mat-form-field class="full-width">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      type="text"
+      placeholder="{{ placeholderText }}"
+      matInput
+      [formControl]="formControl"
+      [matAutocomplete]="auto"
+      #trigger="matAutocompleteTrigger" />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option[valueKey] || option">
+        {{ option[labelKey] || option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

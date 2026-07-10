@@ -1,0 +1,57 @@
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
+
+.mat-mdc-dialog-container {
+  padding: 0 !important;
+  border-radius: 8px !important;
+}
+
+.img-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  img {
+    width: 800px;
+    height: 461px;
+    object-fit: contain;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mr-1 {
+  margin-right: 0.5rem;
+}
+
+.eq-btn {
+  width: 140px;
+  background: transparent;
+  /* Equity Brown/Equity Brown - 500 */
+  color: #a32a29;
+  border: 1px solid #a32a29;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  &.active,
+  &:focus,
+  &:hover {
+    color: #ffffff;
+    background-color: #a32a29;
+  }
+
+  :disabled {
+    color: white;
+    border: 1px solid #e0e0e0;
+    background-color: #e0e0e0;
+  }
+}

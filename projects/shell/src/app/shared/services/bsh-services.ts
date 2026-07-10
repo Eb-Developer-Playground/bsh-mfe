@@ -17,26 +17,27 @@ export class BSHServices {
   }
 
   get MENU_ITEMS(): MenuItem[] {
-    const params = new URLSearchParams({ rt: this.session.user.reissue });
-    const swiftUrl = new URL(env.swiftUrl);
-    swiftUrl.search = params.toString();
-    const onboardingUrl = new URL(env.customerOnboardingUrl);
-    onboardingUrl.search = params.toString();
-    const adminPortalUrl = new URL(env.adminPortalUrl);
-    adminPortalUrl.search = params.toString();
-    const cardPortalUrl = new URL(env.cardsPortalUrl);
-    cardPortalUrl.search = params.toString();
+    const params = this.session.user
+      ? new URLSearchParams({ rt: this.session.user.reissue })
+      : new URLSearchParams();
+    const makeUrl = (url: string | undefined): URL | null => {
+      try { return url ? new URL(url) : null; }
+      catch { return null; }
+    };
+    const addParams = (url: URL | null): URL | null => {
+      if (url) url.search = params.toString();
+      return url;
+    };
+    const swiftUrl = addParams(makeUrl((env as any).swiftUrl));
+    const onboardingUrl = addParams(makeUrl(env.customerOnboardingUrl));
+    const adminPortalUrl = addParams(makeUrl((env as any).adminPortalUrl));
+    const cardPortalUrl = addParams(makeUrl((env as any).cardsPortalUrl));
+    const bankId = this.session.userBank || '';
     return [
       {
         name: 'MENU.MY-DASHBOARD',
         icon: 'ic-dashboard',
         path: '/dashboard',
-        sub_menu: false,
-      },
-      {
-        name: 'MENU.CUSTOMER-SERVICES',
-        icon: 'ic-person',
-        path: '/services',
         sub_menu: false,
       },
       {
@@ -49,86 +50,26 @@ export class BSHServices {
           {
             name: 'MENU.CUSTOMER-MAIN',
             icon: 'ic-account-services',
-            path: `${adminPortalUrl.toString()}&bankId=${this.session.userBank}&lang=${this.lang}`,
+            path: adminPortalUrl ? `${adminPortalUrl.toString()}&bankId=${bankId}&lang=${this.lang}` : '#',
             sub_menu: true,
           },
           {
             name: 'MENU.CUSTOMER-ONBOARDING',
             icon: 'ic-acc-opening',
-            path: `${onboardingUrl.toString()}&bankId=${this.session.userBank}&lang=${this.lang}`,
+            path: onboardingUrl ? `${onboardingUrl.toString()}&bankId=${bankId}&lang=${this.lang}` : '#',
             sub_menu: true,
           },
           {
             name: 'MENU.CUSTOMER-SWIFT',
             icon: 'ic-agency',
-            path: `${swiftUrl.toString()}&bankId=${this.session.userBank}&lang=${this.lang}`,
+            path: swiftUrl ? `${swiftUrl.toString()}&bankId=${bankId}&lang=${this.lang}` : '#',
             sub_menu: true,
           },
           {
             name: 'MENU.CARD-PORTAL',
             icon: 'ic-card',
-            path: `${cardPortalUrl.toString()}&bankId=${this.session.userBank}&lang=${this.lang}`,
+            path: cardPortalUrl ? `${cardPortalUrl.toString()}&bankId=${bankId}&lang=${this.lang}` : '#',
             sub_menu: true,
-          },
-          {
-            name: 'MENU.TICKETS',
-            icon: 'ic-tickets',
-            path: '/dashboard',
-            sub_menu: false,
-          },
-          {
-            name: 'MENU.CORPORATE-SERVICES',
-            icon: 'ic-corprate-services',
-            path: '/dashboard',
-            sub_menu: false,
-          },
-          {
-            name: 'MENU.CREDIT-SERVICES',
-            icon: 'ic-credit-services',
-            path: '/dashboard',
-            sub_menu: false,
-          },
-          {
-            name: 'MENU.AGENCY-SERVICES',
-            icon: 'ic-agency-services',
-            path: '/dashboard',
-            sub_menu: false,
-          },
-          {
-            name: 'MENU.SPECIAL-PROJECTS',
-            icon: 'ic-special-projects',
-            path: '/dashboard',
-            sub_menu: false,
-          },
-          {
-            name: 'MENU.INSURANCE',
-            icon: 'ic-menu-insurance',
-            path: '/dashboard',
-            sub_menu: false,
-          },
-          {
-            name: 'MENU.CUSTODY',
-            icon: 'ic-custody',
-            path: '/dashboard',
-            sub_menu: false,
-          },
-          {
-            name: 'MENU.FOREIGN-EXCHANGE',
-            icon: 'ic-foreign-exchange',
-            path: '/dashboard',
-            sub_menu: false,
-          },
-          {
-            name: 'MENU.REPORTS',
-            icon: 'ic-reports',
-            path: '/dashboard',
-            sub_menu: false,
-          },
-          {
-            name: 'MENU.ADMINISTRATION',
-            icon: 'ic-administration',
-            path: '/dashboard',
-            sub_menu: false,
           },
         ]
       }

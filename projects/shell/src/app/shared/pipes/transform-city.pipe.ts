@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'transformCity',
+  standalone: false,
 })
 export class TransformCityPipe implements PipeTransform {
   transform(value: unknown, ...args: unknown[]): unknown {

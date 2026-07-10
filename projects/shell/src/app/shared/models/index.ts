@@ -1,8 +1,9 @@
-export { User } from './user.model';
-export { RequestSessionToken, SessionToken } from './session';
-export { AgentFormAreValid, AgentFormObj, FormNames } from './agent.model';
-export { AccountDetails } from './account-details.model';
-export { ISearchOptions } from './search-options';
+export type { User } from './user.model';
+export type { RequestSessionToken, SessionToken } from './session';
+export type { AgentFormAreValid, AgentFormObj } from './agent.model';
+export { FormNames } from './agent.model';
+export type { AccountDetails } from './account-details.model';
+export type { ISearchOptions } from './search-options';
 export { SearchableItem } from '@app/shared/models/searchable';
 
 export enum AUTH_VERSION {

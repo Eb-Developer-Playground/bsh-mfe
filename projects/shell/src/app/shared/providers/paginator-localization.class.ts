@@ -5,17 +5,23 @@ import { Subject } from 'rxjs';
 
 @Injectable()
 export class MyCustomPaginatorIntl implements MatPaginatorIntl {
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService) {
+    this.firstPageLabel = this.translate.instant('PAGINATOR.FIRST-PAGE');
+    this.itemsPerPageLabel = this.translate.instant('PAGINATOR.ROWS-PER-PAGE');
+    this.lastPageLabel = this.translate.instant('PAGINATOR.LAST-PAGE');
+    this.nextPageLabel = this.translate.instant('PAGINATOR.NEXT-PAGE');
+    this.previousPageLabel = this.translate.instant('PAGINATOR.PREVIOUS-PAGE');
+  }
   public changes = new Subject<void>();
 
-  public firstPageLabel = this.translate.instant('PAGINATOR.FIRST-PAGE');
-  public itemsPerPageLabel = this.translate.instant('PAGINATOR.ROWS-PER-PAGE');
-  public lastPageLabel = this.translate.instant('PAGINATOR.LAST-PAGE');
+  public firstPageLabel!: string;
+  public itemsPerPageLabel!: string;
+  public lastPageLabel!: string;
 
   // You can set labels to an arbitrary string too, or dynamically compute
   // it through other third-party internationalization libraries.
-  public nextPageLabel = this.translate.instant('PAGINATOR.NEXT-PAGE');
-  public previousPageLabel = this.translate.instant('PAGINATOR.PREVIOUS-PAGE');
+  public nextPageLabel!: string;
+  public previousPageLabel!: string;
 
   public getRangeLabel(page: number, pageSize: number, length: number): string {
     if (length === 0) {

@@ -1,5 +1,6 @@
-import { Component, input } from "@angular/core";
+import { Component, input, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { COMPAT_IMPORTS } from '../compat-barrel';
 
 @Component({
   selector: "app-small-loading-spinner",

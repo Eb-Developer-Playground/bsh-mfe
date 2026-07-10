@@ -25,16 +25,16 @@ export class DragDropDocumentsDirective {
   }
 
   @HostListener('drop', ['$event'])
-  public drop(evt: {
-    preventDefault: () => void;
-    stopPropagation: () => void;
-    dataTransfer: { files: any };
-  }) {
+  public drop(evt: DragEvent) {
     evt.preventDefault();
     evt.stopPropagation();
-    const files = evt.dataTransfer.files;
-    if (files.length > 0) {
-      this.files.emit(files);
+    const files = evt.dataTransfer?.files;
+    if (files && files.length > 0) {
+      const fileHandles: FileHandle[] = [];
+      for (let i = 0; i < files.length; i++) {
+        fileHandles.push({ file: files[i] });
+      }
+      this.files.emit(fileHandles);
     }
   }
 }

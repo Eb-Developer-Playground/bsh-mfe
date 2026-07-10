@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AppNationalIdValidateDirective } from './nationalid-validator';
@@ -24,7 +24,15 @@ import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 
 @NgModule({
-  declarations: [
+
+  imports: [
+    CommonModule,
+    DocumentsUploadModule,
+    MatCard,
+    MatCardHeader,
+    MatIcon,
+    MatIconButton,
+    MatCardTitle,
     AppNationalIdValidateDirective,
     CapitalsDirective,
     EmailValidatorDirective,
@@ -41,17 +49,7 @@ import { MatIconButton } from '@angular/material/button';
     PersonalNameDirective,
     ToUpperCaseDirective,
     TrimWhitespaceDirective,
-    TrimWhitespaceDirective,
     DocumentReviewComponentNew,
-  ],
-  imports: [
-    CommonModule,
-    DocumentsUploadModule,
-    MatCard,
-    MatCardHeader,
-    MatIcon,
-    MatIconButton,
-    MatCardTitle,
   ],
   exports: [
     AppNationalIdValidateDirective,
@@ -72,5 +70,6 @@ import { MatIconButton } from '@angular/material/button';
     TrimWhitespaceDirective,
     DocumentReviewComponentNew,
   ],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DirectivesModule {}

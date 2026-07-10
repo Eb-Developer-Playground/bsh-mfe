@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import {
     RadioOptionsDialog,
     IRadioOptionsDialogData,
@@ -13,7 +14,8 @@ import {
  */
 @Component({
     template: '',
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class RadioOptionsDialogExample {
     constructor(private dialog: MatDialog) {}
 

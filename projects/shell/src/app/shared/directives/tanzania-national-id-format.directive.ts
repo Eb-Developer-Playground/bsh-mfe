@@ -1,9 +1,10 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Directive({
   selector: '[appTanzaniaNationalIdFormat]',
   standalone: true,
 })
+
 export class TanzaniaNationalIdFormatDirective {
   @HostListener('input', ['$event'])
   @HostListener('paste', ['$event'])

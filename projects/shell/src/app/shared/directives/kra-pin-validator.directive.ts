@@ -1,10 +1,11 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[kraPinInput]',
 })
+
 export class KraPinValidatorDirective {
   constructor(private _el: ElementRef) {}
 

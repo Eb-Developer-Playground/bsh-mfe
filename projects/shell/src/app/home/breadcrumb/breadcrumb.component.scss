@@ -1,0 +1,50 @@
+._wrapHeaderTitle {
+  margin-top: 24px;
+  p {
+    color: #221f1f;
+    margin: 0;
+  }
+}
+
+._wrapHeaderBreadCrumb {
+  position: relative;
+  bottom: 8px;
+  ul {
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    text-transform: capitalize;
+    & li {
+      display: inline;
+      font-size: 15px;
+      color: #929497;
+
+      + li {
+        &:before {
+          padding: 8px;
+          margin: 0 10px;
+          color: #929497;
+          content: '';
+          background-image: url('../../../assets/icons/icon-arrow-right.svg');
+          background-size: 18px 12px;
+          background-repeat: no-repeat;
+          position: relative;
+          top: 13px;
+        }
+      }
+      & a {
+        color: #a32a29;
+        text-decoration: none;
+        text-transform: capitalize;
+        &:hover {
+          color: #a32a29;
+          text-decoration: none;
+        }
+        & span {
+          color: #a32a29;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,6 @@
   <ng-container *ngFor="let nav of menuItems">
     <mat-list-item routerLinkActive="active-route" *ngIf="!nav.children">
       <a
-        matListItemLine
         [routerLink]="nav.path"
         routerLinkActive="active"
         class="nav-items"
@@ -16,7 +15,6 @@
         <span class="nav-items-text fw-400">{{ nav.name | translate }}</span>
       </a>
       <a
-        matListItemLine
         [href]="nav.path"
         routerLinkActive="active"
         class="nav-items"
@@ -37,7 +35,6 @@
       <!-- The parent menu item (e.g. More) -->
       <mat-list-item routerLinkActive="active-route">
         <a
-          matListItemLine
           [routerLink]="nav.path"
           routerLinkActive="active"
           (click)="toggleMenu(nav, $event)"
@@ -58,7 +55,6 @@
       <div class="submenu-container" *ngIf="nav.isExpanded">
         <mat-list-item routerLinkActive="active-route" *ngFor="let child of nav.children">
           <a
-            matListItemLine
             [routerLink]="child.path"
             routerLinkActive="active"
             class="nav-items nav-items-child"
@@ -72,7 +68,6 @@
             <span class="nav-items-text fw-400">{{ child.name | translate }}</span>
           </a>
           <a
-            matListItemLine
             [href]="child.path"
             routerLinkActive="active"
             class="nav-items nav-items-child dark-item"

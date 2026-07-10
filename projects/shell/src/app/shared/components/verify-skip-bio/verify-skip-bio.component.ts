@@ -1,14 +1,15 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Inject,
   OnDestroy,
   OnInit,
   Output,
-} from '@angular/core';
+  inject,
+  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { Observable, of, Subject, throwError } from 'rxjs';
 import { map, retry, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { AccountService } from '@app/core/services/account/account.service';
@@ -21,6 +22,7 @@ import { SessionService, UIService } from '../../services';
 import { BioVerifyService } from '../../services/bioVerifyStatus.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SearchComponent } from '@app/home/search/search.component';
+import { ProfileActionsPipe } from '../../pipes/profile-actions.pipe';
 import {
   CloneObject,
   ReasonOption,
@@ -45,7 +47,8 @@ import {
   templateUrl: './verify-skip-bio.component.html',
   styleUrls: ['./verify-skip-bio.component.scss'],
   providers: [SearchComponent],
-})
+  imports: [COMPAT_IMPORTS, ProfileActionsPipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class VerifySkipBioComponent implements OnInit, OnDestroy {
   @Output() closedSkipBioDialogEvent = new EventEmitter<any>();
 
@@ -61,20 +64,16 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
   readonly UploadDocuments = UPLOAD_DOCUMENTS;
   readonly allowedFileTypes = ALLOWED_FILE_TYPES;
 
-  reasonForm = this.formBuilder.group({
-    reason: ['', Validators.required],
-    comment: ['', Validators.required],
-    action: [''],
-  });
+  reasonForm!: any;
 
   private ticketId!: string;
   private profileArr!: any;
   private readonly destroy$ = new Subject<void>();
+  private formBuilder = inject(UntypedFormBuilder);
 
   constructor(
     public dialogRef: MatDialogRef<VerifySkipBioComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private formBuilder: UntypedFormBuilder,
     private router: Router,
     private toastService: ToastService,
     private bioVerifyService: BioVerifyService,
@@ -84,6 +83,11 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
     private auditService: AuditService,
     private translate: TranslateService
   ) {
+    this.reasonForm = this.formBuilder.group({
+      reason: ['', Validators.required],
+      comment: ['', Validators.required],
+      action: [''],
+    });
     this.reasonOptionArray = this.resolveReasonOptionArray();
   }
 
@@ -103,12 +107,12 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
   }
 
   private listenToActionChanges(): void {
-    this.reasonForm.controls.action.valueChanges
+    this.reasonForm['action'].valueChanges
       .pipe(takeUntil(this.destroy$))
-      .subscribe(value => {
+      .subscribe((value: any) => {
         if (this.isDormantActionBlocked(value)) {
           this.warnDormantAccountBlocked();
-          this.reasonForm.controls.action.setValue('', {
+          this.reasonForm['action'].setValue('', {
             emitEvent: false,
             onlySelf: true,
           });
@@ -124,20 +128,19 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
       .subscribe((value: ReasonOption) => {
         this.selectedReason = value;
         if (value === ReasonOption.CUSTOMERNOTPRESENT) {
-          this.reasonForm.controls.action.addValidators(Validators.required);
+          this.reasonForm['action'].addValidators(Validators.required);
           if (this.actionsArray.length === 0) {
             this.loadCustomerNotPresentActions();
           }
         } else {
-          this.reasonForm.controls.action.clearValidators();
-          this.reasonForm.controls.action.updateValueAndValidity();
+          this.reasonForm['action'].clearValidators();
+          this.reasonForm['action'].updateValueAndValidity();
         }
       });
   }
 
   private loadProfileActions(): void {
-    this.accountService
-      .getProfileActions()
+    this.accountService['getProfileActions']()
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: any) => (this.profileArr = res));
   }
@@ -179,7 +182,7 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
     if (!this.isFileSizeValid(file.size)) return;
 
     const base64 = await this.uIservice.toBase64(file);
-    const prefixDocument = this.reasonForm.controls.action.value;
+    const prefixDocument = this.reasonForm['action'].value;
     this.cloneOfObjects.push(
       this.buildCloneObject(file, base64, prefixDocument)
     );
@@ -204,7 +207,7 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
     }
 
     const base64 = await this.uIservice.toBase64(fileInput.files[0]);
-    const prefixDocument = this.reasonForm.controls.action.value;
+    const prefixDocument = this.reasonForm['action'].value;
     this.cloneOfObjects.push(
       this.buildCloneObject(fileInput.files[0], base64, prefixDocument)
     );
@@ -369,8 +372,7 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
 
   private logAuditReason(): void {
     const reason = this.reasonForm.value.reason;
-    this.auditService
-      .auditLog(
+    this.auditService['auditLog'](
         {
           EventName: 'ViewCustomerProfile',
           EventDescription: 'View Customer Profile',
@@ -411,7 +413,7 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
     const customer: IAccMgntObj = JSON.parse(
       localStorage.getItem('accMgntObj') as string
     );
-    const action = this.reasonForm.controls.action.value;
+    const action = this.reasonForm['action'].value;
     const profileViewReason: string = this.reasonForm.controls.comment.value;
 
     const payload: ViewProfileTicketPayload = {
@@ -426,8 +428,7 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
       },
     };
 
-    this.accountService
-      .createCustomerNotPresentViewProfileTicket(payload)
+    this.accountService['createCustomerNotPresentViewProfileTicket'](payload)
       .pipe(
         map((res: any) => res.responseObject.id.toString()),
         tap((id: string) => {
@@ -437,12 +438,12 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
           );
           localStorage.setItem('ticketId', id);
         }),
-        switchMap(id =>
+        switchMap((id: string) =>
           this.requiredUploadDocument || this.cloneOfObjects.length > 0
             ? this.uploadDocumentsToNewgen(id).pipe(map(() => id))
             : of(id)
         ),
-        switchMap(id => this.submitDocuments(id)),
+        switchMap((id: string) => this.submitDocuments(id)),
         takeUntil(this.destroy$)
       )
       .subscribe({
@@ -455,7 +456,7 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
           this.dialogRef.close({ data: 'skip-bio' });
           this.router.navigate(['/dashboard']);
         },
-        error: err => console.error(err),
+        error: (err: any) => console.error(err),
       });
   }
 
@@ -469,10 +470,10 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
 
     const isDRC =
       this.sessionService.subsidiary.countryCode === DRC_COUNTRY_CODE;
-    const action = this.reasonForm.controls.action.value;
+    const action = this.reasonForm['action'].value;
 
     if (isDRC) {
-      return this.accountService.uploadTransactionDocumentsV3(
+      return this.accountService['uploadTransactionDocumentsV3'](
         {
           processName: 'Customer Onboarding',
           processId: 'Customer Onboarding',
@@ -489,7 +490,7 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
       );
     }
 
-    return this.accountService.uploadTransactionDocuments(
+    return this.accountService['uploadTransactionDocuments'](
       {
         CIF: accMgntObj.cif,
         accountNumber: accMgntObj.accountsId,
@@ -505,7 +506,7 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
   }
 
   private submitDocuments(ticketId: string): Observable<any> {
-    return this.accountService.submitCustomerNotPresentViewProfileTicket(
+    return this.accountService['submitCustomerNotPresentViewProfileTicket'](
       ticketId
     );
   }
@@ -525,12 +526,12 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
       .pipe(
         switchMap(dormantAccExists =>
           this.accountService
-            .getCustomerNotPresentActions()
-            .pipe(map(res => ({ ...res, dormantAccExists })))
+            ['getCustomerNotPresentActions']()
+            .pipe(map((res: any) => ({ ...res, dormantAccExists })))
         ),
         takeUntil(this.destroy$)
       )
-      .subscribe(res => {
+      .subscribe((res: any) => {
         this.dormantAccExists = res.dormantAccExists;
         this.actionsArray = res.responseObject;
       });
@@ -538,8 +539,8 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
 
   private getIsAnyDormantAccount(customer: any): Observable<boolean> {
     const url = `?Id=${customer?.cif}&bankId=${customer?.bankID}&idType=customerid`;
-    return this.accountService.getAccount(url).pipe(
-      switchMap(res => {
+    return this.accountService['getAccount'](url).pipe(
+      switchMap((res: any) => {
         if (!res.successful) {
           this.showToast(
             'CUSTOMER.RETRYING-ACCOUNT-INQUIRY',
@@ -551,7 +552,7 @@ export class VerifySkipBioComponent implements OnInit, OnDestroy {
         return of(res);
       }),
       retry(1),
-      map(result => {
+      map((result: any) => {
         const { accounts, relatedAccounts, cif } = result.responseObject;
         const isMandateJoint = !!accounts.find(
           (x: any) => x.mandate !== 'SELF'

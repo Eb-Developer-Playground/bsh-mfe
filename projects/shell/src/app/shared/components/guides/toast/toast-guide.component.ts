@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MessageBoxType } from 'src/app/shared/modules/toast/models';
@@ -8,7 +9,8 @@ import { ToastService } from 'src/app/shared/modules/toast/toast.service';
   selector: 'app-toast-guide',
   templateUrl: './toast-guide.component.html',
   styleUrls: ['./toast-guide.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class ToastGuideComponent implements OnInit, OnDestroy {
   type: MessageBoxType = MessageBoxType.SUCCESS;
   private destroySubject = new Subject();

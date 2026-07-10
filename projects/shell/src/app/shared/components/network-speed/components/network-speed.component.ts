@@ -1,5 +1,6 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { NetworkSpeedService } from '../service/network-speed.service';
 import { NetwortSpeedInfoComponent } from './networt-speed-info/networt-speed-info.component';
 

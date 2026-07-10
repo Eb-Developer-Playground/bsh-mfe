@@ -1,13 +1,15 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DatePipe } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-cash-management-print-receipt',
   templateUrl: './cash-management-print-receipt.component.html',
   styleUrls: ['./cash-management-print-receipt.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class CashManagementPrintReceiptComponent implements OnInit {
   public details: any;
   localDateTime!: any;
@@ -38,7 +40,7 @@ export class CashManagementPrintReceiptComponent implements OnInit {
   };
 
   get isCreatedBy(): boolean {
-    return this.as.currentUser.username === this.data.ticket.createdBy
+    return this.as['currentUser'].username === this.data.ticket.createdBy
       ? true
       : false;
   }

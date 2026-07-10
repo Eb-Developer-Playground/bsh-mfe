@@ -1,16 +1,18 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AccountStatementService } from 'src/app/core/services/account-statement/account-statement.service';
 import {
   ChargeAccountStatementPayload,
   ChargeAccountStatementPayloadChargeOption,
 } from 'src/app/home/customer/account-statements/models/account-statement';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-dialog-statement',
   templateUrl: './dialog-statement.component.html',
   styleUrls: ['./dialog-statement.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DialogStatementComponent implements OnInit {
   dataObject!: any;
 
@@ -76,7 +78,7 @@ export class DialogStatementComponent implements OnInit {
           },
           taskId
         )
-        .subscribe(result => {
+        .subscribe((result: any) => {
           this.closeDialog(true);
         });
     }

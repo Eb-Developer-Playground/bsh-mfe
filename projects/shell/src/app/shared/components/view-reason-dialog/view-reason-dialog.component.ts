@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, OnInit, Output, EventEmitter, inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
@@ -9,6 +9,7 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { AuditService } from 'src/app/core/services/audit/audit.service';
 import { WhiteSpaceValidator } from '../../directives/whitespace-validator';
 
@@ -20,7 +21,8 @@ export interface ViewReasonData {
   selector: 'app-view-reason-dialog',
   templateUrl: './view-reason-dialog.component.html',
   styleUrls: ['./view-reason-dialog.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class ViewReasonDialogComponent implements OnInit {
   @Output() confirmAction: EventEmitter<any> = new EventEmitter<any>();
   @Output() cancelAction: EventEmitter<any> = new EventEmitter<any>();
@@ -28,23 +30,25 @@ export class ViewReasonDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ViewReasonDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ViewReasonData,
-    private fb: UntypedFormBuilder,
     private auditService: AuditService
   ) {}
 
-  public form: UntypedFormGroup = this.fb.group({
-    reason: [
-      '',
-      [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(300),
-        WhiteSpaceValidator.containsOnlySpaces,
-      ],
-    ],
-  });
+  public form!: UntypedFormGroup;
+  private fb = inject(UntypedFormBuilder);
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      reason: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(300),
+          WhiteSpaceValidator.containsOnlySpaces,
+        ],
+      ],
+    });
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -59,11 +63,11 @@ export class ViewReasonDialogComponent implements OnInit {
       EventDescription: 'View Customer Profile',
       AuditData: JSON.stringify({ reason }),
     };
-    this.auditService.auditLog(log, true).subscribe(
-      res => {
+    this.auditService['auditLog'](log, true).subscribe(
+      (res: any) => {
         this.confirmAction.emit(res);
       },
-      err => {
+      (err: any) => {
         this.confirmAction.emit(err);
       }
     );

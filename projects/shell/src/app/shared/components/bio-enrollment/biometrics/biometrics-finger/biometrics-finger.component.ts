@@ -1,12 +1,11 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { Finger, FingerPrintState } from '../../models/biometric.model';
 import { BiometricService } from 'src/app/core/services/biometric/biometric.service';
 import { UIService } from 'src/app/shared/services/ui.service';
@@ -15,7 +14,8 @@ import { UIService } from 'src/app/shared/services/ui.service';
   selector: 'app-biometrics-finger',
   templateUrl: './biometrics-finger.component.html',
   styleUrls: ['./biometrics-finger.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class BiometricsFingerComponent implements OnInit {
   @Input() finger: Finger = {
     id: null,
@@ -68,7 +68,7 @@ export class BiometricsFingerComponent implements OnInit {
       },
     };
 
-    this.biometricService.postMultipleCapture(uriString).subscribe(v => {
+    this.biometricService['postMultipleCapture'](uriString).subscribe((v: any) => {
       if (v.ErrorCode === 0) {
         if (v.ImageQuality < 50) {
         } else {

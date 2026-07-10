@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
+import { Component,
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +25,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.fullName?.currentValue) this.setInitials();
+    if (changes['fullName']?.currentValue) this.setInitials();
   }
 
   setInitials(): void {

@@ -1,13 +1,11 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnChanges,
   OnInit,
   Output,
   SimpleChanges,
-  ChangeDetectorRef,
-} from '@angular/core';
+  ChangeDetectorRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AccountManagementService } from 'src/app/core/services/account-management/account-management.service';
 import { AccountService } from 'src/app/core/services/account/account.service';
@@ -16,6 +14,7 @@ import { ImagePreviewModalComponent } from 'src/app/shared/components/customer-i
 import { ToastService, MessageBoxType } from 'src/app/shared/modules/toast';
 import { MatDialog } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { ChangeMandateService } from 'src/app/core/services/change-mandate/change-mandate.service';
 import { SessionService } from '@app/shared/services';
 
@@ -23,7 +22,8 @@ import { SessionService } from '@app/shared/services';
   selector: 'app-change-of-signature-stakeholder-detail',
   templateUrl: './change-of-signature-stakeholder-detail.component.html',
   styleUrls: ['./change-of-signature-stakeholder-detail.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class ChangeOfSignatureStakeholderDetailComponent
   implements OnInit, OnChanges
 {
@@ -57,7 +57,7 @@ export class ChangeOfSignatureStakeholderDetailComponent
   ) {}
 
   ngOnInit(): void {
-    this.customerDetails = this.accountManagementService.getCustomerDetails();
+    this.customerDetails = this.accountManagementService['getCustomerDetails']();
 
     this.fetchCustomerImages();
   }
@@ -70,7 +70,7 @@ export class ChangeOfSignatureStakeholderDetailComponent
       BankId: this.sessionService.userBank,
     };
 
-    this.accountService.getAccountSignatories(payload).subscribe(data => {
+    this.accountService['getAccountSignatories'](payload).subscribe((data: any) => {
       this.signatories = data.responseObject.mandates;
 
       // Manually trigger change detection
@@ -126,15 +126,14 @@ export class ChangeOfSignatureStakeholderDetailComponent
     }
 
     const account = JSON.parse(<string>localStorage.getItem('selectedAccount'));
-    this.accountService
-      .fetchPhoto(
+    this.accountService['fetchPhoto'](
         {
           customerId: this.customerDetails.cif,
           accountid: this.account.accountNumber,
         },
         'v1'
       )
-      .subscribe(result => {
+      .subscribe((result: any) => {
         if (!result.successful) {
           this.toastService.show(
             result.statusMessage,
@@ -151,7 +150,7 @@ export class ChangeOfSignatureStakeholderDetailComponent
           (image: any) => image.acctIdField === this.account.accountNumber
         );
 
-        this.accountManagementService.setCustomerImages(images);
+        this.accountManagementService['setCustomerImages'](images);
         this.mapImages(images);
       });
   }

@@ -1,5 +1,6 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AccountService } from 'src/app/core/services/account/account.service';
@@ -9,7 +10,8 @@ import { DialogDocumentPreviewComponent } from 'src/app/shared/components/dialog
   selector: 'app-known-agent-supporting-documents',
   templateUrl: './known-agent-supporting-documents.component.html',
   styleUrls: ['./known-agent-supporting-documents.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class KnownAgentSupportingDocumentsComponent
   implements OnInit, OnDestroy
 {
@@ -58,7 +60,7 @@ export class KnownAgentSupportingDocumentsComponent
     };
 
     this.accountService
-      .getTicketDocs(data)
+      ['getTicketDocs'](data)
       .pipe(takeUntil(this.destroy$))
       .subscribe(
         (res: any) => {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -10,16 +10,8 @@ import { BiometricsFingerComponent } from './biometrics-finger/biometrics-finger
 import { BiometricHandComponent } from './biometric-hand/biometric-hand.component';
 import { BiometricCompleteDialog, SkipBioDialog } from './dialogs';
 import { ToastModule } from 'src/app/shared/modules/toast';
-import { TranslateModule } from '@ngx-translate/core';
-
 @NgModule({
-  declarations: [
-    BiometricsComponent,
-    BiometricsFingerComponent,
-    BiometricHandComponent,
-    BiometricCompleteDialog,
-    SkipBioDialog,
-  ],
+
   imports: [
     CommonModule,
     FormsModule,
@@ -28,12 +20,17 @@ import { TranslateModule } from '@ngx-translate/core';
     MaterialModule,
     AutocompleteModule,
     ToastModule,
-    TranslateModule,
+    BiometricsComponent,
+    BiometricsFingerComponent,
+    BiometricHandComponent,
+    BiometricCompleteDialog,
+    SkipBioDialog,
   ],
   exports: [
     BiometricsComponent,
     BiometricsFingerComponent,
     BiometricHandComponent,
   ],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BiometricsModule {}

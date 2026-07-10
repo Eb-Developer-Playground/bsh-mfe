@@ -1,12 +1,11 @@
-import {
-  Component,
+import { Component,
   ElementRef,
   Input,
   SimpleChanges,
   OnChanges,
   OnDestroy,
-  DoCheck,
-} from '@angular/core';
+  DoCheck, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 import { DynamicHTMLRenderer, DynamicHTMLRef } from './renderer';
 
@@ -14,7 +13,8 @@ import { DynamicHTMLRenderer, DynamicHTMLRef } from './renderer';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'dynamic-html',
   template: '',
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DynamicHTMLComponent implements DoCheck, OnChanges, OnDestroy {
   @Input() content!: string;
 

@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableDataComponent } from './table-data.component';
 import { MaterialModule } from './material.modules';
-import { TranslateModule } from '@ngx-translate/core';
 import { TableFieldsTemplateComponent } from './components/table-fields-template/table-fields-template.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TableFieldsHeaderMenuComponent } from './components/table-fields-header-menu/table-fields-header-menu.component';
@@ -13,21 +12,19 @@ import { TablePillsComponent } from './components/table-pills/table-pills.compon
 
 @NgModule({
   providers: [TableDataService],
-  declarations: [
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    FlexLayoutModule,
     TableDataComponent,
     TableFieldsTemplateComponent,
     TableFieldsHeaderMenuComponent,
     TableFilterComponent,
     TablePillsComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    TranslateModule,
-    FlexLayoutModule,
-  ],
   exports: [TableDataComponent],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class TableDataModule {}

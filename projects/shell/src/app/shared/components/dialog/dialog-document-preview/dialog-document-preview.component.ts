@@ -1,15 +1,17 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { AccountService } from 'src/app/core/services/account/account.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { SessionService } from '@app/shared/services';
 
 @Component({
   selector: 'app-dialog-document-preview',
   templateUrl: './dialog-document-preview.component.html',
   styleUrls: ['./dialog-document-preview.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DialogDocumentPreviewComponent implements OnInit {
   anchor!: HTMLAnchorElement;
   imageUrl: any;
@@ -68,8 +70,8 @@ export class DialogDocumentPreviewComponent implements OnInit {
         this.data?.file?.Service ||
         this.subsidiaryDocService(),
     };
-    this.accountService.getTicketDoc(data, 'v2').subscribe(
-      res => {
+    this.accountService['getTicketDoc'](data, 'v2').subscribe(
+      (res: any) => {
         this.anchor = document.createElement('a');
         document.body.appendChild(this.anchor);
         const blob: any = new Blob([res], { type: 'octet/stream' });
@@ -79,7 +81,7 @@ export class DialogDocumentPreviewComponent implements OnInit {
         this.anchor.download =
           this.data?.file?.filename || this.data?.file?.FileName;
       },
-      err => {
+      (err: any) => {
         console.log(err);
       }
     );
@@ -106,7 +108,7 @@ export class DialogDocumentPreviewComponent implements OnInit {
           this.subsidiaryDocService(),
       };
 
-      this.accountService.getTicketDoc(data, 'v2').subscribe(res => {
+      this.accountService['getTicketDoc'](data, 'v2').subscribe((res: any) => {
         const blob = new Blob([res], { type: 'application/pdf' });
         const url = window.URL.createObjectURL(blob);
         const printWindow = window.open(url);

@@ -1,12 +1,10 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectorRef,
+import { ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
   OnInit,
-  Output,
-} from '@angular/core';
+  Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatCard } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import {
@@ -15,6 +13,7 @@ import {
   MatExpansionPanelHeader,
   MatExpansionPanelTitle,
 } from '@angular/material/expansion';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { AccountService } from '@app/core/services';
 import { PhotoSignatureReuseComponent } from '@app/home/customer/additional-account/photo-signature-reuse/photo-signature-reuse.component';
 import {
@@ -30,8 +29,8 @@ import {
   IUploadedDocument,
 } from '@app/shared/modules/upload-docs';
 import { DocumentsUploadModuleDrc } from '@app/shared/modules/upload-docs/documents-upload-drc/documents-upload-drc.module';
-import { ISubsidiary } from '@app/version-2/shared/services/session-v2/session.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { ISubsidiary } from '@app/shared/services/session/session.service';
+
 import { HeaderComponent } from './header/header.component';
 import { PhotoSignatureComponent } from './photo-signature/photo-signature.component';
 import { PrimaryDetailsComponent } from './primary-details/primary-details.component';
@@ -41,14 +40,16 @@ import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-individual-profile',
   standalone: true,
+  templateUrl: './individual-profile.component.html',
+  styleUrl: './individual-profile.component.scss',
   imports: [
+    COMPAT_IMPORTS,
     MatCard,
     MatAccordion,
     MatExpansionPanel,
     MatExpansionPanelTitle,
     MatDividerModule,
     MatExpansionPanelHeader,
-    TranslateModule,
     CommonModule,
     HeaderComponent,
     PrimaryDetailsComponent,
@@ -56,9 +57,7 @@ import { Subject, takeUntil } from 'rxjs';
     PhotoSignatureReuseComponent,
     DocumentsUploadModuleDrc,
   ],
-  templateUrl: './individual-profile.component.html',
-  styleUrl: './individual-profile.component.scss',
-})
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class IndividualProfileComponent implements OnInit {
   destroy$: Subject<any> = new Subject<any>();
   @Input() subsidiary!: ISubsidiary;
@@ -186,8 +185,7 @@ export class IndividualProfileComponent implements OnInit {
     const currentUserBankId = this.subsidiary.bankId;
     const queryParams = `?Id=${cif}&bankId=${currentUserBankId}&idType=customerid&reloadFromCache=false`;
 
-    this.accountService
-      .getAccount(queryParams, true)
+    this.accountService['getAccount'](queryParams, true)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response: any) => {
@@ -211,8 +209,7 @@ export class IndividualProfileComponent implements OnInit {
   };
 
   onAccountSelect(payload: { customerId: string; accountid: string }): void {
-    this.accountService
-      .fetchPhoto(payload, 'v1', {
+    this.accountService['fetchPhoto'](payload, 'v1', {
         headers: { skipLoadingInterceptor: String(false) },
       })
       .pipe(takeUntil(this.destroy$))

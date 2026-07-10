@@ -1,13 +1,15 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { BehaviorSubject } from 'rxjs';
 import { combineLatestWith } from 'rxjs/operators';
-import { account } from '^src/mocks/v1/customer';
+import { customerMock as account } from '../../../mocks/v1/customer';
 
 @Component({
   selector: 'app-customer-account-details',
   templateUrl: './customer-account-details.html',
   styleUrls: ['./customer-account-details.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class CustomerAccountDetails implements OnInit, OnChanges {
   @Input() cifData$!: BehaviorSubject<any>;
   @Input() ticketData$!: BehaviorSubject<any>;

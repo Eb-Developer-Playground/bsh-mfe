@@ -1,19 +1,18 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormArray,
   UntypedFormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
 } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -27,7 +26,8 @@ import { environment } from '@env/environment';
   selector: 'app-known-agent-additional-information',
   templateUrl: './known-agent-additional-information.component.html',
   styleUrls: ['./known-agent-additional-information.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class KnownAgentAdditionalInformationComponent
   implements OnInit, OnDestroy, OnChanges
 {

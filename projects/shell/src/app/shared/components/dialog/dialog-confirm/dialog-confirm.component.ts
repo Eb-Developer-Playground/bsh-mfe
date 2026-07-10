@@ -1,8 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MessageBoxType, ToastService } from 'src/app/shared/modules/toast';
 import { UIService } from 'src/app/shared/services';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { IUploadedDocument } from '@app/shared/modules/upload-docs';
+import { DocumentsUploadDrcComponent } from '../../../modules/upload-docs/documents-upload-drc/documents-upload-drc.component';
 import {
   ISubsidiary,
   SessionService,
@@ -12,7 +14,8 @@ import {
   selector: 'app-dialog-confirm',
   templateUrl: './dialog-confirm.component.html',
   styleUrls: ['./dialog-confirm.component.scss'],
-})
+  imports: [COMPAT_IMPORTS, DocumentsUploadDrcComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DialogConfirmComponent implements OnInit {
   title!: string;
   subtitle!: string;

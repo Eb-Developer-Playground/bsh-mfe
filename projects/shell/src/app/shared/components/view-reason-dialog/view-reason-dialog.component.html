@@ -12,7 +12,7 @@
         cols="30"
         rows="10"></textarea>
     </div>
-    <p class="form-error" *ngIf="form.get('reason')!.errors?.maxlength">
+    <p class="form-error" *ngIf="form.get('reason')!.errors?.['maxlength']">
       {{ 'CUSTOMER.CUSTOMER-PROFILE.MAX-LENGTH-EXCEEDED-300CHARS' | translate }}
     </p>
   </form>

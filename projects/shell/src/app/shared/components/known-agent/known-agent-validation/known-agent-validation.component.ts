@@ -1,15 +1,14 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   OnDestroy,
   OnInit,
-  Output,
-} from '@angular/core';
+  Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AgentFormObj, FormNames } from 'src/app/shared/models';
@@ -18,7 +17,8 @@ import { AgentFormObj, FormNames } from 'src/app/shared/models';
   selector: 'app-known-agent-validation',
   templateUrl: './known-agent-validation.component.html',
   styleUrls: ['./known-agent-validation.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class KnownAgentValidationComponent implements OnInit, OnDestroy {
   @Output() isValidationFormValid: EventEmitter<any> = new EventEmitter();
 

@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-bulk-payment-ticket-transactions-print-receipt',
@@ -9,7 +10,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: [
     './bulk-payment-ticket-transactions-print-receipt.component.scss',
   ],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class BulkPaymentTicketTransactionsPrintReceiptComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

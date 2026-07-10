@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
 import { ComponentsModule } from '../components.module';
 import { MaterialModule } from '../material/material.module';
 import { ChangeOfSignatureChangeComponent } from './change-of-signature-change/change-of-signature-change.component';
@@ -15,7 +14,14 @@ import { ChangeOfSignatureBioDialog } from './change-of-signature-bio-dialog/cha
 import { PhotoSignatoriesListComponent } from './signatories-list/signatories-list.component';
 
 @NgModule({
-  declarations: [
+
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    FlexLayoutModule,
+    ComponentsModule,
     ChangeOfSignatureChangeComponent,
     ChangeOfSignatureStakeholderDetailComponent,
     ChangeOfSignatureSuccessComponent,
@@ -24,15 +30,6 @@ import { PhotoSignatoriesListComponent } from './signatories-list/signatories-li
     ChangeOfSignatureSkipBioComponent,
     ChangeOfSignatureBioDialog,
     PhotoSignatoriesListComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    ComponentsModule,
-    TranslateModule,
   ],
   exports: [
     ChangeOfSignatureChangeComponent,
@@ -43,5 +40,6 @@ import { PhotoSignatoriesListComponent } from './signatories-list/signatories-li
     ChangeOfSignatureSkipBioComponent,
     ChangeOfSignatureBioDialog,
   ],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ChangeOfSignatureComponentsModule {}

@@ -68,14 +68,14 @@
               <mat-date-range-picker #picker></mat-date-range-picker>
               <mat-error
                 *ngIf="
-                  filterForm.controls.fromDate.hasError('matStartDateInvalid')
+                  filterForm.controls['fromDate'].hasError('matStartDateInvalid')
                 ">
                 {{ 'COMMON.INVALID' | translate }}
                 {{ 'COMMON.START_DATE' | translate }}
               </mat-error>
               <mat-error
                 *ngIf="
-                  filterForm.controls.toDate.hasError('matEndDateInvalid')
+                  filterForm.controls['toDate'].hasError('matEndDateInvalid')
                 ">
                 {{ 'COMMON.INVALID' | translate }}
                 {{ 'COMMON.END_DATE' | translate }}

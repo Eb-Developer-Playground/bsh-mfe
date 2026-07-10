@@ -1,11 +1,9 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnDestroy,
   OnInit,
-  Output,
-} from '@angular/core';
+  Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AccountManagementService } from '@app/core/services/account-management/account-management.service';
 import { AccountService } from '@app/core/services/account/account.service';
 import { AuditService } from '@app/core/services/audit/audit.service';
@@ -30,14 +28,16 @@ import { SoftDeleteDialogComponent } from '../soft-delete-dialog/soft-delete-dia
 import { Subject } from 'rxjs';
 import { TransformAddressPipe } from 'src/app/shared/pipes/transform-adress.pipe';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-entity-information',
   templateUrl: './entity.component.html',
   styleUrls: ['./entity.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class EntityInformationComponent implements OnInit, OnDestroy {
-  isBusiness: boolean = this.accountManagementService.getIsCustomerBusiness();
+  isBusiness: boolean = false;
   @Output() cifInquiryDetailsObj = new EventEmitter();
   panelOpenState = false;
   kraPin: any;
@@ -79,13 +79,14 @@ export class EntityInformationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.isBusiness = this.accountManagementService['getIsCustomerBusiness']();
     this.getTypes();
     let customer: any = localStorage.getItem('accMgntObj');
 
     customer = JSON.parse(customer);
-    this.cifInquiryObj = this.accountManagementService.getCustomerCifData();
+    this.cifInquiryObj = this.accountManagementService['getCustomerCifData']();
     this.customerInformation = customer;
-    this.customerDetails = this.accountManagementService.getCustomerDetails();
+    this.customerDetails = this.accountManagementService['getCustomerDetails']();
     const bioCaptured: any = localStorage.getItem('show-bio-captured');
     this.customerId = customer?.cif;
     this.bankId = this.customerInformation.bankID;
@@ -157,7 +158,7 @@ export class EntityInformationComponent implements OnInit, OnDestroy {
   }
 
   getCifInquiry = () => {
-    const customer = this.accountManagementService.getCustomer();
+    const customer = this.accountManagementService['getCustomer']();
     const payload = {
       bankId: customer?.bankID,
       customerId: customer?.cif,
@@ -168,8 +169,8 @@ export class EntityInformationComponent implements OnInit, OnDestroy {
       'Fetch personal details from CIF',
       JSON.stringify(payload)
     );
-    this.accountService.cifInquiryV2(this.isBusiness, payload).subscribe(
-      res => {
+    this.accountService['cifInquiryV2'](this.isBusiness, payload).subscribe(
+      (res: any) => {
         if (res.statusCode !== '00' || !res.responseObject) {
           this.logAudit(
             'SearchCustomerCIFInquiryFailed',
@@ -207,9 +208,9 @@ export class EntityInformationComponent implements OnInit, OnDestroy {
       EventDescription,
       AuditData,
     };
-    this.auditService.auditLog(log, true).subscribe(
-      _res => {},
-      _err => {}
+    this.auditService['auditLog'](log, true).subscribe(
+      (_res: any) => {},
+      (_err: any) => {}
     );
   };
 
@@ -242,12 +243,11 @@ export class EntityInformationComponent implements OnInit, OnDestroy {
 
   getCustomerChannels() {
     this.channelsService
-      .getCustomerChannels(this.bankId, this.customerId)
+      ['getCustomerChannels'](this.bankId, this.customerId)
       .subscribe((res: ChannelsResponse) => {
         if (!res.successful) {
           if (res.statusCode === '99') {
-            this.channelsService
-              .getCustomerChannels(this.bankId, this.preferredPhoneNumber)
+            this.channelsService['getCustomerChannels'](this.bankId, this.preferredPhoneNumber)
               .subscribe((res: ChannelsResponse) => {
                 if (res.statusCode !== '99') {
                   this.profileFound = true;
@@ -320,13 +320,12 @@ export class EntityInformationComponent implements OnInit, OnDestroy {
   }
 
   getProfileDetails() {
-    this.accountService
-      .getAccDetails(
-        this.customerId,
-        this.customerInformation.accountsId,
-        this.preferredPhoneNumber,
-        true
-      )
+    this.accountService['getAccDetails'](
+      this.customerId,
+      this.customerInformation.accountsId,
+      this.preferredPhoneNumber,
+      true
+    )
       .subscribe((res: CustomerProfileDetails) => {
         this.customerLevels = res.customerLevels;
         this.isSwapBlocked = res.isSwapBlocked;
@@ -433,7 +432,7 @@ export class EntityInformationComponent implements OnInit, OnDestroy {
         (a: any, b: any) =>
           a.accountOpeningDate.getTime() - b.accountOpeningDate.getTime()
       );
-    let isEntity = this.accountManagementService.isBusiness;
+    let isEntity = this.accountManagementService['isBusiness'];
     if (isEntity && !accounts.length) {
       this.toast.show(
         null,
@@ -446,7 +445,7 @@ export class EntityInformationComponent implements OnInit, OnDestroy {
       );
       return;
     }
-    let account = this.accountManagementService.getCustomer();
+    let account = this.accountManagementService['getCustomer']();
     let customer = isEntity ? 'entity' : 'individual';
     let url = new URL(env.customerOnboardingUrl);
     let params = url.searchParams;
@@ -467,15 +466,15 @@ export class EntityInformationComponent implements OnInit, OnDestroy {
     }
   }
   getBlockedAccountInfo = () => {
-    this.accountService.getCustomerStatistics(this.customerId, true).subscribe(
-      res => {
+    this.accountService['getCustomerStatistics'](this.customerId, true).subscribe(
+      (res: any) => {
         if (res.successful && res.responseObject.length > 0) {
           this.blockedInformation = res.responseObject[0];
           const taskData = JSON.parse(res.responseObject[0].taskData);
           this.blockReason = taskData.Comment;
         }
       },
-      _error => {}
+      (_error: any) => {}
     );
   };
 

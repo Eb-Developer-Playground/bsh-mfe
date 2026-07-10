@@ -1,14 +1,12 @@
 import { SchedulePaymentService } from '@app/core/services/schedule-payment/schedule-payment.service';
-import {
-  Component,
+import { Component,
   ElementRef,
   EventEmitter,
   Inject,
   OnDestroy,
   OnInit,
   Output,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
@@ -16,6 +14,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { IsActiveMatchOptions, Router } from '@angular/router';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { Subject } from 'rxjs';
 import { map, switchMap, takeUntil } from 'rxjs/operators';
 import { AccountStatementService } from '@app/core/services/account-statement/account-statement.service';
@@ -41,7 +40,7 @@ import { ActionTicketsService } from '@app/shared/services/actionTickets/action-
 import { ChannelsService } from '@app/core/services/channels/channels.service';
 import { SuccessDialogComponent } from '@app/home/customer/cards/success-dialog/success-dialog.component';
 import { IUploadedDocument } from '@app/shared/modules/upload-docs';
-import { TicketsService } from '@app/core/services/ticket/tickets.service';
+import { TicketService } from '@app/core/services/ticket/tickets.service';
 import { TransactionLimitsService } from '@app/core/services/transaction-limits/transaction-limits.service';
 import { ContextManager } from '@app/shared/modules/stepper';
 import { AccountSelectionService } from '@app/core/services/account-selection/account-selection.service';
@@ -73,7 +72,8 @@ export interface VerifySignatoryBioData {
   selector: 'app-verify-signatory-bio-dialog',
   templateUrl: './verify-signatory-bio-dialog.component.html',
   styleUrls: ['./verify-signatory-bio-dialog.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
   firstName = '';
   lastName = '  ';
@@ -111,9 +111,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
     );
   }
 
-  useChangeMandateFlowV2 = this.changeMandateService.useChangeMandateFlowV2(
-    this.sessionService.subsidiary.countryCode
-  );
+  useChangeMandateFlowV2 = false;
 
   constructor(
     public dialog: MatDialog,
@@ -134,7 +132,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
     private standingOrderService: StandingOrderService,
     private channelsService: ChannelsService,
     private schedulePaymentService: SchedulePaymentService,
-    private ticketService: TicketsService,
+    private ticketService: TicketService,
     private transactionLimitService: TransactionLimitsService,
     private ctxManager: ContextManager,
     private accountSelectionService: AccountSelectionService,
@@ -144,6 +142,10 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.useChangeMandateFlowV2 = this.changeMandateService['useChangeMandateFlowV2'](
+      this.sessionService.subsidiary.countryCode
+    );
+
     const selectedAcc = localStorage.getItem('selectedAccount');
     if (selectedAcc) {
       this.accountsSelected = JSON.parse(selectedAcc);
@@ -158,7 +160,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
     }));
 
     // Subscribe to account selection changes to update account context during bio verification
-    this.accountSelectionService.selectedAccount$
+    this.accountSelectionService['selectedAccount$']
       .pipe(takeUntil(this.destroy$))
       .subscribe((selectedAccount: any) => {
         if (
@@ -223,14 +225,14 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
     if (isDev()) {
       uriString = 'timeout=10000&quality=75&licstr=';
     } else if (isUat()) {
-      this.secugenLicenseStr = envUAT.secugenLicenseUAT;
+      this.secugenLicenseStr = (envUAT as any).secugenLicenseUAT;
       uriString =
         'timeout=10000&quality=50&licstr=' +
         encodeURIComponent(this.secugenLicenseStr) +
         '&srvhandle=&FingerPos=RIGHT_INDEX';
     } else {
       // use this for production once the license is ready
-      this.secugenLicenseStr = envProd.secugenLicenseProd;
+      this.secugenLicenseStr = (envProd as any).secugenLicenseProd;
       uriString =
         'timeout=10000&quality=50&licstr=' +
         encodeURIComponent(this.secugenLicenseStr) +
@@ -284,10 +286,10 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       this.multipleBioObj.push(multipleFingersObj);
     } else {
       this.bs
-        .postMultipleCapture(uriString)
+        ['postMultipleCapture'](uriString)
         .pipe(takeUntil(this.destroy$))
         .subscribe(
-          v => {
+          (v: any) => {
             if (v.ErrorCode === 0) {
               if (v.ImageQuality < 50) {
                 this.toast.show(
@@ -372,7 +374,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
             }
             // no finger error
           },
-          error => {
+          (error: any) => {
             this.data.accepted = false;
             user.captured = false;
             if (
@@ -536,10 +538,9 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       localStorage.setItem('show-bio-captured', 'true');
       this.verified = true;
     } else {
-      this.accountService
-        .verifyAccount(bioObj)
+      this.accountService['verifyAccount'](bioObj)
         .pipe(takeUntil(this.destroy$))
-        .subscribe(v => {
+        .subscribe((v: any) => {
           if (v.successful) {
             this.toast.show(
               'Bio Verification',
@@ -720,8 +721,8 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       bioModel: bioModels,
     });
 
-    this.customerProfileService.softDeleteProfile(customerDataObj).subscribe(
-      res => {
+    this.customerProfileService['softDeleteProfile'](customerDataObj).subscribe(
+      (res: any) => {
         if (!res.successful) return;
         this.toast.show(
           'Action submitted successfully',
@@ -737,7 +738,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
           response: res,
         });
       },
-      err => {
+      (err: any) => {
         this.toast.show(
           err,
           '',
@@ -763,8 +764,8 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       bioModel: bioModels,
     });
 
-    this.channelsService.restrictChannelAccount(customerDataObj).subscribe(
-      res => {
+    this.channelsService['restrictChannelAccount'](customerDataObj).subscribe(
+      (res: any) => {
         if (!res.successful) return;
         this.toast.show(
           '',
@@ -781,7 +782,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
           response: res,
         });
       },
-      err => {
+      (err: any) => {
         this.toast.show(
           err,
           '',
@@ -807,10 +808,9 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       bioModel: bioModels,
     });
 
-    this.schedulePaymentService
-      .cancelSchedulePayment(customerDataObj)
+    this.schedulePaymentService['cancelSchedulePayment'](customerDataObj)
       .subscribe(
-        res => {
+        (res: any) => {
           if (!res.successful) return;
           this.toast.show(
             'Cancellation Request sent for approval successfully!',
@@ -826,7 +826,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
             response: res,
           });
         },
-        err => {
+        (err: any) => {
           this.toast.show(
             err,
             '',
@@ -852,10 +852,9 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       bioModel: bioModels,
     });
 
-    this.schedulePaymentService
-      .updateSchedulePayment(customerDataObj)
+    this.schedulePaymentService['updateSchedulePayment'](customerDataObj)
       .subscribe(
-        res => {
+        (res: any) => {
           if (!res.successful) return;
           this.toast.show(
             'Update Request sent for approval successfully!',
@@ -871,7 +870,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
             response: res,
           });
         },
-        err => {
+        (err: any) => {
           this.toast.show(
             err,
             '',
@@ -916,8 +915,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
 
   onClickVerifyNewChequeRequest() {
     if (!this.data.isBankerRequest) {
-      this.chequeBookService
-        .bioVerifyNewChequeRequest(
+      this.chequeBookService['bioVerifyNewChequeRequest'](
           this.data.cif,
           this.data.ticketId,
           this.rightIndexObj
@@ -943,13 +941,12 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
               });
             }
           },
-          error => {
+          (error: any) => {
             this.dialogRef.close();
           }
         );
     } else if (this.data.isForiegnDraft) {
-      this.chequeBookService
-        .bioVerifyForeignDraftRequest(
+      this.chequeBookService['bioVerifyForeignDraftRequest'](
           this.data.cif,
           this.data.ticketId,
           this.rightIndexObj
@@ -975,13 +972,12 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
               });
             }
           },
-          error => {
+          (error: any) => {
             this.dialogRef.close();
           }
         );
     } else {
-      this.chequeBookService
-        .bioVerifyBankerChequeRequest(
+      this.chequeBookService['bioVerifyBankerChequeRequest'](
           this.data.cif,
           this.data.ticketId,
           this.rightIndexObj
@@ -1007,7 +1003,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
               });
             }
           },
-          error => {
+          (error: any) => {
             this.dialogRef.close();
           }
         );
@@ -1022,8 +1018,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       const customer: any = JSON.parse(
         <string>localStorage.getItem('accMgntObj')
       );
-      this.changeMandateService
-        .bioVerify(customer.cif, ticketId, this.multipleBioObj)
+      this.changeMandateService['bioVerify'](customer.cif, ticketId, this.multipleBioObj)
         .pipe(takeUntil(this.destroy$))
         .subscribe({
           next: (response: any) => {
@@ -1033,13 +1028,12 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
                 data: this.data.accepted,
               });
           },
-          error: error => {
+          error: (error: any) => {
             this.dialogRef.close();
           },
         });
     } else {
-      this.changeMandateService
-        .bioVerifyV2(ticketId, actionFlow, this.multipleBioObj) // This is the VerifyBio action
+      this.changeMandateService['bioVerifyV2'](ticketId, actionFlow, this.multipleBioObj) // This is the VerifyBio action
         .pipe(takeUntil(this.destroy$))
         .subscribe({
           next: (response: any) => {
@@ -1076,20 +1070,19 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
   }
 
   onClickVerifyCheque() {
-    const ticketId = this.ctxManager.contextData?.chequebook_request?.ticket
-      ? this.ctxManager.contextData.chequebook_request.ticket.ticketId
+    const ticketId = this.ctxManager.contextData?.['chequebook_request']?.ticket
+      ? this.ctxManager.contextData['chequebook_request'].ticket.ticketId
       : JSON.parse(localStorage.getItem('ticket') || '{}').ticketId;
 
     const customer: any = JSON.parse(
       <string>localStorage.getItem('accMgntObj')
     );
-    const actionFlow = this.ctxManager.contextData?.chequebook_request?.ticket
-      ? this.ctxManager.contextData.chequebook_request.ticket.actionFlowName
+    const actionFlow = this.ctxManager.contextData?.['chequebook_request']?.ticket
+      ? this.ctxManager.contextData['chequebook_request'].ticket.actionFlowName
       : JSON.parse(localStorage.getItem('ticket') || '{}').actionFlowName;
 
     if (this.sessionService.subsidiary.countryCode !== 'CD') {
-      this.changeMandateService
-        .bioVerify(customer.cif, ticketId, this.multipleBioObj)
+      this.changeMandateService['bioVerify'](customer.cif, ticketId, this.multipleBioObj)
         .pipe(takeUntil(this.destroy$))
         .subscribe(
           (response: any) => {
@@ -1099,13 +1092,12 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
                 data: this.data.accepted,
               });
           },
-          error => {
+          (error: any) => {
             this.dialogRef.close();
           }
         );
     } else {
-      this.changeMandateService
-        .bioVerifyV2(ticketId, actionFlow, this.multipleBioObj)
+      this.changeMandateService['bioVerifyV2'](ticketId, actionFlow, this.multipleBioObj)
         .pipe(takeUntil(this.destroy$))
         .subscribe(
           (response: any) => {
@@ -1115,7 +1107,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
                 data: this.data.accepted,
               });
           },
-          error => {
+          (error: any) => {
             this.dialogRef.close();
           }
         );
@@ -1127,7 +1119,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
     const ticketId = this.data.ticketId as string;
     if (this.sessionService.subsidiary.countryCode !== 'CD') {
       this.changeOfSignatureService
-        .bioVerify(ticketId, this.multipleBioObj)
+        ['bioVerify'](ticketId, this.multipleBioObj)
         .pipe(takeUntil(this.destroy$))
         .subscribe(
           (response: any) => {
@@ -1138,7 +1130,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
               });
             }
           },
-          error => {
+          (error: any) => {
             this.dialogRef.close({ data: error });
           }
         );
@@ -1151,7 +1143,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       );
       const actionFlow = localStorage.getItem('runningActionFlow');
       this.changeMandateService
-        .bioVerifyV2(ticketId, actionFlow, this.multipleBioObj)
+        ['bioVerifyV2'](ticketId, actionFlow, this.multipleBioObj)
         .pipe(takeUntil(this.destroy$))
         .subscribe(
           (response: any) => {
@@ -1161,7 +1153,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
                 data: this.data.accepted,
               });
           },
-          error => {
+          (error: any) => {
             this.dialogRef.close();
           }
         );
@@ -1170,8 +1162,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
 
   onVerifyMoveMoney() {
     this.dialogRef.close({ data: this.data.accepted });
-    this.moveMoneyService
-      .verifyCustomerBio(this.data.ticketId, this.multipleBioObj)
+    this.moveMoneyService['verifyCustomerBio'](this.data.ticketId, this.multipleBioObj)
       .pipe(takeUntil(this.destroy$))
       .subscribe(
         (response: any) => {
@@ -1192,7 +1183,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
               data: this.data.accepted,
             });
         },
-        error => {
+        (error: any) => {
           this.dialogRef.close();
         }
       );
@@ -1208,11 +1199,10 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
     let customerDataObj = Object.assign(this.data.customerInformation, {
       bioModel: bioModels,
     });
-    this.customerService
-      .sendCustomerRegistrationRequest(customerDataObj)
+    this.customerService['sendCustomerRegistrationRequest'](customerDataObj)
       .pipe(takeUntil(this.destroy$))
       .subscribe(
-        res => {
+        (res: any) => {
           if (!res.successful) {
             this.toast.show(
               'Customer Registration',
@@ -1238,7 +1228,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
             data: this.data.accepted,
           });
         },
-        err => {
+        (err: any) => {
           this.toast.show(
             err,
             '',
@@ -1262,11 +1252,10 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
     let customerDataObj = Object.assign(this.data.customerInformation, {
       bioModel: bioModels,
     });
-    this.customerProfileService
-      .updateCustomerProfile(customerDataObj)
+    this.customerProfileService['updateCustomerProfile'](customerDataObj)
       .pipe(takeUntil(this.destroy$))
       .subscribe(
-        res => {
+        (res: any) => {
           if (!res.successful) {
             this.toast.show(
               'Customer Profile',
@@ -1292,7 +1281,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
             data: this.data.accepted,
           });
         },
-        err => {
+        (err: any) => {
           this.toast.show(
             err,
             '',
@@ -1318,7 +1307,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       ],
     };
 
-    this.accountStatementService.verifyBio(bioModels, ticketId).subscribe(
+    this.accountStatementService['verifyBio'](bioModels, ticketId).subscribe(
       (response: any) => {
         if (!response.successful) {
           this.toast.show(
@@ -1406,13 +1395,11 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
         idNumber: this.data.user?.prefDocumentID,
       };
       // Upload documents if they exist
-      this.accountService
-        .uploadTransactionDocumentsV3(dataNewGen, action)
+      this.accountService['uploadTransactionDocumentsV3'](dataNewGen, action)
         .pipe(
           switchMap((res: any) => {
             if (res.successful) {
-              return this.accountService
-                .verifyDormantAcc(ticketId, bioModels)
+              return this.accountService['verifyDormantAcc'](ticketId, bioModels)
                 .pipe(
                   map((verifyRes: any) => {
                     if (verifyRes.successful) {
@@ -1456,9 +1443,8 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
         }
       } else {
         //verify dormant activation
-        this.accountService
-          .verifyDormantAcc(ticketId, bioModels)
-          .subscribe(res => {
+        this.accountService['verifyDormantAcc'](ticketId, bioModels)
+          .subscribe((res: any) => {
             if (res.successful) {
               this.dialogRef.close();
               // Check ticket status
@@ -1507,10 +1493,9 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       bioModel: bioModels,
     };
 
-    this.transactionLimitService
-      .amendLimitPersonalisationSettings(customerDataObj)
+    this.transactionLimitService['amendLimitPersonalisationSettings'](customerDataObj)
       .subscribe({
-        next: res => {
+        next: (res: any) => {
           if (!res.successful) return;
           this.toast.show(
             'Action submitted successfully',
@@ -1546,10 +1531,9 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       fingerPrints: [this.rightIndexObj],
     };
 
-    this.standingOrderService
-      .verifyStandingOrderBio(this.data.ticketId, bioModels)
+    this.standingOrderService['verifyStandingOrderBio'](this.data.ticketId, bioModels)
       .pipe(takeUntil(this.destroy$))
-      .subscribe(result => {
+      .subscribe((result: any) => {
         if (!result.successful) {
           this.toast.show(
             'Error',
@@ -1620,8 +1604,7 @@ export class VerifySignatoryBioDialogComponent implements OnInit, OnDestroy {
       bioModel: bioModels,
     };
 
-    this.notificationPreferenceSrv
-      .postAccNtnPreferences(customerDataObj)
+    this.notificationPreferenceSrv['postAccNtnPreferences'](customerDataObj)
       .subscribe({
         next: (res: any) => {
           this.toast.show(

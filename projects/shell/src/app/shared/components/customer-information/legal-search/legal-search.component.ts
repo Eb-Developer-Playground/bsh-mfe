@@ -1,10 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-legal-search',
   templateUrl: './legal-search.component.html',
   styleUrls: ['./legal-search.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class LegalSearchComponent implements OnInit {
   @Input() legalSearchCode!: '001' | '002' | '004' | string;
 

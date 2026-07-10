@@ -1,15 +1,14 @@
-import {
-  ChangeDetectorRef,
+import { ChangeDetectorRef,
   Component,
   Input,
   OnDestroy,
-  OnInit,
-} from '@angular/core';
+  OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import moment from 'moment';
 import {
   Observable,
@@ -27,7 +26,8 @@ import { TableDataService } from '../../services/table-data.service';
   selector: 'app-table-filter',
   templateUrl: './table-filter.component.html',
   styleUrls: ['./table-filter.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class TableFilterComponent implements OnInit, OnDestroy {
   selectable = true;
   removable = true;
@@ -42,12 +42,7 @@ export class TableFilterComponent implements OnInit, OnDestroy {
   @Input() toggleFilter = false;
   @Input() searchFields$!: Observable<TableFields[]>;
 
-  filterForm: UntypedFormGroup = this.fb.group({
-    filters: ['', [Validators.required]],
-    search: [{ value: '', disabled: true }, [Validators.required]],
-    toDate: ['', [Validators.required]],
-    fromDate: ['', [Validators.required]],
-  });
+  filterForm!: UntypedFormGroup;
 
   private destroy$ = new Subject<void>();
 
@@ -59,11 +54,18 @@ export class TableFilterComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.filterForm = this.fb.group({
+      filters: ['', [Validators.required]],
+      search: [{ value: '', disabled: true }, [Validators.required]],
+      toDate: ['', [Validators.required]],
+      fromDate: ['', [Validators.required]],
+    });
+
     combineLatest([
-      this.filterForm.controls.fromDate.valueChanges,
-      this.filterForm.controls.toDate.valueChanges,
+      this.filterForm.controls['fromDate'].valueChanges,
+      this.filterForm.controls['toDate'].valueChanges,
     ]).subscribe(([fromDate, toDate]) => {
-      const control = this.filterForm.controls?.filters;
+      const control = this.filterForm.controls?.['filters'];
       const key = control.value?.name;
       const label = control.value?.label;
       const type = control.value?.type;
@@ -87,7 +89,7 @@ export class TableFilterComponent implements OnInit, OnDestroy {
       });
     });
 
-    this.filterForm.controls.filters.valueChanges
+    this.filterForm.controls['filters'].valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(_v => {
         this.showRangeDate = _v.type === 'DATE';
@@ -95,7 +97,7 @@ export class TableFilterComponent implements OnInit, OnDestroy {
         this.updateFormValidity();
       });
 
-    this.filterForm.controls.search.valueChanges
+    this.filterForm.controls['search'].valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(_v => {
         const _value = typeof _v === 'object' ? _v?.value : _v;
@@ -118,7 +120,7 @@ export class TableFilterComponent implements OnInit, OnDestroy {
         }
       });
 
-    this.filterForm.controls.filters.valueChanges
+    this.filterForm.controls['filters'].valueChanges
       .pipe(debounceTime(400), distinctUntilChanged(), takeUntil(this.destroy$))
       .subscribe(value => {
         this.dropDownHasValues =
@@ -216,9 +218,7 @@ export class TableFilterComponent implements OnInit, OnDestroy {
         });
         this.onSubmit();
       } else if (
-        (updateObj.toDate == undefined ||
-          (null && updateObj.fromDate == undefined) ||
-          null) &&
+        updateObj.toDate == undefined &&
         Object.keys(updateObj).length > 0
       )
         this.onSubmit();
@@ -293,10 +293,10 @@ export class TableFilterComponent implements OnInit, OnDestroy {
     });
 
     if (this.showRangeDate) {
-      this.filterForm.controls.fromDate.setValidators([Validators.required]);
-      this.filterForm.controls.toDate.setValidators([Validators.required]);
+      this.filterForm.controls['fromDate'].setValidators([Validators.required]);
+      this.filterForm.controls['toDate'].setValidators([Validators.required]);
     } else {
-      this.filterForm.controls.search.setValidators([Validators.required]);
+      this.filterForm.controls['search'].setValidators([Validators.required]);
     }
     this.filterForm.updateValueAndValidity();
   }

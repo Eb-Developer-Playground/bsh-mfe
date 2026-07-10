@@ -1,12 +1,10 @@
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   inject,
   Inject,
-  OnInit,
-} from '@angular/core';
+  OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import {
@@ -18,7 +16,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
-import { TranslateModule } from '@ngx-translate/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { TranslatePipe } from '@ngx-translate/core';
 import { MessageBoxType, ToastService } from '@shared/modules/toast';
 import { ApiService, SessionService } from '@shared/services';
 import {
@@ -37,7 +36,6 @@ interface IPermissionInfo {
 
 @Component({
   selector: 'app-user-profile',
-  standalone: true,
   imports: [
     ClipboardModule,
     MatButtonModule,
@@ -47,12 +45,12 @@ interface IPermissionInfo {
     MatIconModule,
     MatListModule,
     MatTabsModule,
-    TranslateModule,
+    TranslatePipe,
+    COMPAT_IMPORTS,
   ],
   templateUrl: './user-profile.html',
   styleUrls: ['./user-profile.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class UserProfile implements OnInit {
   readonly _cdRef = inject(ChangeDetectorRef);
   public readonly api = inject(ApiService);

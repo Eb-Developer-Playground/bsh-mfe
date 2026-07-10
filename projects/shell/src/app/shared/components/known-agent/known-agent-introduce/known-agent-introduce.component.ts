@@ -1,10 +1,9 @@
-import {
-  Component,
+import { Component,
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import {
   CompanyDetails,
   PersonalDetails,
@@ -14,7 +13,8 @@ import {
   selector: 'app-known-agent-introduce',
   templateUrl: './known-agent-introduce.component.html',
   styleUrls: ['./known-agent-introduce.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class KnownAgentIntroduceComponent implements OnInit, OnChanges {
   @Input() personalDetails!: PersonalDetails;
   @Input() companyDetails!: CompanyDetails;

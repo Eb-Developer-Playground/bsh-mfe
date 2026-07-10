@@ -1,4 +1,4 @@
-@import '/src/assets/scss/colors';
+@use '../../../../assets/scss/colors';
 
 .p-0 {
   padding: 0 !important;
@@ -27,12 +27,12 @@
     margin-right: 2.4rem;
   }
   .active {
-    color: $color-accent;
+    color: colors.$color-accent;
     background: rgba(47, 152, 3, 0.04);
   }
   .inactive,
   .blocked {
-    color: $color-warn;
+    color: colors.$color-warn;
     background: rgba(230, 0, 0, 0.04);
   }
 }

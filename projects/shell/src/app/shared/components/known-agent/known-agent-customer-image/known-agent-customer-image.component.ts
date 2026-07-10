@@ -1,13 +1,12 @@
-import {
-  Component,
+import { Component,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { from, map, mergeMap, Subject, takeUntil } from 'rxjs';
 import { AccountManagementService } from 'src/app/core/services/account-management/account-management.service';
 import { AccountService } from 'src/app/core/services/account/account.service';
@@ -27,7 +26,8 @@ export interface SupportDocuments {
   selector: 'app-known-agent-customer-image',
   templateUrl: './known-agent-customer-image.component.html',
   styleUrls: ['./known-agent-customer-image.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class KnownAgentCustomerImageComponent
   implements OnInit, OnChanges, OnDestroy
 {
@@ -61,12 +61,12 @@ export class KnownAgentCustomerImageComponent
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes?.acc?.currentValue) {
-      let accNumber: any = changes.acc.currentValue;
+    if (changes?.['acc']?.currentValue) {
+      let accNumber: any = changes['acc'].currentValue;
       return this.fetchCustomerImagesSecondCall(accNumber);
     }
 
-    if (changes?.supportDocuments?.currentValue) {
+    if (changes?.['supportDocuments']?.currentValue) {
       this.setDocuments();
     }
   }
@@ -103,19 +103,18 @@ export class KnownAgentCustomerImageComponent
   fetchCustomerImagesSecondCall = (val: any) => {
     const customer = this.CIF
       ? { cif: this.CIF }
-      : this.accountManagementService.getCustomer();
+      : this.accountManagementService['getCustomer']();
 
     if (customer && customer.cif) {
-      this.accountService
-        .fetchPhoto(
-          {
-            customerId: customer.cif,
-            accountid: val,
-          },
-          'v1'
-        )
+      this.accountService['fetchPhoto'](
+        {
+          customerId: customer.cif,
+          accountid: val,
+        },
+        'v1'
+      )
         .subscribe({
-          next: result => {
+          next: (result: any) => {
             if (!result.successful) {
               this.toastService.show(
                 result.statusMessage,
@@ -130,10 +129,10 @@ export class KnownAgentCustomerImageComponent
             }
 
             const images = result.responseObject;
-            this.accountManagementService.setCustomerImages(images);
+            this.accountManagementService['setCustomerImages'](images);
             this.mapImages([images[0]]);
           },
-          error: error => {
+          error: (error: any) => {
             this.toastService.show(
               error.message,
               'Error',
@@ -175,16 +174,15 @@ export class KnownAgentCustomerImageComponent
 
   fetchCustomerImages = (customer: any) => {
     if (customer && customer.cif) {
-      this.accountService
-        .fetchPhoto(
-          {
-            customerId: customer.cif,
-            accountid: this.acc,
-          },
-          'v1'
-        )
+      this.accountService['fetchPhoto'](
+        {
+          customerId: customer.cif,
+          accountid: this.acc,
+        },
+        'v1'
+      )
         .subscribe(
-          result => {
+          (result: any) => {
             if (!result.successful) {
               this.toastService.show(
                 result.statusMessage,
@@ -194,10 +192,10 @@ export class KnownAgentCustomerImageComponent
               return;
             }
             const images = result.responseObject;
-            this.accountManagementService.setCustomerImages(images);
+            this.accountManagementService['setCustomerImages'](images);
             this.mapImages([images[0]]);
           },
-          error => {
+          (error: any) => {
             this.toastService.show(
               error,
               'Error',

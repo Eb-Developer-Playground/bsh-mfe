@@ -8,11 +8,12 @@ import {
   OnInit,
   OnDestroy,
 } from '@angular/core';
-import { SwiperContainer } from 'swiper/swiper-element';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { SwiperContainer } from 'swiper/element';
 import { register } from 'swiper/element/bundle';
 @Component({
   selector: 'app-swiperv1',
-  standalone: true,
+
   imports: [],
   templateUrl: './swiperv1.component.html',
   styleUrl: './swiperv1.component.scss',

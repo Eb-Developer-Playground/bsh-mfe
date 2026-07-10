@@ -148,7 +148,7 @@
                 cols="20"
                 rows="4"></textarea>
                     </div>
-                    @if (reasonForm.get('comment')!.errors?.maxlength) {
+                    @if (reasonForm.get('comment')!.errors?.['maxlength']) {
                         <p class="form-error">
                             {{ 'BIOMETRICS.MAX-LENGTH-300CHARS' | translate }}
                         </p>
@@ -177,7 +177,7 @@
                         fxLayoutGap="24px">
                         @if (countryCode === 'CD') {
                             <app-documents-upload-drc
-                                (onUploaded)="onDRCFileChange($event)"
+                                (onUploaded)="onDRCFileChange($any($event))"
                                 [allowAdditional]="false"
                                 [documentSpecs]="UploadDocuments"
                                 [title]="'DOCUMENTS.TITLE'">

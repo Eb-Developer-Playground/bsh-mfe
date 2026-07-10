@@ -40,7 +40,7 @@
           class="mat-icon notranslate text-grey clear-search material-icons mat-icon-no-color"
           aria-hidden="true"
           data-mat-icon-type="font"
-          *ngIf="!!form.controls.query.value"
+          *ngIf="!!form.controls['query'].value"
           (click)="onClearSearch()">
           close
         </mat-icon>

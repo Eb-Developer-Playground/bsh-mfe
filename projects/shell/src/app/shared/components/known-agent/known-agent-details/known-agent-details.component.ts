@@ -1,11 +1,9 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnDestroy,
   OnInit,
-  Output,
-} from '@angular/core';
+  Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
@@ -19,12 +17,14 @@ import { validateKraPin } from '../../../directives/kra-pin-validator.directive'
 import { ValidateFields } from '../../../validators';
 import { SessionService } from '@app/shared/services';
 import { SafeUrl } from '@angular/platform-browser';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-known-agent-details',
   templateUrl: './known-agent-details.component.html',
   styleUrls: ['./known-agent-details.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class KnownAgentDetailsComponent implements OnInit, OnDestroy {
   @Input() knownAgentDetails!: IknownAgentDetails;
   @Input() editAgentNames = false;

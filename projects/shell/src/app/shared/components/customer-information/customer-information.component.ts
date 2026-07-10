@@ -1,26 +1,23 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnInit,
   output,
   Output,
-  signal,
-} from '@angular/core';
+  signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { takeUntil } from 'rxjs';
 import { AccountService, TicketsService } from '@app/core/services';
 import { Unsub } from '../../utils/unsub';
 import { SessionService } from '@app/shared/services';
 import { ComponentsModule } from '@shared/components/components.module';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-shared-customer-information',
   templateUrl: './customer-information.component.html',
   styleUrls: ['./customer-information.component.scss'],
-  standalone: true,
-  imports: [ComponentsModule, CommonModule, TranslateModule],
+  imports: [ComponentsModule, CommonModule, COMPAT_IMPORTS],
 })
 export class CommonCustomerInformationComponent
   extends Unsub
@@ -71,8 +68,7 @@ export class CommonCustomerInformationComponent
     bankId: string = this.sessionService.userBank
   ) {
     const url = `?Id=${cif}&bankId=${bankId}&idType=customerid`;
-    this.accountService
-      .getAccount(url)
+    this.accountService['getAccount'](url)
       .pipe(takeUntil(this.cleanUp))
       .subscribe((res: any) => {
         this.customerData = res?.responseObject;

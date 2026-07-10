@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { TranslateModule } from '@ngx-translate/core';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-photo-signature',
-  standalone: true,
-  imports: [MatCheckboxModule,TranslateModule],
+  imports: [MatCheckboxModule, TranslatePipe],
   templateUrl: './photo-signature.component.html',
   styleUrl: './photo-signature.component.scss'
 })

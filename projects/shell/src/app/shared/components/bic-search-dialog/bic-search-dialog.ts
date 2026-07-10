@@ -1,5 +1,6 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Inject, OnDestroy, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 import { Observable, of, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
@@ -12,6 +13,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'dialog-bic-search',
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: 'bic-search-dialog.html',
   styleUrls: ['bic-search-dialog.scss'],
 })
@@ -29,9 +32,7 @@ export class BicSearchDialog implements OnInit, OnDestroy {
   filteredBranchCityCodes: any = [];
   branchCodes: any = [];
   filteredBranchCodes: any = [];
-  form: UntypedFormGroup = this.fb.group({
-    query: [''],
-  });
+  form!: UntypedFormGroup;
 
   private destroy$: Subject<any> = new Subject<any>();
 
@@ -43,7 +44,10 @@ export class BicSearchDialog implements OnInit, OnDestroy {
     private translate: TranslateService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.form.controls.query.valueChanges
+    this.form = this.fb.group({
+      query: [''],
+    });
+    this.form.controls['query'].valueChanges
       .pipe(debounceTime(500), distinctUntilChanged(), takeUntil(this.destroy$))
       .subscribe(v => {
         if (data.cities || data.branchCityCode) {
@@ -164,7 +168,7 @@ export class BicSearchDialog implements OnInit, OnDestroy {
   }
 
   onClearSearch() {
-    this.form.controls.query.setValue('');
+    this.form.controls['query'].setValue('');
   }
 
   ngOnDestroy(): void {

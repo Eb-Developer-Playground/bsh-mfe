@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -10,6 +10,7 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 export interface signDialogData {
   canVerify: string;
@@ -22,7 +23,8 @@ interface Provider {
   selector: 'app-sign-dialog',
   templateUrl: './sign-dialog.component.html',
   styleUrls: ['./sign-dialog.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class SignDialogComponent implements OnInit {
   forms: any;
 

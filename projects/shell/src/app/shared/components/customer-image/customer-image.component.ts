@@ -1,12 +1,11 @@
-import {
-  Component,
+import { Component,
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { AccountManagementService } from '@app/core/services/account-management/account-management.service';
 import { AccountService } from '@app/core/services/account/account.service';
 import { MessageBoxType, ToastService } from '@app/shared/modules/toast';
@@ -16,7 +15,8 @@ import { CommonCustomerImagePreviewModalComponent } from './customer-image-previ
   selector: 'app-legacy-customer-image',
   templateUrl: './customer-image.component.html',
   styleUrls: ['./customer-image.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class CommonCustomerImageComponent implements OnChanges, OnInit {
   @Input() acc: any;
   @Input() cif: any;
@@ -49,22 +49,21 @@ export class CommonCustomerImageComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.acc?.currentValue) {
-      let accNumber: any = changes.acc?.currentValue;
+    if (changes['acc']?.currentValue) {
+      let accNumber: any = changes['acc']?.currentValue;
       return this.fetchCustomerImagesSecondCall(accNumber);
     }
   }
 
   fetchCustomerImagesSecondCall = (val: any) => {
-    this.accountService
-      .fetchPhoto(
+    this.accountService['fetchPhoto'](
         {
           customerId: this.cif,
           accountid: val,
         },
         'v1'
       )
-      .subscribe(result => {
+      .subscribe((result: any) => {
         if (!result.successful) {
           this.toastService.show(
             result.statusMessage,
@@ -78,7 +77,7 @@ export class CommonCustomerImageComponent implements OnChanges, OnInit {
           return;
         }
         const images = result.responseObject;
-        this.accountManagementService.setCustomerImages(images);
+        this.accountManagementService['setCustomerImages'](images);
         this.mapImages([images[0]]);
       });
   };
@@ -95,10 +94,10 @@ export class CommonCustomerImageComponent implements OnChanges, OnInit {
           ),
         };
       });
-      this.accountService.setCustomerImages(this.customerPhotos);
+      this.accountService['setCustomerImages'](this.customerPhotos);
     } else if (images.length === 0) {
       this.customerPhotos = null;
-      this.accountService.setCustomerImages(this.customerPhotos);
+      this.accountService['setCustomerImages'](this.customerPhotos);
     }
   };
 
@@ -114,15 +113,14 @@ export class CommonCustomerImageComponent implements OnChanges, OnInit {
   };
 
   fetchCustomerImages = () => {
-    this.accountService
-      .fetchPhoto(
+    this.accountService['fetchPhoto'](
         {
           customerId: this.cif,
           accountid: this.acc,
         },
         'v1'
       )
-      .subscribe(result => {
+      .subscribe((result: any) => {
         if (!result.successful) {
           this.toastService.show(
             result.statusMessage,
@@ -136,7 +134,7 @@ export class CommonCustomerImageComponent implements OnChanges, OnInit {
           return;
         }
         const images = result.responseObject;
-        this.accountManagementService.setCustomerImages(images);
+        this.accountManagementService['setCustomerImages'](images);
         this.mapImages([images[0]]);
       });
   };

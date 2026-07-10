@@ -1,12 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { UntypedFormGroup } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-phone-otp-validation',
   templateUrl: './phone-otp-validation.component.html',
   styleUrls: ['./phone-otp-validation.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class PhoneOtpValidationComponent implements OnInit {
   @Input() form!: UntypedFormGroup;
 

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { AccountService } from '@app/core/services/account/account.service';
 import { IAccMgntObj } from '@app/shared/models/common';
 import { IknownAgentDetails } from '@app/shared/models/common/knownAgent.model';
@@ -11,7 +12,8 @@ import { finalize } from 'rxjs/operators';
   selector: 'app-known-agent-success',
   templateUrl: './known-agent-success.component.html',
   styleUrls: ['./known-agent-success.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class KnownAgentSuccessComponent implements OnInit {
   successData: any;
   public accMgntObj!: IAccMgntObj;
@@ -31,7 +33,7 @@ export class KnownAgentSuccessComponent implements OnInit {
     this.successData = JSON.parse(successData);
 
     const selectedAccount =
-      this.accountSelectionService.getSelectedAccountWithFallbacks();
+      this.accountSelectionService['getSelectedAccountWithFallbacks']();
 
     let accountToFetch: string | null = null;
 
@@ -67,10 +69,10 @@ export class KnownAgentSuccessComponent implements OnInit {
     const queryString = `?Id=${accountNumber}&bankId=${bankId}&idType=accountno`;
 
     this.accountService
-      .getAccount(queryString)
+      ['getAccount'](queryString)
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe({
-        next: response => {
+        next: (response: any) => {
           if (response.successful && response.responseObject) {
             const accountData = response.responseObject;
 
@@ -92,7 +94,7 @@ export class KnownAgentSuccessComponent implements OnInit {
             }
           }
         },
-        error: error => {
+        error: (error: any) => {
           console.error('Error fetching account details:', error);
         },
       });

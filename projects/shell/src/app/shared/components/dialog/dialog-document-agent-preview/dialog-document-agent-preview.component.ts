@@ -1,14 +1,16 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { from, map, mergeMap, Subject, switchMap, takeUntil } from 'rxjs';
 import { ApiService } from 'src/app/shared/services';
 import { SupportDocuments } from '../../known-agent/known-agent-customer-image/known-agent-customer-image.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-dialog-document-agent-preview',
   templateUrl: './dialog-document-agent-preview.component.html',
   styleUrls: ['./dialog-document-agent-preview.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class DialogDocumentAgentPreviewComponent implements OnInit, OnDestroy {
   anchor!: HTMLAnchorElement;
   imageUrl: any;

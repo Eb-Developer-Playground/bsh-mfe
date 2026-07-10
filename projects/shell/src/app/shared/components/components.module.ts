@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
@@ -17,7 +17,6 @@ import { DialogDocumentPreviewComponent } from './dialog/dialog-document-preview
 import { DialogConfirmComponent } from './dialog/dialog-confirm/dialog-confirm.component';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { ApprovalFormComponent } from './approval-form/approval-form.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { AccountDetailSectionComponent } from './account-detail-section/account-detail-section.component';
 import { VerifySkipBioComponent } from './verify-skip-bio/verify-skip-bio.component';
 import { BicSearchDialog } from './bic-search-dialog/bic-search-dialog';
@@ -83,7 +82,40 @@ import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.compo
 
 @NgModule({
   providers: [DatePipe],
-  declarations: [
+  imports: [
+    CommonModule,
+    PillsComponent,
+    DocumentsUploaderModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+    PdfViewerModule,
+    FlexLayoutModule,
+    MaterialModule,
+    ToastModule,
+    DirectivesModule,
+    DocumentsUploadModuleDrc,
+    DocumentsUploadModule,
+    DynamicHTMLModule.forRoot({
+      components: [
+        {
+          component: AdditionalDetailsComponent,
+          selector: 'app-additional-details',
+        },
+        {
+          component: ChangeMandateAccountDetailComponent,
+          selector: 'app-change-mandate-account-detail',
+        },
+        {
+          component: CurrentMandateSignatoriesComponent,
+          selector: 'app-current-mandate-signatories',
+        },
+      ],
+    }),
+    PipesModule,
+    BiometricsModule,
+    TransformCurrencyPipe,
+    SkeletonLoaderComponent,
     ThemingComponent,
     IconographyComponent,
     TypographyComponent,
@@ -134,14 +166,12 @@ import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.compo
     ActiveSpecialForexRatesComponent,
     CommonCustomerImageComponent,
     CommonCustomerImagePreviewModalComponent,
-    ActiveSpecialForexRatesComponent,
     EntityInformationComponent,
     CustomerImageComponent,
     EntityImageComponent,
     AccountCardComponent,
     SoftDeleteDialogComponent,
     CustomerProfileStatusComponent,
-    ExistingCustomerComponent,
     ExistingCustomerComponent,
     LegalSearchComponent,
     ListItemComponent,
@@ -151,42 +181,6 @@ import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.compo
     SendTermsDialogComponent,
     CustomerAccountDetails,
     CustomerInformationComponent,
-  ],
-  imports: [
-    CommonModule,
-    PillsComponent,
-    DocumentsUploaderModule,
-    RouterModule,
-    ReactiveFormsModule,
-    FormsModule,
-    PdfViewerModule,
-    FlexLayoutModule,
-    MaterialModule,
-    TranslateModule,
-    ToastModule,
-    DirectivesModule,
-    DocumentsUploadModuleDrc,
-    DocumentsUploadModule,
-    DynamicHTMLModule.forRoot({
-      components: [
-        {
-          component: AdditionalDetailsComponent,
-          selector: 'app-additional-details',
-        },
-        {
-          component: ChangeMandateAccountDetailComponent,
-          selector: 'app-change-mandate-account-detail',
-        },
-        {
-          component: CurrentMandateSignatoriesComponent,
-          selector: 'app-current-mandate-signatories',
-        },
-      ],
-    }),
-    PipesModule,
-    BiometricsModule,
-    TransformCurrencyPipe,
-    SkeletonLoaderComponent,
   ],
   exports: [
     ThemingComponent,
@@ -238,5 +232,6 @@ import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.compo
     SoftDeleteDialogComponent,
     SkeletonLoaderComponent,
   ],
+schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentsModule {}

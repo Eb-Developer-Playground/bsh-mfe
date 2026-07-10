@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SafeResourceUrl } from '@angular/platform-browser';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-image-preview-modal',
   templateUrl: './image-preview-modal.component.html',
-  standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslatePipe],
   styleUrls: ['./image-preview-modal.component.scss'],
 })
 export class ImagePreviewModalComponent implements OnInit {

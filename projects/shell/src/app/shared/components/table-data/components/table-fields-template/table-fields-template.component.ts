@@ -1,5 +1,4 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnInit,
@@ -7,8 +6,8 @@ import {
   TemplateRef,
   ViewChild,
   OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+  SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { FieldType, TableFields } from '../../models/table-fields.models';
 import { TableDataService } from '../../services/table-data.service';
 
@@ -16,7 +15,8 @@ import { TableDataService } from '../../services/table-data.service';
   selector: 'app-table-fields-template',
   templateUrl: './table-fields-template.component.html',
   styleUrls: ['./table-fields-template.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class TableFieldsTemplateComponent implements OnInit, OnChanges {
   @Input() tableField!: TableFields;
   @Input() data: any;
@@ -72,8 +72,8 @@ export class TableFieldsTemplateComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.tableField.type === 'CHECK') {
-      if (changes?.data?.currentValue?.selected) {
-        this.data = changes.data.currentValue;
+      if (changes?.['data']?.currentValue?.selected) {
+        this.data = changes['data'].currentValue;
       }
     }
   }

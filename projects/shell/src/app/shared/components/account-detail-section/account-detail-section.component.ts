@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import {
@@ -13,9 +13,12 @@ import { AccountDetailsComponent } from 'src/app/home/customer/accounts/account-
 import { MatDialog } from '@angular/material/dialog';
 import { ContextManager } from '@app/shared/modules/stepper';
 import { MessageBoxType, ToastService } from '@app/shared/modules/toast';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-account-detail-section',
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './account-detail-section.component.html',
   styleUrls: ['./account-detail-section.component.scss'],
 })
@@ -70,6 +73,9 @@ export class AccountDetailSectionComponent implements OnInit {
   @Output() schemeCodeEligibilityChange = new EventEmitter<boolean>();
 
   private unsupportedSchemeCodeMessage = '';
+  get isCustomerPresent(): boolean {
+    return (this.chequeRequestService as any)['isCustomerPresent'];
+  }
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -148,9 +154,9 @@ export class AccountDetailSectionComponent implements OnInit {
         this.isInitialLoad &&
         currentUrl.includes('/services/cheque-requests')
       ) {
-        const savedContextData = this.ctxManager.contextData;
+        const savedContextData = this.ctxManager.contextData as any;
         const savedAccount =
-          savedContextData?.chequebook_request?.selectedAccount;
+          savedContextData?.['chequebook_request']?.selectedAccount;
 
         if (savedAccount) {
           const matchingAccount = this.filteredAccounts.find(
@@ -232,11 +238,11 @@ export class AccountDetailSectionComponent implements OnInit {
       return;
     }
 
-    this.chequeRequestService
-      .lookupSchemeCodeMessage(schemeCode)
+    (this.chequeRequestService as any)
+      ['lookupSchemeCodeMessage'](schemeCode)
       .pipe(take(1))
       .subscribe({
-        next: response => {
+        next: (response: any) => {
           const isSuccessful = response?.successful;
           const extractedMessage = this.extractSchemeCodeMessage(response);
           const fallbackMessage =

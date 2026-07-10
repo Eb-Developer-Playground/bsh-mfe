@@ -1,37 +1,41 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { PipesModule } from '@app/shared/pipes/pipes.module';
+import { Component,
+ Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatCardContent, MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { AdditionalPersonalDetails } from '@app/shared/models/customer/individual-formstate';
 import { ISignature, Stakeholder } from '@app/shared/models/customer/shared';
 import { DocumentsUploadModule } from '@app/shared/modules/upload-docs';
 import { DocumentsUploadModuleDrc } from '@app/shared/modules/upload-docs/documents-upload-drc/documents-upload-drc.module';
-import { PipesModule } from '@app/shared/pipes/pipes.module';
 import { getLanguageLabel } from '@app/shared/utils/utils';
-import { GenderPipe } from '@app/version-2/shared/pipes/gender.pipe';
-import { ISubsidiary } from '@app/version-2/shared/services/session-v2/session.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { GenderPipe } from '@app/shared/pipes/gender.pipe';
+import { ISubsidiary } from '@app/shared/services/session/session.service';
+import { TranslatePipe } from '@ngx-translate/core';
+import { MaritalStatusPipe } from '@app/shared/pipes/marital-status.pipe';
 import { ImagePreviewModalComponent } from '../../customer-information/image-preview-modal/image-preview-modal.component';
 @Component({
   selector: 'app-primary-details',
-  standalone: true,
+  templateUrl: './primary-details.component.html',
+  styleUrl: './primary-details.component.scss',
   imports: [
+    COMPAT_IMPORTS,
     MatCardContent,
     MatIconModule,
     CommonModule,
     MatCardModule,
-    TranslateModule,
+    TranslatePipe,
     MatDividerModule,
     DocumentsUploadModuleDrc,
     DocumentsUploadModule,
     PipesModule,
     GenderPipe,
+    MaritalStatusPipe,
   ],
-  templateUrl: './primary-details.component.html',
-  styleUrl: './primary-details.component.scss',
-})
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class PrimaryDetailsComponent implements OnInit {
   @Input() subsidiary!: ISubsidiary;
   @Input() signatureAndPhoto: ISignature[] = [];

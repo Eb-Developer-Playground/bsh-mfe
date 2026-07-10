@@ -1,16 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { WhiteSpaceValidator } from 'src/app/shared/directives/whitespace-validator';
 
 @Component({
   selector: 'app-change-of-signature-change',
   templateUrl: './change-of-signature-change.component.html',
   styleUrls: ['./change-of-signature-change.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class ChangeOfSignatureChangeComponent implements OnInit {
   @Input() readonly = false;
   @Input() effectiveDate = '';

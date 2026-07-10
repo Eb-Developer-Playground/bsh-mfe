@@ -1,9 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 export interface LaunchCustomerData {
   canVerify: string;
@@ -13,7 +14,8 @@ export interface LaunchCustomerData {
   selector: 'app-launch-customer-dialog',
   templateUrl: './launch-customer-dialog.component.html',
   styleUrls: ['./launch-customer-dialog.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class LaunchCustomerDialogComponent implements OnInit {
   fingerprintAccepted = false;
   reasonForViewingProfile = '';

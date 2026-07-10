@@ -1,11 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { TableColorPills } from '../../models/table-fields.models';
 
 @Component({
   selector: 'app-table-pills',
   templateUrl: './table-pills.component.html',
   styleUrls: ['./table-pills.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class TablePillsComponent implements OnInit {
   @Input() color!: 'red' | 'green' | 'gray' | 'orange' | 'orange-1' | string;
   @Input() icon!: string;

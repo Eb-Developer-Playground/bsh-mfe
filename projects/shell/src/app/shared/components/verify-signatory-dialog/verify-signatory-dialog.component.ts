@@ -1,10 +1,11 @@
-import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import jwt_decode from 'jwt-decode';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { jwtDecode } from 'jwt-decode';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AccountService } from '@app/core/services';
@@ -44,7 +45,8 @@ export interface signatoriesbioData {
   selector: 'app-verify-signatory-dialog',
   templateUrl: './verify-signatory-dialog.component.html',
   styleUrls: ['./verify-signatory-dialog.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class VerifySignatoryDialogComponent implements OnInit, OnDestroy {
   @ViewChild(SearchComponent) CustomerSearchComponent!: SearchComponent;
 
@@ -103,8 +105,7 @@ export class VerifySignatoryDialogComponent implements OnInit, OnDestroy {
         this.data.user.accounts[0]?.accountNumber,
       BankId: this.getCurrentUserBankId(),
     };
-    this.accountService
-      .getAccountSignatories(sigData, { headers: { skipLoadingInterceptor: 'true' } })
+    this.accountService['getAccountSignatories'](sigData, { headers: { skipLoadingInterceptor: 'true' } })
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: any) => {
         if (!res.successful) {
@@ -182,7 +183,7 @@ export class VerifySignatoryDialogComponent implements OnInit, OnDestroy {
   }
 
   getCurrentUserBankId() {
-    const parsedToken: any = jwt_decode(
+    const parsedToken: any = jwtDecode(
       this.sessionService.loginResponse.access_token
     );
     return parsedToken.bankId;
@@ -344,7 +345,7 @@ export class VerifySignatoryDialogComponent implements OnInit, OnDestroy {
     );
   }
   closeDialog() {
-    this.CustomerSearchComponent?.clearSearchText();
+    (this.CustomerSearchComponent as any)?.clearSearchText();
     this.dialogRef.close({ bioDialogClosed: true });
   }
 

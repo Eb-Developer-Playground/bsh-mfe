@@ -73,7 +73,7 @@ rel<mat-card appearance="outlined" class="mb-2" style="padding: 1.5rem">
             {{ 'COMMON.ACCOUNT-STATUS' | translate }}
           </p>
           <p class="customer-detail-content">
-            {{ account.accountStatus }}
+            {{ account['accountStatus'] }}
           </p>
         </div>
         <div class="customer-detail" *ngIf="!readonly">
@@ -81,7 +81,7 @@ rel<mat-card appearance="outlined" class="mb-2" style="padding: 1.5rem">
             {{ 'BULK-TRANFER.MANDATE-TYPE' | translate }}
           </p>
           <p class="customer-detail-content">
-            {{ account.mandate }}
+            {{ account['mandate'] }}
           </p>
         </div>
         <div class="customer-detail" *ngIf="!readonly">
@@ -89,7 +89,7 @@ rel<mat-card appearance="outlined" class="mb-2" style="padding: 1.5rem">
             {{ 'STATIC_DATA.ONBOARDING.SCHEME_TYPE' | translate }}
           </p>
           <p class="customer-detail-content">
-            {{ account.schemeType }}
+            {{ account['schemeType'] }}
           </p>
         </div>
       </div>

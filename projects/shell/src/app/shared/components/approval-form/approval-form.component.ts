@@ -1,12 +1,14 @@
 import {
   AfterViewInit,
   Component,
+  CUSTOM_ELEMENTS_SCHEMA,
   EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   Output,
 } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
@@ -16,12 +18,14 @@ import * as moment from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Ticket, TicketStatusForm } from '../../../core/services/ticket/models';
-import { TicketsService } from '../../../core/services/ticket/tickets.service';
+import { TicketService } from '../../../core/services/ticket/tickets.service';
 import { FormNames } from '../../models';
 import { MessageBoxType, ToastService } from '../../modules/toast';
 
 @Component({
   selector: 'app-approval-form',
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './approval-form.component.html',
   styleUrls: ['./approval-form.component.scss'],
 })
@@ -54,7 +58,7 @@ export class ApprovalFormComponent
 
   constructor(
     private fb: UntypedFormBuilder,
-    private ticketsService: TicketsService,
+    private ticketsService: TicketService,
     private toastService: ToastService
   ) {
     this.forms = this.fb.group({
@@ -127,7 +131,7 @@ export class ApprovalFormComponent
     this.ticketsService
       .addTicketNote(this.ticket?.id, { note })
       .pipe(takeUntil(this.destroySubject$))
-      .subscribe(res => {
+      .subscribe((res: any) => {
         if (res.successful) {
           this.toastService.show(
             'Note added successfully!',

@@ -1,4 +1,4 @@
-@import '/src/assets/scss/colors';
+@use '../../../../../assets/scss/colors';
 
 .p-0 {
     padding: 0 !important;
@@ -98,7 +98,7 @@
         height: 5rem;
         background-color: #929497;
         margin: 0 -1.5rem;
-        background-image: url('~src/assets/images/customer-service-bg.png');
+        background-image: url('../../../../../../src/assets/images/customer-service-bg.png');
         // background-image: url('~src/assets/images/overview_banner.svg');
         background-size: cover;
         object-fit: cover;

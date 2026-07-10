@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   AbstractControl,
   UntypedFormBuilder,
@@ -10,20 +10,20 @@ import { MessageBoxType } from 'src/app/shared/modules/toast/models';
 import { Finger, FingerPrintState } from '../models';
 import { SkipBioDialog } from './dialogs';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-biometrics',
   templateUrl: './biometrics.component.html',
   styleUrls: ['./biometrics.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class BiometricsComponent implements OnInit, OnDestroy {
   @Input() label!: string;
   @Input() stepperControl!: AbstractControl;
   ticketId!: any;
   action: MessageBoxType = MessageBoxType.DANGER;
-  skipBiometricForm: UntypedFormGroup = this.fb.group({
-    skipCheckBox: false,
-  });
+  skipBiometricForm!: UntypedFormGroup;
   checkboxValue = false;
   leftFingerArray: any[] = [];
   rightFingerArray: any[] = [];

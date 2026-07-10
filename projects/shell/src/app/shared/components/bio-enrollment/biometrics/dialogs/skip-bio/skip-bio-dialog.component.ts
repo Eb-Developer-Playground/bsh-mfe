@@ -1,16 +1,18 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../../../compat-barrel';
 
 @Component({
   selector: 'app-dialog-skip',
   templateUrl: './skip-bio-dialog.component.html',
   styleUrls: ['./skip-bio-dialog.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class SkipBioDialog implements OnInit {
   form!: UntypedFormGroup;
   label = 'Reason*';

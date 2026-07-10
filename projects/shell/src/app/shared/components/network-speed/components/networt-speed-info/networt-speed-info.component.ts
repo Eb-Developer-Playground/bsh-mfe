@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NetworkSpeedInterface } from '../../interfaces/network-speed.interface';
 
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { NetworkSpeedImageComponent } from '../network-speed-image/network-speed-image.component';
 
 @Component({

@@ -1,19 +1,19 @@
-import {
-  Component,
+import { Component,
   EventEmitter,
   Input,
   OnInit,
   Output,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToastService, MessageBoxType } from '@app/shared/modules/toast';
 import { MatDialog } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 
 @Component({
   selector: 'app-change-of-signature-supporting-documents',
   templateUrl: './change-of-signature-supporting-documents.component.html',
   styleUrls: ['./change-of-signature-supporting-documents.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class ChangeOfSignatureSupportingDocumentsComponent implements OnInit {
   @Input() readonly = false;
   @Output() cloneOfObjectsEmitter: EventEmitter<any> = new EventEmitter();

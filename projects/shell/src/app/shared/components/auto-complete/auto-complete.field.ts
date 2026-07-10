@@ -1,14 +1,12 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
+import { Component,
   DestroyRef,
   EventEmitter,
   inject,
   Input,
   OnInit,
   Output,
-  ViewChild,
-} from '@angular/core';
+  ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
   ControlContainer,
   FormGroup,
@@ -28,12 +26,11 @@ import {
   MatAutocompleteTrigger,
 } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectTrigger } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslateModule } from '@ngx-translate/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { SearchableItem } from '@app/shared/models/searchable';
 
 @Component({
@@ -49,8 +46,7 @@ import { SearchableItem } from '@app/shared/models/searchable';
     MatAutocompleteTrigger,
     MatFormFieldModule,
     MatInputModule,
-    TranslateModule,
-    MatSelectTrigger,
+
   ],
   viewProviders: [
     {

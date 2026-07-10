@@ -1,11 +1,9 @@
-import {
-  Component,
+import { Component,
   Inject,
   OnDestroy,
   OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+  ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ChangeOfSignatureService } from 'src/app/core/services/change-of-signature/change-of-signature.service';
 import { ChangeOfSignatureSkipBioComponent } from '../change-of-signature-skip-bio/change-of-signature-skip-bio.component';
@@ -14,16 +12,16 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../compat-barrel';
 @Component({
   selector: 'app-change-of-signature-bio-dialog',
   templateUrl: './change-of-signature-bio-dialog.component.html',
   styleUrls: ['./change-of-signature-bio-dialog.component.scss'],
   encapsulation: ViewEncapsulation.None,
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class ChangeOfSignatureBioDialog implements OnInit, OnDestroy {
-  serviceForm = this.formBuilder.group({
-    service: ['', Validators.required],
-  });
+  serviceForm!: UntypedFormGroup;
   verifyBioSubscription: any;
   constructor(
     public dialogRef: MatDialogRef<ChangeOfSignatureBioDialog>,
@@ -40,7 +38,11 @@ export class ChangeOfSignatureBioDialog implements OnInit, OnDestroy {
     private router: Router,
     public dialog: MatDialog,
     private changeOfSignatureService: ChangeOfSignatureService
-  ) {}
+  ) {
+    this.serviceForm = this.formBuilder.group({
+      service: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {}
 

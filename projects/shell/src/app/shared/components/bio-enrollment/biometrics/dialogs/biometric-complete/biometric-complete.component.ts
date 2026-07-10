@@ -1,13 +1,15 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MessageBoxType } from 'src/app/shared/modules/toast/models';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { COMPAT_IMPORTS } from '../../../../../compat-barrel';
 
 @Component({
   selector: 'app-biometric-complete',
   templateUrl: './biometric-complete.component.html',
   styleUrls: ['./biometric-complete.component.scss'],
   encapsulation: ViewEncapsulation.None,
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class BiometricCompleteDialog implements OnInit {
   success = MessageBoxType.SUCCESS;
   title = 'Biometrics scanned successfully';

@@ -1,11 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { AccountManagementService } from 'src/app/core/services/account-management/account-management.service';
 import { ApiService } from 'src/app/shared/services';
 @Component({
   selector: 'app-entity-image',
   templateUrl: './entity-image.component.html',
   styleUrls: ['./entity-image.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class EntityImageComponent implements OnInit {
   @Input() acc: any;
   @Input() customerDetails: any;
@@ -18,7 +20,7 @@ export class EntityImageComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getTypes();
-    this.customerDetails = this.accountManagementService.getCustomerDetails();
+    this.customerDetails = this.accountManagementService['getCustomerDetails']();
   }
 
   getTypes() {

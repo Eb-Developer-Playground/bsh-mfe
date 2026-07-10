@@ -1,5 +1,4 @@
-import {
-  Component,
+import { Component,
   effect,
   forwardRef,
   input,
@@ -8,9 +7,9 @@ import {
   OutputEmitterRef,
   Signal,
   signal,
-  WritableSignal,
-} from '@angular/core';
+  WritableSignal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 @Component({
   selector: 'app-button-toggle',

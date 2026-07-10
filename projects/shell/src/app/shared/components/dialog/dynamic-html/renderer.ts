@@ -2,9 +2,11 @@ import {
   Injectable,
   Injector,
   ElementRef,
-  ComponentFactoryResolver,
-  ComponentFactory,
   ComponentRef,
+  EnvironmentInjector,
+  createComponent,
+  Type,
+  inject,
 } from '@angular/core';
 import { DynamicHTMLOptions } from './options';
 import { OnMount } from './interfaces';
@@ -20,19 +22,17 @@ function isBrowserPlatform() {
 
 @Injectable()
 export class DynamicHTMLRenderer {
-  private componentFactories = new Map<string, ComponentFactory<any>>();
+  private componentClasses = new Map<string, Type<any>>();
 
   private componentRefs = new Map<any, Array<ComponentRef<any>>>();
+  private environmentInjector = inject(EnvironmentInjector);
 
   constructor(
     private options: DynamicHTMLOptions,
-    private cfr: ComponentFactoryResolver,
     private injector: Injector
   ) {
     this.options.components.forEach(({ selector, component }) => {
-      let cf: ComponentFactory<any>;
-      cf = this.cfr.resolveComponentFactory(component);
-      this.componentFactories.set(selector, cf);
+      this.componentClasses.set(selector, component);
     });
   }
 
@@ -52,20 +52,24 @@ export class DynamicHTMLRenderer {
       );
       Array.prototype.forEach.call(elements, (el: Element) => {
         const content = el.innerHTML;
-        const cmpRef = this.componentFactories
-          .get(selector)
-          ?.create(this.injector, [], el);
+        const componentClass = this.componentClasses.get(selector);
+        if (!componentClass) return;
 
-        el.removeAttribute('ng-version');
+        const cmpRef = createComponent(componentClass, {
+          environmentInjector: this.environmentInjector,
+          elementInjector: this.injector,
+        });
+        const hostEl = cmpRef.location.nativeElement as Element;
+        el.parentNode?.replaceChild(hostEl, el);
 
-        if (cmpRef?.instance.dynamicOnMount) {
+        if (cmpRef.instance.dynamicOnMount) {
           const attrsMap = new Map<string, string>();
           if (el.hasAttributes()) {
             Array.prototype.forEach.call(el.attributes, (attr: Attr) => {
               attrsMap.set(attr.name, attr.value);
             });
           }
-          (cmpRef.instance as OnMount).dynamicOnMount(attrsMap, content, el);
+          (cmpRef.instance as OnMount).dynamicOnMount(attrsMap, content, hostEl);
         }
 
         // @ts-ignore

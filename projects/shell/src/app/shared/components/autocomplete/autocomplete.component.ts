@@ -1,11 +1,13 @@
 import {
   AfterViewInit,
   Component,
+  CUSTOM_ELEMENTS_SCHEMA,
   Input,
   OnInit,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import {
   AbstractControl,
   UntypedFormControl,
@@ -21,6 +23,8 @@ import {
 
 @Component({
   selector: 'app-autocomplete',
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss'],
 })

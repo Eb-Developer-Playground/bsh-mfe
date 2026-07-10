@@ -1,6 +1,7 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { TranslateService } from '@ngx-translate/core';
 import { from, Subject } from 'rxjs';
 import { map, mergeMap, takeUntil } from 'rxjs/operators';
@@ -20,7 +21,8 @@ export interface SupportDocuments {
   selector: 'app-customer-image',
   templateUrl: './customer-image.component.html',
   styleUrls: ['./customer-image.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class CustomerImageComponent implements OnInit, OnDestroy {
   @Input() acc: any;
   @Input() customerDetails: any;
@@ -52,9 +54,9 @@ export class CustomerImageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const customer = this.accountManagementService.getCustomer();
-    this.customerDetails = this.accountManagementService.getCustomerDetails();
-    let acc = this.accountManagementService.getCustomerAccounts();
+    const customer = this.accountManagementService['getCustomer']();
+    this.customerDetails = this.accountManagementService['getCustomerDetails']();
+    let acc = this.accountManagementService['getCustomerAccounts']();
 
     // filter an account with scheme type = SBA, and active
     let accId = acc
@@ -112,7 +114,7 @@ export class CustomerImageComponent implements OnInit, OnDestroy {
   fetchCustomerImages = (customer: any, accId: any) => {
     if (customer && customer.cif) {
       this.accountService
-        .fetchPhoto(
+        ['fetchPhoto'](
           {
             customerId: customer?.cif,
             accountid: accId?.accountNumber,
@@ -121,7 +123,7 @@ export class CustomerImageComponent implements OnInit, OnDestroy {
         )
         .pipe(takeUntil(this.destroy$))
         .subscribe(
-          result => {
+          (result: any) => {
             if (!result.successful) {
               this.toastService.show(
                 result.statusMessage,
@@ -135,7 +137,7 @@ export class CustomerImageComponent implements OnInit, OnDestroy {
               return;
             }
             const images = result.responseObject;
-            this.accountManagementService.setCustomerImages(images);
+            this.accountManagementService['setCustomerImages'](images);
 
             // filters the images of known-agents and individual owners of the accounts
             const filteredImages: any[] = images.filter(
@@ -151,7 +153,7 @@ export class CustomerImageComponent implements OnInit, OnDestroy {
 
             this.mapImages([filteredImages[0]]);
           },
-          error => {
+          (error: any) => {
             this.toastService.show(
               error,
               'Error',

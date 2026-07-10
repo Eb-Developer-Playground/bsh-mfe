@@ -49,7 +49,7 @@
                   <input matInput formControlName="kraPin" required />
 
                   <mat-error
-                    *ngIf="detailskraPin.controls.kraPin.hasError('required')">
+                    *ngIf="detailskraPin.controls['kraPin'].hasError('required')">
                     <span
                       >{{ 'KNOWN-AGENT.KRA-PIN' | translate }}
                       {{ 'COMMON.IS' | translate }}
@@ -59,7 +59,7 @@
 
                   <mat-error
                     *ngIf="
-                      detailskraPin.controls.kraPin.hasError('invalidKraPin')
+                      detailskraPin.controls['kraPin'].hasError('invalidKraPin')
                     ">
                     <span
                       >{{ 'KNOWN-AGENT.KRA-PIN' | translate }}
@@ -119,8 +119,8 @@
                   'KNOWN-AGENT.FIRST-NAME' | translate
                 }}</mat-label>
                 <input matInput formControlName="firstName" required />
-                <mat-error
-                  *ngIf="detailsForm.controls.firstName.hasError('required')">
+                  <mat-error
+                   *ngIf="detailsForm.controls['firstName'].hasError('required')">
                   <span
                     >{{ 'KNOWN-AGENT.FIRST-NAME' | translate }}
                     {{ 'COMMON.IS' | translate }}
@@ -141,8 +141,8 @@
               <mat-form-field appearance="fill">
                 <mat-label>{{ 'KNOWN-AGENT.LAST-NAME' | translate }}</mat-label>
                 <input matInput formControlName="lastName" required />
-                <mat-error
-                  *ngIf="detailsForm.controls.lastName.hasError('required')">
+                  <mat-error
+                   *ngIf="detailsForm.controls['lastName'].hasError('required')">
                   <span
                     >{{ 'KNOWN-AGENT.LAST-NAME' | translate }}
                     {{ 'COMMON.IS' | translate }}
@@ -159,7 +159,7 @@
                 <input matInput formControlName="idSerialNumber" required />
                 <mat-error
                   *ngIf="
-                    detailsForm.controls.idSerialNumber.hasError('required')
+                    detailsForm.controls['idSerialNumber'].hasError('required')
                   ">
                   <span
                     >{{ 'KNOWN-AGENT.ID-SERIAL-NUMBER' | translate }}
@@ -174,7 +174,7 @@
                 <mat-label>{{ 'KNOWN-AGENT.KRA-PIN' | translate }}</mat-label>
                 <input matInput formControlName="kraPin" required />
                 <mat-error
-                  *ngIf="detailsForm.controls.kraPin.hasError('required')">
+                  *ngIf="detailsForm.controls['kraPin'].hasError('required')">
                   <span>
                     {{ 'KNOWN-AGENT.KRA-PIN' | translate }}
                     {{ 'COMMON.IS' | translate }}

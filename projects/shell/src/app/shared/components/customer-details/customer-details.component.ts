@@ -1,10 +1,9 @@
-import {
-  AfterViewInit,
+import { AfterViewInit,
   Component,
   Input,
   OnDestroy,
-  OnInit,
-} from '@angular/core';
+  OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { TicketsService } from 'src/app/core/services';
 import { ChannelsService } from 'src/app/core/services/channels/channels.service';
 import { AccountService, SessionService } from '../../services';
@@ -13,7 +12,8 @@ import { AccountService, SessionService } from '../../services';
   selector: 'app-customer-details',
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.scss'],
-})
+  imports: [COMPAT_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class CustomerDetailsComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
@@ -76,13 +76,11 @@ export class CustomerDetailsComponent
   }
 
   getCustomerChannels(cif: string, bankID: string) {
-    this.channelsService
-      .getCustomerChannels(bankID, cif)
+    this.channelsService['getCustomerChannels'](bankID, cif)
       .subscribe((res: any) => {
         if (!res.successful) {
           if (res.statusCode === '99') {
-            this.channelsService
-              .getCustomerChannels(
+            this.channelsService['getCustomerChannels'](
                 this.bankID,
                 this.customerDetails?.phoneNumber1
               )

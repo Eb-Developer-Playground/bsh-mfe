@@ -1,0 +1,265 @@
+{
+  "EQUITY": {
+    "MOTTO": "Plus qu’une simple banque."
+  },
+  "COMMON": {
+    "FILTER": "Filtre",
+    "HELLO": "Hello",
+    "USERNAME": "Nom d'utilisateur",
+    "WELCOME": "Bienvenue à",
+    "CHARGES": "Frais",
+    "CHARGE_OPTION_DEFAULTS_TO_SHA": "En refusant l'option de frais, SHA sera appliqué par défaut",
+    "CHARGE_OPTION_DEFAULTS_TO_OUR": "En refusant l'option de frais, OUR sera appliqué par défaut",
+    "CONFIRM": "Confirmer",
+    "CANCEL": "Annuler",
+    "BACK": "Back",
+    "QUIT": "Quit",
+    "NEXT": "Next",
+    "COUNTRY": "Country",
+    "BRANCH": "Agence",
+    "WORKCLASS": "Classe Ouvrière",
+    "DOCUMENTS": {
+      "LABEL": "Documents justificatifs",
+      "STATEMENT_DETAILS": "Détails de la déclaration",
+      "FILE_SIZE_TXT_1": "Taille du fichier:",
+      "FILE_SIZE_TXT_2": "Le fichier ne doit pas dépasser 10 Mo",
+      "SIZE_LIMIT_ERROR": "La taille du fichier dépasse la limite maximale de 10 Mo",
+      "UNSUPPORTED_TYPE_ERROR": "Type de fichier non pris en charge",
+      "RESIZE_SCANNED_IMAGE": "Impossible de redimensionner l'image numérisée",
+      "ERROR_SCANNER": "Une erreur du scanner s'est produite",
+      "IMAGE_LARGE": "L'image est trop volumineuse",
+      "RESIZE_IMAGE_ERROR": "Impossible de redimensionner l'image"
+    }
+  },
+  "LOGIN": {
+    "COMMON": {
+      "SIGN-IN": "Connexion",
+      "LOG-OUT": "Se déconnecter",
+      "LOGGED-IN": "Vous êtes connecté en tant que ",
+      "ACCOUNT_HEADER": "Ci-dessous les détails de vos comptes",
+      "LOG-IN-TEXT": "Vous n’êtes pas connecté pour le moment. Veuillez vous connecter pour continuer à servir nos clients."
+    },
+    "MICROSOFT-SSO": {
+      "SIGN-IN": "Se connecter avec Microsoft",
+      "INSTRUCTIONS": "Pour continuer à servir nos clients, connectez-vous avec votre nom d’utilisateur et votre mot de passe."
+    },
+    "BIOMETRIC": {
+      "SIGN-IN": "Connectez-vous à l’aide de votre empreinte digitale",
+      "INSTRUCTIONS": "Placez votre pouce sur le lecteur biométrique pour vous connecter",
+      "INSTRUCTIONS-THUMB": "Placez votre pouce sur le scanner",
+      "ACTION-SCAN": "Scanner l’empreinte digitale",
+      "ACTION-RETRY": "Analyser à nouveau",
+      "ACTION-VERIFY": "Vérifier"
+    }
+  },
+  "LOCALE": {
+    "PREFERENCE": {
+      "CURRENT-LANGUAGE-SET": "langue actuelle définie sur",
+      "SELECT-DEFAULT-LANGUAGE": "Veuillez sélectionner votre langue par défaut",
+      "NONE": "Rien"
+    },
+    "LANGUAGES": {
+      "ENGLISH": "English",
+      "SWAHILI": "Kiswahili",
+      "FRENCH": "Française",
+      "ENGLISH-KE": "English, KE",
+      "ENGLISH-UG": "English, UG",
+      "KISWAHILI-KE": "Kiswahili, KE",
+      "KISWAHILI-TZ": "Kiswahili, TZ",
+      "RWANDESE": "Kinyarwanda, RW",
+      "SUDANESE": "English, SS",
+      "FRENCH-DRC": "French, DRC"
+    }
+  },
+  "MENU": {
+    "MY-DASHBOARD": "My Dashboard",
+    "CUSTOMER-SERVICES": "Customer Services",
+    "CORPORATE-SERVICES": "Corporate Services",
+    "CREDIT-SERVICES": "Credit Services",
+    "AGENCY-SERVICES": "Agency Services",
+    "SPECIAL-PROJECTS": "Special-Projects",
+    "INSURANCE": "Insurance",
+    "CUSTODY": "Custody",
+    "FOREIGN-EXCHANGE": "Foreign Exchange",
+    "REPORTS": "Reports",
+    "ADMINISTRATION": "Administration",
+    "MORE": "More",
+    "CARD-MANAGEMENT": "Card Management",
+    "CARD-PORTAL": "Card Portal",
+    "TICKETS": "Tickets"
+  },
+  "CUSTOMER": {
+    "WHO-ARE-YOU": "Who are you onboarding",
+    "PLEASE-SELECT-ONE-OPTION": "Please select one of the options below",
+    "SELECT-DATA-ENTRY": "Select a data entry method",
+    "LIST-LABEL": "List label",
+    "ACTION": "Action"
+  },
+  "STATS": {
+    "BRANCH-VOLUME": "Volume des succursales",
+    "MY-BALANCES": "Mes soldes",
+    "PRODUCTIVITY": "Productivité",
+    "OPENING-BALANCE": "Solde d'ouverture",
+    "RUNNING-BALANCE": "Solde courant",
+    "CLOSING-BALANCE": "Solde de clôture"
+  },
+  "SERVICES": {
+    "CUSTOMER": {
+      "TITLE": "Service portal",
+      "TEXT": "Easily assist new and existing customers by selecting the relevant option",
+      "ONBOARDING": {
+        "TITLE": "Customer Onboarding",
+        "TEXT": "Onboard a new customer and help them open an account"
+      },
+      "360": {
+        "TITLE": "Customer 360&#176;",
+        "TEXT": "Assist an existing customer with transactions by viewing their profile and account details"
+      },
+      "SERVICE-REQUESTS": {
+        "TITLE": "SWIFT",
+        "TEXT": "Help non-Equity members complete a transaction"
+      },
+      "TELLER-SERVICES": {
+        "TITLE": "Teller Services",
+        "TEXT": "Find additional information to help customers with their queries"
+      },
+      "MERCHANT-PORTAL": {
+        "TITLE": "Merchant Portal",
+        "TEXT": "Configure and expose Equity APIs to customers"
+      }
+    },
+    "BRANCH": {
+      "TITLE": "Branch Services",
+      "TEXT": "Perform branch related services",
+      "CARD": {
+        "WELCOME": "Welcome",
+        "ACTIVITY": "Activity",
+        "GENERAL": "General",
+        "YOUR_REQUEST": "Your Request",
+        "TITLE": "Card Requests",
+        "BRANCH_DETAIL": "Branch details",
+        "TEXT": "Access Equity-Bank credit card request management platform",
+        "CARDS_REQUEST_DETAILS": "Cards request details",
+        "STOCK_HEADING": "Select whether there is partial or full stock available and amend the amounts accordingly",
+        "EOD_HEADING": "Cards end of day details",
+        "EOD_HEADING_SUB": " Add closing balances for the cards to be return to the reserve",
+        "BALANCE_BF": "Balance BF",
+        "ISSUED_QUANTITY": "Issued Quantity",
+        "END_OF_DAY": "End of day",
+        "CARD_DETAIL": "Card Detail",
+        "CLOSING_BALANCE_QUANTITY": "Closing Balance Quantity",
+        "DESTROYED_QUANTITY": "Destroyed Quantity",
+        "REQUEST_CARD_FROM_RESERVE": "Request Card From Reserve",
+        "CARD_RESERVE_HEADING": "Request card from reserve details",
+        "CARD_RESERVE_HEADING_SUB": "Add the products and respective amounts you would like to request to replenish your card stock",
+        "CARD_TYPE": "Card Type",
+        "STOCK_QUANTITY": "Stock quantity",
+        "AMOUNT_TO_REQUEST": "Amount to request",
+        "ADD_CARD": " Add another card type",
+        "REMOVE_CARD": "Remove ",
+        "CARD_REORDER_HEADER": "Current card re-order levels",
+        "CARD_REORDER_HEADER_SUB": "Below are the current card reorder levels for the branch",
+        "SET_AMEND_REORDER_HEADER": "Set or amend re-order level",
+        "SELECT_PRODUCT": "Select a Product",
+        "MIN_ORDER_LEVEL": "Min Order Level",
+        "MAX_ORDER_LEVEL": "Max Order Level",
+        "CARD_STOCK": "Card Stock",
+        "EOD_RETURN": "End of day cards return",
+        "NAV": {
+          "LEVEL": "Manage cards re-order levels",
+          "LEVEL_SUB": "Set or amend card re-order levels",
+          "RESERVE": "Request cards from card centre",
+          "RESERVE_SUB": "Replenish card stock from card centre",
+          "EOD": "End of day cards return",
+          "EOD_SUB": "Return card stock to reserve"
+        },
+        "PARTIAL_DIALOG": {
+          "HEADER": "Amend request details",
+          "PRODUCT_NAME": "Product name",
+          "BRANCH_STOCK": "Branche card stock",
+          "AMOUNT_TO_REQUEST": "Amount requested",
+          "AMOUNT_TO_REPLENISH": "Amount to replenish"
+        },
+        "APPROVAL": {
+          "HEADER": "Approval",
+          "HEADER_SUB": "Please approve and give additional comments.",
+          "WRITE_COMMENT": "Write comment",
+          "STATUS": "Approval Status"
+        },
+        "BALANCE": {
+          "HEADER": "Your balance",
+          "TITLE": "Card Balance",
+          "TOTAL_BALANCE": "Total Balance",
+          "BRANCH_BALANCE": "Branch Balance"
+        },
+        "CARD_STOCK_TYPE": {
+          "FULL": "Full order delivery",
+          "FULL_SUB": "Replenish the full requested card stock. The amounts request will be automatically updated",
+          "PARTIAL": "Partial order delivery",
+          "PARTIAL_SUB": "Replenish a partial amount of the requested card stock. Amend the amount to replenish field below",
+          "ADD_REASON": "Add reason",
+          "NOTIFCATION_TITLE": "Amend the card stock to disburse",
+          "NOTIFCATION_TEXT": "Edit the card stocks to reflect the amount to replenish as per your available stock"
+        }
+      },
+      "CHEQUE": {
+        "TITLE": "Cheque Requests",
+        "TEXT": "Help customers with their cheque requests process"
+      },
+      "OTHER": {
+        "TITLE": "Other Requests",
+        "TEXT": "Assist customers with other queries"
+      },
+      "LIMITS": {
+        "TITLE": "Manage global limits",
+        "TEXT": "Manage transactional limits globally based on customer segments"
+      },
+      "DOCUMENTS": {
+        "TITLE": "Document management",
+        "TEXT": "Upload a customer’s missing documents or update existing ones"
+      }
+    },
+    "CREDIT": {
+      "TITLE": "Credit Services",
+      "TEXT": "Find all customer credit related services",
+      "SCORING": {
+        "TITLE": "Credit Scoring",
+        "TEXT": "Access Equity Bank Credit Scoring Platform"
+      }
+    }
+  },
+  "FIELDS": {
+    "VAT": "TVA",
+    "RSC": "RSC",
+    "NORMAL_CHARGE": "Frais normaux",
+    "SUM_OF_CHARGES": "Somme des frais (TVA + RSC)",
+    "CHARGE_AMOUNT": "Frais totaux",
+    "CHARGE_AMOUNT_CURRENCY": "Devise des frais"
+  },
+  "TICKETS": {
+    "MY-TICKETS": "My tickets",
+    "COLS": {
+      "SUBJECT": "Subject",
+      "NAME": "Customer Name",
+      "CIF": "Customer Cif",
+      "TICKET-ID": "Ticket Id",
+      "DATE-CREATED": "Date Created",
+      "CREATED-BY": "Created By",
+      "STATUS": "Status"
+    },
+    "PILLS": {
+      "NEW": "New",
+      "ERROR": "Error",
+      "ABORTED": "Aborted",
+      "REJECTED": "Rejected",
+      "COMPLETED": "Completed",
+      "PENDING": "Pending",
+      "RETURNED": "Returned",
+      "SUBMITTED-TO-CHECKER": "Submitted to Checker",
+      "SUBMITTED-TO-NEWGEN": "Submitted to NewGen"
+    }
+  },
+  "GUIDES": {
+    "TYPOGRAPHY-LEVELS": "Typography Levels"
+  }
+}

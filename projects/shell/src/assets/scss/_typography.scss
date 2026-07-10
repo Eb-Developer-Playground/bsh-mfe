@@ -1,0 +1,135 @@
+// Typography utility classes
+@use 'sass:math';
+@use '@angular/material' as mat;
+@use './typography-config' as typo;
+
+$base-size: 14;
+
+.fs-1 {
+  font-weight: 400;
+  font-size: math.div(48, $base-size) + rem;
+  line-height: math.div(56, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-1b {
+  font-weight: 600;
+  font-size: math.div(48, $base-size) + rem;
+  line-height: math.div(56, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-2 {
+  font-weight: 400;
+  font-size: math.div(32, $base-size) + rem;
+  line-height: math.div(40, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-2b {
+  font-weight: 600;
+  font-size: math.div(32, $base-size) + rem;
+  line-height: math.div(40, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-3 {
+  font-weight: 400;
+  font-size: math.div(24, $base-size) + rem;
+  line-height: math.div(40, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-3b {
+  font-weight: 600;
+  font-size: math.div(24, $base-size) + rem;
+  line-height: math.div(40, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-4 {
+  font-weight: 400;
+  font-size: math.div(20, $base-size) + rem;
+  line-height: math.div(28, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-4b {
+  font-weight: 600;
+  font-size: math.div(20, $base-size) + rem;
+  line-height: math.div(28, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-5 {
+  font-weight: 400;
+  font-size: math.div(16, $base-size) + rem;
+  line-height: math.div(24, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-5b {
+  font-weight: 600;
+  font-size: math.div(16, $base-size) + rem;
+  line-height: math.div(24, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-6 {
+  font-weight: 400;
+  font-size: math.div(14, $base-size) + rem;
+  line-height: math.div(20, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-6b {
+  font-weight: 600;
+  font-size: math.div(14, $base-size) + rem;
+  line-height: math.div(20, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-7 {
+  font-weight: 400;
+  font-size: math.div(12, $base-size) + rem;
+  line-height: math.div(16, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-7b {
+  font-weight: 600;
+  font-size: math.div(12, $base-size) + rem;
+  line-height: math.div(16, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-8 {
+  font-weight: 400;
+  font-size: math.div(8, $base-size) + rem;
+  line-height: math.div(40, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+.fs-8b {
+  font-weight: 600;
+  font-size: math.div(8, $base-size) + rem;
+  line-height: math.div(40, $base-size) + rem;
+  letter-spacing: normal;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-size: mat.m2-font-size(typo.$equity-typography, body-1);
+  font-family: mat.m2-font-family(typo.$equity-typography);
+  line-height: mat.m2-line-height(typo.$equity-typography, body-1);
+  font-weight: mat.m2-font-weight(typo.$equity-typography, body-1);
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: mat.m2-font-family(typo.$equity-typography, body-1);
+  }
+}

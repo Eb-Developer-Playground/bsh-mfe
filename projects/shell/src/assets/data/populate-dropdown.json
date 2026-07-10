@@ -1,0 +1,6661 @@
+{
+  "statusMessage": "Success",
+  "statusCode": "00",
+  "successful": true,
+  "responseObject": {
+    "chargeOptions": [
+      {
+        "code": "BEN"
+      },
+      {
+        "code": "OUR"
+      },
+      {
+        "code": "SHA"
+      }
+    ],
+    "instrumentTypes": [
+      {
+        "code": "DD",
+        "name": "Direct Debit"
+      },
+      {
+        "code": "CHQ",
+        "name": "Cheque"
+      }
+    ],
+    "field26T": [
+      {
+        "code": "PYE",
+        "name": "PYE"
+      },
+      {
+        "code": "VAT",
+        "name": "VAT"
+      },
+      {
+        "code": "CDS",
+        "name": "CDS"
+      },
+      {
+        "code": "MSC",
+        "name": "MSC"
+      }
+    ],
+    "remittanceCurrencies": [
+      {
+        "currencyCode": "USD",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "EUR",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "TZS",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "RWF",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "USD",
+        "countryCode": "TZ"
+      },
+      {
+        "currencyCode": "GBP",
+        "countryCode": "TZ"
+      },
+      {
+        "currencyCode": "EUR",
+        "countryCode": "TZ"
+      },
+      {
+        "currencyCode": "TZS",
+        "countryCode": "TZ"
+      },
+      {
+        "currencyCode": "KES",
+        "countryCode": "TZ"
+      },
+      {
+        "currencyCode": "UGX",
+        "countryCode": "TZ"
+      },
+      {
+        "currencyCode": "KES",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "RWF",
+        "countryCode": "TZ"
+      },
+      {
+        "currencyCode": "GBP",
+        "countryCode": "RW"
+      },
+      {
+        "currencyCode": "EUR",
+        "countryCode": "RW"
+      },
+      {
+        "currencyCode": "KES",
+        "countryCode": "RW"
+      },
+      {
+        "currencyCode": "UGX",
+        "countryCode": "RW"
+      },
+      {
+        "currencyCode": "TZS",
+        "countryCode": "RW"
+      },
+      {
+        "currencyCode": "RWF",
+        "countryCode": "RW"
+      },
+      {
+        "currencyCode": "USD",
+        "countryCode": "SS"
+      },
+      {
+        "currencyCode": "GBP",
+        "countryCode": "SS"
+      },
+      {
+        "currencyCode": "USD",
+        "countryCode": "RW"
+      },
+      {
+        "currencyCode": "GBP",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "UGX",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "CHF",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "CNY",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "ZAR",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "AUD",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "CAD",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "CHF",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "DKK",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "JPY",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "NOK",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "ZAR",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "SEK",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "KES",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "UGX",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "TZS",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "RWF",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "USD",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "GBP",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "EUR",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "JPY",
+        "countryCode": "UG"
+      },
+      {
+        "currencyCode": "AED",
+        "countryCode": "KE"
+      },
+      {
+        "currencyCode": "EUR",
+        "countryCode": "SS"
+      }
+    ],
+    "routingCodes": [
+      {
+        "code": "Fedwire",
+        "countryCode": "Fedwire"
+      },
+      {
+        "code": "Sort Code",
+        "countryCode": "Sort Code"
+      },
+      {
+        "code": "AU Code",
+        "countryCode": "AU Code"
+      },
+      {
+        "code": "ZA Code",
+        "countryCode": "ZA Code"
+      }
+    ],
+    "purposeCodes": [
+      {
+        "code": "2C2C4",
+        "description": "Portfolio Investment In Foreign Treasury Bills & B",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A2",
+        "description": "Mineral Fuels(Oil Products) & Lubricants",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2C2C4",
+        "description": "Portfolio Investment In Foreign Treasury Bills & B",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2A1",
+        "description": "Food-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2A2",
+        "description": "Mineral Fuels(Oil Products) & Lubricants",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2A3",
+        "description": "Raw Materials-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2A4",
+        "description": "Chemicals-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2A5",
+        "description": "Manufactured Goods-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2A6",
+        "description": "Machinery& Transport Equipment-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2A7",
+        "description": "Other Imports Unclasiffied",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B111",
+        "description": "Business Travel-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B112",
+        "description": "Personal Travel-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B121",
+        "description": "Air Transport-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B122",
+        "description": "Shipping-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B123",
+        "description": "Other Transport-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B13",
+        "description": "Insurance Services-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B14",
+        "description": "Royalties & License Fees-Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "1C12",
+        "description": "Other Capital-Receipts",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B15",
+        "description": "Other Services Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "1C11",
+        "description": "Equity Capital-Receipts",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2E",
+        "description": "Payments To TZ Forex Bureaus",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B221",
+        "description": "Income On Shares",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B222",
+        "description": "Interest On Bonds & Bills",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C1",
+        "description": "Loan Repayments-Private Sector",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C2",
+        "description": "Loan Repayments-Parastatals",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C3",
+        "description": "Other Capital Repatriation",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C4",
+        "description": "Portfolio Investment In Foreign Shares",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C43",
+        "description": "Portfolio Inv In Foreign Other",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C5",
+        "description": "Direct Investment In Foreign Enterprises",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C6",
+        "description": "Other Capital Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2D",
+        "description": "In Transit Customer Payments Between SS Banks",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2E",
+        "description": "Payments ToSS Forex Bureaus",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C43",
+        "description": "Portfolio Inv In Foreign Other",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2C5",
+        "description": "Direct Investment In Foreign Enterprises",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2C6",
+        "description": "Other Capital Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2D",
+        "description": "In Transit Customer Payments Between TZ Banks",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "1B34",
+        "description": "Other Gifts,Dinations & Grants",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B2",
+        "description": "Investment Income Payments",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B211",
+        "description": "Dividends & Other Distributed Profits",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B222",
+        "description": "Interest On Bonds & Bills",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2B211",
+        "description": "Dividends & Other Distributed Profits",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2C2C4",
+        "description": "Portfolio Investment In Foreign Treasury Bills & B",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B222",
+        "description": "Interest On Bonds & Bills",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2C1",
+        "description": "Loan Repayments-Private Sector",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2C2",
+        "description": "Loan Repayments-Parastatals",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2C3",
+        "description": "Other Capital Repatriation",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2C4",
+        "description": "Portfolio Investment In Foreign Shares",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2C43",
+        "description": "Portfolio Inv In Foreign Other",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2C5",
+        "description": "Direct Investment In Foreign Enterprises",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2C6",
+        "description": "Other Capital Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2D",
+        "description": "In Transit Customer Payments Between UG Banks",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2E",
+        "description": "Payments To UG Forex Bureaus",
+        "countryCode": "UG"
+      },
+      {
+        "code": "1B32",
+        "description": "Official Grants,Un & Foreign Govt Agencies",
+        "countryCode": "UG"
+      },
+      {
+        "code": "1B33",
+        "description": "Non-Official Aid,Grants Etc From Ngos'S/ Missions",
+        "countryCode": "UG"
+      },
+      {
+        "code": "1B34",
+        "description": "Other Gifts,Dinations & Grants",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B2",
+        "description": "Investment Income Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B15",
+        "description": "Other Services Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B14",
+        "description": "Royalties & License Fees-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B13",
+        "description": "Insurance Services-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2C1",
+        "description": "Loan Repayments-Private Sector",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2C2",
+        "description": "Loan Repayments-Parastatals",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2C3",
+        "description": "Other Capital Repatriation",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2C4",
+        "description": "Portfolio Investment In Foreign Shares",
+        "countryCode": "TZ"
+      },
+      {
+        "code": "2A1",
+        "description": "Food-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2A2",
+        "description": "Mineral Fuels(Oil Products) & Lubricants",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2A3",
+        "description": "Raw Materials-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B212",
+        "description": "Income On Debt (Interest)",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2A4",
+        "description": "Chemicals-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2A6",
+        "description": "Machinery& Transport Equipment-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2A7",
+        "description": "Other Imports Unclasiffied",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B111",
+        "description": "Business Travel-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B112",
+        "description": "Personal Travel-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B121",
+        "description": "Air Transport-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B122",
+        "description": "Shipping-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B123",
+        "description": "Other Transport-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2A5",
+        "description": "Manufactured Goods-Payments",
+        "countryCode": "UG"
+      },
+      {
+        "code": "2B211",
+        "description": "Dividends & Other Distributed Profits",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B21",
+        "description": "Direct Investment-Income",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B2",
+        "description": "Investment Income Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C2",
+        "description": "Loan Repayments-Parastatals",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2C3",
+        "description": "Other Capital Repatriation",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2C4",
+        "description": "Portfolio Investment In Foreign Shares",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2C43",
+        "description": "Portfolio Inv In Foreign Other",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2C5",
+        "description": "Direct Investment In Foreign Enterprises",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2C6",
+        "description": "Other Capital Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2D",
+        "description": "In Transit Customer Payments Between Kenya Banks",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2E",
+        "description": "Payments To Kenyan Forex Bureaus",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A1",
+        "description": "Food-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2A2",
+        "description": "Mineral Fuels(Oil Products) & Lubricants",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2A3",
+        "description": "Raw Materials-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2A4",
+        "description": "Chemicals-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2A1",
+        "description": "Food-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2A2",
+        "description": "Mineral Fuels(Oil Products) & Lubricants",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2A3",
+        "description": "Raw Materials-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2C1",
+        "description": "Loan Repayments-Private Sector",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B222",
+        "description": "Interest On Bonds & Bills",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B221",
+        "description": "Income On Shares",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B212",
+        "description": "Income On Debt (Interest)",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A3",
+        "description": "Raw Materials-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A4",
+        "description": "Chemicals-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A5",
+        "description": "Manufactured Goods-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A6",
+        "description": "Machinery& Transport Equipment-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A7",
+        "description": "Other Imports Unclasiffied",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B111",
+        "description": "Business Travel-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B112",
+        "description": "Personal Travel-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A4",
+        "description": "Chemicals-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B121",
+        "description": "Air Transport-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B123",
+        "description": "Other Transport-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B13",
+        "description": "Insurance Services-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B14",
+        "description": "Royalties & License Fees-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B15",
+        "description": "Other Services Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B2",
+        "description": "Investment Income Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B21",
+        "description": "Direct Investment-Income",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B211",
+        "description": "Dividends & Other Distributed Profits",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2B122",
+        "description": "Shipping-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A1",
+        "description": "Food-Payments",
+        "countryCode": "KE"
+      },
+      {
+        "code": "2A5",
+        "description": "Manufactured Goods-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2A7",
+        "description": "Other Imports Unclasiffied",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2C6",
+        "description": "Other Capital Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2D",
+        "description": "In Transit Customer Payments Between RW Banks",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2E",
+        "description": "Payments To RW Forex Bureaus",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2C2C4",
+        "description": "Portfolio Investment In Foreign Treasury Bills & B",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2A5",
+        "description": "Manufactured Goods-Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2A6",
+        "description": "Machinery& Transport Equipment-Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2A7",
+        "description": "Other Imports Unclasiffied",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B111",
+        "description": "Business Travel-Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B112",
+        "description": "Personal Travel-Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B121",
+        "description": "Air Transport-Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B122",
+        "description": "Shipping-Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B123",
+        "description": "Other Transport-Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B13",
+        "description": "Insurance Services-Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B14",
+        "description": "Royalties & License Fees-Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2B15",
+        "description": "Other Services Payments",
+        "countryCode": "SS"
+      },
+      {
+        "code": "2C5",
+        "description": "Direct Investment In Foreign Enterprises",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2C43",
+        "description": "Portfolio Inv In Foreign Other",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2C4",
+        "description": "Portfolio Investment In Foreign Shares",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2C3",
+        "description": "Other Capital Repatriation",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B111",
+        "description": "Business Travel-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B112",
+        "description": "Personal Travel-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B121",
+        "description": "Air Transport-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B122",
+        "description": "Shipping-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B123",
+        "description": "Other Transport-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B13",
+        "description": "Insurance Services-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B14",
+        "description": "Royalties & License Fees-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2A6",
+        "description": "Machinery& Transport Equipment-Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B15",
+        "description": "Other Services Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B21",
+        "description": "Direct Investment-Income",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B211",
+        "description": "Dividends & Other Distributed Profits",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B212",
+        "description": "Income On Debt (Interest)",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B221",
+        "description": "Income On Shares",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B222",
+        "description": "Interest On Bonds & Bills",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2C1",
+        "description": "Loan Repayments-Private Sector",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2C2",
+        "description": "Loan Repayments-Parastatals",
+        "countryCode": "RW"
+      },
+      {
+        "code": "2B2",
+        "description": "Investment Income Payments",
+        "countryCode": "RW"
+      },
+      {
+        "code": "1D",
+        "description": "In Transit Customer Receipts BetweenUG Banks",
+        "countryCode": "UG"
+      }
+    ],
+    "creditAccountNumbers": [
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "4000110010486",
+        "productCode": "REPS",
+        "receiverBic": "BNRWRWRWXXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "4000110012152",
+        "productCode": "EAPS",
+        "receiverBic": "BNRWRWRWXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "IFCBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "IMBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "KCOOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "KWMIKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "MIEKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "MORBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "MYBKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "HFCOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "NBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "PRIEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "SBICKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "SBMKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "SIDNKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "SPBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "TNBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "PAUTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "VICMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "HBZUKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "ABCLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "BARBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "BARCKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "CIFIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "CITIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "GUARKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "CONKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "CRMFKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "DEVKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "DUIBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "FABLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "FAUMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "GAFRKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "CRBTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "RTGS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "EAPS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "EAPS",
+        "receiverBic": "BNRWRWRWXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "MCBDUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "NINCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "OPRTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "ORINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "PMFLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "POSTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "SBICUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "HFINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "TROAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "UGFOUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "ABCFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "BARBUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "BARCUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "TOPFUGKAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "EAPS",
+        "receiverBic": "TANZTZTXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "FINCUGKAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "RWF",
+        "accountNumber": "0001100104031",
+        "productCode": "EAPS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "0001100103921",
+        "productCode": "EAPS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "0001100103922",
+        "productCode": "EAPS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "REPS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "0001100101153",
+        "productCode": "REPS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "ABCFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "BARBUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "FTBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "BARCUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "CAIEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "CERBUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "CITIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "DFCUUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "EXTNUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDUGKAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "VICMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "TNBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "GUARKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "HBZUKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "HFCOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "IFCBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "IMBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "KCOOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "GAFRKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "KWMIKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "MORBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "MYBKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "NBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "PAUTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "PRIEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SBICKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SBMKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "MIEKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SIDNKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "FAUMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "TNBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "VICMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "ABCLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "BARBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "BARCKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "FABLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CIFIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CITIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CONKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CRBTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CRMFKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "DEVKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "DUIBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SPBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "HBZUKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "HFCOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "IFCBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "IMBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "KCOOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "KWMIKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "MIEKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "GUARKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "MORBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "NBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "PAUTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "PRIEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "SBICKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "SBMKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "SIDNKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "SPBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "MYBKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "TNBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "FAUMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "VICMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "ABCLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "BARBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "BARCKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "GAFRKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "CIFIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "CONKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "CRBTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "CRMFKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "DEVKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "DUIBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "FABLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "0001100100422",
+        "productCode": "RTGS",
+        "receiverBic": "CITIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SPBLKENAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "CAIEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "CERBUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "TOPFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "TROAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "UGFOUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "EAPS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "RWF",
+        "accountNumber": "1000110031967",
+        "productCode": "EAPS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "SBICUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "1000110031899",
+        "productCode": "EAPS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "EAPS",
+        "receiverBic": "TANZTZTXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "EAPS",
+        "receiverBic": "BNRWRWRWXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "REPS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110031153",
+        "productCode": "REPS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "TANZTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "BARCTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "ACTZTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "AKCOTZTZXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "EAPS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "AMNNTZTZXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "POSTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "ORINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "BARCUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "CAIEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "CERBUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "CITIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "DFCUUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "PMFLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "FINCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "FTBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "HFINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "MCBDUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "NINCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "OPRTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "EXTNUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "BARBUGKAXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "AZANTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "MWCOTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "NLCBTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "NMIBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "PBZATZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "SBICTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "TZADTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "MKCBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "TAINTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "TARATZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "UCCTTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "UNBFTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "YETMTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "TANZTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "BARCTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "ACTZTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "AKCOTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "TAPBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "BARBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "MBTLTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "KLMJTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "BKMYTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "CHLMTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "CDSHTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "CITITZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "CNRBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "CORUTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "DASUTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "DTKETZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "ADVBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "EXTNTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "FIRNTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "FNMITZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "GTBITZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "FMBZTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "HABLTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "IMBLTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "RTGS",
+        "receiverBic": "EUAFTZTZXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "ABCFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "BARBUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "BARCUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "CAIEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "UGFOUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "CERBUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "DFCUUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "EXTNUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "FINCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "FTBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "HFINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "CITIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "TOPFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "CITIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "DFCUUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "EXTNUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "FINCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "FTBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "TROAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "HFINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "MCBDUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "NINCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "OPRTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "ORINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "PMFLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "POSTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "SBICUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "1000110031013",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "1000110031155",
+        "productCode": "RTGS",
+        "receiverBic": "ABCFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "MCBDUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "OPRTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "EXTNUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "FINCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "FTBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "HFINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "MCBDUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "NINCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "OPRTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "PMFLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "POSTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "SBICUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "TOPFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "TROAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "UGFOUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "ORINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "NINCUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "CITIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "ORINUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "PMFLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "POSTUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "SBICUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "TOPFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "TROAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "DFCUUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "UGFOUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "ABCFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "BARBUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "BARCUGKXXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "CAIEUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110031152",
+        "productCode": "RTGS",
+        "receiverBic": "CERBUGKAXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110031154",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFUGKAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SIDNKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SBMKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "060",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "061",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "062",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "063",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "064",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "065",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "066",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "067",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "059",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "068",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "070",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "071",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "072",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "073",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "074",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "075",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "076",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "077",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "069",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "078",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "058",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "056",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "038",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "039",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "040",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "041",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "042",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "043",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "044",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "045",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "057",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "046",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "048",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "049",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "050",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "051",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "052",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "053",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "054",
+        "currency": "USD",
+        "accountNumber": "0001100406375",
+        "productCode": "SWIFT",
+        "receiverBic": "MSHQUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "055",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "047",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "037",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "079",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "081",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "104",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "105",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "106",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "107",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "108",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "109",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "110",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "111",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "103",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "112",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "114",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "115",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "116",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "117",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "118",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "119",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "120",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "121",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "113",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "080",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "102",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "100",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "082",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "083",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "084",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "085",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "086",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "087",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "088",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "089",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "101",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "090",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "092",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "093",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "094",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "095",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "096",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "097",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "098",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "099",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "091",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "122",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "036",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "034",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "NMIBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "NLCBTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "MWCOTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "MKCBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "MBTLTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "ADVBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "KLMJTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "PBZATZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "IMBLTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "FMBZTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "GTBITZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "FNMITZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "FIRNTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "EXTNTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "EUAFTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "DTKETZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "HABLTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "DASUTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "SBICTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFTZTZXXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "4000110012153",
+        "productCode": "EAPS",
+        "receiverBic": "BNRWRWRWXXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "RWF",
+        "accountNumber": "4000110010422",
+        "productCode": "EAPS",
+        "receiverBic": "TANZTZTXXXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "RWF",
+        "accountNumber": "4000110010422",
+        "productCode": "EAPS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "RWF",
+        "accountNumber": "4000110010422",
+        "productCode": "EAPS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "4000110012153",
+        "productCode": "EAPS",
+        "receiverBic": "BNRWRWRWXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "REPS",
+        "receiverBic": "TANZTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "UGX",
+        "accountNumber": "3000110011599",
+        "productCode": "EAPS",
+        "receiverBic": "TANZTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "EAPS",
+        "receiverBic": "BNRWRWRWXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "EAPS",
+        "receiverBic": "UGBAUGKAXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "3000110011598",
+        "productCode": "EAPS",
+        "receiverBic": "TANZTZTXXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "YETMTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "UNBFTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "UCCTTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "TARATZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "TAPBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "TAINTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "TZADTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "TZS",
+        "accountNumber": "3000110010220",
+        "productCode": "EAPS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "035",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "CORUTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "CITITZTZXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "016",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "017",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "018",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "019",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "020",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "021",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "022",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "023",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "015",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "024",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "026",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "027",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "028",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "029",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "030",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "031",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "032",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "033",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "025",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "CNRBTZTZXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "014",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "012",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "CDSHTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "CHLMTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "BKMYTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "BARBTZTZXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "AZANTZTZXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "000",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "001",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "013",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "002",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "004",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "005",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "006",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "007",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "008",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "009",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "010",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "011",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "003",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "123",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "124",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "125",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "FABLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "FAUMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "GAFRKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "GUARKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "HBZUKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "HFCOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "DUIBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "IFCBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "KCOOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "KWMIKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "MIEKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "MORBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "MYBKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "NBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "PAUTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "IMBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "PRIEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "CRMFKENAXXX"
+      },
+      {
+        "countryCode": "SS",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "2000110040820",
+        "productCode": "SWIFT",
+        "receiverBic": "EQBLKENAXXX"
+      },
+      {
+        "countryCode": "SS",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "2000110040821",
+        "productCode": "SWIFT",
+        "receiverBic": "EQBLKENAXXX"
+      },
+      {
+        "countryCode": "SS",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "2000110040822",
+        "productCode": "SWIFT",
+        "receiverBic": "EQBLKENAXXX"
+      },
+      {
+        "countryCode": "SS",
+        "branchCode": "ALL",
+        "currency": "KES",
+        "accountNumber": "2000110040819",
+        "productCode": "RTGS",
+        "receiverBic": "EQBLKENAXXX"
+      },
+      {
+        "countryCode": "SS",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "2000110040820",
+        "productCode": "RTGS",
+        "receiverBic": "EQBLKENAXXX"
+      },
+      {
+        "countryCode": "SS",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "2000110040821",
+        "productCode": "RTGS",
+        "receiverBic": "EQBLKENAXXX"
+      },
+      {
+        "countryCode": "SS",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "2000110040822",
+        "productCode": "RTGS",
+        "receiverBic": "EQBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "DEVKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "ABCLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "BARBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "BARCKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "CIFIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "CITIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "CONKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "CRBTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIKENXXXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "4000110040640",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIDEFFXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "SBICKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "SCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "FAUMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "GAFRKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "GTBIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "GUARKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "HBZUKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "HFCOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "IFCBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "IMBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "FABLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "KCBLKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "KWMIKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "MIEKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "MORBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "MYBKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "NBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "PAUTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "PRIEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "SBICKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "KCOOKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "SBMKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "ECOCKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "DTKEKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "SIDNKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "SPBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "TNBLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "UNAFKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100101155",
+        "productCode": "RTGS",
+        "receiverBic": "VICMKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CBKEKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "ABCLKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "AFRIKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "DUIBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "BARBKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "BKIDKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CBAFKENXXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CIFIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CITIKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CONKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CRBTKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "CRMFKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "DEVKKENAXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100101154",
+        "productCode": "RTGS",
+        "receiverBic": "BARCKENXXXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "4000110040639",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "4000110040641",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "ZAR",
+        "accountNumber": "3000110041813",
+        "productCode": "SWIFT",
+        "receiverBic": "SBZAZAJJXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "149",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "150",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "151",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "152",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "153",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "155",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "156",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "157",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "148",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "158",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "160",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "161",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "162",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "163",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "164",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "165",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "166",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "167",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "159",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "168",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "147",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "145",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "126",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "127",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "128",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "129",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "131",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "132",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "133",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "134",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "146",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "135",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "137",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "138",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "139",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "140",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "141",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "142",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "143",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "144",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "136",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "169",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "170",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "171",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "ZAR",
+        "accountNumber": "0001100404363",
+        "productCode": "SWIFT",
+        "receiverBic": "SBZAZAJJXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "AUD",
+        "accountNumber": "0001100404418",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "CAD",
+        "accountNumber": "0001100404420",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "CHF",
+        "accountNumber": "0001100404421",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "DKK",
+        "accountNumber": "0001100404424",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "JPY",
+        "accountNumber": "0001100404419",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "NOK",
+        "accountNumber": "0001100404423",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "SEK",
+        "accountNumber": "0001100404422",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "CNY",
+        "accountNumber": "0001100404034",
+        "productCode": "SWIFT",
+        "receiverBic": "BKCHZAJJXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "AED",
+        "accountNumber": "0001100405819",
+        "productCode": "SWIFT",
+        "receiverBic": "EBILAEADXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "1000110041143",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "1000110041144",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIDEFFXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "JPY",
+        "accountNumber": "1000110042014",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "CHF",
+        "accountNumber": "1000110042015",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "ZAR",
+        "accountNumber": "1000110041949",
+        "productCode": "SWIFT",
+        "receiverBic": "SBZAZAJJXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110041634",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "3000110041886",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "3000110041887",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIDEFFXXX"
+      },
+      {
+        "countryCode": "UG",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "1000110041142",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "0001100403401",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIDEFFXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "ALL",
+        "currency": "GBP",
+        "accountNumber": "0001100402362",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIGB2LXXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "191",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "172",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "173",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "174",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "175",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "176",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "177",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "178",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "179",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "180",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "181",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "182",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "183",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "184",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "185",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "186",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "187",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "188",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "189",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "KE",
+        "branchCode": "190",
+        "currency": "USD",
+        "accountNumber": "0001100401361",
+        "productCode": "SWIFT",
+        "receiverBic": "CITIUS33XXX"
+      },
+      {
+        "countryCode": "RW",
+        "branchCode": "ALL",
+        "currency": "EUR",
+        "accountNumber": "4000110010326",
+        "productCode": "REPS",
+        "receiverBic": "BNRWRWRWXXX"
+      },
+      {
+        "countryCode": "TZ",
+        "branchCode": "ALL",
+        "currency": "USD",
+        "accountNumber": "3000110010726",
+        "productCode": "RTGS",
+        "receiverBic": "AMNNTZTZXXX"
+      }
+    ]
+  }
+}

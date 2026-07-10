@@ -1,0 +1,45 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start">
+  <div fxLayout="row" fxFill fxFlex="100" fxLayoutAlign="start" class="mb-0">
+    <div fxLayout="row" fxFlex="90">
+      <div fxLayout="column" fxLayoutAlign="start">
+        <p class="mat-headline-6 m-0">
+          {{ 'BIOMETRICS.CUSTOMER-BIOMETRICS' | translate }}
+        </p>
+      </div>
+    </div>
+    <div fxLayout="row" fxFlex="10" fxLayoutAlign="end start ">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="close icon"
+        class="close"
+        mat-dialog-close
+        >close</mat-icon
+      >
+    </div>
+  </div>
+  <div fxLayout="column" fxFill fxFlex="100" fxLayoutAlign="start center">
+    <span class="spliter"></span>
+    <app-message-box
+      style="width: 100%"
+      [title]="title"
+      [text]="text"
+      [type]="success"></app-message-box>
+    <span class="spliter spliter-bottom"></span>
+  </div>
+  <div fxLayout="row" fxFill fxFlex="100" fxLayoutAlign="space-between center">
+    <button
+      style="width: 167px"
+      mat-flat-button
+      color="primary"
+      (click)="closeDialog()">
+      {{ 'COMMON.CANCEL' | translate }}
+    </button>
+    <button
+      style="width: 167px"
+      mat-flat-button
+      color="primary"
+      (click)="closeDialog()">
+      {{ 'COMMON.CONTINUE' | translate }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,133 @@
+<div class="dialog-header" mat-dialog-title>
+  <div class="sub-header">
+    <h2 mat-dialog-title style="margin-bottom: 0">Biometric verification</h2>
+    <mat-icon color="primary" class="cursor-pointer" [mat-dialog-close]="null"
+      >close</mat-icon
+    >
+  </div>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="w-100">
+    <div class="text-muted mb-1">
+      <h4>
+        If the required signatory as per the mandate is not present, select skip
+        bio and submit a bio-<br />override request.
+      </h4>
+    </div>
+    <div class="d-flex align-content-center">
+      <div class="rounded-circle">{{ getAvatarName(data.fullName) }}</div>
+      <div style="display: grid">
+        <div class="align-self-center">
+          {{ data.fullName }}
+          <br />
+          <h4 class="text-muted">Customer Name</h4>
+        </div>
+        <div class="align-self-center">
+          {{ data.account.accountName }}
+          <br />
+          <h4 class="text-muted">Account Name</h4>
+        </div>
+      </div>
+    </div>
+    <div class="gridset mb-1">
+      <div>
+        <span class="text-muted">Account Number</span>
+        <h4>{{ data.account.accountNumber }}</h4>
+      </div>
+      <div>
+        <span class="text-muted">Account Type</span>
+        <h4>{{ data.account.schemeType }}</h4>
+      </div>
+      <div>
+        <span class="text-muted">Account Mandate</span>
+        <h4>{{ data.account.mandate }}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="mb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <div class="text-muted mb-1">
+    <h4>
+      Place and hold the index finger on the fingerprint reader until the screen
+      indicates that the scan<br />
+      is successful.
+    </h4>
+  </div>
+  <div class="d-flex pb-1" style="justify-content: space-between">
+    <div class="w-45">
+      <div class="scanner" [ngClass]="{ 'activate-success': allCaptured }">
+        <img
+          #RIGHT_INDEX_1
+          [src]="defaultImage"
+          alt="finger-print"
+          class="fingerprint" />
+        <!-- <h4 mat-dialog-title >Biometric data missing</h4>
+                <h4 class="text-muted">This signatory has not enrolled on biometric authentication.</h4>
+                <h4 class="text-muted">Select the present signatory and start bio-verification.</h4>
+                <button mat-button mat-flat-button color="primary" (click)="enrollBio()">
+                    Enroll Bio
+                </button> -->
+      </div>
+    </div>
+    <div class="scroll w-45">
+      <div
+        class="verify-box mb-1"
+        [ngClass]="{
+          'activate-success': signatory.captured,
+          selected: signatory.active
+        }"
+        *ngFor="let signatory of data.signatories"
+        (click)="selectedUser(signatory)">
+        <div class="d-flex align-content-center">
+          <div class="rounded-circle">{{ getAvatarName(signatory.name) }}</div>
+          <div class="align-self-center">
+            {{ signatory.name }}
+            <br />
+            <h4 class="text-muted" style="margin-bottom: 4px">Bio required</h4>
+          </div>
+        </div>
+        <div style="padding: 8px">
+          <!-- <mat-icon svgIcon="ic-bio-not-enrolled" aria-hidden="false" aria-label="Bio"
+                    class="bio-image">
+                    </mat-icon> -->
+          <div class="bio-status-warning" *ngIf="!signatory.captured">
+            <h5 class="mat-subtitle-2 fw-200 badge-warning">
+              <span>
+                <mat-icon
+                  svgIcon="ic-unverified-caution"
+                  class="tick-icon"></mat-icon> </span
+              >Unverified
+            </h5>
+          </div>
+          <div class="bio-status-success" *ngIf="signatory.captured">
+            <h5 class="mat-subtitle-2 fw-200 badge-success">
+              <span>
+                <mat-icon
+                  svgIcon="ic-verified-tick"
+                  class="tick-icon"></mat-icon> </span
+              >Verified
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions class="dialog-actions">
+  <button
+    *ngIf="!data.skipBio"
+    mat-button
+    [mat-dialog-close]="{ skipBio: true, success: true, fingerprints: [] }"
+    color="primary">
+    &nbsp;Skip bio&nbsp;
+  </button>
+  <button
+    mat-button
+    mat-flat-button
+    color="primary"
+    (click)="continue()"
+    [disabled]="!allCaptured">
+    Continue
+  </button>
+</div>

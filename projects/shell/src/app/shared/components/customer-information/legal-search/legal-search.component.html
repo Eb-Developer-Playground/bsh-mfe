@@ -1,0 +1,20 @@
+<div class="legal-search-container">
+  <div class="d-flex w-100 align-items-center">
+    <mat-icon
+      [svgIcon]="legalSearchinfo.icon"
+      aria-hidden="false"
+      aria-label="legal search status"
+      class="--icon mr-12"></mat-icon>
+
+    <div class="d-flex flex-column">
+      <p class="mat-subtitle-1 fw-600 m-0">
+        {{ legalSearchinfo.label | translate }}
+      </p>
+      <p
+        class="mat-subtitle-2 fw-600 m-0 color-primary"
+        *ngIf="legalSearchinfo?.action">
+        {{ legalSearchinfo.action || '' | translate }}
+      </p>
+    </div>
+  </div>
+</div>

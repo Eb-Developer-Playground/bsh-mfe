@@ -1,0 +1,36 @@
+<mat-card appearance="outlined">
+  <div class="pl-24">
+    <app-header
+      [title]="'KNOWN-AGENT.HIGH-RISK-DETAILS' | translate"></app-header>
+  </div>
+  <mat-card-content class="pl-24">
+    <form [formGroup]="highRiskForm">
+      <div
+        fxLayout="row"
+        fxFlex
+        fxLayoutAlign="start center"
+        fxLayoutGap="18px">
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>{{
+            'KNOWN-AGENT.HIGH-RISK-INDIVIDUAL' | translate
+          }}</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            formControlName="highRiskIndividual"
+            required />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'KNOWN-AGENT.HIGH-RISK-TYPE' | translate }}</mat-label>
+          <mat-select formControlName="highRiskType" required>
+            <mat-option
+              *ngFor="let option of highRiskOptions"
+              [value]="option.code"
+              >{{ option.description }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

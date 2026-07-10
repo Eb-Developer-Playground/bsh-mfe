@@ -1,0 +1,187 @@
+.approval-instruction {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #929497;
+  white-space: normal;
+}
+
+//.mat-mdc-card {
+//    padding: 10px;
+//}
+
+.approval-option {
+  width: 232px;
+}
+
+mat-option {
+  height: 5em !important;
+  border-bottom: 1px solid rgba(146, 148, 151, 0.2);
+}
+
+.size-map {
+  width: 40%;
+}
+
+::ng-deep .mat-option-text {
+  padding-top: 0.5em !important;
+  padding-bottom: 0.5em !important;
+  line-height: 1.5em !important;
+}
+
+::ng-deep .mat-expansion-indicator::after {
+  color: #a32a29 !important;
+}
+
+.expansion-panel {
+  border-radius: 8px !important;
+}
+
+.mat-headline-6 {
+  margin: 0;
+}
+
+.Rejected,
+.Aborted {
+  color: rgba(230, 0, 0, 1);
+  background-color: rgba(230, 0, 0, 0.1);
+}
+
+.Completed {
+  color: rgba(47, 152, 3, 1);
+  background-color: rgba(47, 152, 3, 0.1);
+}
+
+.SubmittedToChecker,
+.SubmittedToCheckerLevel1 {
+  color: #58595b;
+  background: rgba(88, 89, 91, 0.1);
+}
+
+.Returned {
+  color: rgba(243, 135, 7, 1);
+  background: rgba(243, 135, 7, 0.1);
+}
+
+.status {
+  font-size: 12px;
+  padding: 5px 11px;
+  border-radius: 20px;
+  text-align: center;
+  width: 60%;
+}
+
+.details-container {
+  display: flex;
+  margin-top: 20px;
+
+  .status-div {
+    width: 12%;
+  }
+}
+
+.person-icon {
+  background-color: rgba(163, 42, 41, 1);
+  padding: 7px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+}
+
+.checker-div {
+    width: 88%;
+    display: flex;
+    flex-direction: column;
+    //gap: 24px;
+
+    .task-note-entry {
+        padding-bottom: 24px;
+        border-bottom: 1px solid rgba(146, 148, 151, 0.2);
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    }
+
+  .checker-person {
+    font-size: 16px;
+    display: inline-flex;
+
+    .checker-author {
+      font-weight: 600;
+    }
+
+    .checker-ticket-number {
+      font-weight: 600;
+      color: rgba(163, 42, 41, 1);
+    }
+
+    .checker-modified-date {
+      font-size: 14px;
+      color: rgba(146, 148, 151, 1);
+    }
+  }
+
+  .conversation-icon {
+    margin-right: 15px;
+  }
+
+  .checker-comments-div {
+    margin-top: 15px;
+    background-color: rgba(247, 247, 247, 1);
+    width: 80%;
+    border-radius: 8px;
+    padding: 15px;
+    display: inline-flex;
+    align-items: center;
+
+    .checker-comments {
+      .checker-comment-title {
+        margin: 0;
+        color: rgba(146, 148, 151, 1);
+      }
+
+      .checker-comment-note {
+        margin: 0;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.abort-div {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.mat-mdc-card-title {
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+.mat-mdc-card-subtitle {
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0;
+  color: #929497;
+}
+
+.fieldset {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.locked-indicator {
+  color: #d32f2f;
+  font-weight: 500;
+  background-color: rgba(211, 47, 47, 0.05);
+  padding: 8px 16px;
+  border-radius: 4px;
+  border-left: 4px solid #d32f2f;
+}

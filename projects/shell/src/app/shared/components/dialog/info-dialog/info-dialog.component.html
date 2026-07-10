@@ -1,0 +1,33 @@
+<mat-dialog-content class="mat-typography">
+  <mat-card appearance="outlined" class="mat-elevation-z0">
+    <mat-card-title>
+      <div>
+        <div
+          fxLayout="row"
+          fxFill
+          fxFlex="100"
+          fxLayoutAlign="space-between start"
+          fxLayoutGap="24px">
+          {{ data.title }}
+
+          <button mat-icon-button class="close-button" mat-dialog-close>
+            <mat-icon class="close-icon" color="primary">close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-card-subtitle>{{ data.subtitle }}</mat-card-subtitle>
+    <mat-card-content>
+      <dynamic-html [content]="body"></dynamic-html>
+      <!-- <mat-accordion >
+            <app-change-mandate-info-items
+            *ngFor="let item  of data" [item]="item"></app-change-mandate-info-items>
+        </mat-accordion> -->
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>
+<mat-card-actions align="end">
+  <button mat-button mat-dialog-close mat-raised-button color="primary">
+    {{ 'COMMON.CLOSE' | translate }}
+  </button>
+</mat-card-actions>

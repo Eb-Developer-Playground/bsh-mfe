@@ -1,0 +1,49 @@
+<div>
+  <div class="mb-1">
+    <h3 class="mat-headline-6 fw-400 text-center">
+      {{ 'BIOMETRICS.BIOMETRICS-SCAN' | translate }}
+    </h3>
+    <p class="text-grey">
+      {{ 'BIOMETRICS.BIOMETRICS-SCAN-INSTRUCTION' | translate }}
+    </p>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <div fxLayout="column" style="margin-top: 1.5rem">
+    <div class="hands-box p-1m">
+      <div
+        fxLayout="row"
+        fxFill
+        fxFlex="100"
+        fxLayoutAlign="space-between center"
+        fxLayoutGap="24px">
+        <div fxLayout="column" class="hand-box">
+          <app-biometric-hand
+            (handChangePrints)="onLeftHand($event)"
+            [hand]="leftHand"
+            label="Left hand"></app-biometric-hand>
+        </div>
+        <div fxLayout="column" class="hand-box">
+          <app-biometric-hand
+            (handChangePrints)="onRightHand($event)"
+            [hand]="rightHand"
+            label="Right hand"></app-biometric-hand>
+        </div>
+      </div>
+    </div>
+    <div
+      fxLayout="row"
+      fxFill
+      fxFlex="100"
+      fxLayoutAlign="space-between center">
+      <div class="skip-biometric-box" [formGroup]="skipBiometricForm">
+        <mat-checkbox color="primary" formControlName="skipCheckBox"
+          ><span class="mat-subtitle-2">{{
+            'BIOMETRICS.SKIP-SCAN' | translate
+          }}</span></mat-checkbox
+        >
+      </div>
+    </div>
+  </div>
+</div>

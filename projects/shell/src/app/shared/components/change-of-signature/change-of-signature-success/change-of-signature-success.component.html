@@ -1,0 +1,69 @@
+<mat-card appearance="outlined">
+  <div class="container">
+    <img src="../../../../assets/icons/icon-account-opening-success.svg" />
+    <div style="padding-top: 50px">
+      <div class="header-main-label">
+        <p class="mat-headline-6 m-0">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.SIGNATURE-CHANGE-SUCCESS-TITLE'
+              | translate
+          }}
+        </p>
+      </div>
+      <div class="header-sub-label">
+        <p style="color: grey">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.SIGNATURE-CHANGE-SUCCESS-TEXT'
+              | translate
+          }}
+        </p>
+      </div>
+      <div class="customer-details-container">
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.STAKEHOLDER-ACCOUNT.STAKEHOLDER-NAME'
+                | translate
+            }}
+          </p>
+          <p class="customer-detail-content">Mathias Ojwang Otieno</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.NATIONAL-ID' | translate }}
+          </p>
+          <p class="customer-detail-content">1234596</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.CIF-NUMBER' | translate }}
+          </p>
+          <p class="customer-detail-content">543689766693314</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ACCOUNT-NUMBER' | translate }}
+          </p>
+          <p class="customer-detail-content">543689766693314</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ACCOUNT-TYPE' | translate }}
+          </p>
+          <p class="customer-detail-content">Individual account</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<div fxLayout="row" style="margin-top: 20px" align="end">
+  <span fxFlex></span>
+  <button mat-button style="color: #a32a29">
+    {{ 'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.REDIRECT' | translate }}
+  </button>
+  <button mat-raised-button class="back-button" (click)="onClick()">
+    {{
+      'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATURE.REDIRECT-HOME' | translate
+    }}
+  </button>
+</div>

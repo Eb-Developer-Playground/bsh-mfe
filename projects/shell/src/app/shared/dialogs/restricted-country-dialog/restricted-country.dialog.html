@@ -1,0 +1,42 @@
+<div
+  class="d-flex justify-content-between align-content-center mb-4 header"
+  mat-dialog-title>
+  <h3 class="mb-0">This customer is from a restricted country</h3>
+  <mat-icon
+    aria-hidden="false"
+    aria-label="close icon"
+    class="align-self-center color-primary close"
+    mat-dialog-close>
+    close
+  </mat-icon>
+</div>
+
+<mat-dialog-content class="mat-typography">
+  <div class="d-flex justify-content-between">
+    <div class="toast d-flex">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="info icon"
+        class="align-self-center fill">
+        error_outline
+      </mat-icon>
+      <span>Customer cannot be onboarded</span>
+    </div>
+    <div></div>
+  </div>
+  <p>
+    This customer is a citizen of a country on our restricted list. Please
+    terminate the onboarding process.
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex">
+  <span class="spacer"></span>
+  <button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    class="btn-primary w-70"
+    mat-button>
+    Quit
+  </button>
+</mat-dialog-actions>

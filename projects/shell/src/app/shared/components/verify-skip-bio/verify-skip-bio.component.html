@@ -1,0 +1,261 @@
+<div matDialogContent>
+    <div class="dialog-header">
+        <div class="sub-header">
+            <mat-icon
+                svgIcon="ic-back-arrow"
+                class="cursor-pointer"
+                style="transform: scale(0.7)"
+                mat-dialog-close></mat-icon>
+
+            <h2 style="margin-bottom: 0; padding: 0">{{ data.headerText }}</h2>
+            <mat-icon color="primary" class="cursor-pointer" (click)="closeDialog()"
+            >close</mat-icon
+            >
+        </div>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <div class="w-100 mb-1">
+            <div class="text-muted mb-1">
+                <h4>
+                    {{ 'BIOMETRICS.GIVE-REASON-AND-SUPPORTING-DOCUMENTS' | translate }}
+                </h4>
+            </div>
+            @if (data.user !== '') {
+                <div class="d-flex align-content-center">
+                    <div class="rounded-circle">
+                        {{ data.user ? data.user?.firstName[0] : accountData.user.firstName
+                        }}{{
+                            data.user ? data.user.lastName[0] : accountData.user.lastName
+                        }}
+                    </div>
+                    <div class="align-self-center">
+                        {{ data.user ? data.user.firstName : accountData.user.firstName }}
+                        {{ data.user ? data.user.lastName : accountData.user.lastName }}
+                        <br />
+                        <h4 class="text-muted">{{ 'COMMON.ACCOUNT-NAME' | translate }}</h4>
+                    </div>
+                </div>
+
+                <div class="gridset mb-1">
+                    <div>
+            <span class="text-muted">{{
+                    'COMMON.ACCOUNT-NUMBER' | translate
+                }}</span>
+                        <h4>
+                            {{
+                                data.user.accounts
+                                    ? data.user.accounts[0].accountNumber
+                                    : accountData.user.accountsId
+                            }}
+                        </h4>
+                    </div>
+                    <div>
+            <span class="text-muted">{{
+                    'COMMON.ACCOUNT-TYPE' | translate
+                }}</span>
+                        <h4>
+                            {{
+                                data.user.accounts
+                                    ? data.user.accounts[0].schemeType
+                                    : accountData.user.accountType
+                            }}
+                        </h4>
+                    </div>
+                    <div>
+            <span class="text-muted">{{
+                    'COMMON.ACCOUNT-MANDATE' | translate
+                }}</span>
+                        <h4>
+                            {{
+                                data.user.accounts
+                                    ? data.user.accounts[0].mandate
+                                    : accountData.user.mandate
+                            }}
+                        </h4>
+                    </div>
+                </div>
+            }
+
+            @if (countryCode !== 'KE') {
+                <div class="review-instructions align-self-center">
+                    <h4 class="mat-subtitle-2 fw-400" style="margin-bottom: 4px">
+                        {{ data?.subHeaderText }}
+                    </h4>
+                    <div class="d-flex align-items-center justify-content-between" style="gap: 40px">
+                        <h5 class="text text-black mb-0" style="flex: 1">
+                           <strong>{{ 'BIOMETRICS.BIO-OVERRIDE-REQUIREMENTS' | translate }}</strong>
+                            <br />
+                            {{ 'BIOMETRICS.UPLOAD-SUPPORTING-DOCUMENTS' | translate }}
+                        </h5>
+                        <mat-icon style="flex-shrink: 0">info_outline</mat-icon>
+                    </div>
+                </div>
+            }
+        </div>
+        <form [formGroup]="reasonForm" autocomplete="off">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label
+                >{{ 'BIOMETRICS.SELECT-REASON-SKIP-BIO' | translate }}*</mat-label
+                >
+                <mat-select formControlName="reason" [required]="true">
+                    <mat-option [disabled]="true" value=""
+                    >{{ 'BIOMETRICS.SELECT-REASON' | translate }}
+                    </mat-option>
+                    @for (option of reasonOptionArray; track option) {
+                        <mat-option
+                            [value]="option.code"
+                            class="border-bottom h-auto w-100">
+                            <div class="d-flex flex-row cust-option">
+                                <strong>{{ option.title | translate }} </strong>
+                                <div class="color-grey white-space">
+                                    {{ option.description }}
+                                </div>
+                            </div>
+                        </mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            @if (selectedReason === 'customerNotPresent') {
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>{{ 'COMMON.ACTION' | translate }}</mat-label>
+                    <mat-select formControlName="action" [required]="true">
+                        <mat-option [disabled]="true" value="">{{
+                                'BIOMETRICS.SELECT-ACTION' | translate
+                            }}</mat-option>
+
+                        @for (action of actionsArray; track action) {
+                            <mat-option [value]="action" class="border-bottom h-auto w-100">
+                                <div class="d-flex flex-column cust-option">
+                                    <strong> {{ action | profileActions }} </strong>
+                                </div>
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            }
+
+            @if (selectedReason) {
+                <ng-container>
+                    <p class="mat-subtitle-2 fw-300">
+                        {{ 'BIOMETRICS.ENTER-REASON-VIEWING-CUSTOMER-PROFILE' | translate }}
+                    </p>
+                    <div mat-dialog-content class="dialog-content mb-8">
+            <textarea
+                formControlName="comment"
+                name="comment"
+                id=""
+                cols="20"
+                rows="4"></textarea>
+                    </div>
+                    @if (reasonForm.get('comment')!.errors?.maxlength) {
+                        <p class="form-error">
+                            {{ 'BIOMETRICS.MAX-LENGTH-300CHARS' | translate }}
+                        </p>
+                    }
+                </ng-container>
+            }
+        </form>
+        @if (selectedReason) {
+            <ng-container>
+                <div class="mb-12 mt-12">
+                    <p class="mat-subtitle-2 fw-300">
+                        {{ 'DOCUMENTS.UPLOAD-DOCUMENTS' | translate }}
+                    </p>
+                    <h5 class="text-muted">
+                        {{ 'DOCUMENTS.UPLOAD-INSTRUCTION' | translate }} <br />{{
+                            'DOCUMENTS.SHOULD-NOT-EXCEED-1MB' | translate
+                        }}
+                    </h5>
+                </div>
+                <div>
+                    <div
+                        fxLayout="row"
+                        fxFill
+                        fxFlex="100"
+                        fxLayoutAlign="space-between start"
+                        fxLayoutGap="24px">
+                        @if (countryCode === 'CD') {
+                            <app-documents-upload-drc
+                                (onUploaded)="onDRCFileChange($event)"
+                                [allowAdditional]="false"
+                                [documentSpecs]="UploadDocuments"
+                                [title]="'DOCUMENTS.TITLE'">
+                            </app-documents-upload-drc>
+                        } @else if (countryCode !== 'CD') {
+                            <div fxFlex="50">
+                                <div class="scanner">
+                                    <div
+                                        class="col drag-drop"
+                                        (files)="filesDropped($event)"
+                                        appDragDropDocuments
+                                        (click)="filedrag.click()">
+                                        <input
+                                            type="file"
+                                            #filedrag
+                                            (change)="onChange(filedrag)"
+                                            style="display: none" />
+                                        <div>
+                                            <mat-icon
+                                                height="20px"
+                                                svgIcon="ic-uploadBackground"
+                                                style="transform: scale(1.7)"></mat-icon>
+                                            <p class="text drop-text">
+                                                {{
+                                                    'DOCUMENTS.UPLOAD-ADDITIONAL-DOCUMENTS' | translate
+                                                }}
+                                            </p>
+                                            <p class="text instruction">
+                                                {{ 'DOCUMENTS.DRAG-AND-DROP' | translate }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div
+                            fxLayout="column"
+                            fxFill
+                            fxFlex="50"
+                            fxLayoutAlign="center start"
+                            fxLayoutGap="10px">
+                            @for (obj of cloneOfObjects; track obj) {
+                                <div class="doc-list">
+                                    <div class="docs">
+                                        <div
+                                            class="align-self-center"
+                                            [matTooltip]="obj.documentName">
+                                            <p class="mat-subtitle-2 fw-400 mb-2 format-name-text">
+                                                {{ obj.documentName }}
+                                            </p>
+                                            <p class="text-muted mb-2">{{ obj.fileSize }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="more-icon">
+                                        <button mat-icon-button (click)="deleteUpload(obj)">
+                                            <mat-icon svgIcon="ic-delete"> </mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        }
+    </mat-dialog-content>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button color="primary" (click)="closeDialog()">
+        &nbsp;{{ 'COMMON.CANCEL' | translate }}&nbsp;
+    </button>
+    <button
+        mat-flat-button
+        cdkFocusInitial
+        [disabled]="!isFormValid()"
+        (click)="onSubmit()"
+        color="primary">
+        &nbsp;{{ 'COMMON.CONTINUE' | translate }}&nbsp;
+    </button>
+</mat-dialog-actions>

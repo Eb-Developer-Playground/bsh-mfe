@@ -1,0 +1,300 @@
+<mat-card-content class="d-flex p-0">
+  @if (showAccountImagesAndSignatures) {
+    @if ((signatureAndPhoto?.length ?? 0 > 0)) {
+      @for (photo of signatureAndPhoto; track photo) {
+        <div class="signature">
+          @if (photo?.passport) {
+            <img
+              (click)="displayImageModal(photo?.passport)"
+              class="img_1"
+              [src]="photo?.passport"
+              alt="" />
+          }
+          @if (photo?.signature) {
+            <img
+              (click)="displayImageModal(photo?.signature)"
+              class="img_2"
+              [src]="photo?.signature"
+              alt="" />
+          }
+        </div>
+      }
+    } @else {
+      <ng-container *ngTemplateOutlet="noSignatures"></ng-container>
+    }
+
+    <ng-template #noSignatures>
+      @if (showAccountImagesAndSignatures) {
+        <div class="d-flex flex-column">
+          <mat-icon
+            svgIcon="ic-placeholder-portrait"
+            aria-hidden="false"
+            aria-label="placeholder-portrait"
+            style="width: 141px; height: 141px"></mat-icon>
+          <mat-icon
+            svgIcon="ic-placeholder-darker"
+            aria-hidden="false"
+            aria-label="placeholder"
+            style="width: 141px; height: 100px"></mat-icon>
+        </div>
+      }
+    </ng-template>
+  }
+  <div
+    [ngClass]="{
+      'customer-details-content ml-24': showAccountImagesAndSignatures,
+      'w-100': !showAccountImagesAndSignatures
+    }">
+    <div class="customer-details-container">
+      <div class="customer-detail">
+        <p class="label">{{ 'FORMS.DEDUPE.LABELS.NATIONALITY' | translate }}</p>
+        <p class="value">
+          {{ stakeholderlDetails?.nationality || '***' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.DEDUPE.LABELS.COUNTRY_OF_RESIDENCE' | translate }}
+        </p>
+        <p class="value">
+          {{ stakeholderlDetails?.countryOfResidence || '***' }}
+        </p>
+      </div>
+
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.DEDUPE.LABELS.IDENTIFICATION_TYPE' | translate }}
+        </p>
+        <p class="value">
+          {{ stakeholderlDetails?.identificationType || '***' }}
+        </p>
+      </div>
+
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.DEDUPE.LABELS.DOCUMENT_NUMBER' | translate }}
+        </p>
+        <p class="value">
+          {{ stakeholderlDetails?.documentNumber || '***' }}
+        </p>
+      </div>
+
+      @if (stakeholderlDetails?.salutation) {
+        <div class="customer-detail">
+          <p class="label">
+            {{ 'FORMS.PERSONAL_DETAILS.LABELS.SALUTATION' | translate }}
+          </p>
+          <p class="value">{{ stakeholderlDetails?.salutation || '***' }}</p>
+        </div>
+      }
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.PERSONAL_DETAILS.LABELS.FIRST_NAME' | translate }}
+        </p>
+        <p class="value">{{ stakeholderlDetails?.firstName || '***' }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.PERSONAL_DETAILS.LABELS.MIDDLE_NAME' | translate }}
+        </p>
+        <p class="value">{{ stakeholderlDetails?.middleName || '***' }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.PERSONAL_DETAILS.LABELS.LAST_NAME' | translate }}
+        </p>
+        <p class="value">{{ stakeholderlDetails?.lastName || '***' }}</p>
+      </div>
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.PERSONAL_DETAILS.LABELS.DATE_OF_BIRTH' | translate }}
+        </p>
+        <p class="value">
+          {{
+            stakeholderlDetails?.dateOfBirth
+              ? (stakeholderlDetails.dateOfBirth | date: 'dd/MM/yyyy')
+              : '***'
+          }}
+        </p>
+      </div>
+
+      @if (stakeholderlDetails?.documentSerialNumber) {
+        <div class="customer-detail">
+          <p class="label">
+            {{ 'FORMS.DEDUPE.LABELS.DOCUMENT_SERIAL_NUMBER' | translate }}
+          </p>
+          <p class="value">
+            {{ stakeholderlDetails?.documentSerialNumber || '***' }}
+          </p>
+        </div>
+      }
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.PERSONAL_DETAILS.LABELS.KRA_PIN' | translate }}
+        </p>
+        <p class="value">
+          {{ stakeholderlDetails?.kraPin || '***' }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.PERSONAL_DETAILS.LABELS.GENDER' | translate }}
+        </p>
+        @if (stakeholderlDetails?.gender) {
+          <p class="value">{{ stakeholderlDetails.gender | gender }}</p>
+        } @else {
+          <p class="value">***</p>
+        }
+      </div>
+
+      <div class="customer-detail">
+        <p class="label">
+          {{ 'FORMS.PERSONAL_DETAILS.LABELS.MARITAL_STATUS' | translate }}
+        </p>
+        @if (stakeholderlDetails?.maritalStatus) {
+          <p class="value">
+            {{ stakeholderlDetails.maritalStatus | maritalStatus }}
+          </p>
+        } @else {
+          <p class="value">***</p>
+        }
+      </div>
+
+      @if (additionalPersonalDetails) {
+        @if (additionalPersonalDetails?.dependants) {
+          <div class="customer-detail">
+            <p class="label">
+              {{ 'FORMS.PERSONAL_DETAILS.LABELS.DEPENDANTS' | translate }}
+            </p>
+            <p class="value">{{ additionalPersonalDetails?.dependants }}</p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.qualification) {
+          <div class="customer-detail">
+            <p class="label">
+              {{ 'FORMS.PERSONAL_DETAILS.LABELS.QUALIFICATION' | translate }}
+            </p>
+            <p class="value">{{ additionalPersonalDetails?.qualification }}</p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.institutionName) {
+          <div class="customer-detail">
+            <p class="label">
+              {{ 'FORMS.PERSONAL_DETAILS.LABELS.INSTITUTION' | translate }}
+            </p>
+            <p class="value">
+              {{ additionalPersonalDetails?.institutionName }}
+            </p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.rentalStatus) {
+          <div class="customer-detail">
+            <p class="label">
+              {{ 'FORMS.PERSONAL_DETAILS.LABELS.RENTAL_STATUS' | translate }}
+            </p>
+            <p class="value">{{ additionalPersonalDetails?.rentalStatus }}</p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.socialStatus) {
+          <div class="customer-detail">
+            <p class="label">
+              {{ 'FORMS.PERSONAL_DETAILS.LABELS.SOCIAL_STATUS' | translate }}
+            </p>
+            <p class="value">{{ additionalPersonalDetails?.socialStatus }}</p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.spouseName) {
+          <div class="customer-detail">
+            <p class="label">
+              {{ 'FORMS.PERSONAL_DETAILS.LABELS.SPOUSE_NAME' | translate }}
+            </p>
+            <p class="value">{{ additionalPersonalDetails?.spouseName }}</p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.averageMonthlyExpenditure) {
+          <div class="customer-detail">
+            <p class="label">
+              {{
+                'FORMS.PERSONAL_DETAILS.LABELS.MONTHLY_EXPENDITURE' | translate
+              }}
+            </p>
+            <p class="value">
+              {{ additionalPersonalDetails?.averageMonthlyExpenditure }}
+            </p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.socialEconomicLevel) {
+          <div class="customer-detail">
+            <p class="label">
+              {{
+                'FORMS.PERSONAL_DETAILS.LABELS.SOCIAL_ECONOMIC_LEVEL'
+                  | translate
+              }}
+            </p>
+            <p class="value">
+              {{ additionalPersonalDetails?.socialEconomicLevel }}
+            </p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.smrCode) {
+          <div class="customer-detail">
+            <p class="label">
+              {{
+                'FORMS.ADDITIONAL_PERSONAL_DETAILS.LABELS.SMR_CODE' | translate
+              }}
+            </p>
+            <p class="value">{{ additionalPersonalDetails?.smrCode }}</p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.disability) {
+          <div class="customer-detail">
+            <p class="label">
+              {{
+                'FORMS.ADDITIONAL_PERSONAL_DETAILS.LABELS.DISABILITY'
+                  | translate
+              }}
+            </p>
+            <p class="value">{{ additionalPersonalDetails?.disability }}</p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.fateStatus) {
+          <div class="customer-detail">
+            <p class="label">
+              {{
+                'FORMS.ADDITIONAL_PERSONAL_DETAILS.LABELS.FATE_STATUS'
+                  | translate
+              }}
+            </p>
+            <p class="value">{{ additionalPersonalDetails?.fateStatus }}</p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.negativeClientStatus) {
+          <div class="customer-detail">
+            <p class="label">
+              {{
+                'FORMS.ADDITIONAL_PERSONAL_DETAILS.LABELS.NEGATIVE_STATUS'
+                  | translate
+              }}
+            </p>
+            <p class="value">
+              {{ additionalPersonalDetails?.negativeClientStatus }}
+            </p>
+          </div>
+        }
+        @if (additionalPersonalDetails?.numberOfSpouses) {
+          <div class="customer-detail">
+            <p class="label">
+              {{
+                'FORMS.ADDITIONAL_PERSONAL_DETAILS.LABELS.SPOUSE_COUNT'
+                  | translate
+              }}
+            </p>
+            <p class="value">
+              {{ additionalPersonalDetails?.numberOfSpouses }}
+            </p>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</mat-card-content>

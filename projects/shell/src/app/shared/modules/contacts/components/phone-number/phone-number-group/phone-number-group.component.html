@@ -1,0 +1,45 @@
+<form [formGroup]="form" class="d-flex">
+  <mat-form-field
+    appearance="fill"
+    style="width: 100%"
+    [floatLabel]="
+      form.get('countryCode')?.disabled && form.get('countryCode')?.value
+        ? 'always'
+        : 'auto'
+    ">
+    <mat-label>{{ label }}</mat-label>
+    <img
+      [src]="country?.flagPath || '../../../../assets/icons/icon-search.svg'"
+      alt="{{ country?.countryName }}"
+      class="ml-15 mr-5 w-25 h-25"
+      matIconPrefix />
+    <phone-number-input
+      [required]="required"
+      [formGroup]="form"
+      (onCountrySelected)="country = $event"></phone-number-input>
+    @if (form.get('countryCode')?.hasError('invalidCountryCode')) {
+      <mat-error>{{
+        'COMMON.PHONE_SECTION.INVALID_COUNTRY_CODE' | translate
+      }}</mat-error>
+    } @else if (required && form.get('number')?.hasError('required')) {
+      <mat-error>
+        {{ 'COMMON.PHONE_SECTION.PHONE_NUMBER' | translate }}
+        {{ 'COMMON.IS_REQUIRED' | translate }}.
+      </mat-error>
+    }
+    @if (
+      !form.get('number')?.errors &&
+      dedupeOperationMode &&
+      dedupeOperationMode !== DedupeOperationMode.NEVER
+    ) {
+      <mat-hint>
+        <strong (click)="showMatches()" class="color-primary cursor-pointer">
+          {{ dedupeMatches.length }} profile{{
+            dedupeMatches.length > 1 ? 's' : ''
+          }}
+        </strong>
+        &nbsp;{{ dedupeMatches.length > 1 ? 'have' : 'has' }}&nbsp;matched.
+      </mat-hint>
+    }
+  </mat-form-field>
+</form>

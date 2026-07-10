@@ -1,0 +1,8 @@
+.--box-margin {
+  margin-bottom: 16px;
+  margin-right: 16px;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+}

@@ -1,0 +1,39 @@
+.profile-header {
+    display: flex;
+    align-items: center !important;
+
+    .initials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: capitalize !important;
+        font-size: 0.95em;
+        width: 36px;
+        height: 36px;
+        background: #a32a29;
+        border-radius: 80px;
+        line-height: 20px;
+        color: #ffffff;
+    }
+
+    .profile-title {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            font-size: 1em;
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .title-l {
+            font-size: 1.2em;
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .sub-title {
+            font-size: 0.8em;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+<div class="dialog">
+  <h2 mat-dialog-title class="dialog-title">
+    {{ 'CUSTOMER.CUSTOMER-PROFILE.VIEW-CUSTOMER-PROFILE' | translate }}?
+  </h2>
+  <p>{{ 'CUSTOMER.CUSTOMER-PROFILE.ENTER-REASON-VIEW-PROFILE' | translate }}</p>
+  <form [formGroup]="form">
+    <div mat-dialog-content class="dialog-content">
+      <textarea
+        formControlName="reason"
+        name="reason"
+        id=""
+        cols="30"
+        rows="10"></textarea>
+    </div>
+    <p class="form-error" *ngIf="form.get('reason')!.errors?.maxlength">
+      {{ 'CUSTOMER.CUSTOMER-PROFILE.MAX-LENGTH-EXCEEDED-300CHARS' | translate }}
+    </p>
+  </form>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-stroked-button color="primary" (click)="onNoClick()">
+      {{ 'COMMON.BACK' | translate }}
+    </button>
+    <button
+      type="submit"
+      mat-button
+      mat-flat-button
+      color="primary"
+      *ngIf="form.valid"
+      (click)="next()">
+      {{ 'COMMON.PROCEED' | translate }}
+    </button>
+  </div>
+</div>
+
+<!-- Copyright 2021 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->

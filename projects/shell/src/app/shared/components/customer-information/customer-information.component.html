@@ -1,0 +1,101 @@
+<div *ngIf="!isChangingSignatureAndPhoto" class="main-div">
+  <div class="customer-images">
+    <app-legacy-customer-image [acc]="account" [cif]="customerCif" />
+  </div>
+  <div class="customer-details-content">
+    <div class="customer-details-container">
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.FIRST-NAME' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ customerData?.firstName }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.LAST-NAME' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ customerData?.lastName }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.ID-NUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{
+            customerData?.prefDocumentID || customerData?.identifications[0]?.id
+          }}
+        </p>
+      </div>
+      <div class="customer-detail" *ngIf="customerData?.gender">
+        <p class="customer-detail-title">
+          {{ 'COMMON.GENDER' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ customerData.gender }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.ID-TYPE' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{
+            customerData?.preferredDocDesc ||
+              customerData?.identifications[0]?.type
+          }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">{{ 'COMMON.CIF' | translate }}</p>
+        <p class="customer-detail-content">
+          {{ customerData?.cif }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.MOBILENUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ customerData?.phoneNumber1 }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.OTHER-NUMBER' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ customerData?.phoneNumber2 }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT-DETAILS.BIRTH-DATE'
+              | translate
+          }}
+        </p>
+        <p class="customer-detail-content">
+          {{ customerData?.dateOfBirth | date }}
+        </p>
+      </div>
+      <div class="customer-detail">
+        <p class="customer-detail-title">
+          {{ 'COMMON.EMAILADDRESS' | translate }}
+        </p>
+        <p class="customer-detail-content">
+          {{ customerData?.email }}
+        </p>
+      </div>
+      <div class="customer-detail" *ngIf="!inProcess">
+        <p class="customer-detail-title">{{ 'COMMON.MEMO' | translate }}</p>
+        <p class="customer-detail-content">
+          {{ customerData?.memo }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

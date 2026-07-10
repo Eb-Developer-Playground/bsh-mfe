@@ -1,0 +1,147 @@
+<div class="mb-0 pb-0" mat-dialog-title>
+  <div class="d-flex">
+    <div class="avatar">
+      <span class="badge">{{ session.userInitials }}</span>
+    </div>
+    <div class="align-content-center">
+      <span class="fs-4" style="word-wrap: break-word">{{
+        session.userFullName
+      }}</span>
+      <br />
+      <span class="fs-6 color-primary">{{
+        session.user.username.toLowerCase()
+      }}</span>
+      <br />
+      <span class="text-muted">
+        <small class="fs-7">
+          {{ 'USER_PROFILE.STAFF_NO' | translate }} {{ session.user.staffNo }}
+        </small>
+        &nbsp;&raquo;&nbsp;
+        <small class="fs-7">
+          {{ 'COMMON.WORKCLASS' | translate }} : {{ session.user.workingClass }}
+        </small>
+        &nbsp;&raquo;&nbsp;
+        <small class="fs-7">
+          {{ 'COMMON.BRANCH' | translate }} : {{ session.user.branchid }}
+        </small>
+      </span>
+    </div>
+  </div>
+  <div class="mt-5 mb-5">
+    <mat-divider></mat-divider>
+  </div>
+</div>
+<mat-dialog-content>
+  @if (session.authVersion === '2') {
+    <mat-tab-group>
+      <mat-tab label="{{ 'USER_PROFILE.ROLES' | translate }}">
+        <h3 class="fs-6b">
+          {{ 'USER_PROFILE.MY_ROLES' | translate }} ({{ session.roles.length }})
+        </h3>
+        <mat-list>
+          @for (role of session.roles; track role; let isLast = $last) {
+            <mat-list-item>
+              <span matListItemTitle>{{ role.name }}</span>
+              {{ role.level }}
+            </mat-list-item>
+            @if (!isLast) {
+              <mat-divider></mat-divider>
+            }
+          }
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="{{ 'USER_PROFILE.PERMISSIONS' | translate }}">
+        <h3 class="fs-6b">
+          {{ 'USER_PROFILE.MY_ROLE_PERMISSIONS' | translate }} ({{
+            session.permissions.length
+          }})
+        </h3>
+        @for (role of session.roles; track role; let isLast = $last) {
+          <span class="fs-5 fw-300 mb-10 mt-10">{{ role.name }}</span>
+          @if (!isLast) {
+            <mat-divider></mat-divider>
+          }
+          <div class="m-5">
+            <mat-chip-set>
+              @for (permission of role.permissions; track permission) {
+                <mat-chip [color]="'primary'" class="mr-3 ml-3">{{
+                  permission.name
+                }}</mat-chip>
+              }
+            </mat-chip-set>
+          </div>
+        }
+      </mat-tab>
+      <mat-tab label="{{ 'USER_PROFILE.PROCESSES' | translate }}">
+        <h3 class="fs-6b">
+          {{ 'USER_PROFILE.MY_PROCESSES' | translate }} ({{
+            session.actionFlows.length
+          }})
+        </h3>
+        <mat-list>
+          @for (
+            actionFlow of session.actionFlows;
+            track actionFlow;
+            let i = $index;
+            let isLast = $last
+          ) {
+            <mat-list-item>{{ i + 1 }}. {{ actionFlow }}</mat-list-item>
+            @if (!isLast) {
+              <mat-divider></mat-divider>
+            }
+          }
+        </mat-list>
+      </mat-tab>
+    </mat-tab-group>
+  } @else {
+    <h3 class="fs-6b">
+      {{ 'USER_PROFILE.MY_ROLE_PERMISSIONS' | translate }} ({{
+        session.permissions.length
+      }})
+    </h3>
+    <mat-list>
+      @for (
+        permission of session.permissions;
+        track permission;
+        let isLast = $last
+      ) {
+        <mat-list-item>{{ permission.name }}</mat-list-item>
+        @if (!isLast) {
+          <mat-divider></mat-divider>
+        }
+      }
+    </mat-list>
+  }
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="d-flex m-10 w-100 justify-content-between">
+    <div>
+      <button
+        class="br-10"
+        mat-stroked-button
+        color="primary"
+        (click)="onRefreshSession()">
+        <mat-icon [svgIcon]="'ic-retry-gray'"></mat-icon>
+        <small>{{ 'ACTIONS.REFRESH_SESSION' | translate }}</small>
+      </button>
+      <button
+        class="ml-10 br-10"
+        mat-stroked-button
+        color="primary"
+        (click)="onCopied()"
+        [cdkCopyToClipboard]="session.loginResponse.access_token">
+        <mat-icon
+          style="width: 20px !important"
+          [svgIcon]="'ic-tickets'"></mat-icon>
+        <small>{{ 'ACTIONS.COPY_TOKEN' | translate }}</small>
+      </button>
+    </div>
+    <button
+      class="ml-10 w-85 br-45"
+      (click)="dialogRef.close(null)"
+      color="primary"
+      mat-raised-button>
+      {{ 'ACTIONS.CLOSE' | translate }}
+    </button>
+  </div>
+</mat-dialog-actions>

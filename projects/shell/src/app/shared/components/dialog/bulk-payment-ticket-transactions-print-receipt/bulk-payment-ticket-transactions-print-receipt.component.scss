@@ -1,0 +1,181 @@
+div.container-fluid {
+  padding: 10px 20px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span.title {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 900;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #424241;
+      margin-top: 10px;
+    }
+
+    span.close {
+      cursor: pointer;
+      text-align: right;
+      display: block;
+      font-size: 1rem;
+      opacity: 0.8 !important;
+    }
+  }
+
+  div.details-holder {
+    // background-color: #dee1e6;
+    padding: 7px 8px;
+    margin: 30px 45px;
+
+    span.detail-group {
+      display: block;
+      margin: 16px 0;
+
+      span.detail-label {
+        display: block;
+        font-size: 9px;
+        font-weight: 300;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.09;
+        letter-spacing: normal;
+        text-align: left;
+        color: #656565;
+        padding-bottom: 5px;
+      }
+
+      span.detail-value {
+        display: block;
+        font-size: 11px;
+        font-weight: 900;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.09;
+        letter-spacing: normal;
+        text-align: left;
+        color: #656565;
+        padding-bottom: 7px;
+        table {
+          width: 100%;
+          tbody:before {
+            line-height: 4px;
+            content: '.';
+            color: white;
+            display: block;
+          }
+        }
+      }
+
+      span.detail-signature {
+        display: block;
+        margin-top: 40px;
+        border-bottom: 1px dashed #dfdfdf;
+      }
+    }
+
+    div.signatory-details-group {
+      margin-bottom: 8px;
+    }
+
+    div.print-container {
+      background: #ffffff;
+      padding: 23px;
+      border-radius: 8px;
+
+      .receipt-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .header-message {
+          span {
+            display: block;
+            font-size: 9px;
+            text-align: right;
+          }
+        }
+      }
+
+      .info {
+        font-size: 11px;
+        font-weight: 900;
+        //color: #656565;
+        padding: 12px 0 10px 0;
+      }
+
+      .footer-info {
+        font-size: 9px;
+        margin-top: 25px;
+        padding-right: 30px;
+
+        a {
+          color: #a32a29;
+          &:focus,
+          &:focus-visible {
+            outline: none;
+          }
+        }
+
+        .footer-details {
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+
+  .wrap_btm_btn {
+    margin-top: 70px;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    & .back_btn {
+      width: 106px;
+      height: 31.5px;
+      border-radius: 15.8px;
+      border: solid 0.5px #929aab;
+      background-color: #ffffff;
+      padding-bottom: 10px;
+      & span {
+        font-size: 8px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.36;
+        letter-spacing: 0.02px;
+        text-align: left;
+        color: #6d7278;
+      }
+    }
+
+    & .next_btn {
+      border-radius: 30px;
+      border: none;
+      background-color: #a32a29;
+      padding: 5px 25px;
+      & span {
+        font-size: 8px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.36;
+        letter-spacing: 0.02px;
+        text-align: left;
+        color: #fbfbfb;
+      }
+    }
+  }
+
+  .equity-logo {
+    width: 64px;
+    height: 48px;
+    object-fit: contain;
+    padding: 0;
+  }
+}

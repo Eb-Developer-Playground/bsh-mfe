@@ -1,0 +1,120 @@
+<div>
+  <mat-card appearance="outlined" class="mb-2" style="padding: 1.5rem">
+    <div class="mb-1">
+      <h3 class="mat-headline-6 fw-400">
+        {{ 'APPROVAL-FORM.APPROVAL' | translate }}
+      </h3>
+      <p class="text-muted">
+        {{ 'APPROVAL-FORM.COMMENTS-INSTRUCTION' | translate }}
+      </p>
+    </div>
+    <div class="pb-1">
+      <mat-divider></mat-divider>
+    </div>
+
+    <form [formGroup]="forms">
+      <div fxLayout="column" fxFlex="100" fxLayoutAlign="start start">
+        <div
+          fxLayout="row"
+          fxFlex="100"
+          fxLayoutAlign="start start"
+          fxFill
+          class="w-100">
+          <div
+            class="w-100"
+            fxLayoutGap="24px"
+            [fxLayout]="horizontalView ? 'row' : 'column'"
+            fxFlex="100"
+            [fxLayoutAlign]="
+              horizontalView ? 'space-between center' : 'start start'
+            ">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>{{
+                'APPROVAL-FORM.APPROVAL-STATUS' | translate
+              }}</mat-label>
+              <mat-select formControlName="status" required>
+                <mat-option
+                  *ngFor="let action of statusOptions"
+                  [value]="action.value"
+                  >{{ action.description }}</mat-option
+                >
+              </mat-select>
+              <mat-error *ngIf="forms.get('status')?.hasError('required')">
+                <span
+                  >{{ 'APPROVAL-FORM.APPROVAL-STATUS-IS' | translate }}
+                  <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+                >
+              </mat-error>
+            </mat-form-field>
+
+            <ng-container *ngIf="!horizontalView">
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label>{{
+                  'APPROVAL-FORM.APPROVAL-COMMENT' | translate
+                }}</mat-label>
+                <textarea
+                  matInput
+                  formControlName="comments"
+                  maxlength="500"></textarea>
+              </mat-form-field>
+            </ng-container>
+
+            <ng-container *ngIf="horizontalView">
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label>{{
+                  'APPROVAL-FORM.APPROVAL-COMMENT' | translate
+                }}</mat-label>
+                <input matInput formControlName="comments" maxlength="500" />
+              </mat-form-field>
+            </ng-container>
+            <mat-error *ngIf="forms.get('comments').value.length === 500">
+              {{ 'APPROVAL-FORM.MAX-CHARACTERS-ERROR' | translate }}({{
+                forms.get('comment').value.length
+              }}).
+            </mat-error>
+
+            <div
+              *ngIf="!horizontalView"
+              fxLayout="row"
+              fxFlex="100"
+              fxLayoutAlign="end center"
+              class="w-100"
+              fxLayoutGap="24px">
+              <button
+                mat-stroked-button
+                color="primary"
+                style="width: 100px"
+                (click)="clear()">
+                {{ 'COMMON.CLEAR' | translate }}
+              </button>
+              <button
+                mat-raised-button
+                color="primary"
+                style="width: 100px"
+                (click)="submitComment()">
+                {{ 'COMMON.SAVE' | translate }}
+              </button>
+            </div>
+          </div>
+
+          <div
+            *ngIf="!horizontalView"
+            fxLayout="row"
+            fxFlex="100"
+            fxLayoutAlign="start center">
+            <div class="preview-container">
+              <div class="bottom_rw_bdy scrollable">
+                <div class="">
+                  <p *ngFor="let note of notes">
+                    &#64;{{ note.author }} - {{ note.note }} <br />
+                    {{ note.createdOnUtc | date: 'yyyy-MM-dd' }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

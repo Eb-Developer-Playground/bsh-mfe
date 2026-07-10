@@ -1,0 +1,42 @@
+<div class="skeleton-table-wrapper">
+  <table class="skeleton-table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers" class="skeleton-th"
+            [class.skeleton-th--radio]="header === ''">{{ header }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of skeletonRows" class="skeleton-row">
+        <td *ngFor="let header of headers; let i = index">
+          <!-- stacked: two lines (e.g. dashboard Subject col) -->
+          <ng-container *ngIf="getCellType(i) === 'stacked'">
+            <div class="skeleton-cell skeleton-cell--text skeleton-cell--long"></div>
+            <div class="skeleton-cell skeleton-cell--text skeleton-cell--short mt-4"></div>
+          </ng-container>
+          <!-- radio circle -->
+          <ng-container *ngIf="getCellType(i) === 'radio'">
+            <div class="skeleton-cell skeleton-cell--radio"></div>
+          </ng-container>
+          <!-- badge pill -->
+          <ng-container *ngIf="getCellType(i) === 'badge'">
+            <div class="skeleton-cell skeleton-cell--badge"></div>
+          </ng-container>
+          <!-- single-line text variants -->
+          <ng-container *ngIf="getCellType(i) === 'long'">
+            <div class="skeleton-cell skeleton-cell--text skeleton-cell--long"></div>
+          </ng-container>
+          <ng-container *ngIf="getCellType(i) === 'short'">
+            <div class="skeleton-cell skeleton-cell--text skeleton-cell--short"></div>
+          </ng-container>
+          <ng-container *ngIf="getCellType(i) === 'xs'">
+            <div class="skeleton-cell skeleton-cell--text skeleton-cell--xs"></div>
+          </ng-container>
+          <ng-container *ngIf="getCellType(i) === 'text'">
+            <div class="skeleton-cell skeleton-cell--text"></div>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,198 @@
+<div matDialogContent>
+  <div class="dialog-header">
+    <div class="sub-header">
+      <h2 mat-dialog-title style="margin-bottom: 0px">
+        {{ 'BIOMETRICS.BIOMETRIC-VERIFICATION' | translate }}
+      </h2>
+      <mat-icon color="primary" class="cursor-pointer" (click)="closeDialog()"
+        >close</mat-icon
+      >
+    </div>
+  </div>
+  <div *ngIf="!showBioInterface()" class="mat-typography">
+    <div class="w-100">
+      <div class="text-muted mb-1">
+        <h4>
+          {{ 'BIOMETRICS.SIGNATORY-ABSENT-INSTRUCTION' | translate }}<br />{{
+            'BIOMETRICS.OVERRIDE-REQUEST' | translate
+          }}
+        </h4>
+      </div>
+
+      <div class="d-flex align-content-center">
+        <div class="rounded-circle1">
+          <!--                {{ firstName ? firstName[0] : accountData?.user?.firstName }}-->
+          <!--                {{ lastName ? lastName[0] : accountData?.user?.lastName}}-->
+          A
+        </div>
+        <div class="align-self-center" *ngIf="accountData?.accountsSelected">
+          {{ accountData?.accountsSelected?.accountName }}
+          <br />
+          <h4 class="text-muted">{{ 'COMMON.ACCOUNT-NAME' | translate }}</h4>
+        </div>
+        <div class="align-self-center" *ngIf="!accountData?.accountsSelected">
+          {{ accountData?.user?.accounts[0]?.accountName }}
+          <br />
+          <h4 class="text-muted">{{ 'COMMON.ACCOUNT-NAME' | translate }}</h4>
+        </div>
+      </div>
+      <div class="gridset mb-1" *ngIf="showAccounts">
+        <div>
+          <span class="text-muted">{{
+            'COMMON.ACCOUNT-NUMBER' | translate
+          }}</span>
+          <h4>
+            {{
+              filterAcc?.length > 0
+                ? filterAcc[0]?.accountNumber
+                : accountData?.user?.accountsId
+            }}
+          </h4>
+        </div>
+        <div>
+          <span class="text-muted">{{
+            'COMMON.ACCOUNT-TYPE' | translate
+          }}</span>
+          <h4>
+            {{
+              filterAcc
+                ? filterAcc[0]?.schemeType
+                : accountData?.user?.accountType
+            }}
+          </h4>
+        </div>
+        <div>
+          <span class="text-muted">{{
+            'COMMON.ACCOUNT-MANDATE' | translate
+          }}</span>
+          <h4>
+            {{ filterAcc ? filterAcc[0]?.mandate : accountData?.user?.mandate }}
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="mb-1">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="text-muted mb-1">
+      <h4>{{ 'BIOMETRICS.PLACE-FINGER' | translate }}</h4>
+    </div>
+    <div class="d-flex pb-1 bio-row">
+      <div
+        class="wrap-images"
+        *ngIf="data?.flow === 'customerSearch' && showAccounts">
+        <ng-container *ngIf="photoLoading; else photoContent">
+          <div class="photo-loading-skeleton">
+            <mat-spinner [diameter]="36"></mat-spinner>
+          </div>
+        </ng-container>
+        <ng-template #photoContent>
+          <div *ngIf="customerPhotos; else no_photos">
+            <div class="profile" *ngFor="let photo of customerPhotos">
+              <div class="profile_pic">
+                <img
+                  *ngIf="photo?.photo"
+                  (click)="displayImageModal(photo?.photo)"
+                  class="img_1"
+                  [src]="photo?.photo"
+                  alt="" />
+              </div>
+            </div>
+          </div>
+          <ng-template #no_photos>
+            <div class="profile">
+              <div class="profile_pic">
+                <mat-icon
+                  svgIcon="ic-placeholder-potrait"
+                  aria-hidden="false"
+                  class="img_1"
+                  aria-label="placeholder-potrait">
+                </mat-icon>
+              </div>
+            </div>
+          </ng-template>
+        </ng-template>
+      </div>
+      <div
+        [ngClass]="
+          data?.flow === 'customerSearch'
+            ? 'wrap-fingerprint-image'
+            : 'wrap-fingerprint'
+        ">
+        <div class="scanner" [ngClass]="{ 'activate-success': verified }">
+          <img
+            #RIGHT_INDEX_1
+            [src]="defaultImage"
+            alt="finger-print"
+            class="fingerprint" />
+          <!-- <h4 mat-dialog-title >Biometric data missing</h4>
+                <h4 class="text-muted">This signatory has not enrolled on biometric authentication.</h4>
+                <h4 class="text-muted">Select the present signatory and start bio-verification.</h4>
+                <button mat-button mat-flat-button color="primary" (click)="enrollBio()">
+                    Enroll Bio
+                </button> -->
+        </div>
+      </div>
+      <div class="wrap-fingerprint-name">
+        <div
+          class="verify-box"
+          [ngClass]="{ 'activate-success': verified }"
+          (click)="captureFingerPrint()">
+          <div class="d-flex align-content-center">
+            <div class="rounded-circle2">
+              {{ fingerPrintFirstName[0] }} {{ fingerPrintLastName[0] }}
+            </div>
+            <div class="align-self-center">
+              {{ fingerPrintFirstName }} {{ fingerPrintLastName }}
+              <br />
+              <h4 class="text-muted" style="margin-bottom: 4px">
+                {{ 'BIOMETRICS.BIO-REQUIRED' | translate }}
+              </h4>
+            </div>
+          </div>
+          <div style="padding: 8px">
+            <!-- <mat-icon svgIcon="ic-bio-not-enrolled" aria-hidden="false" aria-label="Bio"
+                    class="bio-image">
+                    </mat-icon> -->
+            <div class="bio-status-warning" *ngIf="!verified">
+              <h5 class="mat-subtitle-2 fw-200 badge-warning">
+                <span>
+                  <mat-icon
+                    svgIcon="ic-unverified-caution"
+                    class="tick-icon"></mat-icon> </span
+                >{{ 'BIOMETRICS.UNVERIFIED' | translate }}
+              </h5>
+            </div>
+            <div class="bio-status-success" *ngIf="verified">
+              <h5 class="mat-subtitle-2 fw-200 badge-success">
+                <span>
+                  <mat-icon
+                    svgIcon="ic-verified-tick"
+                    class="tick-icon"></mat-icon> </span
+                >{{ 'BIOMETRICS.VERIFIED' | translate }}
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button
+      *ngIf="!data.inProcess"
+      mat-button
+      color="primary"
+      (click)="skipBio()">
+      &nbsp;{{ 'COMMON.SKIP-BIO' | translate }}&nbsp;
+    </button>
+    <button
+      mat-button
+      mat-flat-button
+      color="primary"
+      (click)="continue()"
+      [disabled]="!verified || isSubmitting">
+      <mat-spinner *ngIf="isSubmitting" [diameter]="18" style="display:inline-block;vertical-align:middle;margin-right:6px;"></mat-spinner>
+      {{ 'COMMON.CONTINUE' | translate }}
+    </button>
+  </div>
+</div>

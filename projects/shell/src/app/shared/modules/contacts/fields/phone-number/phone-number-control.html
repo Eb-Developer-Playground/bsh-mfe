@@ -1,0 +1,15 @@
+<div [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>Phone number</mat-label>
+    <img
+      *ngIf="country"
+      [src]="country.flagPath"
+      alt="{{ country.countryName }}"
+      class="mr-5 w-25 h-25"
+      matPrefix />
+    <phone-number-input
+      formControlName="tel"
+      (onCountrySelected)="country = $event"
+      required></phone-number-input>
+  </mat-form-field>
+</div>

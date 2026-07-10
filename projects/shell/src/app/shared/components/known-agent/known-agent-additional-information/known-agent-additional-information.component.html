@@ -1,0 +1,251 @@
+<mat-card appearance="outlined">
+  <div class="pl-24">
+    <app-header
+      [title]="'KNOWN-AGENT.CONTACT-DETAILS' | translate"></app-header>
+  </div>
+  <mat-card-content class="pl-24">
+    <form [formGroup]="informationForm">
+      <div fxLayout="column" fxFlex fxLayoutAlign="center start">
+        <div
+          formArrayName="items"
+          *ngFor="let item of items.controls; let i = index"
+          class="--radius-container mb-16">
+          <div
+            [formGroupName]="i"
+            fxLayout="column"
+            fxFlex
+            fxLayoutAlign="center start"
+            fxLayoutGap="10px">
+            <div
+              fxLayout="row"
+              fxLayout.lt-md="column"
+              fxFill
+              fxFlex="100"
+              fxLayoutAlign="start center"
+              fxLayoutGap="18px">
+              <div fxLayout="column" fxFlex="48">
+                <p *ngIf="i === 0" class="mat-subtitle-2 mb-8">
+                  {{ 'KNOWN-AGENT.PRIMARY-MOBILE-NUMBER' | translate }}
+                </p>
+                <p *ngIf="i === 1" class="mat-subtitle-2 mb-8">
+                  {{ 'KNOWN-AGENT.SECONDARY-MOBILE-NUMBER' | translate }}
+                </p>
+                <!-- <p class="mat-body-1 mt-0 mb-24 text-muted">{{'KNOWN-AGENT.MOBILE-MESSAGE' | translate }} </p> -->
+                <div fxLayout="row" fxLayoutGap="4px">
+                  <mat-form-field appearance="fill" *ngIf="setFormReadOnly">
+                    <mat-label
+                      >{{ 'KNOWN-AGENT.DIAL-CODE' | translate }}
+                    </mat-label>
+                    <input
+                      matInput
+                      formControlName="code"
+                      required
+                      [readonly]="setFormReadOnly" />
+                  </mat-form-field>
+
+                  <div>
+                    <p class="mat-body-2 mb-1 text-muted">
+                      {{ 'KNOWN-AGENT.DIAL-CODE' | translate }}
+                    </p>
+                    <p class="mat-subtitle-1">
+                      {{ item?.get('code')?.value }}
+                    </p>
+                  </div>
+
+                  <mat-form-field
+                    appearance="fill"
+                    class="--select-flag"
+                    *ngIf="!setFormReadOnly && countryCodeArr && false">
+                    <mat-select
+                      formControlName="code"
+                      required
+                      [(value)]="countryCodeSelected[i]">
+                      <mat-option
+                        *ngFor="
+                          let countryCode of countryCodeArr[i];
+                          let i = index
+                        "
+                        [value]="countryCode.dialCode">
+                        <mat-icon svgIcon="{{ countryCode.icon }}"></mat-icon
+                        >+{{ countryCode.dialCode }}
+                        {{ countryCode.countryName }}
+                      </mat-option>
+                      <mat-error
+                        *ngIf="item?.get('code')?.hasError('required')">
+                        <span
+                          >{{ 'KNOWN-AGENT.DIAL-CODE' | translate }}
+                          {{ 'COMMON.IS' | translate }}
+                          <strong>{{
+                            'COMMON.REQUIRED' | translate
+                          }}</strong></span
+                        >
+                      </mat-error>
+                      <mat-select-trigger
+                        *ngIf="
+                          countryCodeSelected[i] && countryCodeSelected[i].icon
+                        ">
+                        <div
+                          fxLayout="row"
+                          fxLayoutGap="4px"
+                          fxLayoutAlign="start center">
+                          <mat-icon
+                            style="height: 16px"
+                            matPrefix
+                            [svgIcon]="countryCodeSelected[i].icon"
+                            class="m-0"></mat-icon>
+                          <p class="m-0">
+                            +{{ countryCodeSelected[i].dialCode }}
+                          </p>
+                        </div>
+                      </mat-select-trigger>
+                    </mat-select>
+                  </mat-form-field>
+                  <div>
+                    <p class="mat-body-2 mb-1 text-muted">
+                      {{ 'KNOWN-AGENT.MOBILE-NUMBER' | translate }}
+                    </p>
+                    <p class="mat-subtitle-1">
+                      {{ item?.get('mobileNumber')?.value }}
+                    </p>
+                  </div>
+                  <mat-form-field appearance="fill" *ngIf="false">
+                    <mat-label
+                      >{{ 'KNOWN-AGENT.MOBILE-NUMBER' | translate }}
+                    </mat-label>
+                    <input
+                      matInput
+                      formControlName="mobileNumber"
+                      required
+                      [readonly]="setFormReadOnly"
+                      maxlength="12"
+                      minlength="8" />
+                    <mat-error
+                      *ngIf="item?.get('mobileNumber')?.hasError('required')">
+                      <span
+                        >{{ 'KNOWN-AGENT.MOBILE-NUMBER' | translate }}
+                        {{ 'COMMON.IS' | translate }}
+                        <strong>{{
+                          'COMMON.REQUIRED' | translate
+                        }}</strong></span
+                      >
+                    </mat-error>
+
+                    <mat-error
+                      *ngIf="item?.get('mobileNumber')?.hasError('pattern')">
+                      <span
+                        >{{ 'KNOWN-AGENT.MOBILE-NUMBER' | translate }}
+                        {{ 'COMMON.IS' | translate }}
+                        <strong>{{
+                          'COMMON.NUMBERS_ONLY' | translate
+                        }}</strong></span
+                      >
+                    </mat-error>
+
+                    <mat-error
+                      *ngIf="item?.get('mobileNumber')?.hasError('duplicate')">
+                      <span
+                        >{{ 'KNOWN-AGENT.MOBILE-NUMBER' | translate }}
+                        {{ 'COMMON.IS' | translate }}
+                        <strong>{{
+                          'COMMON.DUPLICATE' | translate
+                        }}</strong></span
+                      >
+                    </mat-error>
+
+                    <mat-error
+                      *ngIf="item?.get('mobileNumber')?.hasError('minlength')">
+                      <span
+                        >{{ 'KNOWN-AGENT.MOBILE-NUMBER' | translate }}
+                        {{ 'COMMON.IS' | translate }}
+                        <strong>{{
+                          'COMMON.INCOMPLETE' | translate
+                        }}</strong></span
+                      >
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="2"
+                fxLayoutAlign="center start"
+                fxFill>
+                <mat-divider vertical style="height: 100%"></mat-divider>
+              </div>
+              <div fxLayout="column" fxFlex="48">
+                <p *ngIf="i === 0" class="mat-subtitle-2 mb-8">
+                  {{ 'KNOWN-AGENT.PRIMARY-EMAIL-ADDRESS' | translate }}
+                </p>
+                <p *ngIf="i === 1" class="mat-subtitle-2 mb-8">
+                  {{ 'KNOWN-AGENT.SECONDARY-EMAIL-ADDRESS' | translate }}
+                </p>
+                <!-- <p class="mat-body-1 mt-0 mb-24 text-muted">{{'KNOWN-AGENT.EMAIL-MESSAGE' | translate }}</p> -->
+
+                <div>
+                  <p class="mat-body-2 mb-1 text-muted">
+                    {{ 'KNOWN-AGENT.EMAIL-ADDRESS' | translate }}
+                  </p>
+                  <p class="mat-subtitle-1">
+                    {{ item?.get('email')?.value }}
+                  </p>
+                </div>
+                <mat-form-field appearance="fill" *ngIf="false">
+                  <mat-label
+                    >{{ 'KNOWN-AGENT.EMAIL-ADDRESS' | translate }}
+                  </mat-label>
+                  <input
+                    matInput
+                    formControlName="email"
+                    required
+                    [readonly]="setFormReadOnly" />
+                  <mat-error *ngIf="item?.get('email')?.hasError('required')">
+                    <span
+                      >{{ 'KNOWN-AGENT.EMAIL-ADDRESS' | translate }}
+                      {{ 'COMMON.IS' | translate }}
+                      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+                    >
+                  </mat-error>
+
+                  <mat-error *ngIf="item?.get('email')?.hasError('duplicate')">
+                    <span
+                      >{{ 'KNOWN-AGENT.EMAIL-ADDRESS' | translate }}
+                      {{ 'COMMON.IS' | translate }}
+                      <strong>{{
+                        'COMMON.DUPLICATE' | translate
+                      }}</strong></span
+                    >
+                  </mat-error>
+                </mat-form-field>
+
+                <!-- //adding code input for mail validation -->
+                <!-- <div fxLayout="row"  fxFlex fxLayoutAlign="start center"  class="mt-38 mb-10" *ngIf="codesInputs">
+                            <div fxLayout="row"  fxFlex fxLayoutAlign="end end"  class="--clickable" (click)="verifyEmailNumber()"
+                            ><p class="mat-subheading-2 text-muted mt-6 mb-0 --clickable">{{'KNOWN-AGENT.SEND-LINK' | translate}} </p>
+                            </div>
+                            </div> -->
+              </div>
+            </div>
+
+            <div
+              *ngIf="i === 1 && !setFormReadOnly"
+              fxLayout="row"
+              fxFlex
+              fxLayoutAlign="start center"
+              fxLayoutGap="10px"
+              class="--radius-container --clickable"
+              (click)="removeItem(i)">
+              <p class="mat-subtitle-2 color-primary m-0 --clickable">
+                {{ 'KNOWN-AGENT.REMOVE-ANOTHER' | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div *ngIf="items.length <= 1 &&  !setFormReadOnly " fxLayout="row"  fxFlex fxLayoutAlign="start center"  fxLayoutGap="10px"  class="--radius-container --clickable" (click)="addItem()">
+                <mat-icon  class="--plus-icon" svgIcon="ic-plus"></mat-icon>
+                <p class="mat-body-2 color-primary m-0 --clickable">{{'KNOWN-AGENT.ADD-ANOTHER' | translate}}</p>
+            </div> -->
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

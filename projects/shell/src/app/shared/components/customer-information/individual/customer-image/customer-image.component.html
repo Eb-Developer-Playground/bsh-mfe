@@ -1,0 +1,54 @@
+<div *ngIf="customerPhotos?.length !== 0; else no_photos">
+  <div
+    class="profile_right"
+    [ngClass]="{ '--minus-margin-top': minusMarginTop }"
+    *ngFor="let photo of customerPhotos; let index = index">
+    <div class="profile_right_pic" *ngIf="photo?.photo">
+      <img
+        (click)="displayImageModal(photo?.photo)"
+        class="img_1"
+        [src]="photo?.photo"
+        alt="" />
+    </div>
+
+    <div class="profile_right_name" *ngIf="!justImages">
+      <span>
+        {{ customerDetails?.firstName }} {{ customerDetails?.middleName }}
+        {{ customerDetails?.lastName }}
+      </span>
+    </div>
+    <app-customer-profile-status
+      *ngIf="!justImages"
+      [customerStatus]="customerStatus"></app-customer-profile-status>
+
+    <div class="profile_right_signature" *ngIf="photo?.signaturePhoto">
+      <img
+        (click)="displayImageModal(photo?.signaturePhoto)"
+        class="img_2"
+        [src]="photo?.signaturePhoto"
+        alt="" />
+    </div>
+  </div>
+</div>
+<ng-template #no_photos>
+  <div class="profile_right">
+    <div class="profile_right_pic">
+      <mat-icon
+        class="customer-image"
+        svgIcon="ic-placeholder-potrait"
+        aria-hidden="false"
+        class="img_1"
+        aria-label="placeholder-potrait">
+      </mat-icon>
+    </div>
+    <div class="profile_right_name" *ngIf="!justImages">
+      <span>
+        {{ customerDetails?.firstName }} {{ customerDetails?.middleName }}
+        {{ customerDetails?.lastName }}
+      </span>
+    </div>
+    <app-customer-profile-status
+      *ngIf="!justImages"
+      [customerStatus]="customerStatus"></app-customer-profile-status>
+  </div>
+</ng-template>

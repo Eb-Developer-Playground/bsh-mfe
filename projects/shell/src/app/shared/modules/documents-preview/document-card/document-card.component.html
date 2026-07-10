@@ -1,0 +1,21 @@
+<!-- doc.id ? downloadDoc(doc.id, doc.filename || doc.documentName) :  -->
+<div
+  class="col document-card"
+  (click)="previewDocument(doc.id, doc.filename || doc.documentName)"
+  [ngStyle]="{ 'background-image': 'url(' + bgImage + ')' }">
+  <div style="display: initial">
+    <div class="upload-instruction">
+      <div style="padding: 8px" class="d-flex justify-content-between">
+        <div>
+          <p *ngIf="doc?.documentName" class="text doc">
+            {{ doc?.documentName }}
+          </p>
+          <p *ngIf="!doc?.documentName" class="text doc">
+            {{ doc?.filename }}
+          </p>
+          <p class="text instruction">File Size: 1mb</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

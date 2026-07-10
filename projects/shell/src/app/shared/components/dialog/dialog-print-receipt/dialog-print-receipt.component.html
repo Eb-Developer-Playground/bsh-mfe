@@ -1,0 +1,553 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="header">
+        <span class="title"> </span>
+        <span class="close" (click)="close()">
+          <mat-icon
+            svgIcon="ic-close"
+            style="transform: scale(0.6); cursor: pointer"
+            mat-dialog-close></mat-icon>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row details-holder">
+    <div class="print-container">
+      <div class="receipt-header">
+        @if (isDRC) {
+          <img
+            class="equity-logo"
+            src="assets/images/equity-bcdc-logo.png"
+            alt=""
+            srcset="" />
+        } @else {
+          <img
+            class="equity-logo"
+            src="assets/images/equity-img.png"
+            alt=""
+            srcset="" />
+        }
+      </div>
+
+      <div [ngSwitch]="data.type">
+        <div *ngSwitchDefault>
+          <div class="header-message">
+            <span>
+              {{ 'COMMON.HELLO' | translate }}
+              {{ details?.SenderDetails?.CustomerName }}
+            </span>
+            <span> {{ 'DIALOG.HERE-IS-YOUR-RECEIPT' | translate }} </span>
+          </div>
+          <div class="info">
+            {{ 'DIALOG.RECEIPT-THANK-YOU-MESSAGE' | translate }}
+          </div>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'COMMON.AMOUNT' | translate }}
+            </span>
+            <span class="detail-value">
+              {{
+                +details?.SenderDetails?.Amount
+                  | transformCurrency: details?.SenderDetails?.CurrencyCode
+              }}
+            </span>
+          </span>
+
+          <span
+            *ngIf="
+              details?.SenderDetails?.SourceAccountCurrency !==
+              details?.BeneficiaryDetails?.DestinationAccountCurrency
+            ">
+            <span class="detail-group">
+              <span class="detail-label">
+                {{ 'CASH-MANAGEMENT.EXCHANGE-RATE' | translate }}
+              </span>
+              <span class="detail-value" *ngIf="transferRateCode === 'TTB'">
+                1
+                {{ details?.SenderDetails?.SourceAccountCurrency }}
+                =
+                {{
+                  details?.ExchangeDetails?.TreasuryRate
+                    | transformCurrency
+                      : details?.BeneficiaryDetails?.DestinationAccountCurrency
+                }}
+              </span>
+              <span class="detail-value" *ngIf="transferRateCode === 'TTS'">
+                1
+                {{
+                  details?.BeneficiaryDetails?.TicketNumber
+                    ? details?.SenderDetails.CurrencyCode
+                    : details?.ExchangeDetails?.ConvertedCurrency
+                }}
+                =
+                {{
+                  details?.ExchangeDetails?.TreasuryRate
+                    | transformCurrency
+                      : details?.SenderDetails.SourceAccountCurrency
+                }}
+              </span>
+            </span>
+
+            <span class="detail-group">
+              <span class="detail-label">
+                {{ 'CASH-MANAGEMENT.CONVERTED-AMOUNT' | translate }}</span
+              >
+              <span class="detail-value">
+                {{
+                  +details?.ExchangeDetails?.ConvertedAmount
+                    | transformCurrency
+                      : details?.BeneficiaryDetails?.DestinationAccountCurrency
+                }}
+              </span>
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.CHARGES' | translate }}
+            </span>
+            <span class="detail-value">
+              {{
+                +details?.Fee
+                  | transformCurrency
+                    : details?.SenderDetails?.SourceAccountCurrency
+              }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.PAYMENT-REFERENCE' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.ReferenceId }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label"
+              >{{ 'CASH-MANAGEMENT.DATE-TIME' | translate }}
+            </span>
+            <span class="detail-value"> {{ localDateTime }} </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'DIALOG.SENT-TO' | translate }}</span
+            >
+            <span class="detail-value">
+              {{ details?.BeneficiaryDetails?.FullName }}
+            </span>
+            <span class="detail-value">
+              {{ maskAccount(details?.BeneficiaryDetails?.DestinationAccount) }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'DIALOG.SENT-FROM' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.SenderDetails?.CustomerName }}
+            </span>
+            <span class="detail-value">
+              {{ maskAccount(details?.SenderDetails?.SourceAccount) }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.PAYMENT-REASON' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.SenderDetails?.PaymentReason }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label"
+              >{{ 'CASH-MANAGEMENT.SERVED-BY' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.CreatedByFullName }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.CUSTOMER-SIGNATURE' | translate }}</span
+            >
+            <span class="detail-signature"> </span>
+          </span>
+        </div>
+        <div *ngSwitchCase="'move-money-receipt'">
+          <div class="header-message">
+            <span>
+              {{ 'COMMON.HELLO' | translate }}
+              {{
+                extractFirstName(
+                  details?.DebitAccountDetails?.accountholderName
+                )
+              }}
+            </span>
+            <span> {{ 'DIALOG.HERE-IS-YOUR-RECEIPT' | translate }} </span>
+          </div>
+
+          <div class="info">
+            {{ 'DIALOG.RECEIPT-THANK-YOU-MESSAGE' | translate }}
+          </div>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'COMMON.AMOUNT' | translate }}
+            </span>
+            <span class="detail-value">
+              {{
+                +details?.PaymentDetails?.amount
+                  | transformCurrency: details?.PaymentDetails?.currency
+              }}
+            </span>
+          </span>
+          <span
+            *ngIf="
+              details?.DebitAccountDetails?.accountCurrency !==
+              details?.BeneficiaryDetails?.accountCurrency
+            ">
+            <span class="detail-group">
+              <span class="detail-label">
+                {{ 'CASH-MANAGEMENT.EXCHANGE-RATE' | translate }}
+              </span>
+              <span
+                class="detail-value"
+                *ngIf="details?.ExchangeDetailsForm?.RateCode === 'TTB'">
+                1
+                {{ details?.DebitAccountDetails?.accountCurrency }}
+                =
+                {{
+                  details?.PaymentDetails?.exchangeRate
+                    | transformCurrency
+                      : details?.BeneficiaryDetails?.accountCurrency
+                }}
+              </span>
+              <span
+                class="detail-value"
+                *ngIf="details?.ExchangeDetailsForm?.RateCode === 'TTS'">
+                1
+                {{ details?.BeneficiaryDetails?.accountCurrency }}
+                =
+                {{
+                  details?.PaymentDetails?.exchangeRate
+                    | transformCurrency
+                      : details?.DebitAccountDetails?.accountCurrency
+                }}
+              </span>
+            </span>
+
+            <span class="detail-group">
+              <span class="detail-label">
+                {{ 'CASH-MANAGEMENT.CONVERTED-AMOUNT' | translate }}</span
+              >
+              <span class="detail-value">
+                {{
+                  +details?.ExchangeDetailsForm?.ConvertedAmount
+                    | transformCurrency
+                      : details?.ExchangeDetailsForm?.ConvertedCurrency
+                }}
+              </span>
+            </span>
+          </span>
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'MOVE-MONEY.SECTIONS.REVIEW.CHARGES' | translate }}
+            </span>
+            <span class="detail-value">
+              {{
+                +details?.PaymentDetails?.paymentFee
+                  | transformCurrency: details?.PaymentDetails?.currency
+              }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.PAYMENT-REFERENCE' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.referenceId }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label"
+              >{{ 'CASH-MANAGEMENT.DATE-TIME' | translate }}
+            </span>
+            <span class="detail-value"> {{ localDateTime }} </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'DIALOG.SENT-TO' | translate }}</span
+            >
+            <span class="detail-value">
+              {{ details?.BeneficiaryDetails?.accountholderName }}
+            </span>
+            <span class="detail-value">
+              {{ maskAccount(details?.BeneficiaryDetails?.accountNumber) }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'DIALOG.SENT-FROM' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.DebitAccountDetails?.accountholderName }}
+            </span>
+            <span class="detail-value">
+              {{ maskAccount(details?.DebitAccountDetails?.accountNumber) }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.PAYMENT-REASON' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.PaymentDetails?.reason }}
+            </span>
+          </span>
+          <span class="detail-group">
+            <span class="detail-label"
+              >{{ 'CASH-MANAGEMENT.SERVED-BY' | translate }}
+            </span>
+            <span class="detail-value">{{ details?.servedBy }}</span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.CUSTOMER-SIGNATURE' | translate }}</span
+            >
+            <span class="detail-signature"> </span>
+          </span>
+        </div>
+        <div *ngSwitchCase="'fixed-call-break-deposit'">
+          <div class="header-message">
+            <span>
+              {{ 'COMMON.HELLO' | translate }}
+              {{ details?.ContactDetails?.FirstName }}
+              {{ details?.ContactDetails?.LastName }}</span
+            >
+            <span> {{ 'DIALOG.HERE-IS-YOUR-RECEIPT' | translate }}</span>
+          </div>
+          <div class="info">
+            {{ 'DIALOG.RECEIPT-THANK-YOU-MESSAGE' | translate }}
+          </div>
+
+          <span class="detail-group">
+            <span class="detail-label">{{
+              'CASH-MANAGEMENT.DEBIT-ACCOUNT' | translate
+            }}</span>
+            <span class="detail-value">
+              {{ details?.SourceAccount }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label"
+              >{{ 'CASH-MANAGEMENT.INITIAL-AMOUNT' | translate }}
+            </span>
+            <span class="detail-value">
+              {{
+                +details?.DepositAmount
+                  | transformCurrency: details?.CurrencyCode
+              }}
+            </span>
+          </span>
+
+          <span class="detail-group" *ngIf="data.type !== 'call'">
+            <span class="detail-label"
+              >{{ 'CASH-MANAGEMENT.DEPOSIT-TERM' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.InvestmentTermInMonths }}
+              {{ 'COMMON.MONTHS' | translate }}
+            </span>
+          </span>
+          <span class="detail-group" *ngIf="data.type === 'call'">
+            <span class="detail-label">
+              {{ 'COMMON.FREQUENCY' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.InvestmentTermInMonths }}
+            </span>
+          </span>
+          <span class="detail-group" *ngIf="data.type !== 'call'">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.INTEREST-RATE' | translate }}
+            </span>
+            <span class="detail-value"> {{ details?.interestPercent }}% </span>
+          </span>
+
+          <span class="detail-group" *ngIf="data.type !== 'call'">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.INVESTMENT-RETURN' | translate }}
+            </span>
+            <span class="detail-value">
+              {{
+                +details?.investmentReturns
+                  | transformCurrency: details?.CurrencyCode
+              }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.DATE-TIME' | translate }}
+            </span>
+            <span class="detail-value"> {{ localDateTime }} </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.SERVED-BY' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.CreatedByFullName }}
+            </span>
+          </span>
+        </div>
+        <div *ngSwitchCase="'call'">
+          <div class="header-message">
+            <span>
+              {{ 'COMMON.HELLO' | translate }}
+              {{ details?.ContactDetails?.FirstName }}
+              {{ details?.ContactDetails?.LastName }}</span
+            >
+            <span> {{ 'DIALOG.HERE-IS-YOUR-RECEIPT' | translate }} </span>
+          </div>
+          <div class="info">
+            {{ 'DIALOG.RECEIPT-THANK-YOU-MESSAGE' | translate }}
+          </div>
+
+          <span class="detail-group">
+            <span class="detail-label"
+              >{{ 'CASH-MANAGEMENT.DEBIT-ACCOUNT' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.SourceAccount }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label"
+              >>{{ 'CASH-MANAGEMENT.PAYMENT-TYPE' | translate }}</span
+            >
+            <span class="detail-value">
+              {{ details?.paymentType | uppercase }}
+            </span>
+          </span>
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.NEW-ACCOUNT-NUMBER' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.newAccountNumber }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.INITIAL-AMOUNT' | translate }}
+            </span>
+            <span class="detail-value">
+              {{
+                +details?.DepositAmount
+                  | transformCurrency: details?.CurrencyCode
+              }}
+            </span>
+          </span>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.DATE-TIME' | translate }}</span
+            >
+            <span class="detail-value"> {{ localDateTime }} </span>
+          </span>
+          <div *ngIf="details.isRecurring">
+            <span class="detail-group">
+              <span class="detail-label">
+                {{ 'CASH-MANAGEMENT.RECURRING-AMOUNT' | translate }}</span
+              >
+              <span class="detail-value">
+                {{ details?.recurringAmount }}
+              </span>
+            </span>
+
+            <span class="detail-group">
+              <span class="detail-label"> {{ 'COMMON.START-DATE' }}</span>
+              <span class="detail-value">
+                {{ details?.startDate | date: 'dd/MM/yyyy' }}
+              </span>
+            </span>
+            <span class="detail-group">
+              <span class="detail-label"> {{ 'COMMON.END-DATE' }} </span>
+              <span class="detail-value">
+                {{ details?.endDate | date: 'dd/MM/yyyy' }}
+              </span>
+            </span>
+          </div>
+
+          <span class="detail-group">
+            <span class="detail-label">
+              {{ 'CASH-MANAGEMENT.SERVED-BY' | translate }}
+            </span>
+            <span class="detail-value">
+              {{ details?.CreatedByFullName }}
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer-info">
+        <div class="detail-label">
+          {{ 'CASH-MANAGEMENT.DOWNLOAD-ONE-EQUITY' | translate }}
+        </div>
+        @if (isDRC) {
+          <a
+            class="footer-link"
+            href="https://equitybcdconline.equitygroupholdings.com/fr-FR/access/login">
+            https://equitybcdconline.equitygroupholdings.com/fr-FR/access/login
+          </a>
+          <div class="footer-details">
+            {{ 'CASH-MANAGEMENT.CALL' | translate }} +243 818 302700
+            {{ 'CASH-MANAGEMENT.OR-EMAIL' | translate }} <br />
+            serviceclient&#64;equitybcdc.cd
+            {{ 'CASH-MANAGEMENT.FOR-SUPPORT' | translate }}
+          </div>
+        } @else {
+          <a
+            class="footer-link"
+            href="https://equityonline.equitygroupholdings.com">
+            https://equityonline.equitygroupholdings.com
+          </a>
+          <div class="footer-details">
+            {{ 'CASH-MANAGEMENT.CALL' | translate }} +254 763 063000
+            {{ 'CASH-MANAGEMENT.OR-EMAIL' | translate }} <br />
+            help&#64;equitygroup.com
+            {{ 'CASH-MANAGEMENT.FOR-SUPPORT' | translate }}
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="row wrap_btm_btn">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <button class="next_btn" (click)="print()" *ngIf="isCreatedByCurrentUser">
+        <span>{{ 'COMMON.PRINT' | translate }}</span>
+      </button>
+    </div>
+  </div>
+</div>

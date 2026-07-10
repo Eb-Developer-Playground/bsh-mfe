@@ -1,0 +1,60 @@
+.bank-list-container:hover {
+  background: #f4f2f0;
+}
+
+.bank-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  .bank-list-name {
+    padding: 16px 0;
+  }
+}
+
+.border-bottom {
+  border-bottom: 1px solid hsl(216, 2%, 58%, 0.2);
+}
+
+.bank-list-container {
+  padding: 0 15px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #d3d3d3;
+  height: 40px;
+  border-radius: 20px;
+  outline: none;
+  background-color: #f7f7f7;
+  font-size: 16px;
+  input {
+    width: 280px;
+  }
+  padding: 0 15px;
+  .clear-search {
+    margin-right: 4px;
+    padding-right: 4px;
+    border-right: 2px solid #929497;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  .search-mats-icons {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.search-bar:focus-within {
+  border: 1px solid #a32a29;
+  .search-icon {
+    color: #a32a29;
+  }
+}
+
+.text-grey {
+  color: #929497;
+}

@@ -1,0 +1,56 @@
+<mat-dialog-content>
+  <div>
+    <div class="mb-1">
+      <div class="dialog-header">
+        <h3 class="title">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.REVIEW-STATEMENT' | translate
+          }}
+        </h3>
+        <mat-icon
+          svgIcon="ic-close"
+          style="transform: scale(0.6); cursor: pointer; align-self: center"
+          mat-dialog-close></mat-icon>
+      </div>
+      <p class="subtitle">
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.CONFIRM-BEFORE-PROCEED'
+            | translate
+        }}
+      </p>
+    </div>
+
+    <div class="gridset">
+      <div *ngFor="let item of data">
+        <h3 class="mat-body-2 text-grey fw-400">
+          {{ item.title | translate }}
+        </h3>
+      </div>
+      <div *ngFor="let item of data.itemsForDisplay">
+        <h3 class="mat-body-2 text-grey fw-400">
+          {{ item.title | translate }}
+        </h3>
+        <span class="mat-body-2">{{ item.value }}</span>
+      </div>
+    </div>
+
+    <div fxLayout="row" class="pb-15" style="margin-top: 15px">
+      <span fxFlex></span>
+      <button
+        mat-flat-button
+        style="width: 90px; margin-right: 15px; color: #a32a29"
+        (click)="closeDialog(false)">
+        {{ 'COMMON.CANCEL' | translate }}
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="ml-15"
+        style="width: 90px"
+        (click)="onConfrm()">
+        {{ 'COMMON.CONFIRM' | translate }}
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>

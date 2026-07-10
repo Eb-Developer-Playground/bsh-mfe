@@ -1,0 +1,35 @@
+<div fxLayout class="mb-0" mat-dialog-title>
+  <h2 mat-dialog-title>Uploaded Documents</h2>
+  <span fxFlex></span>
+  <mat-icon
+    svgIcon="ic-close"
+    style="transform: scale(0.6); cursor: pointer"
+    [mat-dialog-close]="false"></mat-icon>
+</div>
+<div mat-dialog-content>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <div class="review-instructions align-self-center">
+    <h5 class="text text-success">Review uploaded documents</h5>
+    <h5 class="text text-black">
+      Please ensure all supporting documents have been uploaded
+    </h5>
+  </div>
+  <div class="doc-container pt-1">
+    <div *ngFor="let obj of data" class="doc-list">
+      <div class="docs">
+        <div class="align-self-center">
+          <p class="doc-name">{{ obj.name | filenameLabel }}</p>
+          <p class="doc-size">{{ obj.fileSize }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mbr-05" fxLayout mat-dialog-actions>
+  <span fxFlex></span>
+  <button mat-stroked-button class="eq-btn" [mat-dialog-close]="true">
+    Continue
+  </button>
+</div>

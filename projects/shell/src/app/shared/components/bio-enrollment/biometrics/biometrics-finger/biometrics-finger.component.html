@@ -1,0 +1,14 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div class="finger-print-box">
+    <div fxLayout="column" fxFlex="100" fxLayoutAlign="center center">
+      <!--                <mat-icon  [svgIcon]="fingerPrintIcon" aria-hidden="false" [class]="fingerPrintClass" ></mat-icon>-->
+      <img
+        [src]="fingerprint"
+        (click)="captureFingerPrint(finger)"
+        [class]="fingerPrintClass"
+        alt="fingerprint" />
+    </div>
+  </div>
+
+  <p class="mat-caption" style="margin: 16px auto">{{ finger.name }}</p>
+</div>

@@ -1,0 +1,164 @@
+.w-45 {
+    width: 48%;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px !important;
+}
+
+.pb-1 {
+    padding-bottom: 1rem;
+}
+
+.gridset {
+    display: flex;
+    justify-content: space-around;
+    grid-column-gap: 1rem;
+}
+
+.sub-header {
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+}
+
+.dialog-actions {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+}
+
+// ::ng-deep .custom-option > .mat-option-text {
+//     display: flex !important;
+//     align-content: center !important;
+// }
+
+.tick-icon {
+    transform: scale(0.9);
+    position: relative;
+    top: 3px;
+    padding-right: 8px;
+}
+
+.badge-warning {
+    color: #f38707;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge-success {
+    color: #2f9803;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 12px 0px 4px;
+}
+
+.selected {
+    border: 2px solid #a32a29 !important;
+}
+
+.bio-status-warning {
+    background: rgba(243, 135, 7, 0.04);
+    border-radius: 32px;
+}
+
+.bio-status-success {
+    background: rgba(47, 152, 3, 0.04);
+    border-radius: 32px;
+}
+
+.bio-image {
+    transform: scale(1.7);
+}
+
+.activate-success {
+    border: 2px solid #309803 !important;
+}
+
+.h-auto {
+    height: auto !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid rgba(146, 148, 151, 0.2);
+    display: inline-block;
+}
+
+.white-space {
+    white-space: normal;
+    line-height: 2em;
+}
+
+.color-grey {
+    color: #929497 !important;
+}
+
+.mat-mdc-form-field {
+    line-height: inherit;
+}
+
+.mb-1 {
+    margin-bottom: 0.5rem !important;
+}
+
+.mat-mdc-card {
+    border: 1px solid rgba(146, 148, 151, 0.2);
+    box-shadow: none !important;
+}
+
+.mat-checkbox-frame {
+    border: 2px solid rgba(146, 148, 151, 0.2);
+}
+
+.rounded-circle {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: #a32a29;
+    margin-right: 1rem;
+    text-align: center;
+    line-height: 3.5rem;
+}
+
+.scanner {
+    height: 11.11rem;
+    border: 1px solid #929497;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: grid !important;
+    padding: 26px;
+    align-content: center;
+    text-align: center;
+}
+
+.verify-box {
+    border: 1px solid #929497;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.fingerprint {
+    max-width: 6rem;
+    max-height: 9rem;
+    margin: auto;
+}
+
+.accepted {
+    border: 1.5px solid green;
+}
+
+div.scroll {
+    overflow: auto;
+    height: 200px;
+}

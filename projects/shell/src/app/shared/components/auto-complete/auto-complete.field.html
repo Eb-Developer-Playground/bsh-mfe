@@ -1,0 +1,33 @@
+<mat-form-field class="w-100" appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    #input
+    matInput
+    type="text"
+    oninput="this.value = this.value.toUpperCase()"
+    (input)="onSelectValue(input.value)"
+    [required]="required"
+    [placeholder]="placeholder"
+    [formControl]="inputControl"
+    [matAutocomplete]="autocomplete" />
+  <mat-autocomplete
+    #autocomplete="matAutocomplete"
+    (optionSelected)="onSelectValue($event.option.value)">
+    @if (_items.length > 500) {
+      <cdk-virtual-scroll-viewport
+        [ngStyle]="{ minHeight: '200px' }"
+        itemSize="25">
+        <mat-option *cdkVirtualFor="let c of filteredItems | async" [value]="c">
+          {{ c }}
+        </mat-option>
+      </cdk-virtual-scroll-viewport>
+    } @else {
+      <mat-option *ngFor="let c of filteredItems | async" [value]="c">{{
+        c
+      }}</mat-option>
+    }
+  </mat-autocomplete>
+  <mat-error>
+    <ng-content></ng-content>
+  </mat-error>
+</mat-form-field>

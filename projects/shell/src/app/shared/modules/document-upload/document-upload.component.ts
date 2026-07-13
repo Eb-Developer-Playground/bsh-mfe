@@ -20,7 +20,7 @@ import {
 } from '@app/shared/services/session/session.service';
 import { Subject } from 'rxjs';
 import { ToastService } from '../../modules/toast';
-import { UIService } from '../../services';
+import { UIService } from '@app/shared/services/ui.service';
 import { IUploadedDocument } from '../upload-docs';
 import { CameraModalComponent } from './camera-modal/camera-modal.component';
 

@@ -11,7 +11,8 @@ import {
 } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { SessionService, UIService } from '../../../services';
+import { SessionService } from '@app/shared/services/session/session.service';
+import { UIService } from '@app/shared/services/ui.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DialogConfirmComponent', () => {

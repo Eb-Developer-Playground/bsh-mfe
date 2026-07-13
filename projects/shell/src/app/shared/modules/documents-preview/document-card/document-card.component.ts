@@ -15,7 +15,7 @@ import {
 import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ApiService } from '../../../services';
+import { ApiService } from '@app/shared/services/api.service';
 import { PreviewComponent } from '../preview/preview.component';
 
 @Component({

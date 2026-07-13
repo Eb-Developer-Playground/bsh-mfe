@@ -19,7 +19,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { TranslatePipe } from '@ngx-translate/core';
 import { MessageBoxType, ToastService } from '@shared/modules/toast';
-import { ApiService, SessionService } from '@shared/services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import {
   IUserPermission,
   IUserRole,

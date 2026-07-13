@@ -27,7 +27,7 @@ import {
   IdTypeDescription,
   IdTypeSpec,
 } from '../types';
-import { StaticDataService } from '../../../services';
+import { StaticDataService } from '@app/shared/services/static-data.service';
 import { DedupeService } from '../dedupe.service';
 import { Country } from '../../../models/country';
 import { FinacleCity } from '../../../models/finacle-city';

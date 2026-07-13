@@ -12,7 +12,9 @@ import {
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { ToastService } from '../../../modules/toast';
-import { ApiService, SessionService, UIService } from '../../../services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
+import { UIService } from '@app/shared/services/ui.service';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Router } from '@angular/router';

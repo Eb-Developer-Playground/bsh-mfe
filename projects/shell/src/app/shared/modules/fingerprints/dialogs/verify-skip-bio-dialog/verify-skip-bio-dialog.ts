@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MessageBoxType, ToastService } from '../../../toast';
-import { ApiService, SessionService } from '../../../../services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { BioVerifyInput } from '../../models';
 
 import { isDevOrUat } from '../../../../utils';

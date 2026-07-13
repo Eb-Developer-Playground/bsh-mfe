@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { MessageBoxType, ToastService } from '@app/shared/modules/toast';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { currentEnviroment } from '@app/shared/utils';
 import { Observable, of } from 'rxjs';
 import { FeatureAccess } from './feature-access.interface';

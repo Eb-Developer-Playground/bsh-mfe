@@ -6,7 +6,8 @@ import { AfterViewInit,
 import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { TicketsService } from 'src/app/core/services';
 import { ChannelsService } from 'src/app/core/services/channels/channels.service';
-import { AccountService, SessionService } from '../../services';
+import { AccountService } from '@app/shared/services/account/account.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 
 @Component({
   selector: 'app-customer-details',

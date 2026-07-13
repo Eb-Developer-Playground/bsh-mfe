@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { COMPAT_IMPORTS } from '../../../../compat-barrel';
 import { AccountManagementService } from 'src/app/core/services/account-management/account-management.service';
-import { ApiService } from 'src/app/shared/services';
+import { ApiService } from '@app/shared/services/api.service';
 @Component({
   selector: 'app-entity-image',
   templateUrl: './entity-image.component.html',

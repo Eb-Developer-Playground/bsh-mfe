@@ -8,7 +8,8 @@ import { Component,
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AccountSignatory, BioVerifyInput } from '../../models';
-import { ApiService, SessionService } from '../../../../services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { MessageBoxType, ToastService } from '../../../toast';
 import { FingerprintsService } from '../../fingerprints.service';
 import { BIO_EXEMPTED_USERS } from '../../../../static';

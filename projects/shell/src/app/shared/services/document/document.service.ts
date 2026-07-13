@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable, of, take, tap } from 'rxjs';
-import { ApiService, SessionService } from '..';
+import { forkJoin, Observable, take } from 'rxjs';
+import { ApiService } from '../api.service';
+import { SessionService } from '../session/session.service';
 
 const MAX_DOCUMENTS_PER_CALL = 5;
 
@@ -29,7 +30,6 @@ export class DocumentsService {
       calls.push(this.apiService.post<any>(apiUrl, data));
       return forkJoin(calls);
     }
-    const chunks = [];
     for (let i = 0; i < documents.length; i += MAX_DOCUMENTS_PER_CALL) {
       const chunk = documents.slice(i, i + MAX_DOCUMENTS_PER_CALL);
 

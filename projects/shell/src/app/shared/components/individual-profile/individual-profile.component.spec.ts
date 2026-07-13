@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 import { ISignature } from '../../models/customer/shared';
 import { ContextManager } from '../../modules/stepper';
 import { MessageBoxType, ToastService } from '../../modules/toast';
-import { AccountService } from '../../services';
+import { AccountService } from '@app/shared/services/account/account.service';
 import { IndividualProfileComponent } from './individual-profile.component';
 
 class ToastServiceMock {

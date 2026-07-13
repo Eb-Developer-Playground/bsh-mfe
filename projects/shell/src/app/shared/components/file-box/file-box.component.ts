@@ -1,13 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DialogConfirmComponent } from '../dialog/dialog-confirm/dialog-confirm.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-file-box',
   templateUrl: './file-box.component.html',
   styleUrls: ['./file-box.component.scss'],
-  imports: [COMPAT_IMPORTS],
+  imports: [CommonModule, FlexLayoutModule, MatButtonModule, MatIconModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class FileBoxComponent implements OnInit {
   @Input() file: any;

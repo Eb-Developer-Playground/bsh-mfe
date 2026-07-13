@@ -1,5 +1,5 @@
 import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { COMPAT_IMPORTS } from '../../compat-barrel';
 

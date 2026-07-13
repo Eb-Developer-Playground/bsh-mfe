@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { SessionService } from '../services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { MessageBoxType, ToastService } from '../modules/toast';
 import { TranslateService } from '@ngx-translate/core';
 

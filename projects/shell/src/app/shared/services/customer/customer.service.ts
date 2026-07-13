@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { ApiService } from 'src/app/shared/services';
+import { ApiService } from '@app/shared/services/api.service';
 import { Customer } from '../../models/customer/customer.model';
 
 @Injectable()

@@ -23,7 +23,7 @@ import {
 } from 'rxjs/operators';
 import { Country } from '../../../models/country';
 import { Nationality } from '../../../models/nationality';
-import { StaticDataService } from '../../../services';
+import { StaticDataService } from '@app/shared/services/static-data.service';
 import { MessageBoxType, ToastService } from '../../toast';
 import { DedupeService, ICIFItem } from '../dedupe.service';
 import { IdDocumentService } from '../id-document.service';

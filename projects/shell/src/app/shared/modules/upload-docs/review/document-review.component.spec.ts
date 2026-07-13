@@ -15,7 +15,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DocumentPreviewComponent } from '../preview/document-preview.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { of } from 'rxjs';
-import { ApiService } from '../../../services';
+import { ApiService } from '@app/shared/services/api.service';
 
 let ChangeDetectorRefMock = {
   detectChanges: jest.fn(),

@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AccountService } from 'src/app/core/services/account/account.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 
 @Component({
   selector: 'app-dialog-document-preview',

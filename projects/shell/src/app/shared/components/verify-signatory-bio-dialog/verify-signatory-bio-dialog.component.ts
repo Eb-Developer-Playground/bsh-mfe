@@ -31,7 +31,7 @@ import { Bio } from '@app/home/customer/account-statements/models/account-statem
 import { environment as envProd } from '@env/environment.prod';
 import { environment as envUAT } from '@env/environment.uat';
 import { MessageBoxType, ToastService } from '../../modules/toast';
-import { SessionService } from '../../services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { BIO_EXEMPTED_USERS } from '../../static';
 import { isDev, isUat } from '../../utils';
 import { BioEnrollmentComponent } from '../bio-enrollment/bio-enrollment.component';

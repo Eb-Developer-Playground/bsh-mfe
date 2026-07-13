@@ -18,8 +18,8 @@ describe('ChangeOfSignatureApprovalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChangeOfSignatureApprovalComponent],
       imports: [
+        ChangeOfSignatureApprovalComponent,
         ReactiveFormsModule,
         TranslateModule.forRoot(),
         MatCardModule,
@@ -81,7 +81,7 @@ describe('ChangeOfSignatureApprovalComponent', () => {
         approvalStatus: 1,
         commentSection: 'Looks good',
       });
-      done();
+      undefined;
     });
   });
 });

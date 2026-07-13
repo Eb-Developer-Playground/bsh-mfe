@@ -32,7 +32,7 @@ import {
   OTPVerificationMode,
 } from '@app/shared/modules/contacts/types';
 import { MessageBoxType, ToastService } from '@app/shared/modules/toast';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { ISubsidiary } from '@app/shared/services/session/session.service';
 import { combineLatest } from 'rxjs';
 import { ContactsService } from '../../contacts.service';

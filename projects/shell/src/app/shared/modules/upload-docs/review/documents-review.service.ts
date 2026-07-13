@@ -1,4 +1,4 @@
-import { ApiService } from '@app/shared/services';
+import { ApiService } from '@app/shared/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { mergeMap, takeUntil } from 'rxjs/operators';

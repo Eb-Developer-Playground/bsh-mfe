@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { MatCardModule } from '@angular/material/card';
 
 export type InfoBoxType = 'success' | 'warning' | 'info' | 'danger';
 
@@ -7,7 +8,7 @@ export type InfoBoxType = 'success' | 'warning' | 'info' | 'danger';
   selector: 'app-info-box',
   templateUrl: './info-box.component.html',
   styleUrls: ['./info-box.component.scss'],
-  imports: [COMPAT_IMPORTS],
+  imports: [CommonModule, MatCardModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class InfoBoxComponent implements OnInit {
   @Input() type!: InfoBoxType;

@@ -8,7 +8,7 @@ import { map, mergeMap, takeUntil } from 'rxjs/operators';
 import { AccountManagementService } from '@app/core/services/account-management/account-management.service';
 import { AccountService } from '@app/core/services/account/account.service';
 import { MessageBoxType, ToastService } from '@app/shared/modules/toast';
-import { ApiService } from '@app/shared/services';
+import { ApiService } from '@app/shared/services/api.service';
 import { ImagePreviewModalComponent } from '../../image-preview-modal/image-preview-modal.component';
 
 export interface SupportDocuments {

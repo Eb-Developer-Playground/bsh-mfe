@@ -47,8 +47,8 @@ describe('ChangeOfSignatureBioDialog', () => {
     dialog = new MatDialogStub();
 
     await TestBed.configureTestingModule({
-      declarations: [ChangeOfSignatureBioDialog],
       imports: [
+        ChangeOfSignatureBioDialog,
         ReactiveFormsModule,
         MatDialogModule,
         RouterTestingModule.withRoutes([]),

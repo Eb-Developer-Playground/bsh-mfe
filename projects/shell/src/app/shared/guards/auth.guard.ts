@@ -2,17 +2,17 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { catchError, map, of, timeout } from 'rxjs';
 import { SessionService } from '../services/session/session.service';
+import { environment } from '@env/environment';
 
 export const authGuard: CanActivateFn = (_route, state) => {
   const session = inject(SessionService);
   const router = inject(Router);
 
-  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  console.log('[BSH.AuthGuard] evaluating url:', state.url, '| isLocal:', isLocal, '| stored token exists:', !!session.loginResponse, '| isLoggedIn:', session.isLoggedIn());
+  console.log('[BSH.AuthGuard] evaluating url:', state.url, '| bypassAuth:', environment.bypassAuth, '| stored token exists:', !!session.loginResponse, '| isLoggedIn:', session.isLoggedIn());
 
-  // Skip auth check when running locally for development convenience
-  if (isLocal) {
-    console.log('[BSH.AuthGuard] localhost bypass → allow');
+  // Skip auth check when bypassAuth is enabled (development convenience)
+  if (environment.bypassAuth) {
+    console.log('[BSH.AuthGuard] bypassAuth enabled → allow');
     return true;
   }
 

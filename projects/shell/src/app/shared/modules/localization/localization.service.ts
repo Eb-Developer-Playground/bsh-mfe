@@ -1,7 +1,7 @@
 import { EventEmitter, inject, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { SessionService } from '../../../shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { LOCALES } from '../../static';
 
 @Injectable({

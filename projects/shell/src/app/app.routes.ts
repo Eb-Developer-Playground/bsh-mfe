@@ -21,8 +21,8 @@ export const routes: Routes = [
       },
       {
         path: 'customer360',
-        loadComponent: () =>
-          loadRemoteModule('customer360', './Component').then(m => m.App),
+        loadChildren: () =>
+          loadRemoteModule('customer360', './Routes').then(m => m.routes),
         data: {
           title: 'EQUITY.BSH',
           breadcrumb: 'MENU.CUSTOMER-360',

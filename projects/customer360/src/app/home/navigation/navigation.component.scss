@@ -1,0 +1,70 @@
+//@use "styles";
+
+:host ::ng-deep.mat-list-item-content {
+    padding: 0 7px !important;
+}
+
+.nav-items {
+    padding: 4px 0 !important;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* Size 5 */
+    .nav-items-text {
+        font-size: 14px;
+        line-height: 20px;
+        color: #929497;
+    }
+
+    .nav-items-text-small {
+        font-size: 13px;
+        line-height: 20px;
+        color: #929497;
+    }
+}
+
+.nav-items:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.mat-mdc-list-base .mat-mdc-list-item {
+    width: 100%;
+    border-left: 4px solid transparent;
+}
+
+.mat-mdc-nav-list .mat-mdc-list-item:hover {
+    background: transparent !important;
+}
+
+.active-route {
+    border-left: 4px solid #a32a29 !important;
+    outline-width: 0;
+
+    .nav-items .nav-items-text {
+        color: #a32a29;
+    }
+
+    .nav-items .nav-items-btn .nav-items-icon svg {
+        fill: #a32a29;
+        color: #a32a29;
+    }
+
+    .mat-icon svg {
+        fill: #a32a29;
+        color: #a32a29;
+    }
+}
+
+.active {
+    background-color: #f7f7f7;
+}
+
+.nav-items-btn {
+    color: #929497;
+}
+
+.mdc-list-item {
+    padding-left: 8px;
+    padding-right: 8px;
+}

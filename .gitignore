@@ -50,5 +50,9 @@ test-results/
 .DS_Store
 Thumbs.db
 .cursor/
+.claude/
+.opencode/
+.codex/
+.windsurf/
 projects/Customer360Web/
 build-output-*

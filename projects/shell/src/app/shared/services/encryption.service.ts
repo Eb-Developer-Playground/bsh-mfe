@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
+import CryptoJS from 'crypto-js';
 import { environment } from '@env/environment';
 
 @Injectable({

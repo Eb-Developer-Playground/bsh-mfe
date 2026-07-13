@@ -1,4 +1,4 @@
-import { Feature, FeatureFlagsConfig } from "@app/core/feature-flags/feature-flags.model";
+import { Feature, FeatureFlagsConfig } from "../app/core/feature-flags/feature-flags.model";
 
 export const environment = {
   production: false,

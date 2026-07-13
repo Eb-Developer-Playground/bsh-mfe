@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   ngrxLogs: true,
   enableRouterTracing: true,
-  apiUrl: 'https://api-dev.equitygroupholdings.com',
+  apiUrl: 'https://api-uat.equitygroupholdings.com',
   appUrl: 'https://branchservicehub-admin-portal-dev.azurewebsites.net',
   customerOnboardingUrl:
     'https://servicehub-customer-onboarding-uat.equitygroupholdings.com',

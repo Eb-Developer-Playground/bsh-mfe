@@ -15,8 +15,9 @@ import { SessionNavigationService } from './session-navigation.service';
 import { SessionInactivityService } from './session-inactivity.service';
 import { SessionProfileProjectionService } from './session-profile-projection.service';
 import { SessionLogoutService } from './session-logout.service';
+import { addSeconds, isBefore } from 'date-fns';
 import { environment as env } from '../../../../environments/environment';
-import moment from 'moment';
+
 
 export type IActionFlow = string;
 export type IActionFlowStatus = string | null;
@@ -136,11 +137,11 @@ export class SessionService {
     );
   }
 
-  set expiresAt(m: moment.Moment) {
-    this.sessionStorage.setEncryptedItem('expires_at', JSON.stringify(m.valueOf()));
+  set expiresAt(ts: number) {
+    this.sessionStorage.setEncryptedItem('expires_at', JSON.stringify(ts));
   }
 
-  get expiresAt(): moment.Moment {
+  get expiresAt(): number | null {
     return JSON.parse(this.sessionStorage.getDecryptedItem('expires_at') || 'null');
   }
 
@@ -244,7 +245,7 @@ export class SessionService {
     if (loginResponse) {
       console.log('[BSH.SessionService] setSession called with new loginResponse | expires_in:', loginResponse.expires_in);
       this.loginResponse = loginResponse;
-      this.expiresAt = moment().add(loginResponse.expires_in, 'second');
+      this.expiresAt = addSeconds(Date.now(), loginResponse.expires_in).getTime();
     }
 
     const transition = this.sessionAuthTransition.restoreSession(
@@ -267,14 +268,14 @@ export class SessionService {
     if (transition.bankId) {
       localStorage.setItem('bankId', transition.bankId);
     }
-    console.log('[BSH.SessionService] setSession complete | user:', transition.user.sub, '| bankId:', transition.user.bankId, '| isLoggedIn:', transition.active, '| expiresAt:', this.expiresAt?.format());
+    console.log('[BSH.SessionService] setSession complete | user:', transition.user.sub, '| bankId:', transition.user.bankId, '| isLoggedIn:', transition.active, '| expiresAt:', this.expiresAt ? new Date(this.expiresAt).toISOString() : null);
     this._isActive.set(transition.active);
     this._onChanged.set(transition.active);
     this.authStatePublisher.publish(transition.authState);
   }
 
   public isLoggedIn() {
-    return this.loginResponse ? moment().isBefore(this.expiresAt) : false;
+    return this.loginResponse ? isBefore(Date.now(), this.expiresAt!) : false;
   }
 
   public isExpired(): boolean {

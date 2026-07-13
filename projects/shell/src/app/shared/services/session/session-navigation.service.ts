@@ -33,6 +33,7 @@ export class SessionNavigationService {
 
   login(returnPath?: string | null, reAuth?: string | null, bankId?: string): void {
     const returnUrl = returnPath || this.getReturnUrl() || '/dashboard';
+    this.setReturnUrl(returnUrl);
     const locale = this.getStoredLocale();
     const host = window.location.port
       ? `${window.location.protocol}//${window.location.hostname}:${window.location.port}`
@@ -41,7 +42,7 @@ export class SessionNavigationService {
     const params = new URLSearchParams();
 
     params.set('re-auth', `${reAuth || 0}`);
-    params.set('returnUrl', host + returnUrl);
+    params.set('returnUrl', `${host}/auth`);
     params.set('lang', locale.language || 'en-GB');
     params.set('bankId', resolvedBankId);
 

@@ -1,20 +1,21 @@
 import { Injectable, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { toObservable } from '@angular/core/rxjs-interop';
 
 import { finalize, Observable, of } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { EncryptionService } from '../encryption.service';
-import { LoaderService } from '../../modules/loader';
 import { ILocale } from '../../modules/localization';
-import { TimeoutDialog } from '../../dialogs';
 import { AUTH_VERSION, User } from '../../models';
-import { default as SUBSIDIARIES } from '../../../../assets/data/subsidiaries.json';
-import { default as LOCALES } from '../../../../assets/data/language-locales.json';
+import { AuthStatePublisherService } from '../../equity-auth/auth-state-publisher.service';
+import { SessionStorageService } from './session-storage.service';
+import { SessionTokenDecoderService } from './session-token-decoder.service';
+import { SessionAuthTransitionService } from './session-auth-transition.service';
+import { SessionAuthorizationService } from './session-authorization.service';
+import { SessionNavigationService } from './session-navigation.service';
+import { SessionInactivityService } from './session-inactivity.service';
+import { SessionProfileProjectionService } from './session-profile-projection.service';
+import { SessionLogoutService } from './session-logout.service';
 import { environment as env } from '../../../../environments/environment';
-import { jwtDecode } from 'jwt-decode';
 import moment from 'moment';
 
 export type IActionFlow = string;
@@ -59,12 +60,20 @@ export interface ISubsidiary {
 })
 export class SessionService {
   updatingSession!: boolean;
-  dialogRef!: MatDialogRef<any> | undefined;
   _roles!: IUserRole[];
 
   private _user = signal<User | undefined>(undefined);
   private _isActive!: WritableSignal<boolean>;
   private _onChanged!: WritableSignal<boolean>;
+  private authStatePublisher = inject(AuthStatePublisherService);
+  private sessionStorage = inject(SessionStorageService);
+  private sessionTokenDecoder = inject(SessionTokenDecoderService);
+  private sessionAuthTransition = inject(SessionAuthTransitionService);
+  private sessionAuthorization = inject(SessionAuthorizationService);
+  private sessionNavigation = inject(SessionNavigationService);
+  private sessionInactivity = inject(SessionInactivityService);
+  private sessionProfileProjection = inject(SessionProfileProjectionService);
+  private sessionLogout = inject(SessionLogoutService);
 
   get user(): User {
     return this._user()!;
@@ -87,34 +96,10 @@ export class SessionService {
   }
 
   get subsidiary(): ISubsidiary {
-    if (this.isLoggedIn()) {
-      const config = SUBSIDIARIES.responseObject.find(
-        sub => sub.bankId == this.userBank
-      );
-      return <ISubsidiary>{
-        ...config,
-        operatingCountry: false,
-        countryCode3Chars: '',
-        languages: <ILocale[]>config?.languages.map(lang => {
-          const loc = LOCALES.find(l => l.id === lang);
-          return { id: loc?.id, name: loc?.name };
-        }),
-      };
-    }
-    return {
-      bankId: '',
-      countryCode: '',
-      countryName: '',
-      currency: '',
-      currencySymbol: '',
-      nationality: '',
-      dialCode: '',
-      icon: '',
-      flagPath: '',
-      operatingCountry: false,
-      countryCode3Chars: '',
-      languages: [],
-    };
+    return this.sessionProfileProjection.getSubsidiary(
+      this.isLoggedIn(),
+      this.userBank
+    );
   }
 
   get authVersion(): any {
@@ -136,50 +121,43 @@ export class SessionService {
   }
 
   get permissions(): IUserPermission[] {
-    if (!this.isLoggedIn()) return [];
-    let permissions: IUserPermission[] = [];
-    if (this.authVersion === AUTH_VERSION.VERSION_1) {
-      permissions = this.user.role.map(r => {
-        return { name: r, actionFlows: [], statuses: [] };
-      });
-    } else if (this.authVersion === AUTH_VERSION.VERSION_2) {
-      permissions = this.roles
-        .map(r => r.permissions)
-        .reduce((acc, cur) => [...acc, ...cur], []);
-    }
-    return permissions.sort((a, b) => a.name.localeCompare(b.name));
+    return this.sessionAuthorization.getPermissions(
+      this.isLoggedIn(),
+      this.authVersion,
+      this._user(),
+      this.roles || []
+    );
   }
 
   get actionFlows(): IActionFlow[] {
-    if (!this.isLoggedIn()) return [];
-    return this.permissions
-      .map(r => r?.actionFlows || [])
-      .reduce((acc, cur) => [...acc, ...cur], [])
-      .sort((a, b) => a.localeCompare(b));
+    return this.sessionAuthorization.getActionFlows(
+      this.isLoggedIn(),
+      this.permissions
+    );
   }
 
   set expiresAt(m: moment.Moment) {
-    this.encryptItem('expires_at', JSON.stringify(m.valueOf()));
+    this.sessionStorage.setEncryptedItem('expires_at', JSON.stringify(m.valueOf()));
   }
 
   get expiresAt(): moment.Moment {
-    return JSON.parse(this.decryptItem('expires_at') || 'null');
+    return JSON.parse(this.sessionStorage.getDecryptedItem('expires_at') || 'null');
   }
 
   set syncToken(token: string | undefined) {
-    this.encryptItem('syncRt', token || '');
+    this.sessionStorage.setEncryptedItem('syncRt', token || '');
   }
 
   get syncToken(): string | undefined {
-    return this.decryptItem('syncRt') || '';
+    return this.sessionStorage.getDecryptedItem('syncRt') || '';
   }
 
   set loginResponse(resp: ILoginResponse) {
-    this.encryptItem('access_token', JSON.stringify(resp));
+    this.sessionStorage.setEncryptedItem('access_token', JSON.stringify(resp));
   }
 
   get loginResponse(): ILoginResponse {
-    return JSON.parse(this.decryptItem('access_token') || 'null');
+    return JSON.parse(this.sessionStorage.getDecryptedItem('access_token') || 'null');
   }
 
   get userEmail(): string {
@@ -230,10 +208,7 @@ export class SessionService {
   }
 
   constructor(
-    private http: HttpClient,
-    private router: Router,
-    private dialog: MatDialog,
-    private loader: LoaderService
+    private http: HttpClient
     // private accountSelectionService: AccountSelectionService
   ) {
     this._isActive = signal(false);
@@ -242,63 +217,60 @@ export class SessionService {
     this.onChangedSignal = this._onChanged.asReadonly();
     this.isActive$ = toObservable(this._isActive);
     this.onChanged$ = toObservable(this._onChanged);
-    this.encryptionService = inject(EncryptionService);
     this.setSession();
-    const hasToken = !!localStorage.getItem('access_token');
+    const hasToken = this.sessionStorage.hasItem('access_token');
     console.log('[BSH.SessionService] constructed | encrypted token in storage:', hasToken, '| loggedIn:', this.isLoggedIn(), '| signal.active:', this._isActive());
-  }
-
-  private encryptionService!: EncryptionService;
-
-  /** Encrypt and store a value in localStorage */
-  private encryptItem(key: string, value: string): void {
-    localStorage.setItem(key, this.encryptionService.encryptAES(value));
-  }
-
-  /** Read and decrypt from localStorage with fallback for legacy unencrypted data */
-  private decryptItem(key: string): string | null {
-    const raw = localStorage.getItem(key);
-    if (!raw) return null;
-    const decrypted = this.encryptionService.decryptAES(raw);
-    if (decrypted === 'error 1' || decrypted === 'error 2' || decrypted === 'error 3') {
-      return raw;
-    }
-    return decrypted;
   }
 
   /** Public API for external services to signal that session state changed */
   public notifyChanged(active: boolean = this._isActive()): void {
     this._onChanged.set(active);
     this._isActive.set(active);
+    this.publishAuthState();
   }
 
-  public decodeToken(token: string): any {
-    return jwtDecode(token);
+  public decodeToken(token: string): User {
+    return this.sessionTokenDecoder.decodeUser(token);
   }
 
-  public get currentUser(): any {
+  public get currentUser(): User {
     const decoded = this.decodeToken(this.loginResponse.access_token);
     this._user.set(decoded);
     return decoded;
   }
 
   // NOTE: loginResponse to be passed immediately after session retrieval
-  public setSession(loginResponse?: any) {
+  public setSession(loginResponse?: ILoginResponse) {
     if (loginResponse) {
       console.log('[BSH.SessionService] setSession called with new loginResponse | expires_in:', loginResponse.expires_in);
       this.loginResponse = loginResponse;
       this.expiresAt = moment().add(loginResponse.expires_in, 'second');
     }
-    if (this.loginResponse) {
-      this._user.set(jwtDecode(this.loginResponse.access_token));
-      localStorage.setItem('bankId', this.user?.bankId);
-      const active = this.isLoggedIn();
-      console.log('[BSH.SessionService] setSession complete | user:', this.user?.sub, '| bankId:', this.user?.bankId, '| isLoggedIn:', active, '| expiresAt:', this.expiresAt?.format());
-      this._isActive.set(active);
-      this._onChanged.set(active);
-    } else {
+
+    const transition = this.sessionAuthTransition.restoreSession(
+      this.loginResponse,
+      this.isLoggedIn(),
+      this.currentLanguage,
+      this.expiresAtValue
+    );
+
+    if (!transition.user) {
       console.log('[BSH.SessionService] setSession — no loginResponse in storage, user is not authenticated');
+      this._user.set(undefined);
+      this._isActive.set(false);
+      this._onChanged.set(false);
+      this.authStatePublisher.publish(transition.authState);
+      return;
     }
+
+    this._user.set(transition.user);
+    if (transition.bankId) {
+      localStorage.setItem('bankId', transition.bankId);
+    }
+    console.log('[BSH.SessionService] setSession complete | user:', transition.user.sub, '| bankId:', transition.user.bankId, '| isLoggedIn:', transition.active, '| expiresAt:', this.expiresAt?.format());
+    this._isActive.set(transition.active);
+    this._onChanged.set(transition.active);
+    this.authStatePublisher.publish(transition.authState);
   }
 
   public isLoggedIn() {
@@ -310,30 +282,40 @@ export class SessionService {
   }
 
   public getRoles(): string[] {
-    return this.isLoggedIn() ? this.user.role : [];
+    return this.sessionAuthorization.getRoles(this.isLoggedIn(), this._user());
   }
 
-  public hasRole(role: any): boolean {
-    if (!this.isLoggedIn()) return false;
-    return this.getRoles()?.includes(role);
+  public hasRole(role: string): boolean {
+    return this.sessionAuthorization.hasRole(
+      this.isLoggedIn(),
+      this.getRoles(),
+      role
+    );
   }
 
   public hasPermission(permission: string): boolean {
-    if (!this.isLoggedIn()) return false;
-    return this.permissions.some(p => p.name === permission);
+    return this.sessionAuthorization.hasPermission(
+      this.isLoggedIn(),
+      this.permissions,
+      permission
+    );
   }
 
   public hasMarkerPermission(permission: string): boolean {
-    if (!this.isLoggedIn()) return false;
-    return this.permissions.some(
-      p => p.name === permission && p.permissionType === 'Maker'
+    return this.sessionAuthorization.hasPermission(
+      this.isLoggedIn(),
+      this.permissions,
+      permission,
+      'Maker'
     );
   }
 
   public hasCheckerPermission(permission: string): boolean {
-    if (!this.isLoggedIn()) return false;
-    return this.permissions.some(
-      p => p.name === permission && p.permissionType === 'Checker'
+    return this.sessionAuthorization.hasPermission(
+      this.isLoggedIn(),
+      this.permissions,
+      permission,
+      'Checker'
     );
   }
 
@@ -350,43 +332,63 @@ export class SessionService {
   }
 
   public isMakerForProcess(process: string): boolean {
-    if (!this.isLoggedIn() || this.authVersion !== '2') return false;
-    const perm = this.permissions.find(p => p.permissionType === 'Maker');
-    return perm?.actionFlows?.includes(process) || false;
+    return this.sessionAuthorization.hasProcessPermission(
+      this.isLoggedIn(),
+      this.authVersion,
+      this.permissions,
+      process,
+      undefined,
+      'Maker'
+    );
   }
 
   public isCheckerForProcess(process: string): boolean {
-    if (!this.isLoggedIn() || this.authVersion !== '2') return false;
-    const perm = this.permissions.find(p => p.permissionType === 'Checker');
-    return perm?.actionFlows?.includes(process) || false;
+    return this.sessionAuthorization.hasProcessPermission(
+      this.isLoggedIn(),
+      this.authVersion,
+      this.permissions,
+      process,
+      undefined,
+      'Checker'
+    );
   }
 
   public hasPermissionForProcess(permission: string, process: string): boolean {
-    if (!this.isLoggedIn() || this.authVersion !== '2') return false;
-    const perm = this.permissions.find(p => p.name === permission);
-    return perm?.actionFlows?.includes(process) || false;
+    return this.sessionAuthorization.hasProcessPermission(
+      this.isLoggedIn(),
+      this.authVersion,
+      this.permissions,
+      process,
+      permission
+    );
   }
 
   public hasMakerPermissionForProcess(
     permission: string,
     process: string
   ): boolean {
-    if (!this.isLoggedIn() || this.authVersion !== '2') return false;
-    const perm = this.permissions.find(
-      p => p.name === permission && p.permissionType === 'Maker'
+    return this.sessionAuthorization.hasProcessPermission(
+      this.isLoggedIn(),
+      this.authVersion,
+      this.permissions,
+      process,
+      permission,
+      'Maker'
     );
-    return perm?.actionFlows?.includes(process) || false;
   }
 
   public hasCheckerPermissionForProcess(
     permission: string,
     process: string
   ): boolean {
-    if (!this.isLoggedIn() || this.authVersion !== '2') return false;
-    const perm = this.permissions.find(
-      p => p.name === permission && p.permissionType === 'Checker'
+    return this.sessionAuthorization.hasProcessPermission(
+      this.isLoggedIn(),
+      this.authVersion,
+      this.permissions,
+      process,
+      permission,
+      'Checker'
     );
-    return perm?.actionFlows?.includes(process) || false;
   }
 
   public updateFeatureRoles(roles: any[]): void {
@@ -398,111 +400,69 @@ export class SessionService {
   }
 
   public hasFeatureRole(role: string): boolean {
-    // If not logged in or don't have role attribute return with false
-    if (!this.isLoggedIn()) {
-      return false;
-    }
-    return this.user.featureRoles?.some(
-      r =>
-        r.name.toLowerCase() === role.toLowerCase() && r.visible && !r.disabled
+    return this.sessionAuthorization.hasFeatureRole(
+      this.isLoggedIn(),
+      this._user()?.featureRoles,
+      role
     );
   }
-  public hasFeatureFlag(feature: any, environment: string): boolean {
-    // If not logged in or don't have role attribute return with false
-    if (!this.isLoggedIn()) {
-      return false;
-    }
+  public hasFeatureFlag(feature: any, _environment: string): boolean {
 
-    // console.log(feature?.activate?.environment)
-    return feature?.activate?.environment;
+    return this.sessionAuthorization.hasFeatureFlag(
+      this.isLoggedIn(),
+      feature
+    );
   }
 
   public setUrlParameter(url: string) {
-    localStorage.setItem('returnUrl', JSON.stringify(url));
+    this.sessionNavigation.setReturnUrl(url);
   }
 
   public getUrlParameters() {
-    try {
-      return JSON.parse(localStorage.getItem('returnUrl') || 'false');
-    } catch (e) {}
-    return null;
+    return this.sessionNavigation.getReturnUrl();
   }
 
   public removeUrlParameters(): void {
-    localStorage.removeItem('returnUrl');
+    this.sessionNavigation.removeReturnUrl();
   }
 
   public showInactivityCountdown(): void {
-    if (this.dialogRef || !this.isLoggedIn()) return;
-    this.dialogRef = this.dialog.open(TimeoutDialog, {
-      width: '25rem',
-      disableClose: true,
-      data: {},
-    });
-    this.dialogRef.afterClosed().subscribe((result: any) => {
-      this.dialogRef = undefined;
-      if (result.logout) {
-        const bankId = this.user.bankId;
-        this.logout().subscribe(() => {
-          this.setUrlParameter(this.router.routerState.snapshot.url);
-          this.login(null, '1', bankId);
-        });
-      }
+    this.sessionInactivity.showCountdown({
+      isLoggedIn: this.isLoggedIn(),
+      currentBankId: this.user.bankId,
+      currentUrl: window.location.pathname + window.location.search,
+      logout: () => this.logout(),
+      onReloginRequired: (returnUrl, bankId) => {
+        this.setUrlParameter(returnUrl);
+        this.login(null, '1', bankId);
+      },
     });
   }
 
   logout() {
-    const token = this.loginResponse?.access_token;
-    console.log('[BSH.SessionService] logout — token exists:', !!token);
-    this.loader.isLoading.next(true);
-    return this.http
-      .post(
-          `${env.apiUrl}/adminportalauth/api/authorization/logout`,
-          {},
-          {headers: new HttpHeaders({"Authorization": `Bearer ${token}`})}
-      )
-      .pipe(
-        finalize(() => {
-          console.log('[BSH.SessionService] logout finalize — clearing storage');
-          localStorage.removeItem('expires_at');
-          localStorage.removeItem('access_token');
-          localStorage.removeItem('syncRt');
-          this._user.set(undefined);
-          this._isActive.set(false);
-          this._onChanged.set(false);
-          this.loader.isLoading.next(false);
-          console.log('[BSH.SessionService] logout complete — signal.active:', this._isActive(), 'storage cleared');
-        })
-      );
+    return this.sessionLogout.logout({
+      token: this.loginResponse?.access_token,
+      onFinalize: () => {
+        console.log('[BSH.SessionService] logout finalize — clearing storage');
+        this.sessionStorage.clearSessionTokens();
+        this._user.set(undefined);
+        this._isActive.set(false);
+        this._onChanged.set(false);
+        this.publishAuthState();
+        console.log('[BSH.SessionService] logout complete — signal.active:', this._isActive(), 'storage cleared');
+      },
+    });
   }
 
-  login(returnPath?: any, reAuth?: any, bankId?: string) {
-    const returnUrl = returnPath || this.getUrlParameters() || '/dashboard';
-    const locale = JSON.parse(
-      localStorage.getItem('user-locale') || '{"language":"en-GB"}'
-    );
-    const host = window.location.port
-      ? `${window.location.protocol}//${window.location.hostname}:${window.location.port}`
-      : `${window.location.protocol}//${window.location.hostname}`;
-    if (!bankId)
-      bankId = localStorage.getItem('bankId') || '';
-    const redirectUrl = `${(env as any).adminPortalUrl}/login/login/?returnUrl=${encodeURIComponent(host + returnUrl)}&lang=${locale?.language}&bankId=${bankId || ''}&re-auth=${reAuth || 0}`;
-    console.log('[BSH.SessionService] login — redirecting to admin portal:', redirectUrl.substring(0, 120) + '...');
-    const params = new URLSearchParams();
-    params.set('re-auth', `${reAuth || 0}`);
-    params.set('returnUrl', host + returnUrl);
-    params.set('lang', locale?.language);
-    params.set('bankId', bankId || '');
-    window.location.replace(
-      `${(env as any).adminPortalUrl}/login/login/?${params.toString()}`
-    );
+  login(returnPath?: string | null, reAuth?: string | null, bankId?: string) {
+    this.sessionNavigation.login(returnPath, reAuth, bankId);
   }
 
   updateSession(
     reIssue?: string,
     bankId?: any,
     showLoader = true
-  ): Observable<any> {
+  ): Observable<boolean> {
     if (this.updatingSession) {
       console.log('[BSH.SessionService] updateSession — already updating, skipping');
       return of(true);
@@ -522,15 +482,14 @@ export class SessionService {
     const targetUrl = `${env.apiUrl}/adminportalauth/oauth/microsoft`;
     console.log('[BSH.SessionService] updateSession — POST', targetUrl, '| bankId:', bankId, '| reIssue length:', reIssue?.length || 0);
     return this.http
-      .post(targetUrl, body.toString(), {
+      .post<ILoginResponse>(targetUrl, body.toString(), {
         headers: new HttpHeaders(headers),
       })
       .pipe(
-        map(r => {
-          const resp = r as any;
-          console.log('[BSH.SessionService] updateSession SUCCESS | expires_in:', resp?.expires_in, '| token present:', !!resp?.access_token);
+        map(response => {
+          console.log('[BSH.SessionService] updateSession SUCCESS | expires_in:', response.expires_in, '| token present:', !!response.access_token);
           this.syncToken = reIssue;
-          this.setSession(r);
+          this.setSession(response);
           const loggedIn = this.isLoggedIn();
           console.log('[BSH.SessionService] updateSession result — isLoggedIn:', loggedIn);
           return loggedIn;
@@ -544,33 +503,44 @@ export class SessionService {
   }
 
   routeToUrl(url: string | URL) {
-    let lang = '';
-    const localeRaw = localStorage.getItem('user-locale');
-    if (localeRaw)
-      lang = JSON.parse(localeRaw).language;
-    const parts = url.toString().split('?');
-    const params = parts?.[1] || '';
-    const rtParams = new URLSearchParams({
-      rt: this.reissueToken,
-      bankId: this.userBank,
-      lang: lang,
-    });
-    const toUrl = new URL(parts?.[0]);
-    toUrl.search = new URLSearchParams(
-      `${rtParams.toString()}&${params}`
-    ).toString();
-    console.log('[BSH.SessionService] routeToUrl — navigating to:', toUrl.toString().substring(0, 120) + '...', '| rt present:', !!this.reissueToken, '| bankId:', this.userBank);
-    localStorage.removeItem('expires_at');
-    localStorage.removeItem('access_token');
-    console.log('[BSH.SessionService] routeToUrl — cleared local storage, redirecting');
-    window.location.replace(toUrl);
+    this.sessionNavigation.routeToUrl(url, this.reissueToken, this.userBank);
   }
 
   //digital support user
   isDigitalSupportUser = (): boolean => {
-    return (
-      this.hasFeatureRole('AccountManagement.ViewWithReason') &&
-      this.hasRole('AccountManagement.EfrontUser')
+    return this.sessionAuthorization.isDigitalSupportUser(
+      this.isLoggedIn(),
+      this._user()?.featureRoles,
+      this.getRoles()
     );
   };
+
+  private publishAuthState(): void {
+    this.authStatePublisher.publish(
+      this.sessionAuthTransition.buildAuthState({
+        loginResponse: this.loginResponse,
+        isLoggedIn: this.isLoggedIn(),
+        user: this._user(),
+        language: this.currentLanguage,
+        expiresAt: this.expiresAtValue,
+      })
+    );
+  }
+
+  private get currentLanguage(): string | null {
+    return this.sessionProfileProjection.getCurrentLanguage();
+  }
+
+  private get expiresAtValue(): number | null {
+    const rawExpiresAt = this.sessionStorage.getDecryptedItem('expires_at');
+    if (!rawExpiresAt) return null;
+
+    try {
+      const parsed: unknown = JSON.parse(rawExpiresAt);
+      return typeof parsed === 'number' ? parsed : null;
+    } catch (error) {
+      console.warn('[BSH.SessionService] could not parse expires_at', error);
+      return null;
+    }
+  }
 }

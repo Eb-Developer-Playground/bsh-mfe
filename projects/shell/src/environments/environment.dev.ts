@@ -23,6 +23,7 @@ export const environment = {
   showAllMenuItems: true,
   useMockServiceWorker: false,
   encryptionKey: 'S3cr3etKey$123',
+  bypassAuth: false,
   datadogRumId: '',
   datadogRumToken: '',
   featureFlags: {

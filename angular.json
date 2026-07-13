@@ -41,7 +41,10 @@
           }
         },
         "test": {
-          "builder": "@angular/build:unit-test"
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "setupFiles": ["projects/shell/src/test-setup.ts"]
+          }
         },
         "esbuild": {
           "builder": "@angular/build:application",
@@ -381,6 +384,32 @@
             "port": 4202,
             "host": "0.0.0.0",
             "allowedHosts": ["host.docker.internal"]
+          }
+        }
+      }
+    },
+    "equity-auth": {
+      "projectType": "library",
+      "root": "projects/equity-auth",
+      "sourceRoot": "projects/equity-auth/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/equity-auth/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/equity-auth/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/equity-auth/tsconfig.spec.json"
           }
         }
       }

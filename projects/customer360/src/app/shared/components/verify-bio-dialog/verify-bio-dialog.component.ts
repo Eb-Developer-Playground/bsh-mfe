@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-verify-bio-dialog',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   standalone: true
 })
 export class VerifyBioDialogComponent {
+  verifyBioData = new EventEmitter<any>();
+
   constructor() { }
 }

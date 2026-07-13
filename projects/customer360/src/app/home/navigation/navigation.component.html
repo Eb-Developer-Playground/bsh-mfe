@@ -2,16 +2,11 @@
   <mat-list-item routerLinkActive="active-route" *ngFor="let nav of menuItems">
     <a
       matListItemLine
-      [routerLink]="nav.path"
+      [routerLink]="[nav.path]"
+      [relativeTo]="parentRoute"
       routerLinkActive="active"
       class="nav-items"
       *ngIf="!nav.sub_menu">
-      <button color="primary" class="nav-items-btn" mat-icon-button>
-        <mat-icon
-          matListItemIcon
-          class="nav-items-icon"
-          [svgIcon]="nav.icon"></mat-icon>
-      </button>
       <span class="nav-items-text fw-400">{{ nav.name | translate }}</span>
     </a>
     <a
@@ -20,15 +15,7 @@
       routerLinkActive="active"
       class="nav-items"
       *ngIf="nav.sub_menu">
-      <button class="nav-items-btn" mat-icon-button>
-        <mat-icon
-          matListItemIcon
-          class="nav-items-icon"
-          [svgIcon]="nav.icon"></mat-icon>
-      </button>
-      <small class="nav-items-text-small fw-400" *ngIf="nav.sub_menu">{{
-        nav.name | translate
-      }}</small>
+      <small class="nav-items-text-small fw-400">{{ nav.name | translate }}</small>
     </a>
   </mat-list-item>
 </mat-nav-list>

@@ -4,27 +4,27 @@ import { inject, Injectable } from '@angular/core';
 import {
   Channel,
   LinkedProfileAccount,
-} from '@app/home/customer/channels/channels.model';
+} from '../../../home/customer/channels/channels.model';
 import {
   IKnownAgent,
   IKnownAgentFunctions,
-} from '@app/home/customer/known-agent/models/known-agent.models';
-import { AgentUploadDocumentPayload } from '@app/shared/models/agent.model';
+} from '../../../home/customer/known-agent/models/known-agent.models';
+import { AgentUploadDocumentPayload } from '../../../shared/models/agent.model';
 import {
   AccountMgt,
   ApprovalStatus,
   ICifInquiryResponse,
   MandateInqResponse,
   SegmentationResponse,
-} from '@app/shared/models/common';
-import { ICountryInfo } from '@app/shared/models/country-info';
-import { IHttpOptions } from '@app/shared/services/api.service';
-import { environment } from '@env/environment';
+} from '../../../shared/models/common';
+import { ICountryInfo } from '../../../shared/models/country-info';
+import { IHttpOptions } from '../../../shared/services/api.service';
+import { environment } from '../../../../environments/environment';
 import {
   ApiService,
   SessionService,
-} from '@app/shared/services';
-import { GeneralResponse } from '@app/shared/models/menu-button-action.models';
+} from '../../../shared/services';
+import { GeneralResponse } from '../../../shared/models/menu-button-action.models';
 import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
 import { shareReplay, timeout } from 'rxjs/operators';
 

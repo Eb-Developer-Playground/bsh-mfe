@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { default as schemeCodesJSON } from '../../../../assets/data/schemecodes.json';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '../../../shared/services';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

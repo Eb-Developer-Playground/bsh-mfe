@@ -10,6 +10,7 @@ import { FUNDS_TRANSFER_ROUTES } from './home/customer/funds-transfer/funds-tran
 import { CHANNELS_ROUTES } from './home/customer/channels/channels.routes';
 import { MOVE_MONEY_ROUTES } from './home/customer/move-money/move-money.routes';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { SearchComponent } from './home/search/search.component';
 import { App } from './app';
 
 export const routes: Routes = [
@@ -22,6 +23,11 @@ export const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         data: { title: 'Dashboard', breadcrumb: 'MENU.MY-DASHBOARD' },
+      },
+      {
+        path: 'services',
+        component: SearchComponent,
+        data: { title: 'Customer Services', breadcrumb: 'MENU.CUSTOMER-SERVICES' },
       },
       {
         path: 'services/customer-360/save-and-invest',

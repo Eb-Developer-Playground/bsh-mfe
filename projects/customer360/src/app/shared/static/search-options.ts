@@ -1,6 +1,6 @@
 import {Validators} from '@angular/forms';
-import {ISearchOptions} from '@app/shared/models';
-import {WhiteSpaceValidator} from '@app/shared/directives/whitespace-validator';
+import {ISearchOptions} from '../models';
+import {WhiteSpaceValidator} from '../directives/whitespace-validator';
 
 export class CustomValidator {
     static KENumberValidator(number: any): any {

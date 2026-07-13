@@ -1,9 +1,9 @@
 // projects/shell/src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { loadRemoteModule } from '@angular-architects/native-federation';
 import { Home } from './home/home';
 import { ServicePortal } from './home/service-portal/service-portal';
 import { authGuard } from './shared/guards/auth.guard';
+import { safeLoadRemoteRoutes, safeLoadRemoteComponent } from './remote-loader';
 
 export const routes: Routes = [
   {
@@ -21,24 +21,21 @@ export const routes: Routes = [
       },
       {
         path: 'customer360',
-        loadChildren: () =>
-          loadRemoteModule('customer360', './Routes').then(m => m.routes),
+        loadChildren: () => safeLoadRemoteRoutes('customer360'),
         data: {
           title: 'EQUITY.BSH',
           breadcrumb: 'MENU.CUSTOMER-360',
         }, },
       {
         path: 'onboarding',
-        loadComponent: () =>
-          loadRemoteModule('onboarding', './Component').then(m => m.App),
+        loadComponent: () => safeLoadRemoteComponent('onboarding'),
         data: {
           title: 'EQUITY.BSH',
           breadcrumb: 'MENU.CUSTOMER-ONBOARDING',
         }, },
       {
         path: 'swift',
-        loadChildren: () =>
-          loadRemoteModule('swift', './Routes').then(m => m.routes),
+        loadChildren: () => safeLoadRemoteRoutes('swift'),
         data: {
           title: 'EQUITY.BSH',
           breadcrumb: 'MENU.SWIFT',

@@ -5,9 +5,9 @@ import { map } from 'rxjs/operators';
 import {
   Channel,
   ChannelsResponse,
-} from '@app/home/customer/channels/channels.model';
-import { ApiService } from '@app/shared/services';
-import { AccountManagementService } from '@app/core/services';
+} from '../../../home/customer/channels/channels.model';
+import { ApiService } from '../../../shared/services';
+import { AccountManagementService } from '../';
 
 @Injectable({
   providedIn: 'root',

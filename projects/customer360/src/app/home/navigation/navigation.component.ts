@@ -1,10 +1,8 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgFor, NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MatIconButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { MatListItem, MatListItemIcon, MatListItemLine, MatNavList } from '@angular/material/list';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { MatListItem, MatListItemLine, MatNavList } from '@angular/material/list';
 import { TranslatePipe } from '@ngx-translate/core';
 import { MenuItem } from '../../shared/models';
 import { SessionService } from '../../shared/services/session/session.service';
@@ -20,9 +18,6 @@ import { BSHServices } from '../../shared/services/bsh-services';
     MatNavList,
     MatListItem,
     MatListItemLine,
-    MatListItemIcon,
-    MatIcon,
-    MatIconButton,
     TranslatePipe,
   ],
   templateUrl: './navigation.component.html',
@@ -30,6 +25,7 @@ import { BSHServices } from '../../shared/services/bsh-services';
 })
 export class NavigationComponent implements OnInit {
   menuItems!: MenuItem[];
+  protected readonly parentRoute = inject(ActivatedRoute).parent;
 
   private readonly bshService = inject(BSHServices);
   private readonly session = inject(SessionService);

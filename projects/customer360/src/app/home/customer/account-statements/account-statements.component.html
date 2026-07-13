@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="topbar">
+      <mat-toolbar class="toolbar">
+        <div>
+          <span class="title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.GENERATE' | translate }}
+          </span>
+          <span class="vl"></span>
+          <span class="toolbar-page">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STATEMENT.ACCOUNT-NUMBER-VALUE'
+                | translate: { account: accountId }
+            }}
+          </span>
+        </div>
+      </mat-toolbar>
+    </div>
+
+    <app-statement-details
+      (accountIdChange)="onAccountIdChange($event)"
+      [userInfo]="userInfo"></app-statement-details>
+  </div>
+</div>

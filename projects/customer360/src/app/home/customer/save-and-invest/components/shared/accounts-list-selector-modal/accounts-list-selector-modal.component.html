@@ -1,0 +1,103 @@
+<div class="dialog">
+  <div class="dialog-header">
+    <h2 mat-dialog-title class="mat-headline-6 fw-600">
+      {{ 'CUSTOMER.SAVE-INVEST.SELECT-DEBIT-ACCOUNT' | translate }}
+    </h2>
+    <mat-icon (click)="closeDialog()">close</mat-icon>
+  </div>
+
+  <app-info-box
+    type="warning"
+    [messageTitle]="messageAccountType.messageTitle | translate"
+    [messageDetail]="messageAccountType.messageDetail | translate">
+  </app-info-box>
+
+  <div mat-dialog-content class="account-options mt-30 mb-30">
+    <mat-radio-group (change)="onSelectedAccount($event)">
+      <mat-radio-button
+        disableRipple="true"
+        color="primary"
+        *ngFor="let account of data.accounts"
+        [value]="account.accountNumber"
+        [disabled]="
+          account.accountDormant === 'D' || !account.hasMinimalAmount === true
+        ">
+        <div
+          class="account-option p-20 mr-5"
+          [class.disabled]="
+            account.accountDormant === 'D' || !account.hasMinimalAmount
+          ">
+          <div class="account-data">
+            <div class="checkbox-icon">
+              <mat-icon class="check-icon" svgIcon="ic-check"></mat-icon>
+            </div>
+            <div class="account-headline">
+              <span class="account-name">{{ account.accountName }}</span>
+              <div class="status-info">
+                <div class="account-status">
+                  <div [ngSwitch]="account.accountDormant">
+                    <div *ngSwitchCase="'A'" class="active">
+                      {{ 'COMMON.ACTIVE' | translate }}
+                    </div>
+                    <div *ngSwitchCase="'D'" class="dormant">
+                      {{ 'COMMON.DORMANT' | translate }}
+                    </div>
+                  </div>
+                </div>
+                <div class="actions ml-15">
+                  <div class="menu-btn p-0" [matMenuTriggerFor]="menu">
+                    <mat-icon>more_horiz</mat-icon>
+                  </div>
+                  <mat-menu
+                    #menu="matMenu"
+                    [overlapTrigger]="false"
+                    panelClass="custom">
+                    <button
+                      mat-menu-item
+                      *ngIf="account.accountDormant === 'D'"
+                      (click)="activateAccount(account.accountNumber)">
+                      {{ 'CUSTOMER.SAVE-INVEST.ACTIVATE-ACCOUNT' | translate }}
+                    </button>
+                    <mat-divider
+                      class="menu-item-divider"
+                      *ngIf="account.accountDormant === 'D'"></mat-divider>
+                    <button (click)="checkBalance(account)" mat-menu-item>
+                      {{ 'CUSTOMER.SAVE-INVEST.CHECK-BALANCE' | translate }}
+                    </button>
+                    <!-- <mat-divider class="menu-item-divider"></mat-divider>
+                                    <button mat-menu-item>Transact</button> -->
+                  </mat-menu>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="account-info">
+            <div>
+              {{ account.accountNumber }} ({{ account.accountCurreny }}) •
+              {{ account.accountType }}
+            </div>
+            <div class="balance-info fw-600" *ngIf="account.hasMinimalAmount">
+              <mat-icon class="check-icon" svgIcon="ic-check"></mat-icon>
+              {{ 'CUSTOMER.SAVE-INVEST.ACCOUNT-ABOVE-MINIMUM' | translate }}
+            </div>
+            <div class="balance-info fw-600" *ngIf="!account.hasMinimalAmount">
+              <mat-icon class="info-icon" svgIcon="ic-info"></mat-icon>
+              {{ 'CUSTOMER.SAVE-INVEST.ACCOUNT-BELOW-MINIMUM' | translate }}
+            </div>
+          </div>
+        </div>
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div mat-dialog-actions class="dialog-actions">
+    <button
+      type="submit"
+      mat-flat-button
+      color="primary"
+      [disabled]="!selectedAccount"
+      (click)="getStarted()">
+      {{ 'COMMON.GET-STARTED' | translate }}
+    </button>
+  </div>
+</div>

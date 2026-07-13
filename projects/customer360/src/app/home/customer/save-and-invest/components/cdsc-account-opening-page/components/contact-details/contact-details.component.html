@@ -1,0 +1,37 @@
+<mat-card
+  appearance="outlined"
+  class="mat-card mat-focus-indicator main"
+  [@expandCollapse]="expanded ? 'expanded' : 'collapsed'">
+  <div class="head">
+    <span class="form-number">2</span>
+    <span class="title">{{
+      'SAVE-INVEST.CDSC.CONTACT-DETAILS' | translate
+    }}</span>
+    <mat-icon
+      class="arrow-icon"
+      (click)="toggleExpandCollapse()"
+      [@rotate]="expanded ? 'rotated' : 'normal'"
+      >expand_more</mat-icon
+    >
+  </div>
+  <mat-divider class="padded-divider"></mat-divider>
+  <div class="form-holder">
+    <div class="phone-input-holder">
+      <app-phone-otp-validation [form]="phoneNumberForm">
+      </app-phone-otp-validation>
+    </div>
+    <mat-divider vertical class="vertical-divider"></mat-divider>
+    <div class="email-input-holder">
+      <app-email-link-validation [form]="emailAddressForm">
+      </app-email-link-validation>
+    </div>
+  </div>
+  <div class="add-control-holder" *ngIf="false">
+    <button mat-flat-button class="add-another-btn">
+      <mat-icon>add</mat-icon>
+      <span class="add-another-btn-label">{{
+        'SAVE-INVEST.CDSC.ADD-ANOTHER' | translate
+      }}</span>
+    </button>
+  </div>
+</mat-card>

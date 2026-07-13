@@ -1,0 +1,28 @@
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main mt-24 mb-24">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 head-title fw-600 m-0">
+      {{ 'COMMON.UPLOAD-DOCUMENTS' | translate }}
+    </h3>
+  </div>
+</mat-card>
+<app-documents-upload
+  [title]="'Documents Upload'"
+  [documentSpecs]="documentsConfig"
+  (onUploaded)="onDocumentsAttached($event)">
+</app-documents-upload>
+<div class="buttons-holder">
+  <button
+    mat-stroked-button
+    color="primary"
+    class="form-btn"
+    [disabled]="cancelButtonDisabled">
+    {{ 'COMMON.CANCEL' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    class="form-btn next"
+    (click)="onSubmit()">
+    {{ 'COMMON.NEXT' | translate }}
+  </button>
+</div>

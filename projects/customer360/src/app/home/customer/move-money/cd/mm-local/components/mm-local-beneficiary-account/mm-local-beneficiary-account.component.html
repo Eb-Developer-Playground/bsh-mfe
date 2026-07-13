@@ -1,0 +1,78 @@
+<form class="fieldset" [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>{{
+      'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.FIELDS.BENEFICIARY-NAME' | translate
+    }}</mat-label>
+    <input formControlName="accountholderName" matInput readonly required />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>{{ 'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.FIELDS.IBAN' | translate }}</mat-label>
+
+    <input matInput aria-label="Credit Account" formControlName="accountNumber" />
+    @if (form.controls['accountNumber']?.errors?.['invalidAccountNumber']) {
+      <mat-error> Invalid </mat-error>
+    }
+
+    @if (form.controls['accountNumber']?.errors?.['required']) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.ERRORS.INVALID-ACCOUNT' | translate }}
+      </mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>{{
+      'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.FIELDS.BANK-NAME' | translate
+    }}</mat-label>
+
+    <input
+      matInput
+      aria-label="Credit Account"
+      [matAutocomplete]="bankNameAuto"
+      formControlName="bankName"
+    />
+    <mat-autocomplete autoActiveFirstOption #bankNameAuto="matAutocomplete">
+      @for (account of availableBanks | async; track account) {
+        <mat-option>
+          <span>unknown</span>
+        </mat-option>
+      }
+    </mat-autocomplete>
+
+    @if (
+      form.controls['accountNumber']?.errors?.['validateAccountNumber'] ||
+      form.controls['accountNumber']?.errors?.['required']
+    ) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.ERRORS.INVALID-ACCOUNT' | translate }}
+      </mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>{{
+      'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.FIELDS.BRANCH-NAME' | translate
+    }}</mat-label>
+
+    <input
+      matInput
+      aria-label="Credit Account"
+      [matAutocomplete]="branchNameAuto"
+      formControlName="branchName"
+    />
+    <mat-autocomplete autoActiveFirstOption #branchNameAuto="matAutocomplete">
+      @for (account of availableBranches | async; track account) {
+        <mat-option>
+          <span>unknown</span>
+        </mat-option>
+      }
+    </mat-autocomplete>
+
+    @if (
+      form.controls['accountNumber']?.errors?.['validateAccountNumber'] ||
+      form.controls['accountNumber']?.errors?.['required']
+    ) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.ERRORS.INVALID-ACCOUNT' | translate }}
+      </mat-error>
+    }
+  </mat-form-field>
+</form>

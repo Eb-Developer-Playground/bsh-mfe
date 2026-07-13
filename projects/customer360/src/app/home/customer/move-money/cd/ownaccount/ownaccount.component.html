@@ -1,0 +1,51 @@
+<span class="own-account-wrapper">
+  <app-stepper
+    #stepper
+    (onActive)="onActive($event)"
+    (onFinish)="onFinish()"
+    (onQuit)="onQuit()"
+    [isProcessing]="isProcessing"
+    (onSave)="onSave($event)"
+    [linear]="true"
+    lastStepButtonOveride="Submit"
+    [showBackButton]="true"
+    [stepperLabel]="'MOVE-MONEY.SECTIONS.SEND-TO-OWN.TITLE' | translate">
+    <cdk-step
+      [label]="'MOVE-MONEY.SECTIONS.SEND-TO-OWN.STEP-1.TEXT' | translate"
+      [stepControl]="transferFormControl">
+      <app-transfer-details
+        #components
+        [label]="'MOVE-MONEY.SECTIONS.SEND-TO-OWN.STEP-1.TEXT' | translate"
+        [stepControl]="transferFormControl"
+        (updateIsProcessing)="isProcessing = $event"
+        (setupRequiredDocsInfo)="setupRequiredDocsInfo()"
+        [stepperComponent]="stepper">
+      </app-transfer-details>
+    </cdk-step>
+    <cdk-step
+      [label]="'MOVE-MONEY.SECTIONS.SEND-TO-EQUITY.STEP-2.TEXT' | translate"
+      [stepControl]="RequiredDocumentsForm">
+      <app-mm-additional-documents
+        #components
+        (updateDocuments)="updateDocuments($event)"
+        (updatedLocalStorageDocs)="updatedLocalStorageDocs()"
+        [label]="'MOVE-MONEY.SECTIONS.SEND-TO-EQUITY.STEP-2.TEXT' | translate"
+        [requiredDocuments]="requiredDocuments"
+        [stepperComponent]="stepper"
+        [stepControl]="RequiredDocumentsForm"
+        [form]="RequiredDocumentsForm"></app-mm-additional-documents>
+    </cdk-step>
+    <cdk-step
+      [label]="'MOVE-MONEY.SECTIONS.SEND-TO-EQUITY.STEP-3.TEXT' | translate"
+      [stepControl]="reviewControl">
+      <app-mm-review
+        #components
+        [label]="'MOVE-MONEY.SECTIONS.SEND-TO-EQUITY.STEP-3.TEXT' | translate"
+        [dataControl]="transferFormControl"
+        [uploads]="uploads"
+        [stepControl]="reviewControl"
+        [stepperComponent]="stepper">
+      </app-mm-review>
+    </cdk-step>
+  </app-stepper>
+</span>

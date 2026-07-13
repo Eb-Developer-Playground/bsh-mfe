@@ -1,0 +1,79 @@
+
+
+mat-mdc-card {
+  padding: 24px 24px 20px 24px;
+}
+
+
+mat-mdc-card-title {
+  span {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    color: #221f1f;
+  }
+
+  p {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #929497;
+  }
+}
+
+mat-mdc-card-content {
+  display: flex;
+
+  .transaction-item {
+    width: 224px;
+    margin-right: 40px;
+
+    span {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #929497;
+    }
+
+    p {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #221f1f;
+    }
+  }
+}
+
+.notification-title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #221f1f;
+}
+
+.notification-list {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #221f1f;
+
+  .amount {
+    font-weight: 600;
+  }
+
+  .account {
+    font-weight: 600;
+  }
+}

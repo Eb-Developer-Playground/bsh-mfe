@@ -1,0 +1,43 @@
+.item-wrapper {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(258px, 258px));
+  padding-bottom: 20px;
+  .item {
+    width: auto;
+    font-weight: 400px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #221f1f;
+
+    .title {
+      line-height: 20px;
+      color: #929497;
+      font-size: 14px;
+    }
+  }
+}
+
+.document-wrapper {
+  .title {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    color: #2c2c2d;
+    
+    .p20 {
+      padding-top: 20px;
+    }
+  }
+
+  .document-grid {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(504px, 504px));
+
+    .document {
+      width: auto;
+      border: 1px solid red;
+    }
+  }
+}

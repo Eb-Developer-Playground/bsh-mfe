@@ -1,0 +1,117 @@
+.main {
+  box-shadow:
+    0px 1px 1px rgb(0 0 0 / 14%),
+    0px 2px 1px rgb(0 0 0 / 12%);
+  border-radius: 8px;
+  margin: 24px 0;
+  padding: 18px 24px;
+
+  .head {
+    span.form-number {
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      background-color: #a32a29;
+      border-radius: 50%;
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      display: inline-block;
+      padding-top: 2px;
+      box-sizing: border-box;
+    }
+
+    span.title {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 32px;
+      display: inline-block;
+      margin-left: 20px;
+      color: #2c2c2d;
+    }
+
+    .arrow-icon {
+      float: right;
+      color: #a32a29;
+      margin-top: 4px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+  }
+
+  .padded-divider {
+    position: relative;
+    margin: 16px 0;
+  }
+
+  .input {
+    width: 240px;
+    margin-right: 24px;
+    margin-bottom: 32px;
+  }
+}
+
+.submit-selection-button {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 3px 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  float: right;
+  margin-right: 15px;
+}
+
+.select-item-divider {
+  width: calc(100% - 32px);
+  margin-left: 16px;
+
+  &.last-divider {
+    position: relative;
+    margin-bottom: 24px;
+  }
+}
+
+.select-option {
+  padding: 24px 16px;
+}
+
+::ng-deep {
+  /* width */
+  .mat-mdc-select-panel::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Track */
+  .mat-mdc-select-panel::-webkit-scrollbar-track {
+    background: #f7f7f7;
+    border-radius: 12px;
+  }
+
+  /* Handle */
+  .mat-mdc-select-panel::-webkit-scrollbar-thumb {
+    background: #b3b4b6;
+    opacity: 0.4;
+    border-radius: 12px;
+  }
+
+  /* Handle on hover */
+  .mat-mdc-select-panel::-webkit-scrollbar-thumb:hover {
+    background: #b3b4b6;
+    opacity: 0.7;
+    border-radius: 12px;
+  }
+
+  .mat-mdc-select-panel {
+    scrollbar-width: thin;
+    scrollbar-color: #b3b4b6;
+  }
+}
+
+input.clickable-input {
+  cursor: pointer;
+}

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{ 'BIOMETRICS.SKIP-BIOMETRIC' | translate }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="reasonForm">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>{{ 'BIOMETRICS.SELECT-REASON-SKIP-BIO' | translate }}</mat-label>
+      <mat-select formControlName="reason">
+        <mat-option value="signatoriesNotPresent">{{ 'BIOMETRICS.SIGNATORIES-NOT-PRESENT' | translate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="primary">{{ 'COMMON.CANCEL' | translate }}</button>
+  <button mat-flat-button color="primary" [disabled]="reasonForm.invalid" (click)="onSubmit()">{{ 'COMMON.CONTINUE' | translate }}</button>
+</mat-dialog-actions>

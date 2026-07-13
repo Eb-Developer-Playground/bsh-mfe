@@ -1,0 +1,33 @@
+.main {
+  margin-top: 32px;
+  margin-bottom: 18px;
+}
+
+.header {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #221f1f;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 240px;
+  margin-right: 16px;
+}
+
+.main-label {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #929497;
+  display: block;
+  margin-top: -12px;
+  margin-bottom: 20px;
+}

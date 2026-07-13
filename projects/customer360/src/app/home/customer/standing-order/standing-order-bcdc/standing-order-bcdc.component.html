@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <!-- Header Section -->
+  <div class="container">
+    <div class="topbar">
+      <mat-toolbar class="toolbar">
+        <div>
+          <span class="title">{{'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER' | translate }}</span>
+          <span class="vl"></span>
+          <span class="toolbar-page">{{'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING_ORDER_OVERVIEW' | translate }}</span>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+
+  <!-- Account selection Section -->
+  <app-account-detail-section
+    (isActiveStatus)="isActiveAccount($event)"
+    (selectedAccountChange)="accountChange($event)">
+  </app-account-detail-section>
+
+  <!-- Standing Order list & Empty State Section -->
+   <app-shared-standing-order-list
+    [standingOrders]="standingOrders"
+    (onSelectStandingOrder)="onSelectStandingOrder($event)">
+  </app-shared-standing-order-list>
+
+  <!-- Button Section -->
+  <button
+    mat-stroked-button
+    color="primary"
+    class="btn-outline"
+    style="width: 90px; margin-top: 24px;"
+    (click)="goBack()">
+    {{ 'COMMON.BACK' | translate }}
+  </button>
+</div>

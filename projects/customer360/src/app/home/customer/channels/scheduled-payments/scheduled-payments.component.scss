@@ -1,0 +1,129 @@
+.topbar {
+  margin-bottom: 1.5rem;
+}
+.toolbar {
+  background: #ffffff;
+  /* 1 dp */
+
+  box-shadow:
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.vl {
+  border-left: 2px solid #92949733;
+  height: 30px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.toolbar-page {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #929497;
+}
+.mt-05 {
+  margin-top: 0.5rem !important;
+}
+
+.mat-mdc-button-toggle-group {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  .mat-mdc-button-toggle {
+    flex-grow: 1;
+  }
+  .mat-mdc-button-toggle-checked {
+    background-color: #a32a29;
+    color: white;
+  }
+}
+:host ::ng-deep .mat-mdc-button-toggle-label-content {
+  line-height: 44px !important;
+}
+app-customer .mat-mdc-button-toggle-checked {
+  background-color: #fff;
+  &.mat-mdc-button-toggle-appearance-standard {
+    border-color: #a32a29;
+    .mat-mdc-button-toggle-label-content {
+      color: #fff;
+    }
+  }
+}
+
+.toggle-section {
+  padding: 0 5px;
+}
+
+:host ::ng-deep.filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.subject-filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.date-filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.createdBy-filter-fields .mat-mdc-text-field-wrapper {
+  padding-bottom: 0em !important;
+}
+
+// :host ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+//     padding: 0.5em 0 1em 0 !important;
+// }
+.clear-btn {
+  color: var(--equity-brown-equity-brown-500, #a32a29);
+  /* Size 5+ */
+  font-family: Open Sans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem; /* 150% */
+  cursor: pointer;
+}
+
+.source-account-td {
+  padding-left: 20px !important;
+}
+
+.filter-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.account-filter {
+  width: 15rem;
+}
+table {
+  width: 100%;
+  box-shadow: none;
+
+  th {
+    background: #e9eaea;
+    color: black;
+  }
+}
+.wrap_table_tickets {
+  max-height: 33.75rem;
+  overflow: auto;
+}
+.no-result {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  img {
+    max-width: 20rem;
+    align-self: center;
+  }
+}
+
+.cell-padding {
+  padding: 6px 12px !important;
+}

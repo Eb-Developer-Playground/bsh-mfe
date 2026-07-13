@@ -1,0 +1,103 @@
+<div>
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="section">
+        <p class="title-text">
+          {{ 'BULK-TRANFER.BULK-TRANSFER-TYPE.TYPE-TITLE' | translate }}
+        </p>
+        <p class="subtitle-text">
+          {{ 'BULK-TRANFER.BULK-TRANSFER-TYPE.TYPE-DESCR' | translate }}
+        </p>
+        <hr class="section-divider" />
+        <mat-radio-group
+          (change)="bulkType($event)"
+          aria-label="Select an option"
+          color="primary"
+          class="radio-group"
+        >
+          <div class="radio-buttons">
+            <mat-radio-button value="single">
+              <div class="title-text">
+                {{ 'BULK-TRANFER.BULK-TRANSFER-TYPE.SINGLE-DEBIT' | translate }}
+              </div>
+              <div class="subtitle-text">
+                <p class="m-0" style="white-space: normal">
+                  {{
+                    'BULK-TRANFER.BULK-TRANSFER-TYPE.SINGLE-DESCR' | translate
+                  }}
+                </p>
+              </div>
+            </mat-radio-button>
+            <mat-radio-button [disabled]="true" value="multiple">
+              <div class="title-text">
+                {{
+                  'BULK-TRANFER.BULK-TRANSFER-TYPE.MULTIPLE-DEBIT' | translate
+                }}
+              </div>
+              <div class="subtitle-text">
+                <p class="m-0" style="white-space: normal">
+                  {{
+                    'BULK-TRANFER.BULK-TRANSFER-TYPE.MULTIPLE-DESCR' | translate
+                  }}
+                </p>
+              </div>
+            </mat-radio-button>
+          </div>
+        </mat-radio-group>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <br />
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="section">
+        <p class="title-text">
+          {{ 'BULK-TRANFER.BULK-TRANSFER-TYPE.REASON-TITLE' | translate }}
+        </p>
+        <p class="subtitle-text">
+          {{ 'BULK-TRANFER.BULK-TRANSFER-TYPE.REASON-DESCR' | translate }}
+        </p>
+
+        <hr class="section-divider" />
+
+        <mat-radio-group
+          (change)="bulkReason($event)"
+          aria-label="Select an option"
+          color="primary"
+          class="radio-group"
+        >
+          <div class="radio-buttons">
+            <mat-radio-button value="full">
+              <div class="title-text">
+                {{
+                  'BULK-TRANFER.BULK-TRANSFER-TYPE.SALARY-PAYMENTS' | translate
+                }}
+              </div>
+              <div class="subtitle-text">
+                <p class="m-0" style="white-space: normal">
+                  {{
+                    'BULK-TRANFER.BULK-TRANSFER-TYPE.SALARY-DESCR' | translate
+                  }}
+                </p>
+              </div>
+            </mat-radio-button>
+            <mat-radio-button value="other">
+              <div class="title-text">
+                {{
+                  'BULK-TRANFER.BULK-TRANSFER-TYPE.OTHER-PAYMENTS' | translate
+                }}
+              </div>
+              <div class="subtitle-text">
+                <p class="m-0" style="white-space: normal">
+                  {{
+                    'BULK-TRANFER.BULK-TRANSFER-TYPE.OTHER-DESCR' | translate
+                  }}
+                </p>
+              </div>
+            </mat-radio-button>
+          </div>
+        </mat-radio-group>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

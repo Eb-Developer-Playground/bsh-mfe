@@ -1,0 +1,67 @@
+.mat-mdc-card {
+    padding: 15px;
+}
+
+.sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  .sub-header-texts {
+    width: 80%;
+    p {
+      color: var(--grayscale-black, #221f1f);
+      font-family: Open Sans;
+      font-size: 1.25rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 2rem;
+      margin: 0;
+    }
+  }
+}
+
+.account {
+  max-height: 23rem;
+  overflow-y: auto;
+  &-details-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    border-bottom: 0.9px solid rgba(0, 0, 0, 0.12);
+    //   grid-auto-rows: minmax(100px, auto);
+    .account-detail {
+      display: flex;
+      flex-direction: column;
+      &-title {
+        color: #929497;
+        margin-bottom: 0;
+      }
+      &-content {
+        margin-top: 3px;
+        color: var(--grayscale-black, #221f1f);
+        font-family: Open Sans;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5rem;
+      }
+    }
+  }
+}
+
+.sub-button {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+    margin: 0 10px 0 0;
+  box-shadow: 0px -4px 9px 0px rgba(0, 0, 0, 0.02);
+  button {
+    border-radius: 0.5rem;
+    min-width: 7rem;
+  }
+  &-back {
+    background-color: none;
+    border: 1px solid #a32a29;
+  }
+}

@@ -1,0 +1,195 @@
+.divider {
+    width: 20px;
+    background-color: rgba(146, 148, 151, 0.2) !important;
+    margin: 0rem 1rem;
+}
+
+
+.section-divider {
+    margin-bottom: 0;
+}
+hr {
+    background-color: rgba(146, 148, 151, 0.2) !important;
+    margin-block-start: 0em;
+    margin-block-end: 1rem;
+    // background-color: #929497 !important;
+    opacity: 0.35;
+}
+
+
+.fieldset {
+    .period-button{
+        color: #a32a29;
+        border-color: #a32a29 !important;
+    }
+    display: flex;
+    //flex-direction: column;
+    row-gap: 5px;
+}
+
+
+
+.radio-buttons{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 126px;
+    width: 100%;
+    margin-top: 25px;
+}
+.notification{
+    margin-bottom: 10px;
+}
+mat-mdc-radio-button{
+    margin-bottom: 30px;
+}
+:host ::ng-deep.mdc-label{
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+}
+.main-card{
+    margin-top: 20px;
+
+    .section{
+        padding-top: 10px;
+        padding-bottom: 20px;
+        margin-left:20px;
+        .period-form{
+        margin-top: 25px;
+        }
+    }
+}
+
+.errorMessage{
+    color: #f44336;
+    font-size: 10.5;
+    line-height: 1.5;
+}
+
+.subtitle-text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    color: #929497;
+    margin-top:5px;
+}
+.title-text {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    color: #221f1f;
+}
+.disabled-text{
+    color:#929497;
+    
+}
+mat-mdc-radio-group{
+    display: flex;
+}
+button{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #221F1F;
+}
+mat-mdc-card-title{
+    font-style: normal;
+    margin-top: 9px !important;
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    padding:0px 16px 16px;
+    margin-left:14px;
+   
+}
+mat-card-title.mat-mdc-card-title{
+  padding:0px 16px 16px;  
+  margin: 14px 0px 0px 20px;
+}
+
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+
+    #view-statement{
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 24px;
+        color: #A32A29;
+    }
+}
+
+.account-form-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 126px;
+    gap: 126px;
+    padding:16px;
+    mat-form-field {
+        width: 100%;
+    }
+}
+
+.text-grey {
+    color: #929497;
+}
+
+
+h3.mat-body-2 {
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+span.mat-body-2{
+    font-size: 16px;
+}
+@media screen and (max-width: 1024px) {
+    .mat-card-title{
+        font-size:17px;
+    }
+    .title-text{
+        font-size:14px;
+    }
+    .subtitle-text,
+    .fieldset{
+        font-size: 12px;
+    }
+    .fieldset{
+        button{
+            font-size:12px;
+        }
+    }
+    .radio-buttons{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 10px;
+    }
+    .notification{
+        font-size:12px;
+    }
+    .blocked-info{
+        width:300px;
+
+    .mat-form-field,
+    .mat-body-1{
+        font-size:12px;
+    }
+}
+.pb-15{
+    button{
+        font-size:12px;
+    }
+}
+}

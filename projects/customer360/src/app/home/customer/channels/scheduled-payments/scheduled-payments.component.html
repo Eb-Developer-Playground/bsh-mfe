@@ -1,0 +1,261 @@
+<div class="topbar">
+  <mat-toolbar class="toolbar">
+    <div>
+      <span class="title">Scheduled Payments (Standing Orders)</span>
+      <span class="vl"></span>
+      <span class="toolbar-page">App Channel</span>
+    </div>
+  </mat-toolbar>
+</div>
+<mat-card appearance="outlined" class="channels-body mb-24 activity-card">
+  <div
+    class="mb-16 d-flex align-items-center justify-content-between activity-header">
+    <div>
+      <h3 class="size-3 fw-normal title m-0">
+        All scheduled payments (Standing Orders)
+      </h3>
+      <!-- <p class="subtitle-text text-muted mt-05">
+                This is the activity performed on the customer's channels
+            </p> -->
+    </div>
+    <button
+      class="filter-toggle-btn"
+      mat-button
+      (click)="toggleFilter = !toggleFilter">
+      <mat-icon svgIcon="ic-filter"></mat-icon>
+    </button>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <mat-card-content class="card-content">
+    <div class="mb-24">
+      <div class="toggle-section">
+        <mat-button-toggle-group
+          name="customer-profile"
+          aria-label="Customer Profile">
+          @for (value of scheduleTypes; track value) {
+            <mat-button-toggle
+              [value]="value.link"
+              [checked]="activeType === value.link"
+              (click)="dosome(value.link)"
+              >{{ value.text }}
+            </mat-button-toggle>
+          }
+        </mat-button-toggle-group>
+      </div>
+      @if (toggleFilter) {
+        <div class="tickect-filter">
+          <div class="filter">
+            <form
+              [formGroup]="filterForm"
+              class="filter-form"
+              (ngSubmit)="onSubmit()">
+              <div>
+                <mat-icon svgIcon="ic-funnel-filter"></mat-icon>
+              </div>
+
+              <div class="filter-wrapper">
+                <div>
+                  <span class="filter-field">
+                    <mat-form-field
+                      class="date-filter-fields"
+                      appearance="outline">
+                      <mat-label>{{
+                        'DASHBOARD.TABLE.FILTER.ENTER_DATE_RANGE' | translate
+                      }}</mat-label>
+                      <mat-date-range-input
+                        [max]="maxDate"
+                        [rangePicker]="picker">
+                        <input
+                          matStartDate
+                          formControlName="startDate"
+                          required
+                          (keypress)="keyDown($event)"
+                          placeholder="Start date" />
+                        <input
+                          matEndDate
+                          formControlName="endDate"
+                          (keypress)="keyDown($event)"
+                          required
+                          placeholder="End date" />
+                      </mat-date-range-input>
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="picker"></mat-datepicker-toggle>
+                      <mat-date-range-picker
+                        maxRange="7"
+                        #picker></mat-date-range-picker>
+                      <mat-error
+                        *ngIf="
+                          filterForm.controls.startDate.hasError(
+                            'matStartDateInvalid'
+                          )
+                        ">
+                        {{ 'COMMON.INVALID' | translate }}
+                        {{ 'COMMON.START_DATE' | translate }}
+                      </mat-error>
+                      <mat-error
+                        *ngIf="
+                          filterForm.controls.endDate.hasError(
+                            'matEndDateInvalid'
+                          )
+                        ">
+                        {{ 'COMMON.INVALID' | translate }}
+                        {{ 'COMMON.END_DATE' | translate }}
+                      </mat-error>
+                    </mat-form-field>
+                  </span>
+                </div>
+
+                <span class="filter-btn">
+                  <button type="submit" mat-flat-button color="primary">
+                    {{ 'COMMON.SUBMIT' | translate }}
+                  </button>
+                </span>
+              </div>
+            </form>
+          </div>
+
+          <div class="filter-chips">
+            <mat-chip-listbox #chipList aria-label="Filter selection">
+              <mat-chip-option
+                *ngFor="let chip of selctedChipItem"
+                [selectable]="selectable"
+                [removable]="removable"
+                (removed)="remove(chip)">
+                {{ chip.value }}
+                <button matChipRemove *ngIf="removable">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-option>
+            </mat-chip-listbox>
+            <span>
+              <span (click)="clearAllFilters()" class="clear-btn">
+                Reset filters
+              </span>
+            </span>
+          </div>
+        </div>
+      }
+      @if (totalItemsCount) {
+        <div class="wrap_table_tickets">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Account Column -->
+            <ng-container matColumnDef="sourceAccount">
+              <th mat-header-cell *matHeaderCellDef class="cell-padding">
+                Account
+              </th>
+              <td mat-cell *matCellDef="let element" class="cell-padding">
+                <div class="d-flex flex-column justify-content-start">
+                  <span>Mathias Ojwang</span>
+                  <span class="text-muted">094587623344</span>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Event Column -->
+            <ng-container matColumnDef="channel">
+              <th mat-header-cell *matHeaderCellDef class="cell-padding">
+                Event
+              </th>
+              <td mat-cell *matCellDef="let element" class="cell-padding">
+                Paybill
+              </td>
+            </ng-container>
+
+            <!-- Beneficiary Column -->
+            <ng-container matColumnDef="destinationAccount">
+              <th mat-header-cell *matHeaderCellDef class="cell-padding">
+                Beneficiary
+              </th>
+              <td mat-cell *matCellDef="let element" class="cell-padding">
+                <div class="d-flex flex-column justify-content-start">
+                  <span>Sister Ojwang</span>
+                  <span class="text-muted">094587623344</span>
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Amount Column -->
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef class="cell-padding">
+                Amount
+              </th>
+              <td mat-cell *matCellDef="let element" class="cell-padding">
+                <!-- {{ element?.amount | number : "1.2-2" }} -->
+                5,500
+              </td>
+            </ng-container>
+
+            <!-- Currency Column -->
+            <ng-container matColumnDef="amountCurrency">
+              <th mat-header-cell *matHeaderCellDef class="cell-padding">
+                Currency
+              </th>
+              <td mat-cell *matCellDef="let element" class="cell-padding">
+                KES
+              </td>
+            </ng-container>
+
+            <!-- Next payment Column -->
+            <ng-container matColumnDef="nextPayment">
+              <th mat-header-cell *matHeaderCellDef class="cell-padding">
+                Next payment
+              </th>
+              <td mat-cell *matCellDef="let element" class="cell-padding">
+                01/09/2024
+              </td>
+            </ng-container>
+
+            <!-- Status Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef class="cell-padding">
+                Status
+              </th>
+              <td mat-cell *matCellDef="let element" class="cell-padding">
+                @switch (element.status) {
+                  @case ('Successful') {
+                    <div class="completed">Completed</div>
+                  }
+                  @case ('Failed') {
+                    <div class="error">Failed</div>
+                  }
+                  @case ('Approved') {
+                    <div class="completed">Approved</div>
+                  }
+                  @case ('Expired') {
+                    <div class="error">Expired</div>
+                  }
+                  @case ('Declined') {
+                    <div class="error">Declined</div>
+                  }
+                  @default {
+                    <div class="pending">{{ element.status }}</div>
+                  }
+                }
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+        <mat-paginator
+          #paginator
+          [length]="totalItemsCount!"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          showFirstLastButtons
+          aria-label="Select page of channel transaction">
+        </mat-paginator>
+      }
+      <div *ngIf="totalItemsCount === 0" class="no-result">
+        <img src="assets/icons/icon-no-results.svg" alt="no results found" />
+        <p>No scheduled payments for the selected filters.</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

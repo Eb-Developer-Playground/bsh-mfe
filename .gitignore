@@ -49,3 +49,11 @@ test-results/
 # System files
 .DS_Store
 Thumbs.db
+.cursor/
+.claude/
+.opencode/
+.omo/
+.codex/
+.windsurf/
+projects/Customer360Web/
+build-output-*

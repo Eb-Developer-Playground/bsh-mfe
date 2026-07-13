@@ -1,0 +1,255 @@
+
+mat-mdc-card-title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #221f1f;
+  font-family: 'Open Sans';
+  font-style: normal;
+  padding: 16px;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+
+  .clear-t-btn {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #a32a29;
+    cursor: pointer;
+  }
+}
+
+
+mat-mdc-card-title {
+  font-style: normal;
+  margin-top: 9px !important;
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+
+mat-mdc-card {
+  padding: 16px !important;
+}
+
+.return-btn {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.account-text {
+  padding: 15px 0;
+
+  .debit-title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #221f1f;
+    margin: 0;
+  }
+
+  .debit-desc {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #929497;
+    margin: 0;
+  }
+}
+
+.wrapInput {
+  padding-top: 15px;
+}
+
+.section {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.section-divider {
+  margin-bottom: 0;
+}
+
+.subtitle-text {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  color: #929497;
+  margin-top: 5px;
+}
+
+.title-text {
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  color: #221f1f;
+}
+
+.upload-file-box {
+  background: #f7f7f7;
+  border: 1.5px dashed #929497;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+
+  .drag-n-drop {
+    color: #929497;
+  }
+
+  .text-primary {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #a32a29;
+  }
+}
+
+.line-box {
+  .line {
+    height: 1px;
+    background: rgba(146, 148, 151, 0.2);
+    width: 499px;
+    align-self: center;
+  }
+
+  span {
+    display: block;
+    margin-right: 7.5px;
+    margin-left: 7.5px;
+    text-align: center;
+  }
+}
+
+.upload-file-manual-entry {
+  width: 499px;
+  margin: 0 auto;
+
+  h5 {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #221f1f;
+  }
+
+  .upload-file-subtext {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #929497;
+  }
+
+  .manual-entry-button-container {
+    button {
+      margin: 0 auto;
+      display: block;
+    }
+    .mat-mdc-outlined-button:not(.mat-button-disabled) {
+      border-color: #a32a29;
+    }
+  }
+}
+
+.table {
+  background-color: #fff;
+  border-radius: 8px 8px 0px 0px;
+  width: 100%;
+}
+
+table.mat-mdc-table {
+  width: 100%;
+}
+
+.mat-mdc-card {
+  padding: 0;
+}
+
+.mat-mdc-header-row {
+  th.mat-mdc-header-cell {
+    background-color: #e9eaea;
+    border-bottom: 0;
+  }
+}
+
+.mat-mdc-cell {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #221f1f;
+}
+
+.mat-sort-header-content,
+.mat-mdc-header-cell {
+  color: #221f1f;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.mat-icon.check-mark {
+  color: #2f9803;
+}
+
+.mat-icon.ic-warning-caution {
+  color: #e60000;
+  cursor: pointer;
+}
+
+.mat-icon.ic-more-circle {
+  color: #a32a29;
+  cursor: pointer;
+}
+
+.view-error-tooltip {
+  padding: 0px;
+  width: 86px;
+  height: 36px;
+  background: #3a3b3c;
+  border-radius: 4px;
+}
+
+.warning-icon-box {
+  width: 100%;
+}
+
+.row-error-title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #221f1f;
+}
+
+.row-error-description {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #929497;
+}

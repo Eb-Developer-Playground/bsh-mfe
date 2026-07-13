@@ -1,0 +1,98 @@
+<div class="delink">
+  <div class="topbar">
+    <mat-toolbar class="toolbar">
+      <div>
+        <span class="title">Linked PayPal Account</span>
+        <span class="vl"></span>
+        <span class="toolbar-page">Details</span>
+      </div>
+    </mat-toolbar>
+  </div>
+  <mat-card class="mt-2">
+    <mat-card-content class="d-block">
+      <div class="header-tab">
+        <div>
+          <div
+            style="display: flex; justify-content: flex-start; align-items: center"
+            class="mb-16">
+            <div class="rounded-circle2">
+              <img src="assets/images/PayPal.png" alt="" />
+            </div>
+            <div>
+              {{ account?.preferredName }}
+              <p class="m-0 text-muted">
+                {{ account?.balance }}&nbsp;{{ account?.currency }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p (click)="delinkAccount()" class="color-primary fw-600 w-100">
+            Delink account
+          </p>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <div class="customer-details-container">
+          <div class="customer-detail">
+            <p class="customer-detail-title">Equity username</p>
+            <p class="customer-detail-content">
+              {{ account?.preferredName }}
+            </p>
+          </div>
+          <!-- <div class="customer-detail">
+                        <p class="customer-detail-title">Account status</p>
+                        <p class="customer-detail-content">
+                            {{ account?.accountStatus }}
+                        </p>
+                    </div> -->
+          <div class="customer-detail">
+            <p class="customer-detail-title">Preferred name</p>
+            <p class="customer-detail-content">
+              {{ account?.preferredName }}
+            </p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">Primary email</p>
+            <p class="customer-detail-content">
+              {{ account?.primaryEmail }}
+            </p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">Linked account number</p>
+            <p class="customer-detail-content">
+              {{ account?.linkedAccountNumber }}
+            </p>
+          </div>
+          <!-- <div class="customer-detail">
+                        <p class="customer-detail-title">Status code</p>
+                        <p class="customer-detail-content">
+                            {{ account?.statusCode ?? "-" }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">
+                            Account successfully retrieved
+                        </p>
+                        <p class="customer-detail-content">
+                            {{ account?.accountStatus }}
+                        </p>
+                    </div> -->
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="mt-24 d-flex justify-content-between">
+    <button
+      type="button"
+      mat-stroked-button
+      color="primary"
+      style="width: 130px; border-color: #a32a29"
+      class="py-12 px-48 mr-24"
+      (click)="quit()">
+      {{ 'CUSTOMER.SEARCH.QUIT' | translate }}
+    </button>
+  </div>
+</div>

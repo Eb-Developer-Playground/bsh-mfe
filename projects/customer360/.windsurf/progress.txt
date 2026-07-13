@@ -1,0 +1,50 @@
+Customer360 Angular 17 -> 22 Standalone Migration Progress
+
+## Completed
+- Shared directives migrated
+- Core services migrated:
+  - account.service.ts
+  - account-management.service.ts
+  - customer.service.ts
+  - biometric.service.ts
+  - own-ticket-permission.service.ts
+  - data-store.service.ts
+  - auth.service.ts
+  - audit.service.ts
+  - customer-profile.service.ts
+  - crm.service.ts
+  - channels.service.ts
+  - change-of-signature.service.ts
+  - change-mandate.service.ts
+  - account-statement.service.ts
+  - account-selection.service.ts
+  - account-balance-certificate.service.ts
+  - transaction-limits.service.ts
+  - schedule-payment.service.ts
+  - ticket (tickets.service.ts)
+  - bulk-payment.service.ts
+  - cash-management.service.ts
+  - standing-order.service.ts
+  - save-and-invest.service.ts (with placeholder accounts-list-selector-modal stub)
+  - cheque-request.service.ts
+  - cdsc-account-opening.service.ts
+  - cards.service.ts
+  - cheque-operations.service.ts
+- Supporting models enabled:
+  - home/customer/channels/channels.model.ts
+  - home/customer/known-agent/models/known-agent.models.ts
+  - shared/modules/localization/models.ts
+  - shared/components/table-data/models/menu-button-action.models.ts
+  - shared/models/common/index.ts updated
+  - shared/modules/stepper/context-manager.service.ts + models.ts
+- Placeholder bioverification dialog components created
+- Build and tests passing (verified 2026-07-08)
+- Paused until tomorrow
+
+## Next
+- Core services migration complete (all directories enabled in tsconfig.app.json)
+- Replace placeholder stubs with real migrated components when feature modules are tackled:
+  - accounts-list-selector-modal
+  - fingerprints module
+  - bank-card, confirm-block-dialog, cheque-issuance-details-preview components
+- Migrate feature modules and UI components

@@ -1,0 +1,18 @@
+[
+  { "code": "001", "name": "PUBLIC LIMITED COMPANY" },
+  { "code": "002", "name": "PRIVATE LIMITED COMPANY" },
+  { "code": "004", "name": "FOREIGN COMPANY" },
+  { "code": "005", "name": "PARTNERSHIP" },
+  { "code": "006", "name": "TRUST" },
+  { "code": "007", "name": "SOLE PROPRIETOR" },
+  { "code": "008", "name": "EDUCATIONAL BODY" },
+  { "code": "009", "name": "RELIGIOUS BODY" },
+  { "code": "010", "name": "CHARITABLE ORGANISATION" },
+  { "code": "013", "name": "COUNTY GOVERNMENT BODY" },
+  { "code": "014", "name": "COOPERATIVE SOCIETY" },
+  { "code": "016", "name": "CONSTITUENCY" },
+  { "code": "018", "name": "CLUBS AND ASSOCIATIONS" },
+  { "code": "020", "name": "NATIONAL GOVT MINISTRY" },
+  { "code": "021", "name": "COUNTY GOVT MINISTRY" },
+  { "code": "022", "name": "PARASTATALS GOVT AGENCY" }
+]

@@ -1,0 +1,59 @@
+<div class="success-page">
+  <div class="success">
+    <div class="success-img">
+      <img src="../../../../../../assets/images/agentSuccess.png" alt="" />
+    </div>
+    <div>
+      <div class="success-text mb-50">
+        <h1>Submitted for approval</h1>
+        <p>
+          The cards issuance request has been submitted successfully for
+          approval
+        </p>
+      </div>
+      @if (issuanceRequest) {
+        <div class="gridset">
+          <div class="item">
+            <div class="title">Linked account</div>
+            <div>{{ issuanceRequest.accountDetails.accountNumber }}</div>
+          </div>
+          <div class="item">
+            <div class="title">Card type</div>
+            <div>{{ issuanceRequest.cardDetails.cardType }}</div>
+          </div>
+          <div class="item">
+            <div class="title">Embossing name</div>
+            <div>{{ issuanceRequest.cardDetails.embossingName }}</div>
+          </div>
+          <div class="item">
+            <div class="title">Total charges</div>
+            <div>
+              {{
+                issuanceRequest.charges.chargeAmount +
+                  issuanceRequest.charges.taxAmount
+              }}
+              {{ issuanceRequest.charges.currency }}
+            </div>
+          </div>
+          <div class="item">
+            <div class="title">Account to debit</div>
+            <div>{{ issuanceRequest.accountDetails.accountNumber }}</div>
+          </div>
+          <div class="item">
+            <div class="title">Ticket number</div>
+            <div>{{ issuanceRequest.ticketID }}</div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="pb-15 action-btn" style="margin-top: 15px">
+    <button
+      (click)="goToDashboard()"
+      mat-raised-button
+      color="primary"
+      style="margin-right: 15px">
+      Back to dashboard
+    </button>
+  </div>
+</div>

@@ -5,6 +5,7 @@ export default withNativeFederation({
 
   exposes: {
     './Component': './projects/customer360/src/app/app.ts',
+    './Routes': './projects/customer360/src/app/app.federation-routes.ts',
   },
 
   shared: {

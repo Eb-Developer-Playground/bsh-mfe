@@ -1,0 +1,61 @@
+<app-breadcrumb-navigation [config]="breadcrumbsConfig">
+</app-breadcrumb-navigation>
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 head-title fw-600 m-0">
+      {{ 'SAVE-INVEST.CDSC.ACCOUNT-OPENING-TITLE' | translate }}
+    </h3>
+    <mat-divider vertical class="vertical-divider"></mat-divider>
+    <span class="head-subtitle">
+      {{ 'SAVE-INVEST.CDSC.ACCOUNT-DETAILS' | translate }}</span
+    >
+  </div>
+</mat-card>
+<app-info-box
+  *ngIf="displayWarningMessage"
+  [type]="'warning'"
+  [messageTitle]="'Update customer details to continue'"
+  [messageDetail]="
+    'Some details for this customer need to be updated. Check against the customer’s ID to confirm the highlighted details before continuing.'
+  ">
+</app-info-box>
+<app-customer-details
+  [form]="form"
+  [customer]="customer"
+  [existingFormData]="existingFormData"
+  *ngIf="displayForm">
+</app-customer-details>
+<app-contact-details
+  [form]="form"
+  [customer]="customer"
+  [existingFormData]="existingFormData"
+  *ngIf="displayForm">
+</app-contact-details>
+<app-next-of-kin
+  [form]="form"
+  [customer]="customer"
+  [existingFormData]="existingFormData"
+  *ngIf="displayForm">
+</app-next-of-kin>
+<app-additional-information
+  [form]="form"
+  [existingFormData]="existingFormData"
+  *ngIf="displayForm">
+</app-additional-information>
+<div class="buttons-holder" *ngIf="displayForm">
+  <button
+    mat-stroked-button
+    color="primary"
+    class="form-btn"
+    (click)="cancel()">
+    {{ 'COMMON.CANCEL' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    class="form-btn next"
+    (click)="submit()"
+    [disabled]="!form.valid">
+    {{ 'COMMON.NEXT' | translate }}
+  </button>
+</div>

@@ -1,0 +1,34 @@
+<app-stepper
+  #stepper
+  [linear]="true"
+  (onActive)="onActive($event)"
+  (onFinish)="onFinish()"
+  (onQuit)="onQuit()"
+  [showBackButton]="true"
+  (onSave)="onSave($event)"
+  [stepperLabel]="translatedStepperLabel">
+  <cdk-step [label]="translatedStepperInfo" [stepControl]="mandateControl">
+    <app-mandate-form
+      #components
+      [label]="translatedStepperInfo"
+      [stepControl]="mandateControl"
+      [stepperComponent]="stepper">
+    </app-mandate-form>
+  </cdk-step>
+  <cdk-step [label]="translatedStepperDocs" [stepControl]="documentsControl">
+    <app-mandate-documents
+      #components
+      [label]="translatedStepperDocs"
+      [stepperComponent]="stepper"
+      [stepControl]="documentsControl">
+    </app-mandate-documents>
+  </cdk-step>
+  <cdk-step [label]="'Preview'" [stepControl]="previewControl">
+    <app-change-mandate-preview
+      #components
+      [label]="'Preview'"
+      [stepperComponent]="stepper"
+      [stepControl]="previewControl">
+    </app-change-mandate-preview>
+  </cdk-step>
+</app-stepper>

@@ -1,0 +1,101 @@
+$color-accent: #2f9803;
+$color-warn: #e60000;
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  width:100%;
+  padding:0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    justify-content: flex-start;
+  }
+}
+
+.signatory-slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the slider container */
+  width: 100%;
+  height: 285px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 100%; /* Make sure slider takes full available width */
+  height: 100%;
+  justify-content: center; /* Center cards inside slider */
+}
+
+.card {
+  flex: 0 0 207px; /* Fixed width of each card */
+  height: 277px; /* Fixed height */
+  border-radius: 8px;
+  padding: 24px 16px;
+  background-color: #f7f7f7;
+  box-sizing: border-box;
+}
+
+.arrow {
+  width: 40px;
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #a32a29;
+  z-index: 1;
+}
+
+.arrow.left {
+  left: 0;
+}
+
+.arrow.right {
+  right: 0;
+}
+
+.signature-photo {
+  width: 140px;
+  height: 141px;
+  object-fit: contain;
+}
+
+.signature-text {
+  width: 140px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.full-image {
+  max-width: 90%;
+  max-height: 90%;
+}

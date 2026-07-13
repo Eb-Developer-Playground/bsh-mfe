@@ -1,0 +1,177 @@
+<div class="container">
+    @if (customerStatus && customerStatus === 'InActive') {
+        <div
+            class="frozen-section">
+            <p class="support-title">
+                {{ 'CUSTOMER.CHANNELS.CUSTOMER-PROFILE-BLOCKED' | translate }}
+            </p>
+            <p class="support-content">
+                {{ 'CUSTOMER.CHANNELS.BLOCKED-PROFILE-TEXT' | translate }}
+            </p>
+            <div class="action-div">
+                <button
+                    mat-button
+                    color="primary"
+                    class="action-text hover"
+                    routerLink="/services/customer-360/profile-manager">
+                    {{ 'CUSTOMER.CHANNELS.UNBLOCK-PROFILE' | translate }}
+                </button>
+            </div>
+        </div>
+    }
+
+  <mat-card appearance="outlined" class="channels-body" style="padding: 1.5rem">
+    <div class="mb-1 justify-content-between">
+      <h3 class="size-3 fw-normal title">
+        {{ 'CUSTOMER.CHANNELS.TITLE' | translate }}
+      </h3>
+      <p class="subtitle-text">
+        {{ 'CUSTOMER.CHANNELS.SUBTITLE' | translate }}
+      </p>
+    </div>
+    <div class="pb-1">
+      <mat-divider></mat-divider>
+    </div>
+    <mat-card-content class="card-content">
+      <div class="mb-24">
+
+          @if (accountChannels.length > 0) {
+              <app-channels-list
+                  [accountChannels]="accountChannels"
+                  (selectedAccChannel)="onSelectedChannel($event)"
+                  (returnedEquitelData)="onOpenedBSS($event)"
+              >
+              </app-channels-list>
+          }
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+    @if ( selectedChannel?.channel.level === 0 &&
+    !selectedChannel?.channel.isChannelBlocked &&
+    customerStatus !== 'InActive') {
+        <div
+            class="cool-off">
+            <p class="support-title">
+                {{ 'CUSTOMER.CHANNELS.COOLOFF-TITLE' | translate }}
+            </p>
+            <p class="support-content">
+                {{ 'CUSTOMER.CHANNELS.COOLOFF-TEXT' | translate }}
+            </p>
+            <div class="action-div">
+                <button
+                    mat-button
+                    color="primary"
+                    class="action-text hover"
+                    (click)="onCustomerAction('ChangeProfileLevel')">
+                    {{ 'CUSTOMER.CHANNELS.LIFT-COOLOFF' | translate }}
+                </button>
+            </div>
+        </div>
+    }
+
+ @if(selectedChannel?.status === 'Blocked' && customerStatus !== 'InActive') {
+     <div
+         class="frozen-section mt-24">
+         <p class="support-title">
+             {{ 'CUSTOMER.CHANNELS.CHANNEL-BLOCKED' | translate }}
+         </p>
+         <p class="support-content">
+             {{ 'CUSTOMER.CHANNELS.CHANNEL-TEMPORARY-BLOCKED-DUE' | translate }}
+             <strong>{{ selectedChannel.blockReason }}</strong
+             >.{{
+                 'CUSTOMER.CHANNELS.CUSTOMER-UNABLE-USE-CHANNEL-BLOCKED' | translate
+             }}
+         </p>
+         <div class="action-div">
+             <button
+                 mat-button
+                 color="primary"
+                 class="action-text hover"
+                 (click)="onCustomerAction('UnblockChannel')">
+                 {{ 'CUSTOMER.CHANNELS.UNBLOCK-PROFILE' | translate }}
+             </button>
+         </div>
+     </div>
+ }
+        <mat-card class="channels-detail">
+            <mat-card-content class="card-content mt-29">
+                @if (selectedChannel?.channel.channel !== 'Equitel STK') {
+                    <app-channel-detail
+                        [selectedChannel]="selectedChannel" ></app-channel-detail>
+                }
+                @if (selectedChannel?.channel.channel === 'Equitel STK') {
+                    <app-equitel-stk-detail
+                        [equitelData]="equitelData" ></app-equitel-stk-detail>
+                }
+            </mat-card-content>
+        </mat-card>
+
+  <mat-card appearance="outlined" class="channels-detail">
+    <mat-card-content class="card-content mt-29">
+        @if (selectedChannel) {
+            <app-upcoming-scheldule-payment> </app-upcoming-scheldule-payment>
+        }
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card appearance="outlined" class="channels-body mb-24 activity-card">
+  <div class="mb-1 justify-content-between activity-header">
+    <h3 class="size-3 fw-normal title">
+      {{ 'CUSTOMER.CHANNELS.CHANNEL-ACTIVITY' | translate }}
+    </h3>
+    <p class="subtitle-text">
+      {{ 'CUSTOMER.CHANNELS.ACTIVITY-TEXT' | translate }}
+    </p>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <mat-card-content class="card-content">
+    <div class="mb-24">
+      <div class="toggle-section">
+        <mat-button-toggle-group
+          name="customer-profile"
+          aria-label="Customer Profile"
+          [hideSingleSelectionIndicator]="true"
+          [formControl]="channelsActivitiesCtrl">
+
+            @for (value of channelsActivitiesBtn; track value ) {
+                <ng-container>
+                    <mat-button-toggle [value]="value.link"
+                    >{{ value.text }}
+                    </mat-button-toggle>
+                </ng-container>
+            }
+
+                </mat-button-toggle-group>
+            </div>
+            <ng-container>
+                @switch (channelsActivitiesCtrl.value) {
+                    @case ('transactions') {
+                        <div>
+                            @if (selectedChannel) {
+                                <div>
+                                    <app-channel-transactions [selectedChannel]="selectedChannel" />
+                                </div>
+                            }
+                        </div>
+                    }
+                    @case ('sign-ins') {
+                        <div>
+                            <app-signin-channel-activity />
+                        </div>
+                    }
+                    @default {
+                        <div>
+                            <p>{{ 'CUSTOMER.CHANNELS.ERROR-FEATURES' | translate }}</p>
+                        </div>
+                    }
+                }
+            </ng-container>
+        </div>
+    </mat-card-content>
+</mat-card>
+<br />

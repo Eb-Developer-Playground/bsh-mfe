@@ -1,0 +1,45 @@
+<mat-accordion
+  mat-dialog-content
+  color="primary"
+  class="find-agent-container w-100">
+  <mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <p class="mat-headline-6 m-0">
+          {{ 'KNOWN-AGENT.FIND-AGENT.FIND-AGENT' | translate }}
+        </p>
+      </mat-panel-title>
+      <mat-divider></mat-divider>
+    </mat-expansion-panel-header>
+
+    <form [formGroup]="findForm" class="pt-16">
+      <div class="fieldset">
+        <mat-form-field appearance="fill">
+          <mat-label>{{ 'KNOWN-AGENT.ID-TYPE' | translate }} </mat-label>
+          <mat-select required formControlName="id_type">
+            <mat-option value="ID">
+              {{ 'KNOWN-AGENT.NATIONAL-ID' | translate }}
+            </mat-option>
+            <mat-option value="PASSPORT">
+              {{ 'KNOWN-AGENT.PASSPORT' | translate }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>{{ 'KNOWN-AGENT.ID-NUMBER' | translate }}</mat-label>
+          <input matInput formControlName="id_number" maxlength="20" />
+
+          <mat-error *ngIf="findForm?.get('id_number')?.hasError('maxLength')">
+            <span
+              >{{ 'KNOWN-AGENT.ID-NUMBER' | translate }}
+              {{ 'COMMON.IS' | translate }}
+              <strong
+                >{{ 'COMMON.MAX_LENGTH' | translate: { maxValue: '20' } }}
+              </strong></span
+            >
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>

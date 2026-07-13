@@ -1,0 +1,61 @@
+<form class="fieldset" [formGroup]="form">
+  <mat-form-field class="example-full-width">
+    <mat-label>{{
+      'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.FIELDS.ACCOUNT-TO-CREDIT' | translate
+    }}</mat-label>
+    <input
+      matInput
+      aria-label="Credit Account"
+      [matAutocomplete]="beneficiaryAuto"
+      formControlName="accountNumber"
+      [readonly]="lockedForm"
+    />
+    <mat-autocomplete autoActiveFirstOption #beneficiaryAuto="matAutocomplete">
+      @for (account of accounts; track account) {
+        <mat-option [value]="account.accountNumber">
+          <div class="account-dropdown">
+            <div class="dropdown-icon">
+              {{ generateAccountInitials(account.accountName) }}
+            </div>
+            <div class="account-data">
+              <div>
+                <span class="main-text">{{ generateAccountNames(account.accountName) }}</span>
+              </div>
+              <div class="account-info sub-text">
+                <span>{{ account.accountNumber }}</span>
+                <div class="rounded-30">.</div>
+                <span>{{ account.accountCurrency }}</span>
+              </div>
+            </div>
+          </div>
+        </mat-option>
+      }
+    </mat-autocomplete>
+    @if (form.controls['accountNumber']?.errors?.['matchesDebitAccount']) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.ERRORS.MATCHING-ACCOUNTS' | translate }}
+      </mat-error>
+    }
+
+    @if (
+      form.controls['accountNumber']?.errors?.['validateAccountNumber'] ||
+      form.controls['accountNumber']?.errors?.['required']
+    ) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.ERRORS.INVALID-ACCOUNT' | translate }}
+      </mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{
+      'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.FIELDS.CURRENCY' | translate
+    }}</mat-label>
+    <input formControlName="accountCurrency" matInput readonly required />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>{{
+      'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.FIELDS.RECIPIENT-NAME' | translate
+    }}</mat-label>
+    <input formControlName="accountholderName" matInput readonly required />
+  </mat-form-field>
+</form>

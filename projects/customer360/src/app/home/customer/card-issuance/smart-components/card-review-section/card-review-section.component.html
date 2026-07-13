@@ -1,0 +1,74 @@
+@if (issuanceData) {
+  <app-card-section
+    slot="content"
+    [isExpansionPanel]="true"
+    sectionHeader=""
+    sectionTitle="Account details">
+    <div slot="content" class="item-wrapper pt-12 px-8">
+      <div class="item">
+        <div class="title">Account number</div>
+        <div>{{ issuanceData.accountNumber }}</div>
+      </div>
+      <div class="item">
+        <div class="title">Account name</div>
+        <div>{{ issuanceData.accountName }}</div>
+      </div>
+      <div class="item">
+        <div class="title">Account currency</div>
+        <div>{{ issuanceData.cardCurrency }}</div>
+      </div>
+      <div class="item">
+        <div class="title">Account balance</div>
+        <div>{{ activeAccountBalance }}</div>
+      </div>
+    </div>
+  </app-card-section>
+  <app-card-section
+    slot="content"
+    [isExpansionPanel]="true"
+    sectionHeader=""
+    sectionTitle="Card details">
+    <div slot="content" class="item-wrapper pt-12 px-8">
+      <div class="item">
+        <div class="title">Card type</div>
+        <div>{{ selectedCardType }}</div>
+      </div>
+      <div class="item">
+        <div class="title">Card currency</div>
+        <div>{{ issuanceData.cardCurrency }}</div>
+      </div>
+      <div class="item">
+        <div class="title">Embossing name</div>
+        <div>{{ issuanceData.cardEmbossingName }}</div>
+      </div>
+      <div class="item">
+        <div class="title">Daily cash withdrawal limit</div>
+        <div>{{ issuanceData.withdrawalLimit }}</div>
+      </div>
+      <div class="item">
+        <div class="title">Daily E-commerce transaction limit</div>
+        <div>{{ issuanceData.ecommerceLimit }}</div>
+      </div>
+      <div class="item">
+        <div class="title">PAN</div>
+        <div>{{ issuanceData.cardPAN }}</div>
+      </div>
+    </div>
+  </app-card-section>
+  <app-card-section
+    slot="content"
+    [isExpansionPanel]="true"
+    sectionHeader=""
+    sectionTitle="Additional information">
+    <div slot="content" class="item-wrapper pt-12 px-8">
+      <div class="item">
+        <div class="title">Collection branch</div>
+        <div>{{ issuanceData.accountNumber }}</div>
+      </div>
+      <div class="item">
+        <div class="title">Physical PIn required</div>
+        <div>{{ issuanceData.taxAmount }}</div>
+      </div>
+    </div>
+  </app-card-section>
+}

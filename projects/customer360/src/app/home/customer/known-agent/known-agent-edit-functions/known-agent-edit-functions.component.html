@@ -1,0 +1,69 @@
+<mat-accordion 
+mat-dialog-content color="primary" 
+class="w-100 mt-2 mb-2">
+  <mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <p class="mat-headline-6 m-0">
+          {{ 'KNOWN-AGENT.AGENT-FUNCTIONS' | translate }}
+        </p>
+      </mat-panel-title>
+      <mat-divider></mat-divider>
+    </mat-expansion-panel-header>
+
+    <div class="d-flex flex-wrap pt-28" 
+    *ngIf="!edit">
+      <div class="d-flex flex-column four-items-row" 
+      *ngFor="let functionName of functionsAssignedArray">
+        <p class="mat-body-2 text-muted m-0" 
+        *ngIf="isBshFunction">
+          {{ 'KNOWN-AGENT.FUNCTIONS.NAME' | translate }}
+        </p>
+
+        <p class="mat-body-2 text-muted m-0" 
+        *ngIf="!isBshFunction">
+          {{ 'KNOWN-AGENT.FUNCTIONS.TITLE' | translate }}
+        </p>
+
+        <p class="mat-subtitle-1">
+          {{ 'KNOWN-AGENT.FUNCTIONS.' + functionName?.name | translate }}
+        </p>
+      </div>
+    </div>
+
+    <form 
+    *ngIf="edit" 
+    [formGroup]="functionsForm" 
+    class="pt-16">
+      <div class="functions-row">
+        <div 
+        class="mt-20 mb-36 function-item" 
+        *ngFor="let control of functionsArray">
+          <mat-checkbox color="primary" 
+          [formControlName]="control.name">
+            <span class="mat-subtitle-2">
+              {{ 'KNOWN-AGENT.FUNCTIONS.' + control.name | translate }}
+            </span>
+          </mat-checkbox>
+        </div>
+      </div>
+      <div class="mt-20 function-item">
+        <mat-form-field class="w-40">
+          <mat-label>{{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT-DETAILS.EFFECTIVE-DATE' | translate }}</mat-label>
+          <input matInput 
+                 [matDatepicker]="effectiveDatePicker" 
+                 formControlName="effectiveDate" 
+                 [(ngModel)]="effectiveDate" 
+                 [min]="today">
+          <mat-datepicker-toggle 
+          matSuffix 
+          [for]="effectiveDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker 
+          #effectiveDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      
+      
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>

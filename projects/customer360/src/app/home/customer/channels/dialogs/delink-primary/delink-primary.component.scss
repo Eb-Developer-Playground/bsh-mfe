@@ -1,0 +1,18 @@
+.channel-status {
+  display: block;
+  height: 20px;
+  border-radius: 32px;
+  padding: 8px 12px;
+  background: rgba(47, 152, 3, 0.1);
+  color: #2f9803;
+  text-align: center;
+}
+.bg-red {
+  background-color: red !important;
+}
+.w-100 {
+  width: 100% !important;
+}
+:host ::ng-deep .mdc-label {
+  flex: 1 !important;
+}

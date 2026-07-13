@@ -19,7 +19,7 @@ export const environment = {
   secugenLicenseUAT:
     '5aQfTiuSoBOfhoiN/RuOiwFWba1E9FBBNoHz4mx5b1dYNb9/OwvSiGXPfjj++FvFU1/bdqyJQpzinDuHgMZvSg==',
   encryptionKey: 'S3cr3etKey$123',
-  bypassAuth: true,
+  bypassAuth: false,
   PAGE_SIZE: 20,
   useMockServiceWorker: false,
   showAllMenuItems: true,

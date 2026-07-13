@@ -26,6 +26,10 @@
             "development": {
               "target": "shell:esbuild:development",
               "dev": true
+            },
+            "uat": {
+              "target": "shell:esbuild:uat",
+              "dev": true
             }
           },
           "defaultConfiguration": "production"
@@ -39,6 +43,14 @@
             "dev": true,
             "devServer": true,
             "port": 0
+          },
+          "configurations": {
+            "development": {
+              "target": "shell:serve-original:development"
+            },
+            "uat": {
+              "target": "shell:serve-original:uat"
+            }
           }
         },
         "test": {
@@ -84,6 +96,17 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "uat": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/shell/src/environments/environment.ts",
+                  "with": "projects/shell/src/environments/environment.uat.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -96,6 +119,9 @@
             },
             "development": {
               "buildTarget": "shell:esbuild:development"
+            },
+            "uat": {
+              "buildTarget": "shell:esbuild:uat"
             }
           },
           "defaultConfiguration": "development",
@@ -126,6 +152,10 @@
             "development": {
               "target": "customer360:esbuild:development",
               "dev": true
+            },
+            "uat": {
+              "target": "customer360:esbuild:uat",
+              "dev": true
             }
           },
           "defaultConfiguration": "production"
@@ -139,6 +169,14 @@
             "dev": true,
             "devServer": true,
             "port": 0
+          },
+          "configurations": {
+            "development": {
+              "target": "customer360:serve-original:development"
+            },
+            "uat": {
+              "target": "customer360:serve-original:uat"
+            }
           }
         },
         "test": {
@@ -181,6 +219,17 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "uat": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/customer360/src/environments/environment.ts",
+                  "with": "projects/customer360/src/environments/environment.uat.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -193,6 +242,9 @@
             },
             "development": {
               "buildTarget": "customer360:esbuild:development"
+            },
+            "uat": {
+              "buildTarget": "customer360:esbuild:uat"
             }
           },
           "defaultConfiguration": "development",
@@ -223,6 +275,10 @@
             "development": {
               "target": "swift:esbuild:development",
               "dev": true
+            },
+            "uat": {
+              "target": "swift:esbuild:uat",
+              "dev": true
             }
           },
           "defaultConfiguration": "production"
@@ -236,6 +292,14 @@
             "dev": true,
             "devServer": true,
             "port": 0
+          },
+          "configurations": {
+            "development": {
+              "target": "swift:serve-original:development"
+            },
+            "uat": {
+              "target": "swift:serve-original:uat"
+            }
           }
         },
         "test": {
@@ -275,6 +339,17 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "uat": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/swift/src/environments/environment.ts",
+                  "with": "projects/swift/src/environments/environment.uat.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -287,6 +362,9 @@
             },
             "development": {
               "buildTarget": "swift:esbuild:development"
+            },
+            "uat": {
+              "buildTarget": "swift:esbuild:uat"
             }
           },
           "defaultConfiguration": "development",
@@ -317,6 +395,10 @@
             "development": {
               "target": "onboarding:esbuild:development",
               "dev": true
+            },
+            "uat": {
+              "target": "onboarding:esbuild:uat",
+              "dev": true
             }
           },
           "defaultConfiguration": "production"
@@ -330,6 +412,14 @@
             "dev": true,
             "devServer": true,
             "port": 0
+          },
+          "configurations": {
+            "development": {
+              "target": "onboarding:serve-original:development"
+            },
+            "uat": {
+              "target": "onboarding:serve-original:uat"
+            }
           }
         },
         "test": {
@@ -369,6 +459,11 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "uat": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -381,6 +476,9 @@
             },
             "development": {
               "buildTarget": "onboarding:esbuild:development"
+            },
+            "uat": {
+              "buildTarget": "onboarding:esbuild:uat"
             }
           },
           "defaultConfiguration": "development",

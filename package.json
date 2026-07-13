@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:all": "concurrently -n shell,customer360,onboarding,swift \"ng serve shell\" \"ng serve customer360\" \"ng serve onboarding\" \"ng serve swift\"",
+    "start:all": "concurrently -n shell,customer360,onboarding,swift \"ng serve shell --configuration=uat\" \"ng serve customer360 --configuration=uat\" \"ng serve onboarding --configuration=uat\" \"ng serve swift --configuration=uat\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -78,7 +78,7 @@
     "postcss": "^8.5.16",
     "prettier": "^3.9.5",
     "tailwindcss": "^4.3.2",
-    "typescript": "7.0.2",
+    "typescript": "6.0.3",
     "vitest": "^4.1.10"
   }
 }

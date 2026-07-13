@@ -1,0 +1,147 @@
+<mat-card appearance="outlined" class="search">
+  <mat-card-title>
+    {{ 'CUSTOMER.SEARCH.CUSTOMER_SEARCH' | translate }}
+  </mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content class="search-content">
+    <mat-card-subtitle class="header mat-body-2">
+      {{ 'CUSTOMER.SEARCH.SEARCH-FOR' | translate }}
+      @for (option of searchOptions; track option; let last = $last) {
+        {{ option?.name | translate }}@if (!last) {, }
+      }
+    </mat-card-subtitle>
+    <form class="form-horizontal" [formGroup]="searchForm">
+      <div class="form-field form-field-select">
+        <mat-select
+          class="search-term"
+          formControlName="option"
+          #selectDropdown>
+          @for (option of searchOptions; track option) {
+            <mat-option [value]="option.value" (click)="changeSearchFilter()">
+              {{ option?.name | translate }}
+            </mat-option>
+          }
+        </mat-select>
+        <mat-icon
+          svgIcon="ic-customer-search-caret"
+          (click)="openDropdown(selectDropdown)"></mat-icon>
+      </div>
+
+      <div
+        class="form-field form-field-input">
+        @if (currentUserBankIdNum === 55 && selectedOption === 'National ID') {
+          <input
+            type="text"
+            placeholder="{{ 'COMMON.TYPE-HERE' | translate }}"
+            class="search-text"
+            formControlName="searchText" />
+        } @else {
+          <input
+            type="text"
+            (input)="oninputChange()"
+            placeholder="{{ 'COMMON.TYPE-HERE' | translate }}"
+            class="search-text"
+            formControlName="searchText" />
+        }
+      </div>
+
+      @if (!showClearButton) {
+        <button
+          style="cursor: pointer"
+          matSuffix
+          class="button-icon search-icon"
+          mat-icon-button
+          aria-label="Search"
+          (click)="onSearchSubmit()"
+          [disabled]="!searchForm.valid">
+          <mat-icon svgIcon="ic-customer-search">search</mat-icon>
+        </button>
+      } @else {
+        <button
+          type="button"
+          style="cursor: pointer"
+          class="button-icon"
+          color="primary"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearSearchText()">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+    </form>
+
+    @if (eddFlow) {
+      <div class="edd-warning">
+        <div class="edd-warning-content">
+          <h4>{{ 'CUSTOMER.SEARCH.CAUTION_HIGH_RISK_CUSTOMER' | translate }}</h4>
+          <p>{{ 'CUSTOMER.SEARCH.THIS_CUSTOMER_ALREADY_HAS_AN_EQUITY_BANK_PROFILE_THAT_HAS' | translate }}
+            {{ 'CUSTOMER.SEARCH.BEEN_BLACKLISTED_SANCTIONED_DUE_TO_UNDERLYING_ISSUES' | translate }}</p>
+          <p>{{ 'CUSTOMER.SEARCH.PLEASE_COMPLETE_THE_ENHANCED_DUE_DILIGENCE_EDD_PROCESS_AND' | translate }}</p>
+        </div>
+      </div>
+    }
+
+    @if (showSearchTable) {
+      <div class="search-table">
+        <app-customer-search-table
+          [customerData]="customerData"
+          [accounts]="accountsRes"
+          [searchOption]="searchInput"
+          [highRiskCustomer]="eddFlow"
+          (accountSelectEvent)="onSelectedAccount($event)"
+          (closedEvent)="onClosed()">
+        </app-customer-search-table>
+      </div>
+    }
+
+    @if (eddFlow) {
+      <div class="search-actions">
+        <button
+          mat-flat-button
+          color="primary"
+          [disabled]="!showSearchTable || noResult">
+          {{ 'CUSTOMER.SEARCH.LAUNCH_EDD_PROCESS' | translate }}
+        </button>
+      </div>
+    }
+
+    @if (loadingSearch) {
+      <div class="d-flex justify-content-center mt-16">
+        <app-loader [inComponentLoading]="true"></app-loader>
+      </div>
+    }
+
+    @if (searchFailed) {
+      <div class="text-center mt-16">
+        <mat-icon
+          class="ic-not-found-illustration"
+          svgIcon="ic-not-found-illustration"></mat-icon>
+        <p class="mt-0 not-found-title">{{ 'CUSTOMER.SEARCH.NOT_FOUND_TITLE' | translate }}</p>
+        <p class="not-found-description">{{ 'CUSTOMER.SEARCH.NOT_FOUND_DESCRIPTION' | translate }}</p>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>
+
+<div class="mt-24 d-flex justify-content-between">
+  <button
+    type="button"
+    mat-stroked-button
+    color="primary"
+    style="width: 130px; border-color: #a32a29"
+    class="py-12 px-48 mr-24"
+    (click)="quit()">
+    {{ 'CUSTOMER.SEARCH.QUIT' | translate }}
+  </button>
+  <button
+    type="submit"
+    mat-flat-button
+    [disabled]="!selectedAccount"
+    style="width: 324px"
+    color="primary"
+    class="py-12 px-48"
+    [routerLink]="['customer-360']">
+    {{ 'CUSTOMER.SEARCH.LAUNCH_CUSTOMER_360_PROFILE' | translate }}
+  </button>
+</div>

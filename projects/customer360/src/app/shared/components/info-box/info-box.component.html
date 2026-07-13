@@ -1,0 +1,13 @@
+<mat-card
+  appearance="outlined"
+  class="mat-elevation-z0 box"
+  [ngClass]="{
+    warning: type === 'warning',
+    danger: type === 'danger',
+    info: type === 'info',
+    success: type === 'success'
+  }">
+  <h3 class="message-title mb-12">{{ messageTitle }}</h3>
+  <span class="information-icon"></span>
+  <h4 class="message-detail m-0" [innerHTML]="messageDetail"></h4>
+</mat-card>

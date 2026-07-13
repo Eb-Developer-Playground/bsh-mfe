@@ -1,0 +1,144 @@
+.no-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 60%;
+  margin: 0 auto;
+}
+.row-title {
+  background-color: #e9eaea;
+  color: #221f1f;
+  font-size: 12px;
+}
+.add-new {
+  /* Size 5+ */
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  text-align: right;
+
+  /* Equity Brown/Equity Brown - 500 */
+
+  color: #a32a29;
+}
+.table-title {
+  /* Heading */
+
+  position: static;
+  width: 284px;
+  height: 24px;
+  left: 0px;
+  top: 4px;
+
+  /* Size 5+ */
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  display: flex;
+  align-items: center;
+
+  /* Grayscale/Black */
+
+  color: #221f1f;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 16px 0 0;
+}
+.plus-icon {
+  /* Icon */
+  margin-left: 6px;
+  margin-right: 6px;
+  max-width: 12px;
+  color: #a32a29;
+
+  /* Equity Brown/Equity Brown - 500 */
+
+  color: #a32a29;
+}
+
+.row-title {
+  background-color: #e9eaea;
+  color: #221f1f;
+  font-size: 12px;
+}
+
+.table {
+  background-color: #fff;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.account-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  padding: 20px 16px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 28px;
+}
+
+.table-footer {
+  border-radius: 0 0 8px 8px;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: #dad8d8;
+}
+
+.mat-mdc-row:active .mat-mdc-cell {
+  background-color: rgb(136, 136, 135);
+}
+
+.status-text {
+  border-radius: 32px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.status-text--active {
+  color: #2f9803;
+  background: rgba(47, 152, 3, 0.04);
+}
+
+.status-text--rejected {
+  color: #f38707;
+  background: rgba(243, 135, 7, 0.04);
+}
+.status-text--completed {
+  color: #2f9803;
+  background: rgba(230, 0, 0, 0.04);
+}
+.status-text--pending {
+  color: #f3f05b;
+  background: rgba(243, 207, 88, 0.04);
+}
+.status-text--returned {
+  color: #e44632;
+  background: rgba(230, 0, 0, 0.04);
+}

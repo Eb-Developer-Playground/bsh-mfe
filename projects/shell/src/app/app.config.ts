@@ -3,6 +3,7 @@ import {
   ENVIRONMENT_INITIALIZER,
   inject,
   provideBrowserGlobalErrorListeners,
+  importProvidersFrom
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -18,10 +19,14 @@ import {
   NetworkSpeedInterceptor,
 } from './shared/interceptors';
 import { AuthCommandListenerService } from './shared/equity-auth/auth-command-listener.service';
+import {DatePipe} from '@angular/common';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ToastService } from './shared/modules/toast/toast.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    DatePipe,
     provideRouter(routes),
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
@@ -41,5 +46,7 @@ export const appConfig: ApplicationConfig = {
         inject(AuthCommandListenerService);
       },
     },
+    importProvidersFrom(MatSnackBarModule),
+    ToastService,
   ],
 };

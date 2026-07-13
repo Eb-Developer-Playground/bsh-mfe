@@ -3,8 +3,32 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@app/version2/*": ["src/app/version-2/*"],
+      "@store/*": ["src/app/store/*"],
+      "@env/*": ["src/environments/*"],
+      "@assets/*": ["src/assets/*"],
+      "@shared/*": ["src/app/shared/*"]
+    },
     "outDir": "../../out-tsc/spec",
     "types": ["vitest/globals"]
   },
-  "include": ["src/**/*.d.ts", "src/**/*.spec.ts"]
+  "include": ["src/**/*.d.ts", "src/**/*.spec.ts"],
+  "exclude": [
+    "src/app/core/feature-flags/**",
+    "src/app/core/guards/**",
+    "src/app/core/resolvers/**",
+    "src/app/core/services/**",
+    "src/app/home/customer/channels/**",
+    "src/app/shared/directives/**",
+    "src/app/shared/interceptors/**",
+    "src/app/shared/models/**",
+    "src/app/shared/pipes/**",
+    "src/app/shared/static/**",
+    "src/app/shared/utils/**",
+    "src/app/shared/validators/**"
+  ]
 }

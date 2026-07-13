@@ -1,0 +1,131 @@
+<div class="delink">
+    <div class="topbar">
+        <mat-toolbar class="toolbar">
+            <div>
+                <span class="title">Delink PayPal Account</span>
+                <span class="vl"></span>
+                <span class="toolbar-page">Details</span>
+            </div>
+        </mat-toolbar>
+    </div>
+    <mat-card appearance="outlined" class="mt-2">
+        <mat-card-content class="d-block">
+            <div
+                style="display: flex; justify-content: flex-start; align-items: center"
+                class="mb-16">
+                <div class="rounded-circle2">
+                    <img src="assets/images/PayPal.png" alt="" />
+                </div>
+                <div>
+                    {{ account?.preferredName }}
+                    <p class="m-0 text-muted">
+                        {{ account?.balance }}&nbsp;{{ account?.currency }}
+                    </p>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div>
+                <div class="customer-details-container">
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Equity username</p>
+                        <p class="customer-detail-content">
+                            {{ account?.preferredName }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Preferred name</p>
+                        <p class="customer-detail-content">
+                            {{ account?.preferredName }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Primary email</p>
+                        <p class="customer-detail-content">
+                            {{ account?.primaryEmail }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Linked account number</p>
+                        <p class="customer-detail-content">
+                            {{ account?.linkedAccountNumber }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card appearance="outlined" class="mt-2">
+        <mat-card-content class="d-block">
+            <div
+                style="display: flex; justify-content: flex-start; align-items: center"
+                class="mb-16">
+                <div>
+                    <p class="p-title m-0 mb-05">Reason/Comment for delinking</p>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <br />
+            <form [formGroup]="commentForm" autocomplete="off" class="level-form">
+                <mat-form-field appearance="fill" style="flex: 1" class="w-25">
+                    <mat-label>Reason</mat-label>
+                    <mat-select formControlName="comments" name="comments">
+                        @for (reason of delinkReasons; track reason) {
+                            <mat-option [value]="reason">
+                                {{ reason }}
+                            </mat-option>
+                        }
+
+                    </mat-select>
+                </mat-form-field>
+
+                <ng-container>
+                    <mat-form-field appearance="fill" style="flex: 1" class="w-25">
+                        <mat-label>Additional Comments</mat-label>
+                        <input
+                            matInput
+                            [maxLength]="100"
+                            placeholder="additional comments"
+                            autocomplete="off"
+                            #additional
+                            formControlName="additionalComment" />
+                        @if (
+            commentForm
+              .get('additionalComment')
+              ?.hasError('containsOnlySpaces')
+          ) {
+                            <mat-error>
+                            Input cannot contain only spaces.
+                            </mat-error>
+                        }
+                        <mat-hint align="end">
+                            {{ additional.value.length }}/{{ 100 }}
+                        </mat-hint>
+                    </mat-form-field>
+                </ng-container>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="mt-24 d-flex justify-content-between">
+        <button
+            type="button"
+            mat-stroked-button
+            color="primary"
+            style="width: 130px; border-color: #a32a29"
+            class="py-12 px-48 mr-24"
+            (click)="quit()">
+            {{ 'CUSTOMER.SEARCH.QUIT' | translate }}
+        </button>
+        <button
+            type="submit"
+            mat-flat-button
+            style="width: 130px"
+            color="primary"
+            class="py-12 px-48"
+            (click)="delinkAccount()"
+            [disabled]="commentForm.invalid">
+            Submit
+        </button>
+    </div>
+</div>

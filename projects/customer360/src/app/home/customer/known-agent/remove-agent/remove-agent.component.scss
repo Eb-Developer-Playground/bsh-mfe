@@ -1,0 +1,72 @@
+.fx-column { display: flex; flex-direction: column; }
+.fx-row { display: flex; flex-direction: row; }
+.fx-flex { flex: 1 1 auto; }
+.fx-flex-33 { flex: 0 0 33.333333%; }
+.fx-align-start-center { display: flex; align-items: center; justify-content: flex-start; }
+.fx-align-space-between-start { display: flex; align-items: flex-start; justify-content: space-between; }
+.fx-gap-12 { gap: 12px; }
+
+.toolbar {
+  background: #ffffff;
+  /* 1 dp */
+
+  box-shadow:
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+.vl {
+  border-left: 2px solid #92949733;
+  height: 30px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+hr {
+  background-color: rgba(146, 148, 151, 0.2) !important;
+  margin-block-start: 0em;
+  margin-block-end: 1rem;
+  opacity: 0.35;
+}
+
+.remove-agent-container {
+  ::ng-deep .mat-mdc-dialog-content {
+    //height: 385px !important;
+    overflow: initial !important;
+  }
+
+  ::ng-deep mat-option {
+    border-bottom: 1px solid rgba(146, 148, 151, 0.2);
+  }
+
+  ::ng-deep .mat-expansion-panel-header {
+    border-bottom: solid #f7f7f7 1px;
+  }
+
+  ::ng-deep .mat-mdc-outlined-button {
+    border-color: #a32a29 !important;
+  }
+
+  ::ng-deep .mat-expansion-indicator:after {
+    color: #a32a29;
+  }
+}
+
+@media (max-width: 768px) {
+  mat-form-field {
+    width: calc(100% - 48px);
+    width: 100%;
+  }
+}
+
+mat-form-field .mat-mdc-form-field {
+  &-subscript-wrapper {
+    position: static;
+  }
+}
+
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+.mat-form-field-wrapper {
+  padding-bottom: 0.75em;
+}

@@ -59,6 +59,28 @@
 - `projects/swift/tsconfig.app.json` maps `@shared/*` to `src/shared/*` first, then `src/app/shared-stubs/*`.
 - Those `shared-stubs` are a compatibility layer, not a signal to copy shell internals into Swift. Prefer consuming `equity-auth` for auth state and only extend stubs when the remote truly lacks a shell-owned implementation.
 
+- Keep components small and focused on a single responsibility
+- Do NOT use constructor DI with `private` when the dependency is used in a class field initializer. Move field init to constructor body or use `inject()`.
+- Use `input()` and `output()` functions instead of decorators
+- Use `computed()` for derived state
+- Prefer inline templates for small components
+- Prefer Signal Forms (`@angular/forms/signals`) for new forms. They are stable in Angular v22+ and provide signal-based state, type-safe field access, and schema-based validation
+- When not using Signal Forms, prefer Reactive forms instead of Template-driven ones
+- Do NOT use `ngClass`, use `class` bindings instead
+- Do NOT use `ngStyle`, use `style` bindings instead
+- When using external templates/styles, use paths relative to the component TS file.
+- `TranslateModule` is NOT exported from `@ngx-translate/core` v18+. Use `TranslatePipe` instead in `imports` arrays.
+
+### Migration Patterns
+
+When converting NgModule-based components to standalone in Angular v22:
+- Add `imports` array to @Component (do NOT set `standalone: true`)
+- Replace `TranslateModule` with `TranslatePipe` in imports
+- Replace `@angular/flex-layout` attributes (`fxLayout`, `fxFlex`, `fxLayoutAlign`, `fxLayoutGap`) with CSS classes
+- Replace `moment` with native `Date` methods
+- Move class field initializers that reference constructor-injected dependencies into the constructor body
+- Use bracket notation for `queryParams` access (`queryParams['key']` not `queryParams.key`)
+- Use bracket notation for form control access when using `ReturnType<UntypedFormBuilder['group']>` typing
 ## Verification expectations for agent edits
 - For shell auth/session changes: run `pnpm ng build shell --configuration development`.
 - For remote auth or Swift changes: also run `pnpm ng build swift --configuration development`.

@@ -1,0 +1,381 @@
+<div class="wrapper">
+  <!-- header -->
+  <div class="container">
+    <div class="topbar">
+      <mat-toolbar class="toolbar">
+        <div>
+          <span class="title">Scheduled Payments</span>
+          <span class="vl"></span>
+          <span class="toolbar-page">App channel</span>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+
+  <!-- body -->
+  <mat-card appearance="outlined" class="channels-body mb-24 activity-card">
+    <div class="header_wrapper">
+      <div class="mb-1 justify-content-between activity-header">
+        <h3 class="size-3 fw-normal title">Scheduled Payments</h3>
+        <p class="subtitle-text">
+          These are scheduled payments performed on the customer's account
+        </p>
+      </div>
+      <div class="table-head-filter">
+        <button mat-flat-button class="filter-toggle-btn" (click)="toggle()">
+          <mat-icon svgIcon="ic-filter"></mat-icon>
+          <!-- <span> {{'DASHBOARD.TABLE.FILTER.TITLE' | translate}}</span> -->
+        </button>
+      </div>
+    </div>
+
+    <div class="pb-1">
+      <mat-divider></mat-divider>
+    </div>
+
+    <mat-card-content class="card-content">
+      <div class="mb-24">
+        <form [formGroup]="form">
+          <div class="toggle-section">
+            <mat-button-toggle-group
+              ngDefaultControl
+              name="scheduled type"
+              aria-label="Scheduled type"
+              formControlName="scheduleType"
+              [hideSingleSelectionIndicator]="true"
+            >
+              @for (btn of schelduleToggleBtn; track btn) {
+                <ng-container>
+                  <mat-button-toggle [value]="btn.value">{{ btn.key }} </mat-button-toggle>
+                </ng-container>
+              }
+            </mat-button-toggle-group>
+          </div>
+        </form>
+        @if (toggleFilter) {
+          <ng-container>
+            <div class="ticket-filter">
+              <div class="filter">
+                <form [formGroup]="form" class="filter-form" (ngSubmit)="onSubmit()">
+                  <span class="filter-field">
+                    <mat-form-field class="fieldset" appearance="outline">
+                      <mat-label> Source accounts </mat-label>
+                      <mat-select formControlName="sourceAccount">
+                        <mat-option value="">All</mat-option>
+                        @for (acc of combinedAccounts; track acc) {
+                          <mat-option [value]="acc.accountNumber"
+                            >{{ acc.accountNumber }}
+                          </mat-option>
+                        }
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="fieldset" appearance="outline">
+                      <mat-label>{{
+                        'DASHBOARD.TABLE.FILTER.ENTER_DATE_RANGE' | translate
+                      }}</mat-label>
+                      <mat-date-range-input [rangePicker]="picker">
+                        <input
+                          matStartDate
+                          formControlName="startDate"
+                          required
+                          (keypress)="keyDown($event)"
+                          placeholder="Start date"
+                        />
+                        <input
+                          matEndDate
+                          formControlName="endDate"
+                          (keypress)="keyDown($event)"
+                          required
+                          placeholder="End date"
+                        />
+                      </mat-date-range-input>
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-date-range-picker #picker></mat-date-range-picker>
+                      @if (form.controls['startDate'].hasError('matStartDateInvalid')) {
+                        <mat-error>
+                          {{ 'COMMON.INVALID' | translate }}
+                          {{ 'COMMON.START_DATE' | translate }}
+                        </mat-error>
+                      }
+                      @if (form.controls['endDate'].hasError('matEndDateInvalid')) {
+                        <mat-error>
+                          {{ 'COMMON.INVALID' | translate }}
+                          {{ 'COMMON.END_DATE' | translate }}
+                        </mat-error>
+                      }
+                      @if (checkDateError) {
+                        <mat-error>{{ errorMessage }}</mat-error>
+                      }
+                    </mat-form-field>
+                  </span>
+
+                  <span class="filter-btn">
+                    <button type="submit" mat-flat-button color="primary">
+                      {{ 'COMMON.SUBMIT' | translate }}
+                    </button>
+                    <!-- <button type="button" mat-stroked-button color="accent"
+                    (click)="clearFilters()">{{'COMMON.CANCEL' | translate}}
+                  </button> -->
+                  </span>
+                </form>
+              </div>
+
+              <div class="filter-chips">
+                <mat-chip-listbox #chipList aria-label="Filter selection">
+                  @for (chip of selctedChipItem; track chip) {
+                    <mat-chip-option
+                      [selectable]="selectable"
+                      [removable]="removable"
+                      (removed)="remove(chip)"
+                    >
+                      {{ chip.value }}
+                      @if (removable) {
+                        <button matChipRemove>
+                          <mat-icon>cancel</mat-icon>
+                        </button>
+                      }
+                    </mat-chip-option>
+                  }
+                </mat-chip-listbox>
+                <span>
+                  <button mat-stroked-button color="primary" (click)="clearAllFilters()">
+                    {{ 'DASHBOARD.TABLE.FILTER.CLEAR_FILTERS' | translate }}
+                  </button>
+                </span>
+              </div>
+            </div>
+          </ng-container>
+        }
+        <div class="pb-1">
+          <mat-divider></mat-divider>
+        </div>
+
+        <br />
+        <!-- the table layout -->
+        <ng-container>
+          <div class="wrap_table_tickets">
+            <table
+              mat-table
+              [dataSource]="schedules$"
+              matSort
+              matSortActive
+              class="mat-elevation-z8"
+            >
+              <!-- Date Column -->
+              <ng-container matColumnDef="nextDueDate">
+                <th mat-header-cell *matHeaderCellDef class="cell-padding">
+                  {{ dateColumnLabel }}
+                </th>
+                <td mat-cell *matCellDef="let element" class="cell-padding">
+                  <div>
+                    @switch (dateColumnLabel) {
+                      @case ('Next payment date') {
+                        <div>
+                          {{ element?.nextDueDate | date: 'yyyy-MM-dd' }}
+                        </div>
+                      }
+                      @case ('Cancelled date') {
+                        <div>
+                          {{ element?.canceledOn | date: 'yyyy-MM-dd' }}
+                        </div>
+                      }
+                      @case ('Expired date') {
+                        <div>
+                          {{ element?.dueDate | date: 'yyyy-MM-dd' }}
+                        </div>
+                      }
+                      @case ('Failed date') {
+                        <div>
+                          {{ element?.dueDate | date: 'yyyy-MM-dd' }}
+                        </div>
+                      }
+                    }
+                  </div>
+                </td>
+              </ng-container>
+
+              <!-- Account/Card Column -->
+              <ng-container matColumnDef="sourceAccount">
+                <th mat-header-cell *matHeaderCellDef class="cell-padding">Account</th>
+                <td mat-cell *matCellDef="let element" class="cell-padding source-account-td">
+                  {{ element?.sourceAccount }}
+                </td>
+              </ng-container>
+
+              <!-- Event Column -->
+              <ng-container matColumnDef="requestType">
+                <th mat-header-cell *matHeaderCellDef class="cell-padding">Event</th>
+                <td mat-cell *matCellDef="let element" class="description cell-padding">
+                  <ng-container>
+                    {{ element?.transaction.operationType }}
+                  </ng-container>
+                </td>
+              </ng-container>
+
+              <!-- Beneficiary/merchant Column -->
+              <ng-container matColumnDef="destinationAccount">
+                <th mat-header-cell *matHeaderCellDef class="cell-padding">Beneficiary/merchant</th>
+                <td mat-cell *matCellDef="let element" class="cell-padding">
+                  @if (element?.transaction?.destinationAccount) {
+                    {{ element?.transaction?.destinationAccount }}
+                  } @else {
+                    @if (
+                      element?.transaction?.operationType === 'Airtime' ||
+                      element?.transaction?.operationType === 'MobileMoney'
+                    ) {
+                      {{ element?.transaction?.phoneNumber }}
+                    } @else {
+                      {{ element?.transaction?.billerCode }}
+                    }
+                  }
+                </td>
+              </ng-container>
+
+              <!-- Amount Column -->
+              <ng-container matColumnDef="amount">
+                <th mat-header-cell *matHeaderCellDef class="cell-padding">Amount</th>
+                <td mat-cell *matCellDef="let element" class="cell-padding">
+                  <ng-container>
+                    {{ element?.amount | number: '1.2-2' }}
+                  </ng-container>
+                </td>
+              </ng-container>
+
+              <!-- Currency Column -->
+              <ng-container matColumnDef="amountCurrency">
+                <th mat-header-cell *matHeaderCellDef class="cell-padding">Currency</th>
+                <td mat-cell *matCellDef="let element" class="cell-padding">
+                  <ng-container>
+                    {{ element?.amountCurrency }}
+                  </ng-container>
+                </td>
+              </ng-container>
+
+              <!-- Reference no. Column -->
+              <ng-container matColumnDef="frequency">
+                <th mat-header-cell *matHeaderCellDef class="cell-padding">Frequency</th>
+                <td mat-cell *matCellDef="let element" class="cell-padding">
+                  <ng-container>
+                    {{ element?.frequency }}
+                  </ng-container>
+                </td>
+              </ng-container>
+
+              <!-- Status Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef class="cell-padding">Status</th>
+                <td mat-cell *matCellDef="let element" class="cell-padding">
+                  <!-- <div [ngSwitch]="element.status"> -->
+
+                  <div>
+                    @switch (dateColumnLabel) {
+                      @case ('Next payment date') {
+                        <div class="completed">Active</div>
+                      }
+                      @case ('Cancelled date') {
+                        <div class="pending">Cancelled</div>
+                      }
+                      @case ('Expired date') {
+                        <div class="error">Expired</div>
+                      }
+                      @case ('Failed date') {
+                        <div class="returned">Failed</div>
+                      }
+                    }
+                  </div>
+
+                  <!-- <div *ngSwitchCase="'Successful'" class="completed">
+                Completed
+              </div>
+              <div *ngSwitchCase="'Failed'" class="error">
+                Failed
+              </div>
+              <div *ngSwitchCase="'Approved'" class="completed">
+                Approved
+              </div>
+              <div *ngSwitchCase="'Expired'" class="error">
+                Expired
+              </div>
+              <div *ngSwitchCase="'Declined'" class="error">
+                Declined
+              </div>
+              <div *ngSwitchDefault class="pending">
+                {{ element.status }}
+              </div> -->
+                  <!-- </div> -->
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef class="cell-padding">Actions</th>
+                <td mat-cell *matCellDef="let element" class="cell-padding">
+                  <mat-menu backdropClass="custom__menu" #appMenu="matMenu">
+                    <button mat-menu-item (click)="viewDetails(element, status)">
+                      View details
+                    </button>
+                    @if (dateColumnLabel === 'Next payment date') {
+                      <button mat-menu-item (click)="updatePayment(element, status)">
+                        Update payment
+                      </button>
+                    }
+                    @if (dateColumnLabel === 'Next payment date') {
+                      <button mat-menu-item (click)="cancelPayment(element, status)">
+                        Cancel payment
+                      </button>
+                    }
+                  </mat-menu>
+
+                  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                    <div style="display: flex; flex: 1" class="pt-9 pb-9">
+                      <mat-icon
+                        svgIcon="ic-nav"
+                        aria-hidden="false"
+                        aria-label="action"
+                        class="icon-image"
+                      ></mat-icon>
+                    </div>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+
+            @if (totalCount === 0) {
+              <div class="no-result">
+                <img src="assets/icons/icon-no-results.svg" alt="no results found" />
+                <p>No schedule payment for this period.</p>
+              </div>
+            }
+          </div>
+          <mat-paginator
+            #paginator
+            [length]="totalCount!"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            showFirstLastButtons
+            aria-label="Select page of schedule payment"
+          >
+          </mat-paginator>
+        </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- footer -->
+
+  <div style="display: flex" class="pb-15 mt-12">
+    <button
+      mat-stroked-button
+      color="primary"
+      routerLink="/services/customer-360/channels"
+      class="btn-outline"
+    >
+      Back
+    </button>
+  </div>
+
+  <!-- end footer -->
+</div>

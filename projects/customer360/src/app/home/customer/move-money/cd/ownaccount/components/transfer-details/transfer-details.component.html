@@ -1,0 +1,81 @@
+<form [formGroup]="sendToOwnAccountForm" class="transferDetailsWrapper">
+  <app-collapsible
+    [counter]="1"
+    [title]="'MOVE-MONEY.SECTIONS.ACCOUNT-DETAILS.TITLE' | translate"
+    [subText]="'MOVE-MONEY.SECTIONS.ACCOUNT-DETAILS.TEXT' | translate"
+    [isActive]="true"
+    [validControl]="DebitAccountDetailsForm">
+    <div container>
+      <app-mm-debit-account
+        [form]="DebitAccountDetailsForm"
+        [accounts]="allAccounts"
+        [selectedDebitAccount]="selectedDebitAccount"
+        (updateValidBeneficiaryAccounts)="updateBeneficiaryAccounts($event)"
+        [lockedForm]="lockedForm"></app-mm-debit-account>
+    </div>
+  </app-collapsible>
+  <div class="mt-10">
+    <app-collapsible
+      [counter]="2"
+      [title]="'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.TITLE' | translate"
+      [subText]="'MOVE-MONEY.SECTIONS.BENEFICIARY-DETAILS.TEXT' | translate"
+      [activeControl]="DebitAccountDetailsForm"
+      [validControl]="BeneficiaryDetailsForm">
+      <div container>
+        <app-mm-beneficiary-account
+          [form]="BeneficiaryDetailsForm"
+          [accounts]="validBeneficiaryAccounts"
+          [lockedForm]="lockedForm"></app-mm-beneficiary-account>
+      </div>
+    </app-collapsible>
+  </div>
+  <div class="mt-10">
+    <app-collapsible
+      [counter]="3"
+      [title]="'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.TITLE' | translate"
+      [subText]="'MOVE-MONEY.SECTIONS.PAYMENT-DETAILS.TEXT' | translate"
+      [activeControl]="DebitAccountDetailsForm"
+      [validControl]="PaymentDetailsForm">
+      <div container>
+        <app-mm-payment-details
+          [form]="PaymentDetailsForm"
+          [exchangeDetailsForm]="ExchangeDetailsForm"
+          [bankID]="existingCustomerDetails.bankID"
+          [CIF]="existingCustomerDetails.cif"
+          [debitAccount]="selectedDebitAccount"
+          (updateIsProcessing)="updateIsProcessing.emit($event)"
+          (lockFields)="lockFormFields($event)"
+          [creditAccount]="selectedBenefactorAccount"></app-mm-payment-details>
+      </div>
+    </app-collapsible>
+  </div>
+  <div class="mt-10">
+    <app-collapsible
+      [counter]="4"
+      [title]="'MOVE-MONEY.SECTIONS.NARRATION-DETAILS.TITLE' | translate"
+      [subText]="'MOVE-MONEY.SECTIONS.NARRATION-DETAILS.TEXT' | translate"
+      [activeControl]="DebitAccountDetailsForm"
+      [validControl]="NarrationDetailsForm">
+      <div container>
+        <app-mm-narration [form]="NarrationDetailsForm"></app-mm-narration>
+      </div>
+    </app-collapsible>
+  </div>
+  <div class="mt-10">
+    <app-collapsible
+      [counter]="5"
+      [title]="'MOVE-MONEY.SECTIONS.ADDITIONAL-DETAILS.TITLE' | translate"
+      [subText]="'MOVE-MONEY.SECTIONS.ADDITIONAL-DETAILS.TEXT' | translate"
+      [activeControl]="DebitAccountDetailsForm"
+      [validControl]="AdditionalDetailsForm">
+      <div container>
+        <app-mm-additional-delails
+          [form]="AdditionalDetailsForm"
+          [bankID]="existingCustomerDetails.bankID"
+          [accountNumber]="
+            selectedDebitAccount.accountNumber
+          "></app-mm-additional-delails>
+      </div>
+    </app-collapsible>
+  </div>
+</form>

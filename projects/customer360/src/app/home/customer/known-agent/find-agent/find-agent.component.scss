@@ -1,0 +1,39 @@
+.find-agent-container {
+  hr {
+    background-color: rgba(146, 148, 151, 0.2) !important;
+    margin-block-start: 0em;
+    margin-block-end: 1rem;
+    opacity: 0.35;
+  }
+  ::ng-deep mat-option {
+    border-bottom: 1px solid rgba(146, 148, 151, 0.2);
+  }
+
+  ::ng-deep .mat-expansion-panel-header {
+    border-bottom: solid #f7f7f7 1px;
+  }
+
+  ::ng-deep .mat-mdc-outlined-button {
+    border-color: #a32a29 !important;
+  }
+  @media (max-width: 768px) {
+    mat-form-field {
+      width: calc(100% - 48px);
+      width: 100%;
+    }
+  }
+
+  mat-form-field .mat-mdc-form-field {
+    &-subscript-wrapper {
+      position: static;
+    }
+  }
+
+  .mat-mdc-text-field-wrapper {
+    padding-bottom: 0.75em;
+  }
+
+  ::ng-deep .mat-expansion-indicator:after {
+    color: #a32a29;
+  }
+}

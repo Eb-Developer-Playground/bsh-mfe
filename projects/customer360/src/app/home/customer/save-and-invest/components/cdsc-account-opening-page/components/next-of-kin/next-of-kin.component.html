@@ -1,0 +1,138 @@
+<mat-card
+  appearance="outlined"
+  class="mat-card mat-focus-indicator main"
+  [@expandCollapse]="expanded ? 'expanded' : 'collapsed'"
+>
+  <div class="head">
+    <span class="form-number">3</span>
+    <span class="title">{{ 'SAVE-INVEST.CDSC.NEXT-OF-KIN' | translate }}</span>
+    <mat-icon
+      class="arrow-icon"
+      (click)="toggleExpandCollapse()"
+      [@rotate]="expanded ? 'rotated' : 'normal'"
+      >expand_more</mat-icon
+    >
+  </div>
+  <mat-divider class="padded-divider"></mat-divider>
+  <form [formGroup]="form">
+    <div formGroupName="nextOfKin">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.FIRST-NAME' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter details"
+          formControlName="firstName"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error *ngIf="form.get('nextOfKin.firstName')!.errors?.['required']">
+          {{ 'COMMON.FIRST-NAME-IS' | translate }}
+          <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.MIDDLE-NAME' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter details"
+          formControlName="middleName"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error *ngIf="form.get('nextOfKin.middleName')!.errors?.['required']">
+          {{ 'COMMON.MIDDLE-NAME-IS' | translate
+          }}<strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.LAST-NAME' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter details"
+          formControlName="lastName"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error *ngIf="form.get('nextOfKin.lastName')!.errors?.['required']">
+          {{ 'COMMON.LAST-NAME-IS' | translate }}
+          <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.ID-TYPE' | translate }}</mat-label>
+        <mat-select
+          formControlName="idType"
+          (selectionChange)="onIdTypeChange()"
+          [errorStateMatcher]="matcher"
+        >
+          <mat-option value="nationalId">
+            {{ 'COMMON.NATIONAL-ID' | translate }}
+          </mat-option>
+          <mat-option value="passport">
+            {{ 'COMMON.PASSPORT' | translate }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('nextOfKin.idType')!.errors?.['required']">
+          {{ 'COMMON.ID-TYPE-IS' | translate }}
+          <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.ID-NUMBER' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter details"
+          formControlName="idNumber"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error *ngIf="form.get('nextOfKin.idNumber')!.errors?.['required']">
+          {{ 'COMMON.ID-NUMBER-IS' | translate
+          }}<strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="
+            !form.get('nextOfKin.idNumber')!.errors?.['required'] &&
+            form.get('nextOfKin.idNumber')!.errors?.['invalidPassport']
+          "
+        >
+          {{ 'SAVE-INVEST.CDSC.INVALID-PASSPORT' | translate }}
+        </mat-error>
+        <mat-error
+          *ngIf="
+            !form.get('nextOfKin.idNumber')!.errors?.['required'] &&
+            form.get('nextOfKin.idNumber')!.errors?.['invalidPassportNumber']
+          "
+        >
+          {{ 'SAVE-INVEST.CDSC.INVALID-PASSPORT-MESSAGE' | translate }}
+        </mat-error>
+        <mat-error
+          *ngIf="
+            !form.get('nextOfKin.idNumber')!.errors?.['required'] &&
+            form.get('nextOfKin.idNumber')!.errors?.['nationalIdInvalid']
+          "
+        >
+          {{ 'SAVE-INVEST.CDSC.INVALID-ID' | translate }}
+        </mat-error>
+      </mat-form-field>
+      <!-- <mat-form-field class="input" appearance="fill">
+        <mat-label>Phone number</mat-label>
+        <input type="text" matInput numbersOnly placeholder="Enter details" formControlName="phoneNumber" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="form.get('nextOfKin.phoneNumber')!.errors?.required">
+            Phone number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field> -->
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.RELATION' | translate }}</mat-label>
+        <mat-select formControlName="relation" [errorStateMatcher]="matcher">
+          <mat-option *ngFor="let relation of relations" [value]="relation.value">
+            {{ relation.relationship }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('nextOfKin.relation')!.errors?.['required']">
+          {{ 'COMMON.RELATION-IS' | translate }}<strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,86 @@
+<div class="pt-20 pb-12">
+  <h4 class="mat-headline-6 section-title fw-600 mt-6 mb-20">
+    {{ 'CUSTOMER.SAVE-INVEST.INVESTMENT-DETAILS' | translate }}
+  </h4>
+  <div class="row mb-20">
+    <div class="flex-container">
+      <div>
+        <span class="subtitle mb-1">
+          {{ 'COMMON.ACCOUNT-NAME' | translate }}</span
+        >
+        <span class="mat-headline-6 value fw-400 mt-6 mb-8">
+          {{ formData?.accountName }}
+        </span>
+      </div>
+
+      <div>
+        <span class="subtitle mb-1">
+          {{ 'COMMON.ACCOUNT-TYPE' | translate }}
+        </span>
+        <span class="mat-headline-6 value fw-400 mt-6 mb-8">
+          {{
+            creationType === 'fixed'
+              ? 'Fixed deposit savings'
+              : 'Call deposit savings'
+          }}
+        </span>
+      </div>
+
+      <div>
+        <span class="subtitle mb-1"
+          >{{ 'CUSTOMER.SAVE-INVEST.INITIAL-AMOUNT' | translate }}
+        </span>
+        <span class="mat-headline-6 value fw-400 mt-6 mb-8">
+          {{ formData?.currency }}
+          {{ formData?.initialAmount | number: '1.2-2' }}
+        </span>
+      </div>
+
+      <div *ngIf="creationType === 'fixed'">
+        <span class="subtitle mb-1">{{
+          'CUSTOMER.SAVE-INVEST.DEPOSIT-TERM' | translate
+        }}</span>
+        <span
+          class="mat-headline-6 value fw-400 mt-6 mb-8"
+          *ngIf="formData?.depositTerm !== 'custom'; else custom">
+          {{ formData?.depositTerm }} {{ 'COMMON.MONTHS' | translate }}
+        </span>
+        <ng-template #custom>
+          <span class="mat-headline-6 value fw-400 mt-6 mb-8">
+            {{ formData?.customTerm }} {{ 'COMMON.MONTHS' | translate }}
+          </span>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-20">
+    <div class="flex-container">
+      <div *ngIf="creationType === 'fixed'">
+        <span class="subtitle mb-1">
+          {{ 'CUSTOMER.SAVE-INVEST.MATURITY-DATE' | translate }}</span
+        >
+        <span class="mat-headline-6 value fw-400 mt-6 mb-8">{{
+          formData?.maturityDate | date: 'dd/MM/yyyy'
+        }}</span>
+      </div>
+      <div *ngIf="creationType === 'fixed'">
+        <span class="subtitle mb-1">
+          {{ 'CUSTOMER.SAVE-INVEST.INTEREST-RATE' | translate }}
+        </span>
+        <span class="mat-headline-6 value fw-400 mt-6 mb-8"
+          >{{ formData?.interestPercent }}%
+        </span>
+      </div>
+      <div *ngIf="creationType === 'fixed'">
+        <span class="subtitle mb-1">
+          {{ 'CUSTOMER.SAVE-INVEST.INVESTMENT-RETRURN' | translate }}</span
+        >
+        <span class="mat-headline-6 value fw-400 mt-6 mb-8"
+          >{{ formData?.currency }}
+          {{ formData?.investmentReturns | number: '1.2-2' }}</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

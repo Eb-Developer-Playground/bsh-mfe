@@ -1,0 +1,123 @@
+<div class="wrapper">
+  <mat-card class="main">
+    <mat-card-content class="card-content" *ngIf="selectedAccount">
+      <div class="customer-details-content">
+        <div class="customer-name-channels">
+          <div class="customer-channels-sub">
+            <mat-card-subtitle class="subtitle" style="padding-top:1.5rem;padding-left:1.5rem">{{
+              'SAVE-INVEST.ACCOUNT-DETAILS' | translate
+            }}</mat-card-subtitle>
+          </div>
+        </div>
+        <mat-divider inlist></mat-divider>
+
+        <div class="customer-details-container" style="padding: 1.5rem">
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NAME' | translate
+              }}
+            </p>
+            <p class="customer-detail-content">
+              {{ selectedAccount?.accountName }}
+            </p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NUMBER' | translate
+              }}
+            </p>
+            <p class="customer-detail-content">
+              {{ selectedAccount?.accountNumber }}
+            </p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.CURRENCY' | translate }}
+            </p>
+            <p class="customer-detail-content">
+              {{ selectedAccount?.accountCurrency }}
+            </p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_TYPE' | translate
+              }}
+            </p>
+            <p class="customer-detail-content">
+              {{ selectedAccount?.schemeType }}
+            </p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.SCHEME-TYPE' | translate }}
+            </p>
+            <p class="customer-detail-content">
+              {{ selectedAccount?.schemeCode }}
+            </p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'COMMON.STATUS' | translate }}
+            </p>
+            <p class="customer-detail-content">
+              {{
+                selectedAccount?.accountStatus === 'A' ? 'Active' : 'Dormant'
+              }}
+            </p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.MANDATE-TYPE' | translate
+              }}
+            </p>
+            <p class="customer-detail-content">
+              {{ selectedAccount?.mandate }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card appearance="outlined" class="main" style="padding-top:1.5rem">
+    <mat-card-header>
+      <mat-card-title class="subtitle">{{
+        'COMMON.ACCOUNT-MANDATE' | translate
+      }}</mat-card-title>
+    </mat-card-header>
+    <mat-divider inlist></mat-divider>
+    <mat-card-content>
+      <div class="customer-details-container">
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.CURRENT-MANDATE' | translate }}
+          </p>
+          <p class="customer-detail-content"> {{ selectedAccount?.mandate }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.MANDATE-CHANGING-TO' | translate }}
+          </p>
+          <p class="customer-detail-content">{{ selectedSignatory?.title }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.EFFECTIVE-DATE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ effectiveDate ? (effectiveDate | date: 'dd/MM/yyyy') : 'N/A' }}
+          </p>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <app-documents-view
+        *ngIf="documents.length"
+        [contentOnly]="true"
+        [documents]="documents"
+        [ticketId]="documentsTicketId"></app-documents-view>
+    </mat-card-content>
+  </mat-card>
+</div>

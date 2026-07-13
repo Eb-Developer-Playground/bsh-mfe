@@ -1,0 +1,61 @@
+<div class="success-page">
+  <div class="success">
+    <div class="success-img">
+      <img alt="" src="assets/images/agentSuccess.png" />
+    </div>
+    <div class="success-text">
+      <h1>{{ 'BULK-TRANFER.DONE' | translate }}</h1>
+      <p>
+        {{
+          checkerProcess
+            ? 'Batch payment has been submitted for processing'
+            : 'Batch payment has been submitted for approval'
+        }}
+        .
+      </p>
+      <div class="inner-text">
+        <div class="inner-text-row">
+          <div class="inner-text-block">
+            <span class="title">{{
+              'BULK-TRANFER.ACCOUNT-NAME' | translate
+            }}</span>
+            <span class="text">{{ accountNumbers[0].accountName }}</span>
+          </div>
+          <div class="inner-text-block">
+            <span class="title">{{
+              'BULK-TRANFER.BATCH-PAYMENT-TOTAL' | translate
+            }}</span>
+            <span class="text"
+              >{{ transactionDetails?.totalTransanctionAmount + ' ' }}
+              {{ transactionDetails?.accountCurrency }}</span
+            >
+          </div>
+        </div>
+
+        <div class="inner-text-row">
+          <div class="inner-text-block">
+            <span class="title">{{
+              'BULK-TRANFER.TOTAL-CHARGES' | translate
+            }}</span>
+            <span class="text"
+              >{{ transactionDetails?.totalChargeAmount }} KES</span
+            >
+            <!-- update for other currencies -->
+          </div>
+          <div class="inner-text-block">
+            <span class="title">{{ 'COMMON.CIF' | translate }}</span>
+            <span class="text">{{ accountNumbers[0].cif }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="return-btn">
+    <button
+      [routerLink]="['/services/customer-360']"
+      color="primary"
+      mat-raised-button>
+      <span>{{ 'BULK-TRANFER.BACK-TO-OVERVIEW' | translate }}</span>
+    </button>
+  </div>
+</div>

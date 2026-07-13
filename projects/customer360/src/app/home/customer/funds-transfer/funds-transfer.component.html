@@ -1,0 +1,659 @@
+<div>
+    <mat-toolbar class="toolbar">
+        <div>
+            <span class="title">{{ 'MOVE-MONEY.TITLE' | translate }}</span>
+            <span class="vl"></span>
+            @if(!showSupportDocuments){
+                <span  class="toolbar-page">{{
+                        'MOVE-MONEY.DETAIL-CAPTURE' | translate
+                    }}
+            </span>
+            }
+            @else {
+                <span class="toolbar-page">{{
+                        'MOVE-MONEY.UPLOAD-DOCUMENTS' | translate
+                    }}
+                </span>
+            }
+
+        </div>
+    </mat-toolbar>
+    @if (!showSupportDocuments) {
+        <div >
+            <div [formGroup]="parentForm">
+                <mat-accordion multi>
+                    <mat-expansion-panel [expanded]="panelOpenState === true">
+                        <mat-expansion-panel-header>
+                            <div class="d-flex align-content-center">
+                                <div class="indicator-container">
+                                    @if (!isVerified){
+                                        <button
+                                            mat-mini-fab
+                                            color="primary"
+                                            aria-label="Section 1"
+                                            class="color-white"
+                                        >
+                                            1
+                                        </button>
+                                    } @else {
+                                        <button
+                                            mat-mini-fab
+                                            aria-label="Section 1"
+                                            class="color-white bg-green"
+                                        >
+                                            <mat-icon class="check">check</mat-icon>
+                                        </button>
+                                    }
+
+                                </div>
+                                <h3 class="mat-headline-6 fw-400 align-self-center mb-0 ml-8">
+                                    {{ 'MOVE-MONEY.TRANSACTION-DETAILS' | translate }}
+                                </h3>
+                            </div>
+                        </mat-expansion-panel-header>
+                        <hr class="section-divider" />
+                        <div class="d-flex wrap">
+                            <form formGroupName="transactionDetailsForm" class="fieldset">
+                                <div
+                                    style="display: flex; gap: 24px"
+                                     
+                                    class="pl-42"
+                                     >
+                                    <div  style="flex: 1" class="rateCode">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>{{
+                                                    'MOVE-MONEY.TRANSACTION-TYPE' | translate
+                                                }}</mat-label>
+                                            <input class="mt-5" matInput formControlName="transactionType" readonly />
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div  style="flex: 1" >
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>{{
+                                                    'MOVE-MONEY.TRANSFER-TYPE' | translate
+                                                }}</mat-label>
+                                            <mat-select
+                                                formControlName="transferType"
+                                                required
+                                                (ngModelChange)="onTransferTypeChange($event)">
+                                                @for (item of transferType; track item) {
+                                                    <mat-option
+                                                        [value]="item.value">
+                                                        {{ item.name | translate }}
+                                                    </mat-option>
+                                                }
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div  style="flex: 1" >
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>{{
+                                                    'MOVE-MONEY.SELECT-ACCOUNT' | translate
+                                                }}</mat-label>
+                                            <mat-select
+                                                formControlName="account"
+                                                required
+                                                (ngModelChange)="verifyAccount($event)">
+                                                @for (item of remittanceAccounts; track item) {
+                                                    <mat-option
+                                                        [value]="item.accountNumber">
+                                                        {{ item.accountNumber }} ({{ item.accountCurrency }})
+                                                    </mat-option>
+                                                }
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                @if (availableBalance) {
+                                    <div class="wrapInput" >
+                                        <mat-label class="available-balance-title">{{
+                                                'MOVE-MONEY.AVAILABLE-BALANCE' | translate
+                                            }}
+                                        </mat-label>
+                                        <input
+                                            matInput
+                                            readonly
+                                            value="{{
+                                                    availableBalanceCurrency + ' ' + availableBalance
+                                                  }}"
+                                            class="available-balance"
+                                        />
+                                    </div>
+                                }
+                            </form>
+                        </div>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="panelOpenState === true && isVerified">
+                        <mat-expansion-panel-header>
+                            <div class="d-flex align-content-center">
+                                <div class="indicator-container">
+                                    @if (!isVerified) {
+                                        <button
+                                            mat-mini-fab
+                                            color="primary"
+                                            aria-label="Section 2"
+                                            [class.icon-disabled]="!isVerified">
+                                            2
+                                        </button>
+                                    }
+                                    @if ( isVerified &&
+                                        (!transactionDetailsForm.valid ||
+                                        !beneficiaryDetailsForm.valid))
+                                    {
+                                        <button
+                                            mat-mini-fab
+                                            color="primary"
+                                            aria-label="Section 2"
+                                            class="color-white"
+                                        >
+                                            2
+                                        </button>
+                                    }
+                                    @if (
+                                        isVerified &&
+                                        transactionDetailsForm.valid &&
+                                        beneficiaryDetailsForm.valid)
+                                    {
+                                        <button
+                                            mat-mini-fab
+                                            aria-label="Section 2"
+                                            class="color-white bg-green"
+                                        >
+                                            <mat-icon class="check">check</mat-icon>
+                                        </button>
+                                    }
+                                </div>
+                                <h3 class="mat-headline-6 fw-400 align-self-center mb-0 ml-8">
+                                    {{ 'MOVE-MONEY.BENEFICIARY-DETAILS' | translate }}
+                                </h3>
+                            </div>
+                        </mat-expansion-panel-header>
+                        <hr class="section-divider" />
+                        <div class="d-flex wrap">
+                            <form formGroupName="beneficiaryDetailsForm" class="fieldset">
+                                @if (sendToOwnAccount) {
+                                    <div>
+                                        <div class="wrapInput">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>{{
+                                                        'MOVE-MONEY.SELECT-ACCOUNT' | translate
+                                                    }}</mat-label>
+                                                <mat-select
+                                                    formControlName="beneficiaryAccount"
+                                                    required
+                                                    (ngModelChange)="validateOwnAccount($event)">
+                                                    @for (item of filteredOwnAccounts; track item) {
+                                                        <mat-option
+                                                            [value]="item.accountNumber">
+                                                            {{ item.accountNumber }} ({{ item.accountCurrency }})
+                                                        </mat-option>
+                                                    }
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                }
+                                @if (sendToOtherAccount) {
+                                    <div class="beneficiary-part">
+                                        <div class="wrapInput">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>{{
+                                                        'MOVE-MONEY.ENTER-ACCOUNT' | translate
+                                                    }}</mat-label>
+                                                <input
+                                                    matInput
+                                                    formControlName="beneficiaryAccount"
+                                                    required
+                                                    numbersOnly />
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="wrapInput">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>{{
+                                                        'MOVE-MONEY.RECEPIENT-NAME' | translate
+                                                    }}</mat-label>
+                                                <input matInput formControlName="recepientName" readonly />
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                }
+                            </form>
+                        </div>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="panelOpenState === true && isVerified">
+                        <mat-expansion-panel-header>
+                            <div class="d-flex align-content-center">
+                                <div class="indicator-container">
+                                    @if (!isVerified) {
+                                        <button
+                                            mat-mini-fab
+                                            color="primary"
+                                            aria-label="Section 3"
+                                            [class.icon-disabled]="!isVerified"
+                                        >
+                                            3
+                                        </button>
+                                    }
+                                    @if(isVerified &&
+                                        (!transactionDetailsForm.valid ||
+                                        !paymentDetailsForm.valid ||
+                                        !beneficiaryDetailsForm.valid)){
+                                        <button
+                                            mat-mini-fab
+                                            color="primary"
+                                            aria-label="Section 3"
+                                            class="color-white"
+                                        >
+                                            3
+                                        </button>
+                                    }
+                                    @if (transactionDetailsForm.valid &&
+                                        paymentDetailsForm.valid &&
+                                        beneficiaryDetailsForm.valid) {
+                                        <button
+                                            mat-mini-fab
+                                            aria-label="Section 3"
+                                            class="color-white bg-green"
+                                        >
+                                            <mat-icon class="check">check</mat-icon>
+                                        </button>
+                                    }
+
+                                </div>
+                                <h3 class="mat-headline-6 fw-400 align-self-center mb-0 ml-8">
+                                    {{ 'MOVE-MONEY.PAYMENT-DETAILS' | translate }}
+                                </h3>
+                            </div>
+                        </mat-expansion-panel-header>
+                        <hr class="section-divider" />
+                        <div class="d-flex wrap">
+                            <form formGroupName="paymentDetailsForm" class="fieldset">
+                                <div
+                                    style="display: flex; gap: 24px"
+                                     
+                                    class="pl-42"
+                                     >
+                                    <div  style="flex: 1" class="rateCode">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>{{ 'MOVE-MONEY.CURRENCY' | translate }}</mat-label>
+                                            <mat-select
+                                                formControlName="paymentCurrency"
+                                                (ngModelChange)="updateAmountToSend()"
+                                                required>
+                                                @for (currency of currencies; track currency) {
+                                                    <mat-option
+                                                        [value]="currency">
+                                                        {{ currency }}
+                                                    </mat-option>
+                                                }
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div  style="flex: 1" >
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>{{
+                                                    'MOVE-MONEY.AMOUNT-SEND' | translate
+                                                }}</mat-label>
+                                            <input
+                                                class="mt-5"
+                                                matInput
+                                                formControlName="amountToSend"
+                                                (ngModelChange)="checkAmountToSend()"
+                                                currencyMask
+                                                [options]="{
+                                                              prefix: '',
+                                                              thousands: ',',
+                                                              decimal: '.',
+                                                              allowNegative: false,
+                                                              align: 'left'
+                                                            }"
+                                                                                        [value]="
+                                                              beneficiaryDetailsForm.get('amountToSend')?.value
+                                                                | number: '1.2-2'
+                                                            "
+                                                numbersOnly />
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div  style="flex: 1" >
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>{{
+                                                    'MOVE-MONEY.PAYMENT-REASON' | translate
+                                                }}</mat-label>
+                                            <input class="mt-4" matInput formControlName="paymentReason" />
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </mat-expansion-panel>
+                    @if (supportDocumentsRequired) {
+                        <div class="support-documents">
+                            <p class="support-title">
+                                {{ 'MOVE-MONEY.ATTENTION' | translate }}
+                            </p>
+                            <p class="support-content">
+                                {{ 'MOVE-MONEY.AMOUNT-GREATER-MESSAGE' | translate }}
+                            </p>
+                        </div>
+                    }
+
+                    <mat-expansion-panel [expanded]="panelOpenState === true && isVerified">
+                        <mat-expansion-panel-header>
+                            <div class="d-flex align-content-center">
+                                <div class="indicator-container">
+                                    @if (!isVerified) {
+                                        <button
+                                            mat-mini-fab
+                                            color="primary"
+                                            aria-label="Section 4"
+                                            [class.icon-disabled]="!isVerified"
+                                        >
+                                            4
+                                        </button>
+                                    }
+
+                                    @if(isVerified && !paymentDetailsForm.valid) {
+                                        <button
+                                            mat-mini-fab
+                                            color="primary"
+                                            aria-label="Section 4"
+                                            class="color-white"
+                                        >
+                                            4
+                                        </button>
+                                    }
+                                    @if( paymentDetailsVerified && paymentDetailsForm.valid) {
+                                        <button
+                                            mat-mini-fab
+                                            aria-label="Section 4"
+                                            class="color-white bg-green"
+                                        >
+                                            <mat-icon class="check">check</mat-icon>
+                                        </button>
+                                    }
+                                </div>
+                                <h3 class="mat-headline-6 fw-400 align-self-center mb-0 ml-8">
+                                    {{ 'MOVE-MONEY.EXCHANGE-RATE' | translate }}
+                                </h3>
+                            </div>
+                        </mat-expansion-panel-header>
+                        <hr class="section-divider" />
+
+                        <form formGroupName="exchangeRateForm" class="fieldset">
+                            <div
+                                style="display: flex; gap: 24px"
+                                 
+                                class="pl-42"
+                                 >
+                                <!-- <div class="d-flex wrap"> -->
+                                <div  style="flex: 1" class="rateCode">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                                'MOVE-MONEY.RATE-CODE' | translate
+                                            }}</mat-label>
+                                        <input matInput formControlName="rateCode" readonly />
+                                    </mat-form-field>
+                                </div>
+
+                                <div  style="flex: 1" >
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                                'MOVE-MONEY.EXCHANGE-RATE' | translate
+                                            }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="exchangeRate"
+                                            readonly
+                                            [value]="
+                                                  exchangeRateForm.get('exchangeRate')?.value
+                                                    | number: '1.2-2'
+                                                "
+                                        />
+                                    </mat-form-field>
+                                </div>
+
+                                <div  style="flex: 1">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                                'MOVE-MONEY.BASE-EXCHANGE-RATE' | translate
+                                            }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="baseExchangeRate"
+                                            readonly
+                                            [value]="
+                                              exchangeRateForm.get('baseExchangeRate')?.value
+                                                | number: '1.2-2'
+                                            "
+                                        />
+                                    </mat-form-field>
+                                </div>
+                                <div  style="flex: 1">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                                'MOVE-MONEY.TICKET-NUMBER' | translate
+                                            }}</mat-label>
+                                        <input matInput formControlName="ticketNumber" numbersOnly />
+                                    </mat-form-field>
+                                </div>
+                                <div  style="flex: 1">
+                                    <button
+                                        mat-stroked-button
+                                        class="btn-outline back-btn fetch-button"
+                                        color="primary"
+                                        [disabled]="
+                                                !exchangeRateForm.controls['ticketNumber'].value ||
+                                                viewType === 'Checker'
+                                              "
+                                        (click)="getSpecialExchangeRates()">
+                                        {{ 'COMMON.FETCH' | translate }}
+                                    </button>
+                                </div>
+                            </div>
+                            <div
+                                style="display: flex; gap: 24px"
+                                 
+                                class="pl-24"
+                                 >
+                                <div  style="flex: 1">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>{{
+                                                'MOVE-MONEY.CONVERTED-CURRENCY' | translate
+                                            }}</mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="convertedCurrency"
+                                            readonly />
+                                    </mat-form-field>
+                                </div>
+
+                                <div  style="flex: 1">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label
+                                        >{{ 'MOVE-MONEY.CONVERTED-AMOUNT' | translate }} ({{
+                                                (isDebit
+                                                        ? 'MOVE-MONEY.TO-BE-DEBITED'
+                                                        : 'MOVE-MONEY.TO-BE-CREDITED'
+                                                ) | translate
+                                            }})
+                                        </mat-label>
+                                        <input
+                                            matInput
+                                            formControlName="convertedAmount"
+                                            readonly
+                                            [value]="
+                                                  exchangeRateForm.get('convertedAmount')?.value
+                                                    | number: '1.2-2'
+                                                "
+                                        />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel [expanded]="panelOpenState === true && isVerified">
+                        <mat-expansion-panel-header>
+                            <div class="d-flex align-content-center">
+                                <div class="indicator-container">
+                                    @if (!isVerified) {
+                                        <button
+                                            mat-mini-fab
+                                            color="primary"
+                                            aria-label="Section 5"
+                                            [class.icon-disabled]="!isVerified"
+                                        >
+                                            5
+                                        </button>
+                                    } @else {
+                                        <button
+                                            mat-mini-fab
+                                            color="primary"
+                                            aria-label="Section 5"
+                                            class="color-white"
+                                        >
+                                            5
+                                        </button>
+                                    }
+                                    @if(instrumentVerified) {
+                                        <button
+                                            mat-mini-fab
+                                            aria-label="Section 5"
+                                            class="color-white bg-green"
+                                        >
+                                            <mat-icon class="check">check</mat-icon>
+                                        </button>
+                                    }
+
+                                </div>
+                                <h3 class="mat-headline-6 fw-400 align-self-center mb-0 ml-8">
+                                    {{ 'MOVE-MONEY.INSTRUMENT' | translate }}
+                                </h3>
+                            </div>
+                        </mat-expansion-panel-header>
+                        <hr class="section-divider" />
+                        <div class="d-flex wrap">
+                            <form formGroupName="instrumentForm" class="fieldset">
+                                <div
+                                    style="display: flex; gap: 24px"
+                                     
+                                    class="pl-24"
+                                     >
+                                    <div  style="flex: 1">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>{{
+                                                    'MOVE-MONEY.INSTRUMENT-TYPE' | translate
+                                                }}</mat-label>
+                                            <!-- <input matInput formControlName="instrumentType"> -->
+                                            <mat-select formControlName="instrumentType">
+                                                @for(instrument of instrumentTypes; track instrument){
+                                                    <mat-option
+                                                        [value]="instrument.id">
+                                                        {{ instrument.value | translate }}
+                                                    </mat-option>
+                                                }
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div  style="flex: 1">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>{{
+                                                    'MOVE-MONEY.INSTRUMENT-NUMBER' | translate
+                                                }}</mat-label>
+                                            <input
+                                                matInput
+                                                class="mt-4"
+                                                formControlName="instrumentNumber"
+                                                maxlength="8" />
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div  style="flex: 1">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>{{
+                                                    'MOVE-MONEY.INSTRUMENT-DATE' | translate
+                                                }}</mat-label>
+                                            <input
+                                                matInput
+                                                class="mt-4"
+                                                [matDatepicker]="picker"
+                                                [min]="minDate"
+                                                [max]="maxDate"
+                                                formControlName="instrumentDate" />
+                                            <mat-datepicker-toggle
+                                                matSuffix
+                                                [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    } @else {
+        <div >
+            <app-supporting-documents
+                (cloneOfObjectsEmitter)="
+        uploadsDocuments($event)
+      "></app-supporting-documents>
+        </div>
+    }
+
+
+    <div style="display: flex; margin-top: 15px" class="pb-15">
+        <button
+            mat-stroked-button
+            color="primary"
+            class="btn-outline"
+            style="width: 90px"
+            (click)="goToOverview()">
+            {{ 'COMMON.QUIT' | translate }}
+        </button>
+        <span  style="flex: 1"></span>
+        @if(showSupportDocuments) {
+            <button
+                mat-stroked-button
+                class="btn-outline back-btn"
+                color="primary"
+                style="width: 90px"
+                (click)="goBack()">
+                {{ 'COMMON.BACK' | translate }}
+            </button>
+            <button
+                mat-flat-button
+                color="primary"
+                class="ml-15"
+                style="width: 90px"
+                [disabled]="!documents || documents.length === 0"
+                (click)="checkNextStep()">
+                {{ 'COMMON.CONTINUE' | translate }}
+            </button>
+        } @else {
+            <button
+                mat-flat-button
+                color="primary"
+                class="ml-15"
+                style="width: 90px"
+                [disabled]="
+                    !transactionDetailsForm.valid ||
+                    !paymentDetailsForm.valid ||
+                    !beneficiaryDetailsForm.valid
+                  "
+                (click)="checkNextStep()">
+                {{ 'COMMON.CONTINUE' | translate }}
+            </button>
+        }
+    </div>
+</div>

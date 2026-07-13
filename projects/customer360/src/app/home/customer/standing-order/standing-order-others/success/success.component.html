@@ -1,0 +1,104 @@
+<mat-card appearance="outlined">
+  <div class="container">
+    <img src="../../../../assets/icons/icon-account-opening-success.svg" />
+    <div style="padding-top: 50px">
+      <div class="header-main-label">
+        <p class="mat-headline-6 m-0">
+          {{ 'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.SUCCESS' | translate }}
+        </p>
+      </div>
+      <div class="header-sub-label">
+        <p>
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.SUCCESS-TRANSACTION-DETAILS'
+              | translate
+          }}
+        </p>
+      </div>
+      <div class="customer-details-container">
+        <div class="customer-detail">
+          <p class="customer-detail-title">{{ 'COMMON.CIF' | translate }}</p>
+          <p class="customer-detail-content">{{ cif }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BENEFICIARY_BANK'
+                | translate
+            }}
+          </p>
+          <p class="customer-detail-content">{{ beneficiaryBank }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BENEFICIARY_NAME'
+                | translate
+            }}
+          </p>
+          <p class="customer-detail-content">{{ beneficiaryName }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NUMBER' | translate
+            }}
+          </p>
+          <p class="customer-detail-content">{{ accountNumber }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NAME' | translate }}
+          </p>
+          <p class="customer-detail-content">{{ customerName }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'COMMON.ACCOUNT-CURRENCY' | translate }}
+          </p>
+          <p class="customer-detail-content">{{ currency }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.AMOUNT'
+                | translate
+            }}
+          </p>
+          <p class="customer-detail-content">{{ amount }}</p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.PAYMENT' | translate }}
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.FREQUENCY' | translate
+            }}
+          </p>
+          <p class="customer-detail-content">
+            {{ paymentFrequency }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.PAYMENT' | translate }}
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.FREQUENCY_DATE'
+                | translate
+            }}
+          </p>
+          <p class="customer-detail-content">{{ dayOfExecution }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<div style="margin-top: 20px; text-align: right; display: flex" align="end">
+  <span style="flex: 1 1 auto"></span>
+  <button
+    mat-raised-button
+    class="{{ 'COMMON.BACK' | translate }}-button"
+    [routerLink]="[]"
+    (click)="onClick()">
+    {{ 'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.REDIRECT' | translate }}
+  </button>
+</div>

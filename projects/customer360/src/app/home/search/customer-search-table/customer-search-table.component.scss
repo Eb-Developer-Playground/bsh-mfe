@@ -1,0 +1,114 @@
+.table-footer {
+    border-radius: 0 0 8px 8px;
+}
+
+.table-container {
+    width: 100%;
+    border: none;
+
+    .mat-mdc-table {
+        background-color: transparent !important;
+        overflow: hidden !important;
+        width: 100%;
+        border: 1px solid #e9eaea;
+        border-radius: 8px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 0;
+        border-collapse: separate;
+
+        & th {
+            .mat-sort-header {
+                font-size: 0.6rem;
+            }
+        }
+
+        & .td__name_cls {
+            @media (min-width: 992px) and (max-width: 1199.98px) {
+                font-size: 0.75rem;
+                width: 20%;
+                padding: 10px;
+                inline-size: 150px;
+                overflow-wrap: break-word;
+            }
+        }
+
+        & .td__cls {
+            width: 100%;
+
+            @media (min-width: 992px) and (max-width: 1199.98px) {
+                font-size: 0.75rem;
+                width: 10%;
+                inline-size: 150px;
+                overflow-wrap: break-word;
+            }
+
+            @media (min-width: 1200px) {
+                font-size: 0.85rem;
+                width: 15%;
+            }
+        }
+
+        .mat-mdc-header-row {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+
+            th.mat-mdc-header-cell {
+                background-color: #e9eaea;
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 12px;
+                line-height: 16px;
+                color: #221f1f;
+            }
+        }
+
+        .mat-mdc-row {
+            &:last-of-type {
+                td.mat-mdc-cell {
+                    border-bottom-style: none;
+                }
+            }
+
+            .flagged {
+                color: #ff0000cc;
+            }
+        }
+    }
+
+    .mat-paginator {
+        display: block;
+        border: 1px solid #e9eaea;
+        border-radius: 8px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .mat-paginator.items-text {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #221f1f;
+        text-align: end;
+        padding: 18px 16px 18px;
+    }
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+:host ::ng-deep app-pills {
+    .pill {
+        flex: none !important;
+    }
+}

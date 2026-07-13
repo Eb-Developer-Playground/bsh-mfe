@@ -1,0 +1,255 @@
+<div class="main" [formGroup]="form">
+  <mat-form-field class="input" appearance="fill">
+    <mat-label
+      >{{ 'CUSTOMER.SAVE-INVEST.DEBIT-ACCOUNT' | translate }}*</mat-label
+    >
+    <mat-select formControlName="debitAccount" [errorStateMatcher]="matcher">
+      <mat-option
+        *ngFor="let account of customerActiveAccounts"
+        [value]="account.accountNumber">
+        {{ account.accountNumber }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.controls['debitAccount'].hasError('required')">
+      {{ 'CUSTOMER.SAVE-INVEST.DEBIT-ACCOUNT-IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input" appearance="fill" *ngIf="creationType">
+    <mat-label>{{ 'COMMON.CURRENCY' | translate }}*</mat-label>
+    <input
+      matInput
+      formControlName="debitAccountCurrency"
+      type="text"
+      placeholder="Enter currency"
+      autocomplete="off"
+      [errorStateMatcher]="matcher" />
+    <mat-error
+      *ngIf="form.controls['debitAccountCurrency'].hasError('required')">
+      {{ 'COMMON.CURRENCY-IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="creationType === 'call'">
+    <mat-label>
+      {{ 'CUSTOMER.SAVE-INVEST.PAYMENT-TYPE' | translate }}*</mat-label
+    >
+    <mat-select
+      id="paymentType"
+      formControlName="paymentType"
+      [errorStateMatcher]="matcher">
+      <mat-option [value]="''" dsiabled>
+        {{ 'CUSTOMER.SAVE-INVEST.SELECT-PAYMENT-TYPE' | translate }}
+      </mat-option>
+      <mat-option [value]="'one-time'"
+        >{{ 'CUSTOMER.SAVE-INVEST.ONE-TIME' | translate }}
+      </mat-option>
+      <mat-option [value]="'recurring'"
+        >{{ 'CUSTOMER.SAVE-INVEST.RECURRING' | translate }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.controls['paymentType'].hasError('required')">
+      {{ 'CUSTOMER.SAVE-INVEST.SELECT-PAYMENT-TYPE-IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="
+      creationType === 'call' &&
+      form.controls['paymentType'].value === 'recurring'
+    ">
+    <mat-label> {{ 'CUSTOMER.SAVE-INVEST.FREQUENCY' | translate }}*</mat-label>
+    <mat-select formControlName="frequency" [errorStateMatcher]="matcher">
+      <mat-option [value]="''" disabled
+        >{{ 'CUSTOMER.SAVE-INVEST.SELECT-FREQUENCY' | translate }}
+      </mat-option>
+      <mat-option *ngFor="let f of frequency" [value]="f.name | lowercase">
+        {{ f.name }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.controls['frequency'].hasError('required')">
+      {{ 'CUSTOMER.SAVE-INVEST.FREQUENCY-IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="creationType === 'goal'">
+    <mat-label>
+      {{ 'CUSTOMER.SAVE-INVEST.EFFECTIVE-DATE' | translate }}*</mat-label
+    >
+    <input
+      matInput
+      formControlName="effectiveDate"
+      [matDatepicker]="picker"
+      [min]="minDate"
+      numbersOnly
+      readonly />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="form.controls['effectiveDate'].hasError('required')">
+      <span>
+        {{ 'CUSTOMER.SAVE-INVEST.EFFECTIVE-DATE-IS' | translate }}
+        <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+      >
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="
+      creationType === 'goal' &&
+      form.controls['paymentType'].value === 'recurring' &&
+      form.controls['frequency'].value
+    ">
+    <mat-label *ngIf="form.controls['frequency'].value === 'weekly'"
+      >{{ 'CUSTOMER.SAVE-INVEST.DAY-OF-WEEK' | translate }}*</mat-label
+    >
+    <mat-label *ngIf="form.controls['frequency'].value === 'monthly'"
+      >{{ 'CUSTOMER.SAVE-INVEST.DAY-OF-MONTH' | translate }}*</mat-label
+    >
+    <mat-label *ngIf="form.controls['frequency'].value === 'quarterly'"
+      >{{ 'CUSTOMER.SAVE-INVEST.QUARTER-MONTH' | translate }}*</mat-label
+    >
+    <mat-select
+      formControlName="dayOrMonth"
+      [errorStateMatcher]="matcher"
+      #selected>
+      <mat-select-trigger
+        *ngIf="form.controls['frequency'].value === 'quarterly'"
+        >{{ selected.value }}</mat-select-trigger
+      >
+      <mat-option
+        [class.multiline-mat-option]="
+          form.controls['frequency'].value === 'quarterly'
+        "
+        *ngFor="let dayOrMonthOption of dayOrMonthOptions"
+        [value]="dayOrMonthOption">
+        <div>{{ dayOrMonthOption }}</div>
+        <div
+          class="multiline-mat-second-row-option"
+          *ngIf="form.controls['frequency'].value === 'quarterly'">
+          <small [ngSwitch]="dayOrMonthOption">
+            <span *ngSwitchCase="'1st month of quarter'">{{
+              'CUSTOMER.SAVE-INVEST.FIRST-QUARTER-MONTH-MESSAGE' | translate
+            }}</span>
+            <span *ngSwitchCase="'2nd month of quarter'">{{
+              'CUSTOMER.SAVE-INVEST.SECOND-QUARTER-MONTH-MESSAGE' | translate
+            }}</span>
+            <span *ngSwitchCase="'3rd month of quarter'">{{
+              'CUSTOMER.SAVE-INVEST.THIRD-QUARTER-MONTH-MESSAGE' | translate
+            }}</span>
+          </small>
+        </div>
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.controls['dayOrMonth'].hasError('required')">
+      {{ 'CUSTOMER.SAVE-INVEST.DAY-MONTH-IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="
+      creationType === 'call' &&
+      form.controls['paymentType'].value === 'recurring'
+    ">
+    <mat-label>
+      {{ 'CUSTOMER.SAVE-INVEST.RECURRING-AMOUNT' | translate }}*</mat-label
+    >
+    <input
+      matInput
+      formControlName="savingAmount"
+      currencyMask
+      [options]="{
+        prefix: '',
+        thousands: ',',
+        decimal: '.',
+        allowNegative: false,
+        align: 'left'
+      }"
+      [value]="form.controls['savingAmount']?.value | number: '1.2-2'"
+      placeholder="Enter amount (eg. 1,000.00)"
+      autocomplete="off"
+      [errorStateMatcher]="matcher"
+      numbersOnly />
+    <mat-error *ngIf="form.controls['savingAmount'].hasError('required')">
+      {{ 'CUSTOMER.SAVE-INVEST.SAVING-AMOUNT-IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+    <mat-hint *ngIf="form.controls['savingAmount'].value">
+      {{ 'CUSTOMER.SAVE-INVEST.AMOUNT-CREDITED-PER-FREQUENCY' | translate }}
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="
+      creationType === 'call' &&
+      form.controls['paymentType'].value === 'recurring'
+    ">
+    <mat-label>{{ 'CUSTOMER.SAVE-INVEST.START-DATE' | translate }}*</mat-label>
+    <input
+      matInput
+      formControlName="startDate"
+      [matDatepicker]="picker"
+      [min]="minDate"
+      numbersOnly
+      readonly />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="form.controls['startDate'].hasError('required')">
+      <span
+        >{{ 'CUSTOMER.SAVE-INVEST.START-DATE-IS' | translate }}
+        <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+      >
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="
+      creationType === 'call' &&
+      form.controls['paymentType'].value === 'recurring'
+    ">
+    <mat-label>{{ 'CUSTOMER.SAVE-INVEST.END-DATE' | translate }}*</mat-label>
+    <input
+      matInput
+      formControlName="endDate"
+      [matDatepicker]="picker"
+      [min]="minDate"
+      numbersOnly
+      readonly />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="form.controls['endDate'].hasError('required')">
+      <span
+        >{{ 'CUSTOMER.SAVE-INVEST.END-DATE-IS' | translate }}
+        <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+      >
+    </mat-error>
+    <mat-error *ngIf="form.controls['endDate'].hasError('notValid')">
+      <span
+        >{{ 'CUSTOMER.SAVE-INVEST.END-DATE-IS' | translate
+        }}<strong>{{
+          'CUSTOMER.SAVE-INVEST.NOT-VALID' | translate
+        }}</strong></span
+      >
+    </mat-error>
+  </mat-form-field>
+</div>

@@ -1,0 +1,292 @@
+<mat-card appearance="outlined" class="mb-2" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 fw-400">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.UPLOAD_REQUIRED_DOCUMENTS'
+          | translate
+      }}
+    </h3>
+    <p class="text instruction">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.UPLOAD-REQUIRED-SUBTITLE'
+          | translate
+      }}
+    </p>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+
+  <div class="d-flex wrap">
+    <div class="file-col">
+      <div class="empty-file-container">
+        <div
+          class="file-image"
+          [ngStyle]="{
+            'background-image': customerSigFormObj.uploadedFile
+              ? 'url(' + customerSigFormObj.Url + ')'
+              : 'url(../../../../../assets/images/file-img.png)',
+            'background-size': customerSigFormObj.uploadedFile && 'cover'
+          }"></div>
+        <div class="footer py-12 px-16 d-flex justify-content-between">
+          <div class="info align-self-center">
+            <p class="mt-0 mb-4 size-5">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.CHANGE_OF_MANDATE_APPLICATION_FORM'
+                  | translate
+              }}
+            </p>
+            <span class="size-5">{{
+              'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.THE_FILE_SHOULD_NOT_EXCEED_1_MB'
+                | translate
+            }}</span>
+          </div>
+          <div
+            class="icon align-self-center cursor-pointer"
+            (files)="filesDropped($event)"
+            appDragDropDocuments
+            (click)="
+              !customerSigFormObj.uploadedFile &&
+                customerSignatureFormFile.click()
+            ">
+            <input
+              type="file"
+              #customerSignatureFormFile
+              (change)="
+                onDefaultFileChange(
+                  customerSignatureFormFile,
+                  'customerSigFormObj'
+                )
+              "
+              style="display: none" />
+            <mat-icon
+              [svgIcon]="customerSigFormObj.icon"
+              (click)="
+                customerSigFormObj.uploadedFile &&
+                  deleteDefaultFileUpload(
+                    customerSigFormObj,
+                    'customerSigFormObj'
+                  )
+              ">
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="file-col">
+      <div class="empty-file-container">
+        <div
+          class="file-image"
+          [ngStyle]="{
+            'background-image': newSignatureObj.uploadedFile
+              ? 'url(' + newSignatureObj.Url + ')'
+              : 'url(../../../../../assets/images/file-img.png)',
+            'background-size': newSignatureObj.uploadedFile && 'cover'
+          }"></div>
+        <div class="footer py-12 px-16 d-flex justify-content-between">
+          <div class="info align-self-center">
+            <p class="mt-0 mb-4 size-5">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.BOARD_OF_RESOLUTION'
+                  | translate
+              }}
+            </p>
+            <span class="size-5">{{
+              'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.THE_FILE_SHOULD_NOT_EXCEED_1_MB'
+                | translate
+            }}</span>
+          </div>
+          <div
+            class="icon align-self-center cursor-pointer"
+            (files)="filesDropped($event)"
+            appDragDropDocuments
+            (click)="!newSignatureObj.uploadedFile && newSignatureFile.click()">
+            <input
+              type="file"
+              #newSignatureFile
+              (change)="
+                onDefaultFileChange(newSignatureFile, 'newSignatureObj')
+              "
+              style="display: none" />
+            <mat-icon
+              [svgIcon]="newSignatureObj.icon"
+              (click)="
+                newSignatureObj.uploadedFile &&
+                  deleteDefaultFileUpload(newSignatureObj, 'newSignatureObj')
+              ">
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="file-col">
+      <div class="empty-file-container">
+        <div
+          class="file-image"
+          [ngStyle]="{
+            'background-image': profilePhotoObj.uploadedFile
+              ? 'url(' + profilePhotoObj.Url + ')'
+              : 'url(../../../../../assets/images/file-img.png)',
+            'background-size': profilePhotoObj.uploadedFile && 'cover'
+          }"></div>
+        <div class="footer py-12 px-16 d-flex justify-content-between">
+          <div class="info align-self-center">
+            <p class="mt-0 mb-4 size-5">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.LETTER_OF_DSDO'
+                  | translate
+              }}
+            </p>
+            <span class="size-5">{{
+              'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.THE_FILE_SHOULD_NOT_EXCEED_10_MB'
+                | translate
+            }}</span>
+          </div>
+          <div
+            class="icon align-self-center cursor-pointer"
+            (files)="filesDropped($event)"
+            appDragDropDocuments
+            (click)="!profilePhotoObj.uploadedFile && profilePhotoFile.click()">
+            <input
+              type="file"
+              #profilePhotoFile
+              (change)="
+                onDefaultFileChange(profilePhotoFile, 'profilePhotoObj')
+              "
+              style="display: none" />
+            <mat-icon
+              [svgIcon]="profilePhotoObj.icon"
+              (click)="
+                profilePhotoObj.uploadedFile &&
+                  deleteDefaultFileUpload(profilePhotoObj, 'profilePhotoObj')
+              ">
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="file-col">
+      <div class="empty-file-container">
+        <div
+          class="file-image"
+          [ngStyle]="{
+            'background-image': profilePhotoObj1.uploadedFile
+              ? 'url(' + profilePhotoObj1.Url + ')'
+              : 'url(../../../../../assets/images/file-img.png)',
+            'background-size': profilePhotoObj1.uploadedFile && 'cover'
+          }"></div>
+        <div class="footer py-12 px-16 d-flex justify-content-between">
+          <div class="info align-self-center">
+            <p class="mt-0 mb-4 size-5">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.CHANGE_OF_MANDATE_LETTER'
+                  | translate
+              }}
+            </p>
+            <span class="size-5">{{
+              'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.THE_FILE_SHOULD_NOT_EXCEED_1_MB'
+                | translate
+            }}</span>
+          </div>
+          <div
+            class="icon align-self-center cursor-pointer"
+            (files)="filesDropped($event)"
+            appDragDropDocuments
+            (click)="
+              !profilePhotoObj1.uploadedFile && profilePhotoFile1.click()
+            ">
+            <input
+              type="file"
+              #profilePhotoFile1
+              (change)="
+                onDefaultFileChange(profilePhotoFile1, 'profilePhotoObj1')
+              "
+              style="display: none" />
+            <mat-icon
+              [svgIcon]="profilePhotoObj1.icon"
+              (click)="
+                profilePhotoObj1.uploadedFile &&
+                  deleteDefaultFileUpload(profilePhotoObj1, 'profilePhotoObj1')
+              ">
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="col document-card"
+      (click)="!obj.uploadedFile && file.click()"
+      [ngStyle]="{
+        'background-image': obj.uploadedFile
+          ? 'url(' + obj.Url + ')'
+          : 'url(' + supportDocumentBackground + ')',
+        'background-size': obj.uploadedFile && 'cover'
+      }"
+      *ngFor="let obj of cloneOfObjects"
+      [ngClass]="{ 'upload-card': obj.uploadedFile }">
+      <div class="radiobuton-container">
+        <mat-icon *ngIf="obj.uploadedFile" svgIcon="ic-radiobutton"></mat-icon>
+      </div>
+      <div style="display: initial">
+        <div class="upload-instruction">
+          <div style="padding: 8px" class="d-flex justify-content-between">
+            <input
+              type="file"
+              #file
+              #attachments
+              (change)="onChange(file, obj)"
+              style="display: none" />
+            <div>
+              <p class="text doc">{{ obj.documentName }}</p>
+              <p class="text instruction">
+                {{
+                  obj.uploadedFile
+                    ? 'File Size:' + ' ' + obj.fileSize
+                    : 'The file should not exceed 1MB'
+                }}
+              </p>
+            </div>
+
+            <div>
+              <mat-icon
+                [svgIcon]="obj.icon"
+                (click)="obj.uploadedFile && deleteUpload(obj)"></mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col drag-drop empty-file-container"
+      (files)="filesDropped($event)"
+      appDragDropDocuments
+      (click)="filedrag.click()">
+      <input
+        type="file"
+        #filedrag
+        (change)="onChange(filedrag)"
+        style="display: none" />
+      <div>
+        <mat-icon
+          height="20px"
+          svgIcon="ic-uploadBackground"
+          style="transform: scale(1.7)"></mat-icon>
+        <p class="text drop-text">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.MANDATE-DOCUMENTS.UPLOAD_DOCUMENTS'
+              | translate
+          }}
+        </p>
+        <p class="text instruction">
+          {{ 'COMMON.DRAG-AND-DROP' | translate
+          }}<span class="drag-text">{{ 'COMMON.BROWSE' | translate }}</span>
+          {{ 'COMMON.FILES-HERE' | translate }}
+        </p>
+      </div>
+    </div>
+  </div>
+</mat-card>

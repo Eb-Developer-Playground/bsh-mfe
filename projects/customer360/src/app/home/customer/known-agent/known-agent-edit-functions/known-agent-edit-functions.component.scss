@@ -1,0 +1,19 @@
+.--item-container {
+  width: 328px;
+}
+
+.--functions-sm-display {
+  overflow-y: scroll;
+}
+
+.w-40{
+  width: 40% !important;
+}
+.functions-row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
+.function-item {
+  flex: 0 0 33.333333%;
+}

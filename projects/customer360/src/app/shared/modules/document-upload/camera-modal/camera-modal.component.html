@@ -1,0 +1,35 @@
+<div mat-dialog-content>
+  <div class="camera-container">
+    <!-- Video Frame for Camera Feed -->
+    <video
+      id="video"
+      width="100%"
+      height="100%"
+      autoplay
+      style="border: 1px solid #ccc; border-radius: 8px"></video>
+  </div>
+
+  <!-- Preview Image -->
+  <div class="preview-container" *ngIf="capturedImage">
+    <img [src]="capturedImage" alt="Captured Image" class="captured-img" />
+  </div>
+</div>
+
+<mat-dialog-actions align="end">
+  <!-- Capture Button -->
+  <button mat-flat-button color="primary" (click)="captureImage()">
+    {{ capturedImage ? 'Retake Image' : 'Capture Image' }}
+  </button>
+
+  <!-- Use Image Button -->
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="!capturedImage"
+    (click)="useImage()">
+    Use Image
+  </button>
+
+  <!-- Close Button -->
+  <button mat-button color="warn" (click)="closeModal()">Close</button>
+</mat-dialog-actions>

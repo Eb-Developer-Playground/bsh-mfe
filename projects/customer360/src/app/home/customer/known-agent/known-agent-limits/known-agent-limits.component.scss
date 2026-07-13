@@ -1,0 +1,16 @@
+.limits-container {
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-label {
+    margin-top: -0.1em;
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+  ::ng-deep
+    .mat-form-field-appearance-fill.mat-form-field-can-float.mat-form-field-should-float
+    .mat-form-field-label,
+  .mat-form-field-appearance-fill.mat-form-field-can-float
+    .mat-input-server:focus
+    + .mat-form-field-label-wrapper
+    .mat-form-field-label {
+    transform: translateY(-0.9em) scale(0.75);
+  }
+}

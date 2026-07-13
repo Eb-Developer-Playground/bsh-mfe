@@ -1,0 +1,37 @@
+<mat-card appearance="outlined" class="main">
+  <mat-card-content>
+    <h3 matCardTitle class="mat-headline-6" style="font-size: 18px">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.CHANGE-OF-SIGNATORY.SELECT-ACCOUNT'
+          | translate
+      }}
+    </h3>
+    <mat-divider class="mt-2 mb-2"></mat-divider>
+    <div class="fieldset">
+      <form [formGroup]="mandateForm">
+        <div class="wrapSelect">
+          <mat-form-field appearance="fill" style="width: 500px;">
+            <mat-label
+              >{{
+                'COMMON.ACCOUNT'
+                  | translate
+              }}
+            </mat-label>
+            <mat-select
+              [required]="true"
+              formControlName="account"
+              (selectionChange)="onAccountChange($event.value)"
+              >
+              <mat-option
+              *ngFor="let item of filteredAccounts; trackBy: trackByAccount"
+              [disabled]="process === 'AddSignatoryV2' || process === 'RemoveSignatoryV2'"
+              [value]="item.accountNumber">
+              {{ item.accountNumber }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

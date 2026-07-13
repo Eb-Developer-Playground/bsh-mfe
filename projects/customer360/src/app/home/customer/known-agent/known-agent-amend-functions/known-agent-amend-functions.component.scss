@@ -1,0 +1,81 @@
+.--detail-container {
+  .toolbar {
+    background: #ffffff;
+    box-shadow:
+      0px 1px 1px rgba(0, 0, 0, 0.14),
+      0px 2px 1px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+  }
+
+  .icon-display {
+    transform: scale(2);
+  }
+
+  .vl {
+    border-left: 2px solid #92949733;
+    height: 30px;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  ::ng-deep .mat-expansion-panel-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+}
+.main-div {
+  display: flex;
+  flex-direction: row;
+  padding: 24px 0 24px 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.customer-images {
+  flex: 0 0 auto;
+  margin: auto 10px auto 0;
+}
+
+.customer-details-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 90%;
+}
+
+.customer-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-detail-title {
+  color: #929497;
+  margin-bottom: 0;
+}
+
+.customer-detail-content {
+  color: #221f1f;
+  margin-top: 3px;
+}
+.amend-icon {
+  width: 19px;
+  height: 14px;
+  margin: 3px 10px auto auto;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+}
+
+.amendbutton{
+  padding: 6px;
+    &:hover {
+      background-color: rgba(8, 8, 8, 0.04);
+    }
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

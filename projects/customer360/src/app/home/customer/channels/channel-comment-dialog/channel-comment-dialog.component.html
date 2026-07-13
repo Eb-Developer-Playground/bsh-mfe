@@ -1,0 +1,235 @@
+<div matDialogContent>
+    <div class="sub-header">
+        <div class="sub-header-texts">
+            @if (data?.action === 'Register Channel') {
+                <h2>
+                    {{ 'CUSTOMER.CHANNELS.REGISTER' | translate }}
+                    <span class="channel-name">
+
+                @if (isString(data?.productType)) {
+                    {{ data?.productType }}
+                } @else {
+                    {{ data?.productType.channel }}
+                }
+                    </span>
+
+                    {{ 'CUSTOMER.CHANNELS.CHANNEL' | translate }}
+                    ?
+                </h2>
+            }
+
+            @if (data?.action === 'ResetPassword') {
+                <h2>
+                    {{ 'CUSTOMER.CHANNELS.RESET' | translate }}
+                    <span class="channel-name">
+                    {{ data?.channel }}
+                </span>
+
+                    @if (data?.channel === 'Mobile') {
+                        <span class="channel-name">
+                        ({{ data?.subChannel }})
+                    </span>
+                    }
+
+                    @if (data?.channel === 'Mobile' || data?.channel === 'Web') {
+                        <span>
+                        {{ 'CUSTOMER.CHANNELS.PASSWORD' | translate }}
+                    </span>
+                    }
+
+                    @if (data?.channel === 'Chatbot' || data?.channel === 'USSD') {
+                        <span>
+                        {{ 'CUSTOMER.CHANNELS.PIN' | translate}}
+                    </span>
+                    }
+                    ?
+                </h2>
+            }
+
+            @if (data?.action === 'ChangeProfileLevel') {
+                <h2>
+                    {{ 'CUSTOMER.CHANNELS.LIFTCOOLOFF-TIME' | translate }}
+                    <span class="channel-name">
+                    {{ data?.channel }}
+                </span>
+
+                    @if (data?.channel === 'Mobile') {
+                        <span class="channel-name">
+                        ({{ data?.subChannel }})
+                    </span>
+                    }
+                    ?
+                </h2>
+            }
+
+            @if (data?.action === 'UnblockProfile') {
+                <h2>
+                    {{ 'CUSTOMER.CHANNELS.UNBLOCK-CUSTOMER-PROFILE' | translate }}
+                    ?
+                </h2>
+            }
+
+            @if (data?.action === 'UnblockChannel') {
+                <h2>
+                    {{ 'CUSTOMER.CHANNELS.UNBLOCK' | translate }}
+                    <span class="channel-name">
+                    {{ data?.channel }}
+                </span>
+
+                    @if (data?.channel === 'Mobile') {
+                        <span class="channel-name">
+                        ({{ data?.subChannel }})
+                    </span>
+                    }
+                    {{ 'CUSTOMER.CHANNELS.CHANNEL' | translate }}
+                    ?
+                </h2>
+            }
+
+
+            @if (data?.action === 'BlockChannel') {
+                <h2>
+                    {{ 'CUSTOMER.CHANNELS.BLOCK' | translate }}
+                    <span class="channel-name">
+                    {{ data?.channel }}
+                </span>
+                    @if (data?.channel === 'Mobile') {
+                        <span class="channel-name">
+                        ({{ data?.subChannel }})
+                    </span>
+                    }
+
+                    {{ 'CUSTOMER.CHANNELS.CHANNEL' | translate }}?
+                </h2>
+            }
+        </div>
+
+        <mat-icon color="primary" class="cursor-pointer" mat-dialog-close>
+            {{ 'CUSTOMER.CHANNELS.CLOSE' | translate }}
+        </mat-icon>
+    </div>
+
+    <div>
+        <p class="checker-message">
+            {{ 'CUSTOMER.CHANNELS.GIVE-REASON' | translate }}
+
+            @if (data?.action === 'BlockChannel') {
+                <span>
+                {{ 'CUSTOMER.CHANNELS.BLOCKING' | translate }}
+            </span>
+            }
+
+            @if (data?.action === 'UnblockChannel' || data?.action === 'UnblockProfile') {
+                <span>
+                {{ 'CUSTOMER.CHANNELS.UNBLOCKING' | translate }}
+            </span>
+            }
+
+            @if (data?.action === 'ResetPassword') {
+                <span>
+                {{ 'CUSTOMER.CHANNELS.RESETTING' | translate }}
+            </span>
+            }
+
+            @if (data?.action === 'ChangeProfileLevel') {
+                <span >
+                {{ 'CUSTOMER.CHANNELS.LIFTCOOLOFF-STATUS' | translate }}
+            </span>
+            }
+
+            @if (data?.action === 'Register Channel') {
+                <span>
+                {{ 'CUSTOMER.CHANNELS.REGISTERING' | translate }}
+            </span>
+            }
+            {{ 'CUSTOMER.CHANNELS.BELOW' | translate }}
+        </p>
+    </div>
+
+    <form [formGroup]="commentForm">
+
+        <!--      Comment Section-->
+        <mat-form-field appearance="fill">
+            <input
+                matInput
+                placeholder="Reason*"
+                formControlName="comments"
+                #comment
+                maxlength="100" />
+            <mat-hint align="end"> {{ comment.value.length }}/{{ 100 }} </mat-hint>
+            @if (commentForm.get('comments')?.hasError('required')) {
+                <mat-error>
+                <span>
+                    {{ 'CUSTOMER.CHANNELS.REASON-IS' | translate }}
+                    {{ 'COMMON.REQUIRED' | translate }}
+                </span>
+                </mat-error>
+            }
+        </mat-form-field>
+
+        <!--      Selection of OTP transfer option-->
+        @if(data?.action === 'ResetPassword') {
+            <div>
+                <p class="checker-message">
+                    Please select preferred OTP destination below
+                </p>
+                <mat-radio-group class="d-flex flex-column w-100" color="primary" formControlName="otpDestination">
+                    <mat-radio-button class="mb-15 w-100" value="Sms">SMS</mat-radio-button>
+                    <mat-radio-button class="mb-15 w-100" value="Email">Email</mat-radio-button>
+                </mat-radio-group>
+                @if (commentForm.get('otpDestination')?.hasError('required')) {
+                    <mat-error>
+                <span>
+                    OTP Destination is Required
+                    {{ 'COMMON.REQUIRED' | translate }}
+                </span>
+                    </mat-error>
+                }
+            </div>
+        }
+
+    </form>
+    <div class="buttons-div">
+        <button mat-button mat-dialog-close color="primary">
+            {{ 'COMMON.NO-GO-BACK' | translate }}
+        </button>
+        <button
+            mat-button
+            mat-flat-button
+            color="primary"
+            class="--details-btn"
+            [disabled]="!commentForm.valid"
+            (click)="submit()">
+
+            @if (data?.action === 'BlockChannel') {
+                <span>
+                {{ 'CUSTOMER.CHANNELS.BLOCK-CONFIRM' | translate }}
+            </span>
+            }
+
+            @if ( data?.action === 'UnblockChannel' || data?.action === 'UnblockProfile') {
+                <span>
+                {{ 'CUSTOMER.CHANNELS.UNBLOCK-CONFIRM' | translate }}
+            </span>
+            }
+
+            @if (data?.action === 'ResetPassword') {
+                <span>
+                {{ 'CUSTOMER.CHANNELS.RESET-CONFIRM' | translate }}
+            </span>
+            }
+
+            @if (data?.action === 'ChangeProfileLevel') {
+                <span>
+                {{ 'CUSTOMER.CHANNELS.CONTINUE' | translate }}
+            </span>
+            }
+
+            @if (data?.action === 'Register Channel') {
+                <span>
+                {{'CUSTOMER.CHANNELS.REGISTER-CONFIRM' | translate }}
+            </span>
+            }
+        </button>
+    </div>
+</div>

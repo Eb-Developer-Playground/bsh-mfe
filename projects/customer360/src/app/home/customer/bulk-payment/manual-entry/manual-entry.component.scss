@@ -1,0 +1,282 @@
+// .container{
+//     // height: 80%;
+//     // overflow-y: scroll;
+// }
+hr {
+  background-color: rgba(146, 148, 151, 0.2) !important;
+  margin-block-start: 0em;
+  margin-block-end: 1rem;
+  opacity: 0.35;
+  margin-bottom: 0;
+}
+
+.subtitle-text {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  color: #929497;
+  margin-top: 5px;
+}
+
+.title-text {
+  margin-bottom: 0;
+  margin-top: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  color: #221f1f;
+}
+
+.mt-2 {
+  margin-top: 2rem !important;
+}
+
+.me-2 {
+  margin-right: 2rem;
+}
+
+.top-icons {
+  display: flex;
+}
+
+::ng-deep.mat-expansion-indicator::after {
+  color: #a32a29 !important;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+  color: #2c2c2d;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: #221f1f;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: grey;
+}
+
+::ng-deep .mat-mdc-outlined-button {
+  border-color: #a32a29 !important;
+}
+
+@media (max-width: 768px) {
+  mat-form-field {
+    width: calc(100% - 48px);
+    width: 100%;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.inline-input {
+  display: flex;
+  gap: 2px;
+  width: 240px;
+}
+
+.mat-mdc-select-panel-wrap {
+  padding: 12px;
+}
+
+.sub-header {
+  display: flex;
+  gap: 20px;
+}
+
+mat-mdc-option {
+  padding: 30px 0px 30px 15px;
+}
+
+.account-text {
+  padding: 15px 0;
+
+  .debit-title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #221f1f;
+    margin: 0;
+  }
+
+  .debit-desc {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #929497;
+    margin: 0;
+  }
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.mat-expansion-panel:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}
+
+.mat-mdc-mini-fab:not([class*='mat-elevation-z']) {
+  box-shadow: none;
+}
+
+.pop-up-title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0 16px;
+  color: #221f1f;
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  margin-right: 0;
+}
+
+mat-expansion-panel {
+  display: contents;
+}
+
+.fieldset {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  // position: absolute;
+  width: 1000px;
+  padding-bottom: 15px;
+  margin-top: 1.5rem;
+  // gap: 1px;
+}
+
+.--select-flag {
+  width: 92px;
+}
+
+.--icon-flag {
+  width: 12px;
+}
+
+.--clickable {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.--radius-container {
+  width: 100%;
+  border: 1px solid rgba(146, 148, 151, 0.2);
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.--plus-icon {
+  width: 12px;
+  height: auto;
+}
+
+.icon-disabled {
+  border-color: #e9eaea !important;
+  background-color: #e9eaea !important;
+  color: #929497 !important;
+}
+
+.icon-tick {
+  height: 40px;
+  width: 40px;
+}
+
+.check {
+  vertical-align: middle;
+}
+
+.trash-icon {
+  height: 2rem !important;
+  width: 2rem !important;
+}
+
+.wrapInput {
+  .mat-mdc-form-field {
+    width: 240px;
+    height: 47px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-right: 8px;
+    margin-right: 1.5rem;
+    display: table-cell;
+  }
+}
+
+.subtitle {
+  font-size: 14px;
+  color: grey;
+}
+
+.mat-headline-6 {
+  margin: 0 !important;
+}
+
+.close-icon {
+  transform: scale(0.53);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #d3d3d3;
+  height: 40px;
+  border-radius: 20px;
+  outline: none;
+  background-color: #f7f7f7;
+  font-size: 16px;
+
+  input {
+    width: 280px;
+  }
+
+  padding: 0 15px;
+
+  .clear-search {
+    margin-right: 4px;
+    padding-right: 4px;
+    border-right: 2px solid #929497;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  .search-mats-icons {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.search-bar:focus-within {
+  border: 1px solid #a32a29;
+
+  .search-icon {
+    color: #a32a29;
+  }
+}
+
+.text-grey {
+  color: #929497;
+}
+
+.search-form {
+  padding: 10px;
+}

@@ -1,0 +1,202 @@
+<div class="delink">
+    <div class="topbar">
+        <mat-toolbar class="toolbar">
+            <div>
+                <span class="title">Delink Account</span>
+                <span class="vl"></span>
+                <span class="toolbar-page">Details</span>
+            </div>
+        </mat-toolbar>
+    </div>
+
+    <mat-card  appearance="outlined" class="custom-card">
+        <mat-card-content>
+            <p class="fw-600">
+                Permanently delinking an account from a channel
+            </p>
+            <p>
+                After permanently delinking an account, the customer won’t be
+                able to link the account again from their channels. This can
+                only be restored at back office, following a customer request.
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card  appearance="outlined" class="mt-2">
+        <mat-card-content class="d-block">
+            <div
+                style="display: flex; justify-content: flex-start; align-items: center"
+                class="mb-16"
+            >
+                <div class="name-avatar">
+                    <p class="p-text">
+                        {{ getAvatarName(account?.accountName) }}
+                    </p>
+                </div>
+                <div>
+                    {{ account?.accountName }}
+                    @if (isPrimary) {
+                        <span class="text-muted"
+                            >&nbsp;(Primary)</span
+                        >
+                    }
+                    <p class="m-0 text-muted">
+                        {{ account?.accountNumber }} • {{ account?.accountType }}
+                    </p>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div>
+                <div class="customer-details-container">
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Account holder</p>
+                        <p class="customer-detail-content">
+                            {{ account?.accountName }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Account type</p>
+                        <p class="customer-detail-content">
+                            {{ account?.accountType }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Currency</p>
+                        <p class="customer-detail-content">
+                            {{ account?.accountCurrency }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Balance</p>
+                        <p class="customer-detail-content">
+                            {{ getBalance(account?.accountNumber) | number : "1.2-2" }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Customer's role</p>
+                        <p class="customer-detail-content">
+                            {{
+                            getRole(
+                            account?.mandate,
+                            account?.accountNumber
+                            )
+                            }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Status</p>
+                        <p class="customer-detail-content">
+                            {{ account?.status }}
+                        </p>
+                    </div>
+                    <div class="customer-detail">
+                        <p class="customer-detail-title">Channel</p>
+                        <p class="customer-detail-content">
+                            {{ activeChannel?.channel?.channel }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <form [formGroup]="delinkAccountForm" autocomplete="off" class="level-form">
+        <mat-card class="mt-2">
+            <mat-card-content class="d-block">
+                <div style="display: flex; justify-content: flex-start; align-items: center"
+                    class="mb-16">
+                    <div>
+                        <p class="p-title m-0 mb-05">Delinking options</p>
+                        <p class="m-0 text-muted">
+                            Please select one of the options below
+                        </p>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div>
+                    <mat-radio-group aria-label="Select an option" class="d-flex" formControlName="isPermanent">
+                        <mat-radio-button color="primary" class="m-1 flex-1" [value]="true">
+                            <div>
+                                <p class="fw-400 m-0 mb-05">Permanent delinking</p>
+                                <p class="m-0 text-muted">
+                                    The account will no longer be available for
+                                    viewing or re-linking on any of the customer’s
+                                    channels
+                                </p>
+                            </div>
+                        </mat-radio-button>
+                        <mat-radio-button color="primary" class="m-1 flex-1" [value]="false">
+                            <div>
+                                <p class="fw-400 m-0 mb-05">
+                                    Provisional delinking
+                                </p>
+                                <p class="m-0 text-muted">
+                                    The account will still be available for viewing
+                                    and re-linking on all of the customer’s channels
+                                </p>
+                            </div>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card appearance="outlined" class="mt-2">
+            <mat-card-content class="d-block">
+                <div style="display: flex; justify-content: flex-start; align-items: center"
+                    class="mb-16">
+                    <div>
+                        <p class="p-title m-0 mb-05">
+                            Additional comments
+                        </p>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <br>
+
+                <!-- <mat-form-field fxFlex="50" appearance="fill" class="w-25">
+                    <mat-label>Comments</mat-label>
+                    <input
+                        matInput
+                        [maxLength]="100"
+                        placeholder="Comments"
+                        autocomplete="off"
+                        #comment
+                        formControlName="comments"
+                    />
+                    <mat-hint align="end">
+                        {{ comment.value.length }}/{{ 100 }}
+                    </mat-hint>
+                </mat-form-field> -->
+
+                <mat-form-field appearance="fill" style="flex: 1" class="w-25">
+                    <mat-label>Reason</mat-label>
+                    <mat-select formControlName="comments" name="comments">
+                        @for (reason of delinkReasons; track reason) {
+                            <mat-option [value]="reason">
+                                {{reason}}
+                            </mat-option>
+                        }
+                    </mat-select>
+                    @if (delinkAccountForm.get('comments')?.hasError('required')) {
+                        <mat-error>
+                            <span>Reason is {{ "COMMON.REQUIRED" | translate }} </span>
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+            </mat-card-content>
+        </mat-card>
+
+    </form>
+    <div class="mt-24 d-flex justify-content-between">
+        <button type="button" mat-stroked-button color="primary" style="width: 130px; border-color: #a32a29"
+            class="py-12 px-48 mr-24" (click)="quit()">
+            {{ "CUSTOMER.SEARCH.QUIT" | translate }}
+        </button>
+        <button type="submit" mat-flat-button style="width: 130px" color="primary" class="py-12 px-48"
+            (click)="delinkAccount(isPrimary)" [disabled]="delinkAccountForm.invalid">
+            Continue
+        </button>
+    </div>
+</div>

@@ -1,0 +1,357 @@
+<div class="known-agent-view-agent-details container">
+  <div class="fx-column fx-fill fx-flex fx-align-start-start">
+    <div class="topbar mb-24 w-100" *ngIf="!hideHeader">
+      <mat-toolbar class="toolbar">
+        <div
+          class="fx-row fx-flex fx-align-start-center fx-gap-12px">
+          <p class="mat-headline-5 m-0">
+            {{ 'KNOWN-AGENT.DETAILS.HEADER' | translate }}
+          </p>
+          <span class="vl"></span>
+          <p class="mat-body-2 text-muted m-0">
+            {{ 'KNOWN-AGENT.DETAILS.SUBHEADER' | translate }}
+          </p>
+        </div>
+        <app-pills
+          color="green"
+          text="CUSTOMER.CUSTOMER-PROFILE.ACTIVE"></app-pills>
+      </mat-toolbar>
+    </div>
+
+    <div class="mb-16 w-100">
+      <mat-accordion mat-dialog-content color="primary" class="w-100">
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div
+                class="fx-row fx-flex fx-align-start-start fx-fill pt-16 pb-16">
+                <div class="fx-align-center-center circle-name-avatar">
+                  {{
+                    getAvatarName(
+                      agentData?.firstName + ' ' + agentData?.lastName
+                    )
+                  }}
+                </div>
+
+                <div
+                  class="fx-column fx-align-start-start fx-flex pl-24">
+                  <p class="mat-subtitle-1 m-0">
+                    {{ agentData?.firstName }} {{ agentData?.lastName }}
+                  </p>
+                  <p class="mat-body-2 text-muted m-0">
+                    {{ agentData?.datecreated?.substr(0, 10) }}
+                  </p>
+                </div>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="fx-column fx-flex fx-align-start-start pt-24">
+            <div class="fx-row fx-flex fx-align-start-start w-100">
+              <div class="main-div">
+                <div class="customer-images">
+                  <app-legacy-customer-image 
+                    *ngIf="accountNumber && customerId"
+                    [acc]="accountNumber" 
+                    [cif]="customerId">
+                  </app-legacy-customer-image>
+                  
+                  <div *ngIf="!accountNumber || !customerId" class="manual-placeholder">
+                    <div class="photo-placeholder">
+                    </div>
+                    <div class="signature-placeholder">
+                    </div>
+                  </div>
+                </div>
+                  
+                <div class="customer-details-content">
+                  <div class="customer-details-container">
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'KNOWN-AGENT.FIRST-NAME' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ agentData?.firstName }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'KNOWN-AGENT.MIDDLE-NAME' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ agentData?.middleName }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'KNOWN-AGENT.LAST-NAME' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ agentData?.lastName }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'COMMON.GENDER' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ agentData?.gender === 'F' ? 'Female' : 'Male' }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'COMMON.NATIONALITY' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ knownAgentDetails?.nationality }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'COMMON.COUNTRY-OF-RESIDENCE' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ knownAgentDetails?.countryOfResidence }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'COMMON.DATE-OF-BIRTH' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ agentData?.dateOfBirth | date: 'YYYY-MM-dd' }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'COMMON.PLACE-OF-BIRTH' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ knownAgentDetails?.placeOfBirth }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'COMMON.REGION' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ knownAgentDetails?.region }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'COMMON.MARITAL-STATUS' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ knownAgentDetails?.maritalStatus }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'FORMS.PERSONAL_DETAILS.LABELS.PREFERRED_LANGUAGE' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{knownAgentDetails?.language|| knownAgentDetails?.preferredLanguageCode }}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'KNOWN-AGENT.CIF' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ agentData?.custId}}
+                      </p>
+                    </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        {{ 'COMMON.ID-TYPE' | translate }}
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ agentData?.documentIdType || knownAgentDetails?.identityDocumentType }}
+                      </p>
+                    </div>
+                <div class="customer-detail">
+                  <p class="customer-detail-title">
+                    {{ 'COMMON.ID-NUMBER' | translate }}
+                  </p>
+                  <p class="customer-detail-content">
+                    {{ agentData?.id || knownAgentDetails?.identityDocumentNumber }}
+                  </p>
+                </div>
+                    <div class="customer-detail">
+                      <p class="customer-detail-title">
+                        Tax number
+                      </p>
+                      <p class="customer-detail-content">
+                        {{ agentData?.kraPin }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+            <div
+              class="fx-column fx-flex fx-align-start-start pt-58 w-100">
+              <mat-divider class="w-100"></mat-divider>
+              <div class="mt-16">
+                <h3 class="mat-headline-6 fw-400 mb-0">
+                  {{ 'KNOWN-AGENT.REQUIRED-DOCUMENTS' | translate }}
+                </h3>
+              </div>
+
+              <app-documents-review
+                class="w-100"
+                [contentOnly]="true"
+                [documents]="supportDocuments">
+              </app-documents-review>
+              <!-- <app-document-cards class="mt-32 w-100"[RequiredDocuments]="supportDocuments"></app-document-cards> -->
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="mb-16 w-100">
+      <mat-accordion
+        mat-dialog-content
+        color="primary"
+        class="w-100 mb-16"
+        *ngIf="agentData">
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <p class="mat-headline-6 m-0">
+                {{ 'KNOWN-AGENT.CONTACT-DETAILS' | translate }}
+              </p>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div
+            class="fx-row fx-wrap fx-flex fx-align-start-start fx-fill pt-2">
+            <div class="fx-column fx-align-center-start fx-flex">
+              <p class="mat-body-2 text-muted m-0">
+                {{ 'KNOWN-AGENT.PRIMARY-PHONE-NUMBER' | translate }}
+              </p>
+              <p class="mat-subtitle-1">{{ agentData.phoneNumber1 }}</p>
+            </div>
+
+            <div
+              class="fx-column fx-align-center-start fx-flex"
+              *ngIf="agentData.phoneNumber2">
+              <p class="mat-body-2 text-muted m-0">
+                {{ 'KNOWN-AGENT.SECONDARY-MOBILE-NUMBER' | translate }}
+              </p>
+              <p class="mat-subtitle-1">{{ agentData?.phoneNumber2 }}</p>
+            </div>
+
+            <div class="fx-column fx-align-center-start fx-flex">
+              <p class="mat-body-2 text-muted m-0">
+                {{ 'KNOWN-AGENT.PRIMARY-EMAIL-ADDRESS' | translate }}
+              </p>
+              <p class="mat-subtitle-1">{{ agentData?.email }}</p>
+            </div>
+
+            <div
+              class="fx-column fx-align-center-start fx-flex"
+              *ngIf="agentData.email2">
+              <p class="mat-body-2 text-muted m-0">
+                {{ 'KNOWN-AGENT.SECONDARY-EMAIL-ADDRESS' | translate }}
+              </p>
+              <p class="mat-subtitle-1">{{ agentData?.email2 }}</p>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="mb-16 w-100">
+      <mat-accordion
+        mat-dialog-content
+        color="primary"
+        class="w-100 mb-16"
+        *ngIf="agentData">
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <p class="mat-headline-6 m-0">
+                {{ 'KNOWN-AGENT.AGENT-FUNCTIONS' | translate }}
+              </p>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div
+            class="fx-wrap fx-flex fx-align-start-start fx-fill pt-28">
+            <div
+              class="fx-column fx-align-center-start"
+              [style.flex]="agentData?.isBshFunction ? '0 0 25%' : '0 0 100%'"
+              *ngFor="let functionName of agentData.agentFunctions">
+              <p
+                class="mat-body-2 text-muted m-0"
+                *ngIf="agentData?.isBshFunction">
+                {{ 'KNOWN-AGENT.FUNCTIONS.NAME' | translate }}
+              </p>
+
+              <p
+                class="mat-body-2 text-muted m-0"
+                *ngIf="!agentData?.isBshFunction">
+                {{ 'KNOWN-AGENT.FUNCTIONS.TITLE' | translate }}
+              </p>
+
+                <p class="mat-subtitle-1 function-text">
+                  {{ 'KNOWN-AGENT.FUNCTIONS.' + functionName?.name | translate }}
+                </p>
+              </div>
+
+              <div class="fx-column fx-align-center-start fx-flex">
+                <p class="mat-body-2 text-muted m-0">
+                  {{ 'COMMON.EFFECTIVE-DATE' | translate }}
+                </p>
+                <p class="mat-subtitle-1">{{ agentData?.effectiveDate | date: 'dd-MM-yyyy' }}</p>
+              </div>
+              
+            
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="mb-16 w-100">
+      <mat-accordion
+        mat-dialog-content
+        color="primary"
+        class="w-100 mb-16"
+        *ngIf="agentData && showAgentLimits">
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <p class="mat-headline-6 m-0">
+                {{ 'KNOWN-AGENT.LIMITS.TITLE' | translate }}
+              </p>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div
+            class="fx-column fx-align-center-start fx-flex pt-28">
+            <p class="mat-body-2 text-muted m-0">
+              {{ 'KNOWN-AGENT.LIMITS.CASH-LIMITS' | translate }}
+            </p>
+            <p class="mat-subtitle-1">
+              {{ agentData?.agentLimit | number: '1.2-2' }} {{ agentData?.currencyCode }}
+            </p>            
+          </div>
+          
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div
+      class="fx-row fx-fill fx-flex fx-align-end-center"
+      *ngIf="!hideFooter">
+      <!-- <button mat-stroked-button color="primary" class="btn-outline" routerLink="/admin/user-management/create-role" >{{'COMMON.QUIT' | translate}}</button> -->
+      <button mat-raised-button color="primary" (click)="back()">
+        {{ 'COMMON.BACK' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

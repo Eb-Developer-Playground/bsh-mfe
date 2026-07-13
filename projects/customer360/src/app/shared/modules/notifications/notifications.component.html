@@ -1,0 +1,16 @@
+<div [class]="notificationClass" class="notification-container p-16">
+  <ng-container *ngIf="!notificationsContentTemplate">
+    <div class="d-flex justify-content-between">
+      <span class="title" *ngIf="title">{{ title }}</span>
+      <mat-icon svgIcon="ic-info"></mat-icon>
+    </div>
+    <p class="mx-0 mb-0 text mt-8">
+      {{ text }}
+    </p>
+  </ng-container>
+  <ng-container *ngIf="notificationsContentTemplate">
+    <ng-container
+      *ngTemplateOutlet="notificationsContentTemplate.template"></ng-container>
+  </ng-container>
+  <div *ngIf="showLeftBorder" [class]="leftBorderClass"></div>
+</div>

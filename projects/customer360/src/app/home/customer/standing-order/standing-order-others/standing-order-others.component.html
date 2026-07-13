@@ -1,0 +1,65 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="topbar">
+      <mat-toolbar class="toolbar">
+        <div>
+          <span class="title">{{
+            'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER'
+              | translate
+          }}</span>
+          <span class="vl"></span>
+          <span class="toolbar-page">{{
+            'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.CREATE-REQUEST'
+              | translate
+          }}</span>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+  <app-account-detail-section
+    (isActiveStatus)="isActiveAccount($event)"
+    (selectedAccountChange)="
+      accountChange($event)
+    "></app-account-detail-section>
+    
+  <div *ngIf="isAccountActive" class="bottom-section">
+    <app-standing-order-list
+      [standingOrders]="standingOrders"
+      (onStandingOrderSelect)="
+        onSelectStandingOrder($event)
+      "></app-standing-order-list>
+
+    <div class="pb-15 space-between" style="margin-top: 15px">
+      <button
+        mat-stroked-button
+        color="primary"
+        class="btn-outline"
+        style="width: 90px"
+        (click)="goBack()">
+        {{ 'COMMON.BACK' | translate }}
+      </button>
+      <span style="flex: 1 1 auto;"></span>
+      <button
+        *ngIf="isAmendStopActive"
+        mat-stroked-button
+        class="btn-outline back-btn"
+        color="primary"
+        style="width: 227px"
+        [routerLink]="['/services/standing-order/stop-standing-order']">
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STOP-STANDING-ORDER'
+            | translate
+        }}
+      </button>
+      <button
+        *ngIf="isAmendStopActive"
+        mat-flat-button
+        color="primary"
+        class="ml-15"
+        style="width: 200px"
+        [routerLink]="['/services/standing-order/amend-standing-order']">
+        {{ 'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.AMEND-TITLE' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

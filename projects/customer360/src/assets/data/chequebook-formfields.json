@@ -1,0 +1,832 @@
+{
+  "statusCode": "00",
+  "statusMessage": "success",
+  "successful": true,
+  "responseObject": {
+    "allowDifferentCollectionBranch": "Yes",
+    "branches": [
+      {
+        "solId": "063",
+        "description": "KAWANGWARE BRANCH"
+      },
+      {
+        "solId": "090",
+        "description": "TALA BRANCH"
+      },
+      {
+        "solId": "092",
+        "description": "NANDI HILLS BRANCH"
+      },
+      {
+        "solId": "027",
+        "description": "NANYUKI"
+      },
+      {
+        "solId": "043",
+        "description": "GIKOMBA BRANCH"
+      },
+      {
+        "solId": "055",
+        "description": "WESTLANDS BRANCH"
+      },
+      {
+        "solId": "079",
+        "description": "VOI BRANCH"
+      },
+      {
+        "solId": "093",
+        "description": "GITHUNGURI BRANCH"
+      },
+      {
+        "solId": "100",
+        "description": "MANDERA BRANCH"
+      },
+      {
+        "solId": "117",
+        "description": "KIBERA"
+      },
+      {
+        "solId": "016",
+        "description": "NYAHURURU BRANCH"
+      },
+      {
+        "solId": "007",
+        "description": "KANGARI BRANCH"
+      },
+      {
+        "solId": "018",
+        "description": "COMMUNITY CORPORATE"
+      },
+      {
+        "solId": "028",
+        "description": "KERICHO BRANCH"
+      },
+      {
+        "solId": "030",
+        "description": "ELDORET BRANCH"
+      },
+      {
+        "solId": "029",
+        "description": "KISUMU BRANCH"
+      },
+      {
+        "solId": "026",
+        "description": "KIMATHI BRANCH"
+      },
+      {
+        "solId": "037",
+        "description": "NKUBU BRANCH"
+      },
+      {
+        "solId": "041",
+        "description": "ISIOLO BRANCH"
+      },
+      {
+        "solId": "042",
+        "description": "KAGIO BRANCH"
+      },
+      {
+        "solId": "088",
+        "description": "OTC BRANCH"
+      },
+      {
+        "solId": "114",
+        "description": "KENGELENI BRANCH"
+      },
+      {
+        "solId": "025",
+        "description": "MOMBASA"
+      },
+      {
+        "solId": "014",
+        "description": "MERU"
+      },
+      {
+        "solId": "023",
+        "description": "MOLO"
+      },
+      {
+        "solId": "020",
+        "description": "NAIVASHA"
+      },
+      {
+        "solId": "024",
+        "description": "HARAMBEE"
+      },
+      {
+        "solId": "019",
+        "description": "EMBU"
+      },
+      {
+        "solId": "004",
+        "description": "KARATINA"
+      },
+      {
+        "solId": "010",
+        "description": "KERUGOYA"
+      },
+      {
+        "solId": "038",
+        "description": "MWEA BRANCH"
+      },
+      {
+        "solId": "039",
+        "description": "MATUU BRANCH"
+      },
+      {
+        "solId": "047",
+        "description": "MOI AVENUE"
+      },
+      {
+        "solId": "044",
+        "description": "UKUNDA BRANCH"
+      },
+      {
+        "solId": "059",
+        "description": "MWINGI BRANCH"
+      },
+      {
+        "solId": "003",
+        "description": "KANGEMA"
+      },
+      {
+        "solId": "069",
+        "description": "LIMURU BRANCH"
+      },
+      {
+        "solId": "077",
+        "description": "GILGIL"
+      },
+      {
+        "solId": "078",
+        "description": "BUSIA"
+      },
+      {
+        "solId": "082",
+        "description": "DONHOLM"
+      },
+      {
+        "solId": "060",
+        "description": "MACHAKOS BRANCH"
+      },
+      {
+        "solId": "067",
+        "description": "WOTE BRANCH"
+      },
+      {
+        "solId": "110",
+        "description": "MARALAL BRANCH"
+      },
+      {
+        "solId": "054",
+        "description": "DIASPORA BRANCH"
+      },
+      {
+        "solId": "065",
+        "description": "KAYOLE"
+      },
+      {
+        "solId": "066",
+        "description": "GATUNDU BRANCH"
+      },
+      {
+        "solId": "086",
+        "description": "KAJIADO BRANCH"
+      },
+      {
+        "solId": "070",
+        "description": "KITENGELA BRANCH"
+      },
+      {
+        "solId": "075",
+        "description": "BONDO"
+      },
+      {
+        "solId": "076",
+        "description": "MBITA POINT"
+      },
+      {
+        "solId": "080",
+        "description": "ENTERPRISE BRANCH"
+      },
+      {
+        "solId": "084",
+        "description": "EASTLEIGH BRANCH"
+      },
+      {
+        "solId": "085",
+        "description": "NAMANGA BRANCH"
+      },
+      {
+        "solId": "087",
+        "description": "RUIRU BRANCH"
+      },
+      {
+        "solId": "005",
+        "description": "KIRIANI"
+      },
+      {
+        "solId": "006",
+        "description": "MURARANDIA"
+      },
+      {
+        "solId": "008",
+        "description": "OTHAYA"
+      },
+      {
+        "solId": "021",
+        "description": "CHUKA"
+      },
+      {
+        "solId": "057",
+        "description": "KIKUYU BRANCH"
+      },
+      {
+        "solId": "062",
+        "description": "OL-KALAO BRANCH"
+      },
+      {
+        "solId": "071",
+        "description": "GITHURAI"
+      },
+      {
+        "solId": "072",
+        "description": "KITUI"
+      },
+      {
+        "solId": "091",
+        "description": "NGARA BRANCH"
+      },
+      {
+        "solId": "102",
+        "description": "MOYALE BRANCH"
+      },
+      {
+        "solId": "032",
+        "description": "KARIOBANGI"
+      },
+      {
+        "solId": "034",
+        "description": "THIKA KENYATTA HIGHWAY"
+      },
+      {
+        "solId": "036",
+        "description": "NAROK"
+      },
+      {
+        "solId": "050",
+        "description": "KAKAMEGA BRANCH"
+      },
+      {
+        "solId": "051",
+        "description": "KISII BRANCH"
+      },
+      {
+        "solId": "052",
+        "description": "NYAMIRA BRANCH"
+      },
+      {
+        "solId": "053",
+        "description": "LITEIN"
+      },
+      {
+        "solId": "068",
+        "description": "MUMIAS BRANCH"
+      },
+      {
+        "solId": "099",
+        "description": "LODWAR BRANCH"
+      },
+      {
+        "solId": "095",
+        "description": "BURU BURU BRANCH"
+      },
+      {
+        "solId": "001",
+        "description": "CORPORATE"
+      },
+      {
+        "solId": "002",
+        "description": "FOUR WAYS"
+      },
+      {
+        "solId": "015",
+        "description": "MAMANGINA"
+      },
+      {
+        "solId": "022",
+        "description": "MURANGA"
+      },
+      {
+        "solId": "017",
+        "description": "COMMUNITY"
+      },
+      {
+        "solId": "000",
+        "description": "HEAD OFFICE"
+      },
+      {
+        "solId": "999",
+        "description": "DATA CENTER"
+      },
+      {
+        "solId": "009",
+        "description": "THIKA"
+      },
+      {
+        "solId": "011",
+        "description": "NYERI"
+      },
+      {
+        "solId": "012",
+        "description": "TOM MBOYA"
+      },
+      {
+        "solId": "013",
+        "description": "NAKURU"
+      },
+      {
+        "solId": "031",
+        "description": "NAKURU 2"
+      },
+      {
+        "solId": "033",
+        "description": "KITALE"
+      },
+      {
+        "solId": "035",
+        "description": "KNUT HOUSE"
+      },
+      {
+        "solId": "064",
+        "description": "KIAMBU BRANCH"
+      },
+      {
+        "solId": "112",
+        "description": "LUANDA BRANCH"
+      },
+      {
+        "solId": "045",
+        "description": "MALINDI BRANCH"
+      },
+      {
+        "solId": "046",
+        "description": "MOMBASA DIGO ROAD BRANCH"
+      },
+      {
+        "solId": "048",
+        "description": "BUNGOMA BRANCH"
+      },
+      {
+        "solId": "049",
+        "description": "KAPSABET BRANCH"
+      },
+      {
+        "solId": "040",
+        "description": "MAUA BRANCH"
+      },
+      {
+        "solId": "056",
+        "description": "INDUSTRIAL AREA BRANCH"
+      },
+      {
+        "solId": "061",
+        "description": "ONGATA RONGAI BRANCH"
+      },
+      {
+        "solId": "058",
+        "description": "GARISSA BRANCH"
+      },
+      {
+        "solId": "115",
+        "description": "NYERI KIMATHI WAY BRANCH"
+      },
+      {
+        "solId": "094",
+        "description": "TEA ROOM BRANCH"
+      },
+      {
+        "solId": "103",
+        "description": "WAJIR BRANCH"
+      },
+      {
+        "solId": "104",
+        "description": "MERU MAKUTANO BRANCH"
+      },
+      {
+        "solId": "081",
+        "description": "EQUITY CENTER BRANCH"
+      },
+      {
+        "solId": "111",
+        "description": "KIMENDE BRANCH"
+      },
+      {
+        "solId": "105",
+        "description": "MALABA BRANCH"
+      },
+      {
+        "solId": "108",
+        "description": "MOMBASA ROAD BRANCH"
+      },
+      {
+        "solId": "106",
+        "description": "KILIFI BRANCH"
+      },
+      {
+        "solId": "109",
+        "description": "ELDORET MARKET BRANCH"
+      },
+      {
+        "solId": "113",
+        "description": "KU BRANCH"
+      },
+      {
+        "solId": "126",
+        "description": "KISUMU ANGAWA"
+      },
+      {
+        "solId": "128",
+        "description": "NAIROBI WEST"
+      },
+      {
+        "solId": "118",
+        "description": "KASARANI BRANCH"
+      },
+      {
+        "solId": "138",
+        "description": "NYALI BRANCH"
+      },
+      {
+        "solId": "120",
+        "description": "CHANGAMWE BRANCH"
+      },
+      {
+        "solId": "119",
+        "description": "MTWAPA BRANCH"
+      },
+      {
+        "solId": "122",
+        "description": "BOMET BRANCH"
+      },
+      {
+        "solId": "123",
+        "description": "KILGORIS BRANCH"
+      },
+      {
+        "solId": "124",
+        "description": "KEROKA BRANCH"
+      },
+      {
+        "solId": "149",
+        "description": "EPZ ATHI RIVER"
+      },
+      {
+        "solId": "121",
+        "description": "HOLA BRANCH"
+      },
+      {
+        "solId": "127",
+        "description": "MPEKETONI BRANCH"
+      },
+      {
+        "solId": "125",
+        "description": "KAREN BRANCH"
+      },
+      {
+        "solId": "131",
+        "description": "ELDAMA RAVINE"
+      },
+      {
+        "solId": "139",
+        "description": "KABARNET BRANCH"
+      },
+      {
+        "solId": "140",
+        "description": "WESTLANDS CORPORATE"
+      },
+      {
+        "solId": "144",
+        "description": "RUAI BRANCH"
+      },
+      {
+        "solId": "147",
+        "description": "KILIMANI SUPREME"
+      },
+      {
+        "solId": "129",
+        "description": "KENYATTA AVENUE"
+      },
+      {
+        "solId": "130",
+        "description": "CITY HALL"
+      },
+      {
+        "solId": "132",
+        "description": "EMBAKASI TAJ MALL"
+      },
+      {
+        "solId": "133",
+        "description": "KAHAWA HSE BRANCH"
+      },
+      {
+        "solId": "152",
+        "description": "JUJA BRANCH"
+      },
+      {
+        "solId": "134",
+        "description": "RIDGEWAYS"
+      },
+      {
+        "solId": "143",
+        "description": "AWENDO BRANCH"
+      },
+      {
+        "solId": "145",
+        "description": "KILIMANI BRANCH"
+      },
+      {
+        "solId": "135",
+        "description": "RUNYENJES BRANCH"
+      },
+      {
+        "solId": "136",
+        "description": "DAADAB"
+      },
+      {
+        "solId": "137",
+        "description": "KANGEMI"
+      },
+      {
+        "solId": "141",
+        "description": "LAVINGTON SUPREME CENTRE"
+      },
+      {
+        "solId": "151",
+        "description": "MAYFAIR SUPREME CENTRE"
+      },
+      {
+        "solId": "148",
+        "description": "JKIA CARGO BRANCH"
+      },
+      {
+        "solId": "150",
+        "description": "OYUGIS"
+      },
+      {
+        "solId": "142",
+        "description": "TAITA TAVETA"
+      },
+      {
+        "solId": "155",
+        "description": "THIKA SUPREME CENTRE"
+      },
+      {
+        "solId": "153",
+        "description": "ITEN"
+      },
+      {
+        "solId": "156",
+        "description": "MOMBASA SUPREME CENTRE"
+      },
+      {
+        "solId": "146",
+        "description": "NAKURU WESTSIDE MALL"
+      },
+      {
+        "solId": "157",
+        "description": "KAPSOWAR BRANCH"
+      },
+      {
+        "solId": "158",
+        "description": "KWALE BRANCH"
+      },
+      {
+        "solId": "089",
+        "description": "KENOL BRANCH"
+      },
+      {
+        "solId": "101",
+        "description": "MARSABIT BRANCH"
+      },
+      {
+        "solId": "073",
+        "description": "NGONG"
+      },
+      {
+        "solId": "074",
+        "description": "LOITOKTOK BRANCH"
+      },
+      {
+        "solId": "083",
+        "description": "MUKURWE_INI BRANCH"
+      },
+      {
+        "solId": "116",
+        "description": "MIGORI"
+      },
+      {
+        "solId": "096",
+        "description": "MBALE BRANCH"
+      },
+      {
+        "solId": "097",
+        "description": "SIAYA BRANCH"
+      },
+      {
+        "solId": "098",
+        "description": "HOMABAY BRANCH"
+      },
+      {
+        "solId": "107",
+        "description": "KAPENGURIA"
+      },
+      {
+        "solId": "159",
+        "description": "LAMU BRANCH"
+      },
+      {
+        "solId": "160",
+        "description": "KENYATTA AVENUE SUPREME"
+      },
+      {
+        "solId": "175",
+        "description": "GARDEN CITY BRANCH"
+      },
+      {
+        "solId": "180",
+        "description": "KAWANGWARE GITANGA RD"
+      },
+      {
+        "solId": "181",
+        "description": "EMALI BRANCH"
+      },
+      {
+        "solId": "183",
+        "description": "RUMURUTI BRANCH"
+      },
+      {
+        "solId": "187",
+        "description": "ISIBANIA BRANCH"
+      },
+      {
+        "solId": "154",
+        "description": "NYALI SUPREME"
+      },
+      {
+        "solId": "168",
+        "description": "KISERIAN BRANCH"
+      },
+      {
+        "solId": "174",
+        "description": "RUAKA BRANCH"
+      },
+      {
+        "solId": "186",
+        "description": "LAARE BRANCH"
+      },
+      {
+        "solId": "189",
+        "description": "ICD EMBAKASI  BRANCH"
+      },
+      {
+        "solId": "222",
+        "description": "SYNDICATE"
+      },
+      {
+        "solId": "171",
+        "description": "THIKA MAKONGENI BRANCH"
+      },
+      {
+        "solId": "176",
+        "description": "SYOKIMAU GATEWAY MALL BRANCH"
+      },
+      {
+        "solId": "193",
+        "description": "KIMANA SUB BRANCH"
+      },
+      {
+        "solId": "194",
+        "description": "CHAKA SUB BRANCH"
+      },
+      {
+        "solId": "195",
+        "description": "KALOBEYEI  SUB BRANCH"
+      },
+      {
+        "solId": "196",
+        "description": "HINDI SUB BRANCH"
+      },
+      {
+        "solId": "161",
+        "description": "KPA SUB-BRANCH"
+      },
+      {
+        "solId": "163",
+        "description": "KAREN SUPREME CENTRE"
+      },
+      {
+        "solId": "166",
+        "description": "ARCHERS POST SUB-BRANCH"
+      },
+      {
+        "solId": "169",
+        "description": "DAGORETI CORNER BRANCH"
+      },
+      {
+        "solId": "888",
+        "description": "VIRTUAL"
+      },
+      {
+        "solId": "188",
+        "description": "KENYATTA  MARKET BRANCH"
+      },
+      {
+        "solId": "162",
+        "description": "VILLAGE MARKET SUPREME CENTRE"
+      },
+      {
+        "solId": "172",
+        "description": "KUTUS SUB BRANCH"
+      },
+      {
+        "solId": "185",
+        "description": "ISINYA  BRANCH"
+      },
+      {
+        "solId": "192",
+        "description": "KAHAWA WEST BRANCH"
+      },
+      {
+        "solId": "197",
+        "description": "KISII STAGE BRANCH"
+      },
+      {
+        "solId": "170",
+        "description": "KISUMU SUPREME BRANCH"
+      },
+      {
+        "solId": "173",
+        "description": "KIBWEZI BRANCH"
+      },
+      {
+        "solId": "178",
+        "description": "WANGIGE BRANCH"
+      },
+      {
+        "solId": "184",
+        "description": "SOTIK BRANCH"
+      },
+      {
+        "solId": "191",
+        "description": "NJABINI BRANCH"
+      },
+      {
+        "solId": "198",
+        "description": "KAMAKIS SUB- BRANCH"
+      },
+      {
+        "solId": "199",
+        "description": "IMAARA MALL SUB-BRANCH"
+      },
+      {
+        "solId": "777",
+        "description": "E-HAPOHAPO"
+      },
+      {
+        "solId": "164",
+        "description": "ELDORET SUPREME CENTRE"
+      },
+      {
+        "solId": "165",
+        "description": "KAKUMA BRANCH"
+      },
+      {
+        "solId": "167",
+        "description": "MUTOMO BRANCH"
+      },
+      {
+        "solId": "177",
+        "description": "PARLIAMENT ROAD BRANCH"
+      },
+      {
+        "solId": "179",
+        "description": "UTAWALA BRANCH"
+      },
+      {
+        "solId": "182",
+        "description": "KAGWE BRANCH"
+      },
+      {
+        "solId": "190",
+        "description": "ENGINEER BRANCH"
+      }
+    ],
+    "numberOfLeaves": ["25", "50", "100"],
+    "charges": {
+      "25": "512.5",
+      "50": "1025",
+      "100": "2050"
+    }
+  }
+}

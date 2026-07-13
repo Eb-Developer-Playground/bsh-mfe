@@ -1,0 +1,96 @@
+.section-container{
+    display:flex;
+    flex-wrap: wrap;
+}
+.card-info-section{
+   flex:1;
+}
+.card-section{
+    width: 335px;
+}
+.name-section{
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+    left: 20px;
+}
+.name-section p{
+    margin: 0;
+    line-height: 15px;
+}
+
+.card-type-logo{
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.equity-pan{
+    object-fit: cover;
+}
+.equity-logo{
+    position: absolute;
+    top: 17px;
+    right: 20px;
+}
+.card-type-section{
+    position: absolute;
+    color: #fff;
+    top: 5px;
+    left: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.equity-vectors{
+    position: absolute;
+    top: 55px;
+    left: 60px;
+}
+.valid-section{
+    color: #fff;
+    position: absolute;
+    top: 120px;
+    left: 110px;
+    display: flex;
+    align-items: center;
+}
+.card-number-section{
+    position: absolute;
+    color: #fff;
+    top: 80px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: 400;
+}
+.valid-section p:first-child{
+    font-size: 5px;
+    line-height: 6px;
+    margin-right: 6px;
+}
+.notice {
+    background-color: #fef3e6;
+
+    border: 1px solid #f38707;
+    border-radius: 8px;
+    padding: 16px;
+    .notice-title {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .notice-subtitle {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .notice-icon {
+        position: absolute;
+        top: 16px;
+        right: 30px;
+    }
+    .notice-action {
+        justify-content: end;
+    }
+}

@@ -1,0 +1,55 @@
+<app-breadcrumb-navigation [config]="breadcrumbsConfig">
+</app-breadcrumb-navigation>
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 head-title fw-600 m-0">{{ title }}</h3>
+    <mat-divider vertical class="vertical-divider"></mat-divider>
+    <span class="head-subtitle">Fixed Savings 1 - Acc no 12134454554</span>
+  </div>
+</mat-card>
+<app-info-box
+  [type]="'warning'"
+  [messageTitle]="infoMessageTitle"
+  [messageDetail]="infoMessageDetail">
+</app-info-box>
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+  <app-review-details
+    [isRolloverState]="isRolloverState"
+    [isWithdrawalState]="isWithdrawalState"
+    [isBreakState]="isBreakState">
+  </app-review-details>
+  <mat-divider></mat-divider>
+  <app-transfer-details [form]="form" [mainLabel]="transferDetailsMainLabel">
+  </app-transfer-details>
+</mat-card>
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main" *ngIf="isRolloverState">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 head-title fw-400 mt-6 mb-8">
+      {{ 'CUSTOMER.SAVE-INVEST.DEPOSIT-PAGE-REVIEW' | translate }}
+    </h3>
+    <span class="head-subtitle mb-16">{{
+      'CUSTOMER.SAVE-INVEST.DEPOSIT-PAGE-REVIEW-TEXT' | translate
+    }}</span>
+  </div>
+  <mat-divider></mat-divider>
+  <app-investment-details> </app-investment-details>
+  <mat-divider class="padded-divider"></mat-divider>
+  <app-rollover-and-withdraval-details> </app-rollover-and-withdraval-details>
+  <mat-divider class="padded-divider"></mat-divider>
+  <app-transaction-details> </app-transaction-details>
+</mat-card>
+<div class="buttons-holder">
+  <button mat-stroked-button color="primary" class="form-btn">
+    {{ 'COMMON.QUIT' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    class="form-btn confirm"
+    (click)="onSubmit()">
+    {{ 'COMMON.CONFIRM' | translate }}
+  </button>
+  <button mat-stroked-button color="primary" class="form-btn back">
+    {{ 'COMMON.BACK' | translate }}
+  </button>
+</div>

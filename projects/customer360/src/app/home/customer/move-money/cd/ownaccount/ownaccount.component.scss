@@ -1,0 +1,16 @@
+.own-account-wrapper {
+  ::ng-deep {
+    .stepper {
+      border: 1px solid blue;
+
+      .stepper-wrapper {
+        max-width: 100% !important;
+      }
+    }
+    .mat-mdc-outlined-button:not(
+        .mat-stroked-button.mat-button-disabled.mat-button-disabled
+      ) {
+      border: 1px solid #a32a29;
+    }
+  }
+}

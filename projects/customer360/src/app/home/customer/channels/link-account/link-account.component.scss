@@ -1,0 +1,89 @@
+.channels-body {
+  border-radius: 8px;
+}
+
+.activity-card {
+  padding: 0 !important;
+}
+
+.activity-header {
+  padding: 18px 16px;
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+.title {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.subtitle-text {
+  font-size: 0.875rem;
+  color: #929497;
+  margin: 0;
+}
+
+.my-1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+::ng-deep .mat-mdc-radio-button .mdc-radio__outer-circle {
+  border-color: #a32a29;
+}
+.f-14 {
+  font-size: 14px;
+}
+.gap-1 {
+  gap: 1rem;
+}
+
+.step-indicator {
+  width: 195px;
+  height: 6px;
+  border-radius: 4px;
+  align-self: center;
+}
+.bg_primary {
+  background-color: #a32a29;
+}
+.bg_muted {
+  background-color: #d3d4d5;
+}
+
+.no-result {
+  width: 40%;
+  margin: auto;
+}
+.width-60 {
+  max-width: 60%;
+  text-align: center;
+}
+.m-auto {
+  margin: auto;
+}
+.fw-600 {
+  font-weight: 600;
+}
+.my-2 {
+  margin: 2rem 0rem !important;
+}
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+.d-table-cell {
+  display: table-cell;
+}
+.bg-red {
+  background-color: red;
+}
+.justify-content-around {
+  justify-content: space-around;
+}

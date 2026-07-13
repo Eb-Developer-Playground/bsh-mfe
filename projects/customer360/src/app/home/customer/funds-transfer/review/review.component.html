@@ -1,0 +1,139 @@
+<button mat-icon-button class="close-button" (click)="close()">
+  <mat-icon class="close-icon" color="primary">close</mat-icon>
+</button>
+<h1 mat-dialog-title>{{ 'MOVE-MONEY.REVIEW-DIALOG.TITLE' | translate }}</h1>
+<div class="pb-1"></div>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <mat-card-content class="card-content">
+    <div class="details-container">
+      <div class="detail">
+        <p class="detail-title">
+          {{ 'MOVE-MONEY.TRANSACTION-TYPE' | translate }}
+        </p>
+        <p class="detail-content">
+          {{ data.transactionDetailsForm.transactionType }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">{{ 'MOVE-MONEY.TRANSFER-TYPE' | translate }}</p>
+        <p class="detail-content">
+          {{ data.transactionDetailsForm.transferType }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">{{ 'MOVE-MONEY.ACCOUNT' | translate }}</p>
+        <p class="detail-content">{{ data.transactionDetailsForm.account }}</p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">{{ 'MOVE-MONEY.ACCOUNT-NAME' | translate }}</p>
+        <p class="detail-content">
+          {{ data.currentCustomer.firstName }}
+          {{ data.currentCustomer.lastName }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">
+          {{ 'MOVE-MONEY.INSTRUMENT-TYPE' | translate }}
+        </p>
+        <p class="detail-content">{{ data.instrumentForm.instrumentType }}</p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">
+          {{ 'MOVE-MONEY.INSTRUMENT-NUMBER' | translate }}
+        </p>
+        <p class="detail-content">{{ data.instrumentForm.instrumentNumber }}</p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">
+          {{ 'MOVE-MONEY.INSTRUMENT-DATE' | translate }}
+        </p>
+        <p class="detail-content">
+          {{ data.instrumentForm.instrumentDate | date: 'yyyy-MM-dd' }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">{{ 'MOVE-MONEY.CURRENCY' | translate }}</p>
+        <p class="detail-content">
+          {{ data.paymentDetailsForm.paymentCurrency }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">{{ 'MOVE-MONEY.AMOUNT' | translate }}</p>
+        <p class="detail-content">
+          {{ data.paymentDetailsForm.amountToSend | number: '1.2-2' }}
+          {{ data.paymentDetailsForm.paymentCurrency }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">{{ 'MOVE-MONEY.FEE' | translate }}</p>
+        <p class="detail-content">
+          {{ data.transactionDetailsForm.fee }} {{ data.senderCurrency }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">{{ 'MOVE-MONEY.REASON' | translate }}</p>
+        <p class="detail-content">
+          {{ data.paymentDetailsForm.paymentReason }}
+        </p>
+      </div>
+
+      <div class="detail">
+        <p class="detail-title">
+          {{ 'MOVE-MONEY.OTP-DELIVERY-STATUS' | translate }}
+        </p>
+        <p class="detail-content">
+          {{ 'MOVE-MONEY.STATUS-PENDING' | translate }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">
+          {{ 'MOVE-MONEY.BENEFICIARY-ACCOUNT' | translate }}
+        </p>
+        <p class="detail-content">
+          {{ data.beneficiaryDetailsForm.beneficiaryAccount }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">
+          {{ 'MOVE-MONEY.BENEFICIARY-NAME' | translate }}
+        </p>
+        <p class="detail-content">
+          {{ data.beneficiaryDetailsForm.recepientName }}
+        </p>
+      </div>
+      <div class="detail">
+        <p class="detail-title">{{ 'MOVE-MONEY.EXCHANGE-RATE' | translate }}</p>
+        <p class="detail-content">{{ data.exchangeRateForm.exchangeRate }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+  <div class="header-main-label">
+    <p class="detail-title">{{ 'MOVE-MONEY.SEND-NOTIFICATION' | translate }}</p>
+  </div>
+  <div class="d-flex align-items-center" style="gap: 15px">
+    <p>
+      <mat-checkbox formControlName="sms">{{
+        'MOVE-MONEY.SMS' | translate
+      }}</mat-checkbox>
+    </p>
+    <p>
+      <mat-checkbox formControlName="email">{{
+        'MOVE-MONEY.EMAIL' | translate
+      }}</mat-checkbox>
+    </p>
+  </div>
+  <div class="d-flex justify-content-end align-items-center">
+    <button mat-button mat-dialog-close color="primary" (click)="close()">
+      {{ 'COMMON.QUIT' | translate }}
+    </button>
+    <span class="flex-spacer"></span>
+
+    <button
+      mat-raised-button
+      color="primary"
+      cdkFocusInitial
+      (click)="openVerifyBio()">
+      {{ 'COMMON.CONFIRM' | translate }}
+    </button>
+  </div>
+</form>

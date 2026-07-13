@@ -1,0 +1,42 @@
+.d-flex {
+  display: flex;
+}
+
+.close-icon {
+  cursor: pointer;
+  transform: scale(0.53);
+}
+
+.payment-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px 4px 4px;
+  gap: 8px;
+
+  width: 363px;
+  height: 40px;
+
+  background: linear-gradient(0deg, rgba(230, 0, 0, 0.1), rgba(230, 0, 0, 0.1)),
+    #ffffff;
+  border-radius: 32px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 20px;
+  color: #221f1f;
+}
+
+span {
+  font-weight: 400;
+  font-size: 16px;
+  color: #e60000;
+}
+
+p {
+  font-weight: 400;
+  font-size: 16px;
+  color: #929497;
+}

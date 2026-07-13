@@ -1,0 +1,146 @@
+.channel-card {
+  height: 102px;
+  width: 220px;
+  left: 0px;
+  top: 0px;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #d3d4d5;
+  margin-right: 30px;
+}
+
+.channel-card:hover {
+  cursor: pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.icon-section {
+  display: inline-flex;
+}
+
+.icon-div {
+  background-color: #e9eaea;
+  border-radius: 50%;
+  padding: 0.9375rem 0.9375rem 0.625rem 0.9375rem;
+  width: 1.875rem;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+.channel-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.channel-status {
+  // display: flex;
+  height: 20px;
+  border-radius: 32px;
+  padding: 0px 10px 0 0;
+  background: rgba(47, 152, 3, 0.1);
+  color: #2f9803;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.channel-inactive {
+  height: 20px;
+  border-radius: 32px;
+  padding: 0px 10px 0 0;
+  background: rgba(88, 89, 91, 0.1);
+  font-size: 0.75rem;
+  color: #58595b;
+  display: flex;
+  align-items: center;
+}
+
+.channel-blocked {
+  height: 20px;
+  border-radius: 32px;
+  padding: 0px 10px 0 0;
+  font-size: 0.75rem;
+  background: rgba(230, 0, 0, 0.1);
+  color: rgba(230, 0, 0, 1);
+  display: flex;
+  align-items: center;
+}
+
+.checkmark {
+  transform: scale(0.5);
+}
+
+.cool-off-icon {
+  transform: scale(0.5);
+}
+
+.body-text {
+  color: #929497;
+  font-size: 0.75rem;
+}
+
+.active {
+  border: 1px solid #a32a29;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block-reason {
+  color: #a32a29;
+}
+
+.channel-cool-off {
+  height: 20px;
+  border-radius: 32px;
+  padding: 0px 10px 0 0;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  background: rgba(243, 135, 7, 0.1);
+  color: #f38707 !important;
+}
+@media screen and (max-width: 1024px) {
+    .channel-card{
+        height: 90px;
+        width: 220px;
+        gap: 10px!important;;
+
+
+    }
+    .channel-status-text{
+        font-size:10px;
+    }
+    .channel-name {
+        font-size:12px !important;
+    }
+    .mat-menu-item{
+        font-size:12px;
+    }
+    .body-text{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .channel-card{
+        height: 90px;
+        width: 220px;
+        gap: 10px!important;;
+
+
+    }
+    .channel-status-text{
+        font-size:10px;
+    }
+    .channel-name {
+        font-size:12px !important;
+    }
+    .mat-menu-item{
+        font-size:12px;
+    }
+    .body-text{
+        font-size: 12px;
+    }
+}

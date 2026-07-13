@@ -1,0 +1,66 @@
+<div *ngIf="isInsufficient" class="mb-24">
+  <app-notifications [showLeftBorder]="true" status="danger">
+    <ng-template notificationsContent>
+      <span class="notification-title">{{
+        'BULK-TRANFER.INSUFFICIENTNOTIFY' | translate
+      }}</span>
+      <ul class="notification-list">
+        <li>
+          {{ 'BULK-TRANFER.YOUR-ACCOUNT' | translate }}
+          <span class="account">34454343545 - Account name 1</span>
+          {{ 'BULK-TRANFER.IS-BELOW-AMOUNT' | translate }}
+          <span class="amount">KES 500,000.00 </span
+          >{{ 'BULK-TRANFER.CHARGED-AND-INSTRUCTION' | translate }}
+        </li>
+        <li>
+          {{ 'BULK-TRANFER.YOUR-ACCOUNT' | translate }}
+          <span class="account">45465654563 - Account name 2</span>
+          {{ 'BULK-TRANFER.IS-BELOW-AMOUNT' | translate }}
+          <span class="amount">USD 800.00</span>
+          {{ 'BULK-TRANFER.CHARGED-AND-INSTRUCTION' | translate }}
+        </li>
+      </ul>
+    </ng-template>
+  </app-notifications>
+</div>
+<mat-card appearance="outlined" class="pt-24 px-24">
+  <mat-card-title>
+    <span>{{ 'BULK-TRANFER.TRANSACTION-DETAILS' | translate }}</span>
+    <p class="mt-8 mb-16">{{ 'BULK-TRANFER.UPLOAD-DOC' | translate }}</p>
+  </mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content class="pt-24">
+    <div class="transaction-item">
+      <span>{{ 'BULK-TRANFER.TOTAL-BATCH' | translate }}</span>
+      <p class="m-0">
+        {{
+          (transactionDetails?.totalTransanctionAmount | number: '1.2-2') + ' '
+        }}{{ transactionDetails?.accountCurrency }}
+      </p>
+    </div>
+
+    <div class="transaction-item">
+      <span>{{ 'BULK-TRANFER.TOTAL-CHARGES' | translate }}</span>
+      <p class="m-0">
+        {{ (transactionDetails?.totalChargeAmount | number: '1.2-2') + ' '
+        }}{{ transactionDetails?.accountCurrency }}
+      </p>
+    </div>
+
+    <div class="transaction-item">
+      <span>{{ 'BULK-TRANFER.DAILY-RATE' | translate }}</span>
+      <p class="m-0">0</p>
+    </div>
+
+    <div class="transaction-item">
+      <span>{{ 'BULK-TRANFER.BULK-PAYMENT-OPTION' | translate }}</span>
+      <p class="m-0">
+        {{
+          transactionDetails?.paymentOption === 'single'
+            ? 'Single debit'
+            : 'Multiple debit'
+        }}
+      </p>
+    </div>
+  </mat-card-content>
+</mat-card>

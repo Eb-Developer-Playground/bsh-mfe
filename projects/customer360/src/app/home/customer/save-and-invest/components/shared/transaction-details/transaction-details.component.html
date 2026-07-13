@@ -1,0 +1,39 @@
+<div class="main" [formGroup]="form">
+  <span class="header">{{
+    'CUSTOMER.SAVE-INVEST.TRANSFER-DETAILS' | translate
+  }}</span>
+  <mat-form-field class="input" appearance="fill">
+    <mat-label
+      >{{ 'CUSTOMER.SAVE-INVEST.DEBIT-ACCOUNT' | translate }}*</mat-label
+    >
+    <mat-select formControlName="debitAccount" [errorStateMatcher]="matcher">
+      <mat-option
+        *ngFor="let account of accounts"
+        [value]="account.accountNumber">
+        {{ account.accountNumber }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.controls['debitAccount'].hasError('required')">
+      {{ 'CUSTOMER.SAVE-INVEST.DEBIT-ACCOUNT-IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="input" appearance="fill">
+    <mat-label>
+      {{ 'CUSTOMER.SAVE-INVEST.EFFECTIVE-DATE' | translate }}*</mat-label
+    >
+    <input
+      type="text"
+      matInput
+      placeholder="Enter amount"
+      formControlName="effectiveDate"
+      [errorStateMatcher]="matcher" />
+    <mat-hint>{{
+      'CUSTOMER.SAVE-INVEST.CREDITED-ACCOUNT-AMOUNT' | translate
+    }}</mat-hint>
+    <mat-error *ngIf="form.controls['effectiveDate'].hasError('required')">
+      {{ 'CUSTOMER.SAVE-INVEST.EFFECTIVE-DATE-IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+</div>

@@ -1,0 +1,81 @@
+<div class="d-flex flex-column">
+    <div class="d-flex w-100" [class]="data.type">
+        <div class="d-flex align-items-center">
+            <mat-icon
+                [svgIcon]="iconType"
+                [style.color]="iconColor"
+                aria-hidden="false"
+                class="type-icon"></mat-icon>
+        </div>
+        <div class="d-flex justify-content-center">
+            <span class="divider"></span>
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+            <ng-container *ngIf="data?.title">
+                <p style="color: #1e2129" class="fs-6 m-0">
+                    <span *ngIf="data.withTranslations; else NO_TRANSLATION">
+                        {{ data.title | translate: data?.translationVariables }}
+                    </span>
+                    <ng-template #NO_TRANSLATION>
+                        {{ data.title }}
+                    </ng-template>
+                </p>
+            </ng-container>
+            <p style="color: #1e2129" class="fs-7 fw-400 m-0">
+                <span *ngIf="data.withTranslations; else NO_TRANSLATION">
+                    {{ data.text | translate: data?.translationVariables }}
+                </span>
+                <ng-template #NO_TRANSLATION>
+                    {{ data.text }}
+                </ng-template>
+            </p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <span class="divider"></span>
+        </div>
+        <div class="d-flex align-items-center">
+            <section class="fs-7 fw-400" [ngSwitch]="data.type">
+                <article *ngSwitchCase="'danger'" (click)="dismiss()">
+                    <button mat-icon-button>
+                        <mat-icon
+                            aria-hidden="false"
+                            aria-label="close"
+                            [svgIcon]="'ic-close-sm'"
+                            (click)="dismiss()"></mat-icon>
+                    </button>
+                </article>
+                <article *ngSwitchCase="'success'"></article>
+                <article *ngSwitchDefault>
+                    <button mat-icon-button>
+                        <mat-icon
+                            aria-hidden="false"
+                            aria-label="close"
+                            [svgIcon]="'ic-close-sm'"
+                            (click)="dismiss()"></mat-icon>
+                    </button>
+                </article>
+            </section>
+        </div>
+    </div>
+    <ng-container *ngIf="data.callBack">
+        <div class="d-flex align-items-center fs-7 fw-400 w-100 mt-8 mb-8">
+            <button
+                *ngIf="data.callBackButtonLabel"
+                mat-button
+                (click)="callBackAction()"
+                aria-label="action"
+                color="primary">
+                <span *ngIf="data.withTranslations; else NO_TRANSLATION">
+                    {{ data.callBackButtonLabel | translate: data?.translationVariables }}
+                </span>
+                {{ data.callBackButtonLabel | translate: data?.translationVariables }}
+                <ng-template #NO_TRANSLATION>
+                  {{ data.callBackButtonLabel }}
+                </ng-template>
+            </button>
+            <button mat-button (click)="dismiss()" aria-label="close" color="primary">
+                {{ "COMMON.CLOSE" | translate: data?.translationVariables }}
+            </button>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,85 @@
+div.main {
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.header {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  display: block;
+  width: 100%;
+  align-items: center;
+  color: #221f1f;
+  margin-bottom: 20px;
+}
+
+.input-group-holder:first-child {
+  flex: 0 0 52.999%;
+  width: 52.999%;
+}
+
+.input-group-holder:last-child {
+  flex: 0 0 46.999%;
+  width: 46.999%;
+}
+
+.input-group-holder {
+  padding: 24px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+
+  .mat-mdc-radio-group {
+    display: flex;
+  }
+
+  .input-radio {
+    flex: 0 0 40%;
+    width: 40%;
+    margin-right: 40px;
+
+    .radio-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .label-holder {
+      display: inline-block;
+      width: calc(100% - 73px);
+      margin-left: 72px;
+
+      .label {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .hint {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #929497;
+        display: block;
+      }
+    }
+  }
+
+  .input {
+    width: 50%;
+  }
+}

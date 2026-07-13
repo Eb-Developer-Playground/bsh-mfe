@@ -1,0 +1,45 @@
+<!-- <app-breadcrumb-navigation
+  [config]="breadcrumbsConfig"
+>
+</app-breadcrumb-navigation> -->
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+  <div class="flex-50 text-center">
+    <img class="success-img" src="assets/images/agentSuccess.png" />
+  </div>
+  <div class="flex-50">
+    <div class="mb-1">
+      <h3 class="mat-headline-6 head-title m-0">{{ title | translate }}</h3>
+      <span class="head-subtitle">{{ subtitle | translate }}</span>
+    </div>
+    <div class="details-holder">
+      <div class="detail-holder" *ngFor="let detail of details">
+        <span class="detail-label">{{ detail.label | translate }}</span>
+        <span class="detail-value">{{ detail.value | uppercase }}</span>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<div class="buttons-holder">
+  <button
+    mat-stroked-button
+    color="primary"
+    class="form-btn fw-600"
+    *ngIf="!isBreakState"
+    (click)="getCertificate()">
+    {{ 'SAVE-INVEST.GENERATE-CERTIFICATE' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    class="form-btn back fw-600"
+    (click)="goToSaveAndInvest()">
+    {{ 'SAVE-INVEST.BACK' | translate }}
+  </button>
+  <button
+    mat-stroked-button
+    color="primary"
+    class="form-btn go-to-profile fw-600"
+    (click)="goToProfile()">
+    {{ 'SAVE-INVEST.GO-CUSTOMER-PROFILE' | translate }}
+  </button>
+</div>

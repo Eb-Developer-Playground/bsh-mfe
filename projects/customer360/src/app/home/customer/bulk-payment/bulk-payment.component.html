@@ -1,0 +1,55 @@
+<app-stepper
+  #stepper
+  (onActive)="onActive($event)"
+  (onFinish)="onFinish()"
+  (onQuit)="onQuit()"
+  (onSave)="onSave($event)"
+  [linear]="true"
+  [stepperLabel]="'Bulk Funds Transfer'">
+  <cdk-step [label]="'Bulk Funds Transfer'">
+    <app-bulk-transfer-type
+      (payOption)="getPaymentOptions($event)"
+      [label]="'Bulk Funds Transfer'"
+      [stepperComponent]="stepper">
+    </app-bulk-transfer-type>
+  </cdk-step>
+  <cdk-step [label]="'Add or upload data'">
+    <div class="mb-24">
+      <app-notifications
+        *ngIf="transactionError"
+        [status]="'danger'"
+        [text]="'BULK-TRANFER.SOME-TRANSACTION-FAILED-DETAIL' | translate"
+        [title]="'BULK-TRANFER.SOME-TRANSACTION-FAILED-TITLE' | translate">
+      </app-notifications>
+    </div>
+    <app-transaction-entries
+      (onAmount)="getTotalAmount($event)"
+      (onTransactionError)="getTransactionError($event)"
+      [label]="'Add or upload data'"
+      [paymentOptions]="paymentOptions"
+      [stepperComponent]="stepper">
+    </app-transaction-entries>
+  </cdk-step>
+  <!-- (onDocumentError)="disableSave = $event" -->
+  <cdk-step
+    *ngIf="totalAmount < BASE_AMOUNT || documentUploaded"
+    [label]="'Review transaction details'">
+    <app-transaction-details-review
+      [label]="'Review transaction details'"
+      [stepperComponent]="stepper"
+      [transactionDetails]="transactionDetails">
+    </app-transaction-details-review>
+  </cdk-step>
+  <cdk-step
+    *ngIf="
+      (totalAmount > BASE_AMOUNT || totalAmount === BASE_AMOUNT) &&
+      !documentUploaded
+    "
+    [label]="'Upload documents'">
+    <app-upload-document
+      (documentUploaded)="documentUploaded = $event"
+      [label]="'Upload documents'"
+      [stepperComponent]="stepper">
+    </app-upload-document>
+  </cdk-step>
+</app-stepper>

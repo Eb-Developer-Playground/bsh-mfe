@@ -1,0 +1,63 @@
+<div class="account-cards-section d-flex">
+  <app-swiperv1 swiperContainerId="swipercontainer" class="swipercontainer">
+    <swiper-container #swiper class="swipeContainer">
+      @for (channel of filteredChannels; track channel; let first = $index) {
+        <swiper-slide class="swiper-slide">
+          <app-channel-card
+            [channels]="channel.channel"
+            (click)="onCardClick(channel)"
+            [isActive]="
+              channel.channel.channel === 'Mobile'
+                ? channel.channel.subChannel
+                  ? channel.channel.subChannel === activeSubChannel
+                  : channel.channel.channel === activeChannel
+                : channel.channel.channel === activeChannel
+            ">
+            ></app-channel-card
+          >
+        </swiper-slide>
+      }
+    </swiper-container>
+  </app-swiperv1>
+  <!--    <swiper [config]="config">-->
+  <!--&lt;!&ndash;        <ng-template&ndash;&gt;-->
+  <!--&lt;!&ndash;            swiperSlide&ndash;&gt;-->
+  <!--&lt;!&ndash;            *ngFor="let channel of channels; let first = first"&ndash;&gt;-->
+  <!--&lt;!&ndash;        >&ndash;&gt;-->
+  <!--&lt;!&ndash;            <div class="align-self-center">&ndash;&gt;-->
+  <!--&lt;!&ndash;                <app-channel-card&ndash;&gt;-->
+  <!--&lt;!&ndash;                    [channel]="channel"&ndash;&gt;-->
+  <!--&lt;!&ndash;                    (click)="onCardClick(channel)"&ndash;&gt;-->
+  <!--&lt;!&ndash;                    [isActive]="&ndash;&gt;-->
+  <!--&lt;!&ndash;                        channel.channel === 'Mobile'&ndash;&gt;-->
+  <!--&lt;!&ndash;                            ? channel.subChannel&ndash;&gt;-->
+  <!--&lt;!&ndash;                                ? channel.subChannel === activeSubChannel&ndash;&gt;-->
+  <!--&lt;!&ndash;                                : channel.channel === activeChannel&ndash;&gt;-->
+  <!--&lt;!&ndash;                            : channel.channel === activeChannel">&ndash;&gt;-->
+  <!--&lt;!&ndash;                    </app-channel-card>&ndash;&gt;-->
+  <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+  <!--&lt;!&ndash;        </ng-template>&ndash;&gt;-->
+
+  <!--        <ng-template-->
+  <!--            swiperSlide-->
+  <!--            *ngFor="let channel of filteredChannels; let first = first"-->
+  <!--        >-->
+  <!--            <div class="align-self-center">-->
+  <!--                <app-channel-card-->
+  <!--                    [channels]="channel.channel"-->
+  <!--                    (click)="onCardClick(channel)"-->
+  <!--                    [isActive]="-->
+  <!--                        channel.channel.channel === 'Mobile'-->
+  <!--                            ? channel.channel.subChannel-->
+  <!--                                ? channel.channel.subChannel ===-->
+  <!--                                  activeSubChannel-->
+  <!--                                : channel.channel.channel === activeChannel-->
+  <!--                            : channel.channel.channel === activeChannel-->
+  <!--                    "-->
+  <!--                >-->
+  <!--                </app-channel-card-->
+  <!--                >-->
+  <!--            </div>-->
+  <!--        </ng-template>-->
+  <!--    </swiper>-->
+</div>

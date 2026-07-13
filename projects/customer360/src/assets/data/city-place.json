@@ -1,0 +1,4398 @@
+[
+  {
+    "cityPlaceCode": "30202",
+    "cityPlaceName": "moi`sBridge"
+  },
+  {
+    "cityPlaceCode": "972",
+    "cityPlaceName": "ZOMBE"
+  },
+  {
+    "cityPlaceCode": "307",
+    "cityPlaceName": "KANJA"
+  },
+  {
+    "cityPlaceCode": "497",
+    "cityPlaceName": "KANJUKU"
+  },
+  {
+    "cityPlaceCode": "110",
+    "cityPlaceName": "KANSAS CITY"
+  },
+  {
+    "cityPlaceCode": "498",
+    "cityPlaceName": "KANYAKINE"
+  },
+  {
+    "cityPlaceCode": "499",
+    "cityPlaceName": "KANYENYAINI"
+  },
+  {
+    "cityPlaceCode": "500",
+    "cityPlaceName": "KANYUAMBORA"
+  },
+  {
+    "cityPlaceCode": "308",
+    "cityPlaceName": "KANYUAMBORA."
+  },
+  {
+    "cityPlaceCode": "501",
+    "cityPlaceName": "KAPCHENO"
+  },
+  {
+    "cityPlaceCode": "502",
+    "cityPlaceName": "KAPCHEROP"
+  },
+  {
+    "cityPlaceCode": "503",
+    "cityPlaceName": "KAPCHORWA"
+  },
+  {
+    "cityPlaceCode": "504",
+    "cityPlaceName": "KAPEDO"
+  },
+  {
+    "cityPlaceCode": "111",
+    "cityPlaceName": "KAPENGURIA "
+  },
+  {
+    "cityPlaceCode": "135",
+    "cityPlaceName": "KAPKATET"
+  },
+  {
+    "cityPlaceCode": "505",
+    "cityPlaceName": "KAPKELEK"
+  },
+  {
+    "cityPlaceCode": "119",
+    "cityPlaceName": "KANGUNDO"
+  },
+  {
+    "cityPlaceCode": "506",
+    "cityPlaceName": "KAPKENDA"
+  },
+  {
+    "cityPlaceCode": "508",
+    "cityPlaceName": "KAPNGETUNY"
+  },
+  {
+    "cityPlaceCode": "137",
+    "cityPlaceName": "KAPSABET"
+  },
+  {
+    "cityPlaceCode": "979",
+    "cityPlaceName": "KAPSABET"
+  },
+  {
+    "cityPlaceCode": "509",
+    "cityPlaceName": "KAPSARA"
+  },
+  {
+    "cityPlaceCode": "510",
+    "cityPlaceName": "KAPSOIT"
+  },
+  {
+    "cityPlaceCode": "136",
+    "cityPlaceName": "KAPSOKWONY "
+  },
+  {
+    "cityPlaceCode": "511",
+    "cityPlaceName": "KAPSOWAR"
+  },
+  {
+    "cityPlaceCode": "512",
+    "cityPlaceName": "KAPSUMBEIWA"
+  },
+  {
+    "cityPlaceCode": "513",
+    "cityPlaceName": "KAPSUSER"
+  },
+  {
+    "cityPlaceCode": "514",
+    "cityPlaceName": "KAPTAGAT"
+  },
+  {
+    "cityPlaceCode": "515",
+    "cityPlaceName": "KAPTALAMWA"
+  },
+  {
+    "cityPlaceCode": "516",
+    "cityPlaceName": "KAPTAMA"
+  },
+  {
+    "cityPlaceCode": "517",
+    "cityPlaceName": "KAPTARAKWA"
+  },
+  {
+    "cityPlaceCode": "518",
+    "cityPlaceName": "KAPTEBENGWET"
+  },
+  {
+    "cityPlaceCode": "507",
+    "cityPlaceName": "KAPKUGERWET"
+  },
+  {
+    "cityPlaceCode": "519",
+    "cityPlaceName": "KAPTEL"
+  },
+  {
+    "cityPlaceCode": "133",
+    "cityPlaceName": "KANGEMA"
+  },
+  {
+    "cityPlaceCode": "496",
+    "cityPlaceName": "KANDIEGE"
+  },
+  {
+    "cityPlaceCode": "470",
+    "cityPlaceName": "KAHUTI"
+  },
+  {
+    "cityPlaceCode": "471",
+    "cityPlaceName": "KAIMOSI"
+  },
+  {
+    "cityPlaceCode": "472",
+    "cityPlaceName": "KAINUK"
+  },
+  {
+    "cityPlaceCode": "473",
+    "cityPlaceName": "KAIRO"
+  },
+  {
+    "cityPlaceCode": "106",
+    "cityPlaceName": "KAJIADO"
+  },
+  {
+    "cityPlaceCode": "107",
+    "cityPlaceName": "KAKAMEGA"
+  },
+  {
+    "cityPlaceCode": "474",
+    "cityPlaceName": "KAKEMER"
+  },
+  {
+    "cityPlaceCode": "475",
+    "cityPlaceName": "KAKIBORA"
+  },
+  {
+    "cityPlaceCode": "476",
+    "cityPlaceName": "KAKONENI"
+  },
+  {
+    "cityPlaceCode": "477",
+    "cityPlaceName": "KAKUMA"
+  },
+  {
+    "cityPlaceCode": "478",
+    "cityPlaceName": "KAKUNGA"
+  },
+  {
+    "cityPlaceCode": "479",
+    "cityPlaceName": "KAKUZI"
+  },
+  {
+    "cityPlaceCode": "108",
+    "cityPlaceName": "KALAMBA"
+  },
+  {
+    "cityPlaceCode": "480",
+    "cityPlaceName": "KALAWA"
+  },
+  {
+    "cityPlaceCode": "134",
+    "cityPlaceName": "KANGARI"
+  },
+  {
+    "cityPlaceCode": "481",
+    "cityPlaceName": "KALIMONI"
+  },
+  {
+    "cityPlaceCode": "483",
+    "cityPlaceName": "KALOLENI"
+  },
+  {
+    "cityPlaceCode": "484",
+    "cityPlaceName": "KAMAGET"
+  },
+  {
+    "cityPlaceCode": "485",
+    "cityPlaceName": "KAMAHUHA"
+  },
+  {
+    "cityPlaceCode": "486",
+    "cityPlaceName": "KAMARA"
+  },
+  {
+    "cityPlaceCode": "487",
+    "cityPlaceName": "KAMBIRI"
+  },
+  {
+    "cityPlaceCode": "488",
+    "cityPlaceName": "KAMBITI"
+  },
+  {
+    "cityPlaceCode": "489",
+    "cityPlaceName": "KAMITI"
+  },
+  {
+    "cityPlaceCode": "109",
+    "cityPlaceName": "KAMPALA"
+  },
+  {
+    "cityPlaceCode": "490",
+    "cityPlaceName": "KAMPI YA SAMAKI"
+  },
+  {
+    "cityPlaceCode": "491",
+    "cityPlaceName": "KAMURIAI"
+  },
+  {
+    "cityPlaceCode": "492",
+    "cityPlaceName": "KAMUWONGO"
+  },
+  {
+    "cityPlaceCode": "493",
+    "cityPlaceName": "KAMWAURA"
+  },
+  {
+    "cityPlaceCode": "494",
+    "cityPlaceName": "KAMWOSOR"
+  },
+  {
+    "cityPlaceCode": "495",
+    "cityPlaceName": "KANDARA"
+  },
+  {
+    "cityPlaceCode": "482",
+    "cityPlaceName": "KALOKOL"
+  },
+  {
+    "cityPlaceCode": "520",
+    "cityPlaceName": "KAPTEREN"
+  },
+  {
+    "cityPlaceCode": "521",
+    "cityPlaceName": "KARABA"
+  },
+  {
+    "cityPlaceCode": "112",
+    "cityPlaceName": "KARACHI"
+  },
+  {
+    "cityPlaceCode": "549",
+    "cityPlaceName": "KESSES"
+  },
+  {
+    "cityPlaceCode": "550",
+    "cityPlaceName": "KEUMBU"
+  },
+  {
+    "cityPlaceCode": "551",
+    "cityPlaceName": "KEVOTE"
+  },
+  {
+    "cityPlaceCode": "552",
+    "cityPlaceName": "KHAYEGA"
+  },
+  {
+    "cityPlaceCode": "553",
+    "cityPlaceName": "KHUMUSALABA"
+  },
+  {
+    "cityPlaceCode": "554",
+    "cityPlaceName": "KHWISERO"
+  },
+  {
+    "cityPlaceCode": "555",
+    "cityPlaceName": "KIAMARIGA"
+  },
+  {
+    "cityPlaceCode": "556",
+    "cityPlaceName": "KIAMBERE"
+  },
+  {
+    "cityPlaceCode": "114",
+    "cityPlaceName": "KIAMBU "
+  },
+  {
+    "cityPlaceCode": "557",
+    "cityPlaceName": "KIAMOKAMA"
+  },
+  {
+    "cityPlaceCode": "121",
+    "cityPlaceName": "KIAMUTUGU "
+  },
+  {
+    "cityPlaceCode": "558",
+    "cityPlaceName": "KIAMWANGI"
+  },
+  {
+    "cityPlaceCode": "559",
+    "cityPlaceName": "KIANDU"
+  },
+  {
+    "cityPlaceCode": "132",
+    "cityPlaceName": "KIANJAI"
+  },
+  {
+    "cityPlaceCode": "548",
+    "cityPlaceName": "KESOGON"
+  },
+  {
+    "cityPlaceCode": "310",
+    "cityPlaceName": "KIANJOKOMA"
+  },
+  {
+    "cityPlaceCode": "123",
+    "cityPlaceName": "KIATINENI "
+  },
+  {
+    "cityPlaceCode": "560",
+    "cityPlaceName": "KIBIGORI"
+  },
+  {
+    "cityPlaceCode": "561",
+    "cityPlaceName": "KIBINGOTI"
+  },
+  {
+    "cityPlaceCode": "562",
+    "cityPlaceName": "KIBIRICHIA"
+  },
+  {
+    "cityPlaceCode": "563",
+    "cityPlaceName": "KIBUGU"
+  },
+  {
+    "cityPlaceCode": "116",
+    "cityPlaceName": "KIBWEZI"
+  },
+  {
+    "cityPlaceCode": "564",
+    "cityPlaceName": "KIGANJO"
+  },
+  {
+    "cityPlaceCode": "124",
+    "cityPlaceName": "KIGUMO "
+  },
+  {
+    "cityPlaceCode": "565",
+    "cityPlaceName": "KIHOYA"
+  },
+  {
+    "cityPlaceCode": "566",
+    "cityPlaceName": "KIIRUA"
+  },
+  {
+    "cityPlaceCode": "125",
+    "cityPlaceName": "KIJABE "
+  },
+  {
+    "cityPlaceCode": "128",
+    "cityPlaceName": "KIKAMBALA "
+  },
+  {
+    "cityPlaceCode": "567",
+    "cityPlaceName": "KIKIMA"
+  },
+  {
+    "cityPlaceCode": "129",
+    "cityPlaceName": "KIKUYU "
+  },
+  {
+    "cityPlaceCode": "122",
+    "cityPlaceName": "KIANYAGA"
+  },
+  {
+    "cityPlaceCode": "547",
+    "cityPlaceName": "KERWA"
+  },
+  {
+    "cityPlaceCode": "138",
+    "cityPlaceName": "KERUGOYA"
+  },
+  {
+    "cityPlaceCode": "140",
+    "cityPlaceName": "KEROKA "
+  },
+  {
+    "cityPlaceCode": "522",
+    "cityPlaceName": "KARANDI"
+  },
+  {
+    "cityPlaceCode": "142",
+    "cityPlaceName": "KARATINA"
+  },
+  {
+    "cityPlaceCode": "523",
+    "cityPlaceName": "KARATU"
+  },
+  {
+    "cityPlaceCode": "524",
+    "cityPlaceName": "KAREN"
+  },
+  {
+    "cityPlaceCode": "525",
+    "cityPlaceName": "KARINGARI"
+  },
+  {
+    "cityPlaceCode": "526",
+    "cityPlaceName": "KARIUA"
+  },
+  {
+    "cityPlaceCode": "527",
+    "cityPlaceName": "KAROTA"
+  },
+  {
+    "cityPlaceCode": "528",
+    "cityPlaceName": "KARUNGU"
+  },
+  {
+    "cityPlaceCode": "139",
+    "cityPlaceName": "KARURI "
+  },
+  {
+    "cityPlaceCode": "529",
+    "cityPlaceName": "KARURUMO"
+  },
+  {
+    "cityPlaceCode": "530",
+    "cityPlaceName": "KASIGAU"
+  },
+  {
+    "cityPlaceCode": "531",
+    "cityPlaceName": "KASIKEU"
+  },
+  {
+    "cityPlaceCode": "532",
+    "cityPlaceName": "KATANGI"
+  },
+  {
+    "cityPlaceCode": "533",
+    "cityPlaceName": "KATHIANI"
+  },
+  {
+    "cityPlaceCode": "534",
+    "cityPlaceName": "KATHONZWENI"
+  },
+  {
+    "cityPlaceCode": "535",
+    "cityPlaceName": "KATHWANA"
+  },
+  {
+    "cityPlaceCode": "536",
+    "cityPlaceName": "KATITO"
+  },
+  {
+    "cityPlaceCode": "117",
+    "cityPlaceName": "KERICHO"
+  },
+  {
+    "cityPlaceCode": "546",
+    "cityPlaceName": "KENYENYA"
+  },
+  {
+    "cityPlaceCode": "990",
+    "cityPlaceName": "KENDUBAY"
+  },
+  {
+    "cityPlaceCode": "115",
+    "cityPlaceName": "KENDU BAY "
+  },
+  {
+    "cityPlaceCode": "120",
+    "cityPlaceName": "KEHANCHA"
+  },
+  {
+    "cityPlaceCode": "545",
+    "cityPlaceName": "KEGONGA"
+  },
+  {
+    "cityPlaceCode": "469",
+    "cityPlaceName": "KAHURO"
+  },
+  {
+    "cityPlaceCode": "544",
+    "cityPlaceName": "KEGOGI"
+  },
+  {
+    "cityPlaceCode": "542",
+    "cityPlaceName": "KEDOWA"
+  },
+  {
+    "cityPlaceCode": "541",
+    "cityPlaceName": "KEBIRIGO"
+  },
+  {
+    "cityPlaceCode": "540",
+    "cityPlaceName": "KAVUTI"
+  },
+  {
+    "cityPlaceCode": "539",
+    "cityPlaceName": "KAVIANI"
+  },
+  {
+    "cityPlaceCode": "538",
+    "cityPlaceName": "KATUTU"
+  },
+  {
+    "cityPlaceCode": "537",
+    "cityPlaceName": "KATSE"
+  },
+  {
+    "cityPlaceCode": "543",
+    "cityPlaceName": "KEEKOROK"
+  },
+  {
+    "cityPlaceCode": "568",
+    "cityPlaceName": "KILALA"
+  },
+  {
+    "cityPlaceCode": "468",
+    "cityPlaceName": "KAHUHIA"
+  },
+  {
+    "cityPlaceCode": "991",
+    "cityPlaceName": "KAHATIA"
+  },
+  {
+    "cityPlaceCode": "394",
+    "cityPlaceName": "GAKINDU"
+  },
+  {
+    "cityPlaceCode": "395",
+    "cityPlaceName": "GAKUNGU"
+  },
+  {
+    "cityPlaceCode": "396",
+    "cityPlaceName": "GAMBOGI"
+  },
+  {
+    "cityPlaceCode": "397",
+    "cityPlaceName": "GANZE"
+  },
+  {
+    "cityPlaceCode": "398",
+    "cityPlaceName": "GARBA TULLA"
+  },
+  {
+    "cityPlaceCode": "091",
+    "cityPlaceName": "GARISSA"
+  },
+  {
+    "cityPlaceCode": "399",
+    "cityPlaceName": "GARSEN"
+  },
+  {
+    "cityPlaceCode": "400",
+    "cityPlaceName": "GATARA"
+  },
+  {
+    "cityPlaceCode": "401",
+    "cityPlaceName": "GATHIRUINI"
+  },
+  {
+    "cityPlaceCode": "402",
+    "cityPlaceName": "GATHUGU"
+  },
+  {
+    "cityPlaceCode": "403",
+    "cityPlaceName": "GATITU"
+  },
+  {
+    "cityPlaceCode": "404",
+    "cityPlaceName": "GATONDO"
+  },
+  {
+    "cityPlaceCode": "405",
+    "cityPlaceName": "GATUGURA"
+  },
+  {
+    "cityPlaceCode": "406",
+    "cityPlaceName": "GATUKUYU"
+  },
+  {
+    "cityPlaceCode": "393",
+    "cityPlaceName": "GAITU"
+  },
+  {
+    "cityPlaceCode": "092",
+    "cityPlaceName": "GATUNDU"
+  },
+  {
+    "cityPlaceCode": "408",
+    "cityPlaceName": "GATURA"
+  },
+  {
+    "cityPlaceCode": "409",
+    "cityPlaceName": "GEDE"
+  },
+  {
+    "cityPlaceCode": "410",
+    "cityPlaceName": "GEMBE"
+  },
+  {
+    "cityPlaceCode": "088",
+    "cityPlaceName": "GENEVA "
+  },
+  {
+    "cityPlaceCode": "411",
+    "cityPlaceName": "GESIMA"
+  },
+  {
+    "cityPlaceCode": "412",
+    "cityPlaceName": "GESUSU"
+  },
+  {
+    "cityPlaceCode": "413",
+    "cityPlaceName": "GIAKANJA"
+  },
+  {
+    "cityPlaceCode": "414",
+    "cityPlaceName": "GIGIRI"
+  },
+  {
+    "cityPlaceCode": "415",
+    "cityPlaceName": "GIKOE"
+  },
+  {
+    "cityPlaceCode": "089",
+    "cityPlaceName": "GILGIL "
+  },
+  {
+    "cityPlaceCode": "416",
+    "cityPlaceName": "GIRIBE"
+  },
+  {
+    "cityPlaceCode": "417",
+    "cityPlaceName": "GISAMBAI"
+  },
+  {
+    "cityPlaceCode": "418",
+    "cityPlaceName": "GITHIGA"
+  },
+  {
+    "cityPlaceCode": "419",
+    "cityPlaceName": "GITHONGO"
+  },
+  {
+    "cityPlaceCode": "407",
+    "cityPlaceName": "GATUNGA"
+  },
+  {
+    "cityPlaceCode": "420",
+    "cityPlaceName": "GITHUMU"
+  },
+  {
+    "cityPlaceCode": "392",
+    "cityPlaceName": "GACHOKA"
+  },
+  {
+    "cityPlaceCode": "987",
+    "cityPlaceName": "GABORONE"
+  },
+  {
+    "cityPlaceCode": "377",
+    "cityPlaceName": "EL WAK"
+  },
+  {
+    "cityPlaceCode": "081",
+    "cityPlaceName": "ELBURGON"
+  },
+  {
+    "cityPlaceCode": "080",
+    "cityPlaceName": "ELDAMA RAVINE"
+  },
+  {
+    "cityPlaceCode": "082",
+    "cityPlaceName": "ELDORET"
+  },
+  {
+    "cityPlaceCode": "378",
+    "cityPlaceName": "ELEMENTAITA"
+  },
+  {
+    "cityPlaceCode": "379",
+    "cityPlaceName": "ELUGULU"
+  },
+  {
+    "cityPlaceCode": "380",
+    "cityPlaceName": "EMALI"
+  },
+  {
+    "cityPlaceCode": "078",
+    "cityPlaceName": "EMBU"
+  },
+  {
+    "cityPlaceCode": "381",
+    "cityPlaceName": "EMINING"
+  },
+  {
+    "cityPlaceCode": "382",
+    "cityPlaceName": "EMUHAYA"
+  },
+  {
+    "cityPlaceCode": "083",
+    "cityPlaceName": "ENDARASHA "
+  },
+  {
+    "cityPlaceCode": "383",
+    "cityPlaceName": "ENDAU"
+  },
+  {
+    "cityPlaceCode": "384",
+    "cityPlaceName": "ENDEBESS"
+  },
+  {
+    "cityPlaceCode": "385",
+    "cityPlaceName": "ENOSAEN"
+  },
+  {
+    "cityPlaceCode": "391",
+    "cityPlaceName": "GACHARAGE-INI"
+  },
+  {
+    "cityPlaceCode": "386",
+    "cityPlaceName": "EREGI"
+  },
+  {
+    "cityPlaceCode": "388",
+    "cityPlaceName": "EWASO KEDONG"
+  },
+  {
+    "cityPlaceCode": "00610",
+    "cityPlaceName": "Eastleigh"
+  },
+  {
+    "cityPlaceCode": "20115",
+    "cityPlaceName": "EgertonUniversity"
+  },
+  {
+    "cityPlaceCode": "30124",
+    "cityPlaceName": "EldoretAirport"
+  },
+  {
+    "cityPlaceCode": "30100",
+    "cityPlaceName": "EldoretGPO"
+  },
+  {
+    "cityPlaceCode": "20119",
+    "cityPlaceName": "Elementatita"
+  },
+  {
+    "cityPlaceCode": "00501",
+    "cityPlaceName": "Embakasi"
+  },
+  {
+    "cityPlaceCode": "00500",
+    "cityPlaceName": "EnterpriseRoad"
+  },
+  {
+    "cityPlaceCode": "389",
+    "cityPlaceName": "FAZA"
+  },
+  {
+    "cityPlaceCode": "084",
+    "cityPlaceName": "FLORENCE"
+  },
+  {
+    "cityPlaceCode": "085",
+    "cityPlaceName": "FORT DE FRANCE"
+  },
+  {
+    "cityPlaceCode": "390",
+    "cityPlaceName": "FORT TERNAN"
+  },
+  {
+    "cityPlaceCode": "086",
+    "cityPlaceName": "FRANKFURT "
+  },
+  {
+    "cityPlaceCode": "087",
+    "cityPlaceName": "FUNYULA"
+  },
+  {
+    "cityPlaceCode": "387",
+    "cityPlaceName": "ETAGO"
+  },
+  {
+    "cityPlaceCode": "093",
+    "cityPlaceName": "GITHUNGURI "
+  },
+  {
+    "cityPlaceCode": "421",
+    "cityPlaceName": "GITIMENE"
+  },
+  {
+    "cityPlaceCode": "422",
+    "cityPlaceName": "GITUAMBA"
+  },
+  {
+    "cityPlaceCode": "444",
+    "cityPlaceName": "ILEHO"
+  },
+  {
+    "cityPlaceCode": "445",
+    "cityPlaceName": "IMANGA"
+  },
+  {
+    "cityPlaceCode": "306",
+    "cityPlaceName": "ISHIARA"
+  },
+  {
+    "cityPlaceCode": "446",
+    "cityPlaceName": "ISIBANIA"
+  },
+  {
+    "cityPlaceCode": "447",
+    "cityPlaceName": "ISINYA"
+  },
+  {
+    "cityPlaceCode": "102",
+    "cityPlaceName": "ISIOLO "
+  },
+  {
+    "cityPlaceCode": "448",
+    "cityPlaceName": "ISULU"
+  },
+  {
+    "cityPlaceCode": "103",
+    "cityPlaceName": "ITEN"
+  },
+  {
+    "cityPlaceCode": "449",
+    "cityPlaceName": "ITHANGA"
+  },
+  {
+    "cityPlaceCode": "450",
+    "cityPlaceName": "ITIBO"
+  },
+  {
+    "cityPlaceCode": "451",
+    "cityPlaceName": "ITUMBE"
+  },
+  {
+    "cityPlaceCode": "452",
+    "cityPlaceName": "JEBROK"
+  },
+  {
+    "cityPlaceCode": "104",
+    "cityPlaceName": "JOHANNESBURG"
+  },
+  {
+    "cityPlaceCode": "00622",
+    "cityPlaceName": "JujaRoad"
+  },
+  {
+    "cityPlaceCode": "443",
+    "cityPlaceName": "ILASIT"
+  },
+  {
+    "cityPlaceCode": "113",
+    "cityPlaceName": "KABARNET"
+  },
+  {
+    "cityPlaceCode": "105",
+    "cityPlaceName": "KABATI "
+  },
+  {
+    "cityPlaceCode": "454",
+    "cityPlaceName": "KABAZI"
+  },
+  {
+    "cityPlaceCode": "455",
+    "cityPlaceName": "KABIANGA"
+  },
+  {
+    "cityPlaceCode": "456",
+    "cityPlaceName": "KABIEMIT"
+  },
+  {
+    "cityPlaceCode": "457",
+    "cityPlaceName": "KABIYET"
+  },
+  {
+    "cityPlaceCode": "458",
+    "cityPlaceName": "KABOSON"
+  },
+  {
+    "cityPlaceCode": "459",
+    "cityPlaceName": "KABULA"
+  },
+  {
+    "cityPlaceCode": "460",
+    "cityPlaceName": "KACHELIBA"
+  },
+  {
+    "cityPlaceCode": "461",
+    "cityPlaceName": "KADEL"
+  },
+  {
+    "cityPlaceCode": "462",
+    "cityPlaceName": "KADONGO"
+  },
+  {
+    "cityPlaceCode": "463",
+    "cityPlaceName": "KAGIO"
+  },
+  {
+    "cityPlaceCode": "464",
+    "cityPlaceName": "KAGUMO"
+  },
+  {
+    "cityPlaceCode": "465",
+    "cityPlaceName": "KAGUNDUINI"
+  },
+  {
+    "cityPlaceCode": "466",
+    "cityPlaceName": "KAGWE"
+  },
+  {
+    "cityPlaceCode": "453",
+    "cityPlaceName": "KABARTONJO"
+  },
+  {
+    "cityPlaceCode": "442",
+    "cityPlaceName": "IKUU"
+  },
+  {
+    "cityPlaceCode": "101",
+    "cityPlaceName": "IKUTHA "
+  },
+  {
+    "cityPlaceCode": "441",
+    "cityPlaceName": "IKONGE"
+  },
+  {
+    "cityPlaceCode": "423",
+    "cityPlaceName": "GITUGI"
+  },
+  {
+    "cityPlaceCode": "090",
+    "cityPlaceName": "GLASGOW"
+  },
+  {
+    "cityPlaceCode": "424",
+    "cityPlaceName": "GONGONI"
+  },
+  {
+    "cityPlaceCode": "425",
+    "cityPlaceName": "GORGOR"
+  },
+  {
+    "cityPlaceCode": "426",
+    "cityPlaceName": "GRIFTU"
+  },
+  {
+    "cityPlaceCode": "094",
+    "cityPlaceName": "GUJARAT"
+  },
+  {
+    "cityPlaceCode": "10210",
+    "cityPlaceName": "Gacharage-ini"
+  },
+  {
+    "cityPlaceCode": "10109",
+    "cityPlaceName": "GakereRoad"
+  },
+  {
+    "cityPlaceCode": "60217",
+    "cityPlaceName": "Gatimbi"
+  },
+  {
+    "cityPlaceCode": "60205",
+    "cityPlaceName": "Githogo"
+  },
+  {
+    "cityPlaceCode": "80206",
+    "cityPlaceName": "Gongini"
+  },
+  {
+    "cityPlaceCode": "427",
+    "cityPlaceName": "HABASWEIN"
+  },
+  {
+    "cityPlaceCode": "428",
+    "cityPlaceName": "HAKATI"
+  },
+  {
+    "cityPlaceCode": "095",
+    "cityPlaceName": "HAMBURG"
+  },
+  {
+    "cityPlaceCode": "429",
+    "cityPlaceName": "HAMISI"
+  },
+  {
+    "cityPlaceCode": "096",
+    "cityPlaceName": "HARARE "
+  },
+  {
+    "cityPlaceCode": "097",
+    "cityPlaceName": "HAVANA "
+  },
+  {
+    "cityPlaceCode": "440",
+    "cityPlaceName": "IKINU"
+  },
+  {
+    "cityPlaceCode": "439",
+    "cityPlaceName": "IKEREGE"
+  },
+  {
+    "cityPlaceCode": "438",
+    "cityPlaceName": "IKALAASA"
+  },
+  {
+    "cityPlaceCode": "437",
+    "cityPlaceName": "IIANI"
+  },
+  {
+    "cityPlaceCode": "436",
+    "cityPlaceName": "IGWAMITI"
+  },
+  {
+    "cityPlaceCode": "435",
+    "cityPlaceName": "IGOJI"
+  },
+  {
+    "cityPlaceCode": "467",
+    "cityPlaceName": "KAHEHO"
+  },
+  {
+    "cityPlaceCode": "434",
+    "cityPlaceName": "IGARE"
+  },
+  {
+    "cityPlaceCode": "432",
+    "cityPlaceName": "HURUMA"
+  },
+  {
+    "cityPlaceCode": "100",
+    "cityPlaceName": "HONG KONG "
+  },
+  {
+    "cityPlaceCode": "098",
+    "cityPlaceName": "HOMA BAY"
+  },
+  {
+    "cityPlaceCode": "099",
+    "cityPlaceName": "HOLA"
+  },
+  {
+    "cityPlaceCode": "431",
+    "cityPlaceName": "HIGHRIDGE"
+  },
+  {
+    "cityPlaceCode": "430",
+    "cityPlaceName": "HAWINGA"
+  },
+  {
+    "cityPlaceCode": "433",
+    "cityPlaceName": "ICHICHI"
+  },
+  {
+    "cityPlaceCode": "569",
+    "cityPlaceName": "KILGORIS"
+  },
+  {
+    "cityPlaceCode": "570",
+    "cityPlaceName": "KILIBWONI"
+  },
+  {
+    "cityPlaceCode": "118",
+    "cityPlaceName": "KILIFI "
+  },
+  {
+    "cityPlaceCode": "681",
+    "cityPlaceName": "MAKTAU"
+  },
+  {
+    "cityPlaceCode": "192",
+    "cityPlaceName": "MAKUENI"
+  },
+  {
+    "cityPlaceCode": "682",
+    "cityPlaceName": "MAKUMBI"
+  },
+  {
+    "cityPlaceCode": "683",
+    "cityPlaceName": "MAKUNGA"
+  },
+  {
+    "cityPlaceCode": "684",
+    "cityPlaceName": "MAKUPA"
+  },
+  {
+    "cityPlaceCode": "685",
+    "cityPlaceName": "MAKUTANO"
+  },
+  {
+    "cityPlaceCode": "686",
+    "cityPlaceName": "MAKUYU (KENOL)"
+  },
+  {
+    "cityPlaceCode": "194",
+    "cityPlaceName": "MALABA "
+  },
+  {
+    "cityPlaceCode": "687",
+    "cityPlaceName": "MALAHA"
+  },
+  {
+    "cityPlaceCode": "174",
+    "cityPlaceName": "MALAKISI"
+  },
+  {
+    "cityPlaceCode": "688",
+    "cityPlaceName": "MALAVA"
+  },
+  {
+    "cityPlaceCode": "977",
+    "cityPlaceName": "MALINDI"
+  },
+  {
+    "cityPlaceCode": "195",
+    "cityPlaceName": "MALINDI"
+  },
+  {
+    "cityPlaceCode": "689",
+    "cityPlaceName": "MALINYA"
+  },
+  {
+    "cityPlaceCode": "680",
+    "cityPlaceName": "MAKONGENI"
+  },
+  {
+    "cityPlaceCode": "176",
+    "cityPlaceName": "MANCHESTER "
+  },
+  {
+    "cityPlaceCode": "690",
+    "cityPlaceName": "MANGA"
+  },
+  {
+    "cityPlaceCode": "691",
+    "cityPlaceName": "MANYANI"
+  },
+  {
+    "cityPlaceCode": "311",
+    "cityPlaceName": "MANYATTA"
+  },
+  {
+    "cityPlaceCode": "692",
+    "cityPlaceName": "MANYUANDA"
+  },
+  {
+    "cityPlaceCode": "693",
+    "cityPlaceName": "MANYULIA"
+  },
+  {
+    "cityPlaceCode": "186",
+    "cityPlaceName": "MARAGOLI"
+  },
+  {
+    "cityPlaceCode": "203",
+    "cityPlaceName": "MARAGUA"
+  },
+  {
+    "cityPlaceCode": "205",
+    "cityPlaceName": "MARALAL"
+  },
+  {
+    "cityPlaceCode": "694",
+    "cityPlaceName": "MARANI"
+  },
+  {
+    "cityPlaceCode": "204",
+    "cityPlaceName": "MARIAKANI "
+  },
+  {
+    "cityPlaceCode": "695",
+    "cityPlaceName": "MARIGAT"
+  },
+  {
+    "cityPlaceCode": "696",
+    "cityPlaceName": "MARIMA"
+  },
+  {
+    "cityPlaceCode": "697",
+    "cityPlaceName": "MARIMANTI"
+  },
+  {
+    "cityPlaceCode": "698",
+    "cityPlaceName": "MARIWA"
+  },
+  {
+    "cityPlaceCode": "198",
+    "cityPlaceName": "MANDERA"
+  },
+  {
+    "cityPlaceCode": "699",
+    "cityPlaceName": "MARMANET"
+  },
+  {
+    "cityPlaceCode": "173",
+    "cityPlaceName": "MAKINDU"
+  },
+  {
+    "cityPlaceCode": "678",
+    "cityPlaceName": "MAJI MAZURI"
+  },
+  {
+    "cityPlaceCode": "659",
+    "cityPlaceName": "LUNZA"
+  },
+  {
+    "cityPlaceCode": "660",
+    "cityPlaceName": "LUSINGETI"
+  },
+  {
+    "cityPlaceCode": "661",
+    "cityPlaceName": "LUSIOLA"
+  },
+  {
+    "cityPlaceCode": "662",
+    "cityPlaceName": "LUTASO"
+  },
+  {
+    "cityPlaceCode": "168",
+    "cityPlaceName": "LUXEMBOURG "
+  },
+  {
+    "cityPlaceCode": "663",
+    "cityPlaceName": "LWAKHAKHA"
+  },
+  {
+    "cityPlaceCode": "169",
+    "cityPlaceName": "LYON"
+  },
+  {
+    "cityPlaceCode": "00209",
+    "cityPlaceName": "Loitoktok"
+  },
+  {
+    "cityPlaceCode": "20203",
+    "cityPlaceName": "Londian"
+  },
+  {
+    "cityPlaceCode": "175",
+    "cityPlaceName": "MAAI MAHIU "
+  },
+  {
+    "cityPlaceCode": "170",
+    "cityPlaceName": "MAASTRICHT "
+  },
+  {
+    "cityPlaceCode": "664",
+    "cityPlaceName": "MABUSI"
+  },
+  {
+    "cityPlaceCode": "191",
+    "cityPlaceName": "MACHAKOS"
+  },
+  {
+    "cityPlaceCode": "665",
+    "cityPlaceName": "MADARAKA"
+  },
+  {
+    "cityPlaceCode": "679",
+    "cityPlaceName": "MAKIMENY"
+  },
+  {
+    "cityPlaceCode": "666",
+    "cityPlaceName": "MADIANY"
+  },
+  {
+    "cityPlaceCode": "171",
+    "cityPlaceName": "MADRAS "
+  },
+  {
+    "cityPlaceCode": "181",
+    "cityPlaceName": "MADRID "
+  },
+  {
+    "cityPlaceCode": "668",
+    "cityPlaceName": "MAGADA"
+  },
+  {
+    "cityPlaceCode": "185",
+    "cityPlaceName": "MAGADI "
+  },
+  {
+    "cityPlaceCode": "669",
+    "cityPlaceName": "MAGENA"
+  },
+  {
+    "cityPlaceCode": "670",
+    "cityPlaceName": "MAGO"
+  },
+  {
+    "cityPlaceCode": "671",
+    "cityPlaceName": "MAGOMBO"
+  },
+  {
+    "cityPlaceCode": "672",
+    "cityPlaceName": "MAGUMONI"
+  },
+  {
+    "cityPlaceCode": "673",
+    "cityPlaceName": "MAGUNGA"
+  },
+  {
+    "cityPlaceCode": "674",
+    "cityPlaceName": "MAGUTUNI"
+  },
+  {
+    "cityPlaceCode": "675",
+    "cityPlaceName": "MAGWAGWA"
+  },
+  {
+    "cityPlaceCode": "676",
+    "cityPlaceName": "MAHANGA"
+  },
+  {
+    "cityPlaceCode": "172",
+    "cityPlaceName": "MAHE"
+  },
+  {
+    "cityPlaceCode": "677",
+    "cityPlaceName": "MAIRO INYA"
+  },
+  {
+    "cityPlaceCode": "667",
+    "cityPlaceName": "MADINA"
+  },
+  {
+    "cityPlaceCode": "206",
+    "cityPlaceName": "MARSABIT"
+  },
+  {
+    "cityPlaceCode": "177",
+    "cityPlaceName": "MARSEILLE "
+  },
+  {
+    "cityPlaceCode": "700",
+    "cityPlaceName": "MASANA"
+  },
+  {
+    "cityPlaceCode": "184",
+    "cityPlaceName": "MEXICO CITY"
+  },
+  {
+    "cityPlaceCode": "983",
+    "cityPlaceName": "MFANGANO"
+  },
+  {
+    "cityPlaceCode": "726",
+    "cityPlaceName": "MGAMBONYI"
+  },
+  {
+    "cityPlaceCode": "727",
+    "cityPlaceName": "MGANGE"
+  },
+  {
+    "cityPlaceCode": "189",
+    "cityPlaceName": "MIAMI"
+  },
+  {
+    "cityPlaceCode": "728",
+    "cityPlaceName": "MIATHENE"
+  },
+  {
+    "cityPlaceCode": "729",
+    "cityPlaceName": "MIGIOINI"
+  },
+  {
+    "cityPlaceCode": "187",
+    "cityPlaceName": "MIGORI "
+  },
+  {
+    "cityPlaceCode": "730",
+    "cityPlaceName": "MIGWANI"
+  },
+  {
+    "cityPlaceCode": "731",
+    "cityPlaceName": "MIHARATI"
+  },
+  {
+    "cityPlaceCode": "732",
+    "cityPlaceName": "MIKAYI"
+  },
+  {
+    "cityPlaceCode": "733",
+    "cityPlaceName": "MIKINDURI"
+  },
+  {
+    "cityPlaceCode": "190",
+    "cityPlaceName": "MILANO "
+  },
+  {
+    "cityPlaceCode": "973",
+    "cityPlaceName": "MINNEAPOLIS"
+  },
+  {
+    "cityPlaceCode": "207",
+    "cityPlaceName": "MERU"
+  },
+  {
+    "cityPlaceCode": "734",
+    "cityPlaceName": "MIRANGINE"
+  },
+  {
+    "cityPlaceCode": "736",
+    "cityPlaceName": "MISIKHU"
+  },
+  {
+    "cityPlaceCode": "737",
+    "cityPlaceName": "MISORI"
+  },
+  {
+    "cityPlaceCode": "738",
+    "cityPlaceName": "MITABONI"
+  },
+  {
+    "cityPlaceCode": "739",
+    "cityPlaceName": "MITUNGUU"
+  },
+  {
+    "cityPlaceCode": "740",
+    "cityPlaceName": "MIU"
+  },
+  {
+    "cityPlaceCode": "741",
+    "cityPlaceName": "MIWANI"
+  },
+  {
+    "cityPlaceCode": "742",
+    "cityPlaceName": "MKOMANI"
+  },
+  {
+    "cityPlaceCode": "743",
+    "cityPlaceName": "MLOLONGO"
+  },
+  {
+    "cityPlaceCode": "981",
+    "cityPlaceName": "MOBILE"
+  },
+  {
+    "cityPlaceCode": "744",
+    "cityPlaceName": "MOCHONGOI"
+  },
+  {
+    "cityPlaceCode": "745",
+    "cityPlaceName": "MOGOGOSIEK"
+  },
+  {
+    "cityPlaceCode": "199",
+    "cityPlaceName": "MOGOTIO"
+  },
+  {
+    "cityPlaceCode": "747",
+    "cityPlaceName": "MOI'S BRIDGE"
+  },
+  {
+    "cityPlaceCode": "746",
+    "cityPlaceName": "MOI-BEN"
+  },
+  {
+    "cityPlaceCode": "735",
+    "cityPlaceName": "MIROGI"
+  },
+  {
+    "cityPlaceCode": "725",
+    "cityPlaceName": "MERTI"
+  },
+  {
+    "cityPlaceCode": "724",
+    "cityPlaceName": "MERIGI"
+  },
+  {
+    "cityPlaceCode": "723",
+    "cityPlaceName": "MENENGAI"
+  },
+  {
+    "cityPlaceCode": "178",
+    "cityPlaceName": "MASENO "
+  },
+  {
+    "cityPlaceCode": "701",
+    "cityPlaceName": "MASHINI"
+  },
+  {
+    "cityPlaceCode": "702",
+    "cityPlaceName": "MASHURU"
+  },
+  {
+    "cityPlaceCode": "209",
+    "cityPlaceName": "MASII"
+  },
+  {
+    "cityPlaceCode": "703",
+    "cityPlaceName": "MASIMBA"
+  },
+  {
+    "cityPlaceCode": "704",
+    "cityPlaceName": "MASINGA"
+  },
+  {
+    "cityPlaceCode": "705",
+    "cityPlaceName": "MATATHIA"
+  },
+  {
+    "cityPlaceCode": "706",
+    "cityPlaceName": "MATAYOS"
+  },
+  {
+    "cityPlaceCode": "707",
+    "cityPlaceName": "MATETE"
+  },
+  {
+    "cityPlaceCode": "708",
+    "cityPlaceName": "MATHUKI"
+  },
+  {
+    "cityPlaceCode": "709",
+    "cityPlaceName": "MATILIKU"
+  },
+  {
+    "cityPlaceCode": "710",
+    "cityPlaceName": "MATINYANI"
+  },
+  {
+    "cityPlaceCode": "711",
+    "cityPlaceName": "MATUGA"
+  },
+  {
+    "cityPlaceCode": "712",
+    "cityPlaceName": "MATUNDA"
+  },
+  {
+    "cityPlaceCode": "212",
+    "cityPlaceName": "MATUU"
+  },
+  {
+    "cityPlaceCode": "713",
+    "cityPlaceName": "MAU NAROK"
+  },
+  {
+    "cityPlaceCode": "714",
+    "cityPlaceName": "MAU SUMMIT"
+  },
+  {
+    "cityPlaceCode": "183",
+    "cityPlaceName": "MELBOURNE "
+  },
+  {
+    "cityPlaceCode": "182",
+    "cityPlaceName": "MECCA"
+  },
+  {
+    "cityPlaceCode": "722",
+    "cityPlaceName": "MBUMBUNI"
+  },
+  {
+    "cityPlaceCode": "721",
+    "cityPlaceName": "MBIUNI"
+  },
+  {
+    "cityPlaceCode": "720",
+    "cityPlaceName": "MBITINI"
+  },
+  {
+    "cityPlaceCode": "180",
+    "cityPlaceName": "MBITA"
+  },
+  {
+    "cityPlaceCode": "658",
+    "cityPlaceName": "LUNGALUNGA"
+  },
+  {
+    "cityPlaceCode": "719",
+    "cityPlaceName": "MBARI YA NJIKU"
+  },
+  {
+    "cityPlaceCode": "718",
+    "cityPlaceName": "MBAKALO"
+  },
+  {
+    "cityPlaceCode": "982",
+    "cityPlaceName": "MBAGATHI"
+  },
+  {
+    "cityPlaceCode": "717",
+    "cityPlaceName": "MAZERAS"
+  },
+  {
+    "cityPlaceCode": "716",
+    "cityPlaceName": "MAWEGO"
+  },
+  {
+    "cityPlaceCode": "715",
+    "cityPlaceName": "MAVINDINI"
+  },
+  {
+    "cityPlaceCode": "213",
+    "cityPlaceName": "MAUA"
+  },
+  {
+    "cityPlaceCode": "179",
+    "cityPlaceName": "MBALE"
+  },
+  {
+    "cityPlaceCode": "657",
+    "cityPlaceName": "LUMAKANDA"
+  },
+  {
+    "cityPlaceCode": "656",
+    "cityPlaceName": "LUKUME"
+  },
+  {
+    "cityPlaceCode": "655",
+    "cityPlaceName": "LUKORE"
+  },
+  {
+    "cityPlaceCode": "601",
+    "cityPlaceName": "KIRITU"
+  },
+  {
+    "cityPlaceCode": "602",
+    "cityPlaceName": "KIRIUA"
+  },
+  {
+    "cityPlaceCode": "603",
+    "cityPlaceName": "KIRUARA"
+  },
+  {
+    "cityPlaceCode": "604",
+    "cityPlaceName": "KISANANA"
+  },
+  {
+    "cityPlaceCode": "605",
+    "cityPlaceName": "KISASI"
+  },
+  {
+    "cityPlaceCode": "145",
+    "cityPlaceName": "KISERIAN"
+  },
+  {
+    "cityPlaceCode": "143",
+    "cityPlaceName": "KISII"
+  },
+  {
+    "cityPlaceCode": "989",
+    "cityPlaceName": "KISUMU"
+  },
+  {
+    "cityPlaceCode": "144",
+    "cityPlaceName": "KISUMU "
+  },
+  {
+    "cityPlaceCode": "147",
+    "cityPlaceName": "KITALE "
+  },
+  {
+    "cityPlaceCode": "146",
+    "cityPlaceName": "KITENGELA "
+  },
+  {
+    "cityPlaceCode": "606",
+    "cityPlaceName": "KITHIMANI"
+  },
+  {
+    "cityPlaceCode": "607",
+    "cityPlaceName": "KITHIMU"
+  },
+  {
+    "cityPlaceCode": "148",
+    "cityPlaceName": "KITHYOKO"
+  },
+  {
+    "cityPlaceCode": "600",
+    "cityPlaceName": "KIRITIRI"
+  },
+  {
+    "cityPlaceCode": "127",
+    "cityPlaceName": "KITISE "
+  },
+  {
+    "cityPlaceCode": "149",
+    "cityPlaceName": "KITUI"
+  },
+  {
+    "cityPlaceCode": "609",
+    "cityPlaceName": "KIUSYANI"
+  },
+  {
+    "cityPlaceCode": "610",
+    "cityPlaceName": "KIVAANI"
+  },
+  {
+    "cityPlaceCode": "611",
+    "cityPlaceName": "KIVUNGA"
+  },
+  {
+    "cityPlaceCode": "612",
+    "cityPlaceName": "KOBUJOI"
+  },
+  {
+    "cityPlaceCode": "613",
+    "cityPlaceName": "KOCHOLYA"
+  },
+  {
+    "cityPlaceCode": "614",
+    "cityPlaceName": "KOILOT"
+  },
+  {
+    "cityPlaceCode": "615",
+    "cityPlaceName": "KOJWANG"
+  },
+  {
+    "cityPlaceCode": "616",
+    "cityPlaceName": "KOLA"
+  },
+  {
+    "cityPlaceCode": "617",
+    "cityPlaceName": "KOMBEWA"
+  },
+  {
+    "cityPlaceCode": "618",
+    "cityPlaceName": "KONDELE"
+  },
+  {
+    "cityPlaceCode": "619",
+    "cityPlaceName": "KONDIK"
+  },
+  {
+    "cityPlaceCode": "984",
+    "cityPlaceName": "KORA"
+  },
+  {
+    "cityPlaceCode": "620",
+    "cityPlaceName": "KORACHA"
+  },
+  {
+    "cityPlaceCode": "608",
+    "cityPlaceName": "KITIVO"
+  },
+  {
+    "cityPlaceCode": "309",
+    "cityPlaceName": "KIRIRIRI"
+  },
+  {
+    "cityPlaceCode": "141",
+    "cityPlaceName": "KIRIA-INI "
+  },
+  {
+    "cityPlaceCode": "599",
+    "cityPlaceName": "KIRENGETI"
+  },
+  {
+    "cityPlaceCode": "571",
+    "cityPlaceName": "KILINDINI"
+  },
+  {
+    "cityPlaceCode": "572",
+    "cityPlaceName": "KILINGILI"
+  },
+  {
+    "cityPlaceCode": "573",
+    "cityPlaceName": "KIMAHURI"
+  },
+  {
+    "cityPlaceCode": "574",
+    "cityPlaceName": "KIMANA"
+  },
+  {
+    "cityPlaceCode": "575",
+    "cityPlaceName": "KIMBIMBI"
+  },
+  {
+    "cityPlaceCode": "130",
+    "cityPlaceName": "KIMENDE"
+  },
+  {
+    "cityPlaceCode": "131",
+    "cityPlaceName": "KIMILILI"
+  },
+  {
+    "cityPlaceCode": "576",
+    "cityPlaceName": "KIMININI"
+  },
+  {
+    "cityPlaceCode": "577",
+    "cityPlaceName": "KIMONING"
+  },
+  {
+    "cityPlaceCode": "578",
+    "cityPlaceName": "KIMULOT"
+  },
+  {
+    "cityPlaceCode": "579",
+    "cityPlaceName": "KIMUNYE"
+  },
+  {
+    "cityPlaceCode": "580",
+    "cityPlaceName": "KIMWARER"
+  },
+  {
+    "cityPlaceCode": "581",
+    "cityPlaceName": "KINAMBA"
+  },
+  {
+    "cityPlaceCode": "582",
+    "cityPlaceName": "KINANGO"
+  },
+  {
+    "cityPlaceCode": "583",
+    "cityPlaceName": "KINARI"
+  },
+  {
+    "cityPlaceCode": "584",
+    "cityPlaceName": "KINDARUMA"
+  },
+  {
+    "cityPlaceCode": "585",
+    "cityPlaceName": "KINORU"
+  },
+  {
+    "cityPlaceCode": "598",
+    "cityPlaceName": "KIPTUGUMO"
+  },
+  {
+    "cityPlaceCode": "597",
+    "cityPlaceName": "KIPTERE"
+  },
+  {
+    "cityPlaceCode": "596",
+    "cityPlaceName": "KIPTANGWANYI"
+  },
+  {
+    "cityPlaceCode": "595",
+    "cityPlaceName": "KIPTAGICH"
+  },
+  {
+    "cityPlaceCode": "594",
+    "cityPlaceName": "KIPTABACH"
+  },
+  {
+    "cityPlaceCode": "593",
+    "cityPlaceName": "KIPSARAMAN"
+  },
+  {
+    "cityPlaceCode": "621",
+    "cityPlaceName": "KORU"
+  },
+  {
+    "cityPlaceCode": "592",
+    "cityPlaceName": "KIPSAINA"
+  },
+  {
+    "cityPlaceCode": "590",
+    "cityPlaceName": "KIPKELION"
+  },
+  {
+    "cityPlaceCode": "589",
+    "cityPlaceName": "KIPKARREN RIVER"
+  },
+  {
+    "cityPlaceCode": "588",
+    "cityPlaceName": "KIPKABUS"
+  },
+  {
+    "cityPlaceCode": "587",
+    "cityPlaceName": "KIPEVU"
+  },
+  {
+    "cityPlaceCode": "586",
+    "cityPlaceName": "KIONYO"
+  },
+  {
+    "cityPlaceCode": "126",
+    "cityPlaceName": "KINSHASA"
+  },
+  {
+    "cityPlaceCode": "591",
+    "cityPlaceName": "KIPLEGETET"
+  },
+  {
+    "cityPlaceCode": "376",
+    "cityPlaceName": "EKALAKALA"
+  },
+  {
+    "cityPlaceCode": "622",
+    "cityPlaceName": "KOSELE"
+  },
+  {
+    "cityPlaceCode": "150",
+    "cityPlaceName": "KUALA LUMPUR"
+  },
+  {
+    "cityPlaceCode": "638",
+    "cityPlaceName": "LESHAU"
+  },
+  {
+    "cityPlaceCode": "639",
+    "cityPlaceName": "LESSOS"
+  },
+  {
+    "cityPlaceCode": "640",
+    "cityPlaceName": "LIKONI"
+  },
+  {
+    "cityPlaceCode": "161",
+    "cityPlaceName": "LIMURU "
+  },
+  {
+    "cityPlaceCode": "158",
+    "cityPlaceName": "LISBON "
+  },
+  {
+    "cityPlaceCode": "641",
+    "cityPlaceName": "LITA"
+  },
+  {
+    "cityPlaceCode": "167",
+    "cityPlaceName": "LITEIN "
+  },
+  {
+    "cityPlaceCode": "159",
+    "cityPlaceName": "LITEIN "
+  },
+  {
+    "cityPlaceCode": "160",
+    "cityPlaceName": "LIVERPOOL "
+  },
+  {
+    "cityPlaceCode": "155",
+    "cityPlaceName": "LODWAR "
+  },
+  {
+    "cityPlaceCode": "166",
+    "cityPlaceName": "LOITOKITOK "
+  },
+  {
+    "cityPlaceCode": "642",
+    "cityPlaceName": "LOIYANGALANI"
+  },
+  {
+    "cityPlaceCode": "163",
+    "cityPlaceName": "LOKICHOGGIO"
+  },
+  {
+    "cityPlaceCode": "643",
+    "cityPlaceName": "LOKITAUNG"
+  },
+  {
+    "cityPlaceCode": "156",
+    "cityPlaceName": "LEEDS"
+  },
+  {
+    "cityPlaceCode": "644",
+    "cityPlaceName": "LOKORI"
+  },
+  {
+    "cityPlaceCode": "154",
+    "cityPlaceName": "LONDIANI"
+  },
+  {
+    "cityPlaceCode": "164",
+    "cityPlaceName": "LONDON "
+  },
+  {
+    "cityPlaceCode": "157",
+    "cityPlaceName": "LONGISA"
+  },
+  {
+    "cityPlaceCode": "165",
+    "cityPlaceName": "LOS ANGELES"
+  },
+  {
+    "cityPlaceCode": "975",
+    "cityPlaceName": "LOWELL"
+  },
+  {
+    "cityPlaceCode": "646",
+    "cityPlaceName": "LOWER KABETE"
+  },
+  {
+    "cityPlaceCode": "647",
+    "cityPlaceName": "LUANDA"
+  },
+  {
+    "cityPlaceCode": "648",
+    "cityPlaceName": "LUANDANYI"
+  },
+  {
+    "cityPlaceCode": "649",
+    "cityPlaceName": "LUANDETI"
+  },
+  {
+    "cityPlaceCode": "650",
+    "cityPlaceName": "LUBAO"
+  },
+  {
+    "cityPlaceCode": "651",
+    "cityPlaceName": "LUGARI"
+  },
+  {
+    "cityPlaceCode": "652",
+    "cityPlaceName": "LUGINGO"
+  },
+  {
+    "cityPlaceCode": "653",
+    "cityPlaceName": "LUHANO"
+  },
+  {
+    "cityPlaceCode": "654",
+    "cityPlaceName": "LUKOLIS"
+  },
+  {
+    "cityPlaceCode": "645",
+    "cityPlaceName": "LOLGORIAN"
+  },
+  {
+    "cityPlaceCode": "637",
+    "cityPlaceName": "LAVINGTON"
+  },
+  {
+    "cityPlaceCode": "636",
+    "cityPlaceName": "LANGATA"
+  },
+  {
+    "cityPlaceCode": "635",
+    "cityPlaceName": "LANGAS"
+  },
+  {
+    "cityPlaceCode": "624",
+    "cityPlaceName": "KURESOI"
+  },
+  {
+    "cityPlaceCode": "625",
+    "cityPlaceName": "KUTUS"
+  },
+  {
+    "cityPlaceCode": "151",
+    "cityPlaceName": "KUWAIT "
+  },
+  {
+    "cityPlaceCode": "152",
+    "cityPlaceName": "KWALE"
+  },
+  {
+    "cityPlaceCode": "626",
+    "cityPlaceName": "KWANZA"
+  },
+  {
+    "cityPlaceCode": "627",
+    "cityPlaceName": "KWAVONZA"
+  },
+  {
+    "cityPlaceCode": "628",
+    "cityPlaceName": "KYENI"
+  },
+  {
+    "cityPlaceCode": "629",
+    "cityPlaceName": "KYUSO"
+  },
+  {
+    "cityPlaceCode": "60411",
+    "cityPlaceName": "Kaanwa"
+  },
+  {
+    "cityPlaceCode": "20157",
+    "cityPlaceName": "KabarakUniversity"
+  },
+  {
+    "cityPlaceCode": "30305",
+    "cityPlaceName": "Kabujoi"
+  },
+  {
+    "cityPlaceCode": "90150",
+    "cityPlaceName": "Kaewa"
+  },
+  {
+    "cityPlaceCode": "00625",
+    "cityPlaceName": "Kangemi"
+  },
+  {
+    "cityPlaceCode": "20219",
+    "cityPlaceName": "Kapkelet"
+  },
+  {
+    "cityPlaceCode": "00615",
+    "cityPlaceName": "Kariobangi"
+  },
+  {
+    "cityPlaceCode": "00608",
+    "cityPlaceName": "Kasarani"
+  },
+  {
+    "cityPlaceCode": "00518",
+    "cityPlaceName": "Kayole"
+  },
+  {
+    "cityPlaceCode": "634",
+    "cityPlaceName": "LANET"
+  },
+  {
+    "cityPlaceCode": "162",
+    "cityPlaceName": "LAMU"
+  },
+  {
+    "cityPlaceCode": "633",
+    "cityPlaceName": "LAISAMIS"
+  },
+  {
+    "cityPlaceCode": "632",
+    "cityPlaceName": "LAIKIPIA CAMPUS"
+  },
+  {
+    "cityPlaceCode": "153",
+    "cityPlaceName": "LAHORE "
+  },
+  {
+    "cityPlaceCode": "631",
+    "cityPlaceName": "LADHRI AWASI"
+  },
+  {
+    "cityPlaceCode": "623",
+    "cityPlaceName": "KOYONZO"
+  },
+  {
+    "cityPlaceCode": "630",
+    "cityPlaceName": "LAARE"
+  },
+  {
+    "cityPlaceCode": "90148",
+    "cityPlaceName": "Kiunduani"
+  },
+  {
+    "cityPlaceCode": "40200",
+    "cityPlaceName": "Kisii"
+  },
+  {
+    "cityPlaceCode": "10140",
+    "cityPlaceName": "Kimathiway"
+  },
+  {
+    "cityPlaceCode": "30110",
+    "cityPlaceName": "KihugaSquare"
+  },
+  {
+    "cityPlaceCode": "00609",
+    "cityPlaceName": "KenyattaUniversity"
+  },
+  {
+    "cityPlaceCode": "00202",
+    "cityPlaceName": "KenyattaNationalHospital"
+  },
+  {
+    "cityPlaceCode": "90220",
+    "cityPlaceName": "Kyatune"
+  },
+  {
+    "cityPlaceCode": "079",
+    "cityPlaceName": "EDINBURGH "
+  },
+  {
+    "cityPlaceCode": "80104",
+    "cityPlaceName": "Docks"
+  },
+  {
+    "cityPlaceCode": "80401",
+    "cityPlaceName": "DianiBeach"
+  },
+  {
+    "cityPlaceCode": "881",
+    "cityPlaceName": "RONGO"
+  },
+  {
+    "cityPlaceCode": "880",
+    "cityPlaceName": "RONGAI"
+  },
+  {
+    "cityPlaceCode": "258",
+    "cityPlaceName": "ROMA"
+  },
+  {
+    "cityPlaceCode": "879",
+    "cityPlaceName": "RODI KOPANY"
+  },
+  {
+    "cityPlaceCode": "878",
+    "cityPlaceName": "RIRUTA"
+  },
+  {
+    "cityPlaceCode": "877",
+    "cityPlaceName": "RIOSIRI"
+  },
+  {
+    "cityPlaceCode": "876",
+    "cityPlaceName": "RIOCHANDA"
+  },
+  {
+    "cityPlaceCode": "257",
+    "cityPlaceName": "RIO DE JANERIO"
+  },
+  {
+    "cityPlaceCode": "875",
+    "cityPlaceName": "RIGOMA"
+  },
+  {
+    "cityPlaceCode": "874",
+    "cityPlaceName": "RHAMU"
+  },
+  {
+    "cityPlaceCode": "873",
+    "cityPlaceName": "RERU"
+  },
+  {
+    "cityPlaceCode": "872",
+    "cityPlaceName": "RATTA"
+  },
+  {
+    "cityPlaceCode": "871",
+    "cityPlaceName": "RAPOGI"
+  },
+  {
+    "cityPlaceCode": "870",
+    "cityPlaceName": "RANGWE"
+  },
+  {
+    "cityPlaceCode": "882",
+    "cityPlaceName": "RORET"
+  },
+  {
+    "cityPlaceCode": "869",
+    "cityPlaceName": "RANGALA"
+  },
+  {
+    "cityPlaceCode": "867",
+    "cityPlaceName": "RAMULA"
+  },
+  {
+    "cityPlaceCode": "866",
+    "cityPlaceName": "RAMBA"
+  },
+  {
+    "cityPlaceCode": "865",
+    "cityPlaceName": "RAKWARO"
+  },
+  {
+    "cityPlaceCode": "864",
+    "cityPlaceName": "RAGENGNI"
+  },
+  {
+    "cityPlaceCode": "863",
+    "cityPlaceName": "RABUOR"
+  },
+  {
+    "cityPlaceCode": "256",
+    "cityPlaceName": "RABAT"
+  },
+  {
+    "cityPlaceCode": "00624",
+    "cityPlaceName": "QuarryRoad"
+  },
+  {
+    "cityPlaceCode": "255",
+    "cityPlaceName": "QUEBEC "
+  },
+  {
+    "cityPlaceCode": "30116",
+    "cityPlaceName": "Plateau"
+  },
+  {
+    "cityPlaceCode": "20311",
+    "cityPlaceName": "Passenga"
+  },
+  {
+    "cityPlaceCode": "862",
+    "cityPlaceName": "PORT VICTORIA"
+  },
+  {
+    "cityPlaceCode": "254",
+    "cityPlaceName": "POONA"
+  },
+  {
+    "cityPlaceCode": "253",
+    "cityPlaceName": "PHOENIX"
+  },
+  {
+    "cityPlaceCode": "252",
+    "cityPlaceName": "PERTH"
+  },
+  {
+    "cityPlaceCode": "868",
+    "cityPlaceName": "RANEN"
+  },
+  {
+    "cityPlaceCode": "861",
+    "cityPlaceName": "PEMBE TATU"
+  },
+  {
+    "cityPlaceCode": "259",
+    "cityPlaceName": "ROTTERDAM "
+  },
+  {
+    "cityPlaceCode": "260",
+    "cityPlaceName": "RUIRU"
+  },
+  {
+    "cityPlaceCode": "266",
+    "cityPlaceName": "SHANGHAI"
+  },
+  {
+    "cityPlaceCode": "897",
+    "cityPlaceName": "SHABAAB"
+  },
+  {
+    "cityPlaceCode": "896",
+    "cityPlaceName": "SERETUNIN"
+  },
+  {
+    "cityPlaceCode": "895",
+    "cityPlaceName": "SEREM"
+  },
+  {
+    "cityPlaceCode": "265",
+    "cityPlaceName": "SEOUL"
+  },
+  {
+    "cityPlaceCode": "894",
+    "cityPlaceName": "SEGA"
+  },
+  {
+    "cityPlaceCode": "264",
+    "cityPlaceName": "SEATTLE"
+  },
+  {
+    "cityPlaceCode": "263",
+    "cityPlaceName": "SAWAGONGO "
+  },
+  {
+    "cityPlaceCode": "262",
+    "cityPlaceName": "SARE"
+  },
+  {
+    "cityPlaceCode": "261",
+    "cityPlaceName": "SAO PAULO "
+  },
+  {
+    "cityPlaceCode": "893",
+    "cityPlaceName": "SAMITSI"
+  },
+  {
+    "cityPlaceCode": "892",
+    "cityPlaceName": "SAMBURU"
+  },
+  {
+    "cityPlaceCode": "273",
+    "cityPlaceName": "SAINT DENIS"
+  },
+  {
+    "cityPlaceCode": "314",
+    "cityPlaceName": "SAGANA"
+  },
+  {
+    "cityPlaceCode": "883",
+    "cityPlaceName": "RUARAKA"
+  },
+  {
+    "cityPlaceCode": "891",
+    "cityPlaceName": "SAGALLA"
+  },
+  {
+    "cityPlaceCode": "889",
+    "cityPlaceName": "SABATIA"
+  },
+  {
+    "cityPlaceCode": "272",
+    "cityPlaceName": "SABASABA"
+  },
+  {
+    "cityPlaceCode": "888",
+    "cityPlaceName": "SABA SABA"
+  },
+  {
+    "cityPlaceCode": "10134",
+    "cityPlaceName": "Ruthangati"
+  },
+  {
+    "cityPlaceCode": "20313",
+    "cityPlaceName": "Ruri"
+  },
+  {
+    "cityPlaceCode": "20127",
+    "cityPlaceName": "Ronda"
+  },
+  {
+    "cityPlaceCode": "00300",
+    "cityPlaceName": "RonaldNgalaStreet"
+  },
+  {
+    "cityPlaceCode": "40226",
+    "cityPlaceName": "Ringa"
+  },
+  {
+    "cityPlaceCode": "00617",
+    "cityPlaceName": "RacecourseRoad"
+  },
+  {
+    "cityPlaceCode": "887",
+    "cityPlaceName": "RUSINGA"
+  },
+  {
+    "cityPlaceCode": "886",
+    "cityPlaceName": "RURINGU"
+  },
+  {
+    "cityPlaceCode": "885",
+    "cityPlaceName": "RURII"
+  },
+  {
+    "cityPlaceCode": "313",
+    "cityPlaceName": "RUNYENJES"
+  },
+  {
+    "cityPlaceCode": "884",
+    "cityPlaceName": "RUMURUTI"
+  },
+  {
+    "cityPlaceCode": "890",
+    "cityPlaceName": "SABOTI"
+  },
+  {
+    "cityPlaceCode": "860",
+    "cityPlaceName": "PAW AKUCHE"
+  },
+  {
+    "cityPlaceCode": "859",
+    "cityPlaceName": "PARKLANDS"
+  },
+  {
+    "cityPlaceCode": "251",
+    "cityPlaceName": "PARIS"
+  },
+  {
+    "cityPlaceCode": "40333",
+    "cityPlaceName": "Nyadhiwa"
+  },
+  {
+    "cityPlaceCode": "90149",
+    "cityPlaceName": "Nthongoini"
+  },
+  {
+    "cityPlaceCode": "00505",
+    "cityPlaceName": "NgongRoad"
+  },
+  {
+    "cityPlaceCode": "00208",
+    "cityPlaceName": "NgongHills"
+  },
+  {
+    "cityPlaceCode": "00600",
+    "cityPlaceName": "NgaraRoad"
+  },
+  {
+    "cityPlaceCode": "30123",
+    "cityPlaceName": "Ndalat"
+  },
+  {
+    "cityPlaceCode": "00100",
+    "cityPlaceName": "NairobiGPO"
+  },
+  {
+    "cityPlaceCode": "837",
+    "cityPlaceName": "NZOIA"
+  },
+  {
+    "cityPlaceCode": "836",
+    "cityPlaceName": "NZIU"
+  },
+  {
+    "cityPlaceCode": "835",
+    "cityPlaceName": "NZEEKA"
+  },
+  {
+    "cityPlaceCode": "834",
+    "cityPlaceName": "NYILIMA"
+  },
+  {
+    "cityPlaceCode": "238",
+    "cityPlaceName": "NYERI"
+  },
+  {
+    "cityPlaceCode": "833",
+    "cityPlaceName": "NYAWARA"
+  },
+  {
+    "cityPlaceCode": "832",
+    "cityPlaceName": "NYATIKE"
+  },
+  {
+    "cityPlaceCode": "40631",
+    "cityPlaceName": "Nyandorera"
+  },
+  {
+    "cityPlaceCode": "831",
+    "cityPlaceName": "NYARU"
+  },
+  {
+    "cityPlaceCode": "829",
+    "cityPlaceName": "NYANSIONGO"
+  },
+  {
+    "cityPlaceCode": "828",
+    "cityPlaceName": "NYANGWESO"
+  },
+  {
+    "cityPlaceCode": "827",
+    "cityPlaceName": "NYANGUSU"
+  },
+  {
+    "cityPlaceCode": "826",
+    "cityPlaceName": "NYANGORI"
+  },
+  {
+    "cityPlaceCode": "825",
+    "cityPlaceName": "NYANGANDE"
+  },
+  {
+    "cityPlaceCode": "985",
+    "cityPlaceName": "NYANDHIWA  TOWN"
+  },
+  {
+    "cityPlaceCode": "824",
+    "cityPlaceName": "NYAMONYE"
+  },
+  {
+    "cityPlaceCode": "241",
+    "cityPlaceName": "NYAMIRA"
+  },
+  {
+    "cityPlaceCode": "823",
+    "cityPlaceName": "NYAMBUNWA"
+  },
+  {
+    "cityPlaceCode": "231",
+    "cityPlaceName": "NYAMBENE"
+  },
+  {
+    "cityPlaceCode": "822",
+    "cityPlaceName": "NYAMARAMBE"
+  },
+  {
+    "cityPlaceCode": "232",
+    "cityPlaceName": "NYAMACHE"
+  },
+  {
+    "cityPlaceCode": "821",
+    "cityPlaceName": "NYALI"
+  },
+  {
+    "cityPlaceCode": "242",
+    "cityPlaceName": "NYAHURURU "
+  },
+  {
+    "cityPlaceCode": "830",
+    "cityPlaceName": "NYARAMBA"
+  },
+  {
+    "cityPlaceCode": "00506",
+    "cityPlaceName": "NyayoStadium"
+  },
+  {
+    "cityPlaceCode": "838",
+    "cityPlaceName": "OBOCH"
+  },
+  {
+    "cityPlaceCode": "839",
+    "cityPlaceName": "OGEMBO"
+  },
+  {
+    "cityPlaceCode": "858",
+    "cityPlaceName": "PAP ONDITI"
+  },
+  {
+    "cityPlaceCode": "250",
+    "cityPlaceName": "PALERMO"
+  },
+  {
+    "cityPlaceCode": "857",
+    "cityPlaceName": "PALA"
+  },
+  {
+    "cityPlaceCode": "40334",
+    "cityPlaceName": "Oyanimasii"
+  },
+  {
+    "cityPlaceCode": "40324",
+    "cityPlaceName": "Otaro"
+  },
+  {
+    "cityPlaceCode": "50427",
+    "cityPlaceName": "Obekai"
+  },
+  {
+    "cityPlaceCode": "249",
+    "cityPlaceName": "OYUGIS "
+  },
+  {
+    "cityPlaceCode": "988",
+    "cityPlaceName": "OYUGIS"
+  },
+  {
+    "cityPlaceCode": "248",
+    "cityPlaceName": "OTTAWA "
+  },
+  {
+    "cityPlaceCode": "856",
+    "cityPlaceName": "OTONGLO"
+  },
+  {
+    "cityPlaceCode": "855",
+    "cityPlaceName": "OTHORO"
+  },
+  {
+    "cityPlaceCode": "854",
+    "cityPlaceName": "OTHOCH RAKUOM"
+  },
+  {
+    "cityPlaceCode": "247",
+    "cityPlaceName": "OTHERS NOT DEFINED "
+  },
+  {
+    "cityPlaceCode": "246",
+    "cityPlaceName": "OTHAYA "
+  },
+  {
+    "cityPlaceCode": "245",
+    "cityPlaceName": "OSAKA"
+  },
+  {
+    "cityPlaceCode": "853",
+    "cityPlaceName": "ORTUM"
+  },
+  {
+    "cityPlaceCode": "852",
+    "cityPlaceName": "ORIANG"
+  },
+  {
+    "cityPlaceCode": "840",
+    "cityPlaceName": "OGEN"
+  },
+  {
+    "cityPlaceCode": "841",
+    "cityPlaceName": "OGONGO"
+  },
+  {
+    "cityPlaceCode": "842",
+    "cityPlaceName": "OKIA"
+  },
+  {
+    "cityPlaceCode": "843",
+    "cityPlaceName": "OL JORO OROK"
+  },
+  {
+    "cityPlaceCode": "243",
+    "cityPlaceName": "OL KALOU"
+  },
+  {
+    "cityPlaceCode": "844",
+    "cityPlaceName": "OLBUTYO"
+  },
+  {
+    "cityPlaceCode": "898",
+    "cityPlaceName": "SHIANDA"
+  },
+  {
+    "cityPlaceCode": "845",
+    "cityPlaceName": "OLENGURUONE"
+  },
+  {
+    "cityPlaceCode": "847",
+    "cityPlaceName": "OLOLOLUNGA"
+  },
+  {
+    "cityPlaceCode": "848",
+    "cityPlaceName": "OLOOMIRANI"
+  },
+  {
+    "cityPlaceCode": "849",
+    "cityPlaceName": "OLTEPESI"
+  },
+  {
+    "cityPlaceCode": "850",
+    "cityPlaceName": "OMBOGA"
+  },
+  {
+    "cityPlaceCode": "851",
+    "cityPlaceName": "OMOGONCHORO"
+  },
+  {
+    "cityPlaceCode": "244",
+    "cityPlaceName": "ONGATA RONGAI"
+  },
+  {
+    "cityPlaceCode": "846",
+    "cityPlaceName": "OLKURTO"
+  },
+  {
+    "cityPlaceCode": "899",
+    "cityPlaceName": "SHIMBA HILLS"
+  },
+  {
+    "cityPlaceCode": "900",
+    "cityPlaceName": "SHINYALU"
+  },
+  {
+    "cityPlaceCode": "315",
+    "cityPlaceName": "SIAKAGO"
+  },
+  {
+    "cityPlaceCode": "954",
+    "cityPlaceName": "VIWANDANI"
+  },
+  {
+    "cityPlaceCode": "953",
+    "cityPlaceName": "VIPINGO"
+  },
+  {
+    "cityPlaceCode": "297",
+    "cityPlaceName": "VIHIGA "
+  },
+  {
+    "cityPlaceCode": "296",
+    "cityPlaceName": "VARANASI"
+  },
+  {
+    "cityPlaceCode": "295",
+    "cityPlaceName": "VANCOUVER "
+  },
+  {
+    "cityPlaceCode": "40637",
+    "cityPlaceName": "Usigu"
+  },
+  {
+    "cityPlaceCode": "00517",
+    "cityPlaceName": "UhuruGardens"
+  },
+  {
+    "cityPlaceCode": "10137",
+    "cityPlaceName": "UasoNyiro"
+  },
+  {
+    "cityPlaceCode": "294",
+    "cityPlaceName": "UTHIRU "
+  },
+  {
+    "cityPlaceCode": "952",
+    "cityPlaceName": "USENGE"
+  },
+  {
+    "cityPlaceCode": "951",
+    "cityPlaceName": "URIRI"
+  },
+  {
+    "cityPlaceCode": "950",
+    "cityPlaceName": "URANGA"
+  },
+  {
+    "cityPlaceCode": "293",
+    "cityPlaceName": "UPLANDS"
+  },
+  {
+    "cityPlaceCode": "949",
+    "cityPlaceName": "UKWALA"
+  },
+  {
+    "cityPlaceCode": "298",
+    "cityPlaceName": "VOI"
+  },
+  {
+    "cityPlaceCode": "292",
+    "cityPlaceName": "UKUNDA "
+  },
+  {
+    "cityPlaceCode": "60213",
+    "cityPlaceName": "Tunyai"
+  },
+  {
+    "cityPlaceCode": "00400",
+    "cityPlaceName": "TomMboya"
+  },
+  {
+    "cityPlaceCode": "20110",
+    "cityPlaceName": "TimberMillRoad"
+  },
+  {
+    "cityPlaceCode": "01026",
+    "cityPlaceName": "Thare"
+  },
+  {
+    "cityPlaceCode": "10135",
+    "cityPlaceName": "Thangathi"
+  },
+  {
+    "cityPlaceCode": "10110",
+    "cityPlaceName": "Thaara"
+  },
+  {
+    "cityPlaceCode": "947",
+    "cityPlaceName": "TURI"
+  },
+  {
+    "cityPlaceCode": "280",
+    "cityPlaceName": "TURBO"
+  },
+  {
+    "cityPlaceCode": "290",
+    "cityPlaceName": "TUNIS"
+  },
+  {
+    "cityPlaceCode": "946",
+    "cityPlaceName": "TUMU TUMU"
+  },
+  {
+    "cityPlaceCode": "289",
+    "cityPlaceName": "TULIA"
+  },
+  {
+    "cityPlaceCode": "945",
+    "cityPlaceName": "TSEIKURU"
+  },
+  {
+    "cityPlaceCode": "288",
+    "cityPlaceName": "TRIPOLI"
+  },
+  {
+    "cityPlaceCode": "944",
+    "cityPlaceName": "TOT"
+  },
+  {
+    "cityPlaceCode": "948",
+    "cityPlaceName": "UGUNJA"
+  },
+  {
+    "cityPlaceCode": "955",
+    "cityPlaceName": "VOO"
+  },
+  {
+    "cityPlaceCode": "00514",
+    "cityPlaceName": "ValleyArcade"
+  },
+  {
+    "cityPlaceCode": "00621",
+    "cityPlaceName": "VillageMarket"
+  },
+  {
+    "cityPlaceCode": "971",
+    "cityPlaceName": "ZIWA"
+  },
+  {
+    "cityPlaceCode": "00508",
+    "cityPlaceName": "YayaTowers"
+  },
+  {
+    "cityPlaceCode": "304",
+    "cityPlaceName": "YOANI"
+  },
+  {
+    "cityPlaceCode": "970",
+    "cityPlaceName": "YALA"
+  },
+  {
+    "cityPlaceCode": "065",
+    "cityPlaceName": "XYZ CITY"
+  },
+  {
+    "cityPlaceCode": "20329",
+    "cityPlaceName": "Wiyumiririe"
+  },
+  {
+    "cityPlaceCode": "80204",
+    "cityPlaceName": "WataliiRoad"
+  },
+  {
+    "cityPlaceCode": "10225",
+    "cityPlaceName": "Wanjengi"
+  },
+  {
+    "cityPlaceCode": "10138",
+    "cityPlaceName": "Wamagana"
+  },
+  {
+    "cityPlaceCode": "40638",
+    "cityPlaceName": "Wagusu"
+  },
+  {
+    "cityPlaceCode": "969",
+    "cityPlaceName": "WUNDANYI"
+  },
+  {
+    "cityPlaceCode": "302",
+    "cityPlaceName": "WOTE"
+  },
+  {
+    "cityPlaceCode": "968",
+    "cityPlaceName": "WODANGA"
+  },
+  {
+    "cityPlaceCode": "967",
+    "cityPlaceName": "WITU"
+  },
+  {
+    "cityPlaceCode": "966",
+    "cityPlaceName": "WINAM"
+  },
+  {
+    "cityPlaceCode": "965",
+    "cityPlaceName": "WESTLANDS"
+  },
+  {
+    "cityPlaceCode": "964",
+    "cityPlaceName": "WERUGHA"
+  },
+  {
+    "cityPlaceCode": "80211",
+    "cityPlaceName": "Vitengeni"
+  },
+  {
+    "cityPlaceCode": "956",
+    "cityPlaceName": "WACHORO"
+  },
+  {
+    "cityPlaceCode": "957",
+    "cityPlaceName": "WAITHAKA"
+  },
+  {
+    "cityPlaceCode": "301",
+    "cityPlaceName": "WAJIR"
+  },
+  {
+    "cityPlaceCode": "958",
+    "cityPlaceName": "WAMBA"
+  },
+  {
+    "cityPlaceCode": "959",
+    "cityPlaceName": "WAMUNYU"
+  },
+  {
+    "cityPlaceCode": "287",
+    "cityPlaceName": "TORONTO"
+  },
+  {
+    "cityPlaceCode": "960",
+    "cityPlaceName": "WAMWANGI"
+  },
+  {
+    "cityPlaceCode": "316",
+    "cityPlaceName": "WANGURU"
+  },
+  {
+    "cityPlaceCode": "962",
+    "cityPlaceName": "WANJOHI"
+  },
+  {
+    "cityPlaceCode": "299",
+    "cityPlaceName": "WASHINGTON "
+  },
+  {
+    "cityPlaceCode": "303",
+    "cityPlaceName": "WATAMU "
+  },
+  {
+    "cityPlaceCode": "300",
+    "cityPlaceName": "WEBUYE "
+  },
+  {
+    "cityPlaceCode": "963",
+    "cityPlaceName": "WEIWEI"
+  },
+  {
+    "cityPlaceCode": "961",
+    "cityPlaceName": "WANGIGE"
+  },
+  {
+    "cityPlaceCode": "820",
+    "cityPlaceName": "NYADORERA"
+  },
+  {
+    "cityPlaceCode": "943",
+    "cityPlaceName": "TORONGO"
+  },
+  {
+    "cityPlaceCode": "942",
+    "cityPlaceName": "TONGAREN"
+  },
+  {
+    "cityPlaceCode": "923",
+    "cityPlaceName": "SUBA KURIA"
+  },
+  {
+    "cityPlaceCode": "276",
+    "cityPlaceName": "STRASBOURG "
+  },
+  {
+    "cityPlaceCode": "275",
+    "cityPlaceName": "STOCKHOLM "
+  },
+  {
+    "cityPlaceCode": "922",
+    "cityPlaceName": "SOY"
+  },
+  {
+    "cityPlaceCode": "269",
+    "cityPlaceName": "SOUTH KINANGOP"
+  },
+  {
+    "cityPlaceCode": "921",
+    "cityPlaceName": "SOUTH HORR"
+  },
+  {
+    "cityPlaceCode": "274",
+    "cityPlaceName": "SOTIK"
+  },
+  {
+    "cityPlaceCode": "920",
+    "cityPlaceName": "SOSIOT"
+  },
+  {
+    "cityPlaceCode": "919",
+    "cityPlaceName": "SORGET"
+  },
+  {
+    "cityPlaceCode": "918",
+    "cityPlaceName": "SONGHOR"
+  },
+  {
+    "cityPlaceCode": "917",
+    "cityPlaceName": "SONDU"
+  },
+  {
+    "cityPlaceCode": "916",
+    "cityPlaceName": "SOLOLO"
+  },
+  {
+    "cityPlaceCode": "915",
+    "cityPlaceName": "SOLAI"
+  },
+  {
+    "cityPlaceCode": "270",
+    "cityPlaceName": "SOFIA"
+  },
+  {
+    "cityPlaceCode": "924",
+    "cityPlaceName": "SUBUKIA"
+  },
+  {
+    "cityPlaceCode": "914",
+    "cityPlaceName": "SIRISIA"
+  },
+  {
+    "cityPlaceCode": "912",
+    "cityPlaceName": "SIREMBE"
+  },
+  {
+    "cityPlaceCode": "911",
+    "cityPlaceName": "SIPILI"
+  },
+  {
+    "cityPlaceCode": "910",
+    "cityPlaceName": "SIONGIROI"
+  },
+  {
+    "cityPlaceCode": "909",
+    "cityPlaceName": "SIO PORT"
+  },
+  {
+    "cityPlaceCode": "908",
+    "cityPlaceName": "SINGORE"
+  },
+  {
+    "cityPlaceCode": "907",
+    "cityPlaceName": "SINDO"
+  },
+  {
+    "cityPlaceCode": "906",
+    "cityPlaceName": "SILIBWET"
+  },
+  {
+    "cityPlaceCode": "905",
+    "cityPlaceName": "SIKINWA"
+  },
+  {
+    "cityPlaceCode": "904",
+    "cityPlaceName": "SIGOWET"
+  },
+  {
+    "cityPlaceCode": "903",
+    "cityPlaceName": "SIGOTI"
+  },
+  {
+    "cityPlaceCode": "902",
+    "cityPlaceName": "SIGOR"
+  },
+  {
+    "cityPlaceCode": "901",
+    "cityPlaceName": "SIGOMRE"
+  },
+  {
+    "cityPlaceCode": "268",
+    "cityPlaceName": "SIDINDI"
+  },
+  {
+    "cityPlaceCode": "278",
+    "cityPlaceName": "SIAYA"
+  },
+  {
+    "cityPlaceCode": "913",
+    "cityPlaceName": "SIRENDE"
+  },
+  {
+    "cityPlaceCode": "925",
+    "cityPlaceName": "SUGUTA MAR MAR"
+  },
+  {
+    "cityPlaceCode": "926",
+    "cityPlaceName": "SULMAC"
+  },
+  {
+    "cityPlaceCode": "267",
+    "cityPlaceName": "SULTAN HAMUD"
+  },
+  {
+    "cityPlaceCode": "986",
+    "cityPlaceName": "TOMBE"
+  },
+  {
+    "cityPlaceCode": "285",
+    "cityPlaceName": "TOKYO"
+  },
+  {
+    "cityPlaceCode": "940",
+    "cityPlaceName": "TIRIKI"
+  },
+  {
+    "cityPlaceCode": "939",
+    "cityPlaceName": "TINGWANGI"
+  },
+  {
+    "cityPlaceCode": "938",
+    "cityPlaceName": "TIMBOROA"
+  },
+  {
+    "cityPlaceCode": "937",
+    "cityPlaceName": "TIMAU"
+  },
+  {
+    "cityPlaceCode": "936",
+    "cityPlaceName": "TIGIJI"
+  },
+  {
+    "cityPlaceCode": "283",
+    "cityPlaceName": "THIKA"
+  },
+  {
+    "cityPlaceCode": "935",
+    "cityPlaceName": "THIGIO"
+  },
+  {
+    "cityPlaceCode": "934",
+    "cityPlaceName": "TENGES"
+  },
+  {
+    "cityPlaceCode": "281",
+    "cityPlaceName": "TEL AVIV"
+  },
+  {
+    "cityPlaceCode": "282",
+    "cityPlaceName": "TEHERAN"
+  },
+  {
+    "cityPlaceCode": "933",
+    "cityPlaceName": "TAWA"
+  },
+  {
+    "cityPlaceCode": "291",
+    "cityPlaceName": "TAVETA "
+  },
+  {
+    "cityPlaceCode": "932",
+    "cityPlaceName": "TAUSA"
+  },
+  {
+    "cityPlaceCode": "931",
+    "cityPlaceName": "TARASAA"
+  },
+  {
+    "cityPlaceCode": "930",
+    "cityPlaceName": "TAMBACH"
+  },
+  {
+    "cityPlaceCode": "277",
+    "cityPlaceName": "SUNA"
+  },
+  {
+    "cityPlaceCode": "927",
+    "cityPlaceName": "SUWERWA"
+  },
+  {
+    "cityPlaceCode": "279",
+    "cityPlaceName": "SYDNEY "
+  },
+  {
+    "cityPlaceCode": "00606",
+    "cityPlaceName": "SaritCentre"
+  },
+  {
+    "cityPlaceCode": "00513",
+    "cityPlaceName": "SasumuaRoad"
+  },
+  {
+    "cityPlaceCode": "50129",
+    "cityPlaceName": "Shiatsala"
+  },
+  {
+    "cityPlaceCode": "286",
+    "cityPlaceName": "TORINO "
+  },
+  {
+    "cityPlaceCode": "50130",
+    "cityPlaceName": "Shibuli"
+  },
+  {
+    "cityPlaceCode": "40643",
+    "cityPlaceName": "Sifuyo"
+  },
+  {
+    "cityPlaceCode": "30127",
+    "cityPlaceName": "Simat"
+  },
+  {
+    "cityPlaceCode": "40642",
+    "cityPlaceName": "Sirongo"
+  },
+  {
+    "cityPlaceCode": "928",
+    "cityPlaceName": "TABAKA"
+  },
+  {
+    "cityPlaceCode": "929",
+    "cityPlaceName": "TABANI"
+  },
+  {
+    "cityPlaceCode": "284",
+    "cityPlaceName": "TALA"
+  },
+  {
+    "cityPlaceCode": "50131",
+    "cityPlaceName": "Shimanyiro"
+  },
+  {
+    "cityPlaceCode": "305",
+    "cityPlaceName": "ZURICH "
+  },
+  {
+    "cityPlaceCode": "819",
+    "cityPlaceName": "NYABONDO"
+  },
+  {
+    "cityPlaceCode": "236",
+    "cityPlaceName": "NUNGUNI"
+  },
+  {
+    "cityPlaceCode": "040",
+    "cityPlaceName": "BLANTYRE"
+  },
+  {
+    "cityPlaceCode": "326",
+    "cityPlaceName": "BOKOLI"
+  },
+  {
+    "cityPlaceCode": "041",
+    "cityPlaceName": "BOMET"
+  },
+  {
+    "cityPlaceCode": "327",
+    "cityPlaceName": "BONDENI"
+  },
+  {
+    "cityPlaceCode": "044",
+    "cityPlaceName": "BONDO"
+  },
+  {
+    "cityPlaceCode": "045",
+    "cityPlaceName": "BORDEAUX"
+  },
+  {
+    "cityPlaceCode": "328",
+    "cityPlaceName": "BORO"
+  },
+  {
+    "cityPlaceCode": "046",
+    "cityPlaceName": "BRASILLA"
+  },
+  {
+    "cityPlaceCode": "047",
+    "cityPlaceName": "BRISTOL"
+  },
+  {
+    "cityPlaceCode": "048",
+    "cityPlaceName": "BRUSSELS"
+  },
+  {
+    "cityPlaceCode": "050",
+    "cityPlaceName": "BUCHAREST "
+  },
+  {
+    "cityPlaceCode": "329",
+    "cityPlaceName": "BUDALANGI"
+  },
+  {
+    "cityPlaceCode": "051",
+    "cityPlaceName": "BUDAPEST"
+  },
+  {
+    "cityPlaceCode": "330",
+    "cityPlaceName": "BUGAR"
+  },
+  {
+    "cityPlaceCode": "01101",
+    "cityPlaceName": "BISSIL"
+  },
+  {
+    "cityPlaceCode": "331",
+    "cityPlaceName": "BUHUYI"
+  },
+  {
+    "cityPlaceCode": "333",
+    "cityPlaceName": "BUKIRI"
+  },
+  {
+    "cityPlaceCode": "334",
+    "cityPlaceName": "BUKURA"
+  },
+  {
+    "cityPlaceCode": "335",
+    "cityPlaceName": "BULIMBO"
+  },
+  {
+    "cityPlaceCode": "336",
+    "cityPlaceName": "BUMALA"
+  },
+  {
+    "cityPlaceCode": "337",
+    "cityPlaceName": "BUMUTIRU"
+  },
+  {
+    "cityPlaceCode": "978",
+    "cityPlaceName": "BUNGOMA"
+  },
+  {
+    "cityPlaceCode": "038",
+    "cityPlaceName": "BUNGOMA"
+  },
+  {
+    "cityPlaceCode": "338",
+    "cityPlaceName": "BUNYORE"
+  },
+  {
+    "cityPlaceCode": "339",
+    "cityPlaceName": "BURA TANA"
+  },
+  {
+    "cityPlaceCode": "340",
+    "cityPlaceName": "BURNT FOREST"
+  },
+  {
+    "cityPlaceCode": "049",
+    "cityPlaceName": "BUSIA"
+  },
+  {
+    "cityPlaceCode": "341",
+    "cityPlaceName": "BUTERE"
+  },
+  {
+    "cityPlaceCode": "052",
+    "cityPlaceName": "BUTULA "
+  },
+  {
+    "cityPlaceCode": "342",
+    "cityPlaceName": "BUYOFU"
+  },
+  {
+    "cityPlaceCode": "332",
+    "cityPlaceName": "BUKEMBE"
+  },
+  {
+    "cityPlaceCode": "50137",
+    "cityPlaceName": "Booker"
+  },
+  {
+    "cityPlaceCode": "039",
+    "cityPlaceName": "BIRMINGHAM "
+  },
+  {
+    "cityPlaceCode": "036",
+    "cityPlaceName": "BELFAST"
+  },
+  {
+    "cityPlaceCode": "019",
+    "cityPlaceName": "ANYUONGI"
+  },
+  {
+    "cityPlaceCode": "020",
+    "cityPlaceName": "ARAM"
+  },
+  {
+    "cityPlaceCode": "021",
+    "cityPlaceName": "ARCHER S POST"
+  },
+  {
+    "cityPlaceCode": "022",
+    "cityPlaceName": "ARROR"
+  },
+  {
+    "cityPlaceCode": "023",
+    "cityPlaceName": "ASEMBO BAY "
+  },
+  {
+    "cityPlaceCode": "024",
+    "cityPlaceName": "ASUMBI "
+  },
+  {
+    "cityPlaceCode": "025",
+    "cityPlaceName": "ATHENS "
+  },
+  {
+    "cityPlaceCode": "027",
+    "cityPlaceName": "ATHI RIVER "
+  },
+  {
+    "cityPlaceCode": "026",
+    "cityPlaceName": "ATLANTA"
+  },
+  {
+    "cityPlaceCode": "976",
+    "cityPlaceName": "AUBURN"
+  },
+  {
+    "cityPlaceCode": "974",
+    "cityPlaceName": "AUSTELL"
+  },
+  {
+    "cityPlaceCode": "028",
+    "cityPlaceName": "AWACH BRIDGE"
+  },
+  {
+    "cityPlaceCode": "030",
+    "cityPlaceName": "AWACH TENDE"
+  },
+  {
+    "cityPlaceCode": "029",
+    "cityPlaceName": "AWENDO "
+  },
+  {
+    "cityPlaceCode": "037",
+    "cityPlaceName": "BERLIN "
+  },
+  {
+    "cityPlaceCode": "031",
+    "cityPlaceName": "BAGHDAD"
+  },
+  {
+    "cityPlaceCode": "032",
+    "cityPlaceName": "BALTIMORE "
+  },
+  {
+    "cityPlaceCode": "318",
+    "cityPlaceName": "BAMBURI"
+  },
+  {
+    "cityPlaceCode": "042",
+    "cityPlaceName": "BANANA "
+  },
+  {
+    "cityPlaceCode": "043",
+    "cityPlaceName": "BANGALORE "
+  },
+  {
+    "cityPlaceCode": "033",
+    "cityPlaceName": "BANGKOK"
+  },
+  {
+    "cityPlaceCode": "50316",
+    "cityPlaceName": "BANJABANJA"
+  },
+  {
+    "cityPlaceCode": "320",
+    "cityPlaceName": "BAR OBER"
+  },
+  {
+    "cityPlaceCode": "321",
+    "cityPlaceName": "BARAGOI"
+  },
+  {
+    "cityPlaceCode": "322",
+    "cityPlaceName": "BARATON"
+  },
+  {
+    "cityPlaceCode": "034",
+    "cityPlaceName": "BARCELONA "
+  },
+  {
+    "cityPlaceCode": "323",
+    "cityPlaceName": "BARICHO"
+  },
+  {
+    "cityPlaceCode": "324",
+    "cityPlaceName": "BARTOLIMO"
+  },
+  {
+    "cityPlaceCode": "325",
+    "cityPlaceName": "BARWESA"
+  },
+  {
+    "cityPlaceCode": "035",
+    "cityPlaceName": "BEIJING"
+  },
+  {
+    "cityPlaceCode": "317",
+    "cityPlaceName": "BAHATI"
+  },
+  {
+    "cityPlaceCode": "00515",
+    "cityPlaceName": "BuruBuru"
+  },
+  {
+    "cityPlaceCode": "053",
+    "cityPlaceName": "CAIRO"
+  },
+  {
+    "cityPlaceCode": "054",
+    "cityPlaceName": "CALCUTTA"
+  },
+  {
+    "cityPlaceCode": "064",
+    "cityPlaceName": "CORK"
+  },
+  {
+    "cityPlaceCode": "60409",
+    "cityPlaceName": "Chaikariga"
+  },
+  {
+    "cityPlaceCode": "50302",
+    "cityPlaceName": "Chamakanga"
+  },
+  {
+    "cityPlaceCode": "20217",
+    "cityPlaceName": "Chepsinendet"
+  },
+  {
+    "cityPlaceCode": "60410",
+    "cityPlaceName": "Chiakanyinga"
+  },
+  {
+    "cityPlaceCode": "90219",
+    "cityPlaceName": "Chuvuli"
+  },
+  {
+    "cityPlaceCode": "00200",
+    "cityPlaceName": "CitySquare"
+  },
+  {
+    "cityPlaceCode": "80103",
+    "cityPlaceName": "CoastGenHsp"
+  },
+  {
+    "cityPlaceCode": "369",
+    "cityPlaceName": "DADAAB"
+  },
+  {
+    "cityPlaceCode": "370",
+    "cityPlaceName": "DAGO"
+  },
+  {
+    "cityPlaceCode": "067",
+    "cityPlaceName": "DAKAR"
+  },
+  {
+    "cityPlaceCode": "068",
+    "cityPlaceName": "DALLAS "
+  },
+  {
+    "cityPlaceCode": "069",
+    "cityPlaceName": "DAR-ES-SALAAM"
+  },
+  {
+    "cityPlaceCode": "371",
+    "cityPlaceName": "DARAJA MBILI"
+  },
+  {
+    "cityPlaceCode": "063",
+    "cityPlaceName": "COLOMBO"
+  },
+  {
+    "cityPlaceCode": "992",
+    "cityPlaceName": "DAYSTAR"
+  },
+  {
+    "cityPlaceCode": "070",
+    "cityPlaceName": "DENVER "
+  },
+  {
+    "cityPlaceCode": "073",
+    "cityPlaceName": "DIANI"
+  },
+  {
+    "cityPlaceCode": "071",
+    "cityPlaceName": "DIEGO GARCIA"
+  },
+  {
+    "cityPlaceCode": "072",
+    "cityPlaceName": "DJIBOUTI"
+  },
+  {
+    "cityPlaceCode": "373",
+    "cityPlaceName": "DOL DOL"
+  },
+  {
+    "cityPlaceCode": "074",
+    "cityPlaceName": "DONYO-SABUK"
+  },
+  {
+    "cityPlaceCode": "374",
+    "cityPlaceName": "DOROFU"
+  },
+  {
+    "cityPlaceCode": "066",
+    "cityPlaceName": "DUBAI"
+  },
+  {
+    "cityPlaceCode": "075",
+    "cityPlaceName": "DUBLIN "
+  },
+  {
+    "cityPlaceCode": "375",
+    "cityPlaceName": "DUDI"
+  },
+  {
+    "cityPlaceCode": "076",
+    "cityPlaceName": "DUNDORI"
+  },
+  {
+    "cityPlaceCode": "077",
+    "cityPlaceName": "DURBAN "
+  },
+  {
+    "cityPlaceCode": "00516",
+    "cityPlaceName": "Dandora"
+  },
+  {
+    "cityPlaceCode": "90145",
+    "cityPlaceName": "DaystarUniversity"
+  },
+  {
+    "cityPlaceCode": "372",
+    "cityPlaceName": "DEDE"
+  },
+  {
+    "cityPlaceCode": "062",
+    "cityPlaceName": "CINCINATTI "
+  },
+  {
+    "cityPlaceCode": "368",
+    "cityPlaceName": "CHWELE"
+  },
+  {
+    "cityPlaceCode": "367",
+    "cityPlaceName": "CHUMVINI"
+  },
+  {
+    "cityPlaceCode": "055",
+    "cityPlaceName": "CAMBRIDGE "
+  },
+  {
+    "cityPlaceCode": "056",
+    "cityPlaceName": "CANBERRA"
+  },
+  {
+    "cityPlaceCode": "057",
+    "cityPlaceName": "CAPE TOWN "
+  },
+  {
+    "cityPlaceCode": "343",
+    "cityPlaceName": "CHAMAKHANGA"
+  },
+  {
+    "cityPlaceCode": "059",
+    "cityPlaceName": "CHANDIGAR "
+  },
+  {
+    "cityPlaceCode": "344",
+    "cityPlaceName": "CHANGAMWE"
+  },
+  {
+    "cityPlaceCode": "345",
+    "cityPlaceName": "CHAVAKALI"
+  },
+  {
+    "cityPlaceCode": "346",
+    "cityPlaceName": "CHEBIEMIT"
+  },
+  {
+    "cityPlaceCode": "347",
+    "cityPlaceName": "CHEBORGE"
+  },
+  {
+    "cityPlaceCode": "348",
+    "cityPlaceName": "CHEBORORWA"
+  },
+  {
+    "cityPlaceCode": "349",
+    "cityPlaceName": "CHEBUNYO"
+  },
+  {
+    "cityPlaceCode": "350",
+    "cityPlaceName": "CHEMAMUL"
+  },
+  {
+    "cityPlaceCode": "351",
+    "cityPlaceName": "CHEMANER"
+  },
+  {
+    "cityPlaceCode": "352",
+    "cityPlaceName": "CHEMASE"
+  },
+  {
+    "cityPlaceCode": "353",
+    "cityPlaceName": "CHEMELIL"
+  },
+  {
+    "cityPlaceCode": "354",
+    "cityPlaceName": "CHEMIRON"
+  },
+  {
+    "cityPlaceCode": "355",
+    "cityPlaceName": "CHEPARERIA"
+  },
+  {
+    "cityPlaceCode": "366",
+    "cityPlaceName": "CHUMVI"
+  },
+  {
+    "cityPlaceCode": "365",
+    "cityPlaceName": "CHULUNI"
+  },
+  {
+    "cityPlaceCode": "061",
+    "cityPlaceName": "CHUKA"
+  },
+  {
+    "cityPlaceCode": "058",
+    "cityPlaceName": "CHOGORIA"
+  },
+  {
+    "cityPlaceCode": "060",
+    "cityPlaceName": "CHICAGO"
+  },
+  {
+    "cityPlaceCode": "364",
+    "cityPlaceName": "CHIAKARIGA"
+  },
+  {
+    "cityPlaceCode": "018",
+    "cityPlaceName": "ANYIKO "
+  },
+  {
+    "cityPlaceCode": "363",
+    "cityPlaceName": "CHESOI"
+  },
+  {
+    "cityPlaceCode": "361",
+    "cityPlaceName": "CHEPTONGEI"
+  },
+  {
+    "cityPlaceCode": "360",
+    "cityPlaceName": "CHEPTERWAI"
+  },
+  {
+    "cityPlaceCode": "359",
+    "cityPlaceName": "CHEPTALAL"
+  },
+  {
+    "cityPlaceCode": "358",
+    "cityPlaceName": "CHEPTAIS"
+  },
+  {
+    "cityPlaceCode": "357",
+    "cityPlaceName": "CHEPSONOI"
+  },
+  {
+    "cityPlaceCode": "356",
+    "cityPlaceName": "CHEPKORIO"
+  },
+  {
+    "cityPlaceCode": "362",
+    "cityPlaceName": "CHESINENDET"
+  },
+  {
+    "cityPlaceCode": "017",
+    "cityPlaceName": "ANTANANARIVO"
+  },
+  {
+    "cityPlaceCode": "015",
+    "cityPlaceName": "ANGURAI"
+  },
+  {
+    "cityPlaceCode": "014",
+    "cityPlaceName": "ANDINGO"
+  },
+  {
+    "cityPlaceCode": "789",
+    "cityPlaceName": "NDALANI"
+  },
+  {
+    "cityPlaceCode": "222",
+    "cityPlaceName": "NARUMORO"
+  },
+  {
+    "cityPlaceCode": "234",
+    "cityPlaceName": "NAROK"
+  },
+  {
+    "cityPlaceCode": "788",
+    "cityPlaceName": "NARO MORU"
+  },
+  {
+    "cityPlaceCode": "221",
+    "cityPlaceName": "NAPLES "
+  },
+  {
+    "cityPlaceCode": "239",
+    "cityPlaceName": "NANYUKI"
+  },
+  {
+    "cityPlaceCode": "787",
+    "cityPlaceName": "NANGO"
+  },
+  {
+    "cityPlaceCode": "786",
+    "cityPlaceName": "NANGILI"
+  },
+  {
+    "cityPlaceCode": "225",
+    "cityPlaceName": "NANDI HILLS"
+  },
+  {
+    "cityPlaceCode": "224",
+    "cityPlaceName": "NAMBALE"
+  },
+  {
+    "cityPlaceCode": "785",
+    "cityPlaceName": "NAMBACHA"
+  },
+  {
+    "cityPlaceCode": "784",
+    "cityPlaceName": "NAMANGA"
+  },
+  {
+    "cityPlaceCode": "230",
+    "cityPlaceName": "NAKURU "
+  },
+  {
+    "cityPlaceCode": "237",
+    "cityPlaceName": "NAIVASHA"
+  },
+  {
+    "cityPlaceCode": "790",
+    "cityPlaceName": "NDALANI"
+  },
+  {
+    "cityPlaceCode": "235",
+    "cityPlaceName": "NAITIRI"
+  },
+  {
+    "cityPlaceCode": "223",
+    "cityPlaceName": "NAIROBI"
+  },
+  {
+    "cityPlaceCode": "782",
+    "cityPlaceName": "NAIRAGE ENKARE"
+  },
+  {
+    "cityPlaceCode": "30107",
+    "cityPlaceName": "MoiUniversity"
+  },
+  {
+    "cityPlaceCode": "80115",
+    "cityPlaceName": "MoiAirport"
+  },
+  {
+    "cityPlaceCode": "30104",
+    "cityPlaceName": "Moi-ben"
+  },
+  {
+    "cityPlaceCode": "00620",
+    "cityPlaceName": "MobiPlaza"
+  },
+  {
+    "cityPlaceCode": "20123",
+    "cityPlaceName": "MiltonSiding"
+  },
+  {
+    "cityPlaceCode": "50138",
+    "cityPlaceName": "Milimani"
+  },
+  {
+    "cityPlaceCode": "00504",
+    "cityPlaceName": "MchumbiRoad"
+  },
+  {
+    "cityPlaceCode": "10233",
+    "cityPlaceName": "Mbiri"
+  },
+  {
+    "cityPlaceCode": "00611",
+    "cityPlaceName": "MathareValley"
+  },
+  {
+    "cityPlaceCode": "50139",
+    "cityPlaceName": "MasindeMuliroUniversity"
+  },
+  {
+    "cityPlaceCode": "01020",
+    "cityPlaceName": "Makuyu"
+  },
+  {
+    "cityPlaceCode": "217",
+    "cityPlaceName": "MWINGI "
+  },
+  {
+    "cityPlaceCode": "783",
+    "cityPlaceName": "NAISHI"
+  },
+  {
+    "cityPlaceCode": "791",
+    "cityPlaceName": "NDALU"
+  },
+  {
+    "cityPlaceCode": "792",
+    "cityPlaceName": "NDANAI"
+  },
+  {
+    "cityPlaceCode": "793",
+    "cityPlaceName": "NDARAGWA"
+  },
+  {
+    "cityPlaceCode": "817",
+    "cityPlaceName": "NTIMARU"
+  },
+  {
+    "cityPlaceCode": "233",
+    "cityPlaceName": "NOTTINGHAM "
+  },
+  {
+    "cityPlaceCode": "229",
+    "cityPlaceName": "NORTH KINANGOP"
+  },
+  {
+    "cityPlaceCode": "816",
+    "cityPlaceName": "NKUBU"
+  },
+  {
+    "cityPlaceCode": "815",
+    "cityPlaceName": "NKONDI"
+  },
+  {
+    "cityPlaceCode": "814",
+    "cityPlaceName": "NJORO"
+  },
+  {
+    "cityPlaceCode": "813",
+    "cityPlaceName": "NJIPISHIP"
+  },
+  {
+    "cityPlaceCode": "812",
+    "cityPlaceName": "NGWATA"
+  },
+  {
+    "cityPlaceCode": "811",
+    "cityPlaceName": "NGUYOINI"
+  },
+  {
+    "cityPlaceCode": "810",
+    "cityPlaceName": "NGUNI"
+  },
+  {
+    "cityPlaceCode": "809",
+    "cityPlaceName": "NGORIKA"
+  },
+  {
+    "cityPlaceCode": "228",
+    "cityPlaceName": "NGONG"
+  },
+  {
+    "cityPlaceCode": "808",
+    "cityPlaceName": "NGIYA"
+  },
+  {
+    "cityPlaceCode": "807",
+    "cityPlaceName": "NGINYANG"
+  },
+  {
+    "cityPlaceCode": "806",
+    "cityPlaceName": "NGEWA"
+  },
+  {
+    "cityPlaceCode": "805",
+    "cityPlaceName": "NGECHA"
+  },
+  {
+    "cityPlaceCode": "804",
+    "cityPlaceName": "NGANDURI"
+  },
+  {
+    "cityPlaceCode": "794",
+    "cityPlaceName": "NDENDERU"
+  },
+  {
+    "cityPlaceCode": "795",
+    "cityPlaceName": "NDERE"
+  },
+  {
+    "cityPlaceCode": "796",
+    "cityPlaceName": "NDERU"
+  },
+  {
+    "cityPlaceCode": "797",
+    "cityPlaceName": "NDHIWA"
+  },
+  {
+    "cityPlaceCode": "798",
+    "cityPlaceName": "NDIGWA"
+  },
+  {
+    "cityPlaceCode": "799",
+    "cityPlaceName": "NDITHINI"
+  },
+  {
+    "cityPlaceCode": "781",
+    "cityPlaceName": "MWEIGA"
+  },
+  {
+    "cityPlaceCode": "800",
+    "cityPlaceName": "NDOOA"
+  },
+  {
+    "cityPlaceCode": "802",
+    "cityPlaceName": "NDUNYU NJERU"
+  },
+  {
+    "cityPlaceCode": "227",
+    "cityPlaceName": "NEW DELHI "
+  },
+  {
+    "cityPlaceCode": "980",
+    "cityPlaceName": "NEW JERSEY"
+  },
+  {
+    "cityPlaceCode": "226",
+    "cityPlaceName": "NEW ORLEANS"
+  },
+  {
+    "cityPlaceCode": "240",
+    "cityPlaceName": "NEW YORK"
+  },
+  {
+    "cityPlaceCode": "803",
+    "cityPlaceName": "NGAMBWA"
+  },
+  {
+    "cityPlaceCode": "801",
+    "cityPlaceName": "NDORI"
+  },
+  {
+    "cityPlaceCode": "818",
+    "cityPlaceName": "NUU"
+  },
+  {
+    "cityPlaceCode": "219",
+    "cityPlaceName": "MWATATE"
+  },
+  {
+    "cityPlaceCode": "780",
+    "cityPlaceName": "MUUMANDU"
+  },
+  {
+    "cityPlaceCode": "210",
+    "cityPlaceName": "MTITO ANDEI"
+  },
+  {
+    "cityPlaceCode": "752",
+    "cityPlaceName": "MSAMBWENI"
+  },
+  {
+    "cityPlaceCode": "751",
+    "cityPlaceName": "MPEKETONI"
+  },
+  {
+    "cityPlaceCode": "220",
+    "cityPlaceName": "MOYALE "
+  },
+  {
+    "cityPlaceCode": "750",
+    "cityPlaceName": "MOSORIOT"
+  },
+  {
+    "cityPlaceCode": "202",
+    "cityPlaceName": "MOSCOW "
+  },
+  {
+    "cityPlaceCode": "201",
+    "cityPlaceName": "MORINO "
+  },
+  {
+    "cityPlaceCode": "200",
+    "cityPlaceName": "MONTREAL"
+  },
+  {
+    "cityPlaceCode": "211",
+    "cityPlaceName": "MONTPELLIER"
+  },
+  {
+    "cityPlaceCode": "208",
+    "cityPlaceName": "MOMBASA"
+  },
+  {
+    "cityPlaceCode": "196",
+    "cityPlaceName": "MOLO"
+  },
+  {
+    "cityPlaceCode": "749",
+    "cityPlaceName": "MOKOWE"
+  },
+  {
+    "cityPlaceCode": "82",
+    "cityPlaceName": "."
+  },
+  {
+    "cityPlaceCode": "78",
+    "cityPlaceName": "."
+  },
+  {
+    "cityPlaceCode": "753",
+    "cityPlaceName": "MTONGWE"
+  },
+  {
+    "cityPlaceCode": "319",
+    "cityPlaceName": "319"
+  },
+  {
+    "cityPlaceCode": "002",
+    "cityPlaceName": "ADUNGOSI"
+  },
+  {
+    "cityPlaceCode": "003",
+    "cityPlaceName": "AGENGA "
+  },
+  {
+    "cityPlaceCode": "005",
+    "cityPlaceName": "AHERO"
+  },
+  {
+    "cityPlaceCode": "004",
+    "cityPlaceName": "AHMEDABAD "
+  },
+  {
+    "cityPlaceCode": "016",
+    "cityPlaceName": "AINABKOI"
+  },
+  {
+    "cityPlaceCode": "006",
+    "cityPlaceName": "AKADO"
+  },
+  {
+    "cityPlaceCode": "007",
+    "cityPlaceName": "AKALA"
+  },
+  {
+    "cityPlaceCode": "008",
+    "cityPlaceName": "ALBION "
+  },
+  {
+    "cityPlaceCode": "010",
+    "cityPlaceName": "ALUOR"
+  },
+  {
+    "cityPlaceCode": "009",
+    "cityPlaceName": "ALUPE"
+  },
+  {
+    "cityPlaceCode": "013",
+    "cityPlaceName": "AMAGORO"
+  },
+  {
+    "cityPlaceCode": "012",
+    "cityPlaceName": "AMSTERDAM "
+  },
+  {
+    "cityPlaceCode": "011",
+    "cityPlaceName": "AMUKURA"
+  },
+  {
+    "cityPlaceCode": "40136",
+    "cityPlaceName": "ANDIGO"
+  },
+  {
+    "cityPlaceCode": "001",
+    "cityPlaceName": "ABIDJAN"
+  },
+  {
+    "cityPlaceCode": "754",
+    "cityPlaceName": "MTOPANGA"
+  },
+  {
+    "cityPlaceCode": "755",
+    "cityPlaceName": "MTWAPA"
+  },
+  {
+    "cityPlaceCode": "756",
+    "cityPlaceName": "MUBWAYO"
+  },
+  {
+    "cityPlaceCode": "779",
+    "cityPlaceName": "MUTUMBU"
+  },
+  {
+    "cityPlaceCode": "778",
+    "cityPlaceName": "MUTOMO"
+  },
+  {
+    "cityPlaceCode": "777",
+    "cityPlaceName": "MUTITUNI"
+  },
+  {
+    "cityPlaceCode": "776",
+    "cityPlaceName": "MUTHETHENI"
+  },
+  {
+    "cityPlaceCode": "775",
+    "cityPlaceName": "MUTHAIGA"
+  },
+  {
+    "cityPlaceCode": "774",
+    "cityPlaceName": "MUTHA"
+  },
+  {
+    "cityPlaceCode": "773",
+    "cityPlaceName": "MUSANDA"
+  },
+  {
+    "cityPlaceCode": "312",
+    "cityPlaceName": "MURURI"
+  },
+  {
+    "cityPlaceCode": "772",
+    "cityPlaceName": "MURUNGARU"
+  },
+  {
+    "cityPlaceCode": "771",
+    "cityPlaceName": "MURUMBA"
+  },
+  {
+    "cityPlaceCode": "770",
+    "cityPlaceName": "MURUKA"
+  },
+  {
+    "cityPlaceCode": "58",
+    "cityPlaceName": "MURARANDIA"
+  },
+  {
+    "cityPlaceCode": "216",
+    "cityPlaceName": "MURANGA"
+  },
+  {
+    "cityPlaceCode": "215",
+    "cityPlaceName": "MUNICH "
+  },
+  {
+    "cityPlaceCode": "769",
+    "cityPlaceName": "MUNGATSI"
+  },
+  {
+    "cityPlaceCode": "768",
+    "cityPlaceName": "MUNDORO"
+  },
+  {
+    "cityPlaceCode": "197",
+    "cityPlaceName": "MUMIAS "
+  },
+  {
+    "cityPlaceCode": "757",
+    "cityPlaceName": "MUDDO GASHE"
+  },
+  {
+    "cityPlaceCode": "758",
+    "cityPlaceName": "MUDHIERO"
+  },
+  {
+    "cityPlaceCode": "759",
+    "cityPlaceName": "MUGUGA"
+  },
+  {
+    "cityPlaceCode": "760",
+    "cityPlaceName": "MUGUNDA"
+  },
+  {
+    "cityPlaceCode": "188",
+    "cityPlaceName": "MUHORONI"
+  },
+  {
+    "cityPlaceCode": "761",
+    "cityPlaceName": "MUHOTETU"
+  },
+  {
+    "cityPlaceCode": "218",
+    "cityPlaceName": "MWALA"
+  },
+  {
+    "cityPlaceCode": "762",
+    "cityPlaceName": "MUHURU BAY"
+  },
+  {
+    "cityPlaceCode": "764",
+    "cityPlaceName": "MUKEU"
+  },
+  {
+    "cityPlaceCode": "765",
+    "cityPlaceName": "MUKURO"
+  },
+  {
+    "cityPlaceCode": "193",
+    "cityPlaceName": "MUKURWEINI "
+  },
+  {
+    "cityPlaceCode": "766",
+    "cityPlaceName": "MULANGO"
+  },
+  {
+    "cityPlaceCode": "767",
+    "cityPlaceName": "MULUANDA"
+  },
+  {
+    "cityPlaceCode": "214",
+    "cityPlaceName": "MUMBAI "
+  },
+  {
+    "cityPlaceCode": "763",
+    "cityPlaceName": "MUKERENJU"
+  },
+  {
+    "cityPlaceCode": "748",
+    "cityPlaceName": "MOKOMONI"
+  }
+]

@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between">
+  <h2 mat-dialog-title>Verify biometrics</h2>
+  <mat-icon color="primary" class="cursor-pointer" mat-dialog-close
+    >close</mat-icon
+  >
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="text-muted mb-1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit psum dolor sit amet.
+  </div>
+  <mat-card appearance="outlined" class="mb-1">
+    <div class="d-flex align-content-center mb-1">
+      <div class="rounded-circle">MO</div>
+      <div class="align-self-center">Mathias Ojwang</div>
+    </div>
+    <div class="scanner d-flex justify-content-center align-content-center">
+      <img
+        src="assets/images/fingerprint-icon.png"
+        alt="finger-print"
+        class="fingerprint" />
+    </div>
+  </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex justify-content-between align-content-center">
+  <mat-checkbox color="primary" (click)="navigateDocuments()">{{
+    'COMMON.SKIP-BIO' | translate
+  }}</mat-checkbox>
+  <button
+    mat-flat-button
+    cdkFocusInitial
+    (click)="navigateSuccess()"
+    color="primary">
+    &nbsp;&nbsp;{{ 'COMMON.VERIFY' | translate }}&nbsp;&nbsp;
+  </button>
+</mat-dialog-actions>

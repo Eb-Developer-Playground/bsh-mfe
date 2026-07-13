@@ -1,0 +1,56 @@
+<h2 mat-dialog-title class="d-flex justify-content-between">
+  Delinking a Primary account
+  <div class="icon-container">
+    <mat-icon svgIcon="ic-close" [mat-dialog-close]="false"></mat-icon>
+  </div>
+</h2>
+<mat-dialog-content class="mat-typography">
+  <p class="text-muted">
+    The user is about to delink a primary account, please select a new one to be
+    the primary, if not the system will chose it automatically.
+  </p>
+  <!-- (change)="this.optionChangeEvent = $event" -->
+  <mat-radio-group class="d-flex flex-column w-100" color="primary">
+    @for (acc of accounts; track acc) {
+      <mat-radio-button class="mb-15 w-100">
+        <div class="d-flex justify-content-between w-100">
+          <div class="d-flex flex-column white-space-initial">
+            <span class="mb-1 fw-600">{{ acc.accountType }}</span>
+            <span class="text-muted"
+              >{{ acc.accountNumber }} • {{ acc.accountName }}</span
+            >
+          </div>
+          <div class="channel-status">
+            <p class="channel-status-text">{{ acc.status }}</p>
+          </div>
+        </div>
+      </mat-radio-button>
+    }
+    <mat-radio-button class="mb-15 w-100">
+      <div class="d-flex justify-content-between w-100">
+        <div class="d-flex flex-column white-space-initial">
+          <span class="mb-1 fw-600">Joint Account</span>
+          <span class="text-muted">12345321234532 • Juliet Wambugu</span>
+        </div>
+        <div class="channel-status">
+          <span class="channel-status-text">Active</span>
+        </div>
+      </div>
+    </mat-radio-button>
+  </mat-radio-group>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button [disabled]="false" mat-flat-button [mat-dialog-close]="true">
+    Skip
+  </button>
+  <button
+    [disabled]="false"
+    mat-flat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    color="primary">
+    <!-- (click)="getStarted()" -->
+
+    Get started
+  </button>
+</mat-dialog-actions>

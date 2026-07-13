@@ -1,0 +1,5 @@
+[
+  { "code": "001", "name": "Search Ok" },
+  { "code": "002", "name": "Search Pending" },
+  { "code": "004", "name": "Search Not Ok" }
+]

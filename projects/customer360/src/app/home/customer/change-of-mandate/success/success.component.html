@@ -1,0 +1,62 @@
+<mat-card appearance="outlined">
+  <div class="container">
+    <img src="assets/icons/icon-account-opening-success.svg" />
+    <div style="padding-top: 50px">
+      <div class="header-main-label">
+        <p class="mat-headline-6 m-0">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.SUCCESS-MESSAGE'
+              | translate
+          }}
+        </p>
+      </div>
+      <div class="header-sub-label">
+        <p style="color: grey">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.VIEW-DETAILS'
+              | translate
+          }}
+        </p>
+      </div>
+      <div class="customer-details-container">
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NAME' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ selectedAccount?.accountName }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{
+              'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_NUMBER' | translate
+            }}
+          </p>
+          <p class="customer-detail-content">
+            {{ selectedAccount?.accountNumber }}
+          </p>
+        </div>
+        <div class="customer-detail">
+          <p class="customer-detail-title">
+            {{ 'CUSTOMER.ACCOUNT-SERVICES.ACCOUNTS.ACCOUNT_TYPE' | translate }}
+          </p>
+          <p class="customer-detail-content">
+            {{ selectedAccount?.schemeType }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<div class="d-flex mt-10">
+  <span class="spacer"></span>
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    <span
+      >{{ 'COMMON.BACK' | translate
+      }}{{
+        'CUSTOMER.ACCOUNT-SERVICES.CHANGE-MANDATE-ACCOUNT.REDIRECT' | translate
+      }}</span
+    >
+  </button>
+</div>

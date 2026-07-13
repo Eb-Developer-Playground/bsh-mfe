@@ -1,0 +1,354 @@
+@if (!selectedChannel?.channel?.id) {
+    <div
+        class="no-result"
+    >
+        <img
+            src="../../../../../assets/icons/icon-no-results.svg"
+            alt="no results found"
+        />
+        <p class="no-channel-head">
+            {{ "CUSTOMER.CHANNELS.ERROR-UNREGISTERED" | translate }}
+        </p>
+        <p class="no-channel-text">
+            {{ "CUSTOMER.CHANNELS.ERROR-UNREGISTERED-TEXT" | translate }}
+        </p>
+        <button
+            mat-button
+            mat-flat-button
+            color="primary"
+            class="register-btn"
+            (click)="onRegisterChannel()"
+        >
+            {{ "CUSTOMER.CHANNELS.REGISTER-CHANNEL" | translate }}
+        </button>
+    </div>
+
+} @else {
+        <div>
+            <h2 class="fw-normal">
+                {{ "CUSTOMER.CHANNELS.CHANNEL-DETAILS.TITLE" | translate }}
+            </h2>
+            <div class="pb-2">
+                <mat-divider></mat-divider>
+            </div>
+            <!--    From Prod start-->
+            <!--        <div class="customer-details-container">-->
+            <!--            <div-->
+            <!--                class="customer-detail"-->
+            <!--                *ngIf="selectedChannel?.createdDate"-->
+            <!--            >-->
+            <!--                <p class="customer-detail-title">-->
+            <!--                    {{ "CUSTOMER.CHANNELS.REGISTRATION-DATE" | translate }}-->
+            <!--                </p>-->
+            <!--                <p class="customer-detail-content">-->
+            <!--                    {{-->
+            <!--                        selectedChannel?.createdDate-->
+            <!--                            | date: "dd/MM/yyyy"-->
+            <!--                    }}-->
+            <!--                </p>-->
+            <!--            </div>-->
+            <!--            <div class="customer-detail">-->
+            <!--                <p class="customer-detail-title">-->
+            <!--                    {{ "COMMON.PHONE-NUMBER" | translate }}-->
+            <!--                </p>-->
+            <!--                <p-->
+            <!--                    class="customer-detail-content"-->
+            <!--                    *ngFor="let phone of phoneNumbers"-->
+            <!--                >-->
+            <!--                    {{ phone?.countryCode }}{{ phone?.cityCode-->
+            <!--                    }}{{ phone?.number }}-->
+            <!--                </p>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    From Prod end-->
+            <div class="customer-details-container">
+                @if (selectedChannel?.channel?.channelCreatedOn) {
+                    <div
+                        class="customer-detail"
+                    >
+                        <p class="customer-detail-title">
+                            {{ "CUSTOMER.CHANNELS.REGISTRATION-DATE" | translate }}
+                        </p>
+                        <p class="customer-detail-content">
+                            {{
+                                selectedChannel?.channel?.channelCreatedOn
+                                    | date: "dd/MM/yyyy"
+                            }}
+                        </p>
+                    </div>
+
+                }
+                @if (selectedChannel?.accountPermissions[0]?.account?.accountNumber)
+                {
+                    <div
+                        class="customer-detail"
+                    >
+                        <p class="customer-detail-title">
+                            {{ "CUSTOMER.CHANNELS.PRIMARY-ACCOUNT" | translate }}
+                        </p>
+                        <p class="customer-detail-content">
+                            {{
+                                selectedChannel?.accountPermissions[0]?.account
+                                    ?.accountNumber
+                            }}
+                        </p>
+                    </div>
+
+                }
+                <div class="customer-detail">
+                    <p class="customer-detail-title">
+                        {{ "COMMON.PHONE-NUMBER" | translate }}
+                    </p>
+                    @for (phone of phoneNumbers; track phone) {
+                        <p
+                            class="customer-detail-content"
+                        >
+                            {{ phone?.countryCode }}{{ phone?.cityCode
+                            }}{{ phone?.number }}
+                        </p>
+
+                    }
+                </div>
+                @if (selectedChannel?.channel?.channelModifiedOn) {
+                    <div
+                        class="customer-detail"
+                    >
+                        <p class="customer-detail-title">
+                            {{ "COMMON.LAST-ACTIVITY" | translate }}
+                        </p>
+                        <p class="customer-detail-content">
+                            {{
+                                selectedChannel?.channel?.channelModifiedOn
+                                    | date: "short"
+                            }}
+                        </p>
+                    </div>
+
+                }
+            </div>
+        </div>
+        <div class="pb-1">
+            <mat-divider></mat-divider>
+        </div>
+        <!--    From Prod start-->
+        <!--    <mat-accordion *ngIf="accounts?.length">-->
+        <!--        <mat-expansion-panel-->
+        <!--            [expanded]="true"-->
+        <!--            (opened)="panelOpenState = true"-->
+        <!--            (closed)="panelOpenState = false"-->
+        <!--        >-->
+        <!--            <mat-expansion-panel-header>-->
+        <!--                <mat-panel-title>-->
+        <!--                    <h2 class="size-3 fw-normal title">-->
+        <!--                        {{ "CUSTOMER.CHANNELS.LINKED-ACCOUNTS" | translate }}-->
+        <!--                    </h2>-->
+        <!--                </mat-panel-title>-->
+        <!--            </mat-expansion-panel-header>-->
+        <!--            <div class="account-div">-->
+        <!--                <div class="account-wrapper" *ngFor="let account of accounts">-->
+        <!--                    <div class="account">-->
+        <!--                        <div class="rounded-circle1">-->
+        <!--                            {{ account?.accountName?.split(" ")[0][0] }}-->
+        <!--                            {{ account?.accountName?.split(" ")[1][0] }}-->
+        <!--                        </div>-->
+        <!--                        <div class="account-info-div">-->
+        <!--                            <p class="account-info main-text">-->
+        <!--                                {{ account?.accountName }}-->
+        <!--                            </p>-->
+        <!--                            <p class="account-info sub-text">-->
+        <!--                                {{ account?.accountNumber }}-->
+        <!--                            </p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </mat-expansion-panel>-->
+        <!--    </mat-accordion>-->
+        <!--    From Prod end-->
+
+        <!-- From UAT-->
+        @if (linkedAccounts?.length) {
+            <mat-accordion>
+                <mat-expansion-panel
+                    [expanded]="linkedAccounts?.length"
+                    (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false"
+                >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <h2 class="fw-normal">
+                                {{ "CUSTOMER.CHANNELS.LINKED-ACCOUNTS" | translate }}
+                            </h2>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="account-div">
+                        @for (account of linkedAccounts; track account) {
+                            <div
+                                class="account-wrapper"
+                            >
+                                <div class="account">
+                                    <div class="rounded-circle1">
+                                        {{ account?.accountName.split(" ")[0][0] }}
+                                        {{ account?.accountName.split(" ")[1][0] }}
+                                    </div>
+                                    <div class="account-info-div">
+                                        <p class="account-info main-text">
+                                            {{ account?.accountName }}
+                                        </p>
+                                        <p class="account-info sub-text">
+                                            {{ account?.accountNumber }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="account-info-right">
+                                    <div>
+                                        @if (account?.canTransact && account?.canView) {
+                                            <ng-container
+                                            >
+                                            <span class="acc_access_pill">
+                                                {{
+                                                    "CUSTOMER.CHANNELS.VIEW-AND-TRANSACT"
+                                                        | translate
+                                                }}
+                                            </span>
+                                            </ng-container>
+                                        } @else {
+                                            <span class="acc_access_pill"
+                                            >{{
+                                                    "CUSTOMER.CHANNELS.VIEW-ONLY"
+                                                        | translate
+                                                }}
+                                            </span>
+                                        }
+                                    </div>
+                                    <div>
+                                        <mat-icon
+                                            class="icon"
+                                            svgIcon="ic-more-colored"
+                                            [matMenuTriggerFor]="appMenu"
+                                        ></mat-icon>
+                                        <mat-menu
+                                            backdropClass="custom__menu"
+                                            #appMenu="matMenu"
+                                        >
+                                            @if (checkIfCanDelink(account.accountNumber)) {
+                                                <button
+                                                    mat-menu-item
+                                                    (click)="delinkAccount(account)"
+                                                >
+                                                    Delink account
+                                                </button>
+                                            }
+                                            <button
+                                                mat-menu-item
+                                                (click)="viewScheduledPayments(account)"
+                                            >
+                                                View scheduled payments
+                                            </button>
+                                        </mat-menu>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                        @for (account of linkedPayPalAccounts; track account) {
+                            <div
+                                class="account-wrapper"
+                            >
+                                <div class="account">
+                                    <div class="rounded-circle2">
+                                        <img src="assets/images/PayPal.png" alt="" />
+                                    </div>
+                                    <div class="account-info-div">
+                                        <p class="account-info main-text">
+                                            {{ account?.preferredName }}
+                                        </p>
+                                        <p class="account-info sub-text">
+                                            {{ account?.balance }}&nbsp;{{
+                                                account?.currency
+                                            }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="account-info-right">
+                                    <div>
+                                        <mat-icon
+                                            class="icon"
+                                            svgIcon="ic-more-colored"
+                                            [matMenuTriggerFor]="appMenu"
+                                        ></mat-icon>
+                                        <mat-menu
+                                            backdropClass="custom__menu"
+                                            #appMenu="matMenu"
+                                        >
+                                            <button
+                                                mat-menu-item
+                                                (click)="viewPayPalAccount(account)"
+                                            >
+                                                View account details
+                                            </button>
+                                            <button
+                                                mat-menu-item
+                                                (click)="delinkPayPalAccount(account)"
+                                            >
+                                                Delink account
+                                            </button>
+                                        </mat-menu>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="my-1">
+                        <mat-card
+                            class="custom-card"
+                            routerLink="/services/customer-360/channels/link-account"
+                        >
+                            <mat-card-content class="p-0">
+                                <button mat-button color="primary" class="p-2 no-hover fw-nowmal" style="font-size: 1.2rem;">
+                                    <mat-icon svgIcon="ic-plus" class="mr-1"></mat-icon
+                                    >Link new account
+                                </button>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        } @else {
+            <div>
+                <h2 class="size-3 fw-normal title">
+                    {{ "CUSTOMER.CHANNELS.LINKED-ACCOUNT" | translate }}
+                </h2>
+                <div class="no-result">
+                    <img
+                        src="../../../../assets/icons/icon-no-results.svg"
+                        alt="no results found"
+                    />
+                    <p class="no-channel-text">
+                        {{ "CUSTOMER.CHANNELS.ERROR-UNLINKED" | translate }}
+                    </p>
+                </div>
+            </div>
+        }
+        <!-- From UAT   -->
+
+
+        <!-- From Prod Start   -->
+        <!--    <div *ngIf="!accounts?.length">-->
+        <!--        <h2 class="size-3 fw-normal title">Linked accounts</h2>-->
+        <!--        <div class="no-result">-->
+        <!--            <img-->
+        <!--                src="../../../../assets/icons/icon-no-results.svg"-->
+        <!--                alt="no results found"-->
+        <!--            />-->
+        <!--            <p class="no-channel-text">-->
+        <!--                {{ "CUSTOMER.CHANNELS.ERROR-UNLINKED" | translate }}-->
+        <!--            </p>-->
+        <!--        </div>-->
+        <!--    </div>-->
+
+        <!--    From Prod end-->
+
+}
+

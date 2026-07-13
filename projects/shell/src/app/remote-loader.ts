@@ -1,15 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { loadRemoteModule } from '@angular-architects/native-federation';
 import { Routes } from '@angular/router';
 import { ToastService } from './shared/modules/toast/toast.service';
 import { MessageBoxType } from './shared/modules/toast/models';
-
-@Component({
-  selector: 'app-remote-placeholder',
-  template: '',
-  standalone: true,
-})
-class PlaceholderComponent {}
+import { PlaceholderComponent, placeholderDisplayName } from './placeholder.component';
 
 const REMOTE_DISPLAY_NAMES: Record<string, string> = {
   customer360: 'Customer 360',
@@ -38,11 +32,13 @@ export function safeLoadRemoteRoutes(remoteName: string): Promise<Routes> {
         undefined,
         false,
       );
-      return [];
+      placeholderDisplayName.set(displayName);
+      return [{ path: '', component: PlaceholderComponent }];
     });
 }
 
 export function safeLoadRemoteComponent(remoteName: string): Promise<any> {
+  console.log(`loading ${remoteName}...`);
   const toast = inject(ToastService);
   const displayName = getDisplayName(remoteName);
 
@@ -59,6 +55,7 @@ export function safeLoadRemoteComponent(remoteName: string): Promise<any> {
         undefined,
         false,
       );
+      placeholderDisplayName.set(displayName);
       return PlaceholderComponent;
     });
 }

@@ -35,7 +35,7 @@ import {
 import { catchError, map, startWith, takeUntil } from 'rxjs/operators';
 import { finalize, Observable, Subject } from 'rxjs';
 import { ICountry, IPhoneNumber } from './types';
-import { StaticDataService } from '../../../../services';
+import { StaticDataService } from '@app/shared/services/static-data.service';
 import { isValidCountryCode } from './validators';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';

@@ -22,7 +22,7 @@ import {
   SessionService,
 } from '@app/shared/services/session/session.service';
 import { CameraModalComponent } from '../../document-upload/camera-modal/camera-modal.component';
-import { UIService } from '@app/shared/services';
+import { UIService } from '@app/shared/services/ui.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';

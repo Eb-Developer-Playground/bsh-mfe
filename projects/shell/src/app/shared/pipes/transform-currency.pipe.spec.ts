@@ -6,7 +6,7 @@ describe('TransformCurrencyPipe', () => {
   let translateService: TranslateService;
 
   beforeEach(() => {
-    translateService = { currentLang: 'en' } as TranslateService;
+    translateService = new TranslateService();
     pipe = new TransformCurrencyPipe(translateService);
   });
 
@@ -19,7 +19,7 @@ describe('TransformCurrencyPipe', () => {
   });
 
   it('should format currency for CDF with French localization', () => {
-    translateService.currentLang = 'fr-CD';
+    translateService.use('fr-CD');
     pipe = new TransformCurrencyPipe(translateService);
     expect(pipe.transform(1234567.89, 'CDF')).toBe('1.234.567,89 CDF');
   });

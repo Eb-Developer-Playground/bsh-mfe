@@ -1,16 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component,
   Input,
   OnInit,
   TemplateRef,
   ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ListItemType } from '../../models/common/list-item.model';
 
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss'],
-  imports: [COMPAT_IMPORTS],
+  imports: [CommonModule, TranslatePipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class ListItemComponent implements OnInit {
   @Input() displayInfo!: { type: ListItemType; label: string; value: string };

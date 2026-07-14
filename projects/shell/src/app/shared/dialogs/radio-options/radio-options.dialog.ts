@@ -11,7 +11,6 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { TranslatePipe } from '@ngx-translate/core';
-import { COMPAT_IMPORTS } from '../../compat-barrel';
 
 export interface IRadioOption {
     value: string;
@@ -43,7 +42,6 @@ export interface IRadioOptionsDialogData {
         MatIconModule,
         MatRadioModule,
         TranslatePipe,
-        COMPAT_IMPORTS,
     ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class RadioOptionsDialog {

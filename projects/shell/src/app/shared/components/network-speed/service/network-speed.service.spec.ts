@@ -64,7 +64,7 @@ describe('NetworkSpeedService', () => {
     it('should initialize dateOfLastMessageSubject with null', done => {
       service.dateOfLastMessageSubject$.subscribe(date => {
         expect(date).toBeNull();
-        done();
+        undefined;
       });
     });
   });
@@ -119,28 +119,28 @@ describe('NetworkSpeedService', () => {
     it('should return correct speed value', done => {
       service.getSpeed().subscribe(result => {
         expect(result.speed as any).toBe(10.5);
-        done();
+        undefined;
       });
     });
 
     it('should return correct type value', done => {
       service.getSpeed().subscribe(result => {
         expect(result.type).toBe('4g');
-        done();
+        undefined;
       });
     });
 
     it('should return correct effectiveType value', done => {
       service.getSpeed().subscribe(result => {
         expect(result.effectiveType).toBe('4g');
-        done();
+        undefined;
       });
     });
 
     it('should return correct rtt value', done => {
       service.getSpeed().subscribe(result => {
         expect(result.rtt).toBe('50 ms');
-        done();
+        undefined;
       });
     });
 
@@ -153,7 +153,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.speed).toBe('NETWORK-SPEED.NETWORK-SPEED-NOT-AVAILABLE');
-        done();
+        undefined;
       });
     });
 
@@ -166,7 +166,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.type).toBe('3g');
-        done();
+        undefined;
       });
     });
 
@@ -179,7 +179,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.effectiveType).toBe('3g');
-        done();
+        undefined;
       });
     });
 
@@ -192,7 +192,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.rtt).toBe('100 ms');
-        done();
+        undefined;
       });
     });
 
@@ -204,7 +204,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.speed as any).toBe(5.0);
-        done();
+        undefined;
       });
     });
 
@@ -216,7 +216,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.type).toBe('COMMON.UNKNOWN');
-        done();
+        undefined;
       });
     });
 
@@ -228,7 +228,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.effectiveType).toBe('COMMON.UNKNOWN');
-        done();
+        undefined;
       });
     });
 
@@ -240,7 +240,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.rtt).toBe('75 ms');
-        done();
+        undefined;
       });
     });
 
@@ -253,7 +253,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.speed as any).toBe(20.0);
-        done();
+        undefined;
       });
     });
 
@@ -266,7 +266,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.type).toBe('5g');
-        done();
+        undefined;
       });
     });
 
@@ -279,7 +279,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.effectiveType).toBe('5g');
-        done();
+        undefined;
       });
     });
 
@@ -292,7 +292,7 @@ describe('NetworkSpeedService', () => {
 
       service.getSpeed().subscribe(result => {
         expect(result.rtt).toBe('NETWORK-SPEED.RTT-NOT AVAILABLE');
-        done();
+        undefined;
       });
     });
 
@@ -313,7 +313,7 @@ describe('NetworkSpeedService', () => {
 
         service.dateOfLastMessageSubject$.subscribe(date => {
           expect(date).toEqual(testDate);
-          done();
+          undefined;
         });
       });
 
@@ -326,7 +326,7 @@ describe('NetworkSpeedService', () => {
 
         service.dateOfLastMessageSubject$.subscribe(date => {
           expect(date).toEqual(secondDate);
-          done();
+          undefined;
         });
       });
 
@@ -335,7 +335,7 @@ describe('NetworkSpeedService', () => {
 
         service.dateOfLastMessageSubject$.subscribe(date => {
           expect(date).toBeNull();
-          done();
+          undefined;
         });
       });
     });
@@ -401,7 +401,7 @@ describe('NetworkSpeedService', () => {
 
       fallbackResult.subscribe(result => {
         expect(result).toBeDefined();
-        done();
+        undefined;
       });
     });
 
@@ -410,7 +410,7 @@ describe('NetworkSpeedService', () => {
 
       fallbackResult.subscribe(result => {
         expect(result.speed).toBe('0');
-        done();
+        undefined;
       });
     });
 
@@ -419,7 +419,7 @@ describe('NetworkSpeedService', () => {
 
       fallbackResult.subscribe(result => {
         expect(result.type).toBe('COMMON.UNKNOWN');
-        done();
+        undefined;
       });
     });
 
@@ -428,7 +428,7 @@ describe('NetworkSpeedService', () => {
 
       fallbackResult.subscribe(result => {
         expect(result.effectiveType).toBe('2g');
-        done();
+        undefined;
       });
     });
 
@@ -437,7 +437,7 @@ describe('NetworkSpeedService', () => {
 
       fallbackResult.subscribe(result => {
         expect(result.rtt).toBe('NETWORK-SPEED.RTT-NOT AVAILABLE');
-        done();
+        undefined;
       });
     });
 

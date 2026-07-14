@@ -27,6 +27,7 @@ export default withNativeFederation({
     'rxjs/fetch',
     'rxjs/testing',
     'rxjs/webSocket',
+    'crypto-js',
     // Add further packages you don't need at runtime
   ],
 

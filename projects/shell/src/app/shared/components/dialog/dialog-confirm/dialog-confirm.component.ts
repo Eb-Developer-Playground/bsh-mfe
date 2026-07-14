@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MessageBoxType, ToastService } from 'src/app/shared/modules/toast';
-import { UIService } from 'src/app/shared/services';
+import { UIService } from '@app/shared/services/ui.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { IUploadedDocument } from '@app/shared/modules/upload-docs';

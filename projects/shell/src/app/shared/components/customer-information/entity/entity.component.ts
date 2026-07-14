@@ -11,11 +11,9 @@ import { ChannelsService } from '@app/core/services/channels/channels.service';
 import { MessageBoxType, ToastService } from '@app/shared/modules/toast';
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntil } from 'rxjs/operators';
-import {
-  ApiService,
-  SessionService,
-  StaticDataService,
-} from '@app/shared/services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
+import { StaticDataService } from '@app/shared/services/static-data.service';
 import { environment as env } from '@env/environment';
 import {
   Channel,

@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { transform } from 'html2canvas/dist/types/css/property-descriptors/transform';
 
 @Pipe({
   name: 'transformCurrency',
@@ -16,10 +15,9 @@ export class TransformCurrencyPipe implements PipeTransform {
   ): string {
     if (value == null) return '';
 
-    const thousandsDelimiter =
-      String(this.translateService.currentLang) === 'fr-CD' ? '.' : ',';
-    const decimalPlace =
-      String(this.translateService.currentLang) === 'fr-CD' ? ',' : '.';
+    const currentLang = this.translateService.currentLang();
+    const thousandsDelimiter = currentLang === 'fr-CD' ? '.' : ',';
+    const decimalPlace = currentLang === 'fr-CD' ? ',' : '.';
 
     const currency = countryCurrency?.toUpperCase();
     const formattedValue = Number(value).toFixed(decimalPlaces);

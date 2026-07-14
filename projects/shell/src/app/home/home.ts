@@ -22,8 +22,8 @@ import { LoaderComponent } from '../shared/modules/loader/loader.component';
 import { ILocale, LocalizationService } from '../shared/modules/localization';
 import { isDev, isLocal } from '../shared/utils';
 import { ICONS, LOCALES } from '../shared/static';
-import { UIService } from '../shared/services';
-import { SessionService } from '../shared/services';
+import { UIService } from '@app/shared/services/ui.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { TransformSubsidiaryPipe } from '../shared/pipes/transform-subsidiary.pipe';
 import { UserProfile } from '../shared/components/user-profile/user-profile';
 

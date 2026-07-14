@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 
 import { Subject, takeUntil } from 'rxjs';
 import { MessageBoxType, ToastService } from '../../../toast';
-import { ApiService, SessionService } from '../../../../services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { FingerprintsService } from '../../fingerprints.service';
 import { VerifySkipBioDialog } from '../../dialogs';
 import { BioVerifyInput } from '../../models';

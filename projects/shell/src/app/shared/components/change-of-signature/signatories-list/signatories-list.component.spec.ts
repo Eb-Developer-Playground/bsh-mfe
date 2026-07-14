@@ -17,11 +17,7 @@ describe('PhotoSignatoriesListComponent', () => {
   let fixture: ComponentFixture<PhotoSignatoriesListComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [PhotoSignatoriesListComponent],
-      imports: [ReactiveFormsModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-    }).compileComponents();
+    await TestBed.configureTestingModule({ imports: [PhotoSignatoriesListComponent, ReactiveFormsModule], schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA], }).compileComponents();
 
     fixture = TestBed.createComponent(PhotoSignatoriesListComponent);
     component = fixture.componentInstance;

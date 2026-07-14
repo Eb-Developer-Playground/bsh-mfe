@@ -2,10 +2,15 @@
 import { Routes } from '@angular/router';
 import { Home } from './home/home';
 import { ServicePortal } from './home/service-portal/service-portal';
+import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 import { authGuard } from './shared/guards/auth.guard';
 import { safeLoadRemoteRoutes, safeLoadRemoteComponent } from './remote-loader';
 
 export const routes: Routes = [
+  {
+    path: 'auth',
+    component: AuthCallbackComponent,
+  },
   {
     path: '',
     canActivate: [authGuard],
@@ -45,5 +50,4 @@ export const routes: Routes = [
   },
   { path: '**', redirectTo: '' },
 ];
-
 

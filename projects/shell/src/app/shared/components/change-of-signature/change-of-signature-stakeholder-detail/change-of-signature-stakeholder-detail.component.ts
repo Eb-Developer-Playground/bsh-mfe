@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { ChangeMandateService } from 'src/app/core/services/change-mandate/change-mandate.service';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 
 @Component({
   selector: 'app-change-of-signature-stakeholder-detail',

@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 
 import { KraPinService } from 'src/app/shared/modules/identification/kra-pin.service';
 import { IdentityService } from 'src/app/shared/modules/identification/identity.service';
-import { ApiService, SessionService } from 'src/app/shared/services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 
 import { IdDocumentFieldStates } from 'src/app/shared/modules/identification/types';
 

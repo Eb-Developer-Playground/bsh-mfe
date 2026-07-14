@@ -16,4 +16,3 @@ export { SchedulePaymentService } from './schedule-payment/schedule-payment.serv
 export { StandingOrderService } from './standing-order/standing-order.service';
 export { TicketService as TicketsService } from './ticket/tickets.service';
 export { TransactionLimitsService } from './transaction-limits/transaction-limits.service';
-export { AuthService } from './auth/auth.service';

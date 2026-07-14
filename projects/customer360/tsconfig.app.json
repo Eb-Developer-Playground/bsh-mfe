@@ -7,6 +7,7 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
+      "equity-auth": ["../../projects/equity-auth/src/public-api.ts"],
       "@app/*": ["src/app/*"],
       "@app/version2/*": ["src/app/version-2/*"],
       "@store/*": ["src/app/store/*"],
@@ -16,7 +17,7 @@
     },
     "types": []
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "../equity-auth/src/public-api.ts"],
   "exclude": [
     "src/**/*.spec.ts",
     "src/app/core/services/account/account.service.legacy.ts",

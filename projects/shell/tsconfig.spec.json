@@ -4,7 +4,21 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/spec",
-    "types": ["vitest/globals"]
+    "ignoreDeprecations": "6.0",
+    "types": ["vitest/globals"],
+    "baseUrl": ".",
+    "paths": {
+      "equity-auth": ["../../projects/equity-auth/src/public-api.ts"],
+      "@app/*": ["src/app/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@env/*": ["src/environments/*"],
+      "@assets/*": ["src/assets/*"],
+      "src/app/*": ["src/app/*"],
+      "@angular/flex-layout": ["src/app/shared/flex-layout-stubs/index.ts"],
+      "@angular/flex-layout/flex": ["src/app/shared/flex-layout-stubs/flex.ts"],
+      "@angular/flex-layout/extended": ["src/app/shared/flex-layout-stubs/extended.ts"],
+      "@ngx-translate/core": ["src/test-stubs/ngx-translate-core.ts"]
+    }
   },
   "include": ["src/**/*.d.ts", "src/**/*.spec.ts"]
 }

@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy,
   SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Subject, from } from 'rxjs';
 import { mergeMap, takeUntil } from 'rxjs/operators';
-import { ApiService } from '@shared/services';
+import { ApiService } from '@app/shared/services/api.service';
 import { DocumentPreviewComponent } from '@shared/modules/upload-docs';
 import { MatDialog } from '@angular/material/dialog';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';

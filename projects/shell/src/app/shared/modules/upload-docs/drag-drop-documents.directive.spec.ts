@@ -17,7 +17,7 @@ describe('DragDropDocumentsDirective', () => {
       stopPropagation: jest.fn(),
       dataTransfer: { files: [] },
     };
-    pipe.drop(evt);
+    pipe.drop(evt as unknown as DragEvent);
     expect(evt.preventDefault).toHaveBeenCalled();
   });
 });

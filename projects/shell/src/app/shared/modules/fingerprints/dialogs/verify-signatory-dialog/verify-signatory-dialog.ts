@@ -3,7 +3,8 @@ import { Component, Inject, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@a
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MessageBoxType, ToastService } from '../../../toast';
-import { ApiService, SessionService } from '../../../../services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { AccountSignatory, BioVerifyInput } from '../../models';
 import { VerifySkipBioDialog } from '../../dialogs';
 import {

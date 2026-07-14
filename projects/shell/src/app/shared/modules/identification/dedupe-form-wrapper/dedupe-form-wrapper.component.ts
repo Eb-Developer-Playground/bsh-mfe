@@ -18,7 +18,8 @@ import {
   IDedupeFormOutput,
   IdTypeDescription,
 } from '../types';
-import { ApiService, SessionService } from '../../../services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { environment as env } from '../../../../../environments/environment';
 import { DedupeFormComponent } from '@app/shared/modules/identification';
 import { MatCardModule } from '@angular/material/card';

@@ -19,7 +19,7 @@ import {
 } from '@angular/material/table';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { IDedupeCIFResult } from '../types';
-import { SessionService } from '../../../services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { environment as env } from '../../../../../environments/environment';
 
 @Component({

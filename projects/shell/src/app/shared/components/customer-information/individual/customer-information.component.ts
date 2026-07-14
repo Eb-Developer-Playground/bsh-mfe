@@ -9,7 +9,7 @@ import { AuditService } from 'src/app/core/services/audit/audit.service';
 import { ChannelsService } from '@app/core/services/channels/channels.service';
 import { MessageBoxType, ToastService } from 'src/app/shared/modules/toast';
 import { TranslateService } from '@ngx-translate/core';
-import { SessionService } from 'src/app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import {
   Channel,
   ChannelsResponse,

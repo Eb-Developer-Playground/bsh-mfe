@@ -7,7 +7,8 @@ import { UntypedFormGroup } from '@angular/forms';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { Subject, takeUntil } from 'rxjs';
 import { AccountService } from 'src/app/core/services/account/account.service';
-import { SessionService, ApiService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
+import { ApiService } from '@app/shared/services/api.service';
 import { MandateInqResponse } from 'src/app/shared/models/common/mandate.model'; // Import MandateInqResponse
 import { ContextManager } from '@app/shared/modules/stepper';
 import { AccountManagementService } from 'src/app/core/services/account-management/account-management.service';

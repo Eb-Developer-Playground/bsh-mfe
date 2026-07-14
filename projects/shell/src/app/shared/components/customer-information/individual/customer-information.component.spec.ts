@@ -5,7 +5,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { ToastService } from '../../../modules/toast';
-import { SessionService, UIService } from '../../../services';
+import { SessionService } from '@app/shared/services/session/session.service';
+import { UIService } from '@app/shared/services/ui.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {
   AccountManagementService,

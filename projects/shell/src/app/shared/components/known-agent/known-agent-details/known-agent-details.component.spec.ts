@@ -21,8 +21,8 @@ describe('KnownAgentDetailsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [KnownAgentDetailsComponent],
       imports: [
+        KnownAgentDetailsComponent,
         NoopAnimationsModule,
         TranslateModule.forRoot(),
         //MaterialModule,
@@ -65,10 +65,10 @@ describe('KnownAgentDetailsComponent', () => {
   it('should emit the isDetailsFormValid event with the correct form object when the form status changes to valid', () => {
     component.ngOnInit();
 
-    component.detailsForm.controls.firstName.setValue('John');
-    component.detailsForm.controls.lastName.setValue('Doe');
-    component.detailsForm.controls.idSerialNumber.setValue('123456');
-    component.detailsForm.controls.kraPin.setValue('ABC123456DEF');
+    component.detailsForm.controls['firstName'].setValue('John');
+    component.detailsForm.controls['lastName'].setValue('Doe');
+    component.detailsForm.controls['idSerialNumber'].setValue('123456');
+    component.detailsForm.controls['kraPin'].setValue('ABC123456DEF');
 
     const formObj: AgentFormObj = {
       formName: FormNames.ADDITIONALINFORMATION,

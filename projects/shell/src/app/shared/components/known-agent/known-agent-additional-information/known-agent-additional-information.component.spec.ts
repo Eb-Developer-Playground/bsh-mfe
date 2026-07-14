@@ -24,8 +24,8 @@ describe('KnownAgentAdditionalInformationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [KnownAgentAdditionalInformationComponent],
       imports: [
+        KnownAgentAdditionalInformationComponent,
         NoopAnimationsModule,
         TranslateModule.forRoot(),
         MaterialModule,
@@ -46,7 +46,6 @@ describe('KnownAgentAdditionalInformationComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     }).compileComponents();
 
-    // @ts-ignore
     fixture = TestBed.createComponent(KnownAgentAdditionalInformationComponent);
 
     // accountService = fixture.debugElement.injector.get(AccountService);

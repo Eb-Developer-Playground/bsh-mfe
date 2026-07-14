@@ -2,7 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { ISubsidiary } from '@app/shared/services/session/session.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiService, SessionService } from '../../services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { EmailType, PhoneType } from './models';
 
 const otpAPIs: {

@@ -1,0 +1,88 @@
+.move-money {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+
+  .title-wrapper {
+    padding: 24px;
+    flex-direction: column;
+    gap: 8px;
+    .section-title {
+      font-size: 20px;
+      font-weight: 400;
+      color: #221f1f;
+      line-height: 28px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  .items-wrapper {
+    padding: 24px;
+  }
+  .fieldset {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 540px));
+
+    .service-card {
+      box-shadow: none;
+      border: 1px solid #e9eaea;
+      padding: 0;
+      border-radius: 8px;
+      cursor: pointer;
+      height: 100%;
+      width: auto;
+      .card-content {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        gap: 24px;
+        justify-content: flex-start;
+        padding: 24px;
+
+        .service-text {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          justify-content: center;
+          align-items: flex-start;
+
+          .service-title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+          }
+
+          .service-text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+          }
+        }
+
+        .service-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 48px;
+          height: 48px;
+          border-radius: 80px;
+          background-color: rgba(146, 148, 151, 0.2);
+        }
+      }
+
+      &:hover {
+        background-color: #f7f7f7;
+      }
+    }
+  }
+}
+

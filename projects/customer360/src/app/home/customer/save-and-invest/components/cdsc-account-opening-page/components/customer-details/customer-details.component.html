@@ -1,0 +1,110 @@
+<mat-card
+  appearance="outlined"
+  class="mat-card mat-focus-indicator main"
+  [@expandCollapse]="expanded ? 'expanded' : 'collapsed'"
+>
+  <div class="head">
+    <span class="form-number">1</span>
+    <span class="title">Customer details</span>
+    <mat-icon
+      class="arrow-icon"
+      (click)="toggleExpandCollapse()"
+      [@rotate]="expanded ? 'rotated' : 'normal'"
+      >expand_more</mat-icon
+    >
+  </div>
+  <mat-divider class="padded-divider"></mat-divider>
+  <form [formGroup]="form">
+    <div formGroupName="customerDetails">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.FIRST-NAME' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="First Name"
+          formControlName="firstName"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-icon matSuffix>info</mat-icon>
+        <mat-error *ngIf="form.get('customerDetails.firstName')!.errors?.['required']">
+          {{ 'COMMON.FIRST-NAME-IS' | translate }}
+          <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.MIDDLE-NAME' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Middle Name"
+          formControlName="middleName"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-icon matSuffix>info</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.LAST-NAME' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Last Name"
+          formControlName="lastName"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-icon matSuffix>info</mat-icon>
+        <mat-error *ngIf="form.get('customerDetails.lastName')!.errors?.['required']">
+          {{ 'COMMON.LAST-NAME-IS' | translate }}
+          <strong>{{ 'COMMON.REQUIRED' | translate }} </strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label> {{ 'COMMON.KRAPINNUMBER' | translate }}</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="KRA PIN Number"
+          formControlName="kraPin"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-icon matSuffix>info</mat-icon>
+        <mat-error *ngIf="form.get('customerDetails.kraPin')!.errors?.['required']">
+          {{ 'COMMON.KRA-PIN-IS' | translate }} <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+        <mat-error
+          *ngIf="
+            !form.get('customerDetails.kraPin')!.errors?.['required'] &&
+            form.get('customerDetails.kraPin')!.errors?.['invalidKraPin']
+          "
+        >
+          {{ 'COMMON.KRA-PIN-IS' | translate }}
+          <strong>{{ 'COMMON.INVALID' | translate }} </strong>,
+          {{ 'SAVE-INVEST.CDSC.CORRECT-FORMAT' | translate }} <strong>A123456789Z</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label> {{ 'COMMON.NATIONALITY' | translate }}</mat-label>
+        <mat-select formControlName="nationality" [errorStateMatcher]="matcher">
+          <mat-option value="KE">
+            {{ 'COMMON.KENYAN' | translate }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>info</mat-icon>
+        <mat-error *ngIf="form.get('customerDetails.nationality')!.errors?.['required']">
+          {{ 'COMMON.NATIONALITY-IS' | translate }}
+          <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>{{ 'COMMON.COUNTRY-OF-RESIDENCE' | translate }}</mat-label>
+        <mat-select formControlName="countryOfResidence" [errorStateMatcher]="matcher">
+          <mat-option value="KE"> Kenya </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>info</mat-icon>
+        <mat-error *ngIf="form.get('customerDetails.countryOfResidence')!.errors?.['required']">
+          {{ 'COMMON.COUNTRY-RESIDENCE-IS' | translate }}
+          <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-card>

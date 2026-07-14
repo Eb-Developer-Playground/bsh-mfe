@@ -1,0 +1,23 @@
+<p class="mat-subtitle-1 mb-16 fw-600">{{ title }}</p>
+<div *ngIf="signatories">
+  <div class="fx-row-wrap fx-fill fx-flex-100 fx-align-between-start">
+    <div
+      *ngFor="let signatory of signatories"
+      class="fx-flex-0-0-50 fx-align-start-center mb-32">
+      <!-- <mat-checkbox
+            [checked]="signatory.current"
+            color="primary"
+            (change)="onChange($event, signatory)"
+            > -->
+      <div class="fx-row fx-fill fx-flex-100 fx-align-center-center fx-gap-8">
+        <div class="circle-name-avatar">
+          <p class="p-text">{{ getAvatarName(signatory.customerName) }}</p>
+        </div>
+        <div>
+          {{ signatory.customerName }}
+        </div>
+      </div>
+      <!-- </mat-checkbox> -->
+    </div>
+  </div>
+</div>

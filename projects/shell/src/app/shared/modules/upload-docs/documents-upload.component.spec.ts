@@ -16,8 +16,8 @@ describe('DocumentsUploadComponent', () => {
   //let toastService: ToastService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DocumentsUploadComponent],
       imports: [
+        DocumentsUploadComponent,
         TranslateModule.forRoot(),
         MaterialModule,
         MatIconTestingModule, HttpClientModule,

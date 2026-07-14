@@ -1,0 +1,196 @@
+<div class="main" [formGroup]="form">
+  <mat-form-field class="input" appearance="fill">
+    <mat-label>{{ 'SAVE-INVEST.ACCOUNT-NAME' | translate }}*</mat-label>
+    <input
+      matInput
+      id="accountName"
+      formControlName="accountName"
+      type="text"
+      [placeholder]="'SAVE-INVEST.ACCOUNT-NAME-PLACEHOLDER' | translate"
+      autocomplete="off"
+      [errorStateMatcher]="matcher" />
+    <mat-error *ngIf="form.controls['accountName'].hasError('required')">
+      {{ 'SAVE-INVEST.ACCOUNT-NAME' | translate }}
+      {{ 'COMMON.IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="creationType === 'fixed' || creationType === 'call'">
+    <mat-label>{{ 'SAVE-INVEST.CURRENCY' | translate }}*</mat-label>
+    <input
+      matInput
+      formControlName="currency"
+      type="text"
+      [placeholder]="'SAVE-INVEST.CURRENCY-PLACEHOLDER' | translate"
+      autocomplete="off"
+      [errorStateMatcher]="matcher" />
+    <mat-error *ngIf="form.controls['currency'].hasError('required')">
+      {{ 'SAVE-INVEST.CURRENCY' | translate }} {{ 'COMMON.IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="creationType === 'fixed' || creationType === 'call'">
+    <mat-label>{{ 'SAVE-INVEST.INITIAL-AMOUNT' | translate }}*</mat-label>
+    <input
+      matInput
+      id="initialAmount"
+      formControlName="initialAmount"
+      currencyMask
+      [options]="{
+        prefix: '',
+        thousands: ',',
+        decimal: '.',
+        allowNegative: false,
+        align: 'left'
+      }"
+      [value]="form.controls['initialAmount']?.value | number: '1.2-2'"
+      [min]="minInitialAmount"
+      [max]="maxInitialAmount"
+      placeholder="{{ 'SAVE-INVEST.ENTER-AMOUNT-EXAMPLE' | translate }} {{
+        minInitialAmount | currency: form.controls['currency'].value
+      }} )"
+      autocomplete="off"
+      [errorStateMatcher]="matcher"
+      numbersOnly />
+
+    <mat-error *ngIf="form.controls['initialAmount'].hasError('max')">
+      {{ 'SAVE-INVEST.AVAILABLE-BALANCE-IS-NOT-SUFFICIENT' | translate }}
+    </mat-error>
+    <mat-error *ngIf="form.controls['initialAmount'].hasError('min')">
+      {{ 'SAVE-INVEST.INITIAL-AMOUNT-HAS-TO-BE' | translate }}
+      <strong>{{
+        minInitialAmount | currency: form.controls['currency'].value
+      }}</strong>
+      {{ 'SAVE-INVEST.INITIAL-AMOUNT-OR-ABOVE' | translate }}
+    </mat-error>
+    <mat-error *ngIf="form.controls['initialAmount'].hasError('required')">
+      {{ 'SAVE-INVEST.INITIAL-AMOUNT' | translate }}
+      {{ 'COMMON.IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="creationType === 'rollover'">
+    <mat-label>{{ 'SAVE-INVEST.ROLLOVER-AMOUNT' | translate }}*</mat-label>
+    <input
+      matInput
+      formControlName="rolloverAmount"
+      type="text"
+      [placeholder]="'SAVE-INVEST.ROLLOVER-AMOUNT-PLACEHOLDER' | translate"
+      autocomplete="off"
+      [errorStateMatcher]="matcher" />
+    <mat-error *ngIf="form.controls['rolloverAmount'].hasError('required')">
+      {{ 'SAVE-INVEST.ROLLOVER-AMOUNT' | translate }}
+      {{ 'COMMON.IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="creationType === 'fixed'">
+    <mat-label>{{ 'SAVE-INVEST.DEPOSIT-TERM' | translate }}*</mat-label>
+    <mat-select formControlName="depositTerm" [errorStateMatcher]="matcher">
+      <mat-option [value]="'3'">
+        3 {{ 'COMMON.MONTHS' | translate }}
+      </mat-option>
+      <mat-option [value]="'6'">
+        6 {{ 'COMMON.MONTHS' | translate }}
+      </mat-option>
+      <mat-option [value]="'9'">
+        9 {{ 'COMMON.MONTHS' | translate }}
+      </mat-option>
+      <mat-option [value]="'12'">
+        12 {{ 'COMMON.MONTHS' | translate }}
+      </mat-option>
+      <!-- <mat-option [value]="'custom'"> Custom </mat-option> -->
+    </mat-select>
+    <mat-error *ngIf="form.controls['depositTerm'].hasError('required')">
+      {{ 'SAVE-INVEST.DEPOSIT-TERM' | translate }}
+      {{ 'COMMON.IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="
+      creationType === 'fixed' &&
+      form.controls['depositTerm'].value === 'custom'
+    ">
+    <mat-label
+      >{{ 'SAVE-INVEST.CUSTOM-TERM-IN-MONTHS' | translate }}*</mat-label
+    >
+    <input
+      matInput
+      formControlName="customTerm"
+      type="number"
+      min="13"
+      [placeholder]="'SAVE-INVEST.CUSTOM-TERM-PLACEHOLDER' | translate"
+      autocomplete="off"
+      [errorStateMatcher]="matcher" />
+    <mat-error *ngIf="form.controls['customTerm'].hasError('min')">
+      {{ 'SAVE-INVEST.CUSTOM-MIN-VALUE' | translate }}
+    </mat-error>
+    <mat-error *ngIf="form.controls['customTerm'].hasError('required')">
+      {{ 'SAVE-INVEST.CUSTOM-TERM' | translate }} {{ 'COMMON.IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="creationType === 'rollover'">
+    <mat-label>{{ 'SAVE-INVEST.INTEREST-RATE' | translate }} (%)*</mat-label>
+    <input
+      matInput
+      formControlName="interestRate"
+      type="text"
+      [placeholder]="'SAVE-INVEST.INTEREST-RATE-PLACEHOLDER' | translate"
+      autocomplete="off"
+      [errorStateMatcher]="matcher" />
+    <mat-error *ngIf="form.controls['interestRate'].hasError('required')">
+      {{ 'SAVE-INVEST.INTEREST-RATE' | translate }}
+      {{ 'COMMON.IS' | translate }}
+      <strong>{{ 'COMMON.REQUIRED' | translate }}</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field
+    class="input"
+    appearance="fill"
+    *ngIf="creationType !== 'call'">
+    <mat-label>{{ 'SAVE-INVEST.MATURITY-DATE' | translate }}*</mat-label>
+    <input
+      matInput
+      formControlName="maturityDate"
+      [matDatepicker]="picker"
+      [min]="minDate"
+      numbersOnly
+      [disabled]="true"
+      readonly />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="form.controls['maturityDate'].hasError('required')">
+      <span
+        >{{ 'SAVE-INVEST.MATURITY-DATE' | translate }}
+        {{ 'COMMON.IS' | translate }}
+        <strong>{{ 'COMMON.REQUIRED' | translate }}</strong></span
+      >
+    </mat-error>
+  </mat-form-field>
+</div>

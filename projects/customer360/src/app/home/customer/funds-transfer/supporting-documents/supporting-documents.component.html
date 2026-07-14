@@ -1,0 +1,87 @@
+<mat-card appearance="outlined" class="mb-2" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 fw-400">
+      {{ 'MOVE-MONEY.DOCUMENTS-UPLOAD.TITLE' | translate }}
+    </h3>
+    <p class="text instruction">
+      {{ 'MOVE-MONEY.DOCUMENTS-UPLOAD.INSTRUCTION' | translate }}
+    </p>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+
+  <div class="d-flex wrap">
+    @for (obj of cloneOfObjects; track obj) {
+      <div
+        class="col document-card"
+        (click)="!obj.uploadedFile && file.click()"
+        [style.background-image]="obj.uploadedFile
+          ? 'url(' + obj.Url + ')'
+          : 'url(' + supportDocumentBackground + ')'"
+        [style.background-size]="obj.uploadedFile ? 'cover' : null"
+        [class.upload-card]="obj.uploadedFile">
+        <div class="radiobuton-container">
+          @if (obj.uploadedFile) {
+            <mat-icon svgIcon="ic-radiobutton"></mat-icon>
+          }
+        </div>
+        <div style="display: initial">
+          <div class="upload-instruction">
+            <div style="padding: 8px" class="d-flex justify-content-between">
+              <input
+                type="file"
+                #file
+                #attachments
+                (change)="onChange(file, obj)"
+                style="display: none" />
+              <div>
+                <p class="text doc">{{ obj.documentName }}</p>
+                <p class="text instruction">
+                  {{
+                    obj.uploadedFile
+                      ? 'File Size:' + ' ' + obj.fileSize
+                      : 'The file should not exceed 1MB'
+                  }}
+                </p>
+              </div>
+
+              <div>
+                <mat-icon
+                  [svgIcon]="obj.icon"
+                  (click)="obj.uploadedFile && deleteUpload(obj)"></mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+    <div
+      class="col drag-drop"
+      (files)="filesDropped($event)"
+      appDragDropDocuments
+      (click)="filedrag.click()">
+      <input
+        type="file"
+        #filedrag
+        (change)="onChange(filedrag)"
+        style="display: none" />
+      <div>
+        <mat-icon
+          height="20px"
+          svgIcon="ic-uploadBackground"
+          style="transform: scale(1.7)"></mat-icon>
+        <p class="text drop-text">
+          {{ 'MOVE-MONEY.DOCUMENTS-UPLOAD.UPLOAD-DOCUMENT' | translate }}
+        </p>
+        <p class="text instruction">
+          {{ 'MOVE-MONEY.DOCUMENTS-UPLOAD.UPLOAD-DRAG_AND_DROP' | translate }}
+          <span class="drag-text">{{
+            'MOVE-MONEY.DOCUMENTS-UPLOAD.BROWSE' | translate
+          }}</span
+          >{{ 'MOVE-MONEY.DOCUMENTS-UPLOAD.FILES' | translate }}
+        </p>
+      </div>
+    </div>
+  </div>
+</mat-card>

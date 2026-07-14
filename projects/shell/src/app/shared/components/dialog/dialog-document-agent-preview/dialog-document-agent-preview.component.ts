@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { from, map, mergeMap, Subject, switchMap, takeUntil } from 'rxjs';
-import { ApiService } from 'src/app/shared/services';
+import { ApiService } from '@app/shared/services/api.service';
 import { SupportDocuments } from '../../known-agent/known-agent-customer-image/known-agent-customer-image.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';

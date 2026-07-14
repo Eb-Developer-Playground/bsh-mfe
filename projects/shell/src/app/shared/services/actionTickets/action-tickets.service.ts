@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService, SessionService } from '@app/shared/services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { actionTicket } from '@app/shared/models/common/actionTicket.model';
 import { ActionTicketResponse } from '@app/shared/models/action-tickets.model';
 

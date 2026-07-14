@@ -1,0 +1,345 @@
+.wrapper {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    margin: 0;
+}
+
+.toolbar {
+    background: #ffffff;
+    margin-bottom: 1.5rem;
+    box-shadow:
+        0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.vl {
+    border-left: 2px solid #92949733;
+    height: 30px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.toolbar-page {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #929497;
+}
+
+// .toolbar {
+//     display: flex;
+//     justify-content: space-between;
+// }
+
+.title {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.subtitle-text {
+    font-size: 0.875rem;
+    color: #929497;
+    margin: 0;
+}
+
+.frozen-section {
+    background: rgba(230, 0, 0, 0.1);
+    border-radius: 8px;
+    border-left: 8px solid rgba(230, 0, 0, 1);
+    padding: 14px 0 14px 24px;
+    margin-bottom: 24px;
+}
+
+.cool-off {
+    background: rgba(88, 89, 91, 0.1);
+    border-radius: 8px;
+    height: 116px;
+    border-left: 8px solid rgba(88, 89, 91, 1);
+    padding: 14px 0 0 24px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.blocked-channel {
+    background: rgb(252 229 229);
+    border-radius: 8px;
+    height: 116px;
+    border: 0.8px solid #e60000;
+    border-left: 8px solid #e60000;
+    padding: 14px 10px 0 24px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.support-title {
+    color: #221f1f;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.support-content {
+    font-size: 1rem;
+    line-height: 24px;
+    color: black;
+    margin: 0;
+}
+
+.action-text {
+    // text-align: right;
+    // color: #A32A29;
+    font-weight: 600;
+    margin: 0 5px 5px 0;
+    border-radius: 8px;
+    // padding-right: 36px;
+}
+
+.channels-body {
+    border-radius: 8px;
+}
+
+.channels-detail {
+    border-radius: 8px;
+    margin-top: 33px;
+}
+
+.hover {
+    cursor: pointer;
+}
+
+.action-div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container {
+    padding-bottom: 20px;
+}
+.mat-button-toggle-group {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    .mat-button-toggle {
+        flex-grow: 1;
+    }
+    .mat-button-toggle-checked {
+        background-color: #a32a29;
+        color: white;
+    }
+}
+:host ::ng-deep .mat-button-toggle-label-content {
+    line-height: 44px !important;
+}
+app-customer .mat-button-toggle-checked {
+    background-color: #fff;
+    &.mat-button-toggle-appearance-standard {
+        border-color: #a32a29;
+        .mat-button-toggle-label-content {
+            color: #fff;
+        }
+    }
+}
+
+.activity-card {
+    padding: 0 !important;
+}
+
+.header_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.activity-header {
+    //padding: 16px;
+
+    h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+.toggle-section {
+    padding: 0 10px;
+}
+
+.filter-toggle-btn {
+    min-width: 25px !important;
+    background-color: #f7f7f7;
+    mat-icon {
+        width: 20px;
+        height: 26px;
+        font-size: medium;
+    }
+    // span {
+    //     font-weight: 600;
+    //     font-size: 14px;
+    //     line-height: 24px;
+    //     color: #a32a29;
+    // }
+}
+
+::ng-deep .mdc-card__header-text {
+    /* CSS styles go here */
+    display: none;
+}
+
+table {
+    width: 100%;
+    box-shadow: none;
+
+    th {
+        background: #e9eaea;
+        color: black;
+    }
+}
+.mat-button-toggle-group {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    .mat-button-toggle {
+        flex-grow: 1;
+    }
+    .mat-button-toggle-checked {
+        background-color: #a32a29;
+        color: white;
+    }
+}
+:host ::ng-deep .mat-button-toggle-label-content {
+    line-height: 44px !important;
+}
+
+.cell-padding {
+    padding: 0 12px !important;
+}
+
+.details-btn {
+    margin-top: 24px;
+}
+
+:host ::ng-deep.filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.subject-filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.date-filter-fields .mat-mdc-text-field-wrapper,
+:host ::ng-deep.createdBy-filter-fields .mat-mdc-text-field-wrapper {
+    padding-bottom: 0em !important;
+}
+
+// :host ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+//     padding: 0.5em 0 1em 0 !important;
+// }
+
+.filter-fields {
+    width: 11rem;
+}
+
+.date-filter-fields {
+    width: 17rem;
+}
+
+.subject-filter-fields {
+    width: 11rem;
+}
+
+.no-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.rate-flag {
+    display: inline-flex;
+    align-items: center;
+}
+
+.rate-icon {
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 17px;
+}
+
+.rate-currency {
+    color: #757679;
+}
+
+.rate-currency-div {
+    text-align: left;
+
+    p {
+        margin: 0 0 5px 0;
+    }
+}
+
+.date-error {
+    margin-left: 0.9rem;
+}
+
+.wrap_table_tickets {
+    max-height: 33.75rem;
+    overflow: auto;
+}
+
+::ng-deep .mat-mdc-chip.mat-mdc-standard-chip {
+    background-color: var(--grayscale-white, #fff);
+    color: var(--grayscale-black, #221f1f);
+}
+
+::ng-deep .mat-mdc-standard-chip {
+    border: 1px solid var(--grayscale-cool-grey-300, #d3d4d5) !important;
+}
+
+.clear-btn {
+    color: var(--equity-brown-equity-brown-500, #a32a29);
+    /* Size 5+ */
+    font-family: Open Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem; /* 150% */
+    cursor: pointer;
+}
+
+.source-account-td {
+    padding-left: 20px !important;
+}
+
+.filter-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.account-filter {
+    width: 15rem;
+}
+
+.btn-outline {
+    font-size: 13px;
+    width: 7rem;
+}

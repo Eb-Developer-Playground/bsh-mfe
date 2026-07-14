@@ -1,0 +1,49 @@
+<mat-card class="container move-money">
+  <div class="d-flex justify-content-between title-wrapper">
+    <div class="section-title">
+      {{ 'MOVE-MONEY.SERVICE-OPTIONS.TITLE' | translate }}
+    </div>
+    <div class="section-subtitle color-grey">
+      {{ 'MOVE-MONEY.SERVICE-OPTIONS.TEXT' | translate }}
+    </div>
+  </div>
+
+  <div class="py-1">
+    <mat-divider></mat-divider>
+  </div>
+  <div class="items-wrapper">
+    <div class="fieldset">
+      @for (service of moveMoneyServices; track service) {
+        <a href="{{ service.url }}" style="text-decoration: none">
+          @if (service.display === true) {
+            <mat-card class="service-card" (click)="navigateTo(service.url, $event)">
+              <div class="card-content">
+                <div>
+                  <div class="service-icon">
+                    <!-- <img [src]="service.icon" [alt]="service.altText" /> -->
+                    <mat-icon
+                      [svgIcon]="service.icon"
+                      aria-hidden="false"
+                      aria-label="additional account"
+                      class="menu-icon"
+                    >
+                    </mat-icon>
+                  </div>
+                </div>
+                <div class="service-text">
+                  <div
+                    class="mat-subheading-2 service-title"
+                    [innerHTML]="service.title | translate"
+                  ></div>
+                  <div class="color-grey service-text">
+                    {{ service.text | translate }}
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          }
+        </a>
+      }
+    </div>
+  </div>
+</mat-card>

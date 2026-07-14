@@ -1,0 +1,59 @@
+<div [formGroup]="IssuanceForm">
+  @if (issuanceType === 'INSTANT') {
+    <div class="w-auto max-w-600">
+      <mat-radio-group
+        aria-labelledby="Waive charges or not"
+        class="flex pt-20"
+        formControlName="charges"
+        color="primary">
+        <mat-radio-button [value]="true" class="pr-16 flex-1">
+          <div class="flex flex-col pl-10 max-w-410">
+            <span class="radio-header normal-whitespace">Debit Account</span>
+            <span class="radio-sub normal-whitespace">
+              Account to debit charges
+            </span>
+          </div>
+        </mat-radio-button>
+        <mat-radio-button [value]="false" class="px-16 flex-1">
+          <div class="flex flex-col pl-10 max-w-410">
+            <span class="radio-header normal-whitespace">Waive charges</span>
+            <span class="radio-sub normal-whitespace">
+              Waive application charges
+            </span>
+          </div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  }
+  <div class="pt-16 fieldset flex-1">
+    <mat-form-field class="flex-1">
+      <mat-label class="text-12">Account to debit</mat-label>
+      <mat-select
+        class="text-14 pt-10"
+        [disabled]="true"
+        [value]="activeAccountNumber">
+        @for (account of accounts; track account.accountNumber) {
+          <mat-option [value]="account.accountNumber">{{ account.accountNumber }}</mat-option>
+        }
+      </mat-select>
+      <mat-hint class="text-light">Available balance {{ activeAccountBalance }}</mat-hint>
+    </mat-form-field>
+    <app-card-input
+      class="w-full flex-1"
+      label="Account name"
+      [isRequired]="true"
+      name="accountName" />
+    @if (cardTypeCharges !== 'n/a') {
+      <app-card-input
+        label="Charges amount"
+        [isRequired]="true"
+        [isLoading]="cardTypeCharges === 'loading'"
+        name="chargeAmount" />
+      <app-card-input
+        [isLoading]="cardTypeCharges === 'loading'"
+        label="Tax amount"
+        [isRequired]="true"
+        name="taxAmount" />
+    }
+  </div>
+</div>

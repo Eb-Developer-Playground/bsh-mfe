@@ -1,0 +1,992 @@
+{
+  "data": [
+    {
+      "nationalityCode": "AF",
+      "nationalityName": "AFGHAN"
+    },
+    {
+      "nationalityCode": "DZ",
+      "nationalityName": "ALGERIAN"
+    },
+    {
+      "nationalityCode": "NR",
+      "nationalityName": "NAURUAN"
+    },
+    {
+      "nationalityCode": "NP",
+      "nationalityName": "NEPALESE"
+    },
+    {
+      "nationalityCode": "NC",
+      "nationalityName": "NEW CALEDONIAN"
+    },
+    {
+      "nationalityCode": "CK",
+      "nationalityName": "NEW ZEALANDER"
+    },
+    {
+      "nationalityCode": "NZ",
+      "nationalityName": "NEW ZEALANDER"
+    },
+    {
+      "nationalityCode": "NI",
+      "nationalityName": "NICARAGUAN"
+    },
+    {
+      "nationalityCode": "NG",
+      "nationalityName": "NIGERIAN"
+    },
+    {
+      "nationalityCode": "NE",
+      "nationalityName": "NIGERIEN"
+    },
+    {
+      "nationalityCode": "NU",
+      "nationalityName": "NIUEANS"
+    },
+    {
+      "nationalityCode": "NF",
+      "nationalityName": "NORFOLK ISLANDER"
+    },
+    {
+      "nationalityCode": "KP",
+      "nationalityName": "NORTH KOREAN"
+    },
+    {
+      "nationalityCode": "MP",
+      "nationalityName": "NORTHERN MARIANA ISLANDS"
+    },
+    {
+      "nationalityCode": "NA",
+      "nationalityName": "NAMIBIAN"
+    },
+    {
+      "nationalityCode": "NO",
+      "nationalityName": "NORWEGIAN"
+    },
+    {
+      "nationalityCode": "OM",
+      "nationalityName": "OMANI"
+    },
+    {
+      "nationalityCode": "PK",
+      "nationalityName": "PAKISTANI"
+    },
+    {
+      "nationalityCode": "PW",
+      "nationalityName": "PALAUAN"
+    },
+    {
+      "nationalityCode": "PS",
+      "nationalityName": "\"PALESTINIAN TERRITORY-OCCUPIED\""
+    },
+    {
+      "nationalityCode": "PA",
+      "nationalityName": "PANAMANIAN"
+    },
+    {
+      "nationalityCode": "PG",
+      "nationalityName": "PAPUA NEW GUINEAN"
+    },
+    {
+      "nationalityCode": "PY",
+      "nationalityName": "PARAGUAYAN"
+    },
+    {
+      "nationalityCode": "PE",
+      "nationalityName": "PERUVIAN"
+    },
+    {
+      "nationalityCode": "PH",
+      "nationalityName": "PHILIPPINE"
+    },
+    {
+      "nationalityCode": "PN",
+      "nationalityName": "PITCAIRN�ISLANDER"
+    },
+    {
+      "nationalityCode": "PL",
+      "nationalityName": "POLISH"
+    },
+    {
+      "nationalityCode": "PT",
+      "nationalityName": "PORTUGUESE"
+    },
+    {
+      "nationalityCode": "SJ",
+      "nationalityName": "NORWEGIAN"
+    },
+    {
+      "nationalityCode": "MM",
+      "nationalityName": "MYANMARESE"
+    },
+    {
+      "nationalityCode": "MZ",
+      "nationalityName": "MOZAMBICAN"
+    },
+    {
+      "nationalityCode": "MS",
+      "nationalityName": "MOSOTHO"
+    },
+    {
+      "nationalityCode": "LA",
+      "nationalityName": "LAOTIAN"
+    },
+    {
+      "nationalityCode": "LV",
+      "nationalityName": "LATVIAN"
+    },
+    {
+      "nationalityCode": "LB",
+      "nationalityName": "LEBANESE"
+    },
+    {
+      "nationalityCode": "LR",
+      "nationalityName": "LIBERIAN"
+    },
+    {
+      "nationalityCode": "LY",
+      "nationalityName": "LIBYAN"
+    },
+    {
+      "nationalityCode": "LI",
+      "nationalityName": "LIECHTENSTEINER"
+    },
+    {
+      "nationalityCode": "LT",
+      "nationalityName": "LITHUANIAN"
+    },
+    {
+      "nationalityCode": "LU",
+      "nationalityName": "LUXEMBOURGER"
+    },
+    {
+      "nationalityCode": "MK",
+      "nationalityName": "MACEDONIAN"
+    },
+    {
+      "nationalityCode": "YT",
+      "nationalityName": "MAHORAIS"
+    },
+    {
+      "nationalityCode": "MG",
+      "nationalityName": "MALAGASAY�"
+    },
+    {
+      "nationalityCode": "MW",
+      "nationalityName": "MALAWIAN"
+    },
+    {
+      "nationalityCode": "MY",
+      "nationalityName": "MALAYSIAN"
+    },
+    {
+      "nationalityCode": "MV",
+      "nationalityName": "MALDIVIAN"
+    },
+    {
+      "nationalityCode": "ML",
+      "nationalityName": "MALIAN"
+    },
+    {
+      "nationalityCode": "MT",
+      "nationalityName": "MALTESE"
+    },
+    {
+      "nationalityCode": "MH",
+      "nationalityName": "MARSHALLESE"
+    },
+    {
+      "nationalityCode": "MQ",
+      "nationalityName": "MARTINIQUAIS"
+    },
+    {
+      "nationalityCode": "MR",
+      "nationalityName": "MAURITANIAN"
+    },
+    {
+      "nationalityCode": "MU",
+      "nationalityName": "MAURITIAN"
+    },
+    {
+      "nationalityCode": "MX",
+      "nationalityName": "MEXICAN"
+    },
+    {
+      "nationalityCode": "FM",
+      "nationalityName": "MICRONESIAN"
+    },
+    {
+      "nationalityCode": "MD",
+      "nationalityName": "MOLDOVAN"
+    },
+    {
+      "nationalityCode": "MN",
+      "nationalityName": "MONGOLIAN"
+    },
+    {
+      "nationalityCode": "ME",
+      "nationalityName": "MONTENEGRIN"
+    },
+    {
+      "nationalityCode": "MC",
+      "nationalityName": "MON�GASQUE�OR�MONACAN"
+    },
+    {
+      "nationalityCode": "MA",
+      "nationalityName": "MOROCCAN"
+    },
+    {
+      "nationalityCode": "PR",
+      "nationalityName": "PUERTO RICANS"
+    },
+    {
+      "nationalityCode": "QA",
+      "nationalityName": "QATARI"
+    },
+    {
+      "nationalityCode": "RE",
+      "nationalityName": "REUNIONESE"
+    },
+    {
+      "nationalityCode": "RO",
+      "nationalityName": "ROMANIAN"
+    },
+    {
+      "nationalityCode": "TW",
+      "nationalityName": "TAIWANESE"
+    },
+    {
+      "nationalityCode": "TJ",
+      "nationalityName": "TAJIK"
+    },
+    {
+      "nationalityCode": "TZ",
+      "nationalityName": "TANZANIAN"
+    },
+    {
+      "nationalityCode": "TH",
+      "nationalityName": "THAI"
+    },
+    {
+      "nationalityCode": "TL",
+      "nationalityName": "TIMORESE"
+    },
+    {
+      "nationalityCode": "TG",
+      "nationalityName": "TOGOLESE"
+    },
+    {
+      "nationalityCode": "TK",
+      "nationalityName": "TOKELAU"
+    },
+    {
+      "nationalityCode": "TO",
+      "nationalityName": "TONGAN"
+    },
+    {
+      "nationalityCode": "TT",
+      "nationalityName": "TRINIDADIAN"
+    },
+    {
+      "nationalityCode": "TN",
+      "nationalityName": "TUNISIAN"
+    },
+    {
+      "nationalityCode": "TR",
+      "nationalityName": "TURKISH"
+    },
+    {
+      "nationalityCode": "TM",
+      "nationalityName": "TURKOMAN"
+    },
+    {
+      "nationalityCode": "TC",
+      "nationalityName": "TURKS AND CAICOS ISLANDS"
+    },
+    {
+      "nationalityCode": "TV",
+      "nationalityName": "TUVALUAN"
+    },
+    {
+      "nationalityCode": "UG",
+      "nationalityName": "UGANDAN"
+    },
+    {
+      "nationalityCode": "UA",
+      "nationalityName": "UKRAINIAN"
+    },
+    {
+      "nationalityCode": "UM",
+      "nationalityName": "UNITED STATES MINOR OUTLYING ISLANDS"
+    },
+    {
+      "nationalityCode": "UY",
+      "nationalityName": "URUGUAYAN"
+    },
+    {
+      "nationalityCode": "UZ",
+      "nationalityName": "UZBEK"
+    },
+    {
+      "nationalityCode": "VU",
+      "nationalityName": "VANUATUAN"
+    },
+    {
+      "nationalityCode": "VE",
+      "nationalityName": "VENEZUELAN"
+    },
+    {
+      "nationalityCode": "VN",
+      "nationalityName": "VIETNAMESE"
+    },
+    {
+      "nationalityCode": "VI",
+      "nationalityName": "VIRGIN ISLANDER"
+    },
+    {
+      "nationalityCode": "WF",
+      "nationalityName": "WALLIS AND FUTUNA�ISLANDER"
+    },
+    {
+      "nationalityCode": "YE",
+      "nationalityName": "YEMENI"
+    },
+    {
+      "nationalityCode": "ZM",
+      "nationalityName": "ZAMBIAN"
+    },
+    {
+      "nationalityCode": "ZW",
+      "nationalityName": "ZIMBABWEAN"
+    },
+    {
+      "nationalityCode": "SY",
+      "nationalityName": "SYRIAN"
+    },
+    {
+      "nationalityCode": "KG",
+      "nationalityName": "KYRGYZ"
+    },
+    {
+      "nationalityCode": "CH",
+      "nationalityName": "SWISS"
+    },
+    {
+      "nationalityCode": "SZ",
+      "nationalityName": "SWAZI"
+    },
+    {
+      "nationalityCode": "RU",
+      "nationalityName": "RUSSIAN"
+    },
+    {
+      "nationalityCode": "RW",
+      "nationalityName": "RWANDAN"
+    },
+    {
+      "nationalityCode": "EH",
+      "nationalityName": "SAHRAWI"
+    },
+    {
+      "nationalityCode": "SH",
+      "nationalityName": "SAINT HELENIAN"
+    },
+    {
+      "nationalityCode": "LC",
+      "nationalityName": "SAINT LUCIAN"
+    },
+    {
+      "nationalityCode": "VC",
+      "nationalityName": "SAINT VINCENTIAN"
+    },
+    {
+      "nationalityCode": "SV",
+      "nationalityName": "SALVADOREAN"
+    },
+    {
+      "nationalityCode": "WS",
+      "nationalityName": "SAMOAN"
+    },
+    {
+      "nationalityCode": "SM",
+      "nationalityName": "SAN MARINESE"
+    },
+    {
+      "nationalityCode": "ST",
+      "nationalityName": "SAO TOMEAN"
+    },
+    {
+      "nationalityCode": "SA",
+      "nationalityName": "SAUDI ARABIAN"
+    },
+    {
+      "nationalityCode": "SN",
+      "nationalityName": "SENEGALESE"
+    },
+    {
+      "nationalityCode": "RS",
+      "nationalityName": "SERBIAN"
+    },
+    {
+      "nationalityCode": "SC",
+      "nationalityName": "SEYCHELLOIS"
+    },
+    {
+      "nationalityCode": "SL",
+      "nationalityName": "SIERRA LEONIAN"
+    },
+    {
+      "nationalityCode": "SG",
+      "nationalityName": "SINGAPOREAN"
+    },
+    {
+      "nationalityCode": "SK",
+      "nationalityName": "SLOVAK"
+    },
+    {
+      "nationalityCode": "SI",
+      "nationalityName": "SLOVENIAN"
+    },
+    {
+      "nationalityCode": "SB",
+      "nationalityName": "SOLOMON ISLANDER"
+    },
+    {
+      "nationalityCode": "SO",
+      "nationalityName": "SOMALI"
+    },
+    {
+      "nationalityCode": "ZA",
+      "nationalityName": "SOUTH AFRICAN"
+    },
+    {
+      "nationalityCode": "KR",
+      "nationalityName": "SOUTH KOREAN"
+    },
+    {
+      "nationalityCode": "SS",
+      "nationalityName": "SOUTH SUDANESE"
+    },
+    {
+      "nationalityCode": "ES",
+      "nationalityName": "SPANISH"
+    },
+    {
+      "nationalityCode": "LK",
+      "nationalityName": "SRI LANKAN"
+    },
+    {
+      "nationalityCode": "SD",
+      "nationalityName": "SUDANESE"
+    },
+    {
+      "nationalityCode": "SR",
+      "nationalityName": "SURINAMESE"
+    },
+    {
+      "nationalityCode": "SE",
+      "nationalityName": "SWEDISH"
+    },
+    {
+      "nationalityCode": "KW",
+      "nationalityName": "KUWAITI"
+    },
+    {
+      "nationalityCode": "KN",
+      "nationalityName": "KITTIAN "
+    },
+    {
+      "nationalityCode": "KE",
+      "nationalityName": "KENYAN"
+    },
+    {
+      "nationalityCode": "GS",
+      "nationalityName": "BRITISH"
+    },
+    {
+      "nationalityCode": "FK",
+      "nationalityName": "BRITISH"
+    },
+    {
+      "nationalityCode": "IO",
+      "nationalityName": "BRITISH"
+    },
+    {
+      "nationalityCode": "BN",
+      "nationalityName": "BRUNEIAN"
+    },
+    {
+      "nationalityCode": "BG",
+      "nationalityName": "BULGARIAN"
+    },
+    {
+      "nationalityCode": "BF",
+      "nationalityName": "BURKINESE"
+    },
+    {
+      "nationalityCode": "BI",
+      "nationalityName": "BURUNDIAN"
+    },
+    {
+      "nationalityCode": "BY",
+      "nationalityName": "BYELORUSSIAN"
+    },
+    {
+      "nationalityCode": "KH",
+      "nationalityName": "CAMBODIAN"
+    },
+    {
+      "nationalityCode": "CM",
+      "nationalityName": "CAMEROONIAN"
+    },
+    {
+      "nationalityCode": "CA",
+      "nationalityName": "CANADIAN"
+    },
+    {
+      "nationalityCode": "CV",
+      "nationalityName": "CAPE VERDEAN"
+    },
+    {
+      "nationalityCode": "KY",
+      "nationalityName": "CAYMAN ISLANDS"
+    },
+    {
+      "nationalityCode": "CF",
+      "nationalityName": "CENTRAL AFRICAN"
+    },
+    {
+      "nationalityCode": "TD",
+      "nationalityName": "CHADIAN"
+    },
+    {
+      "nationalityCode": "JE",
+      "nationalityName": "CHANNEL ISLANDER"
+    },
+    {
+      "nationalityCode": "IM",
+      "nationalityName": "CHANNEL ISLANDER"
+    },
+    {
+      "nationalityCode": "GG",
+      "nationalityName": "CHANNEL ISLANDER"
+    },
+    {
+      "nationalityCode": "CL",
+      "nationalityName": "CHILEAN"
+    },
+    {
+      "nationalityCode": "CN",
+      "nationalityName": "CHINESE"
+    },
+    {
+      "nationalityCode": "HK",
+      "nationalityName": "CHINESE"
+    },
+    {
+      "nationalityCode": "MO",
+      "nationalityName": "CHINESE"
+    },
+    {
+      "nationalityCode": "CX",
+      "nationalityName": "CHRISTMAS ISLANDER"
+    },
+    {
+      "nationalityCode": "CC",
+      "nationalityName": "COCOS ISLANDER"
+    },
+    {
+      "nationalityCode": "CO",
+      "nationalityName": "COLOMBIAN"
+    },
+    {
+      "nationalityCode": "KM",
+      "nationalityName": "COMORAN"
+    },
+    {
+      "nationalityCode": "CD",
+      "nationalityName": "CONGOLESE"
+    },
+    {
+      "nationalityCode": "GB",
+      "nationalityName": "BRITISH"
+    },
+    {
+      "nationalityCode": "CG",
+      "nationalityName": "CONGOLESE"
+    },
+    {
+      "nationalityCode": "VG",
+      "nationalityName": "BRITISH"
+    },
+    {
+      "nationalityCode": "BR",
+      "nationalityName": "BRAZILIAN"
+    },
+    {
+      "nationalityCode": "US",
+      "nationalityName": "AMERICAN"
+    },
+    {
+      "nationalityCode": "AS",
+      "nationalityName": "AMERICAN SAMOA"
+    },
+    {
+      "nationalityCode": "AD",
+      "nationalityName": "ANDORRAN"
+    },
+    {
+      "nationalityCode": "AO",
+      "nationalityName": "ANGOLAN"
+    },
+    {
+      "nationalityCode": "AI",
+      "nationalityName": "ANGUILLAN"
+    },
+    {
+      "nationalityCode": "AQ",
+      "nationalityName": "ANTARTICA"
+    },
+    {
+      "nationalityCode": "AG",
+      "nationalityName": "ANTIGUAN"
+    },
+    {
+      "nationalityCode": "AR",
+      "nationalityName": "ARGENTINIAN"
+    },
+    {
+      "nationalityCode": "AM",
+      "nationalityName": "ARMENIAN"
+    },
+    {
+      "nationalityCode": "AW",
+      "nationalityName": "ARUBAN"
+    },
+    {
+      "nationalityCode": "AU",
+      "nationalityName": "AUSTRALIAN"
+    },
+    {
+      "nationalityCode": "AT",
+      "nationalityName": "AUSTRIAN"
+    },
+    {
+      "nationalityCode": "AZ",
+      "nationalityName": "AZERBAIJANI"
+    },
+    {
+      "nationalityCode": "BS",
+      "nationalityName": "BAHAMIAN"
+    },
+    {
+      "nationalityCode": "BH",
+      "nationalityName": "BAHRAINI"
+    },
+    {
+      "nationalityCode": "BD",
+      "nationalityName": "BANGLADESHI"
+    },
+    {
+      "nationalityCode": "BB",
+      "nationalityName": "BARBADIAN"
+    },
+    {
+      "nationalityCode": "LS",
+      "nationalityName": "BASOTHO"
+    },
+    {
+      "nationalityCode": "BE",
+      "nationalityName": "BELGIAN"
+    },
+    {
+      "nationalityCode": "BZ",
+      "nationalityName": "BELIZIAN"
+    },
+    {
+      "nationalityCode": "BJ",
+      "nationalityName": "BENINESE"
+    },
+    {
+      "nationalityCode": "BM",
+      "nationalityName": "BERMUDIAN"
+    },
+    {
+      "nationalityCode": "BT",
+      "nationalityName": "BHUTANESE"
+    },
+    {
+      "nationalityCode": "BO",
+      "nationalityName": "BOLIVIAN"
+    },
+    {
+      "nationalityCode": "BA",
+      "nationalityName": "BOSNIAN"
+    },
+    {
+      "nationalityCode": "BW",
+      "nationalityName": "BOTSWANAN"
+    },
+    {
+      "nationalityCode": "BV",
+      "nationalityName": "BOUVET ISLANDER"
+    },
+    {
+      "nationalityCode": "UK",
+      "nationalityName": "BRIT"
+    },
+    {
+      "nationalityCode": "AL",
+      "nationalityName": "ALBANIAN"
+    },
+    {
+      "nationalityCode": "CR",
+      "nationalityName": "COSTA RICAN"
+    },
+    {
+      "nationalityCode": "CU",
+      "nationalityName": "CUBAN"
+    },
+    {
+      "nationalityCode": "GL",
+      "nationalityName": "GREENLANDER"
+    },
+    {
+      "nationalityCode": "GD",
+      "nationalityName": "GRENADIAN"
+    },
+    {
+      "nationalityCode": "GP",
+      "nationalityName": "GUADELOUPIAN"
+    },
+    {
+      "nationalityCode": "GU",
+      "nationalityName": "GUAM"
+    },
+    {
+      "nationalityCode": "GT",
+      "nationalityName": "GUATEMALAN"
+    },
+    {
+      "nationalityCode": "GW",
+      "nationalityName": "GUINEA-BISSAUAN"
+    },
+    {
+      "nationalityCode": "GN",
+      "nationalityName": "GUINEAN"
+    },
+    {
+      "nationalityCode": "GY",
+      "nationalityName": "GUYANESE"
+    },
+    {
+      "nationalityCode": "HT",
+      "nationalityName": "HAITIAN"
+    },
+    {
+      "nationalityCode": "HM",
+      "nationalityName": "HEARD ISLAND AND MCDONALD ISLANDS"
+    },
+    {
+      "nationalityCode": "VA",
+      "nationalityName": "HOLY SEE (VATICAN CITY STATE)"
+    },
+    {
+      "nationalityCode": "HN",
+      "nationalityName": "HONDURAN"
+    },
+    {
+      "nationalityCode": "HU",
+      "nationalityName": "HUNGARIAN"
+    },
+    {
+      "nationalityCode": "KI",
+      "nationalityName": "I-KIRIBATI"
+    },
+    {
+      "nationalityCode": "IS",
+      "nationalityName": "ICELANDIC"
+    },
+    {
+      "nationalityCode": "IN",
+      "nationalityName": "INDIAN"
+    },
+    {
+      "nationalityCode": "ID",
+      "nationalityName": "INDONESIAN"
+    },
+    {
+      "nationalityCode": "IR",
+      "nationalityName": "IRANIAN"
+    },
+    {
+      "nationalityCode": "IQ",
+      "nationalityName": "IRAQI"
+    },
+    {
+      "nationalityCode": "IE",
+      "nationalityName": "IRISH"
+    },
+    {
+      "nationalityCode": "IL",
+      "nationalityName": "ISRAELI"
+    },
+    {
+      "nationalityCode": "IT",
+      "nationalityName": "ITALIAN"
+    },
+    {
+      "nationalityCode": "CI",
+      "nationalityName": "IVORIAN"
+    },
+    {
+      "nationalityCode": "JM",
+      "nationalityName": "JAMAICAN"
+    },
+    {
+      "nationalityCode": "JP",
+      "nationalityName": "JAPANESE"
+    },
+    {
+      "nationalityCode": "JO",
+      "nationalityName": "JORDANIAN"
+    },
+    {
+      "nationalityCode": "KZ",
+      "nationalityName": "KAZAKH"
+    },
+    {
+      "nationalityCode": "GR",
+      "nationalityName": "GREEK"
+    },
+    {
+      "nationalityCode": "HR",
+      "nationalityName": "CROAT�"
+    },
+    {
+      "nationalityCode": "GI",
+      "nationalityName": "GIBRALTARIAN"
+    },
+    {
+      "nationalityCode": "DE",
+      "nationalityName": "GERMAN"
+    },
+    {
+      "nationalityCode": "CY",
+      "nationalityName": "CYPRIOT"
+    },
+    {
+      "nationalityCode": "CZ",
+      "nationalityName": "CZECH"
+    },
+    {
+      "nationalityCode": "DK",
+      "nationalityName": "DANISH"
+    },
+    {
+      "nationalityCode": "DJ",
+      "nationalityName": "DJIBOUTIAN"
+    },
+    {
+      "nationalityCode": "DO",
+      "nationalityName": "DOMINICAN"
+    },
+    {
+      "nationalityCode": "DM",
+      "nationalityName": "DOMINICAN"
+    },
+    {
+      "nationalityCode": "AN",
+      "nationalityName": "DUTCH"
+    },
+    {
+      "nationalityCode": "NL",
+      "nationalityName": "DUTCH"
+    },
+    {
+      "nationalityCode": "EC",
+      "nationalityName": "ECUADOREAN"
+    },
+    {
+      "nationalityCode": "EG",
+      "nationalityName": "EGYPTIAN"
+    },
+    {
+      "nationalityCode": "AE",
+      "nationalityName": "EMIRIAN"
+    },
+    {
+      "nationalityCode": "GQ",
+      "nationalityName": "EQUATOGUINEAN"
+    },
+    {
+      "nationalityCode": "ER",
+      "nationalityName": "ERITREAN"
+    },
+    {
+      "nationalityCode": "EE",
+      "nationalityName": "ESTONIAN"
+    },
+    {
+      "nationalityCode": "ET",
+      "nationalityName": "ETHIOPIAN"
+    },
+    {
+      "nationalityCode": "EU",
+      "nationalityName": "EUROPEAN UNION"
+    },
+    {
+      "nationalityCode": "FO",
+      "nationalityName": "FAROESE"
+    },
+    {
+      "nationalityCode": "FJ",
+      "nationalityName": "FIJIAN"
+    },
+    {
+      "nationalityCode": "FI",
+      "nationalityName": "FINNISH"
+    },
+    {
+      "nationalityCode": "TF",
+      "nationalityName": "FRENCH"
+    },
+    {
+      "nationalityCode": "FR",
+      "nationalityName": "FRENCH"
+    },
+    {
+      "nationalityCode": "PM",
+      "nationalityName": "FRENCH"
+    },
+    {
+      "nationalityCode": "GF",
+      "nationalityName": "FRENCH GUIANA"
+    },
+    {
+      "nationalityCode": "PF",
+      "nationalityName": "FRENCH POLYNESIAN"
+    },
+    {
+      "nationalityCode": "GA",
+      "nationalityName": "GABONESE"
+    },
+    {
+      "nationalityCode": "GM",
+      "nationalityName": "GAMBIAN"
+    },
+    {
+      "nationalityCode": "GE",
+      "nationalityName": "GEORGIAN"
+    },
+    {
+      "nationalityCode": "GH",
+      "nationalityName": "GHANAIAN"
+    },
+    {
+      "nationalityCode": "AX",
+      "nationalityName": "�LAND ISLANDER"
+    }
+  ]
+}

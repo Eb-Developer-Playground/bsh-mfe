@@ -5,7 +5,7 @@ import {
 } from '@angular/forms';
 import { Observable, of, timer } from 'rxjs';
 import { exhaustMap, map } from 'rxjs/operators';
-import { StaticDataService } from '@app/shared/services';
+import { StaticDataService } from '@app/shared/services/static-data.service';
 
 export class CountryCodeValidator {
   static createValidator(service: StaticDataService): AsyncValidatorFn {

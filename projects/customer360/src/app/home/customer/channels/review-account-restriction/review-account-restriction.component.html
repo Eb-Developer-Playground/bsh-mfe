@@ -1,0 +1,67 @@
+<mat-card>
+  <ng-container>
+    <div class="sub-header">
+      <div class="sub-header-texts">
+        <p>{{ 'CUSTOMER.CHANNELS.REVIEW-RESTRICTION-CHANGES' | translate }}</p>
+      </div>
+      <mat-icon color="primary" class="cursor-pointer" mat-dialog-close
+        >close</mat-icon
+      >
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="account">
+      @for (acc of accounts; track acc) {
+        <div class="account-details-container">
+          <div class="account-detail">
+            <p class="account-detail-title">
+              {{ 'COMMON.ACCOUNT-NAME' | translate }}
+            </p>
+            <p class="account-detail-content">
+              {{ acc.accountName }}
+            </p>
+          </div>
+          <div class="account-detail">
+            <p class="account-detail-title">
+              {{ 'COMMON.ACCOUNT-NUMBER' | translate }}
+            </p>
+            <p class="account-detail-content">
+              <span>{{ acc.accountNumber }}</span>
+              &nbsp; &#8226; &nbsp;
+              <span class="account_type">{{ acc.accountType }}</span>
+            </p>
+          </div>
+          <div class="account-detail">
+            <p class="account-detail-title">
+              {{ 'CUSTOMER.CHANNELS.RESTRICTION-TYPE' | translate }}
+            </p>
+            <p class="account-detail-content">
+              @if (acc?.canTransact && acc?.canView) {
+                {{ 'CUSTOMER.CHANNELS.VIEW-AND-TRANSACT' | translate }}
+              } @else {
+                {{ 'CUSTOMER.CHANNELS.VIEW-ONLY' | translate }}
+              }
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="sub-button">
+      <button
+        mat-button
+        mat-dialog-close
+        color="primary"
+        class="sub-button-back">
+        {{ 'COMMON.BACK' | translate }}
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        class="sub-button-submit"
+        (click)="submit()">
+        {{ 'COMMON.SUBMIT' | translate }}
+      </button>
+    </div>
+  </ng-container>
+</mat-card>

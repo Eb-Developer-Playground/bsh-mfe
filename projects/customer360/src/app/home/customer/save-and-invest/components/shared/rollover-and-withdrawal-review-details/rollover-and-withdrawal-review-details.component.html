@@ -1,0 +1,30 @@
+<div class="pt-20 pb-12" *ngIf="creationType === 'fixed'">
+  <h4 class="mat-headline-6 section-title fw-600 mt-6 mb-20">
+    {{ 'CUSTOMER.SAVE-INVEST.ROLLOVER-WITHDRAWAL-OPTIONS' | translate }}
+  </h4>
+  <div class="row mb-20">
+    <div class="flex-container">
+      <div>
+        <span class="subtitle mb-1"
+          >{{ 'CUSTOMER.SAVE-INVEST.ROLLOVER-WITHDRAW' | translate }}
+        </span>
+        <span class="mat-headline-6 value fw-400 mt-6 mb-8">
+          {{
+            formData?.withdrawOrRollover === 'withdraw'
+              ? 'Withdraw'
+              : 'Rollover'
+          }}
+        </span>
+      </div>
+
+      <div *ngIf="formData?.withdrawOrRollover === 'rollover'">
+        <span class="subtitle mb-1">
+          {{ 'CUSTOMER.SAVE-INVEST.ROLLOVER-OPTION' | translate }}</span
+        >
+        <span class="mat-headline-6 value fw-400 mt-6 mb-8">
+          {{ rolloverOption | translate }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

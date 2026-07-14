@@ -1,0 +1,151 @@
+<app-stepper
+  #stepper
+  (onActive)="onActive($event)"
+  (onFinish)="onFinish()"
+  (onQuit)="onQuit()"
+  (onSave)="onSave()"
+  [linear]="true"
+  [showBackButton]="true"
+  [stepperLabel]="'Issue Card'">
+  <cdk-step [stepControl]="IssueCardForm" [label]="'Details'">
+    <app-stepper-container
+      #components
+      [stepperComponent]="stepper"
+      [stepControl]="IssueCardForm"
+      [label]="'Details'">
+      @if (IssueCardForm) {
+        <form slot="content" [formGroup]="IssueCardForm">
+          <app-card-section
+            sectionHeader=""
+            sectionTitle="Account details"
+            sectionSubTitle="Select the account you want the card to be linked to"
+            [isExpansionPanel]="true">
+            <div slot="content">
+              <div class="pt-16 fieldset flex-1">
+                <app-card-input
+                  inputType="dropdown"
+                  label="Account to link"
+                  [isRequired]="true"
+                  name="accountNumber"
+                  [hint]="'Available balance ' + activeAccountBalance"
+                  [options]="accountsOptions" />
+                <app-card-input
+                  label="Account name"
+                  [isRequired]="true"
+                  name="accountName" />
+              </div>
+            </div>
+          </app-card-section>
+          <app-card-section
+            sectionHeader=""
+            sectionTitle="Card Details"
+            sectionSubTitle="Select the card to issue and input details"
+            [isExpansionPanel]="true">
+            <div slot="content">
+              <app-card-details-section
+                [cardTypeCharges]="cardTypeCharges"
+                [FormGroup]="IssueCardForm"
+                [issuanceType]="issuanceType"
+                (updateCardTypeChargesState)="cardTypeCharges = $event"
+                (updateIssuanceType)="handleIssuanceTypeChange($event)"
+                (updateForm)="triggerFormUpdate($event)"
+                (disableInput)="handleDisableInput($event)" />
+            </div>
+          </app-card-section>
+          <app-card-section
+            sectionHeader=""
+            sectionTitle="Card charges"
+            [sectionSubTitle]="
+              issuanceType === 'INSTANT'
+                ? 'Select a mode of paying charges associated with card application. If you waive the  charge, add a reason for doing so.'
+                : 'Select a mode of paying charges associated with card application.'
+            "
+            [isExpansionPanel]="true">
+            <div slot="content">
+              <app-card-charges-section
+                [issuanceType]="issuanceType"
+                [IssuanceForm]="IssueCardForm"
+                [cardTypeCharges]="cardTypeCharges"
+                [accounts]="accounts" />
+            </div>
+          </app-card-section>
+          @if (issuanceType === 'PREMIUM') {
+            <app-card-section
+              sectionHeader=""
+              sectionTitle="Additional details"
+              sectionSubTitle="Select the branch where the customer would prefer to collect the card and if physical PIN is required."
+              [isExpansionPanel]="true">
+              <div slot="content">
+                <div class="pt-16 fieldset flex-1 align-items-center">
+                  <app-card-input
+                    [class]="loadingBranches ? 'w-full' : ''"
+                    inputType="dropdown"
+                    label="Collection branch"
+                    [isRequired]="true"
+                    [isLoading]="loadingBranches"
+                    name="collectionBranch"
+                    [options]="branchesOptions" />
+                  <mat-checkbox
+                    class="text-16"
+                    formControlName="physicalPin"
+                    color="primary"
+                    >Physical Pin required</mat-checkbox
+                  >
+                </div>
+              </div>
+            </app-card-section>
+          }
+        </form>
+      } @else {
+        <div class="p-4 text-center">
+          <mat-spinner diameter="40"></mat-spinner>
+          <p class="mt-3">Loading form data...</p>
+        </div>
+      }
+    </app-stepper-container>
+  </cdk-step>
+  <cdk-step [stepControl]="IssueCardForm" [label]="'Review details'">
+    <app-stepper-container
+      #components
+      [stepperComponent]="stepper"
+      [stepControl]="IssueCardForm"
+      [label]="'Review details'">
+      <ng-container slot="content">
+        <app-card-review-section
+          [activeAccountBalance]="activeAccountBalance"
+          [selectedCardName]="selectedCardName"
+          [activeStepperIndex]="activeStepperIndex"
+          [issuanceData]="IssueCardForm.getRawValue()" />
+      </ng-container>
+    </app-stepper-container>
+  </cdk-step>
+  <cdk-step [stepControl]="DocumentsForm" [label]="'Upload documents'">
+    <app-stepper-container
+      #components
+      [stepperComponent]="stepper"
+      [stepControl]="DocumentsForm"
+      [label]="'Upload documents'">
+      <ng-container slot="content">
+        @if (issuanceType === 'PREPAID') {
+          <app-card-upload-section
+            [DocumentsForm]="DocumentsForm"
+            [requiredDocuments]="requiredDocuments"
+            [runningTaskId]="runningTaskId"
+            [runningActionFlow]="runningActionFlow"
+            [activeAccountNumber]="activeAccountNumber"
+            [issuanceType]="issuanceType"
+            (validationChange)="updateValidation($event)"
+            (documentsProcessed)="stepper.next()" />
+        }
+        @if (issuanceType !== 'PREPAID') {
+          <app-documents-upload-drc
+            class="w-100"
+            [title]="'Supporting Documents'"
+            [documentSpecs]="requiredDocuments"
+            (onUploaded)="updateValidation($event)">
+          </app-documents-upload-drc>
+        }
+      </ng-container>
+    </app-stepper-container>
+  </cdk-step>
+</app-stepper>

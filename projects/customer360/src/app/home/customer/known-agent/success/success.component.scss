@@ -1,0 +1,39 @@
+.mx-auto {
+  margin: auto;
+}
+.mb-3 {
+  margin-bottom: 3rem !important;
+}
+.mb-1 {
+  margin-bottom: 0.5rem !important;
+}
+.w-100 {
+  width: calc(100% - 32px) !important;
+}
+.mt-2 {
+  margin-top: 2rem !important;
+}
+.me-2 {
+  margin-right: 2rem;
+}
+@media (max-width: 768px) {
+  .flex-wrap-sm {
+    flex-wrap: wrap;
+  }
+  .success-img {
+    width: 70%;
+    margin: auto;
+  }
+  .text-center-sm {
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .py {
+    padding: 2% 15%;
+  }
+  .ps-6 {
+    padding: 6%;
+  }
+}

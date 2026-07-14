@@ -41,8 +41,8 @@ describe('ChangeOfSignatureSkipBioComponent', () => {
     dialogRef = new MatDialogRefStub();
 
     await TestBed.configureTestingModule({
-      declarations: [ChangeOfSignatureSkipBioComponent],
       imports: [
+        ChangeOfSignatureSkipBioComponent,
         ReactiveFormsModule,
         RouterTestingModule.withRoutes([]),
         TranslateModule.forRoot(),

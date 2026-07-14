@@ -1,0 +1,191 @@
+<mat-card appearance="outlined" class="mb-2" style="padding: 0">
+  <div
+    class="d-flex align-content-center justify-content-between header py-20 px-16">
+    <h3 class="table-title">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.STANDING_ORDERS'
+          | translate
+      }}
+    </h3>
+    <div
+      *ngIf="standingOrders.length"
+      class="color-primary align-self-center mat-subtitle-1 mb-0 cursor-pointer">
+      <button
+        mat-button
+        class="add-new"
+        [routerLink]="['/services/standing-order/create-standing-order']">
+        <mat-icon class="plus-icon" svgIcon="ic-plus"></mat-icon>
+        {{
+          'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.CREATE_STANDING_ORDER'
+            | translate
+        }}
+      </button>
+    </div>
+  </div>
+  <div *ngIf="standingOrders.length > 0">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      (matSortChange)="announceSortChange($event)"
+      width="100%">
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef class="row-title"></th>
+        <td mat-cell *matCellDef="let row" class="row-content">
+          <mat-checkbox
+            (click)="onSelect(row)"
+            [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="standingOrderId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="row-title">
+          {{ 'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.SERIAL_NO' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="row-content">
+          {{ element.standingOrderId }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="beneficiaryFullName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="row-title">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BENEFICIARY_NAME'
+              | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="row-content">
+          {{ element.beneficiaryFullName }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="benenficiaryAccountId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="row-title">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.BENEFICIARY-ACCOUNT'
+              | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="row-content">
+          {{ element.benenficiaryAccountId }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="row-title">
+          {{
+            'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.AMOUNT'
+              | translate
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="row-content">
+          {{ element.amount }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="bankName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="row-title">
+          {{ 'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.BANK' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="row-content">
+          {{ element.bankName }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="row-title">
+          {{ 'COMMON.CURRENCY' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element" class="row-content">
+          {{ element.currency }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="row-title">
+          {{ 'COMMON.STATUS' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let row" class="row-content">
+          <div [ngSwitch]="row.status">
+            <div
+              *ngSwitchCase="'Active'"
+              class="status-text status-text--active">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.ACTIVE'
+                  | translate
+              }}
+            </div>
+            <div
+              *ngSwitchCase="'Rejected'"
+              class="status-text status-text--rejected">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.REJECTED'
+                  | translate
+              }}
+            </div>
+            <div
+              *ngSwitchCase="'Completed'"
+              class="status-text status-text--completed">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.COMPLETED'
+                  | translate
+              }}
+            </div>
+            <div
+              *ngSwitchCase="'Pending'"
+              class="status-text status-text--pending">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.PENDING'
+                  | translate
+              }}
+            </div>
+            <div
+              *ngSwitchCase="'Returned'"
+              class="status-text status-text--returned">
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.RETURNED'
+                  | translate
+              }}
+            </div>
+            <div *ngSwitchDefault>
+              {{
+                'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.UNKNOWN'
+                  | translate
+              }}
+              {{ 'COMMON.STATUS' | translate }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      #paginator
+      [length]="standingOrders.length"
+      showFirstLastButtons
+      aria-label="Select page">
+    </mat-paginator>
+  </div>
+  <div *ngIf="standingOrders.length === 0" class="no-result">
+    <img
+      src="../../../../../assets/icons/icon-no-results.svg"
+      alt="no results found" />
+    <p>
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.NO_PREVIOUS_STANDING_ORDERS'
+          | translate
+      }}
+    </p>
+    <button
+      mat-flat-button
+      color="primary"
+      class="ml-15"
+      style="width: 200px; margin-bottom: 2rem"
+      [disabled]="!isCreateActive"
+      [routerLink]="['/services/standing-order/create-standing-order']">
+      {{
+        'CUSTOMER.ACCOUNT-SERVICES.STANDING-ORDER.STANDING-ORDER-LIST.CREATE_STANDING_ORDER'
+          | translate
+      }}
+    </button>
+  </div>
+</mat-card>

@@ -1,0 +1,146 @@
+.document-set {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+  .document-100 {
+    grid-column: 1/-1;
+  }
+}
+
+.text-grey {
+  color: #929497;
+}
+
+.document-card {
+  border: 1px solid #92949733;
+  cursor: pointer;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.col {
+  height: 192px;
+  background: #eeeeee;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: inherit;
+  cursor: pointer;
+
+  .upload-instruction {
+    width: 100%;
+    height: 72px;
+    background: #f7f7f7;
+    border-top: none;
+    position: relative;
+    top: 120px;
+    border: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}
+
+.d-success {
+  border: 3px solid #309803;
+}
+
+.d-required {
+  border: 1.5px solid #a32a29;
+}
+
+.drag-drop {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  line-height: 100px;
+
+  &:hover {
+    background-color: #d5d5d5;
+  }
+}
+
+.drop-text {
+  font-weight: normal;
+  line-height: 20px;
+  text-align: center;
+  color: #221f1f;
+}
+
+.drag-text {
+  color: #a32a29;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
+
+.text {
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+
+.doc {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #221f1f;
+  text-align: left;
+}
+
+.instruction {
+  color: #929497;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 1.5rem;
+}
+
+.pb-2 {
+  padding-bottom: 1.5rem;
+}
+
+.radiobuton-container {
+  display: flex;
+  padding: 10px;
+  min-height: 0;
+  height: 0;
+  position: absolute;
+}
+
+.checkbox-section {
+  margin: 0.7rem;
+  cursor: pointer;
+}
+
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: #a32a29 !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #a32a29 !important;
+}
+
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #a32a29 !important;
+}

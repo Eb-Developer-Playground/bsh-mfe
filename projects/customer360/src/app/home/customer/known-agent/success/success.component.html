@@ -1,0 +1,77 @@
+<mat-card appearance="outlined">
+  <div class="d-flex pt-5 pb-5">
+    <img
+      src="assets/images/handshake.svg"
+      alt="success-img"
+      class="success-img align-self-center justify-self-center" />
+    <div class="p-3 align-self-center justify-self-center ps-6">
+      <h3 class="mat-headline-6 fw-400 align-self-center mb-1 text-center-sm">
+        {{ 'COMMON.YOU-ARE-DONE' | translate }}
+      </h3>
+      <div class="color-grey mb-3 text-center-sm">
+        {{ message | translate }}
+      </div>
+
+      <div class="d-flex flex-wrap">
+        <div class="d-flex flex-column two-items-rows">
+          <p class="mat-caption m-0 text-muted">
+            {{ 'KNOWN-AGENT.ACCOUNT-NAME' | translate }}
+          </p>
+          <p>{{ accMgntObj.firstName }} {{ accMgntObj.lastName }}</p>
+        </div>
+
+        <div class="d-flex flex-column two-items-rows">
+          <p class="mat-caption m-0 text-muted">
+            {{ 'KNOWN-AGENT.ACCOUNT-NUMBER' | translate }}
+          </p>
+          <p>{{ accMgntObj?.accountsId }}</p>
+        </div>
+        <div class="d-flex flex-column two-items-rows">
+          <p class="mat-caption m-0 text-muted">
+              {{ 'COMMON.ACCOUNT-TYPE' | translate }}
+          </p>
+          <p>{{ accMgntObj?.accountType }}</p>
+      </div>
+      
+
+        <div class="d-flex flex-column two-items-rows">
+          <div class="color-grey">
+            {{ 'KNOWN-AGENT.AGENT-NAME' | translate }}
+          </div>
+          <p>
+            {{ knownAgentDetails?.firstName }}
+            {{ knownAgentDetails?.middleName }}
+            {{ knownAgentDetails?.lastName }}
+          </p>
+        </div>
+
+        <!-- <div class="d-flex flex-column two-items-rows"  *ngIf="knownAgentDetails?.identityDocumentType">
+                        <div class="color-grey">{{ 'KNOWN-AGENT.ID-TYPE' | translate}} </div>
+                        <p>{{knownAgentDetails?.identityDocumentType}}</p>
+                    </div> -->
+
+        <!-- <div class="d-flex flex-column two-items-rows"  *ngIf="knownAgentDetails?.identityDocumentNumber" >
+                        <div class="color-grey">{{ 'KNOWN-AGENT.ID-NUMBER' | translate}} </div>
+                        <p>{{knownAgentDetails?.identityDocumentNumber}}</p>
+                    </div> -->
+
+        <div
+          class="d-flex flex-column two-items-rows"
+          *ngIf="knownAgentDetails?.customerId">
+          <div class="color-grey">{{ 'KNOWN-AGENT.CIF' | translate }}</div>
+          <p>{{ knownAgentDetails?.customerId }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<div class="d-flex justify-content-between align-content-center mt-2">
+  <button
+    mat-flat-button
+    color="primary"
+    [routerLink]="['/services/known-agent']"
+    class="ms-auto">
+    {{ 'KNOWN-AGENT.BACK-KNOWN-AGENT' | translate }}
+  </button>
+</div>

@@ -6,7 +6,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SessionService } from '../services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { environment } from '../../../environments/environment.uat';
 
 @Injectable()

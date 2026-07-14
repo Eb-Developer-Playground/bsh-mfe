@@ -1,0 +1,114 @@
+hr {
+    background-color: rgba(146, 148, 151, 0.2) !important;
+    margin-block-start: 0em;
+    margin-block-end: 1rem;
+    opacity: 0.35;
+}
+
+.main {
+  margin-top: 20px;
+  box-shadow:
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.12);
+}
+
+
+.mt-2 {
+    margin-top: 2rem !important;
+}
+
+.me-2 {
+    margin-right: 2rem;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: grey;
+}
+
+::ng-deep .mat-mdc-outlined-button {
+    border-color: #a32a29 !important;
+}
+
+@media (max-width: 768px) {
+    mat-form-field {
+        width: calc(100% - 48px);
+        width: 100%;
+    }
+}
+
+.d-flex {
+    display: flex;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.header {
+    margin-bottom: 1rem;
+}
+
+.fieldset {
+    display: flex;
+    width: 800px;
+    height: 80px;
+    margin-top: 1.5rem;
+    top: 81px;
+    gap: 1px;
+}
+
+.wrapInput {
+    .mat-mdc-form-field {
+        width: 240px;
+        //height: 47px;
+        padding: 8px 12px 3px 16px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        margin-right: 8px;
+        margin-right: 1.5rem;
+    }
+}
+
+.customer-detail {
+    display: flex;
+    flex-direction: column;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: grey;
+}
+
+.customer-details-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.customer-detail-title {
+    color: #929497;
+    margin-bottom: 0;
+}
+
+.customer-detail-content {
+    color: #221f1f;
+    margin-top: 3px;
+}
+
+.request-error {
+    font-size: 11px;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.custom-card {
+  margin-top: 20px;
+  background-color: #f387071a;
+  border: 1px solid #f38707;
+  border-left: 8px solid #f38707;
+  box-shadow: none;
+}
+.fw-600 {
+  font-weight: 600;
+}

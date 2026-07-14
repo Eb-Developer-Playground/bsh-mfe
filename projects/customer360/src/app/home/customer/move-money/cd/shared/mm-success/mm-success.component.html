@@ -1,0 +1,68 @@
+<span class="mm-success-wrapper">
+  <span class="left-column"
+    ><img
+      src="assets/images/handshake.svg"
+      alt="success-img"
+      class="success-img"
+  /></span>
+  <span class="right-column">
+    <div class="top-section">
+      <div class="title">
+        {{ 'MOVE-MONEY.SECTIONS.SUCCESS.ALL-DONE' | translate }}
+      </div>
+      <div>
+        {{ 'MOVE-MONEY.SECTIONS.SUCCESS.TICKET-CREATED' | translate }}
+      </div>
+    </div>
+    <div class="item-wrapper">
+      <span class="item">
+        <span class="title">{{ 'MOVE-MONEY.TRANSFER-TYPE' | translate }}</span>
+        @if (transferDetails.PaymentDetails.transactionType === 'OwnAccount') {
+          <span>{{ 'MOVE-MONEY.OWNACCOUNT' | translate }}</span>
+        } @else {
+          <span>{{ 'MOVE-MONEY.EQUITYACCOUNT' | translate }}</span>
+        }
+      </span>
+      <span class="item">
+        <span class="title">{{
+          'MOVE-MONEY.SECTIONS.SUCCESS.DEBIT-ACCOUNT-NAME' | translate
+        }}</span>
+        <span>{{ transferDetails.DebitAccountDetails.accountholderName }}</span>
+      </span>
+      <span class="item">
+        <span class="title">{{
+          'MOVE-MONEY.SECTIONS.SUCCESS.DEBIT-ACCOUNT-NUMBER' | translate
+        }}</span>
+        <span>{{ transferDetails.DebitAccountDetails.accountNumber }}</span>
+      </span>
+      <span class="item">
+        <span class="title">{{
+          'MOVE-MONEY.SECTIONS.SUCCESS.AMOUNT-TO-SEND' | translate
+        }}</span>
+        <span>{{
+          transferDetails.PaymentDetails?.amount
+            | transformCurrency: transferDetails.PaymentDetails?.currency
+        }}</span>
+      </span>
+      <span class="item">
+        <span class="title">{{
+          'MOVE-MONEY.SECTIONS.REVIEW.CHARGES' | translate
+        }}</span>
+        <span>{{
+          transferDetails?.PaymentDetails.paymentFee
+            | transformCurrency
+              : transferDetails?.DebitAccountDetails.accountCurrency
+        }}</span>
+      </span>
+      <span class="item">
+        <span class="title">{{ 'COMMON.TICKET-NUMBER' | translate }}</span>
+        <span>{{ ticketID || '-' }}</span>
+      </span>
+    </div>
+  </span>
+</span>
+<div class="button-wrapper">
+  <button mat-stroked-button color="primary" [routerLink]="['/dashboard']">
+    {{ 'MOVE-MONEY.SECTIONS.SUCCESS.BACK' | translate }}
+  </button>
+</div>

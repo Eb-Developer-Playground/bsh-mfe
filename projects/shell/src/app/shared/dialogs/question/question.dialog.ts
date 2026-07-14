@@ -1,6 +1,10 @@
 import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { TranslatePipe } from '@ngx-translate/core';
 
 interface IDialogNotification {
   title?: string;
@@ -14,7 +18,7 @@ interface IDialogNotification {
   selector: 'dialog-notification',
   templateUrl: 'question.dialog.html',
   styleUrls: ['question.dialog.scss'],
-  imports: [COMPAT_IMPORTS],
+  imports: [FlexLayoutModule, MatButtonModule, MatDialogModule, MatIconModule, TranslatePipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class QuestionDialog {
   constructor(

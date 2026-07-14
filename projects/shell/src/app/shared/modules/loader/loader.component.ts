@@ -1,14 +1,14 @@
 import { Component, Input, OnDestroy, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { Subject } from 'rxjs';
 import { delay, takeUntil } from 'rxjs/operators';
+import { SkeletonLoaderComponent } from '../../components/skeleton-loader/skeleton-loader.component';
 import { LoaderService } from './loader.service';
 
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss'],
-  imports: [COMPAT_IMPORTS],
+  imports: [SkeletonLoaderComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class LoaderComponent implements OnDestroy {
   loading = false;

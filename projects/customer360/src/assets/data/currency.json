@@ -1,0 +1,115 @@
+[
+  {
+    "currency": "EUR",
+    "bankId": "56"
+  },
+  {
+    "currency": "KES",
+    "bankId": "56"
+  },
+  {
+    "currency": "USD",
+    "bankId": "56"
+  },
+  {
+    "currency": "UGX",
+    "bankId": "56",
+    "default": true
+  },
+  {
+    "currency": "GBP",
+    "bankId": "56"
+  },
+  {
+    "currency": "KES",
+    "bankId": "54",
+    "default": true
+  },
+  {
+    "currency": "USD",
+    "bankId": "54"
+  },
+  {
+    "currency": "EUR",
+    "bankId": "54"
+  },
+  {
+    "currency": "GBP",
+    "bankId": "54"
+  },
+  {
+    "currency": "RWF",
+    "bankId": "50",
+    "default": true
+  },
+  {
+    "currency": "USD",
+    "bankId": "50"
+  },
+  {
+    "currency": "EUR",
+    "bankId": "50"
+  },
+  {
+    "currency": "GBP",
+    "bankId": "50"
+  },
+  {
+    "currency": "KES",
+    "bankId": "50"
+  },
+  {
+    "currency": "UGX",
+    "bankId": "50"
+  },
+  {
+    "currency": "EUR",
+    "bankId": "11"
+  },
+  {
+    "currency": "GBP",
+    "bankId": "11"
+  },
+  {
+    "currency": "USD",
+    "bankId": "11"
+  },
+  {
+    "currency": "SSP",
+    "bankId": "11",
+    "default": true
+  },
+  {
+    "currency": "TZS",
+    "bankId": "55",
+    "default": true
+  },
+  {
+    "currency": "KES",
+    "bankId": "55"
+  },
+  {
+    "currency": "USD",
+    "bankId": "55"
+  },
+  {
+    "currency": "EUR",
+    "bankId": "55"
+  },
+  {
+    "currency": "GBP",
+    "bankId": "55"
+  },
+  {
+    "currency": "CDF",
+    "bankId": "43"
+  },
+  {
+    "currency": "USD",
+    "bankId": "43"
+  },
+  {
+    "currency": "EUR",
+    "bankId": "43"
+  }
+]

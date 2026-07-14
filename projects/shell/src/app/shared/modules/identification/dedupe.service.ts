@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, retry, Subject, switchMap, throwError } from 'rxjs';
-import { ApiService, SessionService } from '../../services';
+import { ApiService } from '@app/shared/services/api.service';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { IHttpOptions } from '../../services/api.service';
 import { IdDocumentService } from './id-document.service';
 import { ID_TYPES, IdTypeDescription } from './types';

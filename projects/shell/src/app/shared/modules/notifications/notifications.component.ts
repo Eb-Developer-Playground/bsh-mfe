@@ -1,16 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component,
   ContentChild,
   Input,
   OnInit,
   TemplateRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { COMPAT_IMPORTS } from '../../compat-barrel';
+import { MatIconModule } from '@angular/material/icon';
 import { NotificationsContentDirective } from './notifications-content.directive';
 
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
-  imports: [COMPAT_IMPORTS],
+  imports: [CommonModule, MatIconModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]})
 export class NotificationsComponent implements OnInit {
   @Input()

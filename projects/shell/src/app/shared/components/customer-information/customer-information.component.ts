@@ -8,7 +8,7 @@ import { Component,
 import { takeUntil } from 'rxjs';
 import { AccountService, TicketsService } from '@app/core/services';
 import { Unsub } from '../../utils/unsub';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { ComponentsModule } from '@shared/components/components.module';
 import { CommonModule } from '@angular/common';
 import { COMPAT_IMPORTS } from '../../compat-barrel';

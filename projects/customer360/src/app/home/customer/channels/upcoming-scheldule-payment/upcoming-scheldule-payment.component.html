@@ -1,0 +1,75 @@
+<ng-container>
+  <div class="sub-header">
+    <div class="sub-header-texts">
+      <p>Upcoming scheduled payments (Standing orders)</p>
+    </div>
+    <span class="sub-header-view" (click)="viewSchedule()">View more</span>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="account">
+    @if (accounts.length >= 1) {
+      @for (sched of accounts; track sched) {
+        <div class="account-details-container">
+          <div class="account-detail" style="width: 65%">
+            <p class="account-detail-title">
+              {{ sched?.transaction?.operationType }} to
+              @if (sched?.transaction?.destinationAccount) {
+                {{ sched?.transaction?.destinationAccount }}
+              } @else {
+                @if (
+                  sched?.transaction?.operationType === 'Airtime' ||
+                  sched?.transaction?.operationType === 'MobileMoney'
+                ) {
+                  {{ sched?.transaction?.phoneNumber }}
+                } @else {
+                  {{ sched?.transaction?.billerCode }}
+                }
+              }
+            </p>
+            <p class="account-detail-content">
+              <span>{{ sched?.nextDueDate | date }}</span>
+              &nbsp; &#8226; &nbsp;
+              <span class="account_type">
+                Acc no {{ sched?.transaction?.sourceAccount }}</span
+              >
+            </p>
+          </div>
+          <div class="account-detail" style="width: 20%">
+            <p class="account-detail-title">
+              <span
+                >{{ sched?.amount | number: '1.2-2' }}
+                {{ sched?.amountCurrency }}</span
+              >
+            </p>
+          </div>
+          <div class="account-detail" style="width: 15%">
+            <p class="account-detail-conten">
+              <span class="pending"> Upcoming </span>
+            </p>
+          </div>
+        </div>
+      }
+    } @else {
+      <div
+        class="account-details-container"
+        style="height: 10rem; justify-content: center">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          ">
+          <p class="account-detail-title">
+            No payments have been scheduled yet
+          </p>
+          <p class="account-detail-content">
+            Automate a customer's regular transactions by adding a scheduled
+            payment
+          </p>
+        </div>
+      </div>
+    }
+  </div>
+</ng-container>

@@ -1,0 +1,24 @@
+.input-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+
+  app-card-input {
+    flex: 1;
+  }
+
+  .pan-section {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex: 1;
+
+    app-card-input {
+      flex: 1;
+    }
+
+    app-action-button {
+      margin-bottom: 20px;
+    }
+  }
+}

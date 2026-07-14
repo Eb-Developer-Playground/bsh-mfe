@@ -1,0 +1,43 @@
+<mat-dialog-content>
+  <div>
+    <div class="mb-1">
+      <div class="dialog-header">
+        <h3 class="title">
+          {{ isRemove ? 'Remove transaction' : 'Transaction entry details' }}
+        </h3>
+        <mat-icon
+          mat-dialog-close
+          style="transform: scale(0.6); cursor: pointer; align-self: center"
+          svgIcon="ic-close"></mat-icon>
+      </div>
+      <p *ngIf="isRemove" class="subtitle">
+        {{ 'BULK-TRANFER.CONFIRM-BEFORE' | translate }}
+      </p>
+    </div>
+    <hr />
+    <div class="gridset">
+      <div *ngFor="let item of transactinData">
+        <h3 class="mat-body-2 text-grey fw-400">{{ item.title }}</h3>
+        <span class="mat-body-2">{{ item.value }}</span>
+      </div>
+    </div>
+    <div class="pb-15" fxLayout="row" style="margin-top: 15px">
+      <span fxFlex></span>
+      <button
+        (click)="closeDialog(false)"
+        mat-flat-button
+        style="width: 90px; margin-right: 15px; color: #a32a29">
+        {{ 'BULK-TRANFER.CANCEL' | translate }}
+      </button>
+      <button
+        (click)="removeTransaction()"
+        *ngIf="isRemove"
+        class="ml-15"
+        color="primary"
+        mat-raised-button
+        style="width: 90px">
+        {{ 'BULK-TRANFER.REMOVE' | translate }}
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>

@@ -12,7 +12,7 @@ import { ChangeOfSignatureService } from '../../../../core/services/change-of-si
 import { SignatoriesService } from '../../../../home/customer/change-of-signatories/signatories.service';
 import { ContextManager } from '../../../modules/stepper';
 import { ToastService } from '../../../modules/toast';
-import { AccountService } from '../../../services';
+import { AccountService } from '@app/shared/services/account/account.service';
 import { DialogConfirmComponent } from '../../dialog/dialog-confirm/dialog-confirm.component';
 import { ChangeOfSignatureChangeComponent } from './change-of-signature-change.component';
 describe('ChangeOfSignatureChangeComponent', () => {

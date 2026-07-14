@@ -2,7 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { ApiService } from '../../services';
+import { ApiService } from '@app/shared/services/api.service';
 import { DocumentsService } from './documents.service';
 import { DocumentUploadServiceType, IFileParams } from './models';
 import * as constants from './constants';

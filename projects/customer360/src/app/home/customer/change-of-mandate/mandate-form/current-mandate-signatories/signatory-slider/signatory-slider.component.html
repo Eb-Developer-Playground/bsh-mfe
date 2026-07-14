@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="signatory-slider-container">
+    <button class="arrow left" (click)="scrollLeft()">
+      <mat-icon class="arrow-icon">chevron_left</mat-icon>
+    </button>
+    <div class="slider" #slider>
+      <div class="card" *ngFor="let signatory of signatories">
+        <img
+          [src]="signatory.photo"
+          alt="Signatory Photo"
+          class="signature-photo"
+          (click)="openOverlay(signatory.photo)" />
+        <img
+          *ngIf="signatory.signaturePhoto; else noSignature"
+          [src]="signatory.signaturePhoto"
+          alt="Signatory Signature"
+          class="signature-text"
+          (click)="openOverlay(signatory.signaturePhoto)" />
+        <ng-template #noSignature>
+          <!-- Optionally show the photo again or some placeholder -->
+          <img
+            [src]="signatory.photo"
+            alt="Signatory Photo"
+            class="signature-photo"
+            (click)="openOverlay(signatory.photo)" />
+        </ng-template>
+      </div>
+    </div>
+    <button class="arrow right" (click)="scrollRight()">
+      <mat-icon class="arrow-icon">chevron_right</mat-icon>
+    </button>
+  </div>
+</div>

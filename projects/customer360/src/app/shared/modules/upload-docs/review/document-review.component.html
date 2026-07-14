@@ -1,0 +1,24 @@
+<ng-container *ngIf="skinned" [ngTemplateOutlet]="cards"></ng-container>
+<mat-card *ngIf="!skinned">
+  <div class="header-main-label">
+    <p class="mat-title fw-400">Required documents</p>
+  </div>
+  <ng-container [ngTemplateOutlet]="cards"></ng-container>
+</mat-card>
+<ng-template #cards>
+  <div class="card-grid">
+    <mat-card class="card" *ngFor="let obj of documents">
+      <mat-card-header>
+        <div class="card-title">
+          <span class="subjectCls">{{ obj.filename }}</span>
+          <span class="sizeCls">{{ obj.size || 1024 | fileSize }}</span>
+        </div>
+      </mat-card-header>
+      <div class="more-icon">
+        <button mat-icon-button (click)="previewUpload(obj)">
+          <mat-icon svgIcon="ic-view"></mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</ng-template>

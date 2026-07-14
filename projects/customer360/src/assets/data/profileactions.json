@@ -1,0 +1,17 @@
+[
+  { "key": "AddSignatory", "value": "Add Signatory" }, 
+  { "key": "RemoveSignatory", "value": "Remove Signatory" },
+  { "key": "AddKnownAgent", "value": "Add Known Agent" },
+  { "key": "RemoveKnownAgent", "value": "Remove Known Agent" },
+  { "key": "BulkPayment", "value": "Bulk Payment" },
+  { "key": "CallDeposit", "value": "Call Deposit" },
+  { "key": "ChangeMandate", "value": "Change of Mandate" },
+  { "key": "ChangeSignature", "value": "Change Signature" },
+  { "key": "ChequeBook", "value": "cheque book management" },
+  { "key": "FixedDeposit", "value": "Fixed Deposit" },
+  { "key": "RequestAccountBalance", "value": "Request Account Balance" },
+  { "key": "RequestAccountStatement", "value": "Request Account Statement" },
+  { "key": "StandingOrder", "value": "Standing Order" },
+  { "key": "UpdateEntityCifData", "value": "Entity CIF Update" },
+  { "key": "Teller", "value": "Teller" }
+]

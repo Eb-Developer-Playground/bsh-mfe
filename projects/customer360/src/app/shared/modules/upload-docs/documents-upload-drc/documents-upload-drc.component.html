@@ -1,0 +1,134 @@
+<mat-card *ngIf="!contentOnly" class="mb-2" style="padding: 1.5rem">
+  <div class="mb-1">
+    <h3 class="fw-400 mt-0 mb-0">{{ title | translate }}</h3>
+    <p class="text-grey mt-5">{{ description | translate }}</p>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+    <ng-container [ngTemplateOutlet]="body"></ng-container>
+  </div>
+</mat-card>
+
+<mat-card *ngIf="showConfirmation && !contentOnly">
+  <div class="mb-1">
+    <h3 class="mat-title fw-400">
+      {{ 'DOCUMENTS.CONFIRM_TITLE' | translate }}
+    </h3>
+  </div>
+  <div class="pb-1">
+    <mat-divider></mat-divider>
+  </div>
+  <div class="ptb-3" [formGroup]="confirmationForm">
+    <mat-checkbox color="primary" formControlName="confirm">
+      <div>{{ confirmationText | translate }}</div>
+    </mat-checkbox>
+  </div>
+</mat-card>
+
+<ng-container *ngIf="contentOnly" [ngTemplateOutlet]="body"></ng-container>
+
+<ng-template #body>
+  <div class="document-set mt-10 mb-10">
+    <!-- Required documents uploading based on subsidiary and other conditions like accounttype and scheme -->
+    <div
+      class="col document-card"
+      *ngFor="let obj of cloneOfObjects"
+      [ngStyle]="{
+        'background-image': obj.file
+          ? 'url(' + obj.url + ')'
+          : 'url(' + placeholderImage + ')',
+        'background-size': obj.file && 'cover'
+      }"
+      [ngClass]="{
+        'd-success': obj.file && !obj.hasUploadError,
+        'd-required': (obj.required && !obj.file) || obj.hasUploadError
+      }">
+      <div class="radiobuton-container">
+        <mat-icon *ngIf="obj.file" svgIcon="ic-radiobutton"></mat-icon>
+      </div>
+
+      <div style="display: initial">
+        <div class="upload-instruction">
+          <div style="padding: 8px" class="d-flex justify-content-between">
+            <div>
+              <p class="text doc">
+                {{ obj.name || obj.fileName || '' | filenameLabel }}
+              </p>
+              <p class="text instruction">
+                {{
+                  obj.file
+                    ? ('DOCUMENTS.FILE_SIZE' | translate) +
+                      ' : ' +
+                      (obj.file.size | fileSize)
+                    : ('DOCUMENTS.FILE_LIMIT' | translate) +
+                      ' ' +
+                      (obj.maxSize | fileSize : 0 : true)
+                }}
+              </p>
+            </div>
+
+            <div>
+              <mat-icon
+                class="mr-15"
+                [svgIcon]="'ic-retry-primary'"
+                *ngIf="obj.hasUploadError"
+                (click)="callUploadFile(obj)"></mat-icon>
+
+              <!-- Icon for uploading (opens the menu) -->
+              <mat-icon
+                [svgIcon]="obj.icon || 'ic-upload'"
+                [style.color]="obj?.required ? '#E60000' : '#a7a7a7'"
+                [matMenuTriggerFor]="menu"
+                (menuOpened)="selectedObject = obj"
+                *ngIf="!obj.file"></mat-icon>
+
+              <!-- Icon for deleting uploaded file -->
+              <mat-icon
+                [svgIcon]="obj.icon || 'ic-upload'"
+                [style.color]="obj?.required ? '#E60000' : '#a7a7a7'"
+                (click)="deleteUpload(obj)"
+                *ngIf="obj.file"></mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Menu -->
+      <mat-menu #menu="matMenu" yPosition="below" xPosition="after">
+        <button mat-menu-item (click)="browseFile(selectedObject)">
+          <mat-icon [style.color]="'#E60000'">folder</mat-icon>
+          {{ 'COMMON.DOCUMENTS.BROWSE-DEVICE' | translate }}
+        </button>
+        <button mat-menu-item (click)="handleOption('camera', selectedObject)">
+          <mat-icon [style.color]="'#E60000'">camera_alt</mat-icon>
+          {{ 'COMMON.DOCUMENTS.CAPTURE-WITH-CAMERA' | translate }}
+        </button>
+        <button mat-menu-item (click)="handleOption('scan', selectedObject)">
+          <mat-icon [style.color]="'#E60000'">scanner</mat-icon>
+          {{ 'COMMON.DOCUMENTS.SCAN' | translate }}
+        </button> 
+      </mat-menu>
+    </div>
+
+    <!-- Additional document uploading -->
+    <div
+    *ngIf="showAdditionalDocUpload"
+      class="col drag-drop"
+      appDragDropDocuments
+      (click)="browseAdditionalFile()">
+      <div>
+        <mat-icon
+          style="width: 50px; height: 50px"
+          svgIcon="ic-uploadBackground"></mat-icon>
+        <p class="text drop-text">
+          {{ 'DOCUMENTS.UPLOAD-YOUR-DOCUMENTS' | translate }}
+          <!-- {{ cloneOfObjects?.length ? 'additional' : ('your' | translate) }}
+          {{ 'DOCUMENTS.UPLOAD-DOCUMENTS' | translate }} -->
+        </p>
+        <p class="text instruction">
+          {{ 'DOCUMENTS.DRAG-AND-DROP' | translate }}
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-template>

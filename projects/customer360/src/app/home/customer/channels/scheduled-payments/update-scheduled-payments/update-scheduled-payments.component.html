@@ -1,0 +1,339 @@
+<div class="wrapper">
+  <!-- header -->
+  <div class="container">
+    <div class="topbar">
+      <mat-toolbar class="toolbar">
+        <div>
+          <span class="title">Update Scheduled Payment</span>
+          <span class="vl"></span>
+          <span class="toolbar-page">Ref: {{ scheduleObj?.transaction?.reference }}</span>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+
+  <!-- body -->
+  <form form [formGroup]="form" (ngSubmit)="submit()">
+    <ng-container class="beneficial-details">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <div class="mb-1 justify-content-between activity-header">
+            <h3 class="size-3 fw-normal title">
+              {{ scheduleObj?.requestType }} beneficiary details
+            </h3>
+            <p class="subtitle-text">
+              Details of the person or entity that will receive the payment
+            </p>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="pb-1">
+          <mat-divider></mat-divider>
+        </div>
+
+        <mat-card-content class="card-content">
+          <div class="fieldset">
+            <!-- swift/interbank/intrabank -->
+            @if (scheduleObj?.transaction?.destinationName) {
+              <mat-form-field appearance="fill">
+                <mat-label>Beneficial name</mat-label>
+                <input type="text" matInput formControlName="destinationName" readonly="" />
+              </mat-form-field>
+            }
+
+            @if (scheduleObj?.transaction?.destinationBankCode) {
+              <mat-form-field appearance="fill">
+                <mat-label>Beneficial bank code</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="destinationBankCode"
+                  required
+                  readonly=""
+                />
+              </mat-form-field>
+            }
+
+            @if (scheduleObj?.transaction?.destinationAccount) {
+              <mat-form-field appearance="fill">
+                <mat-label>Beneficial account</mat-label>
+                <input type="text" matInput formControlName="destinationAccount" readonly="" />
+              </mat-form-field>
+            }
+
+            @if (scheduleObj?.transaction?.destinationCountry) {
+              <mat-form-field appearance="fill">
+                <mat-label>Beneficial country</mat-label>
+                <input type="text" matInput formControlName="destinationCountry" readonly="" />
+              </mat-form-field>
+            }
+
+            <!-- Bill payment -->
+            @if (scheduleObj?.transaction?.billName) {
+              <mat-form-field appearance="fill">
+                <mat-label>Bill name</mat-label>
+                <input type="text" matInput formControlName="billName" readonly="" />
+              </mat-form-field>
+            }
+
+            @if (scheduleObj?.transaction?.billerCode) {
+              <mat-form-field appearance="fill">
+                <mat-label>Bill code</mat-label>
+                <input type="text" matInput formControlName="billerCode" required readonly="" />
+              </mat-form-field>
+            }
+
+            @if (scheduleObj?.transaction?.billAccountNumber) {
+              <mat-form-field appearance="fill">
+                <mat-label>Bill account</mat-label>
+                <input type="text" matInput formControlName="billAccountNumber" readonly="" />
+              </mat-form-field>
+            }
+
+            <!-- Airtime/mobileMoney -->
+
+            @if (scheduleObj?.transaction?.phoneNumber) {
+              <mat-form-field appearance="fill">
+                <mat-label>Phone number</mat-label>
+                <input type="text" matInput formControlName="phoneNumber" required readonly="" />
+              </mat-form-field>
+            }
+
+            @if (scheduleObj?.transaction?.telco) {
+              <mat-form-field appearance="fill">
+                <mat-label>Telco</mat-label>
+                <input type="text" matInput formControlName="telco" readonly="" />
+              </mat-form-field>
+            }
+          </div>
+        </mat-card-content>
+      </mat-expansion-panel>
+    </ng-container>
+    <br />
+    <ng-container class="payment-details">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <div class="mb-1 justify-content-between activity-header">
+            <h3 class="size-3 fw-normal title">Payment details</h3>
+            <p class="subtitle-text">Add the amount, dates, and frequency of the payment</p>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="pb-1">
+          <mat-divider></mat-divider>
+        </div>
+
+        <mat-card-content class="card-content">
+          <div class="fieldset">
+            <mat-form-field appearance="fill">
+              <mat-label>Amount</mat-label>
+              <input type="number" placeholder="0.00" min="1" matInput formControlName="amount" />
+              @if (form.get('amount')?.hasError('required')) {
+                <mat-error>
+                  <span> Amount is {{ 'COMMON.REQUIRED' | translate }}</span>
+                </mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Frequency</mat-label>
+              <mat-select
+                formControlName="frequency"
+                name="frequency"
+                (selectionChange)="onFrequencyChange()"
+              >
+                @for (f of frequency; track f) {
+                  <mat-option [value]="f.value">
+                    {{ f.name }}
+                  </mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Start date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="startDate"
+                formControlName="startDate"
+                [matDatepickerFilter]="startDateFilter"
+                (dateChange)="onStartDateChange($event)"
+              />
+              <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+              <mat-datepicker #startDate [startAt]="tomorrow"></mat-datepicker>
+              @if (form.get('startDate')?.hasError('invalid')) {
+                <mat-error>Start date cannot be after end date.</mat-error>
+              }
+              @if (form.get('startDate')?.hasError('required')) {
+                <mat-error>Start date is required.</mat-error>
+              }
+            </mat-form-field>
+
+            @if (form.get('frequency')?.value !== 'OneOff') {
+              <mat-form-field appearance="fill">
+                <mat-label>End date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="endDate"
+                  formControlName="endDate"
+                  [min]="minEndDate"
+                  (dateChange)="onEndDateChange($event)"
+                />
+                <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                <mat-datepicker #endDate [startAt]="minEndDate"></mat-datepicker>
+                @if (form.get('endDate')?.hasError('invalid')) {
+                  <mat-error>End date cannot be before start date.</mat-error>
+                }
+                @if (form.get('endDate')?.hasError('required')) {
+                  <mat-error>End date is required.</mat-error>
+                }
+                @if (form.get('endDate')?.hasError('minDate')) {
+                  <mat-error>
+                    End Date cannot be before {{ minEndDate | date: 'yyyy-MM-dd' }}
+                  </mat-error>
+                }
+              </mat-form-field>
+            }
+
+            <!-- <mat-form-field appearance="fill">
+                      <mat-label>Start date</mat-label>
+                      <input matInput [matDatepicker]="startDate" formControlName="startDate">
+                      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                      <mat-datepicker #startDate></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                      <mat-label>End date</mat-label>
+                      <input matInput [matDatepicker]="endDate" formControlName="endDate">
+                      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                      <mat-datepicker #endDate></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                      <mat-label>Frequency</mat-label>
+                      <mat-select formControlName="frequency" name="frequency" >
+                        <mat-option *ngFor="let f of frequency" [value]="f.value">
+                          {{f.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field> -->
+
+            <mat-form-field appearance="fill">
+              <mat-label>Debit Account</mat-label>
+              <mat-select formControlName="sourceAccount" name="sourceAccount">
+                @for (acc of filteredAccounts; track acc) {
+                  <mat-option [value]="acc.accountNumber">
+                    {{ acc.accountNumber }}
+                  </mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <!-- <mat-form-field appearance="fill">
+                    <mat-label>Notification Reminder</mat-label>
+                    <mat-select formControlName="notificationReminder" name="notificationReminder">
+                      <mat-option *ngFor="let f of notificationOfReminder" [value]="f.notificationReminder">
+                        {{f.label}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+
+            <mat-form-field appearance="fill">
+              <mat-label>Notification Reminder</mat-label>
+              <mat-select
+                formControlName="customField"
+                name="notificationReminder"
+                (selectionChange)="onNotificationReminderChange($event)"
+              >
+                @for (f of notificationOfReminder; track f) {
+                  <mat-option [value]="f">
+                    {{ f.label }}
+                  </mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-expansion-panel>
+    </ng-container>
+    <br />
+    <ng-container class="reason">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <div class="mb-1 justify-content-between activity-header">
+            <h3 class="size-3 fw-normal title">Reason for updating payment</h3>
+            <p class="subtitle-text">Add a reason for updating the scheduled payment below</p>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="pb-1">
+          <mat-divider></mat-divider>
+        </div>
+
+        <mat-card-content class="card-content">
+          <mat-form-field style="width: 40%" appearance="fill">
+            <mat-label>Add Comment</mat-label>
+            <input
+              matInput
+              placeholder="Reason*"
+              formControlName="comments"
+              #comment
+              maxlength="100"
+            />
+            <mat-hint align="end"> {{ comment.value.length }}/{{ 100 }} </mat-hint>
+            @if (form.get('comments')?.hasError('required')) {
+              <mat-error>
+                <span>Reason is {{ 'COMMON.REQUIRED' | translate }} </span>
+              </mat-error>
+            }
+          </mat-form-field>
+        </mat-card-content>
+      </mat-expansion-panel>
+    </ng-container>
+    <br />
+    <ng-container class="doc">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <div class="mb-1 justify-content-between activity-header">
+            <h3 class="size-3 fw-normal title">Upload document</h3>
+            <p class="subtitle-text">
+              Please upload the supporting documents in PDF or Jpeg format. The maximum file size
+              per document should not exceed 10mb.
+            </p>
+          </div>
+        </mat-expansion-panel-header>
+
+        <div class="pb-1">
+          <mat-divider></mat-divider>
+        </div>
+
+        <mat-card-content class="card-content">
+          <app-documents-upload
+            [contentOnly]="true"
+            (onUploaded)="attachedDocs = $event"
+            [allowedFileTypes]="['image/png', 'image/jpeg', 'image/jpg', 'application/pdf']"
+          >
+          </app-documents-upload>
+        </mat-card-content>
+      </mat-expansion-panel>
+    </ng-container>
+    <br />
+    <ng-container class="navigation">
+      <div class="buttons-section">
+        <button mat-button type="button" color="primary" class="quit-btn" (click)="back()">
+          Quit
+        </button>
+
+        <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          [disabled]="!form.valid"
+          class="continue-btn"
+        >
+          Submit
+        </button>
+      </div>
+    </ng-container>
+  </form>
+</div>

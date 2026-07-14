@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.customer-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-details-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.customer-detail-content {
+  color: #221f1f;
+}
+
+.customer-detail-title {
+  color: #929497;
+}
+
+.back-button {
+  color: white;
+  background-color: #a32a29;
+}

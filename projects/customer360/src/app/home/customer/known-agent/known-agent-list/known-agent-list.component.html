@@ -1,0 +1,118 @@
+@for (agent of agents; track agent.custId) {
+  <div class="w-100">
+    <div
+      class="agent-container pb-32 pt-32 pl-20 pr-20 fx-row fx-flex fx-align-start-center"
+      fxFill>
+      
+      <div class="fx-flex" fxLayoutAlign="center center">
+        <div fxLayoutAlign="center center" class="name-avatar">
+          {{ agent.avatarName }}
+        </div>
+      </div>
+      
+      <div class="fx-flex" fxLayout="column" fxLayoutAlign="center start">
+        <p class="mat-subtitle-1 m-0">{{ agent.agentName }}</p>
+        <p class="mat-body-2 text-muted m-0">
+          @if (active) {
+            {{ 'KNOWN-AGENT.OVERVIEW.SIGNED-UP' | translate }}
+            {{ agent.dateCreated }}
+          }
+          @if (!active) {
+            {{ 'KNOWN-AGENT.OVERVIEW.REMOVED-FROM' | translate }}
+            {{ agent.endDate }}
+          }
+        </p>
+      </div>
+      
+      <div class="fx-flex" fxLayout="column" fxLayoutAlign="center start">
+        <p class="mat-subtitle-1 m-0">
+          {{ 'KNOWN-AGENT.ACCOUNT-NUMBER' | translate }}
+        </p>
+        <p class="mat-body-2 text-muted m-0">
+          {{ agent.acctNum }} · {{ getAccountType(agent) }}
+        </p>
+      </div>
+
+      <div class="fx-flex" fxLayout="column" fxLayoutAlign="center start">
+        <p class="mat-subtitle-1 m-0">
+          {{ 'KNOWN-AGENT.AGENT-LIMITS' | translate }}
+        </p>
+        <p class="mat-body-4 text-muted m-0">
+          {{ getCashLimit(agent) }}
+        </p>
+      </div>
+
+      @if (showMenu && active) {
+        <div class="fx-flex" fxLayoutAlign="center center">
+          <app-pills
+            color="green"
+            text="CUSTOMER.CUSTOMER-PROFILE.ACTIVE">
+          </app-pills>
+        </div>
+      }
+      
+      @if (showMenu && !active) {
+        <div class="fx-flex" fxLayoutAlign="center center">
+          <app-pills
+            color="red"
+            text="KNOWN-AGENT.REMOVE">
+          </app-pills>
+        </div>
+      }
+
+      @if (showMenu) {
+        <div class="fx-flex" fxLayoutAlign="end center">
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            [matMenuTriggerData]="{ agent: agent }"
+            aria-label="More options">
+            <mat-icon
+              color="primary"
+              svgIcon="ic-more"
+              class="menu-icon">
+            </mat-icon>
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+}
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-agent="agent">
+    <button mat-menu-item (click)="showAgentDetails(agent)">
+      <mat-icon svgIcon="ic-info" class="menu-item-icon"></mat-icon>
+      <span>{{ 'KNOWN-AGENT.VIEW-DETAILS' | translate }}</span>
+    </button>
+    
+    <mat-divider></mat-divider>
+    
+    <button 
+      mat-menu-item 
+      [disabled]="!active || countryCode === 'CD'" 
+      (click)="showAmendFunctions(agent)">
+      <mat-icon svgIcon="ic-edit" class="menu-item-icon"></mat-icon>
+      <span>{{ 'KNOWN-AGENT.AMEND-FUNCTIONS' | translate }}</span>
+    </button>    
+    
+    @if (!hideWhenAmendFunctions) {
+      <mat-divider></mat-divider>
+      <button
+        mat-menu-item
+        [disabled]="!active"
+        routerLink="/services/known-agent/remove-agent/{{ agent.custId }}">
+        <mat-icon svgIcon="ic-delete" class="menu-item-icon"></mat-icon>
+        <span>{{ 'KNOWN-AGENT.REMOVE-ANOTHER' | translate }}</span>
+      </button>
+    }
+    
+    @if (!active) {
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="restoreAgent(agent)">
+        <mat-icon class="menu-item-icon">undo</mat-icon>
+        <span>{{ 'KNOWN-AGENT.RESTORE-AGENT' | translate }}</span>
+      </button>
+    }
+  </ng-template>
+</mat-menu>

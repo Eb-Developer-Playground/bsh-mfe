@@ -1,0 +1,41 @@
+<ng-template #cardBody>
+  <ng-content select="[slot=content]" />
+</ng-template>
+@if (isExpansionPanel) {
+  <div class="card-section-header mb-20 mt-30">{{ sectionHeader }}</div>
+  <mat-accordion multi [hideToggle]="false">
+    <mat-expansion-panel
+      [expanded]="true"
+      class="mb-32 remove-mat-expansion-panel-padding card-section">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div [class]="isNoPadding ? '' : 'pb-10 pt-14'" class="flex flex-col">
+            <span class="summary-card-title">{{ sectionTitle }}</span>
+            <span class="text-light text-12">{{ sectionSubTitle }}</span>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="pb-20">
+        <mat-divider></mat-divider>
+        <div class="px-16">
+          <ng-container *ngTemplateOutlet="cardBody" />
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+}
+@if (!isExpansionPanel) {
+  <div class="mt-32">
+    <span class="card-section-header">{{ sectionHeader }}</span>
+    <div class="card mt-16">
+      <div
+        [class]="isNoPadding ? '' : 'pb-10 pt-14'"
+        class="flex flex-col px-24">
+        <span class="summary-card-title">{{ sectionTitle }}</span>
+        <span class="text-light text-12">{{ sectionSubTitle }}</span>
+      </div>
+      <hr class="my-16 summary-card-divider" />
+      <ng-container *ngTemplateOutlet="cardBody" />
+    </div>
+  </div>
+}

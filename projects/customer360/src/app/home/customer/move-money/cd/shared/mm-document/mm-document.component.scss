@@ -1,0 +1,39 @@
+.mm-document {
+  width: auto;
+  padding: 12px 16px 12px 16px;
+  gap: 8px;
+  border-radius: 8px;
+  border: 1px solid #92949733;
+  background-color: #F7F7F7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .file-details {
+    display: flex;
+    flex-direction: column;
+    .documentName {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: #221F1F;
+    }
+
+    .documentSize {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #929497;
+    }
+    
+  }
+  .iconWrapper {
+    display: flex;
+    .mat-icon.ic-eye {
+      color: #a32a29;
+      cursor: pointer;
+    }
+  }
+  
+
+}

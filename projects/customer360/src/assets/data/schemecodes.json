@@ -1,0 +1,2344 @@
+{
+  "responseObject": [
+    {
+      "bankId": "54",
+      "data": [
+        {
+          "AccountType": "Equity savings accounts",
+          "SchemeCode": "SB142",
+          "SchemeDesc": "EAZZY SAVE ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA201",
+          "SchemeDesc": "PERSONNAL CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB100",
+          "SchemeDesc": "EQUITY ORDINARY ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB110",
+          "SchemeDesc": "NON RESIDENT BANK ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA205",
+          "SchemeDesc": "PERSONAL CURRENT PRESTIGE",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA210",
+          "SchemeDesc": "NON RESIDENT CURRENT ACCT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA215",
+          "SchemeDesc": "NON-CITIZEN CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB190",
+          "SchemeDesc": "STAFF  ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB115",
+          "SchemeDesc": "EQUITY NON-CITIZEN ORD",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB188",
+          "SchemeDesc": "SUPREME PERSONAL ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB121",
+          "SchemeDesc": "EGF - WINGS TO FLY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA207",
+          "SchemeDesc": "AGENCY CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB108",
+          "SchemeDesc": "EQUITY ACHIEVERS STUDENT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB117",
+          "SchemeDesc": "ORDINARY ACCT-EQTY AGENCY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB102",
+          "SchemeDesc": "SUPER JUNIOR INVESTMENT A",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB111",
+          "SchemeDesc": "EQUITY ORDINARY  PRESTIGE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB140",
+          "SchemeDesc": "REMITTANCE ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB137",
+          "SchemeDesc": "SOCIAL PAYMENT ENGAGEMENT ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB126",
+          "SchemeDesc": "AGENCY ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB145",
+          "SchemeDesc": "SOCIAL PAYMENTS OLDER PERSONS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB146",
+          "SchemeDesc": "SOCIAL PAYMENT SEVERE DISABILITY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Equity savings accounts",
+          "SchemeCode": "SB123",
+          "SchemeDesc": "ORDINARY - SCHOOL FEE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Equity minor accounts",
+          "SchemeCode": "SB122",
+          "SchemeDesc": "JUNIOR MEMBER ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Equity minor accounts",
+          "SchemeCode": "SB124",
+          "SchemeDesc": "EQUITY ORDINARY TEENIZ",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB143",
+          "SchemeDesc": "GROUPS/REGISTERED ENTITIES",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "VA302",
+          "SchemeDesc": "EQUITY MOBILE ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA254",
+          "SchemeDesc": "MONEY REMITTANCE BUSINESS PRE-FUNDING ACCOUNTS",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB134",
+          "SchemeDesc": "EAZZY CHAMA SUPREME GROUP ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA233",
+          "SchemeDesc": "EAZZY CHAMA SUPREME CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB144",
+          "SchemeDesc": "EAZZYPAY MERCHANT NOMINAL ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB156",
+          "SchemeDesc": "MONEY REMITTANCE BUSINESS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA268",
+          "SchemeDesc": "DIASPORA GROUP CURRENT ACCOUNT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB152",
+          "SchemeDesc": "FERTILIZER & AGRO CHEMICAL WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB162",
+          "SchemeDesc": "CALL/DEMAND DEPOSIT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB187",
+          "SchemeDesc": "HNI SAVINGS ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA287",
+          "SchemeDesc": "HNI CURRENT ACCOUNT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB778",
+          "SchemeDesc": "TELCO & CONVERGENCE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB154",
+          "SchemeDesc": "MONEY REMITTANCE BUSINESS PRE-FUNDING ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB151",
+          "SchemeDesc": "SEED WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA255",
+          "SchemeDesc": "MONEY REMITTANCE BUSINESS",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB167",
+          "SchemeDesc": "MPESA VIRTUAL FLOAT ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB155",
+          "SchemeDesc": "CONSERVATION AGRICULTURE WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB153",
+          "SchemeDesc": "POST HARVEST EQUIPMENT WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA282",
+          "SchemeDesc": "CUSTODIAL INVESTMENT CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB133",
+          "SchemeDesc": "ESCROW ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB147",
+          "SchemeDesc": "WFP ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB132",
+          "SchemeDesc": "EAZZY CHAMA GROUP ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA266",
+          "SchemeDesc": "AGENT FLOAT CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB139",
+          "SchemeDesc": "UNHCR ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB131",
+          "SchemeDesc": "ZURU ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB112",
+          "SchemeDesc": "EQUITY BUSINESS PRESTIGE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB113",
+          "SchemeDesc": "GROUP SAVINGS ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB114",
+          "SchemeDesc": "GROUP LOAN COLLECTION ACT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB109",
+          "SchemeDesc": "M-KESHO ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB150",
+          "SchemeDesc": "CAMPUS CARD TUITION ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB130",
+          "SchemeDesc": "70 YEARS AND ABOVE PROGRAMME",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB160",
+          "SchemeDesc": "CLASSIC SAVINGS ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB777",
+          "SchemeDesc": "E-HAPOHAPO",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA218",
+          "SchemeDesc": "CDF ACCOUNTS",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB129",
+          "SchemeDesc": "EQUITY SUPREME PLUS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA208",
+          "SchemeDesc": "TRANSIT MERCHANT OPERATIONAL CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "VA300",
+          "SchemeDesc": "PREPAID VIRTUAL WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB120",
+          "SchemeDesc": "NEEMA A/C",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB138",
+          "SchemeDesc": "SOCIAL PAYMENTS ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "MUDSB",
+          "SchemeDesc": "MUDARABA SAVINGS A/C",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "WADCA",
+          "SchemeDesc": "WADIAH CURRENT A/C",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "MUDCA",
+          "SchemeDesc": "MUDARABA CURRENT A/C",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA232",
+          "SchemeDesc": "EAZZY CHAMA CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB136",
+          "SchemeDesc": "HSNP ACCOUNT SB136",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA219",
+          "SchemeDesc": "DONOR FUNDED PROJECTS",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA206",
+          "SchemeDesc": "BUSINESS CURRENT PRESTIGE",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB103",
+          "SchemeDesc": "JIJENGE ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "VA301",
+          "SchemeDesc": "VIRTUAL EQUITY PREPAID ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB128",
+          "SchemeDesc": "EQUITY KU ALUMNI ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB135",
+          "SchemeDesc": "HSNP ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM153",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM154",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA299",
+          "SchemeDesc": "DORMANT CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM152",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB101",
+          "SchemeDesc": "INSTITUTIONAL ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB199",
+          "SchemeDesc": "EQUITY DORMAN ORDINARY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB700",
+          "SchemeDesc": "GEORGETOWN",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM151",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB106",
+          "SchemeDesc": "INST, UNIV,SCH, COLL AC",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA217",
+          "SchemeDesc": "CHURCH COLLECTION",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA200",
+          "SchemeDesc": "BUSINESS CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB116",
+          "SchemeDesc": "SHARIA EQUITY ORDINARY AC",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA288",
+          "SchemeDesc": "SUPREME BUSINESS ACCOUNT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA216",
+          "SchemeDesc": "SHARIA EQUITY CURRENT AC",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM155",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM156",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM157",
+          "SchemeDesc": "AGRICULTURE REMITTANCE ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM158",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM159",
+          "SchemeDesc": "ORDINARY A/C - SPECIAL",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB119",
+          "SchemeDesc": "PAMOJA ORDINARY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB191",
+          "SchemeDesc": "STAFF ACCOUNT2",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB166",
+          "SchemeDesc": "AGENT FLOAT SAVINGS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB127",
+          "SchemeDesc": "EQUIFLEX BIMA ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB118",
+          "SchemeDesc": "ORDINARY ACT-ORANGE MONEY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB125",
+          "SchemeDesc": "SOCIAL PAYMENT ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB444",
+          "SchemeDesc": "EQUITY ORDINARY -ALIEN",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB107",
+          "SchemeDesc": "HEKIMA ORDINARY ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA203",
+          "SchemeDesc": "INST, UNIV,SCH, COLL AC",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA204",
+          "SchemeDesc": "CASHLESS CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA202",
+          "SchemeDesc": "EQUITY FANIKISHA CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB141",
+          "SchemeDesc": "TRANSIT MERCHANT OPERATIONAL ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB104",
+          "SchemeDesc": "EQUITY BUSINESS ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB105",
+          "SchemeDesc": "COFFEE &MILK ORDINARY A/",
+          "SchemeType": "SBA"
+        }
+      ]
+    },
+    {
+      "bankId": "55",
+      "data": [
+        {
+          "SchemeCode": "SB100",
+          "SchemeDesc": "EQUITY ORDINARY ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB102",
+          "SchemeDesc": "SUPER JUNIOR INVESTMENT ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB103",
+          "SchemeDesc": "JIJENGE ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB108",
+          "SchemeDesc": "EQUITY STUDENT ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB110",
+          "SchemeDesc": "NON RESIDENT BANK ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB113",
+          "SchemeDesc": "INUA GROUP SAVINGS ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB114",
+          "SchemeDesc": "GROUP LOAN COLLECTION ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB115",
+          "SchemeDesc": "EQUITY NON-CITIZEN ORD",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB116",
+          "SchemeDesc": "SHARIA EQUITY ORDINARY ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB117",
+          "SchemeDesc": "ORDINARY A CCT-EQTY AGENCY",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB120",
+          "SchemeDesc": "NEEMA A/C",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB122",
+          "SchemeDesc": "JUNIOR MEMBER",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB123",
+          "SchemeDesc": "ORDINARY-SCHOOL FEE",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB124",
+          "SchemeDesc": "EQUITY ORDINARY TEENIZ",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB127",
+          "SchemeDesc": "MWAJILI WA SERIKALI ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB132",
+          "SchemeDesc": "EAZZY KIKUNDI SAVINGS ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB133",
+          "SchemeDesc": "INUA GROUP SAVINGS ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB135",
+          "SchemeDesc": "UMOJA SAVINGS ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB140",
+          "SchemeDesc": "CONSUMER OPERATIVE ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB143",
+          "SchemeDesc": "INUA JAMII JOINT SAVINGS ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB153",
+          "SchemeDesc": "COLLEGE STUDENTS ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB190",
+          "SchemeDesc": "STAFF ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB101",
+          "SchemeDesc": "INSTITUTIONAL ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB104",
+          "SchemeDesc": "EQUITY BUSINESS ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB106",
+          "SchemeDesc": "UNIV & SCH ACCOUNT",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB126",
+          "SchemeDesc": "EQUITY AGENCY",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB134",
+          "SchemeDesc": "CASHLESS DISTR SAVINGS",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB141",
+          "SchemeDesc": "MERCAHNT ACCOUNTS",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "SB142",
+          "SchemeDesc": "MERCAHNT ACCOUNTS",
+          "AccountType": "Ordinary savings accounts",
+          "SchemeType": "SBA"
+        },
+        {
+          "SchemeCode": "CA116",
+          "SchemeDesc": "SHARIA EQUITY CURRENT AC",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA200",
+          "SchemeDesc": "BUSINESS CURRENT",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA201",
+          "SchemeDesc": "PERSONAL CURRENT",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA203",
+          "SchemeDesc": "INST, UNIV, SCH, COLL AC",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA204",
+          "SchemeDesc": "CASHLESS DISTRIBUTION CURRENT",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA206",
+          "SchemeDesc": "BUSINESS CURRENT PRESTIGE",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA208",
+          "SchemeDesc": "MERCAHNT ACCOUNTS",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA210",
+          "SchemeDesc": "NON-RESIDENT CURRENT ACCT",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA215",
+          "SchemeDesc": "NON-CITIZEN CURRENT",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA217",
+          "SchemeDesc": "CHURCH COLLECTION",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        },
+        {
+          "SchemeCode": "CA218",
+          "SchemeDesc": "INTEREST EARNING CURRENT ACCOUNT",
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA"
+        }
+      ]
+    },
+    {
+      "bankId": "56",
+      "data": [
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB118",
+          "SchemeDesc": "ORDINARY ACT-ORANGE MONEY"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB102",
+          "SchemeDesc": "EQUITY JUNIOR ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB100",
+          "SchemeDesc": "EQUITY ORDINARY ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB144",
+          "SchemeDesc": "WFP NUTRI CASH BENEFICIARY MOYO"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB126",
+          "SchemeDesc": "AGENCY ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB110",
+          "SchemeDesc": "NON RESIDENT BANK ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB124",
+          "SchemeDesc": "YOUTH DIGITAL ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB115",
+          "SchemeDesc": "NON CITIZEN PERSONAL SAVINGS ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB135",
+          "SchemeDesc": "EQUITY SOCIAL PAYMENT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB148",
+          "SchemeDesc": "EQUITY BUSINESS PROJECTS"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB132",
+          "SchemeDesc": "INVESTMENT CLUB ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB136",
+          "SchemeDesc": "EQUITY SOCIAL PAYMENT WFP"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB188",
+          "SchemeDesc": "INDIVIDUAL SUPREME SAVINGS"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB140",
+          "SchemeDesc": "CONSUMER OPERATIVE ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB152",
+          "SchemeDesc": "EQUITY EXPRESS FAN ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB137",
+          "SchemeDesc": "WORLD FOOD PROGRAM WFP"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB143",
+          "SchemeDesc": "PALORINYA REFUGEE SETTLEMENT ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB146",
+          "SchemeDesc": "WFP NUTRI CASH BENEFICIARIES ARUA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB139",
+          "SchemeDesc": "DAN CHURCH AID(DCA) ACCOUNTS"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB151",
+          "SchemeDesc": "PREMIUM SUPREME SAVINGS"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB149",
+          "SchemeDesc": "TELCO AGENT ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB142",
+          "SchemeDesc": "RAMWANJA REFUGEE SETTLEMENT ACCOUNT"
+        },
+        {
+          "AccountType": "Virtual accounts ",
+          "SchemeType": "VAA",
+          "SchemeCode": "VA301",
+          "SchemeDesc": "PREPAID CARDS ACCOUNT"
+        },
+        {
+          "AccountType": "Virtual accounts ",
+          "SchemeType": "VAA",
+          "SchemeCode": "VA300",
+          "SchemeDesc": "EQUITY VIRTUAL ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB138",
+          "SchemeDesc": "WFP ACCOUNTS"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB153",
+          "SchemeDesc": "PARISH DEVELOPMENT SAVINGS"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB145",
+          "SchemeDesc": "RWAMWANJA REFUGEE SETTLEMENT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB141",
+          "SchemeDesc": "KYANGWALI REFUGEE SETTLEMENT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB147",
+          "SchemeDesc": "PALABEK REFUGEE SETTLEMENT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB155",
+          "SchemeDesc": "GOAL ACCOUNT"
+        },
+        {
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA",
+          "SchemeCode": "CA201",
+          "SchemeDesc": "PERSONNAL CURRENT"
+        },
+        {
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA",
+          "SchemeCode": "CA210",
+          "SchemeDesc": "NON RESIDENT CURRENT ACCT"
+        },
+        {
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA",
+          "SchemeCode": "CA215",
+          "SchemeDesc": "NON-CITIZEN CURRENT"
+        },
+        {
+          "AccountType": "Current Accounts",
+          "SchemeType": "CAA",
+          "SchemeCode": "CA299",
+          "SchemeDesc": "HIGH VALUE DORMANT"
+        }
+      ]
+    },
+    {
+      "bankId": "50",
+      "data": [
+        {
+          "AccountType": "Equity savings accounts",
+          "SchemeCode": "SB142",
+          "SchemeDesc": "EAZZY SAVE ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA201",
+          "SchemeDesc": "PERSONNAL CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB100",
+          "SchemeDesc": "EQUITY ORDINARY ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB110",
+          "SchemeDesc": "NON RESIDENT BANK ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA205",
+          "SchemeDesc": "PERSONAL CURRENT PRESTIGE",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA210",
+          "SchemeDesc": "NON RESIDENT CURRENT ACCT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA215",
+          "SchemeDesc": "NON-CITIZEN CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB190",
+          "SchemeDesc": "STAFF  ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB115",
+          "SchemeDesc": "EQUITY NON-CITIZEN ORD",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB188",
+          "SchemeDesc": "SUPREME PERSONAL ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB121",
+          "SchemeDesc": "EGF - WINGS TO FLY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA207",
+          "SchemeDesc": "AGENCY CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB108",
+          "SchemeDesc": "EQUITY ACHIEVERS STUDENT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB117",
+          "SchemeDesc": "ORDINARY ACCT-EQTY AGENCY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB102",
+          "SchemeDesc": "SUPER JUNIOR INVESTMENT A",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB111",
+          "SchemeDesc": "EQUITY ORDINARY  PRESTIGE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB140",
+          "SchemeDesc": "REMITTANCE ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB137",
+          "SchemeDesc": "SOCIAL PAYMENT ENGAGEMENT ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB126",
+          "SchemeDesc": "AGENCY ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB145",
+          "SchemeDesc": "SOCIAL PAYMENTS OLDER PERSONS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB146",
+          "SchemeDesc": "SOCIAL PAYMENT SEVERE DISABILITY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Equity savings accounts",
+          "SchemeCode": "SB123",
+          "SchemeDesc": "ORDINARY - SCHOOL FEE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Equity minor accounts",
+          "SchemeCode": "SB122",
+          "SchemeDesc": "JUNIOR MEMBER ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Equity minor accounts",
+          "SchemeCode": "SB124",
+          "SchemeDesc": "EQUITY ORDINARY TEENIZ",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB143",
+          "SchemeDesc": "GROUPS/REGISTERED ENTITIES",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "VA302",
+          "SchemeDesc": "EQUITY MOBILE ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA254",
+          "SchemeDesc": "MONEY REMITTANCE BUSINESS PRE-FUNDING ACCOUNTS",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB134",
+          "SchemeDesc": "EAZZY CHAMA SUPREME GROUP ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA233",
+          "SchemeDesc": "EAZZY CHAMA SUPREME CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB144",
+          "SchemeDesc": "EAZZYPAY MERCHANT NOMINAL ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB156",
+          "SchemeDesc": "MONEY REMITTANCE BUSINESS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA268",
+          "SchemeDesc": "DIASPORA GROUP CURRENT ACCOUNT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB152",
+          "SchemeDesc": "FERTILIZER & AGRO CHEMICAL WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB162",
+          "SchemeDesc": "CALL/DEMAND DEPOSIT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB187",
+          "SchemeDesc": "HNI SAVINGS ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA287",
+          "SchemeDesc": "HNI CURRENT ACCOUNT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB778",
+          "SchemeDesc": "TELCO & CONVERGENCE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB154",
+          "SchemeDesc": "MONEY REMITTANCE BUSINESS PRE-FUNDING ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB151",
+          "SchemeDesc": "SEED WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA255",
+          "SchemeDesc": "MONEY REMITTANCE BUSINESS",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB167",
+          "SchemeDesc": "MPESA VIRTUAL FLOAT ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB155",
+          "SchemeDesc": "CONSERVATION AGRICULTURE WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB153",
+          "SchemeDesc": "POST HARVEST EQUIPMENT WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA282",
+          "SchemeDesc": "CUSTODIAL INVESTMENT CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB133",
+          "SchemeDesc": "ESCROW ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB147",
+          "SchemeDesc": "WFP ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB132",
+          "SchemeDesc": "EAZZY CHAMA GROUP ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA266",
+          "SchemeDesc": "AGENT FLOAT CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB139",
+          "SchemeDesc": "UNHCR ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB131",
+          "SchemeDesc": "ZURU ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB112",
+          "SchemeDesc": "EQUITY BUSINESS PRESTIGE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB113",
+          "SchemeDesc": "GROUP SAVINGS ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB114",
+          "SchemeDesc": "GROUP LOAN COLLECTION ACT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB109",
+          "SchemeDesc": "M-KESHO ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB150",
+          "SchemeDesc": "CAMPUS CARD TUITION ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB130",
+          "SchemeDesc": "70 YEARS AND ABOVE PROGRAMME",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB160",
+          "SchemeDesc": "CLASSIC SAVINGS ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB777",
+          "SchemeDesc": "E-HAPOHAPO",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA218",
+          "SchemeDesc": "CDF ACCOUNTS",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB129",
+          "SchemeDesc": "EQUITY SUPREME PLUS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA208",
+          "SchemeDesc": "TRANSIT MERCHANT OPERATIONAL CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "VA300",
+          "SchemeDesc": "PREPAID VIRTUAL WALLET",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB120",
+          "SchemeDesc": "NEEMA A/C",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB138",
+          "SchemeDesc": "SOCIAL PAYMENTS ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "MUDSB",
+          "SchemeDesc": "MUDARABA SAVINGS A/C",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "WADCA",
+          "SchemeDesc": "WADIAH CURRENT A/C",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "MUDCA",
+          "SchemeDesc": "MUDARABA CURRENT A/C",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA232",
+          "SchemeDesc": "EAZZY CHAMA CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB136",
+          "SchemeDesc": "HSNP ACCOUNT SB136",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA219",
+          "SchemeDesc": "DONOR FUNDED PROJECTS",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA206",
+          "SchemeDesc": "BUSINESS CURRENT PRESTIGE",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB103",
+          "SchemeDesc": "JIJENGE ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "VA301",
+          "SchemeDesc": "VIRTUAL EQUITY PREPAID ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB128",
+          "SchemeDesc": "EQUITY KU ALUMNI ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB135",
+          "SchemeDesc": "HSNP ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM153",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM154",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA299",
+          "SchemeDesc": "DORMANT CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM152",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB101",
+          "SchemeDesc": "INSTITUTIONAL ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB199",
+          "SchemeDesc": "EQUITY DORMAN ORDINARY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB700",
+          "SchemeDesc": "GEORGETOWN",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM151",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB106",
+          "SchemeDesc": "INST, UNIV,SCH, COLL AC",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA217",
+          "SchemeDesc": "CHURCH COLLECTION",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA200",
+          "SchemeDesc": "BUSINESS CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB116",
+          "SchemeDesc": "SHARIA EQUITY ORDINARY AC",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA288",
+          "SchemeDesc": "SUPREME BUSINESS ACCOUNT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA216",
+          "SchemeDesc": "SHARIA EQUITY CURRENT AC",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM155",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM156",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM157",
+          "SchemeDesc": "AGRICULTURE REMITTANCE ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM158",
+          "SchemeDesc": "ORDINARY ACCOUNT- MOBILE",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SM159",
+          "SchemeDesc": "ORDINARY A/C - SPECIAL",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB119",
+          "SchemeDesc": "PAMOJA ORDINARY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB191",
+          "SchemeDesc": "STAFF ACCOUNT2",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB166",
+          "SchemeDesc": "AGENT FLOAT SAVINGS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB127",
+          "SchemeDesc": "EQUIFLEX BIMA ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB118",
+          "SchemeDesc": "ORDINARY ACT-ORANGE MONEY",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB125",
+          "SchemeDesc": "SOCIAL PAYMENT ACCOUNTS",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB444",
+          "SchemeDesc": "EQUITY ORDINARY -ALIEN",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB107",
+          "SchemeDesc": "HEKIMA ORDINARY ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA203",
+          "SchemeDesc": "INST, UNIV,SCH, COLL AC",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA204",
+          "SchemeDesc": "CASHLESS CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Current Accounts ",
+          "SchemeCode": "CA202",
+          "SchemeDesc": "EQUITY FANIKISHA CURRENT",
+          "SchemeType": "CAA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB141",
+          "SchemeDesc": "TRANSIT MERCHANT OPERATIONAL ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB104",
+          "SchemeDesc": "EQUITY BUSINESS ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB105",
+          "SchemeDesc": "COFFEE &MILK ORDINARY A/",
+          "SchemeType": "SBA"
+        }
+      ]
+    },
+    {
+      "bankId": "11",
+      "data": [
+        {
+          "SchemeCode": "SB135",
+          "SchemeDesc": "SOCIAL PAYMENTS ACCOUNT",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts "
+        },
+        {
+          "SchemeCode": "SB126",
+          "SchemeDesc": "AGENCY SAVINGS ACCOUNT",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts "
+        },
+        {
+          "SchemeCode": "SB100",
+          "SchemeDesc": "PERSONAL SAVINGS ACCOUNT",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts "
+        },
+        {
+          "SchemeCode": "SB103",
+          "SchemeDesc": "MUSTAGBAL SAVINGS ACCOUNT",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts "
+        },
+        {
+          "SchemeCode": "SB190",
+          "SchemeDesc": "STAFF  ACCOUNT",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts "
+        },
+        {
+          "SchemeCode": "SB102",
+          "SchemeDesc": "JENA ACCOUNT (JUNIOR)",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts "
+        },
+        {
+          "SchemeCode": "SB110",
+          "SchemeDesc": "NON REDENT BANK ACCOUNT",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts "
+        },
+        {
+          "SchemeCode": "SB115",
+          "SchemeDesc": "EQUITY NON-CITIZEN ORD",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts "
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB105",
+          "SchemeDesc": "COFFEE &MILK ORDINARY A/",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB108",
+          "SchemeDesc": "EQUITY ACHIEVERS STUDENT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeType": "SBA",
+          "SchemeCode": "SB117",
+          "SchemeDesc": "EQUITY AGENCY ACCOUNT"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB140",
+          "SchemeDesc": "REMITTANCE ACCOUNT",
+          "SchemeType": "SBA"
+        },
+        {
+          "AccountType": "Ordinary savings accounts ",
+          "SchemeCode": "SB154",
+          "SchemeDesc": "MONEY REMITTANCE BUSINESS PRE-FUNDING ACCOUNTS",
+          "SchemeType": "SBA"
+        }
+      ]
+    },
+    {
+      "bankId": "43",
+      "data": [
+        {
+          "SchemeCode": "CA200",
+          "SchemeDesc": "COURANT DES AFFAIRES",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA290",
+          "SchemeDesc": "STAFF CURRENT ACCOUNT",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA224",
+          "SchemeDesc": "COMPTE COURANT PERS.PHYS PACK PLATINUM",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA225",
+          "SchemeDesc": "COMPTE COURANT PERS.PHYS PACK PRESTIGE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA226",
+          "SchemeDesc": "COMPTE COURANT PERS.PHYS PACK ACCES",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA227",
+          "SchemeDesc": "COMPTE COURANT PERS.PHYS PACK SILVER",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA228",
+          "SchemeDesc": "COMPTE COURANT PERS.PHYS TOUT PUBLIC",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA229",
+          "SchemeDesc": "COMPTE COURANT PERS.PHYS PACK GOLD",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA284",
+          "SchemeDesc": "COMPTE COURANT MASOLO",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "SB100",
+          "SchemeDesc": "COMPTE DEPARGNE PERS PHYSIQUE",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB101",
+          "SchemeDesc": "COMPTE KULUMBIMBI PERS PHYS",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB102",
+          "SchemeDesc": "COMPTE JUNIOR",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB104",
+          "SchemeDesc": "COMPTE DEPARGNE PERS MORALE",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB111",
+          "SchemeDesc": "CPTE DEPARGNE PLUS PERS PHYS",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB112",
+          "SchemeDesc": "CPTE DEPARGNE PLUS PERS MOR",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB112",
+          "SchemeDesc": "CPTE DEPARGNE PLUS PERS MOR",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB119",
+          "SchemeDesc": "COMPTE DEPARGNE PENSION",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "CA281",
+          "SchemeDesc": "CORPORATE PREMIUM 2",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA202",
+          "SchemeDesc": "COMPTE COURANT SPECIAL PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA203",
+          "SchemeDesc": "COMPTE ETUDIANT",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA204",
+          "SchemeDesc": "COMPTE SALARIE CLASSIQUE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA205",
+          "SchemeDesc": "COMPTE PROSALARIE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA206",
+          "SchemeDesc": "COMPTE PROMO PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA207",
+          "SchemeDesc": "COMPTE ENTREPRENEUR CREDIT",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA208",
+          "SchemeDesc": "COMPTE ENTREPRENEUR NON CREDIT",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA209",
+          "SchemeDesc": "COMPTE KARIBU SALARIES",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA210",
+          "SchemeDesc": "CDF COMPTE COURANT PERS PHY",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA211",
+          "SchemeDesc": "COMPTE RETRAITES",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA212",
+          "SchemeDesc": "COMPTE SERVICE PUBLIQUE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA213",
+          "SchemeDesc": "COMPTE POS AGENCYBANKING PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA214",
+          "SchemeDesc": "COMPTE WESTERN UNION PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA215",
+          "SchemeDesc": "COMPTE POS PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA216",
+          "SchemeDesc": "COMPTE PRIVATE BANKING PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA217",
+          "SchemeDesc": "COMPTE DIASPORA BANKING PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA218",
+          "SchemeDesc": "COMPTE BUSINESS PREMIUM PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA219",
+          "SchemeDesc": "CORPORATE PLATINUM 7 PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA220",
+          "SchemeDesc": "COMPTE COURANT HIGH GOLD",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA221",
+          "SchemeDesc": "COMPTE COURANT DEC LC PHYS CDF",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA230",
+          "SchemeDesc": "COMPTE SEGUCE KATANGA",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA222",
+          "SchemeDesc": "COMPTE COURANT PERS.PHYS PACK CLASSIC",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA250",
+          "SchemeDesc": "COMPTE COURANT PERS MORALE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA223",
+          "SchemeDesc": "COMPTE COURANT PERS.PHYS PACK INFINITE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA251",
+          "SchemeDesc": "COMPTE BUSINESS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA252",
+          "SchemeDesc": "COMPTE COURANT SPECIAL MOR",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA253",
+          "SchemeDesc": "COMPTE BUSINESS DIAMANT",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA254",
+          "SchemeDesc": "COMPTE MOBILE MONEY MPESA CA",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA255",
+          "SchemeDesc": "COMPTE BUSINESS ELEPHANT",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA256",
+          "SchemeDesc": "COMPTE PROMO PERS MORALE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA257",
+          "SchemeDesc": "CPTE ENTREPRENEUR CREDIT MOR CDF",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA258",
+          "SchemeDesc": "CPTE ENTREPREN NON CRED MOR CDF",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA259",
+          "SchemeDesc": "COMPTE BUSINESS EXTREME",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA260",
+          "SchemeDesc": "COMPTE BUSINESS OKAPI",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA261",
+          "SchemeDesc": "COMPTE BUSINESS PREMIUM",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA262",
+          "SchemeDesc": "CORPORATE PREMIUM 3",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA263",
+          "SchemeDesc": "COMPTE COURANT BANK ET IF",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA264",
+          "SchemeDesc": "COMPTE WESTERN UNION PERS MORALE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA265",
+          "SchemeDesc": "COMPTE POS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA266",
+          "SchemeDesc": "COMPTE COURANT ECCLESIA",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA267",
+          "SchemeDesc": "COMPTE COURANT ECOLE ARCHIDIOCESE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA268",
+          "SchemeDesc": "COMPTE POS AGENCYBANKING PERS MOR",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA269",
+          "SchemeDesc": "CORPORATE PLATINUM 7",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA270",
+          "SchemeDesc": "COMPTE COURANT BUSINESS GOLD",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA271",
+          "SchemeDesc": "COMPTE AMBASSADE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA272",
+          "SchemeDesc": "COMPTE REGIE FINANCIERE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA273",
+          "SchemeDesc": "CORPORATE EXTREME 2",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA274",
+          "SchemeDesc": "CORPORATE PLATINUM 1",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA275",
+          "SchemeDesc": "CORPORATE PLATINUM 2",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA276",
+          "SchemeDesc": "CORPORATE PLATINUM 3",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA277",
+          "SchemeDesc": "CORPORATE PLATINUM 4",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA279",
+          "SchemeDesc": "CORPORATE PLATINUM 6",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA280",
+          "SchemeDesc": "CDF COMPTE COURANT PERS MORALE",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA284",
+          "SchemeDesc": "CA284",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "CA278",
+          "SchemeDesc": "CORPORATE PLATINUM 5",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "SB122",
+          "SchemeDesc": "COMPTE JUNIOR KULUMBIMBI",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB129",
+          "SchemeDesc": "CPTE DEPARGNE PLUS TRESORERIE",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB130",
+          "SchemeDesc": "COMPTE PROEPARGNE PERS PHYS",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB139",
+          "SchemeDesc": "COMPTE KARIBU EPARGNE",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB777",
+          "SchemeDesc": "COMPTE DEPARGNE LIKELEMBA",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB105",
+          "SchemeDesc": "COMPTE DEPARGNE PERS.PHYS DIASPORA",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "SB190",
+          "SchemeDesc": "EMPLOYEE SALARY SCHEME",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        },
+        {
+          "SchemeCode": "CA231",
+          "SchemeDesc": "COMPTE COURANT PERS PHYS",
+          "SchemeType": "CAA",
+          "AccountType": "Current accounts"
+        },
+        {
+          "SchemeCode": "SB106",
+          "SchemeDesc": "COMPTE DEPARGNE PERS.PHYSIQUE GELE",
+          "SchemeType": "SBA",
+          "AccountType": "Ordinary savings accounts"
+        }
+      ]
+    }
+  ]
+}

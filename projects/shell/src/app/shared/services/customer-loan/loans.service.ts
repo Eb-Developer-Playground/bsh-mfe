@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Loans } from './model/loans.model';
-import { ApiService } from 'src/app/shared/services';
+import { ApiService } from '@app/shared/services/api.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { any } from '@amcharts/amcharts5/.internal/core/util/Array';

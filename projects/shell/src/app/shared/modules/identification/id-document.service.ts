@@ -19,7 +19,7 @@ import { alphaNumericValidator, validateDocumentNumber } from './validators';
 import { IdTypeSpecs } from './data/specs';
 import { IdTypeDescriptions } from './data/descriptions';
 import { DOC_REQUIREMENTS } from './data/requirements';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 
 @Injectable({
   providedIn: 'root',

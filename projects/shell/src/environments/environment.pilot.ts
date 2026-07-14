@@ -17,6 +17,7 @@ export const environment = {
   secugenApi: 'https://localhost:8443',
   clientId: '44FEC6A5E3F5454',
   encryptionKey: 'S3cr3etKey$123',
+  bypassAuth: false,
   PAGE_SIZE: 20,
   showAllMenuItems: true,
 };

@@ -1,0 +1,118 @@
+<!-- <app-breadcrumb-navigation
+  [config]="breadcrumbsConfig"
+>
+</app-breadcrumb-navigation> -->
+
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 head-title fw-600 m-0">
+      {{ 'SAVE-INVEST.FIXED-DEPOSIT.SAVINGS-ACCOUNT' | translate }}
+    </h3>
+    <mat-divider vertical class="vertical-divider"></mat-divider>
+    <span class="head-subtitle">{{
+      'SAVE-INVEST.FIXED-DEPOSIT.DETAILS-CAPTURE' | translate
+    }}</span>
+  </div>
+</mat-card>
+
+<div [hidden]="uploadDocumentsStep">
+  <app-info-box
+    [type]="'warning'"
+    [messageTitle]="'SAVE-INVEST.FIXED-DEPOSIT.INFO-TITLE' | translate"
+    [messageDetail]="'SAVE-INVEST.FIXED-DEPOSIT.INFO-DETAILS' | translate">
+  </app-info-box>
+
+  <mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+    <div class="mb-1">
+      <h3 class="mat-headline-6 head-title fw-400 mt-6 mb-8">
+        {{ 'SAVE-INVEST.FIXED-DEPOSIT.INVESTMENT-DETAILS' | translate }}
+      </h3>
+      <span class="subtitle mb-16">
+        {{ 'SAVE-INVEST.FIXED-DEPOSIT.INVESTMENT-DETAILS-INFO' | translate }}
+      </span>
+    </div>
+    <mat-divider></mat-divider>
+    <app-investment-details [form]="form" [savingsDetails]="savingsDetails">
+    </app-investment-details>
+  </mat-card>
+
+  <mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+    <div class="mb-1">
+      <h3 class="mat-headline-6 head-title fw-400 mt-6 mb-8">
+        {{
+          'SAVE-INVEST.FIXED-DEPOSIT.ROLLOVER-WITHDRAWAL-DETAILS' | translate
+        }}
+      </h3>
+      <span class="subtitle mb-16">
+        {{
+          'SAVE-INVEST.FIXED-DEPOSIT.ROLLOVER-WITHDRAWAL-DETAILS-INFO'
+            | translate
+        }}
+      </span>
+    </div>
+    <mat-divider></mat-divider>
+    <app-rollover-and-withdraval-details
+      [form]="form"
+      [savingsDetails]="savingsDetails">
+    </app-rollover-and-withdraval-details>
+  </mat-card>
+
+  <mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+    <div class="mb-1">
+      <h3 class="mat-headline-6 head-title fw-400 mt-6 mb-8">
+        {{ 'SAVE-INVEST.FIXED-DEPOSIT.PAYMENT-DETAILS' | translate }}
+      </h3>
+      <span class="subtitle mb-16">
+        {{ 'SAVE-INVEST.FIXED-DEPOSIT.PAYMENT-DETAILS-INFO' | translate }}
+      </span>
+    </div>
+    <mat-divider></mat-divider>
+    <app-payment-details
+      [form]="form"
+      [customerActiveAccounts]="customerActiveAccounts"
+      [savingsDetails]="savingsDetails">
+    </app-payment-details>
+  </mat-card>
+</div>
+<div [hidden]="!uploadDocumentsStep">
+  <mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+    <div style="margin-bottom: 30px">
+      <app-documents-upload
+        title="Documents Upload"
+        [allowedFileTypes]="[
+          'image/svg+xml',
+          'image/png',
+          'image/jpeg',
+          'application/pdf'
+        ]"
+        [documentSpecs]="UploadDocuments"
+        (onUploaded)="getDocuments($event)">
+      </app-documents-upload>
+    </div>
+  </mat-card>
+</div>
+
+<div class="buttons-holder">
+  <button
+    mat-stroked-button
+    color="primary"
+    class="form-btn"
+    (click)="navigate('quit')">
+    {{ 'COMMON.QUIT' | translate }}
+  </button>
+  <button
+    [disabled]="!form.valid"
+    mat-flat-button
+    color="primary"
+    class="form-btn confirm"
+    (click)="navigate('next')">
+    {{ 'COMMON.NEXT' | translate }}
+  </button>
+  <button
+    mat-stroked-button
+    color="primary"
+    class="form-btn back"
+    (click)="navigate('back')">
+    {{ 'COMMON.BACK' | translate }}
+  </button>
+</div>

@@ -1,15 +1,53 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { RemoteAuthStateService } from 'equity-auth';
 
 // Stub for @shared/services — Phase 2 will replace with real implementation
 // At runtime the shell provides the real SessionService via Module Federation shared scope
 @Injectable({ providedIn: 'root' })
 export class SessionService {
-  userCountryCode: string = 'KE';
-  get user(): any { return JSON.parse(localStorage.getItem('currentUser') || '{}'); }
-  get token(): string { return localStorage.getItem('access_token') || ''; }
+  private readonly remoteAuthState = inject(RemoteAuthStateService);
+
+  get userCountryCode(): string {
+    return BANK_ID_TO_COUNTRY_CODE[this.user.bankId] || 'KE';
+  }
+
+  get user(): {
+    bankId: string;
+    username: string;
+    displayName: string;
+    roles: string[];
+    sub: string;
+  } {
+    const state = this.remoteAuthState.authState();
+
+    return {
+      bankId: state.user?.bankId || state.bankId || '',
+      username: state.user?.username || '',
+      displayName: state.user?.displayName || '',
+      roles: state.user?.roles || [],
+      sub: state.user?.sub || '',
+    };
+  }
+
+  get token(): string {
+    return this.remoteAuthState.accessToken || '';
+  }
+
+  get isLoggedIn(): boolean {
+    return this.remoteAuthState.isAuthenticated();
+  }
 }
+
+const BANK_ID_TO_COUNTRY_CODE: Record<string, string> = {
+  '54': 'KE',
+  '56': 'UG',
+  '55': 'TZ',
+  '11': 'SS',
+  '50': 'RW',
+  '43': 'CD',
+};
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {

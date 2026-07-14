@@ -1,0 +1,131 @@
+<div mat-dialog-title>
+  <div class="dialog-title-row">
+    <div>
+      <h3 class="dialog-title">
+        {{ 'COMMON.SEARCH' | translate }}
+      </h3>
+      <p class="dialog-subtitle">
+        <span *ngIf="data.localBank || (!data.cities && !data.branchCityCode)">{{
+          'SELECTION-DIALOG.SEARCH_BANKS_COUNTRIES' | translate
+        }}</span>
+        <span *ngIf="data.cities">{{ 'SELECTION-DIALOG.BRANCH-CITY-CODE' | translate }}</span>
+        <span *ngIf="data.branchCityCode">{{ 'SELECTION-DIALOG.BRANCH-CODE' | translate }}</span>
+      </p>
+    </div>
+    <span class="flex-spacer"></span>
+    <mat-icon class="close-icon" (click)="onNoClick()">close</mat-icon>
+  </div>
+  <form [formGroup]="form">
+    <div class="search-bar">
+      <input [formControlName]="'query'" placeholder="Search" matInput autocomplete="off" />
+      <div class="search-icons">
+        <mat-icon
+          class="clear-search-icon"
+          *ngIf="!!form.controls['query'].value"
+          (click)="onClearSearch()"
+        >
+          close
+        </mat-icon>
+        <mat-icon class="search-icon"> search </mat-icon>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-content>
+  <section>
+    <ng-container [ngSwitch]="data">
+      <ng-container *ngIf="data.cities">
+        <div
+          class="bank-list-container"
+          *ngFor="let opt of filteredBranchCityCodes; let last = last"
+          (click)="onClickBranchCityCode(opt)"
+        >
+          <div class="bank-list" [class.border-bottom]="!last">
+            <div class="bank-list-name">
+              <div class="text-truncate">{{ opt?.code }}</div>
+              <div class="text-sm text-grey">{{ opt?.description }}</div>
+            </div>
+            <div>
+              <mat-icon class="radio-icon">
+                <svg viewBox="0 0 24 25">
+                  <rect
+                    width="22"
+                    height="22"
+                    x="1"
+                    y="1.5"
+                    fill="#fff"
+                    stroke="#A32A29"
+                    stroke-width="2"
+                    rx="11"
+                  ></rect>
+                </svg>
+              </mat-icon>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="data.branchCityCode">
+        <div
+          class="bank-list-container"
+          *ngFor="let opt of filteredBranchCodes; let last = last"
+          (click)="onClickBranchCityCode(opt)"
+        >
+          <div class="bank-list" [class.border-bottom]="!last">
+            <div class="bank-list-name">
+              <div class="text-truncate">{{ opt?.branchCode }}</div>
+              <div class="text-sm text-grey">{{ opt?.name }}</div>
+            </div>
+            <div>
+              <mat-icon class="radio-icon">
+                <svg viewBox="0 0 24 25">
+                  <rect
+                    width="22"
+                    height="22"
+                    x="1"
+                    y="1.5"
+                    fill="#fff"
+                    stroke="#A32A29"
+                    stroke-width="2"
+                    rx="11"
+                  ></rect>
+                </svg>
+              </mat-icon>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchDefault>
+        <div
+          class="bank-list-container"
+          *ngFor="let opt of filteredOptions | async; let last = last"
+          (click)="onClickBank(opt)"
+        >
+          <div class="bank-list" [class.border-bottom]="!last">
+            <div class="bank-list-name">
+              <div class="text-truncate">{{ opt.bankName }}</div>
+              <div class="text-sm text-grey">{{ opt.code }}</div>
+            </div>
+            <div>
+              <mat-icon class="radio-icon">
+                <svg viewBox="0 0 24 25">
+                  <rect
+                    width="22"
+                    height="22"
+                    x="1"
+                    y="1.5"
+                    fill="#fff"
+                    stroke="#A32A29"
+                    stroke-width="2"
+                    rx="11"
+                  ></rect>
+                </svg>
+              </mat-icon>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </section>
+</div>

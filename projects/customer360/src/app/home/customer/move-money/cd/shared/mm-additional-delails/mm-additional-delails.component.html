@@ -1,0 +1,56 @@
+<form class="fieldset" [formGroup]="form">
+  <mat-form-field>
+    <mat-label>{{
+      'MOVE-MONEY.SECTIONS.ADDITIONAL-DETAILS.FIELDS.INSTRUMENT-TYPE' | translate
+    }}</mat-label>
+    <mat-select formControlName="instrumentType" (selectionChange)="checkValidation()">
+      @for (instrument of instrumentTypes; track instrument) {
+        <mat-option [value]="instrument.id">
+          {{ instrument.value | translate }}
+        </mat-option>
+      }
+    </mat-select>
+    @if (form.controls['instrumentType']?.errors?.['required']) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.ADDITIONAL-DETAILS.FIELDS.ERRORS.TYPE-REQUIRED' | translate }}
+      </mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'MOVE-MONEY.INSTRUMENT-DATE' | translate }}</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [min]="minDate"
+      [max]="maxDate"
+      (dateChange)="checkValidation()"
+      (dateInput)="checkValidation()"
+      formControlName="instrumentDate"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    @if (form.controls['instrumentDate']?.errors?.['required']) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.ADDITIONAL-DETAILS.FIELDS.ERRORS.DATE-REQUIRED' | translate }}
+      </mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{
+      'MOVE-MONEY.SECTIONS.ADDITIONAL-DETAILS.FIELDS.INSTRUMENT-NUMBER' | translate
+    }}</mat-label>
+    <input formControlName="instrumentNumber" matInput (change)="checkValidation()" />
+    @if (form.controls['instrumentNumber']?.errors?.['required']) {
+      <mat-error>
+        {{ 'MOVE-MONEY.SECTIONS.ADDITIONAL-DETAILS.FIELDS.ERRORS.NUMBER-REQUIRED' | translate }}
+      </mat-error>
+    }
+    @if (form.controls['instrumentNumber']?.errors?.['invalidNumber']) {
+      <mat-error>
+        {{
+          'MOVE-MONEY.SECTIONS.ADDITIONAL-DETAILS.FIELDS.ERRORS.INSTRUMENT-NUMBER-ERROR' | translate
+        }}
+      </mat-error>
+    }
+  </mat-form-field>
+</form>

@@ -1,0 +1,46 @@
+.gridset {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.text-grey {
+  color: #929497;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #929497;
+  margin-top: 0;
+}
+
+.title {
+  margin-top: 0 !important;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #221f1f;
+}
+
+h3 {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+span {
+  font-size: 16px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+hr {
+  background-color: rgba(146, 148, 151, 0.2) !important;
+  margin-block-start: 0em;
+  margin-block-end: 1rem;
+  opacity: 0.35;
+}

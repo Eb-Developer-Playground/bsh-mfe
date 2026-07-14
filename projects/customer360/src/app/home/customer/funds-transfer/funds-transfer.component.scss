@@ -1,0 +1,501 @@
+.wrapper {
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+}
+
+.toolbar {
+  background: #ffffff;
+  margin-bottom: 1.5rem;
+  /* 1 dp */
+
+  box-shadow:
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.vl {
+  border-left: 2px solid #92949733;
+  height: 30px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.toolbar-page {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #929497;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toolbar-documents {
+  font-size: 16px;
+  font-weight: 600;
+  color: #a32a29;
+}
+
+.toolbar-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.dropdown-arrow {
+  width: 7%;
+}
+
+.toolbar-actions-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 12px;
+}
+
+.toolbar-actions-section:hover {
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item > span {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1200px) {
+  .toolbar-actions {
+    width: 55%;
+  }
+}
+
+::ng-deep .mat-mdc-menu-panel {
+  max-width: 500px !important;
+}
+
+::ng-deep .mat-expansion-indicator::after {
+  color: #a32a29 !important;
+}
+
+:host {
+  overflow-x: hidden !important;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.material-icons {
+  font-size: 20px;
+}
+
+.mat-mdc-mini-fab {
+  box-shadow: none;
+  font-weight: 400;
+  width: 30px;
+  height: 30px;
+  margin-right: 0.8rem;
+}
+
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
+::ng-deep .mat-mdc-mini-fab .mat-button-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-content: center !important;
+  padding: 0 !important;
+}
+
+.divider {
+  width: 2px;
+  background-color: rgba(146, 148, 151, 0.2) !important;
+  margin: 0rem 1rem;
+}
+
+.section-divider {
+  margin-bottom: 0;
+}
+
+hr {
+  background-color: rgba(146, 148, 151, 0.2) !important;
+  margin-block-start: 0em;
+  margin-block-end: 1rem;
+  // background-color: #929497 !important;
+  opacity: 0.35;
+}
+
+::ng-deep .mat-expansion-panel-header {
+  padding: 12px 24px !important;
+}
+
+.mat-expansion-panel {
+  margin-bottom: 1rem;
+}
+
+.btn-outline {
+  border-color: #a32a29 !important;
+
+  &:disabled {
+    border-color: rgba(233, 234, 234, 1) !important;
+    background-color: rgba(233, 234, 234, 1) !important;
+    color: #929497 !important;
+  }
+}
+
+.bg-green {
+  background: #2f9803;
+}
+
+.loader {
+  vertical-align: middle;
+  margin: 0 2rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.check {
+  vertical-align: middle;
+}
+
+.mx-2 {
+  margin: 0 2rem;
+}
+
+.code-img {
+  height: 1.7rem;
+  width: 1.7rem;
+  object-fit: cover;
+}
+
+.option-img {
+  margin: 0px 8px;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  object-fit: cover;
+  margin-right: 8px;
+}
+
+.w-3 {
+  width: 5rem !important;
+  min-width: 5rem !important;
+}
+
+
+::ng-deep .custom-option > .mat-mdc-option-text {
+  display: flex !important;
+  align-content: center !important;
+}
+
+.border-bottom:not(:last-child) {
+  border-bottom: 1px solid rgba(146, 148, 151, 0.2);
+  display: inline-block;
+}
+
+.white-space {
+  white-space: normal;
+  line-height: 2em;
+}
+
+.h-auto {
+  height: auto !important;
+}
+
+.me-05 {
+  margin-right: 0.3rem;
+}
+
+.mtb-2 {
+  margin: 1rem 0rem;
+}
+
+.help-text {
+  margin-right: 1rem;
+}
+
+.is-verified {
+  .form-control {
+    border-color: #2f9803 !important;
+    box-shadow: 0 0 0 0.1rem #3098037e;
+    outline: none !important;
+    background: rgba(146, 148, 151, 0.2) !important;
+  }
+}
+
+.red {
+  color: rgba(230, 0, 0, 1);
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.hidden-tooltip {
+  display: none;
+}
+
+.re-validate .hidden-tooltip {
+  display: inline-block;
+}
+
+.form-control {
+  display: block;
+  margin: 0.2rem;
+  width: 1.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+
+  &:focus {
+    border-color: #a32a29 !important;
+    box-shadow: 0 0 0 0.1rem #a32a29;
+    outline: none !important;
+    background: rgba(146, 148, 151, 0.2) !important;
+  }
+
+  &:first-child {
+    margin-left: 0px;
+  }
+}
+
+.mat-mdc-radio-button {
+  margin-right: 4rem;
+}
+
+.icon-disabled {
+  border-color: #e9eaea !important;
+  background-color: #e9eaea !important;
+  color: #929497 !important;
+}
+
+::ng-deep mat-flat-button:hover {
+  color: #a32a29 !important;
+}
+
+::ng-deep
+  .mat-expansion-panel-header[aria-disabled='true']
+  .mat-expansion-panel-header-title,
+.mat-expansion-panel-header[aria-disabled='true']
+  .mat-expansion-panel-header-description {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.custom-mb {
+  margin-bottom: 1rem;
+}
+
+.back-btn {
+  margin-right: 20px;
+}
+
+.rateCode {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  // mat-form-field,
+  // .spacer {
+  //     width: 22%;
+  // }
+}
+
+@media (max-width: 768px) {
+  // mat-form-field,
+  // .spacer {
+  //     width: calc(100% - 48px);
+  //     width: 100%;
+  // }
+  .w-3 {
+    width: 4rem !important;
+    min-width: 4rem !important;
+  }
+
+  .help-text {
+    margin-right: 0.5rem;
+  }
+
+  .max-w-sm {
+    max-width: 100%;
+  }
+
+  .form-control {
+    width: 0.8rem;
+  }
+
+  .input-container {
+    width: calc(100% - 32px);
+    max-width: calc(100% - 32px);
+  }
+
+  .divider {
+    height: 2px;
+    width: 100%;
+    background-color: rgba(146, 148, 151, 0.2) !important;
+    margin: 1rem 0rem;
+  }
+
+  .ps-sm-0 {
+    margin-top: 0.5rem;
+  }
+
+  .w-sm-97 {
+    width: calc(100% - 32px);
+  }
+
+  .mat-mdc-mini-fab {
+    box-shadow: none;
+    font-weight: 700;
+    width: 25px;
+    height: 25px;
+    margin-right: 0.5rem;
+
+    .material-icons {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  .mat-mdc-radio-button {
+    margin: 1rem 0rem;
+    display: block;
+
+    &:first-child {
+      margin-top: 0rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0rem;
+    }
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  // height: 80px;
+  margin-top: 1.5rem;
+  top: 81px;
+}
+
+.wrapSelect {
+  .mat-mdc-form-field {
+    width: 240px;
+    height: 47px;
+    padding: 12px, 12px, 11px, 16px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-right: 8px;
+    margin-right: 1.5rem;
+  }
+}
+
+.wrapInput {
+  .mat-mdc-form-field {
+    width: 240px;
+    height: 47px;
+    padding: 8px, 12px, 3px, 16px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-right: 8px;
+    margin-right: 1.5rem;
+  }
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.beneficiary-part {
+  display: flex;
+  justify-content: space-between;
+}
+
+.support-documents {
+  background: linear-gradient(
+      0deg,
+      rgba(243, 135, 7, 0.04),
+      rgba(243, 135, 7, 0.04)
+    ),
+    #ffffff;
+  border-radius: 8px;
+  height: 116px;
+  border-left: 8px solid #f38707;
+  padding: 14px 0 0 24px;
+  margin-bottom: 10px;
+}
+
+.support-title {
+  color: #f38707;
+  font-weight: 600;
+  font-size: 1rem;
+  // margin: 1rem 0 0 24px;
+}
+
+.support-content {
+  font-size: 16px;
+  line-height: 24px;
+  color: black;
+}
+
+.fetch-button {
+  height: 51px;
+  width: 91px;
+}
+
+.available-balance {
+  color: #a32a29;
+  font-weight: 600;
+}
+
+.available-balance-title {
+  color: #929497;
+}

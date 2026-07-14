@@ -1,0 +1,96 @@
+<!-- <app-breadcrumb-navigation
+  [config]="breadcrumbsConfig"
+>
+</app-breadcrumb-navigation> -->
+
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 head-title fw-600 m-0">
+      {{ 'SAVE-INVEST.TITLE' | translate }}
+    </h3>
+    <mat-divider vertical class="vertical-divider"></mat-divider>
+    <span class="head-subtitle">{{ 'SAVE-INVEST.SUBTITLE' | translate }}</span>
+  </div>
+</mat-card>
+
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+  <div fxLayout="column" fxLayoutAlign="center start" class="mb-16">
+    <h3 class="mat-headline-6 head-title fw-400 mt-6 m-0">
+      {{ 'SAVE-INVEST.HEADER' | translate }}
+    </h3>
+    <span class="head-subtitle">{{ 'SAVE-INVEST.SUBHEADER' | translate }}</span>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="mt-38 mb-16">
+    <!-- <h3 class="mat-title fw-600 m-0">{{ 'SAVE-INVEST.BE-FREE-TO-SAVE' | translate }}</h3>
+        <span class="head-subtitle mb-16">{{ 'SAVE-INVEST.BE-FREE-TO-SAVE-DETAILS' | translate }}</span> -->
+    <div class="cards mt-41 mb-40">
+      <mat-card
+        appearance="outlined"
+        class="service-card"
+        *ngFor="let item of deposits.slice(0, 3)"
+        [class.active]="selectedType === item.type"
+        (click)="onSelectedType(item.type)">
+        <div class="bg-top"></div>
+        <div class="card-content">
+          <div class="service-icon">
+            <mat-icon class="plus-icon" svgIcon="ic-plus"></mat-icon>
+          </div>
+          <div class="mat-subtitle-1 service-title">
+            {{ item.headline | translate }}
+          </div>
+          <p class="color-grey">{{ item.subheadline | translate }}</p>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <!-- <mat-divider></mat-divider> -->
+  <div class="mt-46 mb-16">
+    <!-- <h3 class="mat-title fw-600 m-0 pt-40">{{ 'SAVE-INVEST.MAKE-FIXED-SAVING-CONTRIBUTION' | translate }}</h3>
+        <span class="head-subtitle mb-16">{{ 'SAVE-INVEST.MAKE-FIXED-SAVING-CONTRIBUTION-DETAILS' | translate }}</span> -->
+    <div class="cards mt-41">
+      <mat-card
+        appearance="outlined"
+        class="service-card"
+        *ngFor="let item of deposits.slice(3)"
+        [class.active]="selectedType === item.type"
+        (click)="onSelectedType(item.type)">
+        <div class="bg-top"></div>
+        <div class="card-content">
+          <div class="service-icon">
+            <mat-icon class="plus-icon" svgIcon="ic-plus"></mat-icon>
+          </div>
+          <div class="mat-subtitle-1 service-title">
+            {{ item.headline | translate }}
+          </div>
+          <p class="color-grey">{{ item.subheadline | translate }}</p>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</mat-card>
+
+<div class="buttons-holder">
+  <button
+    mat-stroked-button
+    color="primary"
+    class="form-btn"
+    (click)="navigate('quit')">
+    {{ 'COMMON.QUIT' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    class="form-btn confirm"
+    [disabled]="!selectedType"
+    (click)="navigate('next')">
+    {{ 'COMMON.NEXT' | translate }}
+  </button>
+  <button
+    mat-stroked-button
+    color="primary"
+    class="form-btn back"
+    (click)="navigate('back')">
+    {{ 'COMMON.BACK' | translate }}
+  </button>
+</div>

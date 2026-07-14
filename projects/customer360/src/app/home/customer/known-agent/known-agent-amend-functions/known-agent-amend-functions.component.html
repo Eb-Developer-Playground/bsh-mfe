@@ -1,0 +1,283 @@
+<div class="--detail-container">
+  <div class="topbar mb-24">
+    <mat-toolbar class="toolbar">
+      <div
+        class="fx-row fx-flex fx-align-start-center fx-gap-12px">
+        <p class="mat-headline-5 m-0">
+          {{ 'KNOWN-AGENT.AMEND.HEADER' | translate }}
+        </p>
+        <span class="vl"></span>
+        <p class="mat-body-2 text-muted m-0">
+          {{ 'KNOWN-AGENT.AMEND.SUBHEADER' | translate }}
+        </p>
+      </div>
+    </mat-toolbar>
+  </div>
+
+  <div class="mb-16">
+    <mat-accordion mat-dialog-content color="primary" class="w-100">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header class="mb-24" [expandedHeight]="'78px'">
+          <mat-panel-title>
+            <div class="d-flex align-items-center pt-12 pl-20 pb-12 w-100">
+              <mat-icon
+                svgIcon="ic-avatar"
+                aria-hidden="false"
+                aria-label="action"
+                class="icon-display pr-16">
+              </mat-icon>
+
+              <div class="d-flex flex-column">
+                <p class="mat-subtitle-1 m-0">{{ agentData?.agentName }}</p>
+                <p class="mat-body-2 text-muted m-0">
+                  {{ agentData?.dateCreated | date: 'dd/MM/yyyy ' }}
+                </p>
+              </div>
+
+              <div class="fx-flex fx-align-end-center fx-gap-12px" *ngIf="!deleted">
+                <span (click)="removeAgent()"
+                class="amendbutton"
+                *ngIf="!(hideRemoveButton || deleted)"
+                [class.disabled]="deleted"
+                [style.pointer-events]="deleted ? 'none' : 'auto'">
+                  <mat-icon
+                  class="amend-icon"
+                  svgIcon="ic-close"
+                  aria-hidden="false"
+                  aria-label="Bio">
+                </mat-icon>
+                  <span class="pb-1">{{ 'KNOWN-AGENT.REMOVE-ANOTHER' | translate }}</span>
+                </span>
+               <span (click)="toggleAmendFunctions()"
+                  class="amendbutton"
+                  [class.disabled]="countryCode === 'CD'"
+                  [style.pointer-events]="countryCode === 'CD' ? 'none' : 'auto'">      
+                <mat-icon
+                  class="amend-icon"
+                  svgIcon="ic-amend"
+                  aria-hidden="false"
+                  aria-label="Bio">
+                </mat-icon>
+                <span class="pb-1">
+                  Amend Functions
+                </span>
+               </span>          
+              </div>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <!-- <div class="d-flex flex-column">
+          <div class="d-flex">
+            <app-known-agent-customer-image
+              [supportDocuments]="supportDocuments">
+            </app-known-agent-customer-image>
+
+            <div class="d-flex flex-wrap">
+              <div
+                *ngFor="let info of agentDisplayDataArray"
+                class="four-items-row pb-28">
+                <p class="mat-subtitle-1 m-0">{{ info.label | translate }}</p>
+                <p class="mat-body-2 text-muted m-0">
+                  {{ info.value }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="pt-58 w-100" *ngIf="supportDocuments">
+            <mat-divider class="w-100"></mat-divider>
+            <div class="mt-16">
+              <h3 class="mat-headline-6 fw-400 mb-0">
+                {{ 'KNOWN-AGENT.REQUIRED-DOCUMENTS' | translate }}
+              </h3>
+            </div>
+
+            <app-documents-review
+              class="w-100"
+              [contentOnly]="true"
+              [documents]="supportDocuments">
+            </app-documents-review>
+          </div>
+        </div> -->
+
+
+      <div class="main-div">
+        <div class="customer-images">
+          <app-legacy-customer-image 
+          [acc]="agentData?.acctNum" 
+          [cif]="agentData?.custId">
+        </app-legacy-customer-image>
+        </div>
+  
+        <div class="customer-details-container" *ngIf="countryCode === 'CD'">
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'KNOWN-AGENT.FIRST-NAME' | translate }}
+            </p>
+            <p class="customer-detail-content">{{ agentCustomerData?.personalDetails?.firstName}}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'KNOWN-AGENT.MIDDLE-NAME' | translate }}
+            </p>
+            <p class="customer-detail-content">{{ agentCustomerData?.personalDetails?.middleName }}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'KNOWN-AGENT.LAST-NAME' | translate }}
+            </p>
+            <p class="customer-detail-content">{{agentCustomerData?.personalDetails?.lastName }}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">{{ 'COMMON.GENDER' | translate }}</p>
+            <p class="customer-detail-content">{{ agentCustomerData?.personalDetails?.gender === 'F' ? 'Female' : 'Male' }}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'COMMON.NATIONALITY' | translate }}
+            </p>
+            <p class="customer-detail-content">{{ nationality }}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'COMMON.COUNTRY-OF-RESIDENCE' | translate }}
+            </p>
+            <p class="customer-detail-content">{{ countryOfResidence || this.agentCustomerData?.personalDetails?.countryOfResidence}}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'COMMON.DATE-OF-BIRTH' | translate }}
+            </p>
+            <p class="customer-detail-content">{{agentCustomerData?.personalDetails?.birthDate }}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'COMMON.PLACE-OF-BIRTH' | translate }}
+            </p>
+            <p class="customer-detail-content">{{ placeOfBirth || this.agentCustomerData?.personalDetails?.placeOfBirth}}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'KNOWN-AGENT.CIF' | translate }}
+            </p>
+            <p class="customer-detail-content">{{ agentCustomerData?.personalDetails?.customerId }}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'COMMON.REGION' | translate }}
+            </p>
+            <p class="customer-detail-content">{{ region || this.agentCustomerData?.personalDetails?.region}}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'COMMON.MARITAL-STATUS' | translate }}
+            </p>
+            <p class="customer-detail-content">{{ maritalStatus }}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">
+              {{ 'FORMS.PERSONAL_DETAILS.LABELS.PREFERRED_LANGUAGE' | translate }}
+            </p>
+            <p class="customer-detail-content">{{ agentCustomerData?.personalDetails?.language|| agentCustomerData?.personalDetails?.preferredLanguageCode }}</p>
+          </div>
+          <div class="customer-detail">
+            <p class="customer-detail-title">Tax number</p>
+            <p class="customer-detail-content"></p>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="pt-58 w-100" *ngIf="supportDocuments">
+        <mat-divider class="w-100"></mat-divider>
+        <div class="mt-16">
+          <h3 class="mat-headline-6 fw-400 mb-0">
+            {{ 'KNOWN-AGENT.REQUIRED-DOCUMENTS' | translate }}
+          </h3>
+        </div>
+
+        <app-documents-review
+          class="w-100"
+          [contentOnly]="true"
+          [documents]="supportDocuments">
+        </app-documents-review>
+      </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="mb-16">
+    <mat-accordion mat-dialog-content color="primary" class="w-100">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header class="mb-16">
+          <mat-panel-title>
+            <p class="mat-headline-6 m-0">
+              {{
+                'CUSTOMER.CUSTOMER-PROFILE.ENTITY-OVERVIEW.ADDITIONAL-CUSTOMER-INFORMATION'
+                  | translate
+              }}
+            </p>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="d-flex flex-wrap">
+          <div
+            *ngFor="let info of agentDisplayDataAdditionalArray"
+            class="four-items-row pb-28">
+            <p class="mat-subtitle-1 m-0">{{ info.label | translate }}</p>
+            <p class="mat-body-2 text-muted m-0">
+              {{ info.value }}
+            </p>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="mb-16">
+    <app-known-agent-edit-functions
+      *ngIf="functionsArray && functionsArray.length !== 0"
+      [functionsArray]="functionsArray"
+      (isFunctionFormValid)="saveForms($event)"
+      [edit]="amend"
+      [isBshFunction]="
+        agentData?.isBshFunction ? agentData.isBshFunction : false
+      ">
+    </app-known-agent-edit-functions>
+  </div>
+
+  <div class="mb-16">
+    <app-known-agent-limits
+      *ngIf="showAgentLimits"
+      (isLimitFormValid)="saveForms($event)"
+      [edit]="amend"
+      [limit]="limit"></app-known-agent-limits>
+  </div>
+
+  <app-documents-upload
+    *ngIf="amend"
+    [containerDocumentNoGrow]="true"
+    title="KNOWN-AGENT.AMEND.UPLOAD-REQUIRED-DOCUMENTS"
+    [documentSpecs]="documentsConfig"
+    (onUploaded)="onDocumentsAttached($event)"
+    [allowedFileTypes]="['image/png', 'image/jpeg', 'application/pdf']">
+  </app-documents-upload>
+
+  <div class="d-flex justify-content-between">
+    <button mat-stroked-button color="primary" (click)="navigateBack()">
+      {{ 'COMMON.BACK' | translate }}
+    </button>
+    <button
+      [disabled]="
+        !valid ||
+        (isCustomerPresent && documents && documents.length === 0) ||
+        (!valid && !isCustomerPresent)
+      "
+      mat-raised-button
+      color="primary"
+      class="--info-btn"
+      (click)="launchBio()"
+      *ngIf="amend">
+      {{ 'COMMON.SUBMIT' | translate }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="dialog-header">
+  <span style="cursor: pointer" (click)="openNewWindow()">&bot;</span>
+  <h3 mat-dialog-title class="mat-headline-6 fw-400">Document Preview</h3>
+  <mat-icon
+    svgIcon="ic-close"
+    style="transform: scale(0.6); cursor: pointer"
+    [mat-dialog-close]="null"></mat-icon>
+</div>
+<div>
+  <mat-divider></mat-divider>
+</div>
+<div class="img-container mb-8">
+  <img
+    *ngIf="!imgError"
+    [src]="sanitizedURL"
+    (error)="imgError = true"
+    height="90%"
+    width="900px"
+    alt="{{ data?.filename }}" />
+  <embed
+    *ngIf="imgError"
+    [src]="sanitizedURL"
+    height="500px"
+    width="900px"
+    type="application/pdf" />
+</div>
+<div class="button-container">
+  <button mat-stroked-button class="eq-btn" [mat-dialog-close]="null">
+    Close
+  </button>
+  <div>
+    <button mat-stroked-button class="eq-btn mr-1" (click)="openNewWindow()">
+      Open
+    </button>
+    <button
+      mat-stroked-button
+      class="eq-btn mr-1"
+      (click)="print(data.url, data.filename)">
+      Print
+    </button>
+    <button
+      mat-stroked-button
+      class="eq-btn"
+      (click)="download(data.url, data.filename)">
+      Download
+    </button>
+  </div>
+</div>

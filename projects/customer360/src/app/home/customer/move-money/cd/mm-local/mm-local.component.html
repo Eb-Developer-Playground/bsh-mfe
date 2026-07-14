@@ -1,0 +1,33 @@
+<span class="local-account-wrapper">
+  <app-stepper
+    #stepper
+    (onActive)="onActive($event)"
+    (onFinish)="onFinish()"
+    (onQuit)="onQuit()"
+    (onSave)="onSave($event)"
+    [linear]="true"
+    [showBackButton]="true"
+    [stepperLabel]="'MOVE-MONEY.SECTIONS.SEND-TO-LOCAL.TITLE' | translate">
+    <cdk-step
+      [label]="'MOVE-MONEY.SECTIONS.SEND-TO-LOCAL.STEP-1.TEXT' | translate"
+      [stepControl]="transferFormControl">
+      <app-transfer-details
+        #components
+        [label]="'MOVE-MONEY.SECTIONS.SEND-TO-LOCAL.STEP-1.TEXT' | translate"
+        [stepControl]="transferFormControl"
+        [stepperComponent]="stepper">
+      </app-transfer-details>
+    </cdk-step>
+    <cdk-step
+      [label]="'MOVE-MONEY.SECTIONS.SEND-TO-LOCAL.STEP-2.TEXT' | translate"
+      [stepControl]="reviewControl">
+      <app-mm-review
+        #components
+        [label]="'MOVE-MONEY.SECTIONS.SEND-TO-LOCAL.STEP-2.TEXT' | translate"
+        [dataControl]="transferFormControl"
+        [stepControl]="reviewControl"
+        [stepperComponent]="stepper">
+      </app-mm-review>
+    </cdk-step>
+  </app-stepper>
+</span>

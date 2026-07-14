@@ -1,0 +1,77 @@
+$equity-primary: #a32a29;
+$equity-dark: #221f1f;
+$equity-grey: #929497;
+$equity-bg: #f7f7f7;
+
+.fx-row { display: flex; flex-direction: row; }
+.fx-flex { flex: 1 1 auto; }
+.fx-align-start-center { display: flex; align-items: center; justify-content: flex-start; }
+.fx-align-between-center { display: flex; align-items: center; justify-content: space-between; }
+
+.agent-container {
+  border-bottom: 1px solid #{$equity-grey}33;
+  width: 100%;
+  cursor: pointer;
+  &:hover { background: $equity-bg; }
+
+  .name-avatar {
+    width: 48px;
+    height: 48px;
+    background: $equity-primary;
+    color: white;
+    font: 600 20px/28px;
+    border-radius: 50%;
+  }
+}
+
+::ng-deep .mat-mdc-menu-panel {
+  background: white;
+  border: 1px solid #{$equity-primary}1a;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px #{$equity-primary}26;
+  
+  .mat-mdc-menu-content {
+    padding: 8px 0;
+    
+    .mat-mdc-menu-item {
+      color: $equity-dark;
+      font: 400 14px;
+      padding: 12px 16px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      
+      &:first-child, &:hover:not([disabled]) { color: $equity-primary; }
+      &:first-child { font-weight: 500; }
+      &:hover:not([disabled]) { background: #{$equity-primary}14; }
+      &[disabled] { color: $equity-grey; opacity: 0.6; }
+      
+      .menu-item-icon {
+        width: 20px;
+        height: 20px;
+        color: $equity-grey;
+        transition: color 0.2s ease;
+        
+        .mat-mdc-menu-item:first-child &,
+        .mat-mdc-menu-item:hover:not([disabled]) & { color: $equity-primary; }
+        .mat-mdc-menu-item[disabled] & { color: $equity-grey; }
+      }
+    }
+    
+    .mat-divider {
+      border-color: #{$equity-primary}1f;
+      margin: 4px 16px;
+    }
+  }
+}
+
+.menu-icon {
+  color: $equity-primary !important;
+  transition: transform 0.2s ease;
+  &:hover { transform: scale(1.05); }
+}
+
+
+
+

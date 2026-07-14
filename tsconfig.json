@@ -3,6 +3,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "ignoreDeprecations": "6.0",
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -12,7 +15,10 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "preserve",
+    "paths": {
+      "equity-auth": ["projects/equity-auth/src/public-api.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -44,6 +50,12 @@
     },
     {
       "path": "./projects/onboarding/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/equity-auth/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/equity-auth/tsconfig.spec.json"
     }
   ]
 }

@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <app-change-mandate-select-account [mandateForm]="mandateDetailsForm"
+  (accountSelected)="onAccountSelected($event)">
+  </app-change-mandate-select-account>
+    <app-change-mandate-account-detail [mandateForm]="mandateDetailsForm">
+    </app-change-mandate-account-detail>
+    <app-current-mandate-signatories [mandateForm]="mandateDetailsForm" [isAccountSelected]="isAccountSelected">
+    </app-current-mandate-signatories>
+    <app-change-mandate-account [mandateForm]="mandateDetailsForm"  *ngIf="isAccountSelected">
+    </app-change-mandate-account>
+  
+</div>

@@ -1,0 +1,49 @@
+.transferDetailsWrapper {
+  // --mat-form-field-filled-label-display: block;
+  // --mat-form-field-container-vertical-padding: 20px;
+  // mat-label {
+  //   font-size: 16px;
+  // }
+
+  .full-width {
+    width: 100%;
+    .narration-input {
+      width: 50%;
+    }
+  }
+  .input-post-label {
+    margin-top: -20px;
+    font-size: 12px;
+    color: #929497;
+    padding-left: 50px;
+  }
+
+  .ticket-number {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    .apply-ticket-button {
+      height: 64px;
+      border-radius: 8px;
+      width: 92px;
+      border: 1px solid #929497;
+      background-color: #e9eaea;
+      padding: 12px 24px;
+      color: #929497;
+      cursor: pointer;
+    }
+  }
+
+  ::ng-deep {
+    .mdc-text-field {
+      font-size: 16px;
+      padding: 10px;
+      line-height: 20px;
+    }
+
+    .mdc-text-field__input {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+  }
+}

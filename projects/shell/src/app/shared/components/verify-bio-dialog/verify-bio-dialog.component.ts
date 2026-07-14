@@ -25,7 +25,7 @@ import { SuccessDialogComponent } from '@app/home/customer/cards/success-dialog/
 import { MessageBoxType } from '@app/shared/modules/toast/models';
 import { environment } from '@env/environment.uat';
 import { ToastService } from '../../modules/toast';
-import { SessionService } from '../../services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { BIO_EXEMPTED_USERS } from '../../static';
 import { BioEnrollmentComponent } from '../bio-enrollment/bio-enrollment.component';
 import { ImagePreviewModalComponent } from '../customer-information/image-preview-modal/image-preview-modal.component';

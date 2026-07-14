@@ -1,0 +1,142 @@
+.divider {
+    width: 20px;
+    background-color: rgba(146, 148, 151, 0.2) !important;
+    margin: 0rem 1rem;
+}
+
+.section-divider {
+    margin-bottom: 0;
+}
+
+hr {
+    background-color: rgba(146, 148, 151, 0.2) !important;
+    margin-block-start: 0em;
+    margin-block-end: 1rem;
+    opacity: 0.35;
+}
+
+.fieldset {
+    .period-button {
+        color: #a32a29;
+        border-color: #a32a29 !important;
+    }
+
+    display: flex;
+    //flex-direction: column;
+    row-gap: 5px;
+}
+
+.radio-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 126px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.notification {
+    margin-bottom: 10px;
+}
+
+mat-mdc-radio-button {
+    margin-bottom: 30px;
+}
+
+:host ::ng-deep.mat-mdc-radio-label-content {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+}
+
+.main-card {
+    margin-top: 20px;
+
+    .section {
+        padding-top: 10px;
+        padding-bottom: 20px;
+
+        .period-form {
+            margin-top: 25px;
+        }
+    }
+}
+
+.subtitle-text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    color: #929497;
+    margin-top: 5px;
+}
+
+.title-text {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    color: #221f1f;
+}
+
+.radio-group {
+    display: flex;
+}
+
+button {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #221f1f;
+}
+
+mat-card-title {
+    font-style: normal;
+    margin-top: 9px !important;
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 1px;
+}
+
+mat-mdc-select-min-line {
+    white-space: normal;
+}
+
+::ng-deep .cdk-overlay-pane {
+    min-width: 200px !important;
+}
+
+::ng-host.charges {
+    font-weight: 700, Bold;
+}
+
+.ok-button {
+    margin: 5px 11px 14px;
+    border-radius: 14px;
+    line-height: 28px;
+    font-weight: 400;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+
+    #view-statement {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 24px;
+        color: #a32a29;
+    }
+}

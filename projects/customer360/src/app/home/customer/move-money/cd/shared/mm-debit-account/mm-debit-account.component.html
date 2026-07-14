@@ -1,0 +1,53 @@
+<form class="fieldset" [formGroup]="form">
+  <mat-form-field class="example-full-width">
+    <mat-label>{{
+      'MOVE-MONEY.SECTIONS.ACCOUNT-DETAILS.FIELDS.ACCOUNT-TO-DEBIT' | translate
+    }}</mat-label>
+
+    <input
+      matInput
+      aria-label="Debit Account"
+      [matAutocomplete]="auto"
+      formControlName="accountNumber"
+      [readonly]="lockedForm"
+    />
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      @for (account of accounts; track account) {
+        <mat-option [value]="account.accountNumber">
+          <div class="account-dropdown">
+            <div class="dropdown-icon">
+              {{ generateAccountInitials(account.accountName) }}
+            </div>
+            <div class="account-data">
+              <div>
+                <span class="main-text">{{ generateAccountNames(account.accountName) }}</span>
+              </div>
+              <div class="account-info sub-text">
+                <span>{{ account.accountNumber }}</span>
+                <div class="rounded-30">.</div>
+                <span>{{ account.accountCurrency }}</span>
+              </div>
+            </div>
+          </div>
+        </mat-option>
+      }
+    </mat-autocomplete>
+
+    @if (
+      form.controls['accountNumber']?.errors?.['invalidAccountNumber'] ||
+      !form.controls['accountNumber']?.errors?.['required']
+    ) {
+      <mat-error>
+        {{ 'MOVE-MONEY.ACCOUNT-NUMBER-INVALID' | translate }}
+      </mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{ 'MOVE-MONEY.SECTIONS.ACCOUNT-DETAILS.FIELDS.CURRENCY' | translate }}</mat-label>
+    <input formControlName="accountCurrency" matInput readonly />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'MOVE-MONEY.SECTIONS.ACCOUNT-DETAILS.FIELDS.BALANCE' | translate }}</mat-label>
+    <input formControlName="availableBalance" matInput readonly />
+  </mat-form-field>
+</form>

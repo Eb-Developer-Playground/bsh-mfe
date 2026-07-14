@@ -1,0 +1,22 @@
+<div class="transaction-summary">
+  <div class="transaction-title">
+    <span>{{ 'BULK-TRANFER.TOTAL-AMOUNT' | translate }}</span>
+  </div>
+
+  <div class="transaction-content">
+    <div
+      *ngFor="let item of totalAmount; let i = index; let last = last"
+      class="transaction-subcontent">
+      <div style="display: flex">
+        <div class="transaction-currency">
+          <mat-icon [svgIcon]="item.icon"></mat-icon>
+        </div>
+        <div class="transaction-value">
+          {{ (item.total | number: '1.2-2') + ' ' }}{{ item.currency }}
+        </div>
+      </div>
+
+      <div *ngIf="!last" class="vertical-divider"></div>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@ import { AgentFormObj, FormNames } from '@app/shared/models';
 import { IknownAgentDetails } from '@app/shared/models/common/knownAgent.model';
 import { validateKraPin } from '../../../directives/kra-pin-validator.directive';
 import { ValidateFields } from '../../../validators';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { SafeUrl } from '@angular/platform-browser';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';
 

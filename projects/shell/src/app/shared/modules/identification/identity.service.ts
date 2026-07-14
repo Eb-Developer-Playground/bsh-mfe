@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../../services';
+import { ApiService } from '@app/shared/services/api.service';
 import { Observable, of } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { ID_TYPES } from './types';

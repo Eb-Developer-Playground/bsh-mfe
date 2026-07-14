@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AccountService } from '@app/core/services';
 import { MessageBoxType, ToastService } from '../../modules/toast';
-import { SessionService } from '../../services';
+import { SessionService } from '@app/shared/services/session/session.service';
 import { VerifySkipBioComponent } from '../verify-skip-bio/verify-skip-bio.component';
 import { SearchComponent } from '@app/home/search/search.component';
 

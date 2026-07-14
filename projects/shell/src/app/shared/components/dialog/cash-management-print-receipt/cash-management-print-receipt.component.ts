@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DatePipe } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';
+import { SessionService } from '@app/shared/services/session/session.service';
 
 @Component({
   selector: 'app-cash-management-print-receipt',
@@ -17,7 +17,7 @@ export class CashManagementPrintReceiptComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private datePipe: DatePipe,
-    private as: AuthService,
+    private sessionService: SessionService,
     public dialogRef: MatDialogRef<any>
   ) {}
 
@@ -40,7 +40,7 @@ export class CashManagementPrintReceiptComponent implements OnInit {
   };
 
   get isCreatedBy(): boolean {
-    return this.as['currentUser'].username === this.data.ticket.createdBy
+    return this.sessionService.currentUser.username === this.data.ticket.createdBy
       ? true
       : false;
   }

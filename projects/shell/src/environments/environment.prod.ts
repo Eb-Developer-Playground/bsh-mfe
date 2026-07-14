@@ -17,6 +17,7 @@ export const environment = {
   clientId: '44FEC6A5E3F5454',
   PAGE_SIZE: 20,
   encryptionKey: 'S3cr3etKey$123',
+  bypassAuth: false,
   showAllMenuItems: false,
   datadogRumId: '',
   datadogRumToken: '',

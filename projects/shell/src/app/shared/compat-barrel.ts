@@ -1,5 +1,5 @@
 // Shell COMPAT_IMPORTS barrel — all Material/CDK/Angular modules needed across shell components
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -53,7 +53,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 
-export const COMPAT_IMPORTS = [
+const COMPAT_MODULES = [
   // Angular
   CommonModule,
   FormsModule,
@@ -118,5 +118,13 @@ export const COMPAT_IMPORTS = [
   MatTreeModule,
   MatStepperModule,
 ];
+
+@NgModule({
+  imports: COMPAT_MODULES,
+  exports: COMPAT_MODULES,
+})
+export class CompatImportsModule {}
+
+export const COMPAT_IMPORTS = CompatImportsModule;
 
 export { CUSTOM_ELEMENTS_SCHEMA };

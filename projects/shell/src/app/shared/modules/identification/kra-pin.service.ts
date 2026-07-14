@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { guid } from '../../utils';
-import { ApiService } from '../../services';
+import { ApiService } from '@app/shared/services/api.service';
 import { ID_TYPES } from './types';
 
 @Injectable({

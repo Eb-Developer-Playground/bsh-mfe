@@ -1,0 +1,91 @@
+<div class="wrapper">
+  <!-- header -->
+  <div class="container">
+    <div class="topbar">
+      <mat-toolbar class="toolbar">
+        <div>
+          <span class="title">Cancel Scheduled Payment</span>
+          <span class="vl"></span>
+          <span class="toolbar-page">Ref: {{ scheduleObj?.transaction?.reference }}</span>
+        </div>
+      </mat-toolbar>
+    </div>
+  </div>
+
+  <!-- body -->
+  <mat-card appearance="outlined" class="channels-body mb-24 activity-card">
+    <div class="mb-1 justify-content-between activity-header">
+      <h3 class="size-3 fw-normal title">Reason for cancellation</h3>
+      <p class="subtitle-text">Add a reason for cancelling the payment below</p>
+    </div>
+
+    <div class="pb-1">
+      <mat-divider></mat-divider>
+    </div>
+
+    <mat-card-content class="card-content">
+      <div class="mb-24">
+        <form [formGroup]="commentForm">
+          <mat-form-field appearance="fill">
+            <input
+              matInput
+              placeholder="Reason*"
+              formControlName="comments"
+              #comment
+              maxlength="100"
+            />
+            <mat-hint align="end"> {{ comment.value.length }}/{{ 100 }} </mat-hint>
+            @if (commentForm.get('comments')?.hasError('required')) {
+              <mat-error>
+                <span>Reason is {{ 'COMMON.REQUIRED' | translate }} </span>
+              </mat-error>
+            }
+          </mat-form-field>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined" class="channels-body mb-24 activity-card">
+    <div class="mb-1 justify-content-between activity-header">
+      <h3 class="size-3 fw-normal title">Upload documents</h3>
+      <p class="subtitle-text">
+        Please upload supporting documents in PDF or Jpeg format. The maximum file size per document
+        should not exceed 10mb.
+      </p>
+    </div>
+
+    <div class="pb-1">
+      <mat-divider></mat-divider>
+    </div>
+
+    <mat-card-content class="card-content">
+      <div class="mb-24">
+        <app-documents-upload
+          [contentOnly]="true"
+          (onUploaded)="attachedDocs = $event"
+          [allowedFileTypes]="['image/png', 'image/jpeg', 'image/jpg', 'application/pdf']"
+        >
+        </app-documents-upload>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <ng-container class="navigation">
+    <div class="buttons-section">
+      <button mat-button type="button" color="primary" class="quit-btn" (click)="back()">
+        Quit
+      </button>
+
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="submit()"
+        [disabled]="!commentForm.valid"
+        class="continue-btn"
+      >
+        Submit
+      </button>
+    </div>
+  </ng-container>
+</div>

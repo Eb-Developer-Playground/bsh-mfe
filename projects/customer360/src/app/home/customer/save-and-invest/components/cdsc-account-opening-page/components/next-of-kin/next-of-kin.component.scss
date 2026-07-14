@@ -1,0 +1,55 @@
+.main {
+  box-shadow:
+    0px 1px 1px rgb(0 0 0 / 14%),
+    0px 2px 1px rgb(0 0 0 / 12%);
+  border-radius: 8px;
+  margin: 24px 0;
+  padding: 18px 24px;
+
+  .head {
+    span.form-number {
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      background-color: #a32a29;
+      border-radius: 50%;
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      display: inline-block;
+      padding-top: 2px;
+      box-sizing: border-box;
+    }
+
+    span.title {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 32px;
+      display: inline-block;
+      margin-left: 20px;
+      color: #2c2c2d;
+    }
+
+    .arrow-icon {
+      float: right;
+      color: #a32a29;
+      margin-top: 4px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+  }
+
+  .padded-divider {
+    position: relative;
+    margin: 16px 0;
+  }
+
+  .input {
+    width: 240px;
+    margin-right: 24px;
+    margin-bottom: 32px;
+  }
+}

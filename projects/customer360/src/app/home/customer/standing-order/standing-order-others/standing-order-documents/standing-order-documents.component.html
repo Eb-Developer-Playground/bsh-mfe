@@ -1,0 +1,59 @@
+<div class="d-flex wrap">
+  <ng-container *ngFor="let obj of cloneOfObjects; let i = index">
+    <div
+      class="col document-card"
+      *ngIf="shouldRenderDocument(i)"
+      (click)="!obj.uploadedFile && file.click()"
+      [ngStyle]="{
+        'background-image': obj.uploadedFile
+          ? 'url(' + obj.Url + ')'
+          : 'url(' + supportDocumentBackground + ')',
+        'background-size': obj.uploadedFile && 'cover'
+      }"
+      [ngClass]="{ 'upload-card': obj.uploadedFile }">
+      <div class="radiobuton-container">
+        <mat-icon *ngIf="obj.uploadedFile" svgIcon="ic-radiobutton"></mat-icon>
+      </div>
+      <div style="display: initial">
+        <div class="upload-instruction">
+          <div style="padding: 8px" class="d-flex justify-content-between">
+            <input
+              type="file"
+              #file
+              #attachments
+              (change)="onChange(file, obj.name, obj)"
+              style="display: none" />
+            <div>
+              <p class="text doc">{{ obj.name }}</p>
+              <p class="text instruction">
+                {{
+                  obj.uploadedFile
+                    ? 'File Size:' + ' ' + obj.fileSize
+                    : 'The file should not exceed 1MB'
+                }}
+              </p>
+            </div>
+
+            <div>
+              <mat-icon
+                [svgIcon]="obj.icon"
+                (click)="obj.uploadedFile && deleteUpload(obj)"></mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <!-- <div class="col document-card">
+        <div style="padding-top: 10%">
+            <mat-icon
+                height="20px"
+                svgIcon="ic-additional-account"
+                style="transform: scale(1.5)"
+            ></mat-icon>
+            <p class="text drop-text">
+                {{ btnTitle }}
+            </p>
+        </div>
+    </div> -->
+</div>

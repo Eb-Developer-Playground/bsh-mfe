@@ -15,7 +15,7 @@ export class SessionResolver implements Resolve<any> {
 
   resolve(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    _state: RouterStateSnapshot
   ): Observable<any> {
     const oldReIssueToken = this.session.reissueToken || '';
     const reIssueToken =

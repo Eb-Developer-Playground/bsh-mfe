@@ -17,7 +17,8 @@ import { COMPAT_IMPORTS } from '../../compat-barrel';
 import { FileSizePipe } from './file-size.pipe';
 import { FilenameLabelPipe } from './filenameLabel.pipe';
 
-import { SessionService, UIService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
+import { UIService } from '@app/shared/services/ui.service';
 import { DocumentsService } from '@app/shared/services/document/document.service';
 import { TranslateService } from '@ngx-translate/core';
 import { catchError, of, retry, Subject, takeUntil, timer } from 'rxjs';

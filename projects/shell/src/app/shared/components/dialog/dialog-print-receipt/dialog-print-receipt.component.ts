@@ -2,12 +2,11 @@ import { DatePipe } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { SaveAndInvestServiceService } from 'src/app/core/services/save-and-invest/save-and-invest.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { COMPAT_IMPORTS } from '../../../compat-barrel';
 import { TransformCurrencyPipe } from '../../../pipes/transform-currency.pipe';
-import { SessionService } from '@app/shared/services';
+import { SessionService } from '@app/shared/services/session/session.service';
 
 @Component({
   selector: 'app-dialog-print-receipt',
@@ -24,7 +23,6 @@ export class DialogPrintReceiptComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private datePipe: DatePipe,
-    private as: AuthService,
     private sessionService: SessionService,
     public dialogRef: MatDialogRef<any>,
     private saveAndInvestService: SaveAndInvestServiceService
@@ -36,7 +34,7 @@ export class DialogPrintReceiptComponent implements OnInit, OnDestroy {
       this.isCreatedByCurrentUser = true;
     } else {
       this.isCreatedByCurrentUser =
-        this.as['currentUser'].username === this.data.ticket.createdBy;
+        this.sessionService.currentUser.username === this.data.ticket.createdBy;
       this.details = JSON.parse(this.data.ticket.taskData);
     }
 

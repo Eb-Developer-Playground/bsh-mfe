@@ -1,0 +1,213 @@
+.dialog {
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+
+  .account-options {
+    max-height: 400px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 14px;
+      height: 18px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      height: 6px;
+      border: 4px solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+      background-color: rgba(0, 0, 0, 0.2);
+      -webkit-border-radius: 7px;
+      -webkit-box-shadow:
+        inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+        inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+      border-radius: 7px;
+      box-shadow:
+        inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+        inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    &::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+
+    ::ng-deep .mat-mdc-radio-button {
+      margin-bottom: 20px;
+      display: flex;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ::ng-deep .mat-mdc-radio-button .mat-mdc-radio-container {
+      display: none;
+      width: 0;
+    }
+    /* TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version. */
+    ::ng-deep .mat-mdc-radio-button .mdc-label-content {
+      flex-grow: 1;
+    }
+    ::ng-deep .mat-mdc-radio-button .mat-radio-persistent-ripple {
+      display: none;
+      opacity: 0;
+    }
+
+    ::ng-deep .mat-mdc-radio-container .mdc-radio__outer-circle,
+    ::ng-deep .mat-mdc-radio-container .mdc-radio__inner-circle {
+      display: none;
+      border: none;
+      width: 0;
+    }
+
+    .account-option {
+      border: 1px solid rgba(146, 148, 151, 0.2);
+      border-radius: 8px;
+      &:hover {
+        border: 1px solid rgba(146, 148, 151, 0.4);
+      }
+      &.disabled {
+        opacity: 0.6;
+      }
+      .account-data {
+        display: flex;
+        align-items: center;
+
+        .checkbox-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 26px;
+          height: 26px;
+          background: #ffffff;
+          border-radius: 50%;
+          border: 1px solid #a32a29;
+          transition: all 0.1s ease-in;
+          mat-icon {
+            opacity: 0;
+            transform: scale(3);
+            transition: all 0.15s ease-in;
+          }
+        }
+        .account-headline {
+          display: flex;
+          flex: 1;
+          justify-content: space-between;
+          align-items: center;
+          .account-name {
+            flex: 1;
+            width: 200px;
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 16px;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .status-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .account-status {
+              .active,
+              .dormant {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 6px 12px;
+                height: 20px;
+                border-radius: 32px;
+              }
+              .active {
+                color: #2f9803;
+                background: rgba(47, 152, 3, 0.1);
+              }
+              .dormant {
+                color: #f38707;
+                background: rgba(243, 135, 7, 0.1);
+              }
+            }
+
+            .actions {
+              .menu-btn {
+                display: flex;
+                color: #a32a29;
+              }
+              .mat-mdc-menu-item {
+                font-family: Open Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 24px;
+                color: #221f1f;
+              }
+              .menu-item-divider {
+                width: calc(100% - 32px);
+                margin-left: 16px;
+              }
+            }
+          }
+        }
+      }
+      .account-info {
+        margin: 5px 0 0 45px;
+        .balance-info {
+          display: flex;
+          align-items: center;
+          mat-icon.check-icon {
+            stroke: #2f9803;
+            width: 17px;
+            height: 17px;
+            margin-right: 10px;
+          }
+          mat-icon.info-icon {
+            stroke: #f38707;
+            width: 14px;
+            height: 14px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+
+    .mat-mdc-radio-checked {
+      .account-option {
+        border: 1px solid #a32a29;
+      }
+      .account-data {
+        .checkbox-icon {
+          opacity: 1;
+          background: #a32a29;
+          mat-icon {
+            opacity: 1;
+            transform: scale(1.35);
+          }
+        }
+      }
+    }
+  }
+
+  .dialog-actions {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    button {
+      border-color: #a32a29;
+      padding: 1px 36px;
+      border-radius: 8px;
+    }
+  }
+}

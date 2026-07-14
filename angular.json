@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "pnpm"
+    "packageManager": "pnpm",
+    "analytics": "0367343b-c126-4f3b-a265-a2cfa3124cf8"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -25,6 +26,10 @@
             "development": {
               "target": "shell:esbuild:development",
               "dev": true
+            },
+            "uat": {
+              "target": "shell:esbuild:uat",
+              "dev": true
             }
           },
           "defaultConfiguration": "production"
@@ -38,10 +43,23 @@
             "dev": true,
             "devServer": true,
             "port": 0
+          },
+          "configurations": {
+            "development": {
+              "target": "shell:serve-original:development"
+            },
+            "uat": {
+              "target": "shell:serve-original:uat"
+            }
           }
         },
         "test": {
-          "builder": "@angular/build:unit-test"
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "setupFiles": [
+              "projects/shell/src/test-setup.ts"
+            ]
+          }
         },
         "esbuild": {
           "builder": "@angular/build:application",
@@ -54,11 +72,30 @@
                 "input": "projects/shell/public"
               }
             ],
-            "styles": ["projects/shell/src/styles.css", "projects/shell/src/assets/scss/app.scss"],
+            "styles": [
+              "projects/shell/src/styles.css",
+              "projects/shell/src/assets/scss/app.scss"
+            ],
             "stylePreprocessorOptions": {
-              "includePaths": ["projects/shell/src"]
+              "includePaths": [
+                "projects/shell/src"
+              ]
             },
-            "polyfills": ["es-module-shims"]
+            "polyfills": [
+              "es-module-shims"
+            ],
+            "allowedCommonJsDependencies": [
+              "moment",
+              "core-js",
+              "crypto-js",
+              "lottie-web",
+              "rgbcolor",
+              "html2canvas",
+              "raf",
+              "rxjs",
+              "pdfjs-dist",
+              "deepmerge"
+            ]
           },
           "configurations": {
             "production": {
@@ -70,8 +107,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "8kB",
+                  "maximumError": "16kB"
                 }
               ],
               "outputHashing": "all"
@@ -80,6 +117,17 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "uat": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/shell/src/environments/environment.ts",
+                  "with": "projects/shell/src/environments/environment.uat.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -92,13 +140,18 @@
             },
             "development": {
               "buildTarget": "shell:esbuild:development"
+            },
+            "uat": {
+              "buildTarget": "shell:esbuild:uat"
             }
           },
           "defaultConfiguration": "development",
           "options": {
             "port": 4200,
             "host": "0.0.0.0",
-            "allowedHosts": ["host.docker.internal"]
+            "allowedHosts": [
+              "host.docker.internal"
+            ]
           }
         }
       }
@@ -122,6 +175,10 @@
             "development": {
               "target": "customer360:esbuild:development",
               "dev": true
+            },
+            "uat": {
+              "target": "customer360:esbuild:uat",
+              "dev": true
             }
           },
           "defaultConfiguration": "production"
@@ -135,10 +192,21 @@
             "dev": true,
             "devServer": true,
             "port": 0
+          },
+          "configurations": {
+            "development": {
+              "target": "customer360:serve-original:development"
+            },
+            "uat": {
+              "target": "customer360:serve-original:uat"
+            }
           }
         },
         "test": {
-          "builder": "@angular/build:unit-test"
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "customer360:esbuild:development"
+          }
         },
         "esbuild": {
           "builder": "@angular/build:application",
@@ -151,8 +219,24 @@
                 "input": "projects/customer360/public"
               }
             ],
-            "styles": ["projects/customer360/src/styles.css"],
-            "polyfills": ["es-module-shims"]
+            "styles": [
+              "projects/customer360/src/styles.css"
+            ],
+            "polyfills": [
+              "es-module-shims"
+            ],
+            "allowedCommonJsDependencies": [
+              "moment",
+              "core-js",
+              "crypto-js",
+              "lottie-web",
+              "rgbcolor",
+              "html2canvas",
+              "raf",
+              "rxjs",
+              "pdfjs-dist",
+              "deepmerge"
+            ]
           },
           "configurations": {
             "production": {
@@ -164,8 +248,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "8kB",
+                  "maximumError": "100kB"
                 }
               ],
               "outputHashing": "all"
@@ -174,6 +258,17 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "uat": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/customer360/src/environments/environment.ts",
+                  "with": "projects/customer360/src/environments/environment.uat.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -186,13 +281,18 @@
             },
             "development": {
               "buildTarget": "customer360:esbuild:development"
+            },
+            "uat": {
+              "buildTarget": "customer360:esbuild:uat"
             }
           },
           "defaultConfiguration": "development",
           "options": {
             "port": 4201,
             "host": "0.0.0.0",
-            "allowedHosts": ["host.docker.internal"]
+            "allowedHosts": [
+              "host.docker.internal"
+            ]
           }
         }
       }
@@ -216,6 +316,10 @@
             "development": {
               "target": "swift:esbuild:development",
               "dev": true
+            },
+            "uat": {
+              "target": "swift:esbuild:uat",
+              "dev": true
             }
           },
           "defaultConfiguration": "production"
@@ -229,6 +333,14 @@
             "dev": true,
             "devServer": true,
             "port": 0
+          },
+          "configurations": {
+            "development": {
+              "target": "swift:serve-original:development"
+            },
+            "uat": {
+              "target": "swift:serve-original:uat"
+            }
           }
         },
         "test": {
@@ -245,8 +357,25 @@
                 "input": "projects/swift/public"
               }
             ],
-            "styles": ["projects/swift/src/styles.css", "projects/swift/src/assets/scss/app.scss"],
-            "polyfills": ["es-module-shims"]
+            "styles": [
+              "projects/swift/src/styles.css",
+              "projects/swift/src/assets/scss/app.scss"
+            ],
+            "polyfills": [
+              "es-module-shims"
+            ],
+            "allowedCommonJsDependencies": [
+              "moment",
+              "core-js",
+              "crypto-js",
+              "lottie-web",
+              "rgbcolor",
+              "html2canvas",
+              "raf",
+              "rxjs",
+              "pdfjs-dist",
+              "deepmerge"
+            ]
           },
           "configurations": {
             "production": {
@@ -258,8 +387,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "8kB",
+                  "maximumError": "16kB"
                 }
               ],
               "outputHashing": "all"
@@ -268,6 +397,17 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "uat": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/swift/src/environments/environment.ts",
+                  "with": "projects/swift/src/environments/environment.uat.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -280,13 +420,18 @@
             },
             "development": {
               "buildTarget": "swift:esbuild:development"
+            },
+            "uat": {
+              "buildTarget": "swift:esbuild:uat"
             }
           },
           "defaultConfiguration": "development",
           "options": {
             "port": 4203,
             "host": "0.0.0.0",
-            "allowedHosts": ["host.docker.internal"]
+            "allowedHosts": [
+              "host.docker.internal"
+            ]
           }
         }
       }
@@ -310,6 +455,10 @@
             "development": {
               "target": "onboarding:esbuild:development",
               "dev": true
+            },
+            "uat": {
+              "target": "onboarding:esbuild:uat",
+              "dev": true
             }
           },
           "defaultConfiguration": "production"
@@ -323,6 +472,14 @@
             "dev": true,
             "devServer": true,
             "port": 0
+          },
+          "configurations": {
+            "development": {
+              "target": "onboarding:serve-original:development"
+            },
+            "uat": {
+              "target": "onboarding:serve-original:uat"
+            }
           }
         },
         "test": {
@@ -339,8 +496,24 @@
                 "input": "projects/onboarding/public"
               }
             ],
-            "styles": ["projects/onboarding/src/styles.css"],
-            "polyfills": ["es-module-shims"]
+            "styles": [
+              "projects/onboarding/src/styles.css"
+            ],
+            "polyfills": [
+              "es-module-shims"
+            ],
+            "allowedCommonJsDependencies": [
+              "moment",
+              "core-js",
+              "crypto-js",
+              "lottie-web",
+              "rgbcolor",
+              "html2canvas",
+              "raf",
+              "rxjs",
+              "pdfjs-dist",
+              "deepmerge"
+            ]
           },
           "configurations": {
             "production": {
@@ -352,13 +525,18 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "8kB",
+                  "maximumError": "16kB"
                 }
               ],
               "outputHashing": "all"
             },
             "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            },
+            "uat": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -374,13 +552,44 @@
             },
             "development": {
               "buildTarget": "onboarding:esbuild:development"
+            },
+            "uat": {
+              "buildTarget": "onboarding:esbuild:uat"
             }
           },
           "defaultConfiguration": "development",
           "options": {
             "port": 4202,
             "host": "0.0.0.0",
-            "allowedHosts": ["host.docker.internal"]
+            "allowedHosts": [
+              "host.docker.internal"
+            ]
+          }
+        }
+      }
+    },
+    "equity-auth": {
+      "projectType": "library",
+      "root": "projects/equity-auth",
+      "sourceRoot": "projects/equity-auth/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/equity-auth/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/equity-auth/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/equity-auth/tsconfig.spec.json"
           }
         }
       }

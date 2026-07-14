@@ -1,0 +1,42 @@
+<app-breadcrumb-navigation [config]="breadcrumbsConfig">
+</app-breadcrumb-navigation>
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+  <div class="mb-1">
+    <h3 class="mat-headline-6 head-title fw-600 m-0">
+      {{ 'CUSTOMER.SAVE-INVEST.REVIEW-DETAILS' | translate }}
+    </h3>
+  </div>
+</mat-card>
+<mat-card appearance="outlined" class="mat-card mat-focus-indicator main">
+  <span class="title">{{
+    'CUSTOMER.SAVE-INVEST.REVIEW-DETAILS' | translate
+  }}</span>
+  <div *ngFor="let reviewSection of details; let i = index; let l = count">
+    <div class="review-details-holder">
+      <h3 class="mat-headline-6 main-label">{{ reviewSection.title }}</h3>
+      <div
+        class="details-item-holder"
+        *ngFor="let detail of reviewSection.details">
+        <span class="label">{{ detail.label }}</span>
+        <span class="value">{{ detail.value }}</span>
+      </div>
+    </div>
+    <mat-divider *ngIf="i < l - 1"></mat-divider>
+  </div>
+</mat-card>
+<div class="buttons-holder">
+  <button
+    mat-stroked-button
+    color="primary"
+    class="form-btn fw-600"
+    (click)="back()">
+    {{ 'COMMON.BACK' | translate }}
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    class="form-btn next fw-600"
+    (click)="onSubmit()">
+    {{ 'COMMON.NEXT' | translate }}
+  </button>
+</div>

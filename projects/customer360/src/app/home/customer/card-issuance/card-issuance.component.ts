@@ -40,7 +40,7 @@ import { CardChargesSectionComponent } from '@app/home/customer/card-issuance/sm
 import { CardReviewSectionComponent } from '@app/home/customer/card-issuance/smart-components/card-review-section/card-review-section.component';
 import { CardUploadSectionComponent } from '@app/home/customer/card-issuance/smart-components/card-upload-section/card-upload-section.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgIf, NgTemplateOutlet } from '@angular/common';
+
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';

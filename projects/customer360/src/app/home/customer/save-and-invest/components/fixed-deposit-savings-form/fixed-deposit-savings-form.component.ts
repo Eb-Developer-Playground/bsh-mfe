@@ -11,7 +11,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AccountManagementService } from 'src/app/core/services/account-management/account-management.service';
 import { IBreadcrumbConfig } from 'src/app/shared/components/breadcrumb-navigation/breadcrumb-navigation.component';
-import { BreadcrumbNavigationComponent } from 'src/app/shared/components/breadcrumb-navigation/breadcrumb-navigation.component';
 import { IAccMgntObj } from 'src/app/shared/models/common';
 import { CurrentFlowsOptions } from 'src/app/shared/models/common/accMgntObj.model';
 import {
@@ -25,7 +24,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
 import { InfoBoxComponent } from 'src/app/shared/components/info-box/info-box.component';
 import { InvestmentDetailsComponent } from '../shared/investment-details/investment-details.component';
-import { TransactionDetailsComponent } from '../shared/transaction-details/transaction-details.component';
 import { PaymentDetailsComponent } from '../shared/payment-details/payment-details.component';
 import { RolloverAndWithdravalDetailsComponent } from '../shared/rollover-and-withdraval-details/rollover-and-withdraval-details.component';
 import { DocumentsUploadComponent } from 'src/app/shared/modules/upload-docs/documents-upload.component';

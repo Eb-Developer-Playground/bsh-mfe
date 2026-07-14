@@ -15,7 +15,6 @@ import { SaveAndInvest } from 'src/app/shared/models/save-and-invest/save-and-in
 import { AccountsListSelectorModalComponent } from '../shared/accounts-list-selector-modal/accounts-list-selector-modal.component';
 import { CdscAccountOpeningService } from 'src/app/core/services/cdsc-account-opening/cdsc-account-opening.service';
 import { IBreadcrumbConfig } from 'src/app/shared/components/breadcrumb-navigation/breadcrumb-navigation.component';
-import { BreadcrumbNavigationComponent } from 'src/app/shared/components/breadcrumb-navigation/breadcrumb-navigation.component';
 
 @Component({
   selector: 'app-saving-types-menu',

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { shareReplay, switchMap, take, takeUntil, tap } from 'rxjs/operators';
@@ -58,7 +58,7 @@ interface KnownAgentPayload {
       CustomerID: string;
       Comment: any;
   };
-  ViewProfileTicketId?: string; 
+  ViewProfileTicketId?: string;
 }
 @Component({
   selector: 'app-remove-agent',
@@ -136,7 +136,7 @@ export class RemoveAgentComponent implements OnInit, AfterViewInit {
     private translateService: TranslateService,
     private session: SessionService,
     private actionTicketsService: ActionTicketsService
-    
+
   ) {
     this.subsidiary = this.session.subsidiary;
     this.removeForm = this.fb.group({
@@ -209,7 +209,7 @@ private initializeDocuments(): void {
                       maxSize: 1024 * 1024,
                       required: doc.required,
                       docCode: doc.documentCode,
-                      fileTypes: doc.fileExtensions?.map((ext: string) => 
+                      fileTypes: doc.fileExtensions?.map((ext: string) =>
                         ext === 'pdf' ? 'application/pdf' : `image/${ext}`
                     )
                 }));
@@ -273,10 +273,10 @@ private initializeDocuments(): void {
     const agent = this.removeForm.controls['agent_name'].value;
     const effectiveDate = this.removeForm.controls['date'].value;
 
-    const formattedDate = effectiveDate ? 
-    this.formatDateShort(effectiveDate) : 
+    const formattedDate = effectiveDate ?
+    this.formatDateShort(effectiveDate) :
     this.formatDateShort(new Date());
-    
+
     dataObject.push(
       { code: 'agentName', title: 'KNOWN-AGENT.AGENT-NAME', value: <string>agent?.agentName },
       { code: 'agentid', title: 'KNOWN-AGENT.CIF', value: <string>agent?.custId },
@@ -306,9 +306,9 @@ private initializeDocuments(): void {
 
 private uploadDocumentsAndLaunchBio(): void {
   let processedDocs = this.uploadedDocs
-      .filter(doc => 
-          doc?.document && 
-          doc.name && 
+      .filter(doc =>
+          doc?.document &&
+          doc.name &&
           doc.docCode &&
           doc.document.data &&
           doc.document.format
@@ -383,7 +383,7 @@ getDocuments(documents: IUploadedDocument[]) {
       }
       return;
   }
-  
+
       // Existing implementation for other subsidiaries
     const agent: IKnownAgent = this.removeForm.controls['agent_name'].value;
 
@@ -440,9 +440,9 @@ getDocuments(documents: IUploadedDocument[]) {
       });
   }
 
-  
-  
-  
+
+
+
   private verifyBio(ticketId: string, result: any, skipBio: boolean) {
     const bioObj = {
       cif: this.customer.cif,
@@ -630,9 +630,9 @@ private completeTicketDocuments(ticketId: any, skipBio = false) {
   openSignatoriesDialog(data: any) {
     const user = {
       ...this.customerData,
-      accounts: this.customerData.accounts.filter((account: any) => 
+      accounts: this.customerData.accounts.filter((account: any) =>
         account.accountNumber === this.accMgntObj.accountsId)
-    };  
+    };
     const dialogRef = this.dialog.open(VerifySignatoryDialogComponent, {
       width: '50%',
       height: 'auto',
@@ -717,9 +717,9 @@ private completeTicketDocuments(ticketId: any, skipBio = false) {
   openVerifySignatoryBioDialog(signatories: any) {
     const user = {
       ...this.customerData,
-      accounts: this.customerData.accounts.filter((account: any) => 
+      accounts: this.customerData.accounts.filter((account: any) =>
         account.accountNumber === this.accMgntObj.accountsId)
-    };  
+    };
     const dialogRef = this.dialog.open(VerifySignatoryBioDialogComponent, {
       data: {
         ticketId: this.ticket?.id,
@@ -749,9 +749,9 @@ private completeTicketDocuments(ticketId: any, skipBio = false) {
   openSkipBioDialog(event?: string) {
     const user = {
       ...this.customerData,
-      accounts: this.customerData.accounts.filter((account: any) => 
+      accounts: this.customerData.accounts.filter((account: any) =>
         account.accountNumber === this.accMgntObj.accountsId)
-    };  
+    };
     const dialogRef = this.dialog.open(VerifySkipBioComponent, {
       data: {
         approvalType: 'KNOWNAGENTSKIPBIO',

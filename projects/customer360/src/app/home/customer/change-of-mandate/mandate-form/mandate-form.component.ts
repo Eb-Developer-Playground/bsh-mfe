@@ -28,7 +28,7 @@ import {
 import { SpecialCharacterValidator } from '@app/shared/directives/special-character-validator';
 import { v4 as uuid } from 'uuid';
 import { SessionService } from '@app/shared/services';
-import { TranslateService, TranslatePipe } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ActionTicketsService } from '@app/shared/services/actionTickets/action-tickets.service';
 import { AccountManagementService } from '@app/core/services/account-management/account-management.service';
 import { ChangeMandateSelectAccountComponent } from './change-mandate-select-account/change-mandate-select-account.component';

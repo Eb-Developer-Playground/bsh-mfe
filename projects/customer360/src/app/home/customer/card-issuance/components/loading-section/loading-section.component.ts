@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NgSwitch, NgSwitchCase } from '@angular/common';
+
 
 @Component({
   selector: 'app-loading-section',

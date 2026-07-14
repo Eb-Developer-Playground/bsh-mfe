@@ -14,7 +14,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
-import { NgIf } from "@angular/common";
+import { NgIf, NgFor } from "@angular/common";
 import { TranslatePipe } from "@ngx-translate/core";
 import { daysAgoYMD, todayYMD, toYMD } from "@shared/utils/date.utils";
 
@@ -23,7 +23,7 @@ import { daysAgoYMD, todayYMD, toYMD } from "@shared/utils/date.utils";
     templateUrl: "./scheduled-payments.component.html",
     styleUrls: ["./scheduled-payments.component.scss"],
     imports: [
-        NgIf,
+        NgIf, NgFor,
         MatToolbarModule,
         MatCardModule,
         MatDividerModule,

@@ -189,7 +189,7 @@ $margin-lg: 16px;
 @for $i from 0 through 100 {
 
     .wperc-#{$i}{
-        width: $i + '%';
+        width:$i + '%';
     }
 }
 .wperc-80{

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { Observable, of, Subject, throwError } from 'rxjs';
 import { catchError, map, shareReplay, switchMap, take, takeUntil, tap } from 'rxjs/operators';
@@ -117,7 +117,7 @@ export class KnownAgentComponent implements OnInit {
     public displayAgentDetails: boolean = false;
     subsidiary: ISubsidiary;
     selectedLanguage: string = '';
-    
+
 
     public UploadDocuments: IDocumentSpec[] = [
         {
@@ -247,7 +247,7 @@ export class KnownAgentComponent implements OnInit {
                 };
                 this.findAgent();
             }
-        }        
+        }
 
         if (this.route.snapshot.queryParams['returnCtx']) {
 
@@ -294,11 +294,11 @@ export class KnownAgentComponent implements OnInit {
                                                 maxSize: 1024 * 1024,
                                                 required: doc.required,
                                                 docCode: doc.documentCode,
-                                                fileTypes: doc.fileExtensions?.map((ext: string) => 
+                                                fileTypes: doc.fileExtensions?.map((ext: string) =>
                                                     ext === 'pdf' ? 'application/pdf' : `image/${ext}`
                                                 )
                                             }));
-                                            
+
                                             this.ensurePhotoAndSignatureDocuments();
                                         }
                                     }
@@ -336,39 +336,39 @@ export class KnownAgentComponent implements OnInit {
     }
 
     private ensurePhotoAndSignatureDocuments() {
-    
-        const hasPhoto = this.UploadDocuments.some(doc => 
-            (doc.name && doc.name.toLowerCase().includes('photo')) || 
+
+        const hasPhoto = this.UploadDocuments.some(doc =>
+            (doc.name && doc.name.toLowerCase().includes('photo')) ||
             (doc.description && doc.description.toLowerCase().includes('photo'))
         );
-        
-        const hasSignature = this.UploadDocuments.some(doc => 
-            (doc.name && (doc.name.toLowerCase().includes('signature') || doc.name.toLowerCase().includes('sign'))) || 
+
+        const hasSignature = this.UploadDocuments.some(doc =>
+            (doc.name && (doc.name.toLowerCase().includes('signature') || doc.name.toLowerCase().includes('sign'))) ||
             (doc.description && (doc.description.toLowerCase().includes('signature') || doc.description.toLowerCase().includes('sign')))
         );
-        
+
         const photoSignatureMaxSize = this.session.subsidiary.countryCode === 'CD' ? 200 * 1024 : 100 * 1024;
-        
+
         if (!hasPhoto) {
             this.UploadDocuments.push({
                 name: 'Customer Photo',
                 description: 'Agent Photo',
                 required: true,
-                maxSize: photoSignatureMaxSize, 
+                maxSize: photoSignatureMaxSize,
                 docCode: '079',
                 fileTypes: ["image/png", "image/jpeg"]
             });
         } else {
             this.UploadDocuments.forEach(doc => {
-                if ((doc.name && doc.name.toLowerCase().includes('photo')) || 
+                if ((doc.name && doc.name.toLowerCase().includes('photo')) ||
                     (doc.description && doc.description.toLowerCase().includes('photo'))) {
                     doc.docCode = '079';
                     doc.name = 'Customer Photo';
-                    doc.maxSize = photoSignatureMaxSize; 
+                    doc.maxSize = photoSignatureMaxSize;
                 }
             });
         }
-        
+
         if (!hasSignature) {
             this.UploadDocuments.push({
                 name: 'Customer Signature',
@@ -380,7 +380,7 @@ export class KnownAgentComponent implements OnInit {
             });
         } else {
             this.UploadDocuments.forEach(doc => {
-                if ((doc.name && (doc.name.toLowerCase().includes('signature') || doc.name.toLowerCase().includes('sign'))) || 
+                if ((doc.name && (doc.name.toLowerCase().includes('signature') || doc.name.toLowerCase().includes('sign'))) ||
                     (doc.description && (doc.description.toLowerCase().includes('signature') || doc.description.toLowerCase().includes('sign')))) {
                     doc.docCode = '085';
                     doc.name = 'Customer Signature';
@@ -389,9 +389,9 @@ export class KnownAgentComponent implements OnInit {
             });
         }
     }
-    
-    
-    
+
+
+
 
     patchWithIPRSResult = (iprsCheckResult?: any) => {
         if (!this.iprsCheckResult && !!iprsCheckResult)
@@ -431,7 +431,7 @@ export class KnownAgentComponent implements OnInit {
             undefined,
                 undefined,
                 false)
-            
+
             // Check if the customer is the account owner
             if (event.userData?.personalDetails?.customerId && +event.userData?.personalDetails?.customerId === +this.accMgntObj.cif) {
                 this.toastService.show(
@@ -442,10 +442,10 @@ export class KnownAgentComponent implements OnInit {
                 );
                 return;
             }
-    
+
             if (event.userData?.personalDetails?.customerId) {
                 const customerId = +event.userData?.personalDetails?.customerId;
-                
+
                 // Check if the customer is a signatory on the account
                 this.checkIfSignatory(customerId, event.userData).pipe(
                     takeUntil(this.destroy$),
@@ -457,29 +457,29 @@ export class KnownAgentComponent implements OnInit {
                                     { name: `${event.userData.personalDetails?.firstName} ${event.userData.personalDetails?.lastName}` })}`,
                                 MessageBoxType.WARNING, 5000, undefined, undefined, false
                             );
-                            return of(null); 
+                            return of(null);
                         }
-                        
+
                         // If not a signatory, check if already an agent
                         return this.accountService.getKnownAgentsByCif(this.accMgntObj.accountsId, customerId);
                     })
                 ).subscribe(result => {
                     if (result === null) {
-                        return; 
+                        return;
                     }
-                    
+
                     const agents = result as any[];
                     if (agents.length !== 0) {
                         this.toastService.show(
                             this.translateService.instant('TOAST.TITLE-ERROR'),
                             `${this.translateService.instant('KNOWN-AGENT.ALREADY-ACCOUNT-AGENT',
                                 { name: `${event.userData.personalDetails?.firstName} ${event.userData.personalDetails?.lastName}` })}`,
-                            MessageBoxType.WARNING, 
+                            MessageBoxType.WARNING,
                             5000, undefined, undefined, false
                         );
                         return;
                     }
-                    
+
                     this.initExistingUser(event);
                 });
             } else {
@@ -489,54 +489,54 @@ export class KnownAgentComponent implements OnInit {
             this.initNonExistingUser(event.formValues);
         }
     }
-    
-    
+
+
     private checkIfSignatory(customerId: number, userData: CifInquiryObject): Observable<boolean> {
         return this.accountService.getAccount(
-            `?Id=${this.accMgntObj.accountsId}&bankId=${this.accMgntObj.bankID}&idType=accountid`, 
+            `?Id=${this.accMgntObj.accountsId}&bankId=${this.accMgntObj.bankID}&idType=accountid`,
             true
         ).pipe(
             map(response => {
                 if (!response.successful || !response.responseObject) {
                     return false;
                 }
-                
+
                 const account = response.responseObject;
-                
+
                 if (!account.signatories || account.signatories.length === 0) {
                     return false;
                 }
-                
+
                 const isSignatory = account.signatories.some((signatory: any) => {
-                    
+
                     if (signatory.cif && signatory.cif.toString() === customerId.toString()) {
                         return true;
                     }
-                    
-                    if (signatory.idNumber && userData.personalDetails?.idNumber && 
+
+                    if (signatory.idNumber && userData.personalDetails?.idNumber &&
                         signatory.idNumber === userData.personalDetails.idNumber) {
                         return true;
                     }
-                    
-                    if (signatory.name && 
-                        userData.personalDetails?.firstName && 
+
+                    if (signatory.name &&
+                        userData.personalDetails?.firstName &&
                         userData.personalDetails?.lastName) {
                         const signatoryName = signatory.name.toLowerCase();
                         const customerFirstName = userData.personalDetails.firstName.toLowerCase();
                         const customerLastName = userData.personalDetails.lastName.toLowerCase();
-                        
-                        const nameMatch = signatoryName.includes(customerFirstName) && 
+
+                        const nameMatch = signatoryName.includes(customerFirstName) &&
                                          signatoryName.includes(customerLastName);
-                        
+
                         if (nameMatch) {
                         }
-                        
+
                         return nameMatch;
                     }
-                    
+
                     return false;
                 });
-                
+
                 return isSignatory;
             }),
             catchError(error => {
@@ -545,7 +545,7 @@ export class KnownAgentComponent implements OnInit {
             })
         );
     }
-       
+
 
 saveForms(formObj: AgentFormObj) {
     this.AreValid[formObj.formName as FormNames.FUNCTIONS | FormNames.LIMITS | FormNames.ADDITIONALINFORMATION] = formObj.valid;
@@ -592,13 +592,13 @@ saveForms(formObj: AgentFormObj) {
 
 showAgentDetails() {
     if (this.session.subsidiary.countryCode === 'CD') {
-        
-        const photoDoc = this.uploadedDocs.find(doc => 
+
+        const photoDoc = this.uploadedDocs.find(doc =>
             doc?.name?.toLowerCase().includes('photo'));
-        const signatureDoc = this.uploadedDocs.find(doc => 
-            doc?.name?.toLowerCase().includes('signature') || 
+        const signatureDoc = this.uploadedDocs.find(doc =>
+            doc?.name?.toLowerCase().includes('signature') ||
             doc?.name?.toLowerCase().includes('sign'));
-            
+
         if (!photoDoc || !signatureDoc) {
             this.toastService.show(
                 'Required Documents Missing',
@@ -613,7 +613,7 @@ showAgentDetails() {
             photoDoc.docCode = '079';
             photoDoc.name = 'Customer Photo';
         }
-        
+
         if (signatureDoc) {
             signatureDoc.docCode = '085';
             signatureDoc.name = 'Customer Signature';
@@ -624,22 +624,22 @@ showAgentDetails() {
                 doc?.document &&
                 doc.name &&
                 doc.docCode &&
-                doc.document.data &&  
-                doc.document.format  
+                doc.document.data &&
+                doc.document.format
             )
             .map(doc => {
                 let docCopy = {...doc};
                 let docCode = docCopy.docCode?.toString() || '';
                 const lowerName = docCopy.name.toLowerCase();
-                
+
                 if (lowerName.includes('photo')) {
-                    docCopy.name = 'Customer Photo'; 
+                    docCopy.name = 'Customer Photo';
                     docCode = '079';
                 } else if (lowerName.includes('signature') || lowerName.includes('sign')) {
-                    docCopy.name = 'Customer Signature'; 
+                    docCopy.name = 'Customer Signature';
                     docCode = '085';
                 }
-                
+
                 return {
                     ...docCopy?.document,
                     filename: docCopy.name,
@@ -652,7 +652,7 @@ showAgentDetails() {
                 docs.data = docs.data.split(',')[1];
             }
         });
-   
+
         const docsForNewGen = allDocuments.filter(doc => {
             const filename = (doc.filename || '').toLowerCase();
             return !filename.includes('photo') &&
@@ -675,13 +675,13 @@ showAgentDetails() {
         const dataBlobPayload = {
             ...basePayload,
             Service: 'Blob',
-            documents: allDocuments 
+            documents: allDocuments
         };
-        
+
         const dataNewgenPayload = {
             ...basePayload,
             Service: 'NewGen',
-            documents: docsForNewGen 
+            documents: docsForNewGen
         };
 
         this.accountService.uploadTransactionDocumentsV3(dataBlobPayload, 'knownAgent')
@@ -691,7 +691,7 @@ showAgentDetails() {
                     this.documentIds = (response.responseObject as Array<{success: boolean, id: string}>)
                         .filter(doc => doc.success)
                         .map(doc => doc.id);
-                }                
+                }
             }),
             switchMap(() => this.accountService.uploadTransactionDocumentsV3(dataNewgenPayload, 'knownAgent'))
         )
@@ -717,7 +717,7 @@ showAgentDetails() {
                  // Check if this is a restore operation
                  const isRestore = this.route.snapshot.queryParams['restore'] === 'true';
                  const agentId = this.route.snapshot.queryParams['agentId'];
-                 
+
                  // Store restoration info for later use
                  if (isRestore && agentId) {
                      localStorage.setItem('isAgentRestore', 'true');
@@ -774,7 +774,7 @@ showAgentDetails() {
     saveAgent(_data: any, _result: any) {
         const isRestore = this.route.snapshot.queryParams['restore'] === 'true';
         const isCD = this.session.subsidiary.countryCode === 'CD';
-        
+
         if (isCD) {
           if (isRestore) {
             const restoreData = JSON.parse(localStorage.getItem('restoreAgentData') || '{}');
@@ -877,19 +877,19 @@ showAgentDetails() {
             });
     }
 
-    
+
     continueStep() {
         if (this.findAgentStep) {
             this.dedupeService.setDoDedupeObs(true);
             return;
         }
-        
+
         if (this.detailAgentStep) {
             this.assignedFunctions = [];
             const validFunctions = this.session.subsidiary.countryCode === 'CD'
                 ? ['collectBankStatements', 'collectChequeBooks', 'balanceEnquiry', 'encashmentOfChequesToDefinedLimit']
                 : ['collectBankStatements', 'collectDeliverOtherBankMail', 'collectChequeBooks', 'collectCashFromCompanyCheques', 'submitRequestServiceBranch'];
-    
+
             Object.entries(this.formValues).forEach(([key, value]) => {
                 if (value === true && validFunctions.includes(key)) {
                     let limit = 0;
@@ -907,7 +907,7 @@ showAgentDetails() {
                     });
                 }
             });
-    
+
             if (this.session.subsidiary.countryCode === 'CD') {
                 this.createTicketKnownAgent()
                     .pipe(take(1))
@@ -926,11 +926,11 @@ showAgentDetails() {
                                                     maxSize: 1024 * 1024,
                                                     required: doc.required,
                                                     docCode: doc.documentCode,
-                                                    fileTypes: doc.fileExtensions?.map((ext: string) => 
+                                                    fileTypes: doc.fileExtensions?.map((ext: string) =>
                                                         ext === 'pdf' ? 'application/pdf' : `image/${ext}`
                                                     )
                                                 }));
-                                                
+
                                                 this.ensurePhotoAndSignatureDocuments();
                                                 this.detailAgentStep = false;
                                                 this.uploadDocumentsStep = true;
@@ -970,11 +970,11 @@ showAgentDetails() {
                         },
                         error: err => {
                             console.error('Error creating ticket:', err);
-                            const errorMessage = err.error?.statusMessage || 
-                                                err.error?.message || 
-                                                err.message || 
+                            const errorMessage = err.error?.statusMessage ||
+                                                err.error?.message ||
+                                                err.message ||
                                                 'Unknown error creating ticket';
-                            
+
                             this.toastService.show(
                                 this.translateService.instant('TOAST.TITLE-ERROR'),
                                 errorMessage,
@@ -989,7 +989,7 @@ showAgentDetails() {
             }
         }
     }
-    
+
     goBack() {
         if (this.findAgentStep === true) {
             this.router.navigateByUrl('/services/known-agent');
@@ -1040,19 +1040,19 @@ showAgentDetails() {
     }) {
         const userData = cifData.customerData;
         const formValues = cifData.formValues;
-    
+
         this.findAgentStep = false;
         this.detailAgentStep = true;
         if (userData?.personalDetails?.customerId) {
             let idNumber = formValues.refNum || userData.personalDetails.idNumber;
             let idType = formValues.idType || userData.personalDetails.idType;
-    
+
             // For DRC, check identificationDetails for ID information if not already set
             if (this.session.subsidiary.countryCode === 'CD' && (!idNumber || idNumber === 'null')) {
                 const identifications = userData.identificationDetails || [];
                 if (identifications.length > 0) {
                     idNumber = identifications[0].referenceNum;
-    
+
                     const docDesc = identifications[0].docDesc;
                     if (docDesc) {
                         if (docDesc.includes('MILITARY')) {
@@ -1077,23 +1077,23 @@ showAgentDetails() {
                     }
                 }
             }
-    
+
             // Get the stored agent data if available
             const storedAgentData = JSON.parse(localStorage.getItem('createCIFAgentData') || '{}');
-            
+
             // If we have stored agent data from CIF creation, use it
             if (storedAgentData && storedAgentData.refNum && storedAgentData.idType) {
                 idNumber = storedAgentData.refNum;
                 idType = storedAgentData.idType;
             }
-            
+
         const isRestore = this.route.snapshot.queryParams['restore'] === 'true';
         if (isRestore) {
             const storedAgentData = JSON.parse(localStorage.getItem('restoreAgentData') || '{}');
-            
+
             if (storedAgentData && storedAgentData.id) {
                 idNumber = storedAgentData.id;
-                
+
                 if (this.session.subsidiary.countryCode === 'CD') {
                   if (storedAgentData.idType) {
                     idType = storedAgentData.idType;
@@ -1145,9 +1145,9 @@ showAgentDetails() {
                 } else {
                   idType = storedAgentData.idType || 'NationalId';
                 }
-              }              
+              }
         }
-    
+
             this.knownAgentDetails = {
                 customerId: userData?.personalDetails?.customerId,
                 firstName: userData?.personalDetails?.firstName,
@@ -1171,14 +1171,14 @@ showAgentDetails() {
                 preferredLanguageCode: userData?.personalDetails?.preferredLanguageCode,
                 language: userData?.personalDetails?.language
             };
-    
+
             // For DRC, ensure we have valid ID information
             if (this.session.subsidiary.countryCode === 'CD' && (!this.knownAgentDetails.identityDocumentNumber || this.knownAgentDetails.identityDocumentNumber === 'null')) {
                 // If we still don't have a valid ID number, use the CIF
                 this.knownAgentDetails.identityDocumentNumber = this.knownAgentDetails.customerId;
                 this.knownAgentDetails.identityDocumentType = 'NationalIdentification';
             }
-    
+
             this.contactDetails = userData.contactDetails;
         } else {
             console.error('No customer ID found in CIF data');
@@ -1187,8 +1187,8 @@ showAgentDetails() {
             return;
         }
     }
-    
-    
+
+
 
     initExistingUser(cifData: {
         userData: CifInquiryObject,
@@ -1268,15 +1268,15 @@ showAgentDetails() {
             type = this.translateService.instant('TOAST.DOCUMENT-NOT-EXISTS');
         } else {
             type = this.translateService.instant(
-                this.agent.value.id_type === 'ID' || 
-                this.agent.value.id_type === 'nationalid' ? 
-                    'TOAST.ID-NOT-EXISTS' : 
+                this.agent.value.id_type === 'ID' ||
+                this.agent.value.id_type === 'nationalid' ?
+                    'TOAST.ID-NOT-EXISTS' :
                     'TOAST.PASSPORT-NOT-EXISTS'
             );
         }
-        
+
         const id = this.agent.value.id_number;
-        
+
         const dialogRef = this.dialog.open(DialogConfirmComponent, {
             width: '400px',
             height: 'auto',
@@ -1285,7 +1285,7 @@ showAgentDetails() {
                 bodyDescription: `${this.translateService.instant('TOAST.TYPE-NOT-EXIST-CONTINUE-ONBOARDING', { type, id })}`
             }
         });
-    
+
         dialogRef.afterClosed().subscribe((option: any) => {
             if (option?.confirm) {
                 this.createCIF(agent);
@@ -1295,7 +1295,7 @@ showAgentDetails() {
     private findAgent() {
         const id = this.agent.value.id_number;
         if (id) {
-            
+
             let type = 'nationalid';
             switch (this.agent.value.id_type) {
                 case 'customerid':
@@ -1309,21 +1309,21 @@ showAgentDetails() {
                     type = 'passportno';
                     break;
             }
-    
+
             const idUriString = `?Id=${id}&bankId=${this.accMgntObj.bankID}&idType=${type}`;
-    
+
             this.accountService.getAccount(idUriString)
                 .pipe(
                     switchMap(account => {
                         const isBusiness: boolean =
                             !!account.responseObject?.identifications.find(
                                 (identification: any) => identification.type === "CompRegNo" && identification.id !== "");
-    
+
                         const cifInquiryData = {
                             BankId: this.accMgntObj.bankID,
                             CustomerID: this.agent.value.id_number,
                         };
-    
+
                         return this.accountService.cifInquiryV2(isBusiness, cifInquiryData);
                     }),
                     takeUntil(this.destroy$)
@@ -1333,29 +1333,29 @@ showAgentDetails() {
                         if (v.responseObject) {
                             this.findAgentStep = false;
                             this.detailAgentStep = true;
-    
+
                             // Get the stored agent data if available
                             const storedAgentData = JSON.parse(localStorage.getItem('createCIFAgentData') || '{}');
-                            
+
                             // Determine the ID type and number to use
                             let idType = v.responseObject?.personalDetails?.idType;
                             let idNumber = v.responseObject?.personalDetails?.idNumber;
-                            
+
                             // For newly created CIFs, use the stored data if available
                             if (storedAgentData && storedAgentData.refNum && storedAgentData.idType) {
                                 idType = storedAgentData.idType;
                                 idNumber = storedAgentData.refNum;
                             }
-                            
+
                             const isRestore = this.route.snapshot.queryParams['restore'] === 'true';
                             if (isRestore) {
                                 const storedAgentData = JSON.parse(localStorage.getItem('restoreAgentData') || '{}');
-                                
+
                                 if (storedAgentData && storedAgentData.id) {
                                     idNumber = storedAgentData.id;
-                                    
+
                                     if (storedAgentData && storedAgentData.documentIdType) {
-                                       
+
                                         switch (storedAgentData.documentIdType.toUpperCase()) {
                                           case 'VOTERCARD':
                                           case 'VOTER CARD':
@@ -1402,7 +1402,7 @@ showAgentDetails() {
                                       idType = 'NationalId';
                             }
                         }
-                            
+
                             const cifData: {
                                 customerData: CifInquiryObject, formValues: {
                                     nationality: string;
@@ -1419,7 +1419,7 @@ showAgentDetails() {
                                     idType: idType || v.responseObject?.personalDetails?.idType,
                                 }
                             };
-                            
+
                             this.selectAgentDedupeCif(cifData);
                         }
                     },
@@ -1434,11 +1434,11 @@ showAgentDetails() {
                 });
         }
     }
-    
-        
-    
 
-    
+
+
+
+
     // getDocuments(documents: IUploadedDocument[]) {
     //     console.log('Uploaded Documents:', documents);
     //     this.uploadedDocsAreValid = documents.filter(doc => doc.required).every(doc => doc.fileName);
@@ -1447,43 +1447,43 @@ showAgentDetails() {
     //         console.log('Valid Documents Set:', this.uploadedDocs);
     //     }
     // }
-    
+
     getDocuments(documents: IUploadedDocument[]) {
         this.uploadedDocs = documents;
         const photoAndSignature = ['Customer Signature', 'Customer Photo'];
         const uploadedPhotoAndSignature = documents.filter(
             doc => photoAndSignature.includes(doc.name)
         );
-        
+
         localStorage.setItem(
             'photoAndSignature',
             JSON.stringify(uploadedPhotoAndSignature) || '[]'
         );
-        
+
         const requiredDocs = documents.filter(doc => doc.required);
-        
+
         if(this.session.subsidiary.countryCode === 'CD') {
             const invalidDocs = requiredDocs.filter(doc => !doc.fileName || !doc.docCode);
             this.uploadedDocsAreValid = requiredDocs.length > 0 && invalidDocs.length === 0;
 
             if (!this.uploadedDocsAreValid && documents.length > 0) {
-                const hasPhoto = documents.some(doc => 
-                    doc.name && (doc.name.toLowerCase().includes('photo') || 
+                const hasPhoto = documents.some(doc =>
+                    doc.name && (doc.name.toLowerCase().includes('photo') ||
                     doc.description?.toLowerCase().includes('photo')));
-                
-                const hasSignature = documents.some(doc => 
-                    doc.name && (doc.name.toLowerCase().includes('signature') || 
-                    doc.name.toLowerCase().includes('sign') || 
+
+                const hasSignature = documents.some(doc =>
+                    doc.name && (doc.name.toLowerCase().includes('signature') ||
+                    doc.name.toLowerCase().includes('sign') ||
                     doc.description?.toLowerCase().includes('signature')));
-                
+
                 this.uploadedDocsAreValid = hasPhoto && hasSignature;
             }
         } else {
-            this.uploadedDocsAreValid = requiredDocs.length > 0 && 
+            this.uploadedDocsAreValid = requiredDocs.length > 0 &&
                 requiredDocs.every(doc => doc.fileName);
         }
     }
-      
+
 
     showQuitDialog(): void {
 
@@ -1585,7 +1585,7 @@ showAgentDetails() {
         const selectedAccount = this.accountSelectionService.getSelectedAccountWithFallbacks();
         const user = {
             ...this.customerData,
-            accounts: this.customerData.accounts.filter((account: any) => 
+            accounts: this.customerData.accounts.filter((account: any) =>
                 account.accountNumber === selectedAccount?.accountNumber)
         };
 
@@ -1629,9 +1629,9 @@ showAgentDetails() {
         const selectedAccount = this.accountSelectionService.getSelectedAccountWithFallbacks();
         const user = {
             ...this.customerData,
-            accounts: this.customerData.accounts.filter((account: any) => 
+            accounts: this.customerData.accounts.filter((account: any) =>
               account.accountNumber === selectedAccount?.accountNumber)
-          };  
+          };
           const dialogRef_ = this.dialog.open(VerifySignatoryBioDialogComponent, {
             data: {
               ticketId: this.ticket?.id,
@@ -1659,10 +1659,10 @@ showAgentDetails() {
         const selectedAccount = this.accountSelectionService.getSelectedAccountWithFallbacks();
         const user = event ? {
             ...this.customerData,
-            accounts: this.customerData.accounts.filter((account: any) => 
+            accounts: this.customerData.accounts.filter((account: any) =>
                 account.accountNumber === selectedAccount?.accountNumber)
         } : '';
-        
+
         const dialogRef = this.dialog.open(VerifySkipBioComponent, {
             data: {
                 approvalType: 'KNOWNAGENTSKIPBIO',
@@ -1696,9 +1696,9 @@ showAgentDetails() {
             idType: string;
         }
     ): void {
-    
+
         const currentRoute = window.location.href;
-        
+
         // Store the agent data for retrieval after CIF creation
         localStorage.setItem('createCIFAgentData', JSON.stringify({
             nationality: agent.nationality,
@@ -1706,15 +1706,15 @@ showAgentDetails() {
             refNum: agent.refNum,
             idType: agent.idType
         }));
-    
+
         // Define required uploads based on subsidiary and ID type
         let requiredUploads = [];
-        
+
         if (this.session.subsidiary.countryCode === 'CD') {
             // For DRC, customize based on ID type
             let idDocName = "National ID";
             let idDocDescription = "NationalId";
-            
+
             switch (agent.idType) {
                 case 'DRCVotersCard':
                     idDocName = "Voter Card";
@@ -1753,7 +1753,7 @@ showAgentDetails() {
                     idDocDescription = "NationalId";
                     break;
             }
-            
+
             requiredUploads = [
                 {
                     name: idDocName,
@@ -1777,7 +1777,7 @@ showAgentDetails() {
                 }
             ];
         }
-    
+
         const context = {
             dedupe: {
                 idType: agent.idType,
@@ -1813,7 +1813,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
         cif: this.accMgntObj.cif,
         fingerprints: [result.rightFingerPrint]
     };
-    
+
     this.accountService.verifyCustomerBio(ticketId, bioObj, skipBio)
         .pipe(takeUntil(this.destroy$))
         .subscribe(
@@ -1821,7 +1821,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                 if (!response.successful) {
                     return;
                 }
-                
+
                 this.toastService.show(
                     this.translateService.instant('TOAST.TITLE'),
                     this.translateService.instant('TOAST.SUCCESSFULLY-ADDED'),
@@ -1836,7 +1836,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
 
                 const isRestore = this.route.snapshot.queryParams['restore'] === 'true';
                 const agentId = this.route.snapshot.queryParams['agentId'];
-                
+
                 if (isRestore && agentId) {
                     this.router.navigate(['/services/known-agent'], {
                         queryParams: {
@@ -1852,8 +1852,8 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
             },
             error => {
                 this.toastService.show(
-                    this.translateService.instant('TOAST.TITLE-ERROR'), 
-                    error.error?.statusMessage, 
+                    this.translateService.instant('TOAST.TITLE-ERROR'),
+                    error.error?.statusMessage,
                     MessageBoxType.DANGER,
                     5000, undefined, undefined, false
                 );
@@ -1872,7 +1872,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                 this.formValues.kraPin :
                 null;
         }
-    
+
         // Clean up the address to remove null values
         const address = this.knownAgentDetails.address || '';
         const cleanAddress = address
@@ -1893,7 +1893,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
             );
             return throwError(() => new Error('No valid ID number found for agent'));
         }
-    
+
         let payload: any = {
             associatedId: uuid(),
             customerId: this.accMgntObj.cif,
@@ -1924,7 +1924,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                 kraPin: this.subsidiary.countryCode === COUNTRY_CODE.CD ? null : (this.editKraPin ? this.formValues?.kraPin : this.knownAgentDetails?.kraPin),
                 address: cleanAddress,
                 addressType: this.knownAgentDetails.addressType || 'Mailing',
-                assignedFunctionsAndLimit: this.assignedFunctionsObject, 
+                assignedFunctionsAndLimit: this.assignedFunctionsObject,
                 ...(this.subsidiary.countryCode === 'CD' && {
                     effectiveDate: this.formValues.effectiveDate
                         ? this.formatEffectiveDate(this.formValues.effectiveDate)
@@ -1932,13 +1932,13 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                 }),
             }
         };
-    
+
         if (this.accMgntObj.currentFlow === CurrentFlowsOptions.CUSTOMERNOTPRESENT) {
             payload = { ...payload, ViewProfileTicketId: <string>localStorage.getItem('ticketId') };
         }
         return this.accountService.createTicketKnownAgent(payload);
     }
-    
+
 
     formatEffectiveDate(dateInput: Date | undefined): string {
         if (!dateInput) {
@@ -1955,13 +1955,13 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
     }
 
     private mapIdTypeForAPI(idType?: string): string {
-        
+
         if (!idType) {
           return this.session.subsidiary.countryCode === 'CD' ? 'NationalId' : 'ID';
         }
-        
+
         let mappedType = '';
-        
+
         if (this.session.subsidiary.countryCode === 'CD') {
           switch (idType) {
             case 'NationalIdentification':
@@ -1971,7 +1971,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
               mappedType = 'DriversLicense';
               break;
             case 'DRCVotersCard':
-              mappedType = 'VoterCard'; 
+              mappedType = 'VoterCard';
               break;
             case 'DRCPassport':
               mappedType = 'Passport';
@@ -2003,10 +2003,10 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
         }
         return mappedType;
       }
-      
-    
-    
- 
+
+
+
+
       private completeTicketDocuments(ticketId: any, data: any, result: any) {
         if(this.subsidiary.countryCode === 'CD') {
             const documentIds = this.documentIds;
@@ -2021,7 +2021,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                                 MessageBoxType.SUCCESS,
                                 5000, undefined, undefined, false
                             );
-    
+
                             if (this.accMgntObj.currentFlow === CurrentFlowsOptions.CUSTOMERNOTPRESENT) {
                                 if (result.skipLastStep) {
                                     this.verifyBio(this.ticket?.id, result, false);
@@ -2031,12 +2031,12 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                         } else {
                             const isRestore = this.route.snapshot.queryParams['restore'] === 'true';
                             const agentId = this.route.snapshot.queryParams['agentId'];
-                            
+
                             if (isRestore && agentId) {
                                 localStorage.setItem('isAgentRestore', 'true');
                                 localStorage.setItem('restoredAgentId', agentId);
                             }
-                            
+
                             this.verifyBio(this.ticket?.id, result, true);
                         }
                     }
@@ -2046,7 +2046,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                             this.router.navigateByUrl('dashboard');
                             return;
                         }
-                        
+
                         this.toastService.show(
                             this.translateService.instant('TOAST.TITLE-ERROR'),
                             err.message || 'Document submission failed',
@@ -2067,7 +2067,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                                 MessageBoxType.SUCCESS,
                                 5000, undefined, undefined, false
                             );
-    
+
                             if (this.accMgntObj.currentFlow === CurrentFlowsOptions.CUSTOMERNOTPRESENT) {
                                 if (result.skipLastStep) {
                                     this.verifyBio(this.ticket?.id, result, false);
@@ -2084,7 +2084,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                             this.router.navigateByUrl('dashboard');
                             return;
                         }
-                        
+
                         this.toastService.show(
                             this.translateService.instant('TOAST.TITLE-ERROR'),
                             err.error.statusMessage || 'Document submission failed',
@@ -2095,7 +2095,7 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
                 });
         }
     }
-    
+
 
     private getAddresses(address: Address[]): string {
         const _address = address.find(a => a.preferred)
@@ -2110,20 +2110,20 @@ private verifyBio(ticketId: string, result: any, skipBio: boolean) {
             this.selectedLanguage = 'en';
         }
         const maritalStatuses: { [key: string]: string } = {
-          '001': this.session.subsidiary.countryCode === 'CD' ? 
+          '001': this.session.subsidiary.countryCode === 'CD' ?
                 (this.selectedLanguage === 'en' ? 'SINGLE' : 'CELIBATAIRE') : 'SINGLE',
-          '002': this.session.subsidiary.countryCode === 'CD' ? 
+          '002': this.session.subsidiary.countryCode === 'CD' ?
                 (this.selectedLanguage === 'en' ? 'MARRIED' : 'MARIÉ') : 'MARRIED',
-          '003': this.session.subsidiary.countryCode === 'CD' ? 
+          '003': this.session.subsidiary.countryCode === 'CD' ?
                 (this.selectedLanguage === 'en' ? 'SEPARATED' : 'SÉPARÉ') : 'SEPARATED',
-          '004': this.session.subsidiary.countryCode === 'CD' ? 
+          '004': this.session.subsidiary.countryCode === 'CD' ?
                 (this.selectedLanguage === 'en' ? 'DIVORCED' : 'DIVORCÉ') : 'DIVORCED',
-          '005': this.session.subsidiary.countryCode === 'CD' ? 
+          '005': this.session.subsidiary.countryCode === 'CD' ?
                 (this.selectedLanguage === 'en' ? 'WIDOWED' : 'Veuf') : 'WIDOWED'
         };
         return maritalStatuses[code] || code;
       }
-      
+
 
     private getfunctions() {
         this.accountService.getKnownAgentsFunctions().pipe(takeUntil(this.destroy$)).subscribe(

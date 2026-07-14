@@ -14,7 +14,6 @@ import { ActionTicketsService } from '@app/shared/services/actionTickets/action-
 import { MessageBoxType, ToastService } from '@app/shared/modules/toast';
 import { AccountService } from '@app/core/services';
 import { SessionService } from '@app/shared/services';
-import { NgIf, NgFor } from '@angular/common';
 import { DocumentsUploadDrcComponent } from '@shared/modules/upload-docs';
 
 @Component({

@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslatePipe } from '@ngx-translate/core';
 import { MessageBoxType, ToastService } from '@app/shared/modules/toast';
 @Component({
   selector: 'app-standing-order-documents',

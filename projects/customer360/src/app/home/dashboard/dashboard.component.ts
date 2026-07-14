@@ -3,7 +3,7 @@ import {
   Component, DestroyRef, inject, OnDestroy, OnInit, signal, ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AsyncPipe, CurrencyPipe, DatePipe, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, DatePipe, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';

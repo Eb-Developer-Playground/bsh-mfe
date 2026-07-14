@@ -50,11 +50,9 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { LegacyCustomerImageComponent } from '@app/shared/components/legacy-customer-image/legacy-customer-image.component';
 import { DocumentsReviewComponent } from '@app/shared/modules/upload-docs/review/documents-review.component';
 import { DocumentsUploadComponent } from '@app/shared/modules/upload-docs/documents-upload.component';
-import { DocumentsUploadDrcComponent } from '@app/shared/modules/upload-docs/documents-upload-drc/documents-upload-drc.component';
 import { KnownAgentEditFunctionsComponent } from '../known-agent-edit-functions/known-agent-edit-functions.component';
 import { KnownAgentLimitsComponent } from '../known-agent-limits/known-agent-limits.component';
-import { KnownAgentDetailsComponent } from '@app/shared/components/known-agent-details/known-agent-details.component';
-import { KnownAgentAdditionalInformationComponent } from '@app/shared/components/known-agent-additional-information/known-agent-additional-information.component';
+
 
 @Component({
   selector: 'app-known-agent-amend-functions',
@@ -145,8 +143,8 @@ export class KnownAgentAmendFunctionsComponent implements OnInit, OnDestroy {
 
   const accMgntObj = JSON.parse(localStorage.getItem('accMgntObj') || '{}');
 
-  this.hideRemoveButton = 
-    accMgntObj?.currentFlow === CurrentFlowsOptions.CUSTOMERNOTPRESENT && 
+  this.hideRemoveButton =
+    accMgntObj?.currentFlow === CurrentFlowsOptions.CUSTOMERNOTPRESENT &&
     accMgntObj?.action === 'AddKnownAgent';
 
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
@@ -224,7 +222,7 @@ export class KnownAgentAmendFunctionsComponent implements OnInit, OnDestroy {
         }
       });
   }
-  
+
 
   getDocuments(ticketNumber: string) {
     const newgenRequest = {
@@ -232,13 +230,13 @@ export class KnownAgentAmendFunctionsComponent implements OnInit, OnDestroy {
       service: 'Newgen',
       Cif: '',
     };
-    
+
     const blobRequest = {
       ticketNumber,
       service: 'Blob',
       Cif: '',
     };
-  
+
     forkJoin({
       newgen: this.api.post<any>('/v2/documents/search', newgenRequest),
       blob: this.api.post<any>('/v2/documents/search', blobRequest)
@@ -247,11 +245,11 @@ export class KnownAgentAmendFunctionsComponent implements OnInit, OnDestroy {
     .subscribe(result => {
       const newgenDocs = result.newgen.responseObject || [];
       const blobDocs = result.blob.responseObject || [];
-      
+
       this.supportDocuments = [...newgenDocs, ...blobDocs];
     });
   }
-  
+
 
   private setAgentData() {
     this.maritalStatus = this.agentCustomerData.personalDetails?.maritalStatus
@@ -319,7 +317,7 @@ export class KnownAgentAmendFunctionsComponent implements OnInit, OnDestroy {
       },
       { label: 'COMMON.GENDER', value: gender },
       { label: 'COMMON.MARITAL-STATUS', value: this.maritalStatus },
-    
+
     ];
 
     this.loadLookupData('nationalities', this.agentCustomerData?.personalDetails?.nationality);
@@ -382,12 +380,12 @@ loadLookupData(field: string, searchTerm?: string, targetField?: 'region' | 'pla
   public removeAgent() {
     this.router.navigate(['/services/known-agent/remove-agent', this.customerId]);
   }
-  
+
   public toggleAmendFunctions() {
     this.amend = !this.amend;
     // This will show/hide the edit functions section since it's already controlled by the amend flag
   }
-  
+
 
   saveForms(formObj: AgentFormObj) {
     this.AreValid[formObj.formName as FormNames.FUNCTIONS] = formObj.valid;
@@ -723,7 +721,7 @@ loadLookupData(field: string, searchTerm?: string, targetField?: 'region' | 'pla
   }
 
   private createTicketKnownAgent() {
-    const validFunctions = this.sessionService.subsidiary.countryCode === 'CD' 
+    const validFunctions = this.sessionService.subsidiary.countryCode === 'CD'
         ? [
             'collectBankStatements',
             'collectChequeBooks',

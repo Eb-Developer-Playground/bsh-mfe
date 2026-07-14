@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'app-additional-details',
   templateUrl: './additional-details.component.html',
   styleUrls: ['./additional-details.component.scss'],
-  imports: [CommonModule, MatExpansionModule, TranslatePipe],
+  imports: [CommonModule, MatExpansionModule],
 })
 export class AdditionalDetailsComponent implements OnInit {
   public signatory = [

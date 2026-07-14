@@ -39,7 +39,6 @@ import { TranslatePipe } from '@ngx-translate/core';
     MatButtonModule,
     MatMenuModule,
     InfoBoxComponent,
-    DecimalPipe,
     TranslatePipe,
   ],
 })

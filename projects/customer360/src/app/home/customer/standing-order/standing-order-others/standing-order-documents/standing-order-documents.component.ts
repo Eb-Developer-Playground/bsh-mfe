@@ -18,7 +18,6 @@ import { MessageBoxType, ToastService } from '@app/shared/modules/toast';
   styleUrls: ['./standing-order-documents.component.scss'],
   imports: [
     CommonModule,
-    TranslatePipe,
     MatDialogModule,
     MatIconModule,
   ],

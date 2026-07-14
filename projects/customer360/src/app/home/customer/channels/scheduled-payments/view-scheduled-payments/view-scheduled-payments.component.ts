@@ -16,7 +16,6 @@ import { MatDividerModule } from '@angular/material/divider';
   templateUrl: './view-scheduled-payments.component.html',
   styleUrls: ['./view-scheduled-payments.component.scss'],
   imports: [
-    TranslatePipe,
     DatePipe,
     DecimalPipe,
     MatToolbarModule,
@@ -24,7 +23,6 @@ import { MatDividerModule } from '@angular/material/divider';
     MatCardModule,
     MatIconModule,
     MatDividerModule,
-    DocumentPreviewComponent,
     TitleCasePipe,
   ],
 })

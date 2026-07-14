@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-issuance-success-page',
   templateUrl: './issuance-success-page.component.html',
   styleUrl: '../../card-issuance.component.scss',
-  imports: [NgIf, MatButtonModule],
+  imports: [MatButtonModule],
 })
 export class IssuanceSuccessPageComponent implements OnInit {
   issuanceRequest: InstantCardIssuanceRequestDataT = JSON.parse(

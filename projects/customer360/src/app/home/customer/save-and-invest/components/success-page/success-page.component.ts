@@ -32,13 +32,11 @@ export interface IReviewDetail {
   imports: [
     CommonModule,
     MatDialogModule,
-    BreadcrumbNavigationComponent,
     // DialogPrintReceiptComponent, // TODO: Component not available
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     TranslatePipe,
-    DecimalPipe,
   ],
 })
 export class SuccessPageComponent implements OnInit, OnDestroy {

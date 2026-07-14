@@ -56,7 +56,6 @@ import { StandingOrderDocumentsComponent } from '../standing-order-documents/sta
     CurrencyMaskModule,
     AccountDetailsComponent,
     StandingOrderDocumentsComponent,
-    ReviewDetailComponent,
   ],
 })
 export class AmendStandingOrderComponent implements OnInit, AfterViewInit {

@@ -3,7 +3,7 @@ import { NgSwitch, NgSwitchCase } from '@angular/common';
 
 @Component({
   selector: 'app-loading-section',
-  imports: [NgSwitch, NgSwitchCase],
+  imports: [],
   templateUrl: './loading-section.component.html',
   styleUrls: [
     '../../card-issuance.component.scss',

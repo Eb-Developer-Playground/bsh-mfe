@@ -80,7 +80,6 @@ interface ActionTicketResponse {
   templateUrl: './mandate-form.component.html',
   styleUrls: ['./mandate-form.component.scss'],
   imports: [
-    TranslatePipe,
     ChangeMandateSelectAccountComponent,
     ChangeMandateAccountDetailComponent,
     CurrentMandateSignatoriesComponent,

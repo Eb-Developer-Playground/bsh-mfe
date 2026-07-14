@@ -15,7 +15,6 @@ import { CardInputComponent } from '@app/home/customer/card-issuance/components/
   ],
   imports: [
     ReactiveFormsModule,
-    NgIf,
     MatRadioModule,
     MatFormFieldModule,
     MatSelectModule,

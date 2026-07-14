@@ -29,7 +29,6 @@ import { TranslatePipe } from '@ngx-translate/core';
     BreadcrumbNavigationComponent,
     TransferDetailsComponent,
     InvestmentDetailsComponent,
-    PaymentDetailsComponent,
     InfoBoxComponent,
     ReviewDetailsComponent,
     RolloverAndWithdravalDetailsComponent,

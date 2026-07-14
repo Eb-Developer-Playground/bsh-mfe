@@ -62,8 +62,6 @@ import { DocumentsUploadDrcComponent } from '@shared/modules/upload-docs';
     CardDetailsSectionComponent,
     CardChargesSectionComponent,
     ReactiveFormsModule,
-    NgIf,
-    NgTemplateOutlet,
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatCardModule,

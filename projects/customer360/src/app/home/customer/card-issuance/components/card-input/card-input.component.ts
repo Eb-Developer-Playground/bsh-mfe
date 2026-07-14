@@ -37,10 +37,6 @@ import { LoadingSectionComponent } from '@app/home/customer/card-issuance/compon
   imports: [
     ReactiveFormsModule,
     NgSwitch,
-    NgSwitchCase,
-    NgSwitchDefault,
-    NgFor,
-    NgIf,
     AsyncPipe,
     MatFormFieldModule,
     MatSelectModule,

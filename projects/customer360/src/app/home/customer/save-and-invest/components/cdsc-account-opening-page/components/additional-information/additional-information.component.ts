@@ -57,7 +57,6 @@ import { CdscAccountOpeningService } from 'src/app/core/services/cdsc-account-op
     MatNativeDateModule,
     MatDialogModule,
     TranslatePipe,
-    BicSearchDialog,
     PhoneOtpValidationComponent,
   ],
   animations: [

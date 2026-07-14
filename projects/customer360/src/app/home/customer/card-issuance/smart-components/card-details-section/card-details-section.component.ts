@@ -24,9 +24,6 @@ import { ActionButtonComponent } from '@app/home/customer/card-issuance/componen
   ],
   imports: [
     ReactiveFormsModule,
-    NgIf,
-    NgSwitch,
-    NgSwitchCase,
     CardInputComponent,
     ActionButtonComponent,
   ],

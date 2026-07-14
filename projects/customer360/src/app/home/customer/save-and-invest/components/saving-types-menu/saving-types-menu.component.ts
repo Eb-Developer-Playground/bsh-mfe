@@ -29,8 +29,6 @@ import { BreadcrumbNavigationComponent } from 'src/app/shared/components/breadcr
     MatDividerModule,
     MatIconModule,
     TranslatePipe,
-    AccountsListSelectorModalComponent,
-    BreadcrumbNavigationComponent,
   ],
 })
 export class SavingTypesMenuComponent implements OnInit, OnDestroy {

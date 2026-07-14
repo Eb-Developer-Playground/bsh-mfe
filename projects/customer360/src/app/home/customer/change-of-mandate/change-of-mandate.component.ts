@@ -31,7 +31,6 @@ import { ChangeMandatePreviewComponent } from './mandate-form/change-mandate-pre
   styleUrls: ['./change-of-mandate.component.scss'],
   imports: [
     CommonModule,
-    TranslatePipe,
     CdkStepperModule,
     MatButtonModule,
     MatDialogModule,

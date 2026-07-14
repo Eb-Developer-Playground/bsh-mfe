@@ -61,9 +61,8 @@ interface TicketRow {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   imports: [
-    NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault,
+    NgSwitch, NgSwitchCase, NgSwitchDefault,
     AsyncPipe, CurrencyPipe, DatePipe,
-    RouterLink,
     ReactiveFormsModule,
     MatCardModule,
     MatIconModule,

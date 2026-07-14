@@ -16,7 +16,6 @@ import { MatButtonModule } from '@angular/material/button';
   encapsulation: ViewEncapsulation.None,
   imports: [
     CommonModule,
-    RouterLink,
     TranslatePipe,
     MatDialogModule,
     MatIconModule,

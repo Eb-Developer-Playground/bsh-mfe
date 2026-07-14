@@ -26,8 +26,6 @@ import { DocumentsUploadDrcComponent } from '@shared/modules/upload-docs';
   ],
   imports: [
     ReactiveFormsModule,
-    NgIf,
-    NgFor,
     DocumentsUploadDrcComponent,
   ],
 })

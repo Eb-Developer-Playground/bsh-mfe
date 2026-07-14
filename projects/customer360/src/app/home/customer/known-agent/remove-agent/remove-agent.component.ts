@@ -68,7 +68,6 @@ interface KnownAgentPayload {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterLink,
     TranslatePipe,
     MatToolbarModule,
     MatExpansionModule,

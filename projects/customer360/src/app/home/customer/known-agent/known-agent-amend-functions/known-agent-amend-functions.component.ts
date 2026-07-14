@@ -72,11 +72,8 @@ import { KnownAgentAdditionalInformationComponent } from '@app/shared/components
     LegacyCustomerImageComponent,
     DocumentsReviewComponent,
     DocumentsUploadComponent,
-    DocumentsUploadDrcComponent,
     KnownAgentEditFunctionsComponent,
     KnownAgentLimitsComponent,
-    KnownAgentDetailsComponent,
-    KnownAgentAdditionalInformationComponent,
   ],
 })
 export class KnownAgentAmendFunctionsComponent implements OnInit, OnDestroy {

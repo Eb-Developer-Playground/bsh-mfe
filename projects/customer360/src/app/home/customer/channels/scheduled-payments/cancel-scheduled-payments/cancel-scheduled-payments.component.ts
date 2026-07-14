@@ -33,8 +33,6 @@ import { DocumentsUploadComponent } from '@shared/modules/upload-docs';
   imports: [
     ReactiveFormsModule,
     TranslatePipe,
-    DatePipe,
-    DecimalPipe,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,

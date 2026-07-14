@@ -7,7 +7,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-dialog-confirm',
   template: '<ng-content></ng-content>',
-  imports: [CommonModule, MatDialogModule, MatButtonModule, TranslatePipe],
+  imports: [CommonModule, MatDialogModule, MatButtonModule],
 })
 export class DialogConfirmComponent {
   constructor(

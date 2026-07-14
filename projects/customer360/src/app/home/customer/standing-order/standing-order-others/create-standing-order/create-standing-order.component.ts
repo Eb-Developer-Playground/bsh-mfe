@@ -57,7 +57,6 @@ import { AccountDetailsComponent } from "../../account-details/account-details.c
         DecimalPipe,
         AccountDetailsComponent,
         StandingOrderDocumentsComponent,
-        ReviewDetailComponent,
     ],
 })
 export class CreateStandingRequestComponent implements OnInit, AfterViewInit {

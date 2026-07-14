@@ -65,7 +65,6 @@ interface DocumentResponse {
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterLink,
         TranslatePipe,
         MatToolbarModule,
         MatButtonModule,

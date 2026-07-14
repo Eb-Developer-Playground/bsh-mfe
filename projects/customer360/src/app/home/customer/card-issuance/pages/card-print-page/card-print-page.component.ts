@@ -15,7 +15,6 @@ import { CardSectionComponent } from '@app/home/customer/card-issuance/component
     './card-print-page.component.scss',
   ],
   imports: [
-    NgIf,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,

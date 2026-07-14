@@ -55,7 +55,6 @@ interface Account {
     MatPaginatorModule,
     MatRadioModule,
     MatButtonModule,
-    RouterLink,
     PillsComponent,
     DatePipe,
     TranslatePipe,

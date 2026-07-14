@@ -19,7 +19,6 @@ import { TranslatePipe } from '@ngx-translate/core';
   standalone: true,
   imports: [
     CommonModule,
-    BreadcrumbNavigationComponent,
     DocumentsUploadComponent,
     MatCardModule,
     MatButtonModule,

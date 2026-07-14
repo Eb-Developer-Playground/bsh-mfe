@@ -36,8 +36,6 @@ import { TranslatePipe } from '@ngx-translate/core';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    BreadcrumbNavigationComponent,
-    VerifyBioDialogComponent,
     InfoBoxComponent,
     InvestmentReviewDetailsComponent,
     PaymentReviewDetailsComponent,

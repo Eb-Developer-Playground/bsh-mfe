@@ -26,7 +26,6 @@ import { CustomerSearchTableComponent } from './customer-search-table/customer-s
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
   imports: [
-    NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault,
     ReactiveFormsModule,
     RouterLink,
     MatCardModule,

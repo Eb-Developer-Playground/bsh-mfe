@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { effect, inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -10,11 +10,11 @@ import { LoaderService } from '../../modules/loader';
 import { ILocale } from '../../static/locales';
 import { TimeoutDialog } from '../../dialogs';
 import { AUTH_VERSION, User } from '../../models';
-// import { AccountSelectionService } from '../../../core/services/account-selection/account-selection.service';
 import { default as SUBSIDIARIES } from '../../../../assets/data/subsidiaries.json';
 import { default as LOCALES } from '../../../../assets/data/language-locales.json';
 import { environment as env } from '../../../../environments/environment';
 import { jwtDecode } from 'jwt-decode';
+import { RemoteAuthStateService } from 'equity-auth';
 
 export type IActionFlow = string;
 export type IActionFlowStatus = string | null;
@@ -152,7 +152,11 @@ export class SessionService {
   }
 
   get expiresAt(): number {
-    return JSON.parse(<string>localStorage.getItem('expires_at'));
+    try {
+      return JSON.parse(<string>localStorage.getItem('expires_at'));
+    } catch {
+      return 0;
+    }
   }
 
   set syncToken(token: string | undefined) {
@@ -168,7 +172,9 @@ export class SessionService {
   }
 
   get loginResponse(): ILoginResponse {
-    return JSON.parse(<string>localStorage.getItem('access_token'));
+    const token = this.remoteAuth.accessToken;
+    if (!token) return null as unknown as ILoginResponse;
+    return { access_token: token, expires_in: 0, token_type: 'Bearer' };
   }
 
   get userEmail(): string {
@@ -222,9 +228,16 @@ export class SessionService {
   private router = inject(Router);
   private dialog = inject(MatDialog);
   private loader = inject(LoaderService);
+  private readonly remoteAuth = inject(RemoteAuthStateService);
 
   constructor() {
-    this.setSession();
+    effect(() => {
+      const token = this.remoteAuth.authState().accessToken;
+      if (token) {
+        this.user = jwtDecode(token);
+        localStorage.setItem('bankId', this.user?.bankId);
+      }
+    });
   }
 
   public decodeToken(token: string): any {
@@ -232,6 +245,7 @@ export class SessionService {
   }
 
   public get currentUser(): any {
+    if (!this.loginResponse.access_token) return null;
     this._userSubject.next(this.decodeToken(this.loginResponse.access_token));
     return this._userSubject.value;
   }
@@ -242,14 +256,15 @@ export class SessionService {
       this.loginResponse = loginResponse;
       this.expiresAt = addSeconds(Date.now(), loginResponse.expires_in).getTime();
     }
-    if (this.loginResponse) {
-      this.user = jwtDecode(this.loginResponse.access_token);
+    const token = this.loginResponse?.access_token;
+    if (token) {
+      this.user = jwtDecode(token);
       localStorage.setItem("bankId", this.user?.bankId);
     }
   }
 
   public isLoggedIn() {
-    return this.loginResponse ? Date.now() < this.expiresAt : false;
+    return this.remoteAuth.isAuthenticated();
   }
 
   public isExpired(): boolean {
@@ -283,6 +298,7 @@ export class SessionService {
     }
 
     public hasFeatureRole$(roleName: string): Observable<boolean> {
+        if (!this.loginResponse.access_token) return of(false);
         const url = new URL(env.apiUrl);
         url.pathname = "/adminportalauth/api/userinfo/oldrole";
         url.searchParams.set("role", roleName);

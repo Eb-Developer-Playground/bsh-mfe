@@ -25,7 +25,10 @@ export class RemoteAuthStateService {
   constructor() {
     this.unsubscribe = getNativeFederationRegistry()?.on<AuthState>(
       AUTH_STATE_CHANNEL,
-      ({ data }) => this.state.set(data),
+      ({ data }) => {
+        console.log({DAZOTIZO: data})
+        return this.state.set(data);
+      },
       { replay: 1 }
     );
   }

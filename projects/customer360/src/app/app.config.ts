@@ -8,7 +8,6 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideRemoteAuthChannel, remoteAuthInterceptor } from 'equity-auth';
 
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
-import { HttpHeaderInterceptor } from './shared/interceptors/http-header.interceptor';
 import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { NetworkSpeedInterceptor } from './shared/interceptors/network-speed.interceptor';
 import { routes } from './app.routes';
@@ -20,7 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withInterceptorsFromDi(), withInterceptors([remoteAuthInterceptor])),
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: HttpHeaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: NetworkSpeedInterceptor, multi: true },
     provideRemoteAuthChannel(),

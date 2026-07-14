@@ -6,7 +6,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, Injector } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { SessionService } from '../services';
@@ -16,9 +16,13 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable({ providedIn: 'root' })
 export class ErrorInterceptor implements HttpInterceptor {
   private router = inject(Router);
-  private session = inject(SessionService);
+  private injector = inject(Injector);
   private toast = inject(ToastService);
   private translate = inject(TranslateService);
+
+  private get session(): SessionService {
+    return this.injector.get(SessionService);
+  }
 
 
   intercept(

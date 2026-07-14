@@ -4,14 +4,14 @@ import { CardIssuanceService } from '@app/home/customer/card-issuance/services/c
 import {
   InstantCardIssuanceRequestDataT,
 } from '@app/home/customer/card-issuance/card-issuance.models';
-import { NgIf } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-issuance-success-page',
   templateUrl: './issuance-success-page.component.html',
   styleUrl: '../../card-issuance.component.scss',
-  imports: [NgIf, MatButtonModule],
+  imports: [MatButtonModule],
 })
 export class IssuanceSuccessPageComponent implements OnInit {
   issuanceRequest: InstantCardIssuanceRequestDataT = JSON.parse(

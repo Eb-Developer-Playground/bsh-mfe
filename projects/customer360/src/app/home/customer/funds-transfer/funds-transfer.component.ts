@@ -62,7 +62,6 @@ import { SupportingDocumentsComponent } from './supporting-documents/supporting-
     ReactiveFormsModule,
     TranslatePipe,
     DecimalPipe,
-    DatePipe,
     MatToolbarModule,
     MatExpansionModule,
     MatFormFieldModule,

@@ -11,7 +11,6 @@ import { FormGroup, UntypedFormBuilder, ReactiveFormsModule } from '@angular/for
 import { CardIssuanceApisService } from '@app/home/customer/card-issuance/services/card-issuance-apis.service';
 import { CardIssuanceService } from '@app/home/customer/card-issuance/services/card-issuance.service';
 import { SessionService } from '@shared/services';
-import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { CardInputComponent } from '@app/home/customer/card-issuance/components/card-input/card-input.component';
 import { ActionButtonComponent } from '@app/home/customer/card-issuance/components/action-button/action-button.component';
 
@@ -24,9 +23,6 @@ import { ActionButtonComponent } from '@app/home/customer/card-issuance/componen
   ],
   imports: [
     ReactiveFormsModule,
-    NgIf,
-    NgSwitch,
-    NgSwitchCase,
     CardInputComponent,
     ActionButtonComponent,
   ],

@@ -108,73 +108,73 @@ $margin-lg: 16px;
 // Utility classes
 @for $i from 0 through 100 {
     .pt-#{$i} {
-        padding-top: $i +px;
+        padding-top: $i + px;
     }
     .pb-#{$i} {
-        padding-bottom: $i +px;
+        padding-bottom: $i + px;
     }
     .pl-#{$i} {
-        padding-left: $i +px;
+        padding-left: $i + px;
     }
     .pr-#{$i} {
-        padding-right: $i +px;
+        padding-right: $i + px;
     }
 
     .px-#{$i} {
-        padding-right: $i +px;
-        padding-left: $i+px;
+        padding-right: $i + px;
+        padding-left: $i + px;
     }
     .py-#{$i} {
-        padding-top: $i +px;
-        padding-bottom: $i+px;
+        padding-top: $i + px;
+        padding-bottom: $i + px;
     }
     .mx-#{$i} {
-        margin-right: $i +px;
-        margin-left: $i+px;
+        margin-right: $i + px;
+        margin-left: $i + px;
     }
     .my-#{$i} {
-        margin-top: $i +px;
-        margin-bottom: $i+px;
+        margin-top: $i + px;
+        margin-bottom: $i + px;
     }
     .mt-#{$i} {
-        margin-top: $i +px;
+        margin-top: $i + px;
     }
     .mb-#{$i} {
-        margin-bottom: $i +px;
+        margin-bottom: $i + px;
     }
     .mr-#{$i} {
-        margin-right: $i +px;
+        margin-right: $i + px;
     }
     .p-#{$i} {
-        padding: $i +px;
+        padding: $i + px;
     }
 }
 
 @for $i from 0 through 30 {
     .text-#{$i} {
-        font-size: $i +px;
+        font-size: $i + px;
     }
 }
 
 
 @for $i from 0 through 30 {
     .top-#{$i} {
-        top: $i +px;
+        top: $i + px;
     }
     .right-#{$i} {
-        right: $i +px;
+        right: $i + px;
     }
     .left-#{$i} {
-        left: $i +px;
+        left: $i + px;
     }
     .bottom-#{$i} {
-        bottom: $i +px;
+        bottom: $i + px;
     }
 }
 @for $i from 0 through 800 {
 
     .max-w-#{$i}{
-        max-width:$i +px;
+        max-width:$i + px;
     }
 }
 
@@ -182,14 +182,14 @@ $margin-lg: 16px;
 @for $i from 0 through 600 {
 
     .w-#{$i}{
-        width:$i +px;
+        width:$i + px;
     }
 }
 
 @for $i from 0 through 100 {
 
     .wperc-#{$i}{
-        width:$i +'%';
+        width:$i + '%';
     }
 }
 .wperc-80{
@@ -198,7 +198,7 @@ $margin-lg: 16px;
 @for $i from 0 through 600 {
 
     .h-#{$i}{
-        height:$i +px;
+        height:$i + px;
     }
 }
 .completed {

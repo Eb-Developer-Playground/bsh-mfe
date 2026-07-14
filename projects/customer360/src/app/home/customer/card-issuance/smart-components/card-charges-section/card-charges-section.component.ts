@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -15,7 +14,6 @@ import { CardInputComponent } from '@app/home/customer/card-issuance/components/
   ],
   imports: [
     ReactiveFormsModule,
-    NgIf,
     MatRadioModule,
     MatFormFieldModule,
     MatSelectModule,

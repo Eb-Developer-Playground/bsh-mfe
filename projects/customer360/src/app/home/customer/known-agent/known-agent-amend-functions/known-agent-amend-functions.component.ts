@@ -50,11 +50,9 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { LegacyCustomerImageComponent } from '@app/shared/components/legacy-customer-image/legacy-customer-image.component';
 import { DocumentsReviewComponent } from '@app/shared/modules/upload-docs/review/documents-review.component';
 import { DocumentsUploadComponent } from '@app/shared/modules/upload-docs/documents-upload.component';
-import { DocumentsUploadDrcComponent } from '@app/shared/modules/upload-docs/documents-upload-drc/documents-upload-drc.component';
 import { KnownAgentEditFunctionsComponent } from '../known-agent-edit-functions/known-agent-edit-functions.component';
 import { KnownAgentLimitsComponent } from '../known-agent-limits/known-agent-limits.component';
-import { KnownAgentDetailsComponent } from '@app/shared/components/known-agent-details/known-agent-details.component';
-import { KnownAgentAdditionalInformationComponent } from '@app/shared/components/known-agent-additional-information/known-agent-additional-information.component';
+
 
 @Component({
   selector: 'app-known-agent-amend-functions',
@@ -72,11 +70,8 @@ import { KnownAgentAdditionalInformationComponent } from '@app/shared/components
     LegacyCustomerImageComponent,
     DocumentsReviewComponent,
     DocumentsUploadComponent,
-    DocumentsUploadDrcComponent,
     KnownAgentEditFunctionsComponent,
     KnownAgentLimitsComponent,
-    KnownAgentDetailsComponent,
-    KnownAgentAdditionalInformationComponent,
   ],
 })
 export class KnownAgentAmendFunctionsComponent implements OnInit, OnDestroy {

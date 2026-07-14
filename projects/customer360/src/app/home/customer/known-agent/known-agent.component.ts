@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { Observable, of, Subject, throwError } from 'rxjs';
 import { catchError, map, shareReplay, switchMap, take, takeUntil, tap } from 'rxjs/operators';
@@ -65,7 +65,6 @@ interface DocumentResponse {
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterLink,
         TranslatePipe,
         MatToolbarModule,
         MatButtonModule,

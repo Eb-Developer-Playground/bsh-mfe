@@ -10,7 +10,6 @@ import { AccountManagementService } from 'src/app/core/services/account-manageme
 import { AccountService } from 'src/app/core/services/account/account.service';
 import { SaveAndInvestService } from 'src/app/core/services/save-and-invest/save-and-invest.service';
 import { IBreadcrumbConfig } from 'src/app/shared/components/breadcrumb-navigation/breadcrumb-navigation.component';
-import { BreadcrumbNavigationComponent } from 'src/app/shared/components/breadcrumb-navigation/breadcrumb-navigation.component';
 import { VerifyBioDialogComponent } from 'src/app/shared/components/verify-bio-dialog/verify-bio-dialog.component';
 import { InfoBoxComponent } from 'src/app/shared/components/info-box/info-box.component';
 import { InvestmentReviewDetailsComponent } from '../shared/investment-review-details/investment-review-details.component';
@@ -36,8 +35,6 @@ import { TranslatePipe } from '@ngx-translate/core';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    BreadcrumbNavigationComponent,
-    VerifyBioDialogComponent,
     InfoBoxComponent,
     InvestmentReviewDetailsComponent,
     PaymentReviewDetailsComponent,

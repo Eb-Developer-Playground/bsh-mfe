@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
   standalone: true,
-  imports: [CommonModule, MatIconModule, NotificationsContentDirective],
+  imports: [CommonModule, MatIconModule],
 })
 export class NotificationsComponent implements OnInit {
   @Input()

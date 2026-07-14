@@ -7,7 +7,6 @@ import { IBreadcrumbConfig } from 'src/app/shared/components/breadcrumb-navigati
 import { BreadcrumbNavigationComponent } from 'src/app/shared/components/breadcrumb-navigation/breadcrumb-navigation.component';
 import { TransferDetailsComponent } from '../shared/transfer-details/transfer-details.component';
 import { InvestmentDetailsComponent } from '../shared/investment-details/investment-details.component';
-import { PaymentDetailsComponent } from '../shared/payment-details/payment-details.component';
 import { InfoBoxComponent } from 'src/app/shared/components/info-box/info-box.component';
 import { ReviewDetailsComponent } from '../shared/review-details/review-details.component';
 import { RolloverAndWithdravalDetailsComponent } from '../shared/rollover-and-withdraval-details/rollover-and-withdraval-details.component';
@@ -29,7 +28,6 @@ import { TranslatePipe } from '@ngx-translate/core';
     BreadcrumbNavigationComponent,
     TransferDetailsComponent,
     InvestmentDetailsComponent,
-    PaymentDetailsComponent,
     InfoBoxComponent,
     ReviewDetailsComponent,
     RolloverAndWithdravalDetailsComponent,

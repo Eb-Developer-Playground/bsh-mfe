@@ -6,7 +6,7 @@ import {
   Input,
   ChangeDetectorRef,
 } from '@angular/core';
-import { NgFor, DecimalPipe } from '@angular/common';
+import { NgFor, NgIf, DecimalPipe } from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./transaction-summary.component.scss'],
   imports: [
     NgFor,
+    NgIf,
     DecimalPipe,
     TranslatePipe,
     MatIconModule,

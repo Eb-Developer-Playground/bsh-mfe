@@ -33,7 +33,6 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
-import { DatePipe, DecimalPipe, TitleCasePipe } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { TransTableComponent } from '@app/home/customer/channels/channel-activities/channel-transactions/trans-table/trans-table.component';
@@ -67,9 +66,6 @@ export const MY_DATE_FORMATS = MAT_NATIVE_DATE_FORMATS;
     MatIconModule,
     MatMenuModule,
     MatDividerModule,
-    TitleCasePipe,
-    DatePipe,
-    DecimalPipe,
     MatExpansionModule,
     MatButtonModule,
     TransTableComponent,

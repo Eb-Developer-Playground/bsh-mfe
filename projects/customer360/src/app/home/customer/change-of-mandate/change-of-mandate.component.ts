@@ -17,7 +17,6 @@ import { DialogConfirmComponent } from '@app/shared/components/dialog/dialog-con
 import { SessionService } from '@app/shared/services';
 import { ChangeMandateService } from '@app/core/services/change-mandate/change-mandate.service';
 import { CommonModule } from '@angular/common';
-import { TranslatePipe } from '@ngx-translate/core';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -31,7 +30,6 @@ import { ChangeMandatePreviewComponent } from './mandate-form/change-mandate-pre
   styleUrls: ['./change-of-mandate.component.scss'],
   imports: [
     CommonModule,
-    TranslatePipe,
     CdkStepperModule,
     MatButtonModule,
     MatDialogModule,

@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentsService } from 'src/app/shared/services/document/document.service';
 import { CdscAccountOpeningService } from 'src/app/core/services/cdsc-account-opening/cdsc-account-opening.service';
 import { IBreadcrumbConfig } from 'src/app/shared/components/breadcrumb-navigation/breadcrumb-navigation.component';
-import { BreadcrumbNavigationComponent } from 'src/app/shared/components/breadcrumb-navigation/breadcrumb-navigation.component';
 import { MessageBoxType, ToastService } from 'src/app/shared/modules/toast';
 import { DocumentsUploadComponent } from 'src/app/shared/modules/upload-docs/documents-upload.component';
 import { MatCardModule } from '@angular/material/card';
@@ -19,7 +18,6 @@ import { TranslatePipe } from '@ngx-translate/core';
   standalone: true,
   imports: [
     CommonModule,
-    BreadcrumbNavigationComponent,
     DocumentsUploadComponent,
     MatCardModule,
     MatButtonModule,

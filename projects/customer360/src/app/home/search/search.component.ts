@@ -8,7 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslatePipe } from '@ngx-translate/core';
-import { NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, NgIf, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 import { AccountService } from '../../core/services/account/account.service';
 import { ToastService } from '../../shared/modules/toast/toast.service';
@@ -26,7 +26,6 @@ import { CustomerSearchTableComponent } from './customer-search-table/customer-s
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
   imports: [
-    NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault,
     ReactiveFormsModule,
     RouterLink,
     MatCardModule,

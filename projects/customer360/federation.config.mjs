@@ -32,7 +32,11 @@ export default withNativeFederation({
     'rxjs/fetch',
     'rxjs/testing',
     'rxjs/webSocket',
-    // Add further packages you don't need at runtime
+    // Internal app paths without package metadata — not actual npm packages
+    'src/app/shared/modules/localization/models',
+    '@app/home/customer/account-statements/models/account-statement',
+    '@shared/modules/loader/model/size-props',
+    '@app/shared/models/searchable',
   ],
 
   // Please read our FAQ about sharing libs:

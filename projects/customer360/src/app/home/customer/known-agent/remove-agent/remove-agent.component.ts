@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { shareReplay, switchMap, take, takeUntil, tap } from 'rxjs/operators';
@@ -68,7 +68,6 @@ interface KnownAgentPayload {
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterLink,
     TranslatePipe,
     MatToolbarModule,
     MatExpansionModule,

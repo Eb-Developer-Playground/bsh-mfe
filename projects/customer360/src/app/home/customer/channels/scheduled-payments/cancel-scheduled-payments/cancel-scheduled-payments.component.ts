@@ -15,7 +15,6 @@ import { VerifySignatoryDialogComponent } from '@app/shared/components/verify-si
 import { SessionService } from '@app/shared/services/session/session.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslatePipe } from '@ngx-translate/core';
-import { DatePipe, DecimalPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,8 +32,6 @@ import { DocumentsUploadComponent } from '@shared/modules/upload-docs';
   imports: [
     ReactiveFormsModule,
     TranslatePipe,
-    DatePipe,
-    DecimalPipe,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,

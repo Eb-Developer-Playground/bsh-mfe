@@ -1,6 +1,5 @@
-import { DecimalPipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { AccountService } from 'src/app/core/services/account/account.service';
 import { SaveAndInvest } from 'src/app/shared/models/save-and-invest/save-and-invest.model';
 import { ToastService } from 'src/app/shared/modules/toast';
@@ -39,7 +38,6 @@ import { TranslatePipe } from '@ngx-translate/core';
     MatButtonModule,
     MatMenuModule,
     InfoBoxComponent,
-    DecimalPipe,
     TranslatePipe,
   ],
 })

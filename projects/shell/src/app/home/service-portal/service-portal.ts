@@ -33,6 +33,13 @@ const CARDS: ServiceCard[] = [
     route: '/swift',
   },
   {
+    id: 'react-remote',
+    title: 'React Remote',
+    description: 'Open the federated React micro frontend inside the shell',
+    icon: 'web',
+    route: '/react-remote/services',
+  },
+  {
     id: 'teller',
     title: 'Teller Services',
     description: 'Find additional information to help customers with their queries',
@@ -79,7 +86,7 @@ const CARDS: ServiceCard[] = [
     title: 'Cards',
     description: 'Centralized access to card operations, inventory',
     icon: 'credit_card',
-    route: '#',
+    route: '/react-remote/cards',
   },
 ];
 

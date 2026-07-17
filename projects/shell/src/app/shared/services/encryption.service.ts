@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import CryptoJS from 'crypto-js';
+import AES from 'crypto-js/aes';
+import Utf8 from 'crypto-js/enc-utf8';
 import { environment } from '@env/environment';
 
 @Injectable({
@@ -9,8 +10,8 @@ export class EncryptionService {
   /**
    * Encrypt a derived hd private key with a given pin and return it in Base64 form
    */
-  encryptAES = (text: any) => {
-    return CryptoJS.AES.encrypt(text, environment.encryptionKey).toString();
+  encryptAES = (text: string) => {
+    return AES.encrypt(text, environment.encryptionKey).toString();
   };
 
   /**
@@ -18,14 +19,11 @@ export class EncryptionService {
    * @param encryptedBase64 encrypted data in base64 format
    * @return The decrypted content
    */
-  decryptAES = (encryptedBase64: any) => {
-    const decrypted = CryptoJS.AES.decrypt(
-      encryptedBase64,
-      environment.encryptionKey
-    );
+  decryptAES = (encryptedBase64: string) => {
+    const decrypted = AES.decrypt(encryptedBase64, environment.encryptionKey);
     if (decrypted) {
       try {
-        const str = decrypted.toString(CryptoJS.enc.Utf8);
+        const str = decrypted.toString(Utf8);
         if (str.length > 0) {
           return str;
         } else {

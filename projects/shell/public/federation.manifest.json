@@ -1,5 +1,6 @@
 {
   "customer360": "http://localhost:4201/remoteEntry.json",
   "onboarding": "http://localhost:4202/remoteEntry.json",
-  "swift": "http://localhost:4203/remoteEntry.json"
+  "swift": "http://localhost:4203/remoteEntry.json",
+  "reactRemote": "http://localhost:4204/remoteEntry.json"
 }

@@ -1,0 +1,640 @@
+.bsh-react-remote-root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+@media (prefers-color-scheme: dark) {
+  .bsh-react-remote-root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  .bsh-react-remote-root #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+.bsh-react-remote-root {
+  /*width: 1126px;*/
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  max-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.bsh-react-remote-root h1,
+.bsh-react-remote-root h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+.bsh-react-remote-root h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+}
+.bsh-react-remote-root h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+}
+.bsh-react-remote-root p {
+  margin: 0;
+}
+
+.bsh-react-remote-root code {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+.bsh-react-remote-root code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+@media (max-width: 1024px) {
+  .bsh-react-remote-root {
+    font-size: 16px;
+  }
+
+  .bsh-react-remote-root h1 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+
+  .bsh-react-remote-root h2 {
+    font-size: 20px;
+  }
+}
+
+.bsh-react-remote-root .services-page {
+  flex: 1;
+  overflow-y: auto;
+  padding: 56px clamp(20px, 5vw, 72px) 72px;
+  text-align: left;
+  background:
+    radial-gradient(circle at 92% 4%, rgba(163, 42, 41, 0.1), transparent 26rem),
+    #f7f7f6;
+  box-sizing: border-box;
+}
+
+.bsh-react-remote-root .services-header,
+.bsh-react-remote-root .services-search-panel,
+.bsh-react-remote-root .services-results {
+  width: min(100%, 1120px);
+  margin-inline: auto;
+}
+
+.bsh-react-remote-root .services-eyebrow,
+.bsh-react-remote-root .service-category {
+  color: #a32a29;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bsh-react-remote-root .services-header h1 {
+  max-width: 720px;
+  margin: 8px 0 14px;
+  color: #191717;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.03;
+  letter-spacing: -0.04em;
+}
+
+.bsh-react-remote-root .services-intro {
+  max-width: 680px;
+  color: #5d5858;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.bsh-react-remote-root .services-search-panel {
+  margin-top: 38px;
+  padding: 26px;
+  border: 1px solid #dedad8;
+  border-top: 4px solid #a32a29;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(54, 35, 35, 0.08);
+  box-sizing: border-box;
+}
+
+.bsh-react-remote-root .services-search-panel h2,
+.bsh-react-remote-root .services-results-heading h2 {
+  color: #272323;
+}
+
+.bsh-react-remote-root .services-search-panel label {
+  display: block;
+  margin: 18px 0 8px;
+  color: #332f2f;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.bsh-react-remote-root .services-search-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 10px;
+}
+
+.bsh-react-remote-root .services-search-row input {
+  min-width: 0;
+  height: 50px;
+  padding: 0 16px;
+  border: 1px solid #bcb6b4;
+  border-radius: 7px;
+  color: #201d1d;
+  background: #fff;
+  font: inherit;
+  font-size: 16px;
+}
+
+.bsh-react-remote-root .services-search-row input::placeholder {
+  color: #6d6765;
+}
+
+.bsh-react-remote-root .services-search-row button,
+.bsh-react-remote-root .services-empty-state button {
+  min-height: 50px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bsh-react-remote-root .services-search-button,
+.bsh-react-remote-root .services-empty-state button {
+  color: #fff;
+  background: #a32a29;
+}
+
+.bsh-react-remote-root .services-search-button:hover,
+.bsh-react-remote-root .services-empty-state button:hover {
+  background: #7f201f;
+}
+
+.bsh-react-remote-root .services-clear-button {
+  color: #4b4543;
+  border-color: #c9c4c2 !important;
+  background: #f4f2f1;
+}
+
+.bsh-react-remote-root .services-search-row input:focus-visible,
+.bsh-react-remote-root .services-search-row button:focus-visible,
+.bsh-react-remote-root .services-empty-state button:focus-visible {
+  outline: 3px solid rgba(163, 42, 41, 0.34);
+  outline-offset: 2px;
+}
+
+.bsh-react-remote-root .services-search-hint {
+  margin-top: 10px;
+  color: #6d6765;
+  font-size: 14px;
+}
+
+.bsh-react-remote-root .services-results {
+  margin-top: 40px;
+}
+
+.bsh-react-remote-root .services-results-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.bsh-react-remote-root .services-results-heading p {
+  color: #5d5858;
+  font-size: 15px;
+}
+
+.bsh-react-remote-root .services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bsh-react-remote-root .service-card {
+  height: 100%;
+  padding: 24px;
+  border: 1px solid #e1dddb;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(54, 35, 35, 0.04);
+  box-sizing: border-box;
+}
+
+.bsh-react-remote-root .service-card h3,
+.bsh-react-remote-root .services-empty-state h3 {
+  margin: 10px 0 8px;
+  color: #272323;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.bsh-react-remote-root .service-card > p:last-child,
+.bsh-react-remote-root .services-empty-state p {
+  color: #625c5a;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.bsh-react-remote-root .services-empty-state {
+  padding: 46px 24px;
+  border: 1px dashed #bcb6b4;
+  border-radius: 10px;
+  text-align: center;
+  background: #fff;
+}
+
+.bsh-react-remote-root .services-empty-state button {
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .bsh-react-remote-root .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .bsh-react-remote-root .services-page {
+    padding: 36px 16px 48px;
+  }
+
+  .bsh-react-remote-root .services-search-panel {
+    padding: 20px;
+  }
+
+  .bsh-react-remote-root .services-search-row,
+  .bsh-react-remote-root .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bsh-react-remote-root .services-results-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+.bsh-react-remote-root .route-not-found {
+  display: grid;
+  flex: 1;
+  place-content: center;
+  justify-items: start;
+  padding: 48px clamp(20px, 8vw, 96px);
+  text-align: left;
+  color: #292525;
+  background: #f7f7f6;
+  box-sizing: border-box;
+}
+
+.bsh-react-remote-root .route-not-found__eyebrow {
+  color: #a32a29;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bsh-react-remote-root .route-not-found h1 {
+  margin: 8px 0 14px;
+  color: #191717;
+}
+
+.bsh-react-remote-root .route-not-found > p:not(.route-not-found__eyebrow) {
+  color: #625c5a;
+}
+
+.bsh-react-remote-root .route-not-found a {
+  margin-top: 24px;
+  padding: 12px 18px;
+  border-radius: 7px;
+  color: #fff;
+  background: #a32a29;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.bsh-react-remote-root .route-not-found a:hover {
+  background: #7f201f;
+}
+
+.bsh-react-remote-root .route-not-found a:focus-visible {
+  outline: 3px solid rgba(163, 42, 41, 0.34);
+  outline-offset: 3px;
+}
+
+.bsh-react-remote-root .cards-page {
+  flex: 1;
+  overflow-y: auto;
+  padding: 64px clamp(20px, 7vw, 96px);
+  text-align: left;
+  color: #292525;
+  background:
+    linear-gradient(120deg, rgba(163, 42, 41, 0.08), transparent 38%),
+    #f7f7f6;
+  box-sizing: border-box;
+}
+
+.bsh-react-remote-root .cards-header,
+.bsh-react-remote-root .cards-workspace {
+  width: min(100%, 920px);
+  margin-inline: auto;
+}
+
+.bsh-react-remote-root .cards-eyebrow,
+.bsh-react-remote-root .cards-route {
+  color: #a32a29;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bsh-react-remote-root .cards-header h1 {
+  margin: 8px 0 14px;
+  color: #191717;
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.bsh-react-remote-root .cards-header > p:last-child {
+  max-width: 660px;
+  color: #5d5858;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.bsh-react-remote-root .cards-workspace {
+  margin-top: 44px;
+  padding: 32px;
+  border: 1px solid #dedad8;
+  border-left: 5px solid #a32a29;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(54, 35, 35, 0.08);
+  box-sizing: border-box;
+}
+
+.bsh-react-remote-root .cards-workspace h2 {
+  margin-top: 12px;
+  color: #272323;
+}
+
+.bsh-react-remote-root .cards-workspace > p:last-child {
+  color: #625c5a;
+  line-height: 1.65;
+}
+
+@media (max-width: 640px) {
+  .bsh-react-remote-root .cards-page {
+    padding: 40px 16px;
+  }
+
+  .bsh-react-remote-root .cards-workspace {
+    padding: 24px 20px;
+  }
+}
+
+.bsh-react-remote-root .counter:hover {
+  border-color: var(--accent-border);
+}
+
+.bsh-react-remote-root .counter:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.bsh-react-remote-root .hero {
+  position: relative;
+}
+
+.bsh-react-remote-root .hero .base,
+.bsh-react-remote-root .hero .framework,
+.bsh-react-remote-root .hero .vite {
+  inset-inline: 0;
+  margin: 0 auto;
+}
+
+.bsh-react-remote-root .hero .base {
+  width: 170px;
+  position: relative;
+  z-index: 0;
+}
+
+.bsh-react-remote-root .hero .framework,
+.bsh-react-remote-root .hero .vite {
+  position: absolute;
+}
+
+.bsh-react-remote-root .hero .framework {
+  z-index: 1;
+  top: 34px;
+  height: 28px;
+  transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg) scale(1.4);
+}
+
+.bsh-react-remote-root .hero .vite {
+  z-index: 0;
+  top: 107px;
+  height: 26px;
+  width: auto;
+  transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg) scale(0.8);
+}
+
+.bsh-react-remote-root #center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+}
+
+.bsh-react-remote-root #next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+}
+
+.bsh-react-remote-root #next-steps > div {
+  flex: 1 1 0;
+  padding: 32px;
+}
+
+.bsh-react-remote-root #next-steps .icon {
+  margin-bottom: 16px;
+  width: 22px;
+  height: 22px;
+}
+
+.bsh-react-remote-root #docs {
+  border-right: 1px solid var(--border);
+}
+
+.bsh-react-remote-root #next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+}
+
+.bsh-react-remote-root #next-steps ul .logo {
+  height: 18px;
+}
+
+.bsh-react-remote-root #next-steps ul a {
+  color: var(--text-h);
+  font-size: 16px;
+  border-radius: 6px;
+  background: var(--social-bg);
+  display: flex;
+  padding: 6px 12px;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: box-shadow 0.3s;
+}
+
+.bsh-react-remote-root #next-steps ul a:hover {
+  box-shadow: var(--shadow);
+}
+
+.bsh-react-remote-root #next-steps ul a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.bsh-react-remote-root #next-steps ul a .button-icon {
+  height: 18px;
+  width: 18px;
+}
+
+.bsh-react-remote-root #spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+}
+
+.bsh-react-remote-root .ticks {
+  position: relative;
+  width: 100%;
+}
+
+.bsh-react-remote-root .ticks::before,
+.bsh-react-remote-root .ticks::after {
+  content: '';
+  position: absolute;
+  top: -4.5px;
+  border: 5px solid transparent;
+}
+
+.bsh-react-remote-root .ticks::before {
+  left: 0;
+  border-left-color: var(--border);
+}
+
+.bsh-react-remote-root .ticks::after {
+  right: 0;
+  border-right-color: var(--border);
+}
+
+@media (max-width: 1024px) {
+  .bsh-react-remote-root #center {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+
+  .bsh-react-remote-root #next-steps {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bsh-react-remote-root #next-steps > div {
+    padding: 24px 20px;
+  }
+
+  .bsh-react-remote-root #docs {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bsh-react-remote-root #next-steps ul {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bsh-react-remote-root #next-steps ul li {
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  .bsh-react-remote-root #next-steps ul a {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .bsh-react-remote-root #spacer {
+    height: 48px;
+  }
+}

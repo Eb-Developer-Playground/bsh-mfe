@@ -57,3 +57,4 @@ Thumbs.db
 .windsurf/
 projects/Customer360Web/
 build-output-*
+projects/react-remote/src/tailwind.generated.css

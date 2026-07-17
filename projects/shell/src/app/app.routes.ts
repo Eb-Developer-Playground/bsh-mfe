@@ -5,6 +5,7 @@ import { ServicePortal } from './home/service-portal/service-portal';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 import { authGuard } from './shared/guards/auth.guard';
 import { safeLoadRemoteRoutes, safeLoadRemoteComponent } from './remote-loader';
+import { safeLoadReactRemoteRoutes } from './react-remote-host/react-remote-route-loader';
 
 export const routes: Routes = [
   {
@@ -46,8 +47,15 @@ export const routes: Routes = [
           breadcrumb: 'MENU.SWIFT',
         },
       },
+      {
+        path: 'react-remote',
+        loadChildren: safeLoadReactRemoteRoutes,
+        data: {
+          title: 'EQUITY.BSH',
+          breadcrumb: 'MENU.REACT-REMOTE',
+        },
+      },
     ],
   },
   { path: '**', redirectTo: '' },
 ];
-

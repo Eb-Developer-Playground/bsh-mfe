@@ -4,8 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:all": "concurrently -n shell,customer360,onboarding,swift \"ng serve shell --configuration=uat\" \"ng serve customer360 --configuration=uat\" \"ng serve onboarding --configuration=uat\" \"ng serve swift --configuration=uat\"",
+    "start:all": "concurrently -n shell,customer360,onboarding,swift,reactRemote \"ng serve shell --configuration=uat\" \"ng serve customer360 --configuration=uat\" \"ng serve onboarding --configuration=uat\" \"ng serve swift --configuration=uat\" \"pnpm --filter react-remote serve:federation\"",
+    "start:react": "pnpm --filter react-remote dev",
+    "serve:react": "pnpm --filter react-remote serve:federation",
     "build": "ng build",
+    "build:react": "pnpm --filter react-remote build:federation",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -71,7 +74,7 @@
     "@softarc/native-federation-orchestrator": "^4.5.0",
     "@tailwindcss/postcss": "^4.3.2",
     "@types/crypto-js": "^4.2.2",
-    "@types/uuid": "^10.0.0",
+    "@types/uuid": "^11.0.0",
     "crypto-js": "4.2.0",
     "jsdom": "^28.1.0",
     "ng-packagr": "^22.0.0",

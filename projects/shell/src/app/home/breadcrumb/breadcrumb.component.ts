@@ -1,8 +1,12 @@
 import {NgFor} from '@angular/common';
-import {ChangeDetectorRef, Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, effect, inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterLink} from '@angular/router';
 import {filter, startWith, Subject, takeUntil} from 'rxjs';
 import {TranslatePipe} from '@ngx-translate/core';
+import {
+  BreadcrumbBridgeService,
+  BreadcrumbItem,
+} from './breadcrumb-bridge.service';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -16,11 +20,24 @@ import {TranslatePipe} from '@ngx-translate/core';
 export class BreadcrumbComponent implements OnInit, OnDestroy {
   static readonly BREADCRUMB = 'breadcrumb';
   static readonly TITLE = 'title';
-  breadcrumbs: any[] = [];
+  breadcrumbs: BreadcrumbItem[] = [];
   titleKey: string = '';
+  private readonly breadcrumbBridge = inject(BreadcrumbBridgeService);
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly destroy$ = new Subject<void>();
   private currentUrl: string = '';
+
+  private readonly remoteBreadcrumbEffect = effect(() => {
+    const remoteState = this.breadcrumbBridge.state();
+
+    if (!remoteState) {
+      return;
+    }
+
+    this.breadcrumbs = [...remoteState.items];
+    this.titleKey = remoteState.title;
+    this.cdr.markForCheck();
+  });
 
   constructor(
     private router: Router,

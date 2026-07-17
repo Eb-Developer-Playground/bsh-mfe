@@ -33,7 +33,7 @@ export const appConfig: ApplicationConfig = {
     provideTranslateService({
       lang: 'en-GB',
       fallbackLang: 'en',
-      loader: provideTranslateHttpLoader(),
+      loader: provideTranslateHttpLoader({ useHttpBackend: true }),
     }),
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: NetworkSpeedInterceptor, multi: true },

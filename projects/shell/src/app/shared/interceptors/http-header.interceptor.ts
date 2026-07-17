@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, Injector } from '@angular/core';
 import {
   HttpEvent,
   HttpHandler,
@@ -11,7 +11,11 @@ import { environment } from '../../../environments/environment.uat';
 
 @Injectable()
 export class HttpHeaderInterceptor implements HttpInterceptor {
-  constructor(private sessionService: SessionService) {}
+  private readonly injector = inject(Injector);
+
+  private get sessionService(): SessionService {
+    return this.injector.get(SessionService);
+  }
 
   intercept(
     req: HttpRequest<any>,

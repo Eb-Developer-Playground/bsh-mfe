@@ -1,6 +1,6 @@
 <mat-card appearance="outlined" class="search">
   <mat-card-title>
-    {{ 'CUSTOMER.SEARCH.CUSTOMER_SEARCH' | translate }}
+    Customer Search
   </mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-content class="search-content">
@@ -125,6 +125,16 @@
 </mat-card>
 
 <div class="mt-24 d-flex justify-content-between">
+  <eq-button
+    [variant]="'primary'"
+    [size]="'medium'"
+    [disabled]="false"
+    [loading]="false"
+    (clicked)="quit()"
+  >
+    Quit Now
+  </eq-button>
+
   <button
     type="button"
     mat-stroked-button

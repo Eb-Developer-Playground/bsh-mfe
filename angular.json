@@ -56,9 +56,7 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "setupFiles": [
-              "projects/shell/src/test-setup.ts"
-            ]
+            "setupFiles": ["projects/shell/src/test-setup.ts"]
           }
         },
         "esbuild": {
@@ -73,17 +71,14 @@
               }
             ],
             "styles": [
+              "node_modules/@equity/ebk-web-components/theme/theme.css",
               "projects/shell/src/styles.css",
               "projects/shell/src/assets/scss/app.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "projects/shell/src"
-              ]
+              "includePaths": ["projects/shell/src"]
             },
-            "polyfills": [
-              "es-module-shims"
-            ],
+            "polyfills": ["es-module-shims"],
             "allowedCommonJsDependencies": [
               "moment",
               "core-js",
@@ -149,9 +144,7 @@
           "options": {
             "port": 4200,
             "host": "0.0.0.0",
-            "allowedHosts": [
-              "host.docker.internal"
-            ]
+            "allowedHosts": ["host.docker.internal"]
           }
         }
       }
@@ -220,11 +213,10 @@
               }
             ],
             "styles": [
+              "node_modules/@equity/ebk-web-components/theme/theme.css",
               "projects/customer360/src/styles.css"
             ],
-            "polyfills": [
-              "es-module-shims"
-            ],
+            "polyfills": ["es-module-shims"],
             "allowedCommonJsDependencies": [
               "moment",
               "core-js",
@@ -290,9 +282,7 @@
           "options": {
             "port": 4201,
             "host": "0.0.0.0",
-            "allowedHosts": [
-              "host.docker.internal"
-            ]
+            "allowedHosts": ["host.docker.internal"]
           }
         }
       }
@@ -357,13 +347,8 @@
                 "input": "projects/swift/public"
               }
             ],
-            "styles": [
-              "projects/swift/src/styles.css",
-              "projects/swift/src/assets/scss/app.scss"
-            ],
-            "polyfills": [
-              "es-module-shims"
-            ],
+            "styles": ["projects/swift/src/styles.css", "projects/swift/src/assets/scss/app.scss"],
+            "polyfills": ["es-module-shims"],
             "allowedCommonJsDependencies": [
               "moment",
               "core-js",
@@ -429,9 +414,7 @@
           "options": {
             "port": 4203,
             "host": "0.0.0.0",
-            "allowedHosts": [
-              "host.docker.internal"
-            ]
+            "allowedHosts": ["host.docker.internal"]
           }
         }
       }
@@ -496,12 +479,8 @@
                 "input": "projects/onboarding/public"
               }
             ],
-            "styles": [
-              "projects/onboarding/src/styles.css"
-            ],
-            "polyfills": [
-              "es-module-shims"
-            ],
+            "styles": ["projects/onboarding/src/styles.css"],
+            "polyfills": ["es-module-shims"],
             "allowedCommonJsDependencies": [
               "moment",
               "core-js",
@@ -561,9 +540,7 @@
           "options": {
             "port": 4202,
             "host": "0.0.0.0",
-            "allowedHosts": [
-              "host.docker.internal"
-            ]
+            "allowedHosts": ["host.docker.internal"]
           }
         }
       }

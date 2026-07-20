@@ -37,6 +37,32 @@ export function safeLoadRemoteRoutes(remoteName: string): Promise<Routes> {
     });
 }
 
+export function safeLoadRemoteExposed(
+  remoteName: string,
+  exposedModule: string,
+  exportName: string,
+): Promise<any> {
+  const toast = inject(ToastService);
+  const displayName = getDisplayName(remoteName);
+
+  return loadRemoteModule(remoteName, exposedModule)
+    .then((m: any) => m[exportName])
+    .catch((err) => {
+      console.error(`Failed to load remote "${remoteName}" (${exposedModule}):`, err);
+      toast.show(
+        'Error',
+        `Failed to load ${displayName}`,
+        MessageBoxType.DANGER,
+        5000,
+        undefined,
+        undefined,
+        false,
+      );
+      placeholderDisplayName.set(displayName);
+      return PlaceholderComponent;
+    });
+}
+
 export function safeLoadRemoteComponent(remoteName: string): Promise<any> {
   console.log(`loading ${remoteName}...`);
   const toast = inject(ToastService);

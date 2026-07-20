@@ -4,7 +4,7 @@ import { Home } from './home/home';
 import { ServicePortal } from './home/service-portal/service-portal';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 import { authGuard } from './shared/guards/auth.guard';
-import { safeLoadRemoteRoutes, safeLoadRemoteComponent } from './remote-loader';
+import { safeLoadRemoteRoutes, safeLoadRemoteComponent, safeLoadRemoteExposed } from './remote-loader';
 
 export const routes: Routes = [
   {
@@ -19,6 +19,14 @@ export const routes: Routes = [
       {
         path: '',
         component: ServicePortal,
+        data: {
+          title: 'EQUITY.BSH',
+          breadcrumb: 'MENU.CUSTOMER-SERVICES',
+        },
+      },
+      {
+        path: 'search',
+        loadComponent: () => safeLoadRemoteExposed('customer360', './SearchComponent', 'SearchComponent'),
         data: {
           title: 'EQUITY.BSH',
           breadcrumb: 'MENU.CUSTOMER-SERVICES',

@@ -6,6 +6,7 @@ export default withNativeFederation({
   exposes: {
     './Component': './projects/customer360/src/app/app.ts',
     './Routes': './projects/customer360/src/app/app.federation-routes.ts',
+    './SearchComponent': './projects/customer360/src/app/home/search/search.component.ts',
   },
 
   shared: {
@@ -28,6 +29,9 @@ export default withNativeFederation({
   },
 
   skip: [
+    // CJS-only; named imports from @equity/ebk-web-components fail when
+    // pre-bundled as a shared ESM chunk. Bundle it inline instead.
+    'lodash',
     'rxjs/ajax',
     'rxjs/fetch',
     'rxjs/testing',

@@ -20,6 +20,7 @@ import { AccountManagementService } from '../../core/services/account-management
 import { SEARCH_OPTIONS } from '../../shared/static/search-options';
 import { LoaderComponent } from '../../shared/modules/loader/loader.component';
 import { CustomerSearchTableComponent } from './customer-search-table/customer-search-table.component';
+import { EqButtonComponent } from '@equity/ebk-web-components';
 
 @Component({
   selector: 'app-search',
@@ -36,8 +37,9 @@ import { CustomerSearchTableComponent } from './customer-search-table/customer-s
     TranslatePipe,
     LoaderComponent,
     CustomerSearchTableComponent,
+    EqButtonComponent
   ],
-  providers: [DatePipe],
+  providers: [DatePipe]
 })
 export class SearchComponent implements OnInit {
   private readonly fb = inject(UntypedFormBuilder);
@@ -53,7 +55,7 @@ export class SearchComponent implements OnInit {
 
   protected searchForm: UntypedFormGroup = this.fb.group({
     option: ['', Validators.required],
-    searchText: ['', [Validators.required, WhiteSpaceValidator.containsOnlySpaces]],
+    searchText: ['', [Validators.required, WhiteSpaceValidator.containsOnlySpaces]]
   });
 
   protected selectedOption = 'National ID';
@@ -90,7 +92,7 @@ export class SearchComponent implements OnInit {
     const arr: any = SEARCH_OPTIONS.find(x => x.bank_id === bankId);
     if (arr) {
       this.searchForm.patchValue({
-        option: arr.options.filter((x: any) => x.default === true)[0]?.value,
+        option: arr.options.filter((x: any) => x.default === true)[0]?.value
       });
     }
   }
@@ -114,7 +116,7 @@ export class SearchComponent implements OnInit {
     const searchText = this.searchForm.get('searchText')?.value;
     if (searchText) {
       this.searchForm.patchValue({
-        searchText: searchText.toUpperCase().trim(),
+        searchText: searchText.toUpperCase().trim()
       });
     }
   }
@@ -142,7 +144,7 @@ export class SearchComponent implements OnInit {
       error: () => {
         this.loadingSearch = false;
         this.searchFailed = true;
-      },
+      }
     });
   }
 
@@ -189,7 +191,7 @@ export class SearchComponent implements OnInit {
       case 'Phone Number':
         uriString = `?Id=${searchValue}&bankId=${this.currentUserBankId}&idType=phoneno&reloadFromCache=false`;
         break;
-      case "Voter's Card":
+      case 'Voter\'s Card':
         uriString = `?Id=${searchValue}&bankId=${this.currentUserBankId}&idType=voterscard&reloadFromCache=false`;
         break;
       case 'Other Document Number':
@@ -248,17 +250,17 @@ export class SearchComponent implements OnInit {
 
       const filteredAccounts = [
         ...(v.responseObject.accounts.filter(
-          (account: any) => account.mandate === 'SELF' && account.accountStatus === 'D' && (account.schemeType === 'SBA' || account.schemeType === 'CAA'),
+          (account: any) => account.mandate === 'SELF' && account.accountStatus === 'D' && (account.schemeType === 'SBA' || account.schemeType === 'CAA')
         ) || []),
         ...(v.responseObject.accounts.filter(
-          (account: any) => account.mandate === 'SELF' && account.accountStatus === 'A' && (account.schemeType === 'SBA' || account.schemeType === 'CAA'),
+          (account: any) => account.mandate === 'SELF' && account.accountStatus === 'A' && (account.schemeType === 'SBA' || account.schemeType === 'CAA')
         ) || []),
         ...(v.responseObject.accounts.filter(
-          (account: any) => account.mandate !== 'SELF' && account.accountStatus === 'A' && (account.schemeType === 'SBA' || account.schemeType === 'CAA'),
+          (account: any) => account.mandate !== 'SELF' && account.accountStatus === 'A' && (account.schemeType === 'SBA' || account.schemeType === 'CAA')
         ) || []),
         ...(v.responseObject.accounts.filter(
-          (account: any) => account.mandate !== 'SELF' && account.accountStatus === 'D' && (account.schemeType === 'SBA' || account.schemeType === 'CAA'),
-        ) || []),
+          (account: any) => account.mandate !== 'SELF' && account.accountStatus === 'D' && (account.schemeType === 'SBA' || account.schemeType === 'CAA')
+        ) || [])
       ];
       this.accountsRes = filteredAccounts.length > 0 ? filteredAccounts : [];
       this.checkJointAndEntityAccs(v.responseObject, this.accountsRes);
@@ -291,7 +293,7 @@ export class SearchComponent implements OnInit {
           5000,
           undefined,
           undefined,
-          false,
+          false
         );
         this.searchFailed = true;
         this.storeUser(res);
@@ -330,7 +332,7 @@ export class SearchComponent implements OnInit {
       idType: value.identifications?.[0]?.type,
       mandate: acc?.mandate,
       accountType: acc?.schemeType,
-      isPresent: true,
+      isPresent: true
     };
     localStorage.setItem('accMgntObj', JSON.stringify(objAcc));
   }
@@ -344,7 +346,7 @@ export class SearchComponent implements OnInit {
     this.selectedAccount = event;
     if (this.activeCifFData) {
       const selectedAcc = this.activeCifFData.accounts.find(
-        (acc: any) => acc.accountNumber === this.selectedAccount?.accountNumber,
+        (acc: any) => acc.accountNumber === this.selectedAccount?.accountNumber
       );
       if (!selectedAcc) return;
       const objAcc = {
@@ -358,7 +360,7 @@ export class SearchComponent implements OnInit {
         idType: this.activeCifFData.identifications?.[0]?.type,
         mandate: selectedAcc.mandate,
         accountType: selectedAcc.schemeType,
-        isPresent: true,
+        isPresent: true
       };
       localStorage.setItem('accMgntObj', JSON.stringify(objAcc));
     }

@@ -58,3 +58,4 @@ Thumbs.db
 projects/Customer360Web/
 build-output-*
 projects/react-remote/src/tailwind.generated.css
+projects/equity-auth/node_modules
